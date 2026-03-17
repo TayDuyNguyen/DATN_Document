@@ -1,0 +1,492 @@
+// ============================================================
+// DATABASE SCHEMA - WEBSITE DU LỊCH ĐÀ NẴNG "ĐÀ NẴNG TRIP"
+// Stack: Laravel 10.x + MySQL 8.0
+// Tổng: 18 bảng
+// ============================================================
+
+
+// ============================================================
+// BẢNG: users
+// Mục đích: Lưu thông tin tài khoản người dùng (User + Admin)
+// Quan hệ: 1 user có nhiều ratings, favorites, views,
+//          point_transactions, notifications, search_logs
+// ============================================================
+Table users {
+  id            bigint       [pk, note: 'Khóa chính, tự tăng']
+  username      varchar(50)  [unique, note: 'Tên đăng nhập, duy nhất trong hệ thống']
+  email         varchar(100) [unique, note: 'Email đăng nhập, duy nhất']
+  password      varchar(255) [note: 'Mật khẩu đã hash bằng bcrypt']
+  full_name     varchar(100) [note: 'Họ tên đầy đủ hiển thị trên profile']
+  avatar        varchar(255) [note: 'URL ảnh đại diện lưu trên Cloudinary']
+  phone         varchar(20)  [note: 'Số điện thoại liên hệ (không bắt buộc)']
+  birthdate     date         [note: 'Ngày sinh (không bắt buộc)']
+  gender        varchar(20)  [note: 'Giới tính: male | female | other']
+  city          varchar(100) [note: 'Thành phố hiện tại của người dùng']
+  point_balance int          [note: 'Số dư point hiện tại, mặc định 0, có thể âm']
+  role          varchar(20)  [note: 'Vai trò: user | admin']
+  status        varchar(20)  [note: 'Trạng thái tài khoản: active | banned']
+  email_verified_at timestamp [note: 'Thời điểm xác thực email, NULL nếu chưa xác thực']
+  last_login_at timestamp    [note: 'Lần đăng nhập gần nhất']
+  created_at    timestamp    [note: 'Thời điểm tạo tài khoản']
+  updated_at    timestamp    [note: 'Thời điểm cập nhật gần nhất']
+
+  indexes {
+    status // Lọc user theo trạng thái active/banned
+    role   // Phân biệt admin và user thường
+  }
+}
+
+
+// ============================================================
+// BẢNG: categories
+// Mục đích: Danh mục chính của địa điểm
+// Dữ liệu mẫu: Ăn uống | Khách sạn | Du lịch
+// Quan hệ: 1 category có nhiều subcategories và locations
+// ============================================================
+Table categories {
+  id          bigint      [pk, note: 'Khóa chính, tự tăng']
+  name        varchar(50) [note: 'Tên danh mục, ví dụ: Ăn uống, Khách sạn, Du lịch']
+  slug        varchar(60) [unique, note: 'URL thân thiện, ví dụ: an-uong, khach-san']
+  icon        varchar(50) [note: 'Tên icon FontAwesome, ví dụ: fa-utensils']
+  description text        [note: 'Mô tả ngắn về danh mục']
+  image       varchar(255) [note: 'URL ảnh đại diện danh mục']
+  sort_order  int         [note: 'Thứ tự hiển thị trên trang chủ, số nhỏ hiển thị trước']
+  status      varchar(20) [note: 'Trạng thái: active | inactive']
+  created_at  timestamp   [note: 'Thời điểm tạo']
+  updated_at  timestamp   [note: 'Thời điểm cập nhật gần nhất']
+
+  indexes {
+    status // Lọc danh mục đang hoạt động
+  }
+}
+
+
+// ============================================================
+// BẢNG: subcategories
+// Mục đích: Danh mục con, phân loại chi tiết hơn trong category
+// Ví dụ: Ăn uống → Hải sản, Quán cà phê, Nhà hàng
+//        Khách sạn → Homestay, Resort, Hostel
+//        Du lịch → Bãi biển, Núi, Bảo tàng
+// Quan hệ: n-1 với categories, 1-n với locations
+// ============================================================
+Table subcategories {
+  id          bigint      [pk, note: 'Khóa chính, tự tăng']
+  category_id bigint      [note: 'FK → categories.id, danh mục cha']
+  name        varchar(50) [note: 'Tên danh mục con, ví dụ: Hải sản, Resort']
+  slug        varchar(60) [unique, note: 'URL thân thiện của danh mục con']
+  description text        [note: 'Mô tả danh mục con']
+  sort_order  int         [note: 'Thứ tự hiển thị trong danh mục cha']
+  status      varchar(20) [note: 'Trạng thái: active | inactive']
+  created_at  timestamp   [note: 'Thời điểm tạo']
+  updated_at  timestamp   [note: 'Thời điểm cập nhật gần nhất']
+
+  indexes {
+    category_id // Lấy tất cả subcategory của 1 category
+    status      // Lọc subcategory đang hoạt động
+  }
+}
+
+
+// ============================================================
+// BẢNG: locations (BẢNG TRUNG TÂM)
+// Mục đích: Lưu thông tin địa điểm du lịch, ăn uống, khách sạn
+// Phạm vi: 6 quận Đà Nẵng, 100-150 địa điểm ban đầu
+// Quan hệ: n-1 categories, n-1 subcategories
+//          1-n ratings, favorites, views, location_tags, location_amenities
+// Lưu ý: avg_rating và review_count được cập nhật tự động khi duyệt rating
+// ============================================================
+Table locations {
+  id                bigint        [pk, note: 'Khóa chính, tự tăng']
+  name              varchar(200)  [note: 'Tên địa điểm, ví dụ: Nhà hàng Bé Mặn']
+  slug              varchar(220)  [unique, note: 'URL thân thiện, tự sinh từ name']
+  category_id       bigint        [note: 'FK → categories.id, danh mục chính (bắt buộc)']
+  subcategory_id    bigint        [note: 'FK → subcategories.id, danh mục con (tùy chọn)']
+  description       text          [note: 'Mô tả chi tiết về địa điểm']
+  short_description varchar(500)  [note: 'Mô tả ngắn hiển thị trên card danh sách']
+  address           varchar(255)  [note: 'Địa chỉ đầy đủ, ví dụ: 123 Trần Phú']
+  district          varchar(50)   [note: 'Quận: Hải Châu | Sơn Trà | Ngũ Hành Sơn | Cẩm Lệ | Thanh Khê | Liên Chiểu']
+  ward              varchar(50)   [note: 'Phường/Xã (tùy chọn)']
+  latitude          decimal(10,8) [note: 'Vĩ độ GPS, dùng cho Google Maps và tìm kiếm gần nhất']
+  longitude         decimal(11,8) [note: 'Kinh độ GPS, dùng cho Google Maps và tìm kiếm gần nhất']
+  phone             varchar(20)   [note: 'Số điện thoại liên hệ của địa điểm']
+  email             varchar(100)  [note: 'Email liên hệ của địa điểm']
+  website           varchar(255)  [note: 'Website chính thức của địa điểm']
+  opening_hours     text          [note: 'Giờ mở cửa dạng JSON, ví dụ: {"mon":"08:00-22:00","sun":"closed"}']
+  price_min         decimal(12,0) [note: 'Giá thấp nhất (VNĐ), dùng để lọc theo khoảng giá']
+  price_max         decimal(12,0) [note: 'Giá cao nhất (VNĐ), dùng để lọc theo khoảng giá']
+  price_level       tinyint       [note: 'Mức giá tổng quát: 1=Rẻ, 2=Trung bình, 3=Cao, 4=Sang trọng']
+  avg_rating        decimal(3,2)  [note: 'Điểm đánh giá trung bình (0.00-5.00), tự cập nhật khi duyệt rating']
+  review_count      int           [note: 'Tổng số bài đánh giá đã được duyệt (approved)']
+  view_count        int           [note: 'Tổng lượt xem trang chi tiết địa điểm']
+  favorite_count    int           [note: 'Tổng số user đã thêm vào yêu thích']
+  thumbnail         varchar(255)  [note: 'URL ảnh đại diện chính hiển thị trên card']
+  images            text          [note: 'Danh sách URL ảnh bổ sung dạng JSON array']
+  video_url         varchar(255)  [note: 'URL video YouTube giới thiệu địa điểm']
+  status            varchar(20)   [note: 'Trạng thái: active | inactive (ẩn khỏi kết quả tìm kiếm)']
+  is_featured       bool          [note: 'true = địa điểm nổi bật, hiển thị trên trang chủ']
+  created_by        bigint        [note: 'FK → users.id, admin đã tạo địa điểm này']
+  created_at        timestamp     [note: 'Thời điểm tạo']
+  updated_at        timestamp     [note: 'Thời điểm cập nhật gần nhất']
+
+  indexes {
+    category_id    // Lọc địa điểm theo danh mục
+    subcategory_id // Lọc địa điểm theo danh mục con
+    district       // Lọc địa điểm theo quận
+    status         // Chỉ lấy địa điểm active cho public
+    is_featured    // Lấy địa điểm nổi bật cho trang chủ
+    avg_rating     // Sắp xếp theo điểm đánh giá
+    view_count     // Sắp xếp theo lượt xem phổ biến
+  }
+}
+
+
+// ============================================================
+// BẢNG: tags
+// Mục đích: Nhãn mô tả đặc điểm địa điểm
+// Ví dụ: view-đẹp, giá-rẻ, wifi-miễn-phí, gần-biển, có-chỗ-đậu-xe
+// Quan hệ: n-n với locations qua bảng location_tags
+// ============================================================
+Table tags {
+  id         bigint      [pk, note: 'Khóa chính, tự tăng']
+  name       varchar(50) [unique, note: 'Tên tag, ví dụ: View đẹp, Giá rẻ']
+  slug       varchar(60) [unique, note: 'URL thân thiện của tag']
+  type       varchar(30) [note: 'Phân loại tag: cuisine | service | feature | atmosphere']
+  created_at timestamp   [note: 'Thời điểm tạo']
+  updated_at timestamp   [note: 'Thời điểm cập nhật']
+}
+
+
+// ============================================================
+// BẢNG: location_tags (BẢNG TRUNG GIAN)
+// Mục đích: Liên kết nhiều-nhiều giữa locations và tags
+// Ràng buộc: Mỗi cặp (location_id, tag_id) là duy nhất
+// ============================================================
+Table location_tags {
+  id          bigint    [pk, note: 'Khóa chính, tự tăng']
+  location_id bigint    [note: 'FK → locations.id']
+  tag_id      bigint    [note: 'FK → tags.id']
+  created_at  timestamp [note: 'Thời điểm gán tag cho địa điểm']
+
+  indexes {
+    (location_id, tag_id) [unique, name: 'uq_location_tag'] // Không cho phép gán trùng tag cho cùng 1 địa điểm
+  }
+}
+
+
+// ============================================================
+// BẢNG: amenities
+// Mục đích: Tiện ích của địa điểm
+// Ví dụ: WiFi miễn phí, Bãi đỗ xe, Điều hòa, Nhận thẻ tín dụng
+// Quan hệ: n-n với locations qua bảng location_amenities
+// ============================================================
+Table amenities {
+  id         bigint      [pk, note: 'Khóa chính, tự tăng']
+  name       varchar(50) [unique, note: 'Tên tiện ích, ví dụ: WiFi miễn phí']
+  icon       varchar(50) [note: 'Tên icon hiển thị, ví dụ: fa-wifi']
+  category   varchar(30) [note: 'Nhóm tiện ích: connectivity | parking | comfort | payment']
+  created_at timestamp   [note: 'Thời điểm tạo']
+  updated_at timestamp   [note: 'Thời điểm cập nhật']
+}
+
+
+// ============================================================
+// BẢNG: location_amenities (BẢNG TRUNG GIAN)
+// Mục đích: Liên kết nhiều-nhiều giữa locations và amenities
+// Ràng buộc: Mỗi cặp (location_id, amenity_id) là duy nhất
+// ============================================================
+Table location_amenities {
+  id          bigint    [pk, note: 'Khóa chính, tự tăng']
+  location_id bigint    [note: 'FK → locations.id']
+  amenity_id  bigint    [note: 'FK → amenities.id']
+  created_at  timestamp [note: 'Thời điểm gán tiện ích cho địa điểm']
+
+  indexes {
+    (location_id, amenity_id) [unique, name: 'uq_location_amenity'] // Không cho phép gán trùng tiện ích cho cùng 1 địa điểm
+  }
+}
+
+
+// ============================================================
+// BẢNG: ratings (BẢNG QUAN TRỌNG)
+// Mục đích: Lưu bài đánh giá của user về địa điểm
+// Luồng: User gửi → status=pending → Admin duyệt/từ chối
+//        Duyệt → trừ point (2 nếu không ảnh, 3 nếu có ảnh)
+//        Từ chối → không trừ point, lưu lý do
+// Ràng buộc: Mỗi user chỉ được đánh giá 1 lần cho 1 địa điểm
+// Quan hệ: n-1 users, n-1 locations, 1-n rating_images
+// ============================================================
+Table ratings {
+  id              bigint       [pk, note: 'Khóa chính, tự tăng']
+  user_id         bigint       [note: 'FK → users.id, người viết đánh giá']
+  location_id     bigint       [note: 'FK → locations.id, địa điểm được đánh giá']
+  score           tinyint      [note: 'Số sao đánh giá từ 1 đến 5']
+  comment         text         [note: 'Nội dung bình luận (có thể để trống)']
+  image_count     tinyint      [note: 'Số ảnh đính kèm, tối đa 5 ảnh/bài']
+  point_cost      int          [note: 'Số point bị trừ khi duyệt: 2 (không ảnh) | 3 (có ảnh)']
+  status          varchar(20)  [note: 'Trạng thái duyệt: pending | approved | rejected']
+  rejected_reason varchar(255) [note: 'Lý do từ chối, chỉ có giá trị khi status=rejected']
+  approved_by     bigint       [note: 'FK → users.id, admin đã duyệt/từ chối bài này']
+  approved_at     timestamp    [note: 'Thời điểm admin xử lý bài đánh giá']
+  helpful_count   int          [note: 'Số lượt user đánh dấu bài này là hữu ích']
+  created_at      timestamp    [note: 'Thời điểm user gửi bài đánh giá']
+  updated_at      timestamp    [note: 'Thời điểm chỉnh sửa (chỉ cho phép khi còn pending)']
+
+  indexes {
+    user_id              // Lấy tất cả bài đánh giá của 1 user
+    location_id          // Lấy tất cả đánh giá của 1 địa điểm
+    status               // Lọc bài chờ duyệt / đã duyệt / từ chối
+    created_at           // Sắp xếp theo thời gian mới nhất
+    score                // Lọc theo số sao
+    (user_id, location_id) [unique, name: 'uq_user_location_rating'] // Mỗi user chỉ đánh giá 1 lần cho 1 địa điểm
+  }
+}
+
+
+// ============================================================
+// BẢNG: rating_images
+// Mục đích: Lưu ảnh đính kèm trong bài đánh giá
+// Tách riêng khỏi ratings để dễ quản lý và xóa từng ảnh
+// Giới hạn: Tối đa 5 ảnh/bài (kiểm tra ở application layer)
+// Quan hệ: n-1 với ratings
+// ============================================================
+Table rating_images {
+  id         bigint       [pk, note: 'Khóa chính, tự tăng']
+  rating_id  bigint       [note: 'FK → ratings.id, bài đánh giá chứa ảnh này']
+  image_url  varchar(255) [note: 'URL ảnh đã upload lên Cloudinary']
+  sort_order tinyint      [note: 'Thứ tự hiển thị ảnh trong bài, bắt đầu từ 0']
+  created_at timestamp    [note: 'Thời điểm upload ảnh']
+
+  indexes {
+    rating_id // Lấy tất cả ảnh của 1 bài đánh giá
+  }
+}
+
+
+// ============================================================
+// BẢNG: favorites
+// Mục đích: Lưu danh sách địa điểm yêu thích của user
+// Ràng buộc: Mỗi cặp (user_id, location_id) là duy nhất
+// Quan hệ: n-1 users, n-1 locations
+// ============================================================
+Table favorites {
+  id          bigint    [pk, note: 'Khóa chính, tự tăng']
+  user_id     bigint    [note: 'FK → users.id, user đã lưu yêu thích']
+  location_id bigint    [note: 'FK → locations.id, địa điểm được lưu']
+  created_at  timestamp [note: 'Thời điểm thêm vào yêu thích']
+
+  indexes {
+    (user_id, location_id) [unique, name: 'uq_user_location_fav'] // Không cho phép lưu trùng cùng 1 địa điểm
+    location_id            // Đếm tổng lượt yêu thích của địa điểm
+  }
+}
+
+
+// ============================================================
+// BẢNG: views
+// Mục đích: Ghi lại lượt xem trang chi tiết địa điểm
+// Dùng cho: Thống kê phổ biến, hệ thống gợi ý, trending
+// Lưu ý: Bảng này tăng nhanh, nên định kỳ aggregate hoặc
+//        chỉ giữ dữ liệu 90 ngày gần nhất
+// Quan hệ: n-1 users (nullable cho guest), n-1 locations
+// ============================================================
+Table views {
+  id          bigint       [pk, note: 'Khóa chính, tự tăng']
+  user_id     bigint       [note: 'FK → users.id, NULL nếu là khách chưa đăng nhập']
+  location_id bigint       [note: 'FK → locations.id, địa điểm được xem']
+  session_id  varchar(100) [note: 'Session ID của trình duyệt, dùng để track guest']
+  time_spent  int          [note: 'Thời gian xem trang (giây), dùng để đo mức độ quan tâm']
+  created_at  timestamp    [note: 'Thời điểm xem']
+
+  indexes {
+    user_id     // Lịch sử xem của 1 user
+    location_id // Đếm lượt xem của 1 địa điểm
+    created_at  // Lọc theo khoảng thời gian (trending 7 ngày, 30 ngày)
+    session_id  // Track hành vi guest theo session
+  }
+}
+
+
+// ============================================================
+// BẢNG: point_transactions
+// Mục đích: Ghi lại toàn bộ lịch sử thay đổi point của user
+// Loại giao dịch:
+//   purchase = Nạp point (mô phỏng thanh toán)
+//   spend    = Tiêu point khi bài đánh giá được duyệt
+//   bonus    = Thưởng point (đăng ký mới: +5, sự kiện)
+//   refund   = Hoàn point (khi bài bị từ chối sau khi đã trừ)
+// Lưu ý: balance_before và balance_after giúp audit trail
+// Quan hệ: n-1 users
+// ============================================================
+Table point_transactions {
+  id               bigint       [pk, note: 'Khóa chính, tự tăng']
+  user_id          bigint       [note: 'FK → users.id, chủ sở hữu giao dịch']
+  transaction_code varchar(50)  [unique, note: 'Mã giao dịch duy nhất, dùng để tra cứu']
+  type             varchar(30)  [note: 'Loại: purchase | spend | bonus | refund']
+  amount           int          [note: 'Số point thay đổi: dương (+) khi nhận, âm (-) khi tiêu']
+  balance_before   int          [note: 'Số dư point trước giao dịch, dùng để audit']
+  balance_after    int          [note: 'Số dư point sau giao dịch, dùng để audit']
+  reference_id     bigint       [note: 'ID của đối tượng liên quan (rating_id, purchase_id...)']
+  reference_type   varchar(50)  [note: 'Loại đối tượng liên quan: rating | purchase']
+  description      varchar(255) [note: 'Mô tả giao dịch, ví dụ: Duyệt bài đánh giá #123']
+  payment_method   varchar(30)  [note: 'Phương thức nạp tiền (mô phỏng): momo | vnpay | bank']
+  status           varchar(20)  [note: 'Trạng thái: pending | completed | failed']
+  created_at       timestamp    [note: 'Thời điểm giao dịch']
+
+  indexes {
+    user_id                        // Lịch sử giao dịch của 1 user
+    created_at                     // Sắp xếp theo thời gian
+    (reference_id, reference_type) // Tìm giao dịch liên quan đến 1 đối tượng cụ thể
+  }
+}
+
+
+// ============================================================
+// BẢNG: notifications
+// Mục đích: Thông báo trong hệ thống gửi đến user
+// Loại thông báo:
+//   rating_approved = Bài đánh giá được duyệt
+//   rating_rejected = Bài đánh giá bị từ chối
+//   point_credited  = Nhận point mới
+// Quan hệ: n-1 users
+// ============================================================
+Table notifications {
+  id         bigint       [pk, note: 'Khóa chính, tự tăng']
+  user_id    bigint       [note: 'FK → users.id, người nhận thông báo']
+  type       varchar(30)  [note: 'Loại thông báo: rating_approved | rating_rejected | point_credited']
+  title      varchar(255) [note: 'Tiêu đề thông báo hiển thị cho user']
+  content    text         [note: 'Nội dung chi tiết thông báo']
+  data       text         [note: 'Dữ liệu bổ sung dạng JSON, ví dụ: {"rating_id":5,"location":"Bé Mặn"}']
+  is_read    bool         [note: 'false = chưa đọc, true = đã đọc']
+  read_at    timestamp    [note: 'Thời điểm user đọc thông báo, NULL nếu chưa đọc']
+  created_at timestamp    [note: 'Thời điểm tạo thông báo']
+
+  indexes {
+    (user_id, is_read) // Đếm thông báo chưa đọc của user (badge số)
+    created_at         // Sắp xếp thông báo mới nhất lên đầu
+  }
+}
+
+
+// ============================================================
+// BẢNG: search_logs
+// Mục đích: Ghi lại lịch sử tìm kiếm của người dùng
+// Dùng cho: Phân tích từ khóa phổ biến, cải thiện tìm kiếm,
+//           hệ thống gợi ý dựa trên hành vi tìm kiếm
+// Quan hệ: n-1 users (nullable cho guest)
+// ============================================================
+Table search_logs {
+  id            bigint       [pk, note: 'Khóa chính, tự tăng']
+  user_id       bigint       [note: 'FK → users.id, NULL nếu là khách chưa đăng nhập']
+  session_id    varchar(100) [note: 'Session ID để track hành vi guest']
+  query         varchar(255) [note: 'Từ khóa người dùng đã tìm kiếm']
+  results_count int          [note: 'Số kết quả trả về, 0 = không tìm thấy']
+  filters       text         [note: 'Bộ lọc đã áp dụng dạng JSON, ví dụ: {"district":"Hải Châu","category":1}']
+  created_at    timestamp    [note: 'Thời điểm tìm kiếm']
+
+  indexes {
+    user_id    // Lịch sử tìm kiếm của 1 user
+    query      // Thống kê từ khóa phổ biến
+    created_at // Lọc theo khoảng thời gian (trending 30 ngày)
+    session_id // Track hành vi tìm kiếm của guest
+  }
+}
+
+
+// ============================================================
+// BẢNG: blog_posts
+// Mục đích: Bài viết cẩm nang du lịch Đà Nẵng
+// Ví dụ: Top 10 quán hải sản ngon, Kinh nghiệm thuê xe máy...
+// Quan hệ: n-1 users (author), n-n blog_categories
+// ============================================================
+Table blog_posts {
+  id             bigint       [pk, note: 'Khóa chính, tự tăng']
+  title          varchar(255) [note: 'Tiêu đề bài viết']
+  slug           varchar(280) [unique, note: 'URL thân thiện, tự sinh từ title']
+  excerpt        varchar(500) [note: 'Tóm tắt ngắn hiển thị trên danh sách bài viết']
+  content        longtext     [note: 'Nội dung đầy đủ bài viết (HTML hoặc Markdown)']
+  featured_image varchar(255) [note: 'URL ảnh bìa bài viết lưu trên Cloudinary']
+  author_id      bigint       [note: 'FK → users.id, admin viết bài']
+  view_count     int          [note: 'Tổng lượt xem bài viết']
+  status         varchar(20)  [note: 'Trạng thái: draft | published | archived']
+  published_at   timestamp    [note: 'Thời điểm xuất bản, NULL nếu còn là draft']
+  created_at     timestamp    [note: 'Thời điểm tạo bài']
+  updated_at     timestamp    [note: 'Thời điểm chỉnh sửa gần nhất']
+
+  indexes {
+    author_id    // Lấy bài viết của 1 tác giả
+    status       // Chỉ hiển thị bài published cho public
+    published_at // Sắp xếp bài mới nhất lên đầu
+  }
+}
+
+
+// ============================================================
+// BẢNG: blog_categories
+// Mục đích: Danh mục bài viết blog (tách biệt với categories địa điểm)
+// Ví dụ: Ẩm thực, Lưu trú, Vui chơi, Kinh nghiệm, Tin tức
+// Quan hệ: n-n với blog_posts qua blog_post_categories
+// ============================================================
+Table blog_categories {
+  id          bigint      [pk, note: 'Khóa chính, tự tăng']
+  name        varchar(50) [unique, note: 'Tên danh mục blog, ví dụ: Ẩm thực, Lưu trú']
+  slug        varchar(60) [unique, note: 'URL thân thiện của danh mục blog']
+  description text        [note: 'Mô tả danh mục blog']
+  created_at  timestamp   [note: 'Thời điểm tạo']
+  updated_at  timestamp   [note: 'Thời điểm cập nhật']
+}
+
+
+// ============================================================
+// BẢNG: blog_post_categories (BẢNG TRUNG GIAN)
+// Mục đích: Liên kết nhiều-nhiều giữa blog_posts và blog_categories
+// Ràng buộc: Mỗi cặp (post_id, blog_category_id) là duy nhất
+// ============================================================
+Table blog_post_categories {
+  id               bigint [pk, note: 'Khóa chính, tự tăng']
+  post_id          bigint [note: 'FK → blog_posts.id']
+  blog_category_id bigint [note: 'FK → blog_categories.id (đổi tên để tránh nhầm với categories địa điểm)']
+
+  indexes {
+    (post_id, blog_category_id) [unique, name: 'uq_post_blog_category'] // Không cho phép gán trùng danh mục cho cùng 1 bài viết
+  }
+}
+
+
+// ============================================================
+// RELATIONSHIPS
+// Ký hiệu: < = one-to-many (1 bên trái, nhiều bên phải)
+// ============================================================
+
+// --- users ---
+Ref: users.id < ratings.user_id           // 1 user viết nhiều bài đánh giá
+Ref: users.id < ratings.approved_by       // 1 admin duyệt nhiều bài đánh giá
+Ref: users.id < favorites.user_id         // 1 user có nhiều địa điểm yêu thích
+Ref: users.id < views.user_id             // 1 user có nhiều lượt xem
+Ref: users.id < point_transactions.user_id // 1 user có nhiều giao dịch point
+Ref: users.id < notifications.user_id     // 1 user nhận nhiều thông báo
+Ref: users.id < search_logs.user_id       // 1 user có nhiều lịch sử tìm kiếm
+Ref: users.id < blog_posts.author_id      // 1 admin viết nhiều bài blog
+Ref: users.id < locations.created_by      // 1 admin tạo nhiều địa điểm
+
+// --- categories & subcategories ---
+Ref: categories.id < subcategories.category_id  // 1 category có nhiều subcategory
+Ref: categories.id < locations.category_id      // 1 category có nhiều địa điểm
+Ref: subcategories.id < locations.subcategory_id // 1 subcategory có nhiều địa điểm
+
+// --- locations ---
+Ref: locations.id < ratings.location_id          // 1 địa điểm có nhiều đánh giá
+Ref: locations.id < favorites.location_id        // 1 địa điểm được nhiều user yêu thích
+Ref: locations.id < views.location_id            // 1 địa điểm có nhiều lượt xem
+Ref: locations.id < location_tags.location_id    // 1 địa điểm có nhiều tag
+Ref: locations.id < location_amenities.location_id // 1 địa điểm có nhiều tiện ích
+
+// --- tags & amenities ---
+Ref: tags.id < location_tags.tag_id              // 1 tag gán cho nhiều địa điểm
+Ref: amenities.id < location_amenities.amenity_id // 1 tiện ích gán cho nhiều địa điểm
+
+// --- ratings ---
+Ref: ratings.id < rating_images.rating_id        // 1 bài đánh giá có nhiều ảnh
+
+// --- blog ---
+Ref: blog_posts.id < blog_post_categories.post_id           // 1 bài viết thuộc nhiều danh mục
+Ref: blog_categories.id < blog_post_categories.blog_category_id // 1 danh mục chứa nhiều bài viết
