@@ -105,18 +105,32 @@ def create_dummy_image():
     return tmp.name
 
 
-def get_all_locations(n=50):
-    """Lấy danh sách n location IDs từ DB."""
-    res = requests.get(f"{BASE_URL}/locations", headers=auth(), params={"per_page": n})
-    if res.status_code == 200:
+def get_all_locations(n=100):
+    """Lấy danh sách location IDs từ DB, hỗ trợ nhiều trang."""
+    ids = []
+    page = 1
+    per_page = 50
+    while len(ids) < n:
+        res = requests.get(f"{BASE_URL}/locations", headers=auth(),
+                           params={"per_page": per_page, "page": page})
+        if res.status_code != 200:
+            break
         try:
             body  = res.json()
             data  = body.get("data", [])
             items = data if isinstance(data, list) else data.get("data", data.get("items", []))
-            return [item["id"] for item in items if isinstance(item, dict) and item.get("id")]
+            if not items:
+                break
+            ids += [item["id"] for item in items if isinstance(item, dict) and item.get("id")]
+            # Kiểm tra còn trang tiếp không
+            meta = body.get("meta") or (data if isinstance(data, dict) else {})
+            last_page = meta.get("last_page") or meta.get("total_pages") or 1
+            if page >= last_page:
+                break
+            page += 1
         except Exception:
-            pass
-    return []
+            break
+    return ids[:n]
 
 
 def get_unused_location(used_ids, all_ids):
@@ -178,7 +192,7 @@ def run_tests():
         return
 
     url      = BASE_URL
-    all_locs = get_all_locations(20)
+    all_locs = get_all_locations()
     if not all_locs:
         print("[ABORT] Khong co location nao trong DB, can seed data truoc.")
         return
@@ -342,22 +356,31 @@ def run_tests():
             results.append((tc, desc, False, "skip"))
 
     # ── POST /ratings/{id}/helpful ───────────────────────────
+    # Backend yêu cầu rating phải approved mới mark helpful được
+    # Tạo rating mới và approve trước khi test helpful
+    helpful_rating_id, _ = create_rating_auto(USER_TOKEN, user1_used, all_locs,
+                                               score=4, comment="Rating cho helpful test")
+    if helpful_rating_id:
+        # Approve rating này để có thể mark helpful
+        approve_res = requests.patch(f"{url}/admin/ratings/{helpful_rating_id}/approve",
+                                     headers=auth(ADMIN_TOKEN))
+        if approve_res.status_code == 200:
+            print(f"[SETUP] helpful_rating_id = {helpful_rating_id} (approved)")
+        else:
+            print(f"[SETUP] helpful_rating_id = {helpful_rating_id} (approve failed: {approve_res.status_code})")
+    else:
+        print("[SETUP] helpful_rating_id = None (het location)")
 
-    helpful_id    = put_rating_id
-    # Dùng user2 để mark helpful (tránh trường hợp user1 đã mark từ lần trước)
+    helpful_id    = helpful_rating_id
     helpful_token = USER2_TOKEN if USER2_TOKEN else USER_TOKEN
     if helpful_id:
-        # Gọi probe để kiểm tra trạng thái hiện tại
         probe = requests.post(f"{url}/ratings/{helpful_id}/helpful",
                               headers=auth(helpful_token))
-        print(f"  [DEBUG] TC24 probe: status={probe.status_code}, body={probe.text[:200]}")
+        print(f"  [DEBUG] TC24 probe: status={probe.status_code}, body={probe.text[:150]}")
 
         if probe.status_code in (200, 201):
-            # Lần mark đầu tiên thành công
-            ok    = True
-            label = "\033[92mPASS\033[0m"
-            print(f"[{label}] TC24 - POST /ratings/{{id}}/helpful - danh dau huu ich | got {probe.status_code}, expected [200, 201]")
             results.append(("TC24", "POST /ratings/{id}/helpful - danh dau huu ich", True, probe.status_code))
+            print(f"[\033[92mPASS\033[0m] TC24 - POST /ratings/{{id}}/helpful - danh dau huu ich | got {probe.status_code}, expected [200, 201]")
             try:
                 data  = probe.json().get("data", probe.json())
                 count = data.get("helpful_count") if isinstance(data, dict) else None
@@ -365,27 +388,18 @@ def run_tests():
                     print(f"  [INFO] TC24: helpful_count = {count}")
             except Exception:
                 pass
-            # TC25: toggle/mark lại
-            run("TC25", "POST /ratings/{id}/helpful - toggle bo danh dau",
-                "post", f"{url}/ratings/{helpful_id}/helpful", [200, 201, 409],
-                headers=auth(helpful_token))
         elif probe.status_code == 409:
-            # User2 đã mark rating này rồi (từ lần chạy trước)
-            # Backend không hỗ trợ unmark → chấp nhận 409 là expected cho TC24
-            print(f"  [INFO] TC24: user2 da mark rating {helpful_id} truoc do, backend khong ho tro unmark")
-            print(f"  [INFO] TC24: 409 = da mark roi, chap nhan la PASS (backend one-way helpful)")
+            # Đã mark từ lần trước (one-way) → chấp nhận PASS
             results.append(("TC24", "POST /ratings/{id}/helpful - danh dau huu ich", True, 409))
-            print(f"[\033[92mPASS\033[0m] TC24 - POST /ratings/{{id}}/helpful - danh dau huu ich | got 409 (da mark, one-way)")
-            # TC25: cũng 409
-            run("TC25", "POST /ratings/{id}/helpful - toggle bo danh dau",
-                "post", f"{url}/ratings/{helpful_id}/helpful", [200, 201, 409],
-                headers=auth(helpful_token))
+            print(f"[\033[92mPASS\033[0m] TC24 - POST /ratings/{{id}}/helpful - danh dau huu ich | got 409 (da mark truoc, one-way)")
         else:
             results.append(("TC24", "POST /ratings/{id}/helpful - danh dau huu ich", False, probe.status_code))
             print(f"[\033[91mFAIL\033[0m] TC24 - POST /ratings/{{id}}/helpful - danh dau huu ich | got {probe.status_code}, expected [200, 201]")
-            run("TC25", "POST /ratings/{id}/helpful - toggle bo danh dau",
-                "post", f"{url}/ratings/{helpful_id}/helpful", [200, 201, 409],
-                headers=auth(helpful_token))
+
+        # TC25: gọi lần 2 — toggle hoặc 409
+        run("TC25", "POST /ratings/{id}/helpful - toggle bo danh dau",
+            "post", f"{url}/ratings/{helpful_id}/helpful", [200, 201, 409],
+            headers=auth(helpful_token))
     else:
         for tc, desc in [("TC24","helpful danh dau"), ("TC25","helpful toggle")]:
             print(f"[SKIP] {tc} - {desc} (helpful_id = None)")
