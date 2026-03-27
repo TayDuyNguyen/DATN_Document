@@ -1,4 +1,4 @@
-# API List — Dự án Đà Nẵng Trip
+﻿# API List — Dự án Đà Nẵng Trip
 
 > Base URL: `/api/v1`
 > Auth: Laravel Sanctum (Bearer Token)
@@ -205,30 +205,46 @@
 
 ## UPLOAD
 > 🌿 Branch: `feat/taynd/api-upload`
-> 💬 `feat(upload): upload image to Cloudinary, return public URL`
+> 💬 `feat(upload): upload image/multiple images to Cloudinary, delete image`
+> 📝 Cloudinary trả về URL public trực tiếp — frontend dùng URL để hiển thị, không cần proxy qua backend
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
-| POST | `/upload/image` | 🔐 | Upload ảnh lên Cloudinary, trả về URL | body: `image`* (file, image/jpeg\|png\|webp, max 5MB) `folder` (cloudinary folder) | — *(lưu trên Cloudinary, không ghi DB trực tiếp)* |
+| POST | `/upload/image` | 🔐 | Upload 1 ảnh lên Cloudinary, trả về URL | body: `image`* (file, image/jpeg\|png\|webp, max 5MB) `folder` (cloudinary folder) | — |
+| POST | `/upload/images` |  | Upload nhiều ảnh cùng lúc (max 10 files) | body: `images[]`* (files, image/jpeg\|png\|webp, mỗi file max 5MB) `folder` | — |
+| DELETE | `/upload/image` | 🔐 | Xóa ảnh khỏi Cloudinary theo public_id | body: `public_id`* (Cloudinary public_id) | — |
+
+---
+
+## IMAGES (Hình ảnh theo đối tượng)
+> 🌿 Branch: `feat/taynd/api-upload`
+> 💬 Lấy danh sách URL ảnh đã lưu trong DB để hiển thị gallery
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/locations/{id}/images` | 🌐 | Danh sách ảnh của địa điểm (thumbnail + images[]) | path: `id` | **locations** (SELECT thumbnail, images) |
+| GET | `/ratings/{id}/images` | 🌐 | Danh sách ảnh trong bài đánh giá | path: `id` | **rating_images** (SELECT WHERE rating_id, ORDER BY sort_order) |
+| GET | `/admin/upload/images` |  | Danh sách ảnh đã upload theo folder trên Cloudinary | `?folder` `&page &per_page` |  *(Cloudinary Admin API)* |
 
 ---
 
 ## Tổng kết
 
-| Nhóm | Public 🌐 | User 🔐 | Admin 🛡️ | Branch |
+| Nhóm | Public  | User  | Admin  | Branch |
 |------|-----------|---------|----------|--------|
-| Auth | 4 | 3 | — | `feat/taynd/api-auth` |
-| Categories | 2 | — | 6 | `feat/taynd/api-categories` |
-| Locations | 5 | — | 5 | `feat/taynd/api-locations` |
-| Search | 3 | — | — | `feat/taynd/api-search` |
-| Ratings | — | 4 | 3 | `feat/taynd/api-ratings` |
-| Favorites | — | 3 | — | `feat/taynd/api-favorites` |
-| Profile | — | 5 | — | `feat/taynd/api-user-profile` |
-| Points | — | 3 | — | `feat/taynd/api-points` |
-| Notifications | — | 4 | — | `feat/taynd/api-notifications` |
-| Blog | 3 | — | 4 | `feat/taynd/api-blog` |
-| Users | — | — | 5 | `feat/taynd/api-admin-users` |
-| Dashboard | — | — | 5 | `feat/taynd/api-admin-dashboard` |
-| Tags & Amenities | 2 | — | 4 | `feat/taynd/api-tags-amenities` |
-| Upload | — | 1 | — | `feat/taynd/api-upload` |
-| **Tổng** | **19** | **23** | **32** | |
+| Auth | 4 | 3 |  | `feat/taynd/api-auth` |
+| Categories | 4 |  | 6 | `feat/taynd/api-categories` |
+| Locations | 7 |  | 9 | `feat/taynd/api-locations` |
+| Search | 3 |  |  | `feat/taynd/api-search` |
+| Ratings |  | 4 | 5 | `feat/taynd/api-ratings` |
+| Favorites |  | 3 |  | `feat/taynd/api-favorites` |
+| Profile |  | 5 |  | `feat/taynd/api-user-profile` |
+| Points |  | 3 |  | `feat/taynd/api-points` |
+| Notifications |  | 4 |  | `feat/taynd/api-notifications` |
+| Blog | 3 |  | 7 | `feat/taynd/api-blog` |
+| Users |  |  | 5 | `feat/taynd/api-admin-users` |
+| Dashboard |  |  | 5 | `feat/taynd/api-admin-dashboard` |
+| Tags & Amenities | 2 |  | 4 | `feat/taynd/api-tags-amenities` |
+| Upload |  | 3 |  | `feat/taynd/api-upload` |
+| Images | 2 |  | 1 | `feat/taynd/api-upload` |
+| **Tổng** | **25** | **25** | **42** | |
