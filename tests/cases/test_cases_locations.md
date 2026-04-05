@@ -57,6 +57,16 @@ GET /api/v1/locations?price_level=99
 
 ---
 
+## 1b. GET /locations/districts — Danh sách quận có địa điểm
+
+### ✅ TC01b — Lấy danh sách quận dynamic
+```http
+GET /api/v1/locations/districts
+```
+- Expected: `200 OK`, trả về array các quận đang có ít nhất 1 location active
+
+---
+
 ## 2. GET /locations/featured — Địa điểm nổi bật
 
 ### ✅ TC09 — Lấy danh sách nổi bật
@@ -98,6 +108,54 @@ GET /api/v1/locations/nearby?lat=16.0544
 GET /api/v1/locations/nearby?lat=abc&lng=xyz
 ```
 - Expected: `422 Unprocessable`
+
+---
+
+## 4b. GET /locations/{id}/images — Ảnh của địa điểm
+
+### ✅ TC15b — ID hợp lệ
+```http
+GET /api/v1/locations/{id}/images
+```
+- Expected: `200 OK`, trả về `thumbnail` và `images[]`
+
+### ❌ TC15c — ID không tồn tại
+```http
+GET /api/v1/locations/99999/images
+```
+- Expected: `404 Not Found`
+
+---
+
+## 4c. GET /locations/{id}/rating-stats — Phân bố số sao
+
+### ✅ TC15d — ID hợp lệ
+```http
+GET /api/v1/locations/{id}/rating-stats
+```
+- Expected: `200 OK`, trả về `{1: n, 2: n, 3: n, 4: n, 5: n}`
+
+### ❌ TC15e — ID không tồn tại
+```http
+GET /api/v1/locations/99999/rating-stats
+```
+- Expected: `404 Not Found`
+
+---
+
+## 4d. GET /locations/{id}/nearby — Địa điểm lân cận
+
+### ✅ TC15f — ID hợp lệ
+```http
+GET /api/v1/locations/{id}/nearby
+```
+- Expected: `200 OK`, trả về tối đa 6 locations gần nhất
+
+### ❌ TC15g — ID không tồn tại
+```http
+GET /api/v1/locations/99999/nearby
+```
+- Expected: `404 Not Found`
 
 ---
 
@@ -327,6 +385,95 @@ PUT /api/v1/admin/locations/99999
 
 ---
 
+## 9b. GET /admin/locations/export — Export Excel
+
+### ✅ TC39b — Export thành công
+```http
+GET /api/v1/admin/locations/export
+```
+- Expected: `200 OK`, trả về file Excel (Content-Type: application/vnd.openxmlformats...)
+
+### ✅ TC39c — Export với filter
+```http
+GET /api/v1/admin/locations/export?district=Hai Chau&status=active
+```
+- Expected: `200 OK`, file chỉ chứa locations theo filter
+
+### ❌ TC39d — Không có token
+- Expected: `401 Unauthorized`
+
+---
+
+## 9c. POST /admin/locations/{id}/tags — Gán tags
+
+### ✅ TC39e — Gán tags hợp lệ
+```json
+{ "tag_ids": [1, 2, 3] }
+```
+- Expected: `200 OK`
+
+### ❌ TC39f — tag_id không tồn tại
+```json
+{ "tag_ids": [99999] }
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC39g — Không có token
+- Expected: `401 Unauthorized`
+
+---
+
+## 9d. DELETE /admin/locations/{id}/tags/{tagId} — Xóa tag
+
+### ✅ TC39h — Xóa tag hợp lệ
+```http
+DELETE /api/v1/admin/locations/{id}/tags/{tagId}
+```
+- Expected: `200 OK`
+
+### ❌ TC39i — tagId không tồn tại trong location
+- Expected: `404 Not Found`
+
+### ❌ TC39j — Không có token
+- Expected: `401 Unauthorized`
+
+---
+
+## 9e. POST /admin/locations/{id}/amenities — Gán tiện ích
+
+### ✅ TC39k — Gán amenities hợp lệ
+```json
+{ "amenity_ids": [1, 2] }
+```
+- Expected: `200 OK`
+
+### ❌ TC39l — amenity_id không tồn tại
+```json
+{ "amenity_ids": [99999] }
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC39m — Không có token
+- Expected: `401 Unauthorized`
+
+---
+
+## 9f. DELETE /admin/locations/{id}/amenities/{amenityId} — Xóa tiện ích
+
+### ✅ TC39n — Xóa amenity hợp lệ
+```http
+DELETE /api/v1/admin/locations/{id}/amenities/{amenityId}
+```
+- Expected: `200 OK`
+
+### ❌ TC39o — amenityId không tồn tại trong location
+- Expected: `404 Not Found`
+
+### ❌ TC39p — Không có token
+- Expected: `401 Unauthorized`
+
+---
+
 ## 9. DELETE /admin/locations/{id} — Xóa địa điểm
 
 ### ✅ TC39 — Xóa thành công
@@ -425,6 +572,7 @@ PATCH /api/v1/admin/locations/99999/featured
 | TC | API | Trường hợp | Expected |
 |----|-----|-----------|----------|
 | TC01 | GET /locations | Không filter | 200 |
+| TC01b | GET /locations/districts | Danh sách quận dynamic | 200 |
 | TC02 | GET /locations | Filter category_id | 200 |
 | TC03 | GET /locations | Filter district | 200 |
 | TC04 | GET /locations | Filter price_level | 200 |
@@ -439,6 +587,12 @@ PATCH /api/v1/admin/locations/99999/featured
 | TC13 | GET /locations/nearby | Thiếu lng | 422 |
 | TC14 | GET /locations/nearby | lat/lng không phải số | 422 |
 | TC15 | GET /locations/{slug} | Slug hợp lệ | 200 |
+| TC15b | GET /locations/{id}/images | ID hợp lệ | 200 |
+| TC15c | GET /locations/{id}/images | ID không tồn tại | 404 |
+| TC15d | GET /locations/{id}/rating-stats | ID hợp lệ | 200 |
+| TC15e | GET /locations/{id}/rating-stats | ID không tồn tại | 404 |
+| TC15f | GET /locations/{id}/nearby | ID hợp lệ | 200 |
+| TC15g | GET /locations/{id}/nearby | ID không tồn tại | 404 |
 | TC16 | GET /locations/{slug} | Slug không tồn tại | 404 |
 | TC17 | GET /locations/{id}/ratings | Có ratings | 200 |
 | TC18 | GET /locations/{id}/ratings | Chưa có rating | 200 |
@@ -463,15 +617,30 @@ PATCH /api/v1/admin/locations/99999/featured
 | TC37 | PUT /admin/locations/{id} | slug trùng | 422 |
 | TC38 | PUT /admin/locations/{id} | Không có token | 401 |
 | TC39 | DELETE /admin/locations/{id} | Xóa thành công | 200/204 |
-| TC40 | DELETE /admin/locations/{id} | ID không tồn tại | 404 |
+| TC39b | GET /admin/locations/export | Export thành công | 200 |
+| TC39c | GET /admin/locations/export | Export với filter | 200 |
+| TC39d | GET /admin/locations/export | Không có token | 401 |
+| TC39e | POST /admin/locations/{id}/tags | Gán tags hợp lệ | 200 |
+| TC39f | POST /admin/locations/{id}/tags | tag_id không tồn tại | 422 |
+| TC39g | POST /admin/locations/{id}/tags | Không có token | 401 |
+| TC39h | DELETE /admin/locations/{id}/tags/{tagId} | Xóa tag hợp lệ | 200 |
+| TC39i | DELETE /admin/locations/{id}/tags/{tagId} | tagId không tồn tại | 404 |
+| TC39j | DELETE /admin/locations/{id}/tags/{tagId} | Không có token | 401 |
+| TC39k | POST /admin/locations/{id}/amenities | Gán amenities hợp lệ | 200 |
+| TC39l | POST /admin/locations/{id}/amenities | amenity_id không tồn tại | 422 |
+| TC39m | POST /admin/locations/{id}/amenities | Không có token | 401 |
+| TC39n | DELETE /admin/locations/{id}/amenities/{amenityId} | Xóa amenity hợp lệ | 200 |
+| TC39o | DELETE /admin/locations/{id}/amenities/{amenityId} | amenityId không tồn tại | 404 |
+| TC39p | DELETE /admin/locations/{id}/amenities/{amenityId} | Không có token | 401 |
+| TC40 | DELETE /admin/locations/{id} | ID không tồn tại | 404/422 |
 | TC41 | DELETE /admin/locations/{id} | Không có token | 401 |
 | TC42 | PATCH /admin/locations/{id}/status | Đổi sang inactive | 200 |
 | TC43 | PATCH /admin/locations/{id}/status | Đổi sang active | 200 |
 | TC44 | PATCH /admin/locations/{id}/status | status sai giá trị | 422 |
-| TC45 | PATCH /admin/locations/{id}/status | ID không tồn tại | 404 |
+| TC45 | PATCH /admin/locations/{id}/status | ID không tồn tại | 404/422 |
 | TC46 | PATCH /admin/locations/{id}/status | Không có token | 401 |
 | TC47 | PATCH /admin/locations/{id}/featured | Bật nổi bật | 200 |
 | TC48 | PATCH /admin/locations/{id}/featured | Tắt nổi bật | 200 |
 | TC49 | PATCH /admin/locations/{id}/featured | is_featured sai kiểu | 422 |
-| TC50 | PATCH /admin/locations/{id}/featured | ID không tồn tại | 404 |
+| TC50 | PATCH /admin/locations/{id}/featured | ID không tồn tại | 404/422 |
 | TC51 | PATCH /admin/locations/{id}/featured | Không có token | 401 |

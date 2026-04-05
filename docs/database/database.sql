@@ -1,8 +1,8 @@
 -- ============================================================
 -- DATABASE SCHEMA - WEBSITE DU LỊCH ĐÀ NẴNG "ĐÀ NẴNG TRIP"
--- Stack: Laravel 10.x + MySQL 8.0
+-- Stack: Laravel 11.x + MySQL 8.0
 -- Encoding: utf8mb4_unicode_ci
--- Tổng: 18 bảng
+-- Tổng: 24 bảng | Dịch vụ tour (không có point)
 -- ============================================================
 
 CREATE DATABASE IF NOT EXISTS danang_trip
@@ -11,528 +11,518 @@ CREATE DATABASE IF NOT EXISTS danang_trip
 
 USE danang_trip;
 
-SET FOREIGN_KEY_CHECKS = 0;
-
 -- ============================================================
--- BẢNG: users
--- Mục đích: Lưu thông tin tài khoản người dùng (User + Admin)
+-- BẢNG 1: users
 -- ============================================================
 CREATE TABLE users (
-  id                BIGINT UNSIGNED   NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  username          VARCHAR(50)       NOT NULL                COMMENT 'Tên đăng nhập, duy nhất trong hệ thống',
-  email             VARCHAR(100)      NOT NULL                COMMENT 'Email đăng nhập, duy nhất',
-  password          VARCHAR(255)      NOT NULL                COMMENT 'Mật khẩu đã hash bằng bcrypt',
-  full_name         VARCHAR(100)      NULL                    COMMENT 'Họ tên đầy đủ hiển thị trên profile',
-  avatar            VARCHAR(255)      NULL                    COMMENT 'URL ảnh đại diện lưu trên Cloudinary',
-  phone             VARCHAR(20)       NULL                    COMMENT 'Số điện thoại liên hệ (không bắt buộc)',
-  birthdate         DATE              NULL                    COMMENT 'Ngày sinh (không bắt buộc)',
-  gender            VARCHAR(20)       NULL                    COMMENT 'Giới tính: male | female | other',
-  city              VARCHAR(100)      NULL                    COMMENT 'Thành phố hiện tại của người dùng',
-  point_balance     INT               NOT NULL DEFAULT 0      COMMENT 'Số dư point hiện tại, mặc định 0, có thể âm',
-  role              VARCHAR(20)       NOT NULL DEFAULT 'user' COMMENT 'Vai trò: user | admin',
-  status            VARCHAR(20)       NOT NULL DEFAULT 'active' COMMENT 'Trạng thái tài khoản: active | banned',
-  email_verified_at TIMESTAMP         NULL                    COMMENT 'Thời điểm xác thực email, NULL nếu chưa xác thực',
-  last_login_at     TIMESTAMP         NULL                    COMMENT 'Lần đăng nhập gần nhất',
-  created_at        TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo tài khoản',
-  updated_at        TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật gần nhất',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_users_username (username),
-  UNIQUE KEY uq_users_email (email),
-  INDEX idx_users_status (status),
-  INDEX idx_users_role (role)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Tài khoản người dùng và admin';
-
+  id                BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  username          VARCHAR(50)  NOT NULL UNIQUE,
+  email             VARCHAR(100) NOT NULL UNIQUE,
+  password          VARCHAR(255) NOT NULL,
+  full_name         VARCHAR(100),
+  avatar            VARCHAR(255),
+  phone             VARCHAR(20),
+  birthdate         DATE,
+  gender            VARCHAR(20),
+  city              VARCHAR(100),
+  role              VARCHAR(20)  NOT NULL DEFAULT 'user' COMMENT 'user | admin | staff',
+  status            VARCHAR(20)  NOT NULL DEFAULT 'active' COMMENT 'active | banned',
+  email_verified_at TIMESTAMP    NULL,
+  last_login_at     TIMESTAMP    NULL,
+  remember_token    VARCHAR(100),
+  created_at        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_email  (email),
+  INDEX idx_status (status),
+  INDEX idx_role   (role)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: categories
--- Mục đích: Danh mục chính (Ăn uống | Khách sạn | Du lịch)
+-- BẢNG 2: categories
 -- ============================================================
 CREATE TABLE categories (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  name        VARCHAR(50)     NOT NULL                COMMENT 'Tên danh mục, ví dụ: Ăn uống, Khách sạn, Du lịch',
-  slug        VARCHAR(60)     NOT NULL                COMMENT 'URL thân thiện, ví dụ: an-uong, khach-san',
-  icon        VARCHAR(50)     NULL                    COMMENT 'Tên icon FontAwesome, ví dụ: fa-utensils',
-  description TEXT            NULL                    COMMENT 'Mô tả ngắn về danh mục',
-  image       VARCHAR(255)    NULL                    COMMENT 'URL ảnh đại diện danh mục',
-  sort_order  INT             NOT NULL DEFAULT 0      COMMENT 'Thứ tự hiển thị trên trang chủ, số nhỏ hiển thị trước',
-  status      VARCHAR(20)     NOT NULL DEFAULT 'active' COMMENT 'Trạng thái: active | inactive',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo',
-  updated_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_categories_slug (slug),
-  INDEX idx_categories_status (status)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Danh mục chính của địa điểm';
-
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name        VARCHAR(50)  NOT NULL,
+  slug        VARCHAR(60)  NOT NULL UNIQUE,
+  icon        VARCHAR(50),
+  description TEXT,
+  image       VARCHAR(255),
+  sort_order  INT          DEFAULT 0,
+  status      VARCHAR(20)  NOT NULL DEFAULT 'active' COMMENT 'active | inactive',
+  created_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: subcategories
--- Mục đích: Danh mục con (Hải sản, Resort, Bãi biển...)
+-- BẢNG 3: subcategories
 -- ============================================================
 CREATE TABLE subcategories (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  category_id BIGINT UNSIGNED NOT NULL                COMMENT 'FK → categories.id, danh mục cha',
-  name        VARCHAR(50)     NOT NULL                COMMENT 'Tên danh mục con, ví dụ: Hải sản, Resort',
-  slug        VARCHAR(60)     NOT NULL                COMMENT 'URL thân thiện của danh mục con',
-  description TEXT            NULL                    COMMENT 'Mô tả danh mục con',
-  sort_order  INT             NOT NULL DEFAULT 0      COMMENT 'Thứ tự hiển thị trong danh mục cha',
-  status      VARCHAR(20)     NOT NULL DEFAULT 'active' COMMENT 'Trạng thái: active | inactive',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo',
-  updated_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_subcategories_slug (slug),
-  INDEX idx_subcategories_category (category_id),
-  INDEX idx_subcategories_status (status),
-  CONSTRAINT fk_subcategories_category FOREIGN KEY (category_id)
-    REFERENCES categories (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Danh mục con của địa điểm';
-
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  category_id BIGINT UNSIGNED NOT NULL,
+  name        VARCHAR(50)  NOT NULL,
+  slug        VARCHAR(60)  NOT NULL UNIQUE,
+  description TEXT,
+  sort_order  INT          DEFAULT 0,
+  status      VARCHAR(20)  NOT NULL DEFAULT 'active' COMMENT 'active | inactive',
+  created_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_category_id (category_id),
+  INDEX idx_status      (status),
+  FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: locations (BẢNG TRUNG TÂM)
--- Mục đích: Địa điểm du lịch, ăn uống, khách sạn tại Đà Nẵng
--- Lưu ý: avg_rating và review_count tự cập nhật khi duyệt rating
+-- BẢNG 4: locations
 -- ============================================================
 CREATE TABLE locations (
-  id                BIGINT UNSIGNED   NOT NULL AUTO_INCREMENT  COMMENT 'Khóa chính, tự tăng',
-  name              VARCHAR(200)      NOT NULL                  COMMENT 'Tên địa điểm, ví dụ: Nhà hàng Bé Mặn',
-  slug              VARCHAR(220)      NOT NULL                  COMMENT 'URL thân thiện, tự sinh từ name',
-  category_id       BIGINT UNSIGNED   NOT NULL                  COMMENT 'FK → categories.id, danh mục chính (bắt buộc)',
-  subcategory_id    BIGINT UNSIGNED   NULL                      COMMENT 'FK → subcategories.id, danh mục con (tùy chọn)',
-  description       TEXT              NULL                      COMMENT 'Mô tả chi tiết về địa điểm',
-  short_description VARCHAR(500)      NULL                      COMMENT 'Mô tả ngắn hiển thị trên card danh sách',
-  address           VARCHAR(255)      NOT NULL                  COMMENT 'Địa chỉ đầy đủ, ví dụ: 123 Trần Phú',
-  district          VARCHAR(50)       NOT NULL                  COMMENT 'Quận: Hải Châu | Sơn Trà | Ngũ Hành Sơn | Cẩm Lệ | Thanh Khê | Liên Chiểu',
-  ward              VARCHAR(50)       NULL                      COMMENT 'Phường/Xã (tùy chọn)',
-  latitude          DECIMAL(10,8)     NULL                      COMMENT 'Vĩ độ GPS, dùng cho Google Maps và tìm kiếm gần nhất',
-  longitude         DECIMAL(11,8)     NULL                      COMMENT 'Kinh độ GPS, dùng cho Google Maps và tìm kiếm gần nhất',
-  phone             VARCHAR(20)       NULL                      COMMENT 'Số điện thoại liên hệ của địa điểm',
-  email             VARCHAR(100)      NULL                      COMMENT 'Email liên hệ của địa điểm',
-  website           VARCHAR(255)      NULL                      COMMENT 'Website chính thức của địa điểm',
-  opening_hours     JSON              NULL                      COMMENT 'Giờ mở cửa dạng JSON, ví dụ: {"mon":"08:00-22:00","sun":"closed"}',
-  price_min         DECIMAL(12,0)     NULL                      COMMENT 'Giá thấp nhất (VNĐ), dùng để lọc theo khoảng giá',
-  price_max         DECIMAL(12,0)     NULL                      COMMENT 'Giá cao nhất (VNĐ), dùng để lọc theo khoảng giá',
-  price_level       TINYINT UNSIGNED  NULL                      COMMENT 'Mức giá tổng quát: 1=Rẻ, 2=Trung bình, 3=Cao, 4=Sang trọng',
-  avg_rating        DECIMAL(3,2)      NOT NULL DEFAULT 0.00     COMMENT 'Điểm đánh giá trung bình (0.00-5.00), tự cập nhật khi duyệt rating',
-  review_count      INT               NOT NULL DEFAULT 0        COMMENT 'Tổng số bài đánh giá đã được duyệt (approved)',
-  view_count        INT               NOT NULL DEFAULT 0        COMMENT 'Tổng lượt xem trang chi tiết địa điểm',
-  favorite_count    INT               NOT NULL DEFAULT 0        COMMENT 'Tổng số user đã thêm vào yêu thích',
-  thumbnail         VARCHAR(255)      NULL                      COMMENT 'URL ảnh đại diện chính hiển thị trên card',
-  images            JSON              NULL                      COMMENT 'Danh sách URL ảnh bổ sung dạng JSON array',
-  video_url         VARCHAR(255)      NULL                      COMMENT 'URL video YouTube giới thiệu địa điểm',
-  status            VARCHAR(20)       NOT NULL DEFAULT 'active' COMMENT 'Trạng thái: active | inactive (ẩn khỏi kết quả tìm kiếm)',
-  is_featured       TINYINT(1)        NOT NULL DEFAULT 0        COMMENT '1 = địa điểm nổi bật, hiển thị trên trang chủ',
-  created_by        BIGINT UNSIGNED   NULL                      COMMENT 'FK → users.id, admin đã tạo địa điểm này',
-  created_at        TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo',
-  updated_at        TIMESTAMP         NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_locations_slug (slug),
-  INDEX idx_locations_category (category_id),
-  INDEX idx_locations_subcategory (subcategory_id),
-  INDEX idx_locations_district (district),
-  INDEX idx_locations_status (status),
-  INDEX idx_locations_featured (is_featured),
-  INDEX idx_locations_avg_rating (avg_rating),
-  INDEX idx_locations_view_count (view_count),
-  CONSTRAINT fk_locations_category    FOREIGN KEY (category_id)    REFERENCES categories    (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT fk_locations_subcategory FOREIGN KEY (subcategory_id) REFERENCES subcategories (id) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT fk_locations_created_by  FOREIGN KEY (created_by)     REFERENCES users         (id) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Địa điểm du lịch, ăn uống, khách sạn tại Đà Nẵng';
-
+  id                BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name              VARCHAR(200) NOT NULL,
+  slug              VARCHAR(220) NOT NULL UNIQUE,
+  category_id       BIGINT UNSIGNED NOT NULL,
+  subcategory_id    BIGINT UNSIGNED NULL,
+  description       TEXT         NOT NULL,
+  short_description VARCHAR(500) NOT NULL,
+  address           VARCHAR(255) NOT NULL,
+  district          VARCHAR(50)  NOT NULL COMMENT 'Hải Châu | Sơn Trà | Ngũ Hành Sơn | Cẩm Lệ | Thanh Khê | Liên Chiểu',
+  ward              VARCHAR(50),
+  latitude          DECIMAL(10,8) NOT NULL,
+  longitude         DECIMAL(11,8) NOT NULL,
+  phone             VARCHAR(20),
+  email             VARCHAR(100),
+  website           VARCHAR(255),
+  opening_hours     TEXT COMMENT 'JSON: {"mon":"08:00-22:00","sun":"closed"}',
+  price_min         DECIMAL(12,0),
+  price_max         DECIMAL(12,0),
+  price_level       TINYINT COMMENT '1=Rẻ | 2=Trung bình | 3=Cao | 4=Sang trọng',
+  avg_rating        DECIMAL(3,2) DEFAULT 0.00,
+  review_count      INT          DEFAULT 0,
+  view_count        INT          DEFAULT 0,
+  favorite_count    INT          DEFAULT 0,
+  thumbnail         VARCHAR(255),
+  images            TEXT COMMENT 'JSON array URL ảnh',
+  video_url         VARCHAR(255),
+  status            VARCHAR(20)  NOT NULL DEFAULT 'active' COMMENT 'active | inactive',
+  is_featured       BOOLEAN      NOT NULL DEFAULT FALSE,
+  created_by        BIGINT UNSIGNED NOT NULL,
+  created_at        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at        TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_category_id    (category_id),
+  INDEX idx_subcategory_id (subcategory_id),
+  INDEX idx_district       (district),
+  INDEX idx_status         (status),
+  INDEX idx_is_featured    (is_featured),
+  INDEX idx_avg_rating     (avg_rating),
+  INDEX idx_view_count     (view_count),
+  FOREIGN KEY (category_id)    REFERENCES categories(id),
+  FOREIGN KEY (subcategory_id) REFERENCES subcategories(id) ON DELETE SET NULL,
+  FOREIGN KEY (created_by)     REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: tags
--- Mục đích: Nhãn mô tả đặc điểm địa điểm (view đẹp, giá rẻ...)
+-- BẢNG 5: tags
 -- ============================================================
 CREATE TABLE tags (
-  id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  name       VARCHAR(50)     NOT NULL                COMMENT 'Tên tag, ví dụ: View đẹp, Giá rẻ',
-  slug       VARCHAR(60)     NOT NULL                COMMENT 'URL thân thiện của tag',
-  type       VARCHAR(30)     NULL                    COMMENT 'Phân loại tag: cuisine | service | feature | atmosphere',
-  created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo',
-  updated_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_tags_name (name),
-  UNIQUE KEY uq_tags_slug (slug)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Nhãn mô tả đặc điểm địa điểm';
-
+  id         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name       VARCHAR(50) NOT NULL UNIQUE,
+  slug       VARCHAR(60) NOT NULL UNIQUE,
+  type       VARCHAR(30) COMMENT 'cuisine | service | feature | atmosphere',
+  created_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: location_tags (TRUNG GIAN)
--- Mục đích: Liên kết nhiều-nhiều giữa locations và tags
+-- BẢNG 6: location_tags
 -- ============================================================
 CREATE TABLE location_tags (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  location_id BIGINT UNSIGNED NOT NULL                COMMENT 'FK → locations.id',
-  tag_id      BIGINT UNSIGNED NOT NULL                COMMENT 'FK → tags.id',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm gán tag cho địa điểm',
-
-  PRIMARY KEY (id),
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  location_id BIGINT UNSIGNED NOT NULL,
+  tag_id      BIGINT UNSIGNED NOT NULL,
+  created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY uq_location_tag (location_id, tag_id),
-  CONSTRAINT fk_location_tags_location FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_location_tags_tag      FOREIGN KEY (tag_id)      REFERENCES tags      (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Liên kết nhiều-nhiều giữa địa điểm và tag';
-
+  FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE,
+  FOREIGN KEY (tag_id)      REFERENCES tags(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: amenities
--- Mục đích: Tiện ích của địa điểm (WiFi, bãi đỗ xe, điều hòa...)
+-- BẢNG 7: amenities
 -- ============================================================
 CREATE TABLE amenities (
-  id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  name       VARCHAR(50)     NOT NULL                COMMENT 'Tên tiện ích, ví dụ: WiFi miễn phí',
-  icon       VARCHAR(50)     NULL                    COMMENT 'Tên icon hiển thị, ví dụ: fa-wifi',
-  category   VARCHAR(30)     NULL                    COMMENT 'Nhóm tiện ích: connectivity | parking | comfort | payment',
-  created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo',
-  updated_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_amenities_name (name)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Tiện ích của địa điểm';
-
+  id         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name       VARCHAR(50) NOT NULL UNIQUE,
+  icon       VARCHAR(50),
+  category   VARCHAR(30) COMMENT 'connectivity | parking | comfort | payment',
+  created_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: location_amenities (TRUNG GIAN)
--- Mục đích: Liên kết nhiều-nhiều giữa locations và amenities
+-- BẢNG 8: location_amenities
 -- ============================================================
 CREATE TABLE location_amenities (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  location_id BIGINT UNSIGNED NOT NULL                COMMENT 'FK → locations.id',
-  amenity_id  BIGINT UNSIGNED NOT NULL                COMMENT 'FK → amenities.id',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm gán tiện ích cho địa điểm',
-
-  PRIMARY KEY (id),
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  location_id BIGINT UNSIGNED NOT NULL,
+  amenity_id  BIGINT UNSIGNED NOT NULL,
+  created_at  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY uq_location_amenity (location_id, amenity_id),
-  CONSTRAINT fk_location_amenities_location FOREIGN KEY (location_id) REFERENCES locations  (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_location_amenities_amenity  FOREIGN KEY (amenity_id)  REFERENCES amenities  (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Liên kết nhiều-nhiều giữa địa điểm và tiện ích';
-
+  FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE,
+  FOREIGN KEY (amenity_id)  REFERENCES amenities(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: ratings (QUAN TRỌNG)
--- Mục đích: Bài đánh giá của user về địa điểm
--- Luồng: pending → approved (trừ point) | rejected (không trừ)
--- Ràng buộc: 1 user chỉ đánh giá 1 lần cho 1 địa điểm
+-- BẢNG 9: tour_categories
+-- ============================================================
+CREATE TABLE tour_categories (
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name        VARCHAR(50) NOT NULL UNIQUE,
+  slug        VARCHAR(60) NOT NULL UNIQUE,
+  description TEXT,
+  icon        VARCHAR(50),
+  sort_order  INT         DEFAULT 0,
+  status      VARCHAR(20) NOT NULL DEFAULT 'active' COMMENT 'active | inactive',
+  created_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_status (status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 10: tours
+-- ============================================================
+CREATE TABLE tours (
+  id               BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name             VARCHAR(200) NOT NULL,
+  slug             VARCHAR(220) NOT NULL UNIQUE,
+  tour_category_id BIGINT UNSIGNED NOT NULL,
+  description      TEXT,
+  short_desc       VARCHAR(500),
+  itinerary        TEXT COMMENT 'Lịch trình chi tiết (JSON hoặc HTML)',
+  inclusions       TEXT COMMENT 'Bao gồm (JSON array)',
+  exclusions       TEXT COMMENT 'Không bao gồm (JSON array)',
+  price_adult      DECIMAL(12,0) NOT NULL,
+  price_child      DECIMAL(12,0),
+  price_infant     DECIMAL(12,0),
+  discount_percent INT           DEFAULT 0 COMMENT '0-100',
+  duration         VARCHAR(50)   COMMENT 'Ví dụ: 1 ngày, 2 ngày 1 đêm',
+  start_time       VARCHAR(50),
+  meeting_point    VARCHAR(255),
+  max_people       INT           DEFAULT 0 COMMENT '0 = không giới hạn',
+  min_people       INT           DEFAULT 1,
+  available_from   DATE,
+  available_to     DATE,
+  thumbnail        VARCHAR(255),
+  images           TEXT COMMENT 'JSON array URL ảnh',
+  video_url        VARCHAR(255),
+  location_ids     TEXT COMMENT 'JSON array ID các địa điểm trong tour',
+  status           VARCHAR(20)   NOT NULL DEFAULT 'active' COMMENT 'active | inactive | sold_out',
+  is_featured      BOOLEAN       NOT NULL DEFAULT FALSE,
+  is_hot           BOOLEAN       NOT NULL DEFAULT FALSE,
+  view_count       INT           DEFAULT 0,
+  booking_count    INT           DEFAULT 0,
+  created_by       BIGINT UNSIGNED NOT NULL,
+  created_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_tour_category_id (tour_category_id),
+  INDEX idx_status           (status),
+  INDEX idx_is_featured      (is_featured),
+  INDEX idx_is_hot           (is_hot),
+  INDEX idx_price_adult      (price_adult),
+  INDEX idx_available_from   (available_from),
+  INDEX idx_available_to     (available_to),
+  FOREIGN KEY (tour_category_id) REFERENCES tour_categories(id),
+  FOREIGN KEY (created_by)       REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 11: tour_schedules
+-- ============================================================
+CREATE TABLE tour_schedules (
+  id            BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  tour_id       BIGINT UNSIGNED NOT NULL,
+  start_date    DATE            NOT NULL,
+  end_date      DATE            NOT NULL,
+  max_people    INT             NOT NULL DEFAULT 0,
+  booked_people INT             NOT NULL DEFAULT 0,
+  price_adult   DECIMAL(12,0)   NULL COMMENT 'Override giá tour cho ngày này',
+  price_child   DECIMAL(12,0)   NULL,
+  price_infant  DECIMAL(12,0)   NULL,
+  status        VARCHAR(20)     NOT NULL DEFAULT 'available' COMMENT 'available | full | cancelled',
+  created_at    TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at    TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_tour_id    (tour_id),
+  INDEX idx_start_date (start_date),
+  INDEX idx_status     (status),
+  UNIQUE KEY uq_tour_schedule (tour_id, start_date),
+  FOREIGN KEY (tour_id) REFERENCES tours(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 12: bookings
+-- ============================================================
+CREATE TABLE bookings (
+  id                  BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  booking_code        VARCHAR(20)   NOT NULL UNIQUE COMMENT 'DANANG-YYYYMMDD-XXXX',
+  user_id             BIGINT UNSIGNED NULL,
+  customer_name       VARCHAR(100)  NOT NULL,
+  customer_email      VARCHAR(100)  NOT NULL,
+  customer_phone      VARCHAR(20)   NOT NULL,
+  customer_address    TEXT,
+  customer_note       TEXT,
+  total_amount        DECIMAL(12,0) NOT NULL,
+  discount_amount     DECIMAL(12,0) NOT NULL DEFAULT 0,
+  final_amount        DECIMAL(12,0) NOT NULL,
+  deposit_amount      DECIMAL(12,0) DEFAULT 0,
+  payment_method      VARCHAR(30)   COMMENT 'momo | vnpay | bank | cash',
+  payment_status      VARCHAR(30)   NOT NULL DEFAULT 'unpaid' COMMENT 'unpaid | paid | failed | refunded',
+  booking_status      VARCHAR(30)   NOT NULL DEFAULT 'pending' COMMENT 'pending | confirmed | cancelled | completed',
+  cancellation_reason TEXT,
+  booked_at           TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  confirmed_at        TIMESTAMP     NULL,
+  cancelled_at        TIMESTAMP     NULL,
+  completed_at        TIMESTAMP     NULL,
+  created_at          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at          TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_booking_code    (booking_code),
+  INDEX idx_user_id         (user_id),
+  INDEX idx_customer_email  (customer_email),
+  INDEX idx_customer_phone  (customer_phone),
+  INDEX idx_booking_status  (booking_status),
+  INDEX idx_payment_status  (payment_status),
+  INDEX idx_booked_at       (booked_at),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 13: booking_items
+-- ============================================================
+CREATE TABLE booking_items (
+  id                BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  booking_id        BIGINT UNSIGNED NOT NULL,
+  tour_id           BIGINT UNSIGNED NOT NULL,
+  tour_schedule_id  BIGINT UNSIGNED NOT NULL,
+  item_type         VARCHAR(30)   NOT NULL DEFAULT 'tour' COMMENT 'tour | hotel | transport | extra',
+  item_name         VARCHAR(200)  NOT NULL,
+  travel_date       DATE          NOT NULL,
+  quantity_adult    INT           NOT NULL DEFAULT 0,
+  quantity_child    INT           NOT NULL DEFAULT 0,
+  quantity_infant   INT           NOT NULL DEFAULT 0,
+  unit_price_adult  DECIMAL(12,0) NOT NULL DEFAULT 0,
+  unit_price_child  DECIMAL(12,0) NOT NULL DEFAULT 0,
+  unit_price_infant DECIMAL(12,0) NOT NULL DEFAULT 0,
+  subtotal          DECIMAL(12,0) NOT NULL,
+  status            VARCHAR(30)   NOT NULL DEFAULT 'pending' COMMENT 'pending | confirmed | cancelled | completed',
+  created_at        TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at        TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_booking_id       (booking_id),
+  INDEX idx_tour_id          (tour_id),
+  INDEX idx_tour_schedule_id (tour_schedule_id),
+  INDEX idx_travel_date      (travel_date),
+  FOREIGN KEY (booking_id)       REFERENCES bookings(id) ON DELETE CASCADE,
+  FOREIGN KEY (tour_id)          REFERENCES tours(id),
+  FOREIGN KEY (tour_schedule_id) REFERENCES tour_schedules(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 14: payments
+-- ============================================================
+CREATE TABLE payments (
+  id               BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  booking_id       BIGINT UNSIGNED NOT NULL,
+  transaction_code VARCHAR(100)  NOT NULL UNIQUE,
+  amount           DECIMAL(12,0) NOT NULL,
+  payment_method   VARCHAR(30),
+  payment_status   VARCHAR(30)   NOT NULL DEFAULT 'pending' COMMENT 'pending | success | failed | refunded',
+  payment_gateway  VARCHAR(50)   COMMENT 'momo | vnpay | zalopay',
+  gateway_response TEXT          COMMENT 'JSON response từ cổng thanh toán',
+  paid_at          TIMESTAMP     NULL,
+  refunded_at      TIMESTAMP     NULL,
+  refund_reason    TEXT,
+  created_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at       TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_booking_id      (booking_id),
+  INDEX idx_transaction_code (transaction_code),
+  INDEX idx_payment_status  (payment_status),
+  FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 15: ratings
 -- ============================================================
 CREATE TABLE ratings (
-  id              BIGINT UNSIGNED  NOT NULL AUTO_INCREMENT   COMMENT 'Khóa chính, tự tăng',
-  user_id         BIGINT UNSIGNED  NOT NULL                  COMMENT 'FK → users.id, người viết đánh giá',
-  location_id     BIGINT UNSIGNED  NOT NULL                  COMMENT 'FK → locations.id, địa điểm được đánh giá',
-  score           TINYINT UNSIGNED NOT NULL                  COMMENT 'Số sao đánh giá từ 1 đến 5',
-  comment         TEXT             NULL                      COMMENT 'Nội dung bình luận (có thể để trống)',
-  image_count     TINYINT UNSIGNED NOT NULL DEFAULT 0        COMMENT 'Số ảnh đính kèm, tối đa 5 ảnh/bài',
-  point_cost      INT              NOT NULL DEFAULT 0        COMMENT 'Số point bị trừ khi duyệt: 2 (không ảnh) | 3 (có ảnh)',
-  status          VARCHAR(20)      NOT NULL DEFAULT 'pending' COMMENT 'Trạng thái duyệt: pending | approved | rejected',
-  rejected_reason VARCHAR(255)     NULL                      COMMENT 'Lý do từ chối, chỉ có giá trị khi status=rejected',
-  approved_by     BIGINT UNSIGNED  NULL                      COMMENT 'FK → users.id, admin đã duyệt/từ chối bài này',
-  approved_at     TIMESTAMP        NULL                      COMMENT 'Thời điểm admin xử lý bài đánh giá',
-  helpful_count   INT              NOT NULL DEFAULT 0        COMMENT 'Số lượt user đánh dấu bài này là hữu ích',
-  created_at      TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm user gửi bài đánh giá',
-  updated_at      TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm chỉnh sửa (chỉ cho phép khi còn pending)',
-
-  PRIMARY KEY (id),
+  id              BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id         BIGINT UNSIGNED NOT NULL,
+  location_id     BIGINT UNSIGNED NULL,
+  tour_id         BIGINT UNSIGNED NULL,
+  booking_id      BIGINT UNSIGNED NULL,
+  score           TINYINT         NOT NULL COMMENT '1-5 sao',
+  comment         TEXT,
+  image_urls      TEXT            COMMENT 'JSON array, tối đa 5 ảnh',
+  status          VARCHAR(20)     NOT NULL DEFAULT 'pending' COMMENT 'pending | approved | rejected',
+  rejected_reason VARCHAR(255),
+  approved_by     BIGINT UNSIGNED NULL,
+  approved_at     TIMESTAMP       NULL,
+  helpful_count   INT             DEFAULT 0,
+  created_at      TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at      TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_user_id     (user_id),
+  INDEX idx_location_id (location_id),
+  INDEX idx_tour_id     (tour_id),
+  INDEX idx_booking_id  (booking_id),
+  INDEX idx_status      (status),
+  INDEX idx_score       (score),
+  INDEX idx_created_at  (created_at),
   UNIQUE KEY uq_user_location_rating (user_id, location_id),
-  INDEX idx_ratings_user (user_id),
-  INDEX idx_ratings_location (location_id),
-  INDEX idx_ratings_status (status),
-  INDEX idx_ratings_created (created_at),
-  INDEX idx_ratings_score (score),
-  CONSTRAINT chk_ratings_score CHECK (score BETWEEN 1 AND 5),
-  CONSTRAINT chk_ratings_image_count CHECK (image_count <= 5),
-  CONSTRAINT fk_ratings_user     FOREIGN KEY (user_id)     REFERENCES users     (id) ON DELETE CASCADE  ON UPDATE CASCADE,
-  CONSTRAINT fk_ratings_location FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE  ON UPDATE CASCADE,
-  CONSTRAINT fk_ratings_approver FOREIGN KEY (approved_by) REFERENCES users     (id) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Bài đánh giá của user về địa điểm, qua quy trình kiểm duyệt';
-
+  UNIQUE KEY uq_user_tour_rating     (user_id, tour_id),
+  FOREIGN KEY (user_id)     REFERENCES users(id),
+  FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE,
+  FOREIGN KEY (tour_id)     REFERENCES tours(id) ON DELETE CASCADE,
+  FOREIGN KEY (booking_id)  REFERENCES bookings(id) ON DELETE SET NULL,
+  FOREIGN KEY (approved_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: rating_images
--- Mục đích: Ảnh đính kèm trong bài đánh giá (tối đa 5 ảnh/bài)
+-- BẢNG 16: rating_images
 -- ============================================================
 CREATE TABLE rating_images (
-  id         BIGINT UNSIGNED  NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  rating_id  BIGINT UNSIGNED  NOT NULL                COMMENT 'FK → ratings.id, bài đánh giá chứa ảnh này',
-  image_url  VARCHAR(255)     NOT NULL                COMMENT 'URL ảnh đã upload lên Cloudinary',
-  sort_order TINYINT UNSIGNED NOT NULL DEFAULT 0      COMMENT 'Thứ tự hiển thị ảnh trong bài, bắt đầu từ 0',
-  created_at TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm upload ảnh',
-
-  PRIMARY KEY (id),
-  INDEX idx_rating_images_rating (rating_id),
-  CONSTRAINT fk_rating_images_rating FOREIGN KEY (rating_id) REFERENCES ratings (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Ảnh đính kèm trong bài đánh giá';
-
+  id         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  rating_id  BIGINT UNSIGNED NOT NULL,
+  image_url  VARCHAR(255)    NOT NULL,
+  sort_order TINYINT         DEFAULT 0,
+  created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_rating_id (rating_id),
+  FOREIGN KEY (rating_id) REFERENCES ratings(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: favorites
--- Mục đích: Danh sách địa điểm yêu thích của user
+-- BẢNG 17: favorites
 -- ============================================================
 CREATE TABLE favorites (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  user_id     BIGINT UNSIGNED NOT NULL                COMMENT 'FK → users.id, user đã lưu yêu thích',
-  location_id BIGINT UNSIGNED NOT NULL                COMMENT 'FK → locations.id, địa điểm được lưu',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm thêm vào yêu thích',
-
-  PRIMARY KEY (id),
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id     BIGINT UNSIGNED NOT NULL,
+  location_id BIGINT UNSIGNED NOT NULL,
+  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
   UNIQUE KEY uq_user_location_fav (user_id, location_id),
-  INDEX idx_favorites_location (location_id),
-  CONSTRAINT fk_favorites_user     FOREIGN KEY (user_id)     REFERENCES users     (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_favorites_location FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Danh sách địa điểm yêu thích của user';
-
+  INDEX idx_location_id (location_id),
+  FOREIGN KEY (user_id)     REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: views
--- Mục đích: Ghi lại lượt xem trang chi tiết địa điểm
--- Lưu ý: Bảng tăng nhanh, nên định kỳ aggregate dữ liệu cũ
--- ============================================================
-CREATE TABLE views (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  user_id     BIGINT UNSIGNED NULL                    COMMENT 'FK → users.id, NULL nếu là khách chưa đăng nhập',
-  location_id BIGINT UNSIGNED NOT NULL                COMMENT 'FK → locations.id, địa điểm được xem',
-  session_id  VARCHAR(100)    NULL                    COMMENT 'Session ID của trình duyệt, dùng để track guest',
-  time_spent  INT             NOT NULL DEFAULT 0      COMMENT 'Thời gian xem trang (giây), dùng để đo mức độ quan tâm',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm xem',
-
-  PRIMARY KEY (id),
-  INDEX idx_views_user (user_id),
-  INDEX idx_views_location (location_id),
-  INDEX idx_views_created (created_at),
-  INDEX idx_views_session (session_id),
-  CONSTRAINT fk_views_user     FOREIGN KEY (user_id)     REFERENCES users     (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_views_location FOREIGN KEY (location_id) REFERENCES locations (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Lượt xem trang chi tiết địa điểm, dùng cho thống kê và gợi ý';
-
-
--- ============================================================
--- BẢNG: point_transactions
--- Mục đích: Lịch sử thay đổi point của user (audit trail)
--- Loại: purchase | spend | bonus | refund
--- ============================================================
-CREATE TABLE point_transactions (
-  id               BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  user_id          BIGINT UNSIGNED NOT NULL                COMMENT 'FK → users.id, chủ sở hữu giao dịch',
-  transaction_code VARCHAR(50)     NOT NULL                COMMENT 'Mã giao dịch duy nhất, dùng để tra cứu',
-  type             VARCHAR(30)     NOT NULL                COMMENT 'Loại: purchase | spend | bonus | refund',
-  amount           INT             NOT NULL                COMMENT 'Số point thay đổi: dương (+) khi nhận, âm (-) khi tiêu',
-  balance_before   INT             NOT NULL                COMMENT 'Số dư point trước giao dịch, dùng để audit',
-  balance_after    INT             NOT NULL                COMMENT 'Số dư point sau giao dịch, dùng để audit',
-  reference_id     BIGINT UNSIGNED NULL                    COMMENT 'ID của đối tượng liên quan (rating_id, purchase_id...)',
-  reference_type   VARCHAR(50)     NULL                    COMMENT 'Loại đối tượng liên quan: rating | purchase',
-  description      VARCHAR(255)    NULL                    COMMENT 'Mô tả giao dịch, ví dụ: Duyệt bài đánh giá #123',
-  payment_method   VARCHAR(30)     NULL                    COMMENT 'Phương thức nạp tiền (mô phỏng): momo | vnpay | bank',
-  status           VARCHAR(20)     NOT NULL DEFAULT 'completed' COMMENT 'Trạng thái: pending | completed | failed',
-  created_at       TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm giao dịch',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_transaction_code (transaction_code),
-  INDEX idx_point_tx_user (user_id),
-  INDEX idx_point_tx_created (created_at),
-  INDEX idx_point_tx_reference (reference_id, reference_type),
-  CONSTRAINT fk_point_transactions_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Lịch sử thay đổi point của user';
-
-
--- ============================================================
--- BẢNG: notifications
--- Mục đích: Thông báo hệ thống gửi đến user
--- Loại: rating_approved | rating_rejected | point_credited
--- ============================================================
-CREATE TABLE notifications (
-  id         BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  user_id    BIGINT UNSIGNED NOT NULL                COMMENT 'FK → users.id, người nhận thông báo',
-  type       VARCHAR(30)     NOT NULL                COMMENT 'Loại thông báo: rating_approved | rating_rejected | point_credited',
-  title      VARCHAR(255)    NOT NULL                COMMENT 'Tiêu đề thông báo hiển thị cho user',
-  content    TEXT            NOT NULL                COMMENT 'Nội dung chi tiết thông báo',
-  data       JSON            NULL                    COMMENT 'Dữ liệu bổ sung dạng JSON, ví dụ: {"rating_id":5}',
-  is_read    TINYINT(1)      NOT NULL DEFAULT 0      COMMENT '0 = chưa đọc, 1 = đã đọc',
-  read_at    TIMESTAMP       NULL                    COMMENT 'Thời điểm user đọc thông báo, NULL nếu chưa đọc',
-  created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo thông báo',
-
-  PRIMARY KEY (id),
-  INDEX idx_notifications_user_read (user_id, is_read),
-  INDEX idx_notifications_created (created_at),
-  CONSTRAINT fk_notifications_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Thông báo hệ thống gửi đến user';
-
-
--- ============================================================
--- BẢNG: search_logs
--- Mục đích: Lịch sử tìm kiếm, dùng cho phân tích và gợi ý
--- ============================================================
-CREATE TABLE search_logs (
-  id            BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  user_id       BIGINT UNSIGNED NULL                    COMMENT 'FK → users.id, NULL nếu là khách chưa đăng nhập',
-  session_id    VARCHAR(100)    NULL                    COMMENT 'Session ID để track hành vi guest',
-  query         VARCHAR(255)    NOT NULL                COMMENT 'Từ khóa người dùng đã tìm kiếm',
-  results_count INT             NOT NULL DEFAULT 0      COMMENT 'Số kết quả trả về, 0 = không tìm thấy',
-  filters       JSON            NULL                    COMMENT 'Bộ lọc đã áp dụng dạng JSON',
-  created_at    TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tìm kiếm',
-
-  PRIMARY KEY (id),
-  INDEX idx_search_logs_user (user_id),
-  INDEX idx_search_logs_query (query),
-  INDEX idx_search_logs_created (created_at),
-  INDEX idx_search_logs_session (session_id),
-  CONSTRAINT fk_search_logs_user FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Lịch sử tìm kiếm, dùng cho phân tích từ khóa và hệ thống gợi ý';
-
-
--- ============================================================
--- BẢNG: blog_posts
--- Mục đích: Bài viết cẩm nang du lịch Đà Nẵng
--- ============================================================
-CREATE TABLE blog_posts (
-  id             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT   COMMENT 'Khóa chính, tự tăng',
-  title          VARCHAR(255)    NOT NULL                  COMMENT 'Tiêu đề bài viết',
-  slug           VARCHAR(280)    NOT NULL                  COMMENT 'URL thân thiện, tự sinh từ title',
-  excerpt        VARCHAR(500)    NULL                      COMMENT 'Tóm tắt ngắn hiển thị trên danh sách bài viết',
-  content        LONGTEXT        NOT NULL                  COMMENT 'Nội dung đầy đủ bài viết (HTML hoặc Markdown)',
-  featured_image VARCHAR(255)    NULL                      COMMENT 'URL ảnh bìa bài viết lưu trên Cloudinary',
-  author_id      BIGINT UNSIGNED NOT NULL                  COMMENT 'FK → users.id, admin viết bài',
-  view_count     INT             NOT NULL DEFAULT 0        COMMENT 'Tổng lượt xem bài viết',
-  status         VARCHAR(20)     NOT NULL DEFAULT 'draft'  COMMENT 'Trạng thái: draft | published | archived',
-  published_at   TIMESTAMP       NULL                      COMMENT 'Thời điểm xuất bản, NULL nếu còn là draft',
-  created_at     TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo bài',
-  updated_at     TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm chỉnh sửa gần nhất',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_blog_posts_slug (slug),
-  INDEX idx_blog_posts_author (author_id),
-  INDEX idx_blog_posts_status (status),
-  INDEX idx_blog_posts_published (published_at),
-  CONSTRAINT fk_blog_posts_author FOREIGN KEY (author_id) REFERENCES users (id) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Bài viết cẩm nang du lịch Đà Nẵng';
-
-
--- ============================================================
--- BẢNG: blog_categories
--- Mục đích: Danh mục bài viết blog (tách biệt với categories địa điểm)
+-- BẢNG 18: blog_categories
 -- ============================================================
 CREATE TABLE blog_categories (
-  id          BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  name        VARCHAR(50)     NOT NULL                COMMENT 'Tên danh mục blog, ví dụ: Ẩm thực, Lưu trú',
-  slug        VARCHAR(60)     NOT NULL                COMMENT 'URL thân thiện của danh mục blog',
-  description TEXT            NULL                    COMMENT 'Mô tả danh mục blog',
-  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm tạo',
-  updated_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Thời điểm cập nhật',
-
-  PRIMARY KEY (id),
-  UNIQUE KEY uq_blog_categories_name (name),
-  UNIQUE KEY uq_blog_categories_slug (slug)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Danh mục bài viết blog (tách biệt với categories địa điểm)';
-
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name        VARCHAR(50) NOT NULL UNIQUE,
+  slug        VARCHAR(60) NOT NULL UNIQUE,
+  description TEXT,
+  created_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at  TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- BẢNG: blog_post_categories (TRUNG GIAN)
--- Mục đích: Liên kết nhiều-nhiều giữa blog_posts và blog_categories
+-- BẢNG 19: blog_posts
+-- ============================================================
+CREATE TABLE blog_posts (
+  id             BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  title          VARCHAR(255) NOT NULL,
+  slug           VARCHAR(280) NOT NULL UNIQUE,
+  excerpt        VARCHAR(500),
+  content        LONGTEXT,
+  featured_image VARCHAR(255),
+  author_id      BIGINT UNSIGNED NOT NULL,
+  view_count     INT          DEFAULT 0,
+  status         VARCHAR(20)  NOT NULL DEFAULT 'draft' COMMENT 'draft | published | archived',
+  published_at   TIMESTAMP    NULL,
+  created_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_author_id    (author_id),
+  INDEX idx_status       (status),
+  INDEX idx_published_at (published_at),
+  FOREIGN KEY (author_id) REFERENCES users(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ============================================================
+-- BẢNG 20: blog_post_categories
 -- ============================================================
 CREATE TABLE blog_post_categories (
-  id               BIGINT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Khóa chính, tự tăng',
-  post_id          BIGINT UNSIGNED NOT NULL                COMMENT 'FK → blog_posts.id',
-  blog_category_id BIGINT UNSIGNED NOT NULL                COMMENT 'FK → blog_categories.id',
-
-  PRIMARY KEY (id),
+  id               BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  post_id          BIGINT UNSIGNED NOT NULL,
+  blog_category_id BIGINT UNSIGNED NOT NULL,
   UNIQUE KEY uq_post_blog_category (post_id, blog_category_id),
-  CONSTRAINT fk_blog_post_cat_post FOREIGN KEY (post_id)          REFERENCES blog_posts       (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT fk_blog_post_cat_cat  FOREIGN KEY (blog_category_id) REFERENCES blog_categories  (id) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
-  COMMENT='Liên kết nhiều-nhiều giữa bài viết blog và danh mục blog';
-
-
-SET FOREIGN_KEY_CHECKS = 1;
-
+  FOREIGN KEY (post_id)          REFERENCES blog_posts(id) ON DELETE CASCADE,
+  FOREIGN KEY (blog_category_id) REFERENCES blog_categories(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- TRIGGER: Cập nhật avg_rating và review_count khi duyệt rating
+-- BẢNG 21: views
 -- ============================================================
-DELIMITER //
-
-CREATE TRIGGER trg_after_rating_approved
-AFTER UPDATE ON ratings
-FOR EACH ROW
-BEGIN
-  -- Khi admin duyệt bài (pending → approved)
-  IF OLD.status != 'approved' AND NEW.status = 'approved' THEN
-    UPDATE locations
-    SET
-      review_count = review_count + 1,
-      avg_rating   = ROUND(
-        (avg_rating * review_count + NEW.score) / (review_count + 1),
-        2
-      ),
-      updated_at   = CURRENT_TIMESTAMP
-    WHERE id = NEW.location_id;
-  END IF;
-
-  -- Khi admin thu hồi duyệt (approved → rejected/pending)
-  IF OLD.status = 'approved' AND NEW.status != 'approved' THEN
-    UPDATE locations
-    SET
-      review_count = GREATEST(review_count - 1, 0),
-      avg_rating   = CASE
-        WHEN review_count - 1 <= 0 THEN 0.00
-        ELSE ROUND(
-          (avg_rating * review_count - OLD.score) / (review_count - 1),
-          2
-        )
-      END,
-      updated_at   = CURRENT_TIMESTAMP
-    WHERE id = NEW.location_id;
-  END IF;
-END//
+CREATE TABLE views (
+  id          BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id     BIGINT UNSIGNED NULL,
+  location_id BIGINT UNSIGNED NOT NULL,
+  session_id  VARCHAR(100),
+  time_spent  INT             DEFAULT 0 COMMENT 'Thời gian xem (giây)',
+  created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_user_id     (user_id),
+  INDEX idx_location_id (location_id),
+  INDEX idx_created_at  (created_at),
+  INDEX idx_session_id  (session_id),
+  FOREIGN KEY (user_id)     REFERENCES users(id) ON DELETE SET NULL,
+  FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- TRIGGER: Cập nhật favorite_count khi thêm/xóa yêu thích
+-- BẢNG 22: search_logs
 -- ============================================================
-CREATE TRIGGER trg_after_favorite_insert
-AFTER INSERT ON favorites
-FOR EACH ROW
-BEGIN
-  UPDATE locations
-  SET favorite_count = favorite_count + 1
-  WHERE id = NEW.location_id;
-END//
-
-CREATE TRIGGER trg_after_favorite_delete
-AFTER DELETE ON favorites
-FOR EACH ROW
-BEGIN
-  UPDATE locations
-  SET favorite_count = GREATEST(favorite_count - 1, 0)
-  WHERE id = OLD.location_id;
-END//
+CREATE TABLE search_logs (
+  id            BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id       BIGINT UNSIGNED NULL,
+  session_id    VARCHAR(100),
+  query         VARCHAR(255)    NOT NULL,
+  results_count INT             DEFAULT 0,
+  filters       TEXT            COMMENT 'JSON filters đã áp dụng',
+  created_at    TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_user_id    (user_id),
+  INDEX idx_query      (query),
+  INDEX idx_created_at (created_at),
+  INDEX idx_session_id (session_id),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================
--- TRIGGER: Cập nhật view_count khi có lượt xem mới
+-- BẢNG 23: notifications
 -- ============================================================
-CREATE TRIGGER trg_after_view_insert
-AFTER INSERT ON views
-FOR EACH ROW
-BEGIN
-  UPDATE locations
-  SET view_count = view_count + 1
-  WHERE id = NEW.location_id;
-END//
+CREATE TABLE notifications (
+  id         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id    BIGINT UNSIGNED NOT NULL,
+  type       VARCHAR(30)     NOT NULL COMMENT 'booking_confirmed | booking_cancelled | payment_success | rating_approved',
+  title      VARCHAR(255)    NOT NULL,
+  content    TEXT,
+  data       TEXT            COMMENT 'JSON data bổ sung',
+  is_read    BOOLEAN         NOT NULL DEFAULT FALSE,
+  read_at    TIMESTAMP       NULL,
+  created_at TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_user_is_read (user_id, is_read),
+  INDEX idx_created_at   (created_at),
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-DELIMITER ;
+-- ============================================================
+-- BẢNG 24: contacts
+-- ============================================================
+CREATE TABLE contacts (
+  id         BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  name       VARCHAR(100) NOT NULL,
+  email      VARCHAR(100) NOT NULL,
+  phone      VARCHAR(20),
+  subject    VARCHAR(200),
+  message    TEXT         NOT NULL,
+  status     VARCHAR(20)  NOT NULL DEFAULT 'new' COMMENT 'new | read | replied',
+  replied_by BIGINT UNSIGNED NULL,
+  replied_at TIMESTAMP    NULL,
+  reply      TEXT,
+  created_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  INDEX idx_status     (status),
+  INDEX idx_created_at (created_at),
+  FOREIGN KEY (replied_by) REFERENCES users(id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

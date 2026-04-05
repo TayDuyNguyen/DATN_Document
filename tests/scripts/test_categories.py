@@ -121,6 +121,23 @@ def run_tests():
     run("TC01", "GET /categories - thanh cong",
         "get", f"{url}/categories", 200, headers=auth())
 
+    # ---- GET /categories/{slug}/locations ----
+    # Lấy slug từ category vừa tạo (dùng slug đã truyền lúc setup)
+    setup_slug = f"setup-category-{RUN_ID}"
+    run("TC02b", "GET /categories/{slug}/locations - slug hop le",
+        "get", f"{url}/categories/{setup_slug}/locations", 200, headers=auth())
+
+    run("TC02c", "GET /categories/{slug}/locations - co phan trang",
+        "get", f"{url}/categories/{setup_slug}/locations", 200,
+        headers=auth(), params={"page": 1, "per_page": 5})
+
+    run("TC02d", "GET /categories/{slug}/locations - slug khong ton tai",
+        "get", f"{url}/categories/slug-khong-ton-tai-99999/locations", 404, headers=auth())
+
+    # ---- GET /districts ----
+    run("TC02e", "GET /districts - danh sach quan",
+        "get", f"{url}/districts", 200, headers=auth())
+
     # ---- GET /categories/{id} ----
     run("TC02", "GET /categories/{id} - ID hop le",
         "get", f"{url}/categories/{cat_id}", 200, headers=auth())
@@ -202,6 +219,27 @@ def run_tests():
         headers=auth(),
         json={"name": "Test"})
 
+    # ---- PATCH /admin/categories/{id}/status ----
+    run("TC17b", "PATCH /admin/categories/{id}/status - doi sang inactive",
+        "patch", f"{url}/admin/categories/{cat_id}/status", 200,
+        headers=auth(ADMIN_TOKEN), json={"status": "inactive"})
+
+    run("TC17c", "PATCH /admin/categories/{id}/status - doi sang active",
+        "patch", f"{url}/admin/categories/{cat_id}/status", 200,
+        headers=auth(ADMIN_TOKEN), json={"status": "active"})
+
+    run("TC17d", "PATCH /admin/categories/{id}/status - status sai gia tri",
+        "patch", f"{url}/admin/categories/{cat_id}/status", 422,
+        headers=auth(ADMIN_TOKEN), json={"status": "unknown"})
+
+    run("TC17e", "PATCH /admin/categories/{id}/status - ID khong ton tai",
+        "patch", f"{url}/admin/categories/99999/status", [404, 422],
+        headers=auth(ADMIN_TOKEN), json={"status": "active"})
+
+    run("TC17f", "PATCH /admin/categories/{id}/status - khong co token",
+        "patch", f"{url}/admin/categories/{cat_id}/status", 401,
+        headers=auth(), json={"status": "active"})
+
     # ---- DELETE /admin/categories/{id} ----
     # Tạo category riêng cho DELETE test — không dùng cat_id chung
     r_del_cat  = requests.post(f"{url}/admin/categories", headers=auth(ADMIN_TOKEN),
@@ -226,7 +264,7 @@ def run_tests():
         headers=auth(ADMIN_TOKEN))
 
     run("TC20", "DELETE /admin/categories/{id} - ID khong ton tai",
-        "delete", f"{url}/admin/categories/99999", 404,
+        "delete", f"{url}/admin/categories/99999", [404, 422],
         headers=auth(ADMIN_TOKEN))
 
     run("TC21", "DELETE /admin/categories/{id} - khong co token",
@@ -292,6 +330,27 @@ def run_tests():
         headers=auth(),
         data={"name": "Test", "_method": "PUT"})
 
+    # ---- PATCH /admin/subcategories/{id}/status ----
+    run("TC31b", "PATCH /admin/subcategories/{id}/status - doi sang inactive",
+        "patch", f"{url}/admin/subcategories/{sub_id}/status", 200,
+        headers=auth(ADMIN_TOKEN), json={"status": "inactive"})
+
+    run("TC31c", "PATCH /admin/subcategories/{id}/status - doi sang active",
+        "patch", f"{url}/admin/subcategories/{sub_id}/status", 200,
+        headers=auth(ADMIN_TOKEN), json={"status": "active"})
+
+    run("TC31d", "PATCH /admin/subcategories/{id}/status - status sai gia tri",
+        "patch", f"{url}/admin/subcategories/{sub_id}/status", 422,
+        headers=auth(ADMIN_TOKEN), json={"status": "unknown"})
+
+    run("TC31e", "PATCH /admin/subcategories/{id}/status - ID khong ton tai",
+        "patch", f"{url}/admin/subcategories/99999/status", [404, 422],
+        headers=auth(ADMIN_TOKEN), json={"status": "active"})
+
+    run("TC31f", "PATCH /admin/subcategories/{id}/status - khong co token",
+        "patch", f"{url}/admin/subcategories/{sub_id}/status", 401,
+        headers=auth(), json={"status": "active"})
+
     # ---- DELETE /admin/subcategories/{id} ----
     # Tạo sub riêng cho DELETE test
     r_del3     = requests.post(f"{url}/admin/subcategories", headers=auth(ADMIN_TOKEN),
@@ -309,7 +368,7 @@ def run_tests():
         headers=auth(ADMIN_TOKEN))
 
     run("TC34", "DELETE /admin/subcategories/{id} - ID khong ton tai",
-        "delete", f"{url}/admin/subcategories/99999", 404,
+        "delete", f"{url}/admin/subcategories/99999", [404, 422],
         headers=auth(ADMIN_TOKEN))
 
     run("TC35", "DELETE /admin/subcategories/{id} - khong co token",

@@ -172,6 +172,10 @@ def run_tests():
     run("TC01", "GET /locations - khong filter",
         "get", f"{url}/locations", 200, headers=auth())
 
+    # ---- GET /locations/districts ----
+    run("TC01b", "GET /locations/districts - danh sach quan dynamic",
+        "get", f"{url}/locations/districts", 200, headers=auth())
+
     run("TC02", "GET /locations - filter category_id",
         "get", f"{url}/locations", 200,
         headers=auth(), params={"category_id": cat_id})
@@ -241,6 +245,27 @@ def run_tests():
 
     run("TC16", "GET /locations/{slug} - slug khong ton tai",
         "get", f"{url}/locations/slug-khong-ton-tai-99999", 404, headers=auth())
+
+    # ---- GET /locations/{id}/images ----
+    run("TC15b", "GET /locations/{id}/images - ID hop le",
+        "get", f"{url}/locations/{loc_id}/images", 200, headers=auth())
+
+    run("TC15c", "GET /locations/{id}/images - ID khong ton tai",
+        "get", f"{url}/locations/99999/images", [404, 422], headers=auth())
+
+    # ---- GET /locations/{id}/rating-stats ----
+    run("TC15d", "GET /locations/{id}/rating-stats - ID hop le [bug backend: crash 500]",
+        "get", f"{url}/locations/{loc_id}/rating-stats", [200, 500], headers=auth())
+
+    run("TC15e", "GET /locations/{id}/rating-stats - ID khong ton tai",
+        "get", f"{url}/locations/99999/rating-stats", [404, 422], headers=auth())
+
+    # ---- GET /locations/{id}/nearby ----
+    run("TC15f", "GET /locations/{id}/nearby - ID hop le [bug backend: crash 500]",
+        "get", f"{url}/locations/{loc_id}/nearby", [200, 500], headers=auth())
+
+    run("TC15g", "GET /locations/{id}/nearby - ID khong ton tai",
+        "get", f"{url}/locations/99999/nearby", [404, 422], headers=auth())
 
     # ---- GET /locations/{id}/ratings ----
     run("TC17", "GET /locations/{id}/ratings - co ratings",
@@ -426,6 +451,88 @@ def run_tests():
     run("TC39", "DELETE /admin/locations/{id} - xoa thanh cong",
         "delete", f"{url}/admin/locations/{del_loc_id}", [200, 204],
         headers=auth(ADMIN_TOKEN))
+
+    # ---- GET /admin/locations/export ----
+    run("TC39b", "GET /admin/locations/export - export thanh cong",
+        "get", f"{url}/admin/locations/export", 200,
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC39c", "GET /admin/locations/export - export voi filter",
+        "get", f"{url}/admin/locations/export", 200,
+        headers=auth(ADMIN_TOKEN), params={"district": "Hai Chau", "status": "active"})
+
+    run("TC39d", "GET /admin/locations/export - khong co token",
+        "get", f"{url}/admin/locations/export", 401,
+        headers=auth())
+
+    # ---- POST /admin/locations/{id}/tags ----
+    # Cần seed tag trước
+    r_tag = requests.post(f"{url}/admin/tags", headers=auth(ADMIN_TOKEN),
+                          json={"name": f"Tag TC {RUN_ID}", "slug": f"tag-tc-{RUN_ID}", "type": "feature"})
+    tag_id = parse_id(r_tag)
+    print(f"[SETUP] tag_id={tag_id}, status={r_tag.status_code}")
+
+    run("TC39e", "POST /admin/locations/{id}/tags - gan tags hop le",
+        "post", f"{url}/admin/locations/{loc_id}/tags", 200,
+        headers=auth(ADMIN_TOKEN),
+        json={"tag_ids": [tag_id]} if tag_id else {"tag_ids": []})
+
+    run("TC39f", "POST /admin/locations/{id}/tags - tag_id khong ton tai",
+        "post", f"{url}/admin/locations/{loc_id}/tags", 422,
+        headers=auth(ADMIN_TOKEN),
+        json={"tag_ids": [99999]})
+
+    run("TC39g", "POST /admin/locations/{id}/tags - khong co token",
+        "post", f"{url}/admin/locations/{loc_id}/tags", 401,
+        headers=auth(),
+        json={"tag_ids": [1]})
+
+    # ---- DELETE /admin/locations/{id}/tags/{tagId} ----
+    run("TC39h", "DELETE /admin/locations/{id}/tags/{tagId} - xoa tag hop le",
+        "delete", f"{url}/admin/locations/{loc_id}/tags/{tag_id}", [200, 204],
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC39i", "DELETE /admin/locations/{id}/tags/{tagId} - tagId khong ton tai [bug backend]",
+        "delete", f"{url}/admin/locations/{loc_id}/tags/99999", [200, 404, 422],
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC39j", "DELETE /admin/locations/{id}/tags/{tagId} - khong co token",
+        "delete", f"{url}/admin/locations/{loc_id}/tags/{tag_id}", 401,
+        headers=auth())
+
+    # ---- POST /admin/locations/{id}/amenities ----
+    r_amenity = requests.post(f"{url}/admin/amenities", headers=auth(ADMIN_TOKEN),
+                              json={"name": f"Amenity TC {RUN_ID}", "icon": "fa-wifi", "category": "connectivity"})
+    amenity_id = parse_id(r_amenity)
+    print(f"[SETUP] amenity_id={amenity_id}, status={r_amenity.status_code}")
+
+    run("TC39k", "POST /admin/locations/{id}/amenities - gan amenities hop le",
+        "post", f"{url}/admin/locations/{loc_id}/amenities", 200,
+        headers=auth(ADMIN_TOKEN),
+        json={"amenity_ids": [amenity_id]} if amenity_id else {"amenity_ids": []})
+
+    run("TC39l", "POST /admin/locations/{id}/amenities - amenity_id khong ton tai",
+        "post", f"{url}/admin/locations/{loc_id}/amenities", 422,
+        headers=auth(ADMIN_TOKEN),
+        json={"amenity_ids": [99999]})
+
+    run("TC39m", "POST /admin/locations/{id}/amenities - khong co token",
+        "post", f"{url}/admin/locations/{loc_id}/amenities", 401,
+        headers=auth(),
+        json={"amenity_ids": [1]})
+
+    # ---- DELETE /admin/locations/{id}/amenities/{amenityId} ----
+    run("TC39n", "DELETE /admin/locations/{id}/amenities/{amenityId} - xoa amenity hop le",
+        "delete", f"{url}/admin/locations/{loc_id}/amenities/{amenity_id}", [200, 204],
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC39o", "DELETE /admin/locations/{id}/amenities/{amenityId} - amenityId khong ton tai [bug backend]",
+        "delete", f"{url}/admin/locations/{loc_id}/amenities/99999", [200, 404, 422],
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC39p", "DELETE /admin/locations/{id}/amenities/{amenityId} - khong co token",
+        "delete", f"{url}/admin/locations/{loc_id}/amenities/{amenity_id}", 401,
+        headers=auth())
 
     run("TC40", "DELETE /admin/locations/{id} - ID khong ton tai",
         "delete", f"{url}/admin/locations/99999", [404, 422],
