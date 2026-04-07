@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đà Nẵng Trip — Style Guide</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary:  { DEFAULT: '#0066CC', dark: '#004999', light: '#3385D6', subtle: '#B3D9FF' },
+        accent:   { DEFAULT: '#FF6B35', dark: '#E55A2B', light: '#FF8F5C', subtle: '#FFE0D4' },
+        neutral:  { bg: '#F8FAFC', surface: '#FFFFFF', border: '#E2E8F0', 900: '#1E293B', 500: '#64748B', 300: '#94A3B8' },
+        success:  { DEFAULT: '#10B981', bg: '#D1FAE5' },
+        warning:  { DEFAULT: '#F59E0B', bg: '#FEF3C7' },
+        error:    { DEFAULT: '#EF4444', bg: '#FEE2E2' },
+        info:     { DEFAULT: '#3B82F6', bg: '#DBEAFE' },
+      },
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      boxShadow: {
+        card: '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
+        'card-hover': '0 8px 24px rgba(0,102,204,0.12), 0 2px 8px rgba(0,0,0,0.06)',
+        modal: '0 24px 64px rgba(0,0,0,0.14), 0 4px 16px rgba(0,0,0,0.08)',
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #F0F4F8; color: #1E293B; }
+
+  /* Nav */
+  .side-nav { position: fixed; left: 0; top: 0; height: 100vh; width: 220px; background: #fff; border-right: 1px solid #E2E8F0; padding: 32px 16px; display: flex; flex-direction: column; gap: 4px; z-index: 100; overflow-y: auto; }
+  .side-nav a { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; color: #64748B; text-decoration: none; transition: all .15s; }
+  .side-nav a:hover, .side-nav a.active { background: #EFF6FF; color: #0066CC; }
+  .side-nav .nav-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+  .main-content { margin-left: 220px; padding: 48px 48px 80px; max-width: calc(1280px + 220px); }
+
+  /* Section */
+  .section-title { display: flex; align-items: center; gap: 12px; font-size: 20px; font-weight: 700; margin-bottom: 28px; color: #1E293B; }
+  .section-title::before { content: ''; display: block; width: 4px; height: 22px; background: linear-gradient(180deg, #0066CC, #3385D6); border-radius: 2px; flex-shrink: 0; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #94A3B8; margin-bottom: 12px; }
+
+  /* Swatch */
+  .swatch { transition: transform .15s, box-shadow .15s; cursor: default; }
+  .swatch:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,102,204,0.10); }
+
+  /* Color block */
+  .color-block { border-radius: 16px; overflow: hidden; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+  .color-block-header { height: 80px; display: flex; align-items: flex-end; padding: 12px 16px; }
+  .color-block-header span { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: .06em; text-transform: uppercase; }
+  .color-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #fff; border-top: 1px solid #F1F5F9; }
+  .color-dot { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
+
+  /* Typography demo */
+  .type-row { padding: 16px 0; border-bottom: 1px solid #F1F5F9; }
+  .type-row:last-child { border-bottom: none; }
+  .type-meta { font-size: 10px; font-family: monospace; color: #94A3B8; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+
+  /* Button group card */
+  .btn-card { background: #fff; border-radius: 16px; border: 1px solid #E2E8F0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); padding: 24px; }
+
+  /* Badge */
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 9999px; font-size: 11px; font-weight: 700; }
+
+  /* Animations */
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spin { animation: spin 1s linear infinite; }
+  @keyframes skeleton { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .skeleton { animation: skeleton 1.5s ease-in-out infinite; background: #E2E8F0; border-radius: 6px; }
+  @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(.85)} }
+  .pulse { animation: pulse-dot 2s ease-in-out infinite; }
+
+  input[type=range] { accent-color: #0066CC; }
+  input[type=checkbox], input[type=radio] { accent-color: #0066CC; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- SIDE NAV -->
+<nav class="side-nav">
+  <div class="mb-6 px-2">
+    <div class="flex items-center gap-2 mb-1">
+      <div class="w-7 h-7 rounded-lg bg-[#0066CC] flex items-center justify-center">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+      </div>
+      <span class="font-bold text-sm text-[#1E293B]">Đà Nẵng Trip</span>
+    </div>
+    <p class="text-[10px] text-[#94A3B8] font-semibold uppercase tracking-widest pl-9">Design System v1.0</p>
+  </div>
+  <a href="#colors"><span class="nav-dot"></span>Color System</a>
+  <a href="#typography"><span class="nav-dot"></span>Typography</a>
+  <a href="#buttons"><span class="nav-dot"></span>Buttons</a>
+  <a href="#badges"><span class="nav-dot"></span>Badges & Tags</a>
+  <a href="#forms"><span class="nav-dot"></span>Form Elements</a>
+  <a href="#cards"><span class="nav-dot"></span>Cards</a>
+  <a href="#spacing"><span class="nav-dot"></span>Spacing & Grid</a>
+  <a href="#animations"><span class="nav-dot"></span>Animations</a>
+  <div class="mt-auto pt-6 border-t border-[#E2E8F0]">
+    <div class="flex flex-wrap gap-2 px-2">
+      <span class="badge bg-[#EFF6FF] text-[#0066CC]">Inter</span>
+      <span class="badge bg-[#FFE0D4] text-[#FF6B35]">Tailwind</span>
+      <span class="badge bg-[#D1FAE5] text-[#10B981]">v1.0.0</span>
+    </div>
+  </div>
+</nav>
+
+<div class="main-content">
+
+<!-- HEADER -->
+<header class="mb-14">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#E2E8F0]">
+    <div>
+      <p class="text-xs font-bold tracking-widest uppercase text-[#0066CC] mb-2">Design System</p>
+      <h1 class="text-4xl font-bold text-[#1E293B] tracking-tight" style="letter-spacing:-0.5px">Đà Nẵng Trip</h1>
+      <p class="text-[#64748B] mt-1.5 text-sm">Style Guide — Bảng thiết kế chuẩn cho toàn bộ dự án</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-[#E2E8F0] shadow-card text-sm">
+        <span class="w-2 h-2 rounded-full bg-[#0066CC]"></span>
+        <span class="font-semibold text-[#1E293B]">Inter Variable</span>
+        <span class="text-[#94A3B8]">300–700</span>
+      </div>
+      <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-[#E2E8F0] shadow-card text-sm">
+        <span class="w-2 h-2 rounded-full bg-[#FF6B35]"></span>
+        <span class="font-semibold text-[#1E293B]">Tailwind CSS</span>
+        <span class="text-[#94A3B8]">v3</span>
+      </div>
+      <div class="flex items-center gap-2 px-4 py-2 bg-white rounded-xl border border-[#E2E8F0] shadow-card text-sm">
+        <span class="w-2 h-2 rounded-full bg-[#10B981] pulse"></span>
+        <span class="font-semibold text-[#1E293B]">v1.0.0</span>
+        <span class="text-[#94A3B8]">Stable</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="space-y-20">
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 1. COLOR SYSTEM                         -->
+<!-- ═══════════════════════════════════════ -->
+<section id="colors">
+  <h2 class="section-title">Color System</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+    <!-- Primary -->
+    <div>
+      <p class="section-label">Primary — Brand Blue</p>
+      <div class="color-block">
+        <div class="color-block-header" style="background:linear-gradient(135deg,#0066CC,#3385D6)">
+          <span>Brand Blue</span>
+        </div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#0066CC"></div><div><p class="text-sm font-semibold">Default</p><code class="text-xs text-[#94A3B8]">#0066CC</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#004999"></div><div><p class="text-sm font-semibold">Dark</p><code class="text-xs text-[#94A3B8]">#004999</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#3385D6"></div><div><p class="text-sm font-semibold">Light</p><code class="text-xs text-[#94A3B8]">#3385D6</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#B3D9FF;border:1px solid #E2E8F0"></div><div><p class="text-sm font-semibold">Subtle</p><code class="text-xs text-[#94A3B8]">#B3D9FF</code></div></div>
+      </div>
+    </div>
+
+    <!-- Accent -->
+    <div>
+      <p class="section-label">Accent — Coral Orange</p>
+      <div class="color-block">
+        <div class="color-block-header" style="background:linear-gradient(135deg,#FF6B35,#FF8F5C)">
+          <span>Coral Orange</span>
+        </div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#FF6B35"></div><div><p class="text-sm font-semibold">Default</p><code class="text-xs text-[#94A3B8]">#FF6B35</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#E55A2B"></div><div><p class="text-sm font-semibold">Dark</p><code class="text-xs text-[#94A3B8]">#E55A2B</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#FF8F5C"></div><div><p class="text-sm font-semibold">Light</p><code class="text-xs text-[#94A3B8]">#FF8F5C</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#FFE0D4;border:1px solid #E2E8F0"></div><div><p class="text-sm font-semibold">Subtle</p><code class="text-xs text-[#94A3B8]">#FFE0D4</code></div></div>
+      </div>
+    </div>
+
+    <!-- Neutral -->
+    <div>
+      <p class="section-label">Neutral — Slate</p>
+      <div class="color-block">
+        <div class="color-block-header" style="background:linear-gradient(135deg,#1E293B,#475569)">
+          <span>Slate Scale</span>
+        </div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#F8FAFC;border:1px solid #E2E8F0"></div><div><p class="text-sm font-semibold">Background</p><code class="text-xs text-[#94A3B8]">#F8FAFC</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#FFFFFF;border:1px solid #E2E8F0"></div><div><p class="text-sm font-semibold">Surface</p><code class="text-xs text-[#94A3B8]">#FFFFFF</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#E2E8F0"></div><div><p class="text-sm font-semibold">Border</p><code class="text-xs text-[#94A3B8]">#E2E8F0</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#94A3B8"></div><div><p class="text-sm font-semibold">Text Disabled</p><code class="text-xs text-[#94A3B8]">#94A3B8</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#64748B"></div><div><p class="text-sm font-semibold">Text Secondary</p><code class="text-xs text-[#94A3B8]">#64748B</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#1E293B"></div><div><p class="text-sm font-semibold">Text Primary</p><code class="text-xs text-[#94A3B8]">#1E293B</code></div></div>
+      </div>
+    </div>
+
+    <!-- Status -->
+    <div>
+      <p class="section-label">Status Colors</p>
+      <div class="color-block">
+        <div class="color-block-header" style="background:linear-gradient(135deg,#10B981,#3B82F6)">
+          <span>Semantic</span>
+        </div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#10B981"></div><div><p class="text-sm font-semibold text-[#10B981]">Success</p><code class="text-xs text-[#94A3B8]">#10B981</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#D1FAE5;border:1px solid rgba(16,185,129,.2)"></div><div><p class="text-sm font-semibold text-[#10B981]">Success Bg</p><code class="text-xs text-[#94A3B8]">#D1FAE5</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#F59E0B"></div><div><p class="text-sm font-semibold text-[#F59E0B]">Warning</p><code class="text-xs text-[#94A3B8]">#F59E0B</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#FEF3C7;border:1px solid rgba(245,158,11,.2)"></div><div><p class="text-sm font-semibold text-[#F59E0B]">Warning Bg</p><code class="text-xs text-[#94A3B8]">#FEF3C7</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#EF4444"></div><div><p class="text-sm font-semibold text-[#EF4444]">Error</p><code class="text-xs text-[#94A3B8]">#EF4444</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#FEE2E2;border:1px solid rgba(239,68,68,.2)"></div><div><p class="text-sm font-semibold text-[#EF4444]">Error Bg</p><code class="text-xs text-[#94A3B8]">#FEE2E2</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#3B82F6"></div><div><p class="text-sm font-semibold text-[#3B82F6]">Info</p><code class="text-xs text-[#94A3B8]">#3B82F6</code></div></div>
+        <div class="color-row swatch"><div class="color-dot" style="background:#DBEAFE;border:1px solid rgba(59,130,246,.2)"></div><div><p class="text-sm font-semibold text-[#3B82F6]">Info Bg</p><code class="text-xs text-[#94A3B8]">#DBEAFE</code></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
