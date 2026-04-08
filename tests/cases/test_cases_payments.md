@@ -102,8 +102,9 @@
 ### ✅ TC19 — Filter `payment_status=pending`
 - Expected: `200 OK`
 
-### ✅ TC20 — Filter `payment_status=success`
+### ✅ TC20 — Filter `payment_status=paid`
 - Expected: `200 OK`
+- Note: PaymentStatus enum: `pending`, `paid`, `failed`, `refunded` (không có `success`)
 
 ### ✅ TC21 — Filter `payment_status=failed`
 - Expected: `200 OK`
