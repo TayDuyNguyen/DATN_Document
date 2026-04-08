@@ -40,7 +40,8 @@
 📈  Báo cáo
     ├── Đơn hàng
     ├── Doanh thu
-    └── Đánh giá
+    ├── Đánh giá
+    └── Người dùng
 ```
 
 ---
@@ -53,7 +54,7 @@
 
 | # | Màn hình | Route | Loại | API sử dụng |
 |---|----------|-------|------|-------------|
-| 1.1 | Tổng quan Dashboard | `/admin/dashboard` | Trang đơn | `GET /admin/dashboard/stats` `GET /admin/dashboard/revenue` `GET /admin/dashboard/booking-trend` `GET /admin/dashboard/user-growth` `GET /admin/dashboard/top-tours` `GET /admin/bookings` |
+| 1.1 | Tổng quan Dashboard | `/admin/dashboard` | Trang đơn | `GET /admin/dashboard/stats` `GET /admin/dashboard/revenue` `GET /admin/dashboard/booking-trend` `GET /admin/dashboard/user-growth` `GET /admin/dashboard/top-tours` `GET /admin/dashboard/top-locations` `GET /admin/bookings` |
 
 ---
 
@@ -166,6 +167,7 @@
 | 11.1 | Báo cáo Đơn hàng | `/admin/reports/bookings` | Chart + table + export | `GET /admin/reports/bookings` `GET /admin/bookings/export` |
 | 11.2 | Báo cáo Doanh thu | `/admin/reports/revenue` | Chart + table + export | `GET /admin/reports/revenue-detail` `GET /admin/dashboard/revenue` `GET /admin/payments/export` |
 | 11.3 | Báo cáo Đánh giá | `/admin/reports/ratings` | Chart + table + export | `GET /admin/reports/ratings` `GET /admin/ratings/export` |
+| 11.4 | Báo cáo Người dùng | `/admin/reports/users` | Chart + export | `GET /admin/reports/users` `GET /admin/users/export` |
 
 ---
 
@@ -183,5 +185,5 @@
 | 8 | Tags & Tiện ích | 2 | Tags · Amenities (hoặc 1 trang 2 tab) |
 | 9 | Thông báo | 2 | List · Gửi thông báo |
 | 10 | Liên hệ | 2 | List · Detail/Reply |
-| 11 | Báo cáo | 3 | Đơn hàng · Doanh thu · Đánh giá |
-| | **Tổng** | **41** | |
+| 11 | Báo cáo | 4 | Đơn hàng · Doanh thu · Đánh giá · Người dùng |
+| | **Tổng** | **42** | |

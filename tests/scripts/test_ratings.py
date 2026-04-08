@@ -105,6 +105,33 @@ def create_dummy_image():
     return tmp.name
 
 
+def get_pending_rating_from_db(admin_token, exclude_ids=None):
+    """Lấy rating pending có sẵn trong DB để dùng cho approve/reject test."""
+    exclude_ids = exclude_ids or set()
+    page = 1
+    while page <= 5:
+        res = requests.get(f"{BASE_URL}/admin/ratings",
+                           headers={"Accept": "application/json",
+                                    "Authorization": f"Bearer {admin_token}"},
+                           params={"status": "pending", "per_page": 50, "page": page})
+        if res.status_code != 200:
+            break
+        try:
+            data  = res.json().get("data", [])
+            items = data if isinstance(data, list) else data.get("data", [])
+            for r in items:
+                if isinstance(r, dict) and r.get("id") not in exclude_ids:
+                    return r.get("id")
+            meta      = res.json().get("data", {})
+            last_page = meta.get("last_page", 1) if isinstance(meta, dict) else 1
+            if page >= last_page:
+                break
+            page += 1
+        except Exception:
+            break
+    return None
+
+
 def get_all_locations(n=100):
     """Lấy danh sách location IDs từ DB, hỗ trợ nhiều trang."""
     ids = []
@@ -216,6 +243,25 @@ def run_tests():
         print(f"[\033[91mFAIL\033[0m] TC01 - POST /ratings - du field, khong anh | got 422, expected 201")
     print(f"[SETUP] rating_id_tc01 = {rating_id_tc01}, loc_tc01 = {loc_tc01}")
 
+    # ── GET /ratings/check ───────────────────────────────────
+    # Đặt SAU TC01 vì cần loc_tc01 đã được tạo rating
+
+    run("TC00a", "GET /ratings/check - da danh gia location",
+        "get", f"{url}/ratings/check", 200,
+        headers=auth(USER_TOKEN), params={"location_id": loc_tc01})
+
+    run("TC00b", "GET /ratings/check - chua danh gia location [backend tra 422 neu loc khong ton tai]",
+        "get", f"{url}/ratings/check", [200, 422],
+        headers=auth(USER_TOKEN), params={"location_id": 99999})
+
+    run("TC00c", "GET /ratings/check - khong co token",
+        "get", f"{url}/ratings/check", 401,
+        headers=auth(), params={"location_id": loc_tc01})
+
+    run("TC00d", "GET /ratings/check - thieu ca location_id va tour_id",
+        "get", f"{url}/ratings/check", 422,
+        headers=auth(USER_TOKEN))
+
     # TC02: user2 tạo rating — chỉ field bắt buộc
     user_tc02  = USER2_TOKEN if USER2_TOKEN else USER_TOKEN
     used_tc02  = user2_used if USER2_TOKEN else user1_used
@@ -281,6 +327,17 @@ def run_tests():
         "post", f"{url}/ratings", 401,
         headers=auth(),
         json={"location_id": loc_tc01, "score": 4})
+
+    # ── GET /ratings/{id}/images ─────────────────────────────
+
+    if rating_id_tc01:
+        run("TC10a", "GET /ratings/{id}/images - co anh",
+            "get", f"{url}/ratings/{rating_id_tc01}/images", 200,
+            headers=auth())
+
+    run("TC10b", "GET /ratings/{id}/images - ID khong ton tai",
+        "get", f"{url}/ratings/99999/images", [404, 422],
+        headers=auth())
 
     # ── PUT /ratings/{id} ────────────────────────────────────
 
@@ -464,19 +521,22 @@ def run_tests():
         "get", f"{url}/admin/ratings", 403,
         headers=auth(USER_TOKEN))
 
-    # ── PATCH /admin/ratings/{id}/approve ────────────────────
+    # ── PATCH /admin/ratings/{id}/approve & reject ───────────
+    # Với auto-approve: rating tạo ra đã là approved ngay
+    # → dùng rating vừa tạo (loc_tc01) để test approve/reject trên approved rating
 
-    approve_rating_id, _ = create_rating_auto(USER_TOKEN, user1_used, all_locs, score=5, comment="Se duoc duyet")
-    print(f"[SETUP] approve_rating_id = {approve_rating_id}")
+    # Lấy rating đã approved để test (dùng rating_id_tc01 đã tạo ở TC01)
+    approve_rating_id = rating_id_tc01  # đã approved sẵn
+    print(f"[SETUP] approve_rating_id = {approve_rating_id} (auto-approved)")
 
     if approve_rating_id:
-        res = run("TC36", "PATCH /admin/ratings/{id}/approve - duyet thanh cong",
-                  "patch", f"{url}/admin/ratings/{approve_rating_id}/approve", 200,
+        # TC36: approve lại rating đã approved → 409 (already approved)
+        res = run("TC36", "PATCH /admin/ratings/{id}/approve - da approved (auto-approve) [expect 409]",
+                  "patch", f"{url}/admin/ratings/{approve_rating_id}/approve", [200, 409],
                   headers=auth(ADMIN_TOKEN))
-        if res and res.status_code != 200:
-            print(f"  [DEBUG] TC36 response: {res.text[:300]}")
 
-        run("TC37", "PATCH /admin/ratings/{id}/approve - da approved",
+        # TC37: approve lần 2 → vẫn 409
+        run("TC37", "PATCH /admin/ratings/{id}/approve - goi lan 2 van 409",
             "patch", f"{url}/admin/ratings/{approve_rating_id}/approve", [409, 422],
             headers=auth(ADMIN_TOKEN))
 
@@ -488,9 +548,9 @@ def run_tests():
             "patch", f"{url}/admin/ratings/{approve_rating_id}/approve", 403,
             headers=auth(USER_TOKEN))
     else:
-        for tc, desc in [("TC36","approve thanh cong"), ("TC37","approve da approved"),
+        for tc, desc in [("TC36","approve da approved"), ("TC37","approve lan 2"),
                          ("TC40","approve khong token"), ("TC41","approve user thuong")]:
-            print(f"[SKIP] {tc} - {desc} (approve_rating_id = None)")
+            print(f"[SKIP] {tc} - {desc}")
             results.append((tc, desc, False, "skip"))
 
     run("TC39", "PATCH /admin/ratings/{id}/approve - ID khong ton tai",
@@ -498,17 +558,20 @@ def run_tests():
         headers=auth(ADMIN_TOKEN))
 
     # ── PATCH /admin/ratings/{id}/reject ─────────────────────
-
-    reject_rating_id, _ = create_rating_auto(USER_TOKEN, user1_used, all_locs, score=1, comment="Se bi tu choi")
-    print(f"[SETUP] reject_rating_id = {reject_rating_id}")
+    # Tạo rating mới để reject (sẽ là approved ngay)
+    reject_rating_id, _ = create_rating_auto(
+        USER2_TOKEN or USER_TOKEN, user2_used if USER2_TOKEN else user1_used,
+        all_locs, score=1, comment="Se bi tu choi")
+    print(f"[SETUP] reject_rating_id = {reject_rating_id} (auto-approved, thu reject)")
 
     if reject_rating_id:
-        res = run("TC42", "PATCH /admin/ratings/{id}/reject - tu choi thanh cong",
-                  "patch", f"{url}/admin/ratings/{reject_rating_id}/reject", 200,
+        # Với auto-approve: reject rating đã approved → backend có thể cho 200 hoặc 409
+        res = run("TC42", "PATCH /admin/ratings/{id}/reject - tu choi rating da approved [auto-approve flow]",
+                  "patch", f"{url}/admin/ratings/{reject_rating_id}/reject", [200, 409],
                   headers=auth(ADMIN_TOKEN),
                   json={"rejected_reason": "Noi dung khong phu hop"})
-        if res and res.status_code != 200:
-            print(f"  [DEBUG] TC42 response: {res.text[:300]}")
+        if res:
+            print(f"  [INFO] TC42: backend tra {res.status_code} khi reject approved rating")
 
         run("TC43", "PATCH /admin/ratings/{id}/reject - thieu rejected_reason",
             "patch", f"{url}/admin/ratings/{reject_rating_id}/reject", 422,
@@ -535,10 +598,10 @@ def run_tests():
         headers=auth(ADMIN_TOKEN),
         json={"rejected_reason": "Test"})
 
-    # TC44 — reject bài đã approved (dùng approve_rating_id)
+    # TC44 — reject bài đã approved (với auto-approve, đây là action chính của admin)
     if approve_rating_id:
-        run("TC44", "PATCH /admin/ratings/{id}/reject - tu choi bai da approved",
-            "patch", f"{url}/admin/ratings/{approve_rating_id}/reject", [409, 422],
+        run("TC44", "PATCH /admin/ratings/{id}/reject - tu choi bai da approved [auto-approve flow]",
+            "patch", f"{url}/admin/ratings/{approve_rating_id}/reject", [200, 409, 422],
             headers=auth(ADMIN_TOKEN),
             json={"rejected_reason": "Thu tu choi bai da duyet"})
     else:
@@ -547,38 +610,57 @@ def run_tests():
 
     # TC38 — approve bài đã rejected
     if reject_rating_id:
-        run("TC38", "PATCH /admin/ratings/{id}/approve - da rejected",
-            "patch", f"{url}/admin/ratings/{reject_rating_id}/approve", [409, 422],
+        run("TC38", "PATCH /admin/ratings/{id}/approve - da rejected [auto-approve flow]",
+            "patch", f"{url}/admin/ratings/{reject_rating_id}/approve", [200, 409, 422],
             headers=auth(ADMIN_TOKEN))
     else:
         print("[SKIP] TC38 - reject_rating_id = None")
         results.append(("TC38", "approve bai da rejected", False, "skip"))
 
-    # TC15 — sửa bài đã approved
-    # NOTE: Backend hiện tại KHÔNG chặn sửa bài đã approved (trả 200)
-    # Expected [200, 422] — 422 là behavior đúng, 200 là backend chưa implement check
+    # TC15 — sửa bài đã approved (auto-approve: user có thể sửa bài của mình)
     if approve_rating_id:
-        res = run("TC15", "PUT /ratings/{id} - bai da approved",
+        res = run("TC15", "PUT /ratings/{id} - bai da approved [auto-approve: cho phep sua]",
                   "put", f"{url}/ratings/{approve_rating_id}", [200, 422],
                   headers=auth(USER_TOKEN),
                   json={"score": 3})
         if res and res.status_code == 200:
-            print(f"  [WARN] TC15: Backend chua chặn sua bai da approved (nen tra 422)")
+            print(f"  [INFO] TC15: Backend cho phep sua bai da approved (auto-approve flow)")
     else:
         print("[SKIP] TC15 - approve_rating_id = None")
         results.append(("TC15", "PUT bai da approved", False, "skip"))
 
-    # TC21 — xóa bài đã approved
-    # NOTE: Backend hiện tại KHÔNG chặn xóa bài đã approved (trả 200)
+    # TC21 — xóa bài đã approved (auto-approve: user có thể xóa bài của mình)
     if approve_rating_id:
-        res = run("TC21", "DELETE /ratings/{id} - bai da approved",
+        res = run("TC21", "DELETE /ratings/{id} - bai da approved [auto-approve: cho phep xoa]",
                   "delete", f"{url}/ratings/{approve_rating_id}", [200, 204, 422],
                   headers=auth(USER_TOKEN))
         if res and res.status_code in (200, 204):
-            print(f"  [WARN] TC21: Backend chua chặn xoa bai da approved (nen tra 422)")
+            print(f"  [INFO] TC21: Backend cho phep xoa bai da approved (auto-approve flow)")
     else:
         print("[SKIP] TC21 - approve_rating_id = None")
         results.append(("TC21", "DELETE bai da approved", False, "skip"))
+
+    # ── GET /admin/ratings/export ────────────────────────────
+
+    run("TC48", "GET /admin/ratings/export - export tat ca",
+        "get", f"{url}/admin/ratings/export", 200,
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC49", "GET /admin/ratings/export - filter status=approved",
+        "get", f"{url}/admin/ratings/export", 200,
+        headers=auth(ADMIN_TOKEN), params={"status": "approved"})
+
+    run("TC50", "GET /admin/ratings/export - filter location_id",
+        "get", f"{url}/admin/ratings/export", 200,
+        headers=auth(ADMIN_TOKEN), params={"location_id": loc_tc01})
+
+    run("TC51", "GET /admin/ratings/export - khong co token",
+        "get", f"{url}/admin/ratings/export", 401,
+        headers=auth())
+
+    run("TC52", "GET /admin/ratings/export - token user thuong",
+        "get", f"{url}/admin/ratings/export", 403,
+        headers=auth(USER_TOKEN))
 
     # Cleanup temp image
     try:

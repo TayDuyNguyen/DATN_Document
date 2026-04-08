@@ -15,6 +15,7 @@
 ## AUTH
 > 🌿 Branch: `feat/taynd/api-auth`
 > 💬 `feat(auth): register, login, logout, refresh token, forgot/reset password via email`
+> 🧪 Test: `python tests/scripts/test_auth.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -32,6 +33,7 @@
 ## CATEGORIES & SUBCATEGORIES
 > 🌿 Branch: `feat/taynd/api-categories`
 > 💬 `feat(categories): CRUD categories & subcategories, admin only write, public read`
+> 🧪 Test: `python tests/scripts/test_categories.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -53,6 +55,7 @@
 ## LOCATIONS (Địa điểm)
 > 🌿 Branch: `feat/taynd/api-locations`
 > 💬 `feat(locations): list/detail/featured/nearby, track views, admin CRUD & toggle status/featured`
+> 🧪 Test: `python tests/scripts/test_locations.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -83,6 +86,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## TOURS (Sản phẩm tour)
 > 🌿 Branch: `feat/taynd/api-tours`
 > 💬 `feat(tours): list/detail/featured/hot, admin CRUD & toggle status/featured/hot`
+> 🧪 Test: `python tests/scripts/test_tours.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -107,6 +111,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## TOUR CATEGORIES (Danh mục tour)
 > 🌿 Branch: `feat/taynd/api-tours`
 > 💬 `feat(tour-categories): public list, admin CRUD`
+> 🧪 Test: `python tests/scripts/test_tour_categories.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -123,6 +128,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## TOUR SCHEDULES (Lịch khởi hành)
 > 🌿 Branch: `feat/taynd/api-tours`
 > 💬 `feat(tour-schedules): admin manage departure schedules per tour`
+> 🧪 Test: `python tests/scripts/test_tour_schedules.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -138,6 +144,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## BOOKINGS (Đặt tour)
 > 🌿 Branch: `feat/taynd/api-bookings`
 > 💬 `feat(bookings): user book tour, view history, cancel; admin manage orders`
+> 🧪 Test: `python tests/scripts/test_bookings.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -161,6 +168,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## PAYMENTS (Thanh toán)
 > 🌿 Branch: `feat/taynd/api-bookings`
 > 💬 `feat(payments): process payment, refund, admin manage transactions`
+> 🧪 Test: `python tests/scripts/test_payments.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -178,6 +186,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## RATINGS (Đánh giá)
 > 🌿 Branch: `feat/taynd/api-ratings`
 > 💬 `feat(ratings): user review location/tour after booking, admin approve/reject`
+> 🧪 Test: `python tests/scripts/test_ratings.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -198,6 +207,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## FAVORITES (Yêu thích)
 > 🌿 Branch: `feat/taynd/api-favorites`
 > 💬 `feat(favorites): user save/unsave locations, list saved locations`
+> 🧪 Test: `python tests/scripts/test_favorites.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -211,6 +221,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## USER PROFILE
 > 🌿 Branch: `feat/taynd/api-user-profile`
 > 💬 `feat(profile): view/update profile, upload avatar, change password, booking/rating history`
+> 🧪 Test: `python tests/scripts/test_user_profile.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -228,6 +239,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## NOTIFICATIONS (Thông báo)
 > 🌿 Branch: `feat/taynd/api-notifications`
 > 💬 `feat(notifications): list, mark read, mark all read, delete; admin send notification`
+> 🧪 Test: `python tests/scripts/test_notifications.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -246,6 +258,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## SEARCH (Tìm kiếm)
 > 🌿 Branch: `feat/taynd/api-search`
 > 💬 `feat(search): full-text search locations & tours, autocomplete, popular keywords`
+> 🧪 Test: `python tests/scripts/test_search.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -261,6 +274,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## BLOG
 > 🌿 Branch: `feat/taynd/api-blog`
 > 💬 `feat(blog): public list/detail/categories, admin CRUD & publish/archive posts`
+> 🧪 Test: `python tests/scripts/test_blog.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -283,6 +297,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## ADMIN — USERS
 > 🌿 Branch: `feat/taynd/api-admin-users`
 > 💬 `feat(admin/users): list, detail, create, update, toggle status/role, delete`
+> 🧪 Test: `python tests/scripts/test_admin_users.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -302,6 +317,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## ADMIN — DASHBOARD & REPORTS
 > 🌿 Branch: `feat/taynd/api-admin-dashboard`
 > 💬 `feat(admin/dashboard): overview stats, revenue, top tours/locations, user growth, booking trend`
+> 🧪 Test: `python tests/scripts/test_dashboard.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -321,6 +337,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## TAGS & AMENITIES
 > 🌿 Branch: `feat/taynd/api-tags-amenities`
 > 💬 `feat(tags/amenities): public list, admin CRUD`
+> 🧪 Test: `python tests/scripts/test_tags_amenities.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -338,6 +355,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## CONTACTS (Liên hệ)
 > 🌿 Branch: `feat/taynd/api-contacts`
 > 💬 `feat(contacts): public submit contact form, admin manage & reply`
+> 🧪 Test: *(chưa có script)*
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -353,6 +371,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## UPLOAD
 > 🌿 Branch: `feat/taynd/api-upload`
 > 💬 `feat(upload): upload image/multiple images to Cloudinary, delete image`
+> 🧪 Test: `python tests/scripts/test_upload.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -365,6 +384,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## CONFIG & UTILITIES
 > 🌿 Branch: `feat/taynd/api-config`
 > 💬 `feat(config): website config, weather, health check`
+> 🧪 Test: *(chưa có script)*
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
