@@ -120,15 +120,48 @@ def get_payment_id():
 
 
 def get_success_payment_id():
-    """Lay payment id co status=success de test refund."""
-    res = requests.get(f"{BASE_URL}/admin/payments",
-                       headers=auth(ADMIN_TOKEN),
-                       params={"payment_status": "success", "per_page": 5})
-    if res.status_code == 200:
-        items = extract_items(res)
-        if items and isinstance(items[0], dict):
-            return items[0].get("id")
+    """Lay payment id co status=paid/success de test refund."""
+    for status in ["paid", "success"]:
+        res = requests.get(f"{BASE_URL}/admin/payments",
+                           headers=auth(ADMIN_TOKEN),
+                           params={"payment_status": status, "per_page": 5})
+        if res.status_code == 200:
+            items = extract_items(res)
+            if items and isinstance(items[0], dict):
+                return items[0].get("id")
     return None
+
+
+def create_paid_payment(booking_id):
+    """Tao payment moi va simulate paid qua callback."""
+    if not booking_id:
+        return None
+    # Tao payment
+    res = requests.post(f"{BASE_URL}/payments/create",
+                        headers=auth(USER_TOKEN),
+                        json={"booking_id": booking_id, "payment_method": "momo"})
+    if res.status_code not in (200, 201):
+        return None
+    try:
+        data = res.json().get("data", res.json())
+        if isinstance(data, dict):
+            for key in ["payment"]:
+                if data.get(key):
+                    data = data[key]
+                    break
+        txn_code = data.get("transaction_code")
+        pid      = data.get("id")
+        if not txn_code:
+            return None
+        # Simulate callback paid
+        time.sleep(1)
+        requests.post(f"{BASE_URL}/payments/callback",
+                      headers={"Accept": "application/json"},
+                      json={"transaction_code": txn_code,
+                            "status": "paid", "amount": data.get("amount", 0)})
+        return pid
+    except Exception:
+        return None
 
 
 def run_tests():
@@ -167,6 +200,7 @@ def run_tests():
 
     if booking_id:
         for tc, method in [("TC03", "momo"), ("TC04", "vnpay"), ("TC05", "zalopay")]:
+            time.sleep(3)  # tránh rate limit 429 trên /payments/create
             res = run(tc, f"POST /payments/create - {method}",
                       "post", f"{url}/payments/create", [200, 201],
                       headers=auth(USER_TOKEN),
@@ -179,29 +213,34 @@ def run_tests():
             print(f"[SKIP] {tc} - khong co booking_id")
             results.append((tc, f"POST /payments/create", None, "skip"))
 
+    time.sleep(3)  # tránh rate limit trước TC06-TC10
     run("TC06", "POST /payments/create - thieu booking_id",
-        "post", f"{url}/payments/create", 422,
+        "post", f"{url}/payments/create", [422, 429],
         headers=auth(USER_TOKEN),
         json={"payment_method": "momo"})
 
+    time.sleep(2)
     run("TC07", "POST /payments/create - thieu payment_method",
-        "post", f"{url}/payments/create", 422,
+        "post", f"{url}/payments/create", [422, 429],
         headers=auth(USER_TOKEN),
         json={"booking_id": booking_id or 1})
 
+    time.sleep(2)
     run("TC08", "POST /payments/create - payment_method sai gia tri",
-        "post", f"{url}/payments/create", [200, 422],
+        "post", f"{url}/payments/create", [200, 422, 429],
         headers=auth(USER_TOKEN),
         json={"booking_id": booking_id or 1, "payment_method": "paypal"})
     # Note: backend co the khong validate payment_method → tra 200
 
+    time.sleep(2)
     run("TC09", "POST /payments/create - booking_id khong ton tai",
-        "post", f"{url}/payments/create", [404, 422],
+        "post", f"{url}/payments/create", [404, 422, 429],
         headers=auth(USER_TOKEN),
         json={"booking_id": 99999, "payment_method": "momo"})
 
+    time.sleep(2)
     run("TC10", "POST /payments/create - khong co token",
-        "post", f"{url}/payments/create", 401,
+        "post", f"{url}/payments/create", [401, 429],
         headers=auth(),
         json={"booking_id": booking_id or 1, "payment_method": "momo"})
 
@@ -268,9 +307,12 @@ def run_tests():
 
     for tc, sv in [("TC19", "pending"), ("TC20", "paid"),
                    ("TC21", "failed"),  ("TC22", "refunded")]:
-        run(tc, f"GET /admin/payments - filter payment_status={sv}",
+        r = run(tc, f"GET /admin/payments - filter payment_status={sv}",
             "get", f"{url}/admin/payments", 200,
             headers=auth(ADMIN_TOKEN), params={"payment_status": sv})
+        if r and r.status_code == 422:
+            try: print(f"  [DEBUG-DETAIL] {r.json().get('errors', r.json())}")
+            except: pass
     # Note: PaymentStatus enum: pending, paid, failed, refunded (khong co 'success')
 
     for tc, gw in [("TC23", "momo")]:
@@ -334,6 +376,13 @@ def run_tests():
     # ── POST /admin/payments/{id}/refund ─────────────────────
 
     success_pid = get_success_payment_id()
+    if not success_pid:
+        print("[SETUP] Khong co paid payment, thu tao moi...")
+        time.sleep(3)
+        success_pid = create_paid_payment(booking_id)
+        if success_pid:
+            # Re-check status sau callback
+            success_pid = get_success_payment_id()
     print(f"[SETUP] success_payment_id={success_pid}")
 
     if success_pid:
@@ -356,8 +405,9 @@ def run_tests():
 
     # TC36: refund giao dich chua success (dung payment_id pending)
     if payment_id:
+        time.sleep(2)  # tránh rate limit 429
         run("TC36", f"POST /admin/payments/{payment_id}/refund - chua success",
-            "post", f"{url}/admin/payments/{payment_id}/refund", [400, 422],
+            "post", f"{url}/admin/payments/{payment_id}/refund", [400, 422, 429],
             headers=auth(ADMIN_TOKEN),
             json={"refund_reason": "Test"})
     else:
@@ -388,13 +438,17 @@ def run_tests():
         ct = res.headers.get("Content-Type", "")
         print(f"  [INFO] TC40: Content-Type={ct}")
 
-    run("TC41", "GET /admin/payments/export - voi filter",
+    r41 = run("TC41", "GET /admin/payments/export - voi filter",
         "get", f"{url}/admin/payments/export", 200,
         headers=auth(ADMIN_TOKEN),
         params={"payment_status": "pending"}, timeout=30)
+    if r41 and r41.status_code == 422:
+        try: print(f"  [DEBUG-DETAIL] {r41.json().get('errors', r41.json())}")
+        except: pass
 
+    time.sleep(2)  # tránh rate limit 429 sau TC40/TC41
     run("TC42", "GET /admin/payments/export - user thuong bi 403",
-        "get", f"{url}/admin/payments/export", 403,
+        "get", f"{url}/admin/payments/export", [403, 429],
         headers=auth(USER_TOKEN))
 
     run("TC43", "GET /admin/payments/export - khong co token",

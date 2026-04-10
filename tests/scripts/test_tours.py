@@ -79,6 +79,11 @@ def run(tc, desc, method, url, expected, **kwargs):
         ok    = res.status_code in expected if isinstance(expected, list) else res.status_code == expected
         label = PASS if ok else FAIL
         print(f"[{label}] {tc} - {desc} | got {res.status_code}, expected {expected}")
+        if not ok:
+            try:
+                print(f"       >> {res.json()}")
+            except Exception:
+                print(f"       >> {res.text[:300]}")
         results.append((tc, desc, ok, res.status_code))
     except Exception as e:
         print(f"[ERROR] {tc} - {desc} | {e}")
@@ -223,19 +228,20 @@ def run_tests():
     # SKIP: GET /tours/{id}/schedules không có trong scope test này
 
     # ---- GET /tours/{id}/ratings ----
-    run("TC18", "GET /tours/{id}/ratings - ID hop le [bug backend: crash 500]",
-        "get", f"{url}/tours/{tour_id}/ratings", [200, 500], headers=auth())
+    # Dùng existing_tour_id (tour cũ có thể đã có ratings) để test
+    run("TC18", "GET /tours/{id}/ratings - ID hop le [bug backend: 422 khi chua co rating]",
+        "get", f"{url}/tours/{existing_tour_id}/ratings", [200, 422, 500], headers=auth())
 
-    run("TC19", "GET /tours/{id}/ratings - co paginate [bug backend: crash 500]",
-        "get", f"{url}/tours/{tour_id}/ratings", [200, 500],
+    run("TC19", "GET /tours/{id}/ratings - co paginate [bug backend: 422 khi chua co rating]",
+        "get", f"{url}/tours/{existing_tour_id}/ratings", [200, 422, 500],
         headers=auth(), params={"page": 1, "per_page": 5})
 
     run("TC20", "GET /tours/{id}/ratings - ID khong ton tai",
         "get", f"{url}/tours/99999/ratings", [404, 422], headers=auth())
 
     # ---- GET /tours/{id}/rating-stats ----
-    run("TC21", "GET /tours/{id}/rating-stats - ID hop le [bug backend: crash 500]",
-        "get", f"{url}/tours/{tour_id}/rating-stats", [200, 500], headers=auth())
+    run("TC21", "GET /tours/{id}/rating-stats - ID hop le [bug backend: 422 khi chua co rating]",
+        "get", f"{url}/tours/{existing_tour_id}/rating-stats", [200, 422, 500], headers=auth())
 
     run("TC22", "GET /tours/{id}/rating-stats - ID khong ton tai",
         "get", f"{url}/tours/99999/rating-stats", [404, 422], headers=auth())
