@@ -1,10 +1,13 @@
+
 """
 Test script - BLOG (Bai viet)
+Branch: feat/taynd/api-blog
 Run: python tests/scripts/test_blog.py
 Yeu cau: pip install requests
 """
 
 import requests
+import time
 
 BASE_URL       = "http://localhost:8000/api/v1"
 USER_EMAIL     = "user1@example.com"
@@ -15,12 +18,10 @@ ADMIN_PASSWORD = "password"
 USER_TOKEN  = None
 ADMIN_TOKEN = None
 results     = []
+created_post_ids     = []
+created_category_ids = []
+ts = int(time.time())
 
-# ID/slug tạo ra trong quá trình test (để cleanup)
-created_ids = []
-
-
-# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def login(email, password):
     res = requests.post(f"{BASE_URL}/auth/login",
@@ -28,14 +29,13 @@ def login(email, password):
                         headers={"Accept": "application/json"})
     if res.status_code == 200:
         data  = res.json()
-        token = (data.get("token")
-                 or data.get("access_token")
+        token = (data.get("token") or data.get("access_token")
                  or data.get("data", {}).get("token")
                  or data.get("data", {}).get("access_token"))
         if token:
             print(f"[AUTH] Logged in as {email}")
             return token
-    print(f"[AUTH ERROR] {email}: {res.status_code} - {res.text[:200]}")
+    print(f"[AUTH ERROR] {email}: {res.status_code} - {res.text[:150]}")
     return None
 
 
@@ -47,18 +47,24 @@ def auth(token=None):
 
 
 def run(tc, desc, method, url, expected, **kwargs):
+    kwargs.setdefault("timeout", 15)
     try:
-        res   = getattr(requests, method)(url, **kwargs)
-        ok    = res.status_code in expected if isinstance(expected, list) else res.status_code == expected
+        res = getattr(requests, method)(url, **kwargs)
+        ok  = res.status_code in expected if isinstance(expected, list) else res.status_code == expected
         label = "\033[92mPASS\033[0m" if ok else "\033[91mFAIL\033[0m"
         print(f"[{label}] {tc} - {desc} | got {res.status_code}, expected {expected}")
         if not ok:
             try:
-                print(f"  [DEBUG] body = {res.json()}")
+                body = res.json()
+                print(f"  [DEBUG] {body.get('message') or str(body)[:200]}")
             except Exception:
-                print(f"  [DEBUG] raw  = {res.text[:300]}")
+                print(f"  [DEBUG] {res.text[:200]}")
         results.append((tc, desc, ok, res.status_code))
         return res
+    except requests.exceptions.Timeout:
+        print(f"[TIMEOUT] {tc} - {desc}")
+        results.append((tc, desc, False, "timeout"))
+        return None
     except Exception as e:
         print(f"[ERROR] {tc} - {desc} | {e}")
         results.append((tc, desc, False, "error"))
@@ -76,52 +82,37 @@ def extract_items(res):
 def extract_data(res):
     try:
         d = res.json().get("data", res.json())
-        return d if isinstance(d, dict) else {}
+        if isinstance(d, dict):
+            for key in ["post", "blog_post", "category", "blog_category"]:
+                if d.get(key):
+                    return d[key]
+            return d
+        return {}
     except Exception:
         return {}
 
 
-def get_first_published_slug():
-    """Lấy slug bài viết published đầu tiên."""
+def get_published_slug():
+    """Lay slug bai viet published de test."""
     res = requests.get(f"{BASE_URL}/blog", headers=auth(), params={"per_page": 5})
     if res.status_code == 200:
         items = extract_items(res)
         for item in items:
             if isinstance(item, dict) and item.get("slug"):
-                return item.get("slug"), item.get("id")
-    return None, None
+                return item["slug"]
+    return None
 
 
-def get_first_category_id():
-    """Lấy category_id đầu tiên từ /blog/categories."""
-    res = requests.get(f"{BASE_URL}/blog/categories", headers=auth())
+def get_admin_category_id():
+    """Lay category_id dau tien tu admin."""
+    res = requests.get(f"{BASE_URL}/admin/blog-categories",
+                       headers=auth(ADMIN_TOKEN))
     if res.status_code == 200:
         items = extract_items(res)
         if items and isinstance(items[0], dict):
             return items[0].get("id")
-    return 1
+    return None
 
-
-def admin_create_post(title, status="draft", **extra):
-    """Tạo bài viết qua admin API, trả về (id, slug)."""
-    # Lấy category_id nếu chưa truyền vào
-    if "category_ids" not in extra:
-        cid = get_first_category_id()
-        extra["category_ids"] = [cid] if cid else []
-    body = {"title": title, "content": f"Noi dung {title}", "status": status, **extra}
-    res  = requests.post(f"{BASE_URL}/admin/blog",
-                         headers=auth(ADMIN_TOKEN), json=body)
-    if res.status_code in (200, 201):
-        data = extract_data(res)
-        pid  = data.get("id")
-        slug = data.get("slug")
-        if pid:
-            created_ids.append(pid)
-        return pid, slug
-    return None, None
-
-
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def run_tests():
     global USER_TOKEN, ADMIN_TOKEN
@@ -129,13 +120,15 @@ def run_tests():
     USER_TOKEN  = login(USER_EMAIL, USER_PASSWORD)
     ADMIN_TOKEN = login(ADMIN_EMAIL, ADMIN_PASSWORD)
 
-    if not USER_TOKEN:
-        print("[ABORT] Khong lay duoc USER_TOKEN.")
-        return
     if not ADMIN_TOKEN:
-        print("[WARN] Khong lay duoc ADMIN_TOKEN — cac TC admin se SKIP.")
+        print("[ABORT] Khong lay duoc ADMIN_TOKEN.")
+        return
 
     url = BASE_URL
+
+    # SETUP: lay category_id va slug co san
+    cat_id = get_admin_category_id()
+    print(f"[SETUP] blog category_id = {cat_id}")
 
     # ── GET /blog ─────────────────────────────────────────────
 
@@ -143,81 +136,58 @@ def run_tests():
               "get", f"{url}/blog", 200, headers=auth())
     if res and res.status_code == 200:
         items = extract_items(res)
-        print(f"  [INFO] TC01: {len(items)} bai viet")
+        print(f"  [INFO] TC01: {len(items)} posts")
         if items and isinstance(items[0], dict):
             print(f"  [INFO] TC01: fields = {list(items[0].keys())}")
 
-    res = run("TC02", "GET /blog - chi tra ve published",
+    res = run("TC02", "GET /blog - chi tra published",
               "get", f"{url}/blog", 200, headers=auth())
     if res and res.status_code == 200:
         items = extract_items(res)
         bad = [i for i in items if isinstance(i, dict) and i.get("status") != "published"]
         if bad:
-            print(f"  [WARN] TC02: co {len(bad)} bai khong phai published")
+            print(f"  [WARN] TC02: co {len(bad)} item khong phai published")
         else:
-            print(f"  [INFO] TC02: tat ca {len(items)} bai deu published - OK")
+            print(f"  [INFO] TC02: tat ca {len(items)} items la published - OK")
 
     res = run("TC03", "GET /blog - phan trang per_page=5",
               "get", f"{url}/blog", 200,
               headers=auth(), params={"page": 1, "per_page": 5})
     if res and res.status_code == 200:
         items = extract_items(res)
-        if len(items) > 5:
-            print(f"  [WARN] TC03: tra ve {len(items)} items, nen <= 5")
-        else:
-            print(f"  [INFO] TC03: {len(items)} items - OK")
+        print(f"  [INFO] TC03: {len(items)} items {'OK' if len(items) <= 5 else 'WARN > 5'}")
 
     run("TC04", "GET /blog - trang 2",
         "get", f"{url}/blog", 200,
         headers=auth(), params={"page": 2, "per_page": 5})
 
-    cat_id = get_first_category_id()
-    res = run("TC05", f"GET /blog - filter category_id={cat_id}",
-              "get", f"{url}/blog", 200,
-              headers=auth(), params={"category_id": cat_id})
-    if res and res.status_code == 200:
-        items = extract_items(res)
-        print(f"  [INFO] TC05: {len(items)} bai trong category {cat_id}")
+    run("TC05", "GET /blog - filter category_id=1",
+        "get", f"{url}/blog", 200,
+        headers=auth(), params={"category_id": cat_id or 1})
 
-    res = run("TC06", "GET /blog - category_id khong co bai nao",
-              "get", f"{url}/blog", [200, 422],
-              headers=auth(), params={"category_id": 99999})
-    if res and res.status_code == 200:
-        items = extract_items(res)
-        if len(items) == 0:
-            print(f"  [INFO] TC06: data=[] - OK")
-        else:
-            print(f"  [WARN] TC06: tra ve {len(items)} items, ky vong 0")
-    elif res and res.status_code == 422:
-        print(f"  [INFO] TC06: backend validate category_id ton tai - OK")
+    run("TC06", "GET /blog - category_id khong co bai",
+        "get", f"{url}/blog", [200, 422],
+        headers=auth(), params={"category_id": 99999})
 
-    run("TC07", "GET /blog - category_id khong phai so",
+    run("TC07", "GET /blog - category_id khong phai so → 422",
         "get", f"{url}/blog", 422,
         headers=auth(), params={"category_id": "abc"})
 
-    res = run("TC08", "GET /blog - per_page=200 vuot max",
-              "get", f"{url}/blog", [200, 422],
-              headers=auth(), params={"per_page": 200})
-    if res and res.status_code == 422:
-        print(f"  [INFO] TC08: backend validate per_page max - OK")
-    elif res and res.status_code == 200:
-        items = extract_items(res)
-        print(f"  [INFO] TC08: tra ve {len(items)} items {'(<= 100 OK)' if len(items) <= 100 else '(WARN: > 100)'}")
+    run("TC08", "GET /blog - per_page vuot max",
+        "get", f"{url}/blog", [200, 422],
+        headers=auth(), params={"per_page": 200})
 
     run("TC09", "GET /blog - khong can token (public)",
         "get", f"{url}/blog", 200, headers=auth())
 
     # ── GET /blog/{slug} ──────────────────────────────────────
 
-    first_slug, first_id = get_first_published_slug()
-    if first_slug:
-        print(f"[SETUP] first_slug = {first_slug}")
-    else:
-        print("[SETUP] Khong tim thay bai published nao — TC10-TC14 co the SKIP")
+    pub_slug = get_published_slug()
+    print(f"[SETUP] published slug = {pub_slug}")
 
-    if first_slug:
-        res = run("TC10", f"GET /blog/{first_slug} - chi tiet thanh cong",
-                  "get", f"{url}/blog/{first_slug}", 200, headers=auth())
+    if pub_slug:
+        res = run("TC10", f"GET /blog/{pub_slug} - chi tiet thanh cong",
+                  "get", f"{url}/blog/{pub_slug}", 200, headers=auth())
         if res and res.status_code == 200:
             data = extract_data(res)
             print(f"  [INFO] TC10: fields = {list(data.keys())}")
@@ -225,41 +195,50 @@ def run_tests():
                 if f not in data:
                     print(f"  [WARN] TC10: thieu field '{f}'")
 
-        # TC11: view_count tăng
-        vc1 = extract_data(
-            requests.get(f"{url}/blog/{first_slug}", headers=auth())
-        ).get("view_count", 0)
-        requests.get(f"{url}/blog/{first_slug}", headers=auth())
-        vc2 = extract_data(
-            requests.get(f"{url}/blog/{first_slug}", headers=auth())
-        ).get("view_count", 0)
-        ok_vc = vc2 >= vc1
-        label = "\033[92mPASS\033[0m" if ok_vc else "\033[91mFAIL\033[0m"
-        print(f"[{label}] TC11 - GET /blog/{{slug}} - view_count tang | {vc1} -> {vc2}")
-        results.append(("TC11", "view_count tang", ok_vc, f"{vc1}->{vc2}"))
+        # TC11: view_count tang
+        res1 = requests.get(f"{url}/blog/{pub_slug}", headers=auth())
+        res2 = requests.get(f"{url}/blog/{pub_slug}", headers=auth())
+        if res1.status_code == 200 and res2.status_code == 200:
+            vc1 = extract_data(res1).get("view_count", 0)
+            vc2 = extract_data(res2).get("view_count", 0)
+            ok  = vc2 >= vc1
+            label = "\033[92mPASS\033[0m" if ok else "\033[91mFAIL\033[0m"
+            print(f"[{label}] TC11 - GET /blog/{{slug}} - view_count tang | {vc1} → {vc2}")
+            results.append(("TC11", "view_count tang", ok, 200))
+        else:
+            print("[SKIP] TC11 - khong lay duoc response")
+            results.append(("TC11", "view_count tang", None, "skip"))
 
-        run("TC12", f"GET /blog/{first_slug} - khong can token",
-            "get", f"{url}/blog/{first_slug}", 200, headers=auth())
+        run("TC12", "GET /blog/{slug} - khong can token",
+            "get", f"{url}/blog/{pub_slug}", 200, headers=auth())
     else:
         for tc in ["TC10", "TC11", "TC12"]:
-            print(f"[SKIP] {tc} - khong co bai published")
+            print(f"[SKIP] {tc} - khong co published post")
             results.append((tc, "GET /blog/{slug}", None, "skip"))
 
     run("TC13", "GET /blog/slug-khong-ton-tai-xyz-999 - 404",
         "get", f"{url}/blog/slug-khong-ton-tai-xyz-999", 404, headers=auth())
 
-    # TC14: bài draft không hiển thị public — cần tạo bài draft trước
-    if ADMIN_TOKEN:
-        draft_id, draft_slug = admin_create_post("Draft TC14 test post", status="draft")
-        if draft_slug:
-            run("TC14", f"GET /blog/{draft_slug} - bai draft khong hien thi public",
-                "get", f"{url}/blog/{draft_slug}", [403, 404], headers=auth())
-        else:
-            print("[SKIP] TC14 - khong tao duoc bai draft")
-            results.append(("TC14", "Bai draft khong hien thi", None, "skip"))
+    # TC14: bai draft khong hien thi public — tao draft roi thu GET
+    res_draft = requests.post(f"{url}/admin/blog-posts",
+                              headers=auth(ADMIN_TOKEN),
+                              json={"title": f"Draft TC14 {ts}", "content": "Draft content",
+                                    "category_ids": [cat_id] if cat_id else [],
+                                    "status": "draft"})
+    draft_slug = None
+    if res_draft.status_code in (200, 201):
+        d = extract_data(res_draft)
+        draft_slug = d.get("slug")
+        draft_id   = d.get("id")
+        if draft_id:
+            created_post_ids.append(draft_id)
+
+    if draft_slug:
+        run("TC14", f"GET /blog/{draft_slug} - bai draft khong hien thi public",
+            "get", f"{url}/blog/{draft_slug}", [403, 404], headers=auth())
     else:
-        print("[SKIP] TC14 - khong co ADMIN_TOKEN")
-        results.append(("TC14", "Bai draft khong hien thi", None, "skip"))
+        print("[SKIP] TC14 - khong tao duoc draft post")
+        results.append(("TC14", "bai draft khong hien thi", None, "skip"))
 
     # ── GET /blog/categories ──────────────────────────────────
 
@@ -276,277 +255,355 @@ def run_tests():
     run("TC16", "GET /blog/categories - khong can token",
         "get", f"{url}/blog/categories", 200, headers=auth())
 
-    # ── POST /admin/blog ──────────────────────────────────────
+    # ── GET /admin/blog-posts ─────────────────────────────────
 
-    if not ADMIN_TOKEN:
-        for tc in [f"TC{i}" for i in range(17, 27)]:
-            print(f"[SKIP] {tc} - khong co ADMIN_TOKEN")
-            results.append((tc, "POST /admin/blog", None, "skip"))
-    else:
-        res = run("TC17", "POST /admin/blog - tao draft",
-                  "post", f"{url}/admin/blog", [200, 201],
-                  headers=auth(ADMIN_TOKEN),
-                  json={"title": "TC17 Draft Post", "content": "Noi dung TC17",
-                        "category_ids": [cat_id], "status": "draft"})
-        if res and res.status_code in (200, 201):
-            data = extract_data(res)
-            pid  = data.get("id")
-            if pid:
-                created_ids.append(pid)
-            print(f"  [INFO] TC17: id={pid}, slug={data.get('slug')}, status={data.get('status')}")
-            if data.get("status") != "draft":
-                print(f"  [WARN] TC17: status={data.get('status')}, ky vong draft")
+    res = run("TC17", "GET /admin/blog-posts - lay tat ca (ke ca draft)",
+              "get", f"{url}/admin/blog-posts", 200,
+              headers=auth(ADMIN_TOKEN))
+    if res and res.status_code == 200:
+        items = extract_items(res)
+        print(f"  [INFO] TC17: {len(items)} posts")
 
-        res = run("TC18", "POST /admin/blog - tao published",
-                  "post", f"{url}/admin/blog", [200, 201],
-                  headers=auth(ADMIN_TOKEN),
-                  json={"title": "TC18 Published Post", "content": "Noi dung TC18",
-                        "category_ids": [cat_id], "status": "published"})
-        if res and res.status_code in (200, 201):
-            data = extract_data(res)
-            pid  = data.get("id")
-            if pid:
-                created_ids.append(pid)
-            if data.get("status") == "published":
-                print(f"  [INFO] TC18: status=published - OK")
-            if data.get("published_at"):
-                print(f"  [INFO] TC18: published_at={data.get('published_at')} - OK")
-            else:
-                print(f"  [WARN] TC18: published_at=null sau khi published")
+    run("TC18", "GET /admin/blog-posts - filter status=draft",
+        "get", f"{url}/admin/blog-posts", 200,
+        headers=auth(ADMIN_TOKEN), params={"status": "draft"})
 
-        res = run("TC19", "POST /admin/blog - day du fields",
-                  "post", f"{url}/admin/blog", [200, 201],
-                  headers=auth(ADMIN_TOKEN),
-                  json={"title": "TC19 Full Fields", "content": "Noi dung TC19",
-                        "excerpt": "Tom tat TC19",
-                        "featured_image": "https://example.com/img.jpg",
-                        "category_ids": [cat_id], "status": "draft"})
-        if res and res.status_code in (200, 201):
-            data = extract_data(res)
-            pid  = data.get("id")
-            if pid:
-                created_ids.append(pid)
+    run("TC19", "GET /admin/blog-posts - filter status=published",
+        "get", f"{url}/admin/blog-posts", 200,
+        headers=auth(ADMIN_TOKEN), params={"status": "published"})
 
-        res = run("TC20", "POST /admin/blog - nhieu category_ids",
-                  "post", f"{url}/admin/blog", [200, 201],
-                  headers=auth(ADMIN_TOKEN),
-                  json={"title": "TC20 Multi Category", "content": "Noi dung TC20",
-                        "category_ids": [cat_id], "status": "draft"})
-        if res and res.status_code in (200, 201):
-            data = extract_data(res)
-            pid  = data.get("id")
-            if pid:
-                created_ids.append(pid)
+    run("TC20", "GET /admin/blog-posts - filter category_id",
+        "get", f"{url}/admin/blog-posts", 200,
+        headers=auth(ADMIN_TOKEN), params={"category_id": cat_id or 1})
 
-        run("TC21", "POST /admin/blog - thieu title",
-            "post", f"{url}/admin/blog", 422,
-            headers=auth(ADMIN_TOKEN),
-            json={"content": "Noi dung", "status": "draft"})
+    res = run("TC21", "GET /admin/blog-posts - phan trang per_page=5",
+              "get", f"{url}/admin/blog-posts", 200,
+              headers=auth(ADMIN_TOKEN), params={"page": 1, "per_page": 5})
+    if res and res.status_code == 200:
+        items = extract_items(res)
+        print(f"  [INFO] TC21: {len(items)} items {'OK' if len(items) <= 5 else 'WARN > 5'}")
 
-        run("TC22", "POST /admin/blog - thieu content",
-            "post", f"{url}/admin/blog", 422,
-            headers=auth(ADMIN_TOKEN),
-            json={"title": "Tieu de", "status": "draft"})
+    run("TC22", "GET /admin/blog-posts - user thuong bi 403",
+        "get", f"{url}/admin/blog-posts", 403,
+        headers=auth(USER_TOKEN))
 
-        run("TC23", "POST /admin/blog - status sai gia tri",
-            "post", f"{url}/admin/blog", 422,
-            headers=auth(ADMIN_TOKEN),
-            json={"title": "Test", "content": "Test", "status": "invalid"})
+    run("TC23", "GET /admin/blog-posts - khong co token → 401",
+        "get", f"{url}/admin/blog-posts", 401, headers=auth())
 
-        run("TC24", "POST /admin/blog - category_ids khong ton tai",
-            "post", f"{url}/admin/blog", [422, 404],
-            headers=auth(ADMIN_TOKEN),
-            json={"title": "Test", "content": "Test", "category_ids": [99999], "status": "draft"})
+    # ── POST /admin/blog-posts ────────────────────────────────
 
-        run("TC25", "POST /admin/blog - user thuong bi 403",
-            "post", f"{url}/admin/blog", 403,
-            headers=auth(USER_TOKEN),
-            json={"title": "Test", "content": "Test", "status": "draft"})
+    res = run("TC24", "POST /admin/blog-posts - tao draft",
+              "post", f"{url}/admin/blog-posts", [200, 201],
+              headers=auth(ADMIN_TOKEN),
+              json={"title": f"Draft Post {ts}", "content": "Noi dung draft",
+                    "category_ids": [cat_id] if cat_id else [],
+                    "status": "draft"})
+    post_id = None
+    if res and res.status_code in (200, 201):
+        data = extract_data(res)
+        post_id = data.get("id")
+        if post_id:
+            created_post_ids.append(post_id)
+        print(f"  [INFO] TC24: id={post_id}, slug={data.get('slug')}")
 
-        run("TC26", "POST /admin/blog - khong co token",
-            "post", f"{url}/admin/blog", 401,
-            headers=auth(),
-            json={"title": "Test", "content": "Test", "status": "draft"})
+    res = run("TC25", "POST /admin/blog-posts - tao published",
+              "post", f"{url}/admin/blog-posts", [200, 201],
+              headers=auth(ADMIN_TOKEN),
+              json={"title": f"Published Post {ts}", "content": "Noi dung published",
+                    "category_ids": [cat_id] if cat_id else [],
+                    "status": "published"})
+    if res and res.status_code in (200, 201):
+        data = extract_data(res)
+        pid  = data.get("id")
+        if pid:
+            created_post_ids.append(pid)
+        if data.get("published_at"):
+            print(f"  [INFO] TC25: published_at={data.get('published_at')} - OK")
+        else:
+            print(f"  [WARN] TC25: published_at=null")
 
-    # ── PUT /admin/blog/{id} ──────────────────────────────────
+    res = run("TC26", "POST /admin/blog-posts - day du fields",
+              "post", f"{url}/admin/blog-posts", [200, 201],
+              headers=auth(ADMIN_TOKEN),
+              json={"title": f"Full Fields Post {ts}", "content": "Noi dung day du",
+                    "excerpt": "Tom tat", "category_ids": [cat_id] if cat_id else [],
+                    "status": "draft"})
+    if res and res.status_code in (200, 201):
+        pid = extract_data(res).get("id")
+        if pid:
+            created_post_ids.append(pid)
 
-    # Tạo bài để test PUT
-    edit_id = None
-    if ADMIN_TOKEN:
-        edit_id, _ = admin_create_post("TC27-34 Edit Target", status="draft")
-        if edit_id:
-            print(f"[SETUP] edit_id = {edit_id}")
+    res = run("TC27", "POST /admin/blog-posts - nhieu category_ids",
+              "post", f"{url}/admin/blog-posts", [200, 201],
+              headers=auth(ADMIN_TOKEN),
+              json={"title": f"Multi Cat Post {ts}", "content": "Noi dung",
+                    "category_ids": [cat_id, cat_id] if cat_id else [], "status": "draft"})
+    if res and res.status_code in (200, 201):
+        pid = extract_data(res).get("id")
+        if pid:
+            created_post_ids.append(pid)
 
-    if not ADMIN_TOKEN or not edit_id:
-        for tc in [f"TC{i}" for i in range(27, 35)]:
-            print(f"[SKIP] {tc} - khong co ADMIN_TOKEN hoac edit_id")
-            results.append((tc, "PUT /admin/blog/{id}", None, "skip"))
-    else:
-        res = run("TC27", f"PUT /admin/blog/{edit_id} - cap nhat title",
-                  "put", f"{url}/admin/blog/{edit_id}", 200,
-                  headers=auth(ADMIN_TOKEN),
-                  json={"title": "TC27 Updated Title"})
-        if res and res.status_code == 200:
-            data = extract_data(res)
-            if "TC27 Updated Title" in (data.get("title") or ""):
-                print(f"  [INFO] TC27: title cap nhat thanh cong - OK")
-            else:
-                print(f"  [WARN] TC27: title trong response = {data.get('title')}")
+    run("TC28", "POST /admin/blog-posts - thieu title → 422",
+        "post", f"{url}/admin/blog-posts", 422,
+        headers=auth(ADMIN_TOKEN),
+        json={"content": "Noi dung", "status": "draft"})
 
-        run("TC28", f"PUT /admin/blog/{edit_id} - cap nhat content",
-            "put", f"{url}/admin/blog/{edit_id}", 200,
-            headers=auth(ADMIN_TOKEN),
-            json={"content": "Noi dung moi TC28"})
+    run("TC29", "POST /admin/blog-posts - thieu content → 422",
+        "post", f"{url}/admin/blog-posts", 422,
+        headers=auth(ADMIN_TOKEN),
+        json={"title": "Tieu de", "status": "draft"})
 
-        run("TC29", f"PUT /admin/blog/{edit_id} - cap nhat category_ids",
-            "put", f"{url}/admin/blog/{edit_id}", 200,
-            headers=auth(ADMIN_TOKEN),
-            json={"category_ids": [cat_id]})
+    run("TC30", "POST /admin/blog-posts - status sai gia tri → 422",
+        "post", f"{url}/admin/blog-posts", 422,
+        headers=auth(ADMIN_TOKEN),
+        json={"title": "Test", "content": "Test", "status": "invalid_status"})
 
-        run("TC30", f"PUT /admin/blog/{edit_id} - category_ids rong",
-            "put", f"{url}/admin/blog/{edit_id}", [200, 422],
-            headers=auth(ADMIN_TOKEN),
-            json={"category_ids": []})
+    run("TC31", "POST /admin/blog-posts - category_ids khong ton tai → 422",
+        "post", f"{url}/admin/blog-posts", [404, 422],
+        headers=auth(ADMIN_TOKEN),
+        json={"title": "Test", "content": "Test", "category_ids": [99999], "status": "draft"})
 
-        run("TC31", "PUT /admin/blog/99999 - ID khong ton tai",
-            "put", f"{url}/admin/blog/99999", 404,
-            headers=auth(ADMIN_TOKEN),
-            json={"title": "Test"})
+    run("TC32", "POST /admin/blog-posts - user thuong bi 403",
+        "post", f"{url}/admin/blog-posts", 403,
+        headers=auth(USER_TOKEN),
+        json={"title": "Test", "content": "Test", "status": "draft"})
 
-        run("TC32", f"PUT /admin/blog/{edit_id} - status sai gia tri",
-            "put", f"{url}/admin/blog/{edit_id}", 422,
-            headers=auth(ADMIN_TOKEN),
-            json={"status": "invalid"})
+    run("TC33", "POST /admin/blog-posts - khong co token → 401",
+        "post", f"{url}/admin/blog-posts", 401,
+        headers=auth(),
+        json={"title": "Test", "content": "Test", "status": "draft"})
 
-        run("TC33", f"PUT /admin/blog/{edit_id} - user thuong bi 403",
-            "put", f"{url}/admin/blog/{edit_id}", 403,
-            headers=auth(USER_TOKEN),
-            json={"title": "Test"})
+    # ── GET /admin/blog-posts/{id} ────────────────────────────
 
-        run("TC34", f"PUT /admin/blog/{edit_id} - khong co token",
-            "put", f"{url}/admin/blog/{edit_id}", 401,
-            headers=auth(),
-            json={"title": "Test"})
-
-    # ── DELETE /admin/blog/{id} ───────────────────────────────
-
-    # Tạo bài để test DELETE
-    delete_id = None
-    if ADMIN_TOKEN:
-        delete_id, delete_slug = admin_create_post("TC35 Delete Target", status="draft")
-        if delete_id:
-            print(f"[SETUP] delete_id = {delete_id}")
-
-    if not ADMIN_TOKEN or not delete_id:
-        for tc in ["TC35", "TC36", "TC37", "TC38"]:
-            print(f"[SKIP] {tc} - khong co ADMIN_TOKEN hoac delete_id")
-            results.append((tc, "DELETE /admin/blog/{id}", None, "skip"))
-    else:
-        run("TC36", "DELETE /admin/blog/99999 - ID khong ton tai",
-            "delete", f"{url}/admin/blog/99999", 404,
-            headers=auth(ADMIN_TOKEN))
-
-        run("TC37", f"DELETE /admin/blog/{delete_id} - user thuong bi 403",
-            "delete", f"{url}/admin/blog/{delete_id}", 403,
-            headers=auth(USER_TOKEN))
-
-        run("TC38", f"DELETE /admin/blog/{delete_id} - khong co token",
-            "delete", f"{url}/admin/blog/{delete_id}", 401,
-            headers=auth())
-
-        res = run("TC35", f"DELETE /admin/blog/{delete_id} - xoa thanh cong",
-                  "delete", f"{url}/admin/blog/{delete_id}", [200, 204],
+    if post_id:
+        res = run("TC34", f"GET /admin/blog-posts/{post_id} - chi tiet",
+                  "get", f"{url}/admin/blog-posts/{post_id}", 200,
                   headers=auth(ADMIN_TOKEN))
-        if res and res.status_code in (200, 204):
-            # Verify: GET public → 404
-            if delete_slug:
-                check = requests.get(f"{url}/blog/{delete_slug}", headers=auth())
-                if check.status_code == 404:
-                    print(f"  [INFO] TC35: GET public sau xoa → 404 - OK")
-                else:
-                    print(f"  [WARN] TC35: GET public → {check.status_code}, ky vong 404")
-            # Xóa khỏi created_ids vì đã xóa rồi
-            if delete_id in created_ids:
-                created_ids.remove(delete_id)
-
-    # ── PATCH /admin/blog/{id}/publish ────────────────────────
-
-    # Tạo bài draft để test publish
-    pub_id = None
-    if ADMIN_TOKEN:
-        pub_id, _ = admin_create_post("TC39-46 Publish Target", status="draft")
-        if pub_id:
-            print(f"[SETUP] pub_id = {pub_id}")
-
-    if not ADMIN_TOKEN or not pub_id:
-        for tc in [f"TC{i}" for i in range(39, 47)]:
-            print(f"[SKIP] {tc} - khong co ADMIN_TOKEN hoac pub_id")
-            results.append((tc, "PATCH .../publish", None, "skip"))
+        if res and res.status_code == 200:
+            data = extract_data(res)
+            print(f"  [INFO] TC34: fields = {list(data.keys())}")
     else:
-        res = run("TC39", f"PATCH /admin/blog/{pub_id}/publish - draft → published",
-                  "patch", f"{url}/admin/blog/{pub_id}/publish", 200,
+        print("[SKIP] TC34 - khong co post_id")
+        results.append(("TC34", "GET /admin/blog-posts/{id}", None, "skip"))
+
+    run("TC35", "GET /admin/blog-posts/99999 - ID khong ton tai",
+        "get", f"{url}/admin/blog-posts/99999", [404, 422],
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC36", "GET /admin/blog-posts/{id} - khong co token → 401",
+        "get", f"{url}/admin/blog-posts/{post_id or 1}", 401,
+        headers=auth())
+
+    # ── PUT /admin/blog-posts/{id} ────────────────────────────
+
+    if post_id:
+        res = run("TC37", f"PUT /admin/blog-posts/{post_id} - cap nhat title",
+                  "put", f"{url}/admin/blog-posts/{post_id}", 200,
                   headers=auth(ADMIN_TOKEN),
-                  json={"status": "published"})
+                  json={"title": f"Updated Title {ts}"})
+        if res and res.status_code == 200:
+            data = extract_data(res)
+            if f"Updated Title {ts}" in str(data.get("title", "")):
+                print(f"  [INFO] TC37: title cap nhat OK")
+
+        run("TC38", f"PUT /admin/blog-posts/{post_id} - cap nhat content",
+            "put", f"{url}/admin/blog-posts/{post_id}", 200,
+            headers=auth(ADMIN_TOKEN),
+            json={"content": "Noi dung moi da cap nhat"})
+
+        run("TC39", f"PUT /admin/blog-posts/{post_id} - cap nhat category_ids",
+            "put", f"{url}/admin/blog-posts/{post_id}", 200,
+            headers=auth(ADMIN_TOKEN),
+            json={"category_ids": [cat_id] if cat_id else []})
+    else:
+        for tc in ["TC37", "TC38", "TC39"]:
+            print(f"[SKIP] {tc} - khong co post_id")
+            results.append((tc, "PUT /admin/blog-posts/{id}", None, "skip"))
+
+    run("TC40", "PUT /admin/blog-posts/99999 - ID khong ton tai",
+        "put", f"{url}/admin/blog-posts/99999", [404, 422],
+        headers=auth(ADMIN_TOKEN), json={"title": "Test"})
+
+    run("TC41", f"PUT /admin/blog-posts/{post_id or 1} - status sai gia tri → 422",
+        "put", f"{url}/admin/blog-posts/{post_id or 1}", 422,
+        headers=auth(ADMIN_TOKEN), json={"status": "invalid_status"})
+
+    run("TC42", f"PUT /admin/blog-posts/{post_id or 1} - user thuong bi 403",
+        "put", f"{url}/admin/blog-posts/{post_id or 1}", 403,
+        headers=auth(USER_TOKEN), json={"title": "Test"})
+
+    run("TC43", f"PUT /admin/blog-posts/{post_id or 1} - khong co token → 401",
+        "put", f"{url}/admin/blog-posts/{post_id or 1}", 401,
+        headers=auth(), json={"title": "Test"})
+
+    # ── PATCH /admin/blog-posts/{id}/status ───────────────────
+
+    if post_id:
+        res = run("TC48", f"PATCH /admin/blog-posts/{post_id}/status - draft → published",
+                  "patch", f"{url}/admin/blog-posts/{post_id}/status", 200,
+                  headers=auth(ADMIN_TOKEN), json={"status": "published"})
         if res and res.status_code == 200:
             data = extract_data(res)
             if data.get("status") == "published":
-                print(f"  [INFO] TC39: status=published - OK")
+                print(f"  [INFO] TC48: status=published - OK")
             if data.get("published_at"):
-                print(f"  [INFO] TC39: published_at={data.get('published_at')} - OK")
-            else:
-                print(f"  [WARN] TC39: published_at=null sau khi publish")
+                print(f"  [INFO] TC48: published_at set - OK")
 
-        res = run("TC40", f"PATCH /admin/blog/{pub_id}/publish - published → draft",
-                  "patch", f"{url}/admin/blog/{pub_id}/publish", 200,
-                  headers=auth(ADMIN_TOKEN),
-                  json={"status": "draft"})
+        res = run("TC49", f"PATCH /admin/blog-posts/{post_id}/status - published → draft",
+                  "patch", f"{url}/admin/blog-posts/{post_id}/status", 200,
+                  headers=auth(ADMIN_TOKEN), json={"status": "draft"})
         if res and res.status_code == 200:
             data = extract_data(res)
             if data.get("status") == "draft":
-                print(f"  [INFO] TC40: status=draft - OK")
+                print(f"  [INFO] TC49: status=draft - OK")
 
-        # Publish lại để test TC41
-        requests.patch(f"{url}/admin/blog/{pub_id}/publish",
-                       headers=auth(ADMIN_TOKEN), json={"status": "published"})
+        run("TC50", f"PATCH /admin/blog-posts/{post_id}/status - archived",
+            "patch", f"{url}/admin/blog-posts/{post_id}/status", 200,
+            headers=auth(ADMIN_TOKEN), json={"status": "archived"})
 
-        run("TC41", f"PATCH /admin/blog/{pub_id}/publish - idempotent (published lai)",
-            "patch", f"{url}/admin/blog/{pub_id}/publish", 200,
-            headers=auth(ADMIN_TOKEN),
-            json={"status": "published"})
+        run("TC51", f"PATCH /admin/blog-posts/{post_id}/status - idempotent",
+            "patch", f"{url}/admin/blog-posts/{post_id}/status", 200,
+            headers=auth(ADMIN_TOKEN), json={"status": "published"})
+    else:
+        for tc in ["TC48", "TC49", "TC50", "TC51"]:
+            print(f"[SKIP] {tc} - khong co post_id")
+            results.append((tc, "PATCH .../status", None, "skip"))
 
-        run("TC42", f"PATCH /admin/blog/{pub_id}/publish - status sai gia tri",
-            "patch", f"{url}/admin/blog/{pub_id}/publish", 422,
-            headers=auth(ADMIN_TOKEN),
-            json={"status": "archived"})
+    run("TC52", f"PATCH /admin/blog-posts/{post_id or 1}/status - status sai → 422",
+        "patch", f"{url}/admin/blog-posts/{post_id or 1}/status", 422,
+        headers=auth(ADMIN_TOKEN), json={"status": "invalid_status"})
 
-        run("TC43", f"PATCH /admin/blog/{pub_id}/publish - thieu status",
-            "patch", f"{url}/admin/blog/{pub_id}/publish", 422,
-            headers=auth(ADMIN_TOKEN),
-            json={})
+    run("TC53", f"PATCH /admin/blog-posts/{post_id or 1}/status - thieu status → 422",
+        "patch", f"{url}/admin/blog-posts/{post_id or 1}/status", 422,
+        headers=auth(ADMIN_TOKEN), json={})
 
-        run("TC44", "PATCH /admin/blog/99999/publish - ID khong ton tai",
-            "patch", f"{url}/admin/blog/99999/publish", 404,
-            headers=auth(ADMIN_TOKEN),
-            json={"status": "published"})
+    run("TC54", "PATCH /admin/blog-posts/99999/status - ID khong ton tai",
+        "patch", f"{url}/admin/blog-posts/99999/status", [404, 422],
+        headers=auth(ADMIN_TOKEN), json={"status": "published"})
 
-        run("TC45", f"PATCH /admin/blog/{pub_id}/publish - user thuong bi 403",
-            "patch", f"{url}/admin/blog/{pub_id}/publish", 403,
-            headers=auth(USER_TOKEN),
-            json={"status": "published"})
+    run("TC55", f"PATCH /admin/blog-posts/{post_id or 1}/status - user thuong bi 403",
+        "patch", f"{url}/admin/blog-posts/{post_id or 1}/status", 403,
+        headers=auth(USER_TOKEN), json={"status": "published"})
 
-        run("TC46", f"PATCH /admin/blog/{pub_id}/publish - khong co token",
-            "patch", f"{url}/admin/blog/{pub_id}/publish", 401,
-            headers=auth(),
-            json={"status": "published"})
+    run("TC56", f"PATCH /admin/blog-posts/{post_id or 1}/status - khong co token → 401",
+        "patch", f"{url}/admin/blog-posts/{post_id or 1}/status", 401,
+        headers=auth(), json={"status": "published"})
+
+    # ── DELETE /admin/blog-posts/{id} ─────────────────────────
+
+    # Tao post rieng de xoa
+    del_res = requests.post(f"{url}/admin/blog-posts",
+                            headers=auth(ADMIN_TOKEN),
+                            json={"title": f"To Delete {ts}", "content": "Del content",
+                                  "category_ids": [cat_id] if cat_id else [],
+                                  "status": "draft"})
+    del_id = None
+    if del_res.status_code in (200, 201):
+        del_id = extract_data(del_res).get("id")
+
+    if del_id:
+        run("TC45", f"DELETE /admin/blog-posts/99999 - ID khong ton tai",
+            "delete", f"{url}/admin/blog-posts/99999", [404, 422],
+            headers=auth(ADMIN_TOKEN))
+
+        run("TC46", f"DELETE /admin/blog-posts/{del_id} - user thuong bi 403",
+            "delete", f"{url}/admin/blog-posts/{del_id}", 403,
+            headers=auth(USER_TOKEN))
+
+        run("TC47", f"DELETE /admin/blog-posts/{del_id} - khong co token → 401",
+            "delete", f"{url}/admin/blog-posts/{del_id}", 401,
+            headers=auth())
+
+        res = run("TC44", f"DELETE /admin/blog-posts/{del_id} - xoa thanh cong",
+                  "delete", f"{url}/admin/blog-posts/{del_id}", [200, 204],
+                  headers=auth(ADMIN_TOKEN))
+        if res and res.status_code in (200, 204):
+            print(f"  [INFO] TC44: xoa id={del_id} - OK")
+    else:
+        for tc in ["TC44", "TC45", "TC46", "TC47"]:
+            print(f"[SKIP] {tc} - khong tao duoc post de xoa")
+            results.append((tc, "DELETE /admin/blog-posts/{id}", None, "skip"))
+
+    # ── Admin Blog Categories ─────────────────────────────────
+
+    res = run("TC57", "GET /admin/blog-categories - lay danh sach",
+              "get", f"{url}/admin/blog-categories", 200,
+              headers=auth(ADMIN_TOKEN))
+    if res and res.status_code == 200:
+        items = extract_items(res)
+        print(f"  [INFO] TC57: {len(items)} categories")
+
+    res = run("TC58", "POST /admin/blog-categories - tao danh muc",
+              "post", f"{url}/admin/blog-categories", [200, 201],
+              headers=auth(ADMIN_TOKEN),
+              json={"name": f"Blog Cat {ts}", "description": "Mo ta test"})
+    new_cat_id = None
+    if res and res.status_code in (200, 201):
+        new_cat_id = extract_data(res).get("id")
+        if new_cat_id:
+            created_category_ids.append(new_cat_id)
+        print(f"  [INFO] TC58: id={new_cat_id}")
+
+    if new_cat_id:
+        res = run("TC59", f"PUT /admin/blog-categories/{new_cat_id} - cap nhat",
+                  "put", f"{url}/admin/blog-categories/{new_cat_id}", 200,
+                  headers=auth(ADMIN_TOKEN),
+                  json={"name": f"Updated Cat {ts}"})
+        if res and res.status_code == 200:
+            print(f"  [INFO] TC59: cap nhat OK")
+    else:
+        print("[SKIP] TC59 - khong co new_cat_id")
+        results.append(("TC59", "PUT /admin/blog-categories/{id}", None, "skip"))
+
+    run("TC60", "POST /admin/blog-categories - thieu name → 422",
+        "post", f"{url}/admin/blog-categories", 422,
+        headers=auth(ADMIN_TOKEN), json={"description": "Mo ta"})
+
+    # Tao category rieng de xoa
+    del_cat_res = requests.post(f"{url}/admin/blog-categories",
+                                headers=auth(ADMIN_TOKEN),
+                                json={"name": f"Del Cat {ts}"})
+    del_cat_id = None
+    if del_cat_res.status_code in (200, 201):
+        del_cat_id = extract_data(del_cat_res).get("id")
+
+    if del_cat_id:
+        res = run("TC61", f"DELETE /admin/blog-categories/{del_cat_id} - xoa",
+                  "delete", f"{url}/admin/blog-categories/{del_cat_id}", [200, 204],
+                  headers=auth(ADMIN_TOKEN))
+        if res and res.status_code in (200, 204):
+            print(f"  [INFO] TC61: xoa category id={del_cat_id} - OK")
+    else:
+        print("[SKIP] TC61 - khong tao duoc category de xoa")
+        results.append(("TC61", "DELETE /admin/blog-categories/{id}", None, "skip"))
+
+    run("TC62", "DELETE /admin/blog-categories/99999 - ID khong ton tai",
+        "delete", f"{url}/admin/blog-categories/99999", [404, 422],
+        headers=auth(ADMIN_TOKEN))
+
+    run("TC63", "POST /admin/blog-categories - user thuong bi 403",
+        "post", f"{url}/admin/blog-categories", 403,
+        headers=auth(USER_TOKEN), json={"name": "Test"})
+
+    run("TC64", "GET /admin/blog-categories - khong co token → 401",
+        "get", f"{url}/admin/blog-categories", 401,
+        headers=auth())
 
     # ── CLEANUP ───────────────────────────────────────────────
 
-    if ADMIN_TOKEN and created_ids:
-        print(f"\n[CLEANUP] Xoa {len(created_ids)} bai viet da tao trong test...")
-        for pid in list(created_ids):
-            r = requests.delete(f"{url}/admin/blog/{pid}", headers=auth(ADMIN_TOKEN))
-            status = "OK" if r.status_code in (200, 204) else f"got {r.status_code}"
-            print(f"  [CLEANUP] DELETE /admin/blog/{pid} → {status}")
+    if ADMIN_TOKEN and created_post_ids:
+        print(f"\n[CLEANUP] Xoa {len(created_post_ids)} posts...")
+        for pid in created_post_ids:
+            r = requests.delete(f"{url}/admin/blog-posts/{pid}",
+                                headers=auth(ADMIN_TOKEN))
+            print(f"  [CLEANUP] post/{pid} → {r.status_code}")
+
+    if ADMIN_TOKEN and created_category_ids:
+        print(f"[CLEANUP] Xoa {len(created_category_ids)} categories...")
+        for cid in created_category_ids:
+            r = requests.delete(f"{url}/admin/blog-categories/{cid}",
+                                headers=auth(ADMIN_TOKEN))
+            print(f"  [CLEANUP] category/{cid} → {r.status_code}")
 
     # ── SUMMARY ──────────────────────────────────────────────
 

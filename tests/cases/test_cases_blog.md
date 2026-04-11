@@ -1,9 +1,8 @@
 # Test Cases — BLOG (Bài viết)
 
 > Base URL: `http://localhost:8000/api/v1`
-> 🌐 Public: không cần token
-> 🔐 User token
-> 🛡️ Admin token bắt buộc
+> Branch: `feat/taynd/api-blog`
+> 🌐 Public | 🛡️ Admin token bắt buộc cho write operations
 
 ---
 
@@ -13,15 +12,10 @@
 ```http
 GET /api/v1/blog
 ```
-- Expected: `200 OK`
-- Verify: response có `data` là array, mỗi item có `id`, `title`, `slug`, `excerpt`, `status`, `published_at`
+- Expected: `200 OK`, `data` là array, mỗi item có `id`, `title`, `slug`, `excerpt`, `status`, `published_at`
 
 ### ✅ TC02 — Chỉ trả về bài `published`
-```http
-GET /api/v1/blog
-```
-- Expected: `200 OK`
-- Verify: tất cả item có `status = published`
+- Expected: `200 OK`, tất cả item có `status = published`
 
 ### ✅ TC03 — Phân trang `per_page=5`
 ```http
@@ -35,20 +29,17 @@ GET /api/v1/blog?page=2&per_page=5
 ```
 - Expected: `200 OK`
 
-### ✅ TC05 — Filter theo `category_id` hợp lệ
+### ✅ TC05 — Filter theo `category_id`
 ```http
 GET /api/v1/blog?category_id=1
 ```
 - Expected: `200 OK`
-- Verify: tất cả item thuộc category_id=1
 
-### ✅ TC06 — Filter `category_id` không có bài nào
+### ✅ TC06 — `category_id` không có bài nào
 ```http
 GET /api/v1/blog?category_id=99999
 ```
-- Expected: `200 OK` hoặc `422 Unprocessable`
-- Nếu 200: `data = []`
-- Nếu 422: backend validate `category_id` phải tồn tại trong DB
+- Expected: `200 OK` (data=[]) hoặc `422 Unprocessable`
 
 ### ❌ TC07 — `category_id` không phải số
 ```http
@@ -56,18 +47,14 @@ GET /api/v1/blog?category_id=abc
 ```
 - Expected: `422 Unprocessable`
 
-### ✅ TC08 — `per_page` vượt max 100
+### ✅ TC08 — `per_page` vượt max
 ```http
 GET /api/v1/blog?per_page=200
 ```
 - Expected: `200 OK` hoặc `422 Unprocessable`
-- Nếu 200: verify số item <= 100
 
 ### ✅ TC09 — Không cần token (public)
-```http
-GET /api/v1/blog
-```
-- Expected: `200 OK` (không cần Authorization header)
+- Expected: `200 OK`
 
 ---
 
@@ -77,21 +64,13 @@ GET /api/v1/blog
 ```http
 GET /api/v1/blog/{slug_hop_le}
 ```
-- Expected: `200 OK`
-- Verify: có fields `id`, `title`, `slug`, `content`, `author`, `view_count`, `published_at`
+- Expected: `200 OK`, có `id`, `title`, `slug`, `content`, `view_count`, `published_at`
 
 ### ✅ TC11 — `view_count` tăng sau mỗi lần xem
-```http
-GET /api/v1/blog/{slug} (gọi 2 lần)
-```
-- Expected: `200 OK`
-- Verify: `view_count` lần 2 >= lần 1
+- Expected: `200 OK`, `view_count` lần 2 >= lần 1
 
 ### ✅ TC12 — Không cần token (public)
-```http
-GET /api/v1/blog/{slug}
-```
-- Expected: `200 OK` (không cần Authorization header)
+- Expected: `200 OK`
 
 ### ❌ TC13 — Slug không tồn tại
 ```http
@@ -100,9 +79,6 @@ GET /api/v1/blog/slug-khong-ton-tai-xyz-999
 - Expected: `404 Not Found`
 
 ### ❌ TC14 — Bài viết `draft` không hiển thị public
-```http
-GET /api/v1/blog/{slug_bai_draft}
-```
 - Expected: `404 Not Found` hoặc `403 Forbidden`
 
 ---
@@ -113,49 +89,76 @@ GET /api/v1/blog/{slug_bai_draft}
 ```http
 GET /api/v1/blog/categories
 ```
-- Expected: `200 OK`
-- Verify: mỗi item có `id`, `name`, `slug`
+- Expected: `200 OK`, mỗi item có `id`, `name`, `slug`
 
 ### ✅ TC16 — Không cần token (public)
-```http
-GET /api/v1/blog/categories
-```
 - Expected: `200 OK`
 
 ---
 
-## 4. POST /admin/blog — Tạo bài viết (Admin)
+## 4. GET /admin/blog-posts — Danh sách bài viết (Admin)
 
-### ✅ TC17 — Tạo bài viết `draft` thành công
+### ✅ TC17 — Lấy tất cả (kể cả draft)
+```http
+GET /api/v1/admin/blog-posts
+Authorization: Bearer {admin_token}
+```
+- Expected: `200 OK`, có cả bài `draft` và `published`
+
+### ✅ TC18 — Filter `status=draft`
+```http
+GET /api/v1/admin/blog-posts?status=draft
+```
+- Expected: `200 OK`, tất cả item có `status=draft`
+
+### ✅ TC19 — Filter `status=published`
+```http
+GET /api/v1/admin/blog-posts?status=published
+```
+- Expected: `200 OK`
+
+### ✅ TC20 — Filter `category_id`
+```http
+GET /api/v1/admin/blog-posts?category_id=1
+```
+- Expected: `200 OK`
+
+### ✅ TC21 — Phân trang
+```http
+GET /api/v1/admin/blog-posts?page=1&per_page=5
+```
+- Expected: `200 OK`, `data` có tối đa 5 phần tử
+
+### ❌ TC22 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC23 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 5. POST /admin/blog-posts — Tạo bài viết (Admin)
+
+### ✅ TC24 — Tạo bài viết `draft`
 ```json
-{
-  "title": "Bài viết test draft",
-  "content": "Nội dung bài viết test đầy đủ",
-  "category_ids": [1],
-  "status": "draft"
-}
+{ "title": "Bài viết test draft", "content": "Nội dung", "status": "draft" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
-- Verify: response có `id`, `slug` tự sinh từ `title`, `status=draft`
+- Verify: `slug` tự sinh từ `title`, `status=draft`
 
-### ✅ TC18 — Tạo bài viết `published` thành công
+### ✅ TC25 — Tạo bài viết `published`
 ```json
-{
-  "title": "Bài viết test published",
-  "content": "Nội dung bài viết published",
-  "category_ids": [1],
-  "status": "published"
-}
+{ "title": "Bài viết published", "content": "Nội dung", "status": "published" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
-- Verify: `status=published`, `published_at` không null
+- Verify: `published_at` không null
 
-### ✅ TC19 — Tạo với đầy đủ fields
+### ✅ TC26 — Tạo với đầy đủ fields
 ```json
 {
-  "title": "Bài viết đầy đủ fields",
+  "title": "Bài viết đầy đủ",
   "content": "Nội dung chi tiết",
-  "excerpt": "Tóm tắt ngắn",
+  "excerpt": "Tóm tắt",
   "featured_image": "https://example.com/image.jpg",
   "category_ids": [1],
   "status": "draft"
@@ -163,189 +166,199 @@ GET /api/v1/blog/categories
 ```
 - Expected: `200 OK` hoặc `201 Created`
 
-### ✅ TC20 — Tạo với nhiều `category_ids`
+### ✅ TC27 — Tạo với nhiều `category_ids`
 ```json
-{
-  "title": "Bài viết nhiều danh mục",
-  "content": "Nội dung",
-  "category_ids": [1, 2],
-  "status": "draft"
-}
+{ "title": "Test", "content": "Test", "category_ids": [1, 2], "status": "draft" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
-- Verify: bài viết thuộc cả 2 category
 
-### ❌ TC21 — Thiếu `title`
+### ❌ TC28 — Thiếu `title`
 ```json
 { "content": "Nội dung", "status": "draft" }
 ```
 - Expected: `422 Unprocessable`
 
-### ❌ TC22 — Thiếu `content`
+### ❌ TC29 — Thiếu `content`
 ```json
 { "title": "Tiêu đề", "status": "draft" }
 ```
 - Expected: `422 Unprocessable`
 
-### ❌ TC23 — `status` sai giá trị
+### ❌ TC30 — `status` sai giá trị
 ```json
-{ "title": "Test", "content": "Test", "status": "invalid" }
+{ "title": "Test", "content": "Test", "status": "invalid_status" }
 ```
 - Expected: `422 Unprocessable`
 
-### ❌ TC24 — `category_ids` chứa ID không tồn tại
+### ❌ TC31 — `category_ids` chứa ID không tồn tại
 ```json
 { "title": "Test", "content": "Test", "category_ids": [99999], "status": "draft" }
 ```
 - Expected: `422 Unprocessable` hoặc `404 Not Found`
 
-### ❌ TC25 — User thường không được tạo bài (403)
-```json
-{ "title": "Test", "content": "Test", "status": "draft" }
-```
+### ❌ TC32 — User thường bị 403
 - Expected: `403 Forbidden`
 
-### ❌ TC26 — Không có token
-```json
-{ "title": "Test", "content": "Test", "status": "draft" }
-```
+### ❌ TC33 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 5. PUT /admin/blog/{id} — Cập nhật bài viết (Admin)
+## 6. GET /admin/blog-posts/{id} — Chi tiết bài viết (Admin)
 
-### ✅ TC27 — Cập nhật `title` thành công
+### ✅ TC34 — Lấy chi tiết thành công
+```http
+GET /api/v1/admin/blog-posts/{id}
+```
+- Expected: `200 OK`, có đầy đủ fields kể cả `content`
+
+### ❌ TC35 — ID không tồn tại
+```http
+GET /api/v1/admin/blog-posts/99999
+```
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
+
+### ❌ TC36 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 7. PUT /admin/blog-posts/{id} — Cập nhật bài viết (Admin)
+
+### ✅ TC37 — Cập nhật `title`
 ```json
 { "title": "Tiêu đề đã cập nhật" }
 ```
-- Expected: `200 OK`
-- Verify: `title` thay đổi trong response
+- Expected: `200 OK`, `title` thay đổi
 
-### ✅ TC28 — Cập nhật `content` thành công
+### ✅ TC38 — Cập nhật `content`
 ```json
-{ "content": "Nội dung mới đã cập nhật" }
+{ "content": "Nội dung mới" }
 ```
 - Expected: `200 OK`
 
-### ✅ TC29 — Cập nhật `category_ids` (sync)
+### ✅ TC39 — Cập nhật `category_ids` (sync)
 ```json
 { "category_ids": [2] }
 ```
 - Expected: `200 OK`
-- Verify: category cũ bị xóa, category mới được gán
 
-### ✅ TC30 — Cập nhật `category_ids = []` (xóa hết category)
-```json
-{ "category_ids": [] }
-```
-- Expected: `200 OK` hoặc `422 Unprocessable`
+### ❌ TC40 — ID không tồn tại
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
 
-### ❌ TC31 — ID không tồn tại
+### ❌ TC41 — `status` sai giá trị
 ```json
-{ "title": "Test" }
-```
-- Expected: `404 Not Found`
-
-### ❌ TC32 — `status` sai giá trị
-```json
-{ "status": "invalid" }
+{ "status": "invalid_status" }
 ```
 - Expected: `422 Unprocessable`
 
-### ❌ TC33 — User thường không được cập nhật
-```json
-{ "title": "Test" }
-```
+### ❌ TC42 — User thường bị 403
 - Expected: `403 Forbidden`
 
-### ❌ TC34 — Không có token
-```json
-{ "title": "Test" }
-```
+### ❌ TC43 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 6. DELETE /admin/blog/{id} — Xóa bài viết (Admin)
+## 8. DELETE /admin/blog-posts/{id} — Xóa bài viết (Admin)
 
-### ✅ TC35 — Xóa bài viết thành công
+### ✅ TC44 — Xóa thành công
 ```http
-DELETE /api/v1/admin/blog/{id}
+DELETE /api/v1/admin/blog-posts/{id}
 ```
 - Expected: `200 OK` hoặc `204 No Content`
 - Verify: GET `/blog/{slug}` → `404 Not Found`
 
-### ❌ TC36 — Xóa ID không tồn tại
-```http
-DELETE /api/v1/admin/blog/99999
-```
-- Expected: `404 Not Found`
+### ❌ TC45 — ID không tồn tại
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
 
-### ❌ TC37 — User thường không được xóa
-```http
-DELETE /api/v1/admin/blog/{id}
-```
+### ❌ TC46 — User thường bị 403
 - Expected: `403 Forbidden`
 
-### ❌ TC38 — Không có token
-```http
-DELETE /api/v1/admin/blog/{id}
-```
+### ❌ TC47 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 7. PATCH /admin/blog/{id}/publish — Xuất bản / Ẩn bài viết (Admin)
+## 9. PATCH /admin/blog-posts/{id}/status — Đổi trạng thái (Admin)
 
-### ✅ TC39 — Xuất bản bài `draft` → `published`
+### ✅ TC48 — Draft → Published
 ```json
 { "status": "published" }
 ```
-- Expected: `200 OK`
-- Verify: `status=published`, `published_at` không null
+- Expected: `200 OK`, `status=published`, `published_at` không null
 
-### ✅ TC40 — Ẩn bài `published` → `draft`
+### ✅ TC49 — Published → Draft
 ```json
 { "status": "draft" }
 ```
-- Expected: `200 OK`
-- Verify: `status=draft`
+- Expected: `200 OK`, `status=draft`
 
-### ✅ TC41 — Publish lại bài đã published (idempotent)
+### ✅ TC50 — Published → Archived
+```json
+{ "status": "archived" }
+```
+- Expected: `200 OK`, `status=archived`
+
+### ✅ TC51 — Idempotent (published → published)
 ```json
 { "status": "published" }
 ```
 - Expected: `200 OK`
 
-### ❌ TC42 — `status` sai giá trị
+### ❌ TC52 — `status` sai giá trị
 ```json
-{ "status": "archived" }
+{ "status": "invalid_status" }
 ```
 - Expected: `422 Unprocessable`
 
-### ❌ TC43 — Thiếu `status`
+### ❌ TC53 — Thiếu `status`
 ```json
 {}
 ```
 - Expected: `422 Unprocessable`
 
-### ❌ TC44 — ID không tồn tại
-```json
-{ "status": "published" }
-```
-- Expected: `404 Not Found`
+### ❌ TC54 — ID không tồn tại
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
 
-### ❌ TC45 — User thường không được publish
-```json
-{ "status": "published" }
-```
+### ❌ TC55 — User thường bị 403
 - Expected: `403 Forbidden`
 
-### ❌ TC46 — Không có token
+### ❌ TC56 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 10. Admin Blog Categories CRUD
+
+### ✅ TC57 — GET /admin/blog-categories — Lấy danh sách
+- Expected: `200 OK`
+
+### ✅ TC58 — POST /admin/blog-categories — Tạo danh mục
 ```json
-{ "status": "published" }
+{ "name": "Danh mục test", "description": "Mô tả" }
 ```
+- Expected: `200 OK` hoặc `201 Created`
+
+### ✅ TC59 — PUT /admin/blog-categories/{id} — Cập nhật
+```json
+{ "name": "Danh mục đã cập nhật" }
+```
+- Expected: `200 OK`
+
+### ❌ TC60 — POST thiếu `name` → 422
+- Expected: `422 Unprocessable`
+
+### ✅ TC61 — DELETE /admin/blog-categories/{id} — Xóa
+- Expected: `200 OK` hoặc `204 No Content`
+
+### ❌ TC62 — DELETE ID không tồn tại → 404/422
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
+
+### ❌ TC63 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC64 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
@@ -354,49 +367,15 @@ DELETE /api/v1/admin/blog/{id}
 
 | TC | API | Trường hợp | Expected |
 |----|-----|-----------|----------|
-| TC01 | GET /blog | Lấy danh sách | 200 |
-| TC02 | GET /blog | Chỉ trả published | 200 |
-| TC03 | GET /blog | Phân trang per_page=5 | 200 |
-| TC04 | GET /blog | Trang 2 | 200 |
-| TC05 | GET /blog | Filter category_id | 200 |
-| TC06 | GET /blog | category_id không có bài / không tồn tại | 200/422 |
-| TC07 | GET /blog | category_id không phải số | 422 |
-| TC08 | GET /blog | per_page vượt max | 200/422 |
-| TC09 | GET /blog | Không cần token | 200 |
-| TC10 | GET /blog/{slug} | Chi tiết thành công | 200 |
-| TC11 | GET /blog/{slug} | view_count tăng | 200 |
-| TC12 | GET /blog/{slug} | Không cần token | 200 |
-| TC13 | GET /blog/{slug} | Slug không tồn tại | 404 |
-| TC14 | GET /blog/{slug} | Bài draft | 404/403 |
-| TC15 | GET /blog/categories | Lấy danh mục | 200 |
-| TC16 | GET /blog/categories | Không cần token | 200 |
-| TC17 | POST /admin/blog | Tạo draft | 200/201 |
-| TC18 | POST /admin/blog | Tạo published | 200/201 |
-| TC19 | POST /admin/blog | Đầy đủ fields | 200/201 |
-| TC20 | POST /admin/blog | Nhiều category_ids | 200/201 |
-| TC21 | POST /admin/blog | Thiếu title | 422 |
-| TC22 | POST /admin/blog | Thiếu content | 422 |
-| TC23 | POST /admin/blog | status sai | 422 |
-| TC24 | POST /admin/blog | category_ids không tồn tại | 422/404 |
-| TC25 | POST /admin/blog | User thường | 403 |
-| TC26 | POST /admin/blog | Không có token | 401 |
-| TC27 | PUT /admin/blog/{id} | Cập nhật title | 200 |
-| TC28 | PUT /admin/blog/{id} | Cập nhật content | 200 |
-| TC29 | PUT /admin/blog/{id} | Cập nhật category_ids | 200 |
-| TC30 | PUT /admin/blog/{id} | category_ids rỗng | 200/422 |
-| TC31 | PUT /admin/blog/{id} | ID không tồn tại | 404 |
-| TC32 | PUT /admin/blog/{id} | status sai | 422 |
-| TC33 | PUT /admin/blog/{id} | User thường | 403 |
-| TC34 | PUT /admin/blog/{id} | Không có token | 401 |
-| TC35 | DELETE /admin/blog/{id} | Xóa thành công | 200/204 |
-| TC36 | DELETE /admin/blog/{id} | ID không tồn tại | 404 |
-| TC37 | DELETE /admin/blog/{id} | User thường | 403 |
-| TC38 | DELETE /admin/blog/{id} | Không có token | 401 |
-| TC39 | PATCH .../publish | Draft → Published | 200 |
-| TC40 | PATCH .../publish | Published → Draft | 200 |
-| TC41 | PATCH .../publish | Idempotent | 200 |
-| TC42 | PATCH .../publish | status sai | 422 |
-| TC43 | PATCH .../publish | Thiếu status | 422 |
-| TC44 | PATCH .../publish | ID không tồn tại | 404 |
-| TC45 | PATCH .../publish | User thường | 403 |
-| TC46 | PATCH .../publish | Không có token | 401 |
+| TC01–TC09 | GET /blog | List, filter, paginate, public | 200/422 |
+| TC10–TC14 | GET /blog/{slug} | Detail, view_count, draft, 404 | 200/404 |
+| TC15–TC16 | GET /blog/categories | Public list | 200 |
+| TC17–TC23 | GET /admin/blog-posts | Admin list, filter, auth | 200/403/401 |
+| TC24–TC33 | POST /admin/blog-posts | Create, validation, auth | 200/201/422/403/401 |
+| TC34–TC36 | GET /admin/blog-posts/{id} | Detail, 404, auth | 200/404/401 |
+| TC37–TC43 | PUT /admin/blog-posts/{id} | Update, validation, auth | 200/422/403/401 |
+| TC44–TC47 | DELETE /admin/blog-posts/{id} | Delete, 404, auth | 200/204/403/401 |
+| TC48–TC56 | PATCH .../status | Status transitions, validation | 200/422/403/401 |
+| TC57–TC64 | Admin blog-categories | CRUD, auth | 200/201/422/403/401 |
+
+**Tổng: 64 test cases** — 30 happy path ✅ · 34 error case ❌

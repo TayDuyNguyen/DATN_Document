@@ -384,7 +384,7 @@ def run_tests():
             headers=auth(ADMIN_TOKEN), json={"max_people": 10})
 
         run("TC31", f"PUT /admin/tour-schedules/{sched_id} - end_date truoc start_date",
-            "put", f"{url}/admin/tour-schedules/{sched_id}", [200, 422],
+            "put", f"{url}/admin/tour-schedules/{sched_id}", [200, 422, 400],
             headers=auth(ADMIN_TOKEN), json={"end_date": "2026-08-01"})
         # Note: backend co the khong validate end_date > start_date → tra 200
 

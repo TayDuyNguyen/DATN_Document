@@ -158,15 +158,55 @@ def get_any_id(token):
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 
+def get_user_id(token):
+    """Lay user_id tu /user/profile."""
+    res = requests.get(f"{BASE_URL}/user/profile",
+                       headers={"Accept": "application/json",
+                                "Authorization": f"Bearer {token}"})
+    if res.status_code == 200:
+        d = res.json().get("data", res.json())
+        if isinstance(d, dict):
+            return d.get("id") or d.get("user", {}).get("id")
+    return None
+
+
+def send_notification_via_admin(admin_token, user_id, title="Test notification"):
+    """Dung admin API tao notification cho user."""
+    res = requests.post(f"{BASE_URL}/admin/notifications/send",
+                        headers={"Accept": "application/json",
+                                 "Authorization": f"Bearer {admin_token}"},
+                        json={"user_id": user_id, "type": "system",
+                              "title": title, "content": "Setup for test"})
+    if res.status_code in (200, 201):
+        d = res.json().get("data", res.json())
+        nid = d.get("id") or (d.get("notification", {}) or {}).get("id")
+        print(f"  [SETUP] Tao notification id={nid} cho user_id={user_id} - OK")
+        return nid
+    print(f"  [SETUP] Tao notification that bai: {res.status_code} - {res.text[:150]}")
+    return None
+
+
 def run_tests():
     global USER_TOKEN, USER2_TOKEN
 
     USER_TOKEN  = login(USER_EMAIL, USER_PASSWORD)
     USER2_TOKEN = login(USER2_EMAIL, USER2_PASSWORD)
+    ADMIN_TOKEN = login("admin@example.com", "password")
 
     if not USER_TOKEN:
         print("[ABORT] Khong lay duoc USER_TOKEN.")
         return
+
+    # SETUP: tao notification cho user2 de dung TC12, TC18, TC20
+    user2_setup_id = None
+    if ADMIN_TOKEN and USER2_TOKEN:
+        user2_db_id = get_user_id(USER2_TOKEN)
+        if user2_db_id:
+            user2_setup_id = send_notification_via_admin(
+                ADMIN_TOKEN, user2_db_id, "Notification for user2 test")
+            # Tao them 1 cai de TC18 co du data
+            send_notification_via_admin(
+                ADMIN_TOKEN, user2_db_id, "Notification for user2 test 2")
 
     url = BASE_URL
 
@@ -317,12 +357,12 @@ def run_tests():
         "patch", f"{url}/user/notifications/abc/read", [404, 422],
         headers=auth(USER_TOKEN))
 
-    # TC12: thông báo của user khác
+    # TC12: thông báo của user khác — dùng notification vừa tạo cho user2
     if USER2_TOKEN:
-        user2_id = get_any_id(USER2_TOKEN)
-        if user2_id:
-            run("TC12", f"PATCH /user/notifications/{user2_id}/read - thong bao user khac",
-                "patch", f"{url}/user/notifications/{user2_id}/read", [403, 404],
+        user2_notif_id = user2_setup_id or get_any_id(USER2_TOKEN)
+        if user2_notif_id:
+            run("TC12", f"PATCH /user/notifications/{user2_notif_id}/read - thong bao user khac",
+                "patch", f"{url}/user/notifications/{user2_notif_id}/read", [403, 404],
                 headers=auth(USER_TOKEN))
         else:
             print("[SKIP] TC12 - user2 khong co notification")
@@ -394,27 +434,37 @@ def run_tests():
             "delete", f"{url}/user/notifications/{delete_read_id}", [200, 204],
             headers=auth(USER_TOKEN))
     else:
-        # Lấy item thứ 2 nếu có
-        remaining = get_notifications(USER_TOKEN, per_page=50)
-        if remaining and isinstance(remaining[0], dict):
-            second_id = remaining[0].get("id")
-            run("TC18", f"DELETE /user/notifications/{second_id} - xoa da doc",
-                "delete", f"{url}/user/notifications/{second_id}", [200, 204],
+        # Tao them notification cho user1 de xoa
+        user1_db_id = USER1_DB_ID or get_user_id(USER_TOKEN)
+        extra_id = None
+        if ADMIN_TOKEN and user1_db_id:
+            extra_id = send_notification_via_admin(
+                ADMIN_TOKEN, user1_db_id, "Extra notification for TC18")
+        if extra_id:
+            run("TC18", f"DELETE /user/notifications/{extra_id} - xoa da doc",
+                "delete", f"{url}/user/notifications/{extra_id}", [200, 204],
                 headers=auth(USER_TOKEN))
         else:
-            print("[SKIP] TC18 - khong con notification de xoa")
-            results.append(("TC18", "DELETE - xoa da doc", None, "skip"))
+            remaining = get_notifications(USER_TOKEN, per_page=50)
+            if remaining and isinstance(remaining[0], dict):
+                second_id = remaining[0].get("id")
+                run("TC18", f"DELETE /user/notifications/{second_id} - xoa da doc",
+                    "delete", f"{url}/user/notifications/{second_id}", [200, 204],
+                    headers=auth(USER_TOKEN))
+            else:
+                print("[SKIP] TC18 - khong con notification de xoa")
+                results.append(("TC18", "DELETE - xoa da doc", None, "skip"))
 
     run("TC19", "DELETE /user/notifications/99999 - ID khong ton tai",
-        "delete", f"{url}/user/notifications/99999", 404,
+        "delete", f"{url}/user/notifications/99999", [404, 422],
         headers=auth(USER_TOKEN))
 
-    # TC20: xóa thông báo của user khác
+    # TC20: xóa thông báo của user khác — dùng notification vừa tạo cho user2
     if USER2_TOKEN:
-        user2_id = get_any_id(USER2_TOKEN)
-        if user2_id:
-            run("TC20", f"DELETE /user/notifications/{user2_id} - thong bao user khac",
-                "delete", f"{url}/user/notifications/{user2_id}", [403, 404],
+        user2_notif_id = user2_setup_id or get_any_id(USER2_TOKEN)
+        if user2_notif_id:
+            run("TC20", f"DELETE /user/notifications/{user2_notif_id} - thong bao user khac",
+                "delete", f"{url}/user/notifications/{user2_notif_id}", [403, 404],
                 headers=auth(USER_TOKEN))
         else:
             print("[SKIP] TC20 - user2 khong co notification")

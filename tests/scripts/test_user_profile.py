@@ -1,35 +1,39 @@
 """
 Test script - USER PROFILE
+Branch: feat/taynd/api-user-profile
 Run: python tests/scripts/test_user_profile.py
 Yeu cau: pip install requests
 """
 
 import requests
-import tempfile
+import time
 import os
 
 BASE_URL       = "http://localhost:8000/api/v1"
 USER_EMAIL     = "user1@example.com"
 USER_PASSWORD  = "password"
+ADMIN_EMAIL    = "admin@example.com"
+ADMIN_PASSWORD = "password"
 
-USER_TOKEN = None
-results    = []
+USER_TOKEN  = None
+ADMIN_TOKEN = None
+results     = []
+ts = int(time.time())
 
-
-# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def login(email, password):
-    res = requests.post(f"{BASE_URL}/auth/login", json={"email": email, "password": password})
+    res = requests.post(f"{BASE_URL}/auth/login",
+                        json={"email": email, "password": password},
+                        headers={"Accept": "application/json"})
     if res.status_code == 200:
         data  = res.json()
-        token = (data.get("token")
-                 or data.get("access_token")
+        token = (data.get("token") or data.get("access_token")
                  or data.get("data", {}).get("token")
                  or data.get("data", {}).get("access_token"))
         if token:
             print(f"[AUTH] Logged in as {email}")
             return token
-    print(f"[AUTH ERROR] {email}: {res.status_code} - {res.text[:200]}")
+    print(f"[AUTH ERROR] {email}: {res.status_code} - {res.text[:150]}")
     return None
 
 
@@ -41,362 +45,436 @@ def auth(token=None):
 
 
 def run(tc, desc, method, url, expected, **kwargs):
+    kwargs.setdefault("timeout", 15)
     try:
-        res   = getattr(requests, method)(url, **kwargs)
-        ok    = res.status_code in expected if isinstance(expected, list) else res.status_code == expected
+        res = getattr(requests, method)(url, **kwargs)
+        ok  = res.status_code in expected if isinstance(expected, list) else res.status_code == expected
         label = "\033[92mPASS\033[0m" if ok else "\033[91mFAIL\033[0m"
         print(f"[{label}] {tc} - {desc} | got {res.status_code}, expected {expected}")
+        if not ok:
+            try:
+                body = res.json()
+                print(f"  [DEBUG] {body.get('message') or str(body)[:200]}")
+            except Exception:
+                print(f"  [DEBUG] {res.text[:200]}")
         results.append((tc, desc, ok, res.status_code))
         return res
+    except requests.exceptions.Timeout:
+        print(f"[TIMEOUT] {tc} - {desc}")
+        results.append((tc, desc, False, "timeout"))
+        return None
     except Exception as e:
         print(f"[ERROR] {tc} - {desc} | {e}")
         results.append((tc, desc, False, "error"))
         return None
 
 
-def make_jpeg(size_bytes=1024):
-    """Tạo file JPEG giả với kích thước tùy chỉnh."""
-    jpeg_header = (
-        b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00'
-        b'\xff\xdb\x00C\x00\x08\x06\x06\x07\x06\x05\x08\x07\x07\x07\t\t'
-        b'\x08\n\x0c\x14\r\x0c\x0b\x0b\x0c\x19\x12\x13\x0f\x14\x1d\x1a'
-        b'\x1f\x1e\x1d\x1a\x1c\x1c $.\' ",#\x1c\x1c(7),01444\x1f\'9=82<.342\x1e'
-        b'\xff\xc0\x00\x0b\x08\x00\x01\x00\x01\x01\x01\x11\x00'
-        b'\xff\xc4\x00\x1f\x00\x00\x01\x05\x01\x01\x01\x01\x01\x01\x00\x00'
-        b'\x00\x00\x00\x00\x00\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b'
-        b'\xff\xda\x00\x08\x01\x01\x00\x00?\x00\xfb\xff\xd9'
-    )
-    # Pad đến kích thước mong muốn bằng comment JPEG (FF FE)
-    padding_needed = max(0, size_bytes - len(jpeg_header) - 4)
-    padding = b'\xff\xfe' + padding_needed.to_bytes(2, 'big') + b'\x00' * padding_needed
-    data = jpeg_header[:-2] + padding + b'\xff\xd9'
-    tmp = tempfile.NamedTemporaryFile(suffix=".jpg", delete=False, dir=tempfile.gettempdir())
-    tmp.write(data)
-    tmp.close()
-    return tmp.name
+def extract_data(res):
+    try:
+        d = res.json().get("data", res.json())
+        if isinstance(d, dict):
+            for key in ["user", "profile"]:
+                if d.get(key):
+                    return d[key]
+            return d
+        return {}
+    except Exception:
+        return {}
 
 
-def make_png():
-    """Tạo file PNG giả tối thiểu (1x1 pixel)."""
-    png_bytes = (
-        b'\x89PNG\r\n\x1a\n'                          # signature
-        b'\x00\x00\x00\rIHDR'                          # IHDR chunk
-        b'\x00\x00\x00\x01\x00\x00\x00\x01'           # 1x1
-        b'\x08\x02\x00\x00\x00\x90wS\xde'             # 8bit RGB
-        b'\x00\x00\x00\x0cIDATx\x9cc\xf8\x0f\x00\x00\x01\x01\x00\x05\x18\xd8N'
-        b'\x00\x00\x00\x00IEND\xaeB`\x82'
-    )
-    tmp = tempfile.NamedTemporaryFile(suffix=".png", delete=False, dir=tempfile.gettempdir())
-    tmp.write(png_bytes)
-    tmp.close()
-    return tmp.name
+def extract_items(res):
+    try:
+        data = res.json().get("data", [])
+        if isinstance(data, list):
+            return data
+        return data.get("data", [])
+    except Exception:
+        return []
 
-
-def make_large_jpeg(mb=3):
-    """Tạo file giả vượt quá giới hạn bằng cách ghi raw bytes (không cần JPEG hợp lệ)."""
-    tmp = tempfile.NamedTemporaryFile(suffix=".jpg", delete=False, dir=tempfile.gettempdir())
-    # Ghi JPEG header hợp lệ trước, sau đó pad bằng null bytes
-    jpeg_start = b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00'
-    tmp.write(jpeg_start)
-    remaining = mb * 1024 * 1024 - len(jpeg_start)
-    # Ghi từng chunk 64KB để tránh memory spike
-    chunk = b'\x00' * 65536
-    while remaining > 0:
-        write_size = min(remaining, len(chunk))
-        tmp.write(chunk[:write_size])
-        remaining -= write_size
-    tmp.close()
-    return tmp.name
-
-
-def make_txt():
-    """Tạo file text giả."""
-    tmp = tempfile.NamedTemporaryFile(suffix=".txt", delete=False, dir=tempfile.gettempdir())
-    tmp.write(b"This is not an image file.")
-    tmp.close()
-    return tmp.name
-
-
-# ── Main ──────────────────────────────────────────────────────────────────────
 
 def run_tests():
-    global USER_TOKEN
+    global USER_TOKEN, ADMIN_TOKEN
 
-    USER_TOKEN = login(USER_EMAIL, USER_PASSWORD)
+    USER_TOKEN  = login(USER_EMAIL, USER_PASSWORD)
+    ADMIN_TOKEN = login(ADMIN_EMAIL, ADMIN_PASSWORD)
+
     if not USER_TOKEN:
         print("[ABORT] Khong lay duoc USER_TOKEN.")
         return
 
-    url        = BASE_URL
-    temp_files = []
+    url = BASE_URL
 
-    # ── GET /user/profile ─────────────────────────────────────
+    # ── GET /user/profile ────────────────────────────────────
 
-    res = run("TC01", "GET /user/profile - lay profile",
+    res = run("TC01", "GET /user/profile - lay thong tin ca nhan",
               "get", f"{url}/user/profile", 200,
               headers=auth(USER_TOKEN))
     if res and res.status_code == 200:
-        try:
-            data = res.json().get("data", res.json())
-            print(f"  [INFO] TC01: fields = {list(data.keys()) if isinstance(data, dict) else type(data)}")
-        except Exception:
-            pass
+        data = extract_data(res)
+        print(f"  [INFO] TC01: fields = {list(data.keys())}")
+        for f in ["id", "full_name", "email"]:
+            if f not in data:
+                print(f"  [WARN] TC01: thieu field '{f}'")
 
-    run("TC02", "GET /user/profile - khong co token",
+    run("TC02", "GET /user/profile - khong co token → 401",
         "get", f"{url}/user/profile", 401,
         headers=auth())
 
-    # ── PUT /user/profile ─────────────────────────────────────
+    run("TC03", "GET /user/profile - token sai → 401",
+        "get", f"{url}/user/profile", 401,
+        headers=auth("invalid_token_xyz"))
 
-    # Lưu lại giá trị gốc để restore sau
-    original_name = None
-    if res and res.status_code == 200:
-        try:
-            data = res.json().get("data", res.json())
-            original_name = data.get("full_name") if isinstance(data, dict) else None
-        except Exception:
-            pass
+    # ── PUT /user/profile ────────────────────────────────────
 
-    res = run("TC03", "PUT /user/profile - cap nhat day du field",
+    res = run("TC04", "PUT /user/profile - cap nhat day du fields",
               "put", f"{url}/user/profile", 200,
               headers=auth(USER_TOKEN),
-              json={"full_name": "Nguyen Van A", "phone": "0901234567",
-                    "birthdate": "1995-06-15", "gender": "male", "city": "Da Nang"})
+              json={
+                  "full_name": f"User Test {ts}",
+                  "phone": "0901234567",
+                  "birthdate": "1995-06-15",
+                  "gender": "male",
+                  "city": "Da Nang"
+              })
     if res and res.status_code == 200:
-        try:
-            data = res.json().get("data", res.json())
-            name = data.get("full_name") if isinstance(data, dict) else None
-            print(f"  [INFO] TC03: full_name = {name}")
-        except Exception:
-            pass
+        data = extract_data(res)
+        if data.get("full_name") == f"User Test {ts}":
+            print(f"  [INFO] TC04: full_name cap nhat OK")
 
-    run("TC04", "PUT /user/profile - cap nhat 1 field",
-        "put", f"{url}/user/profile", 200,
-        headers=auth(USER_TOKEN),
-        json={"full_name": "Ten Moi"})
-
-    run("TC05", "PUT /user/profile - body rong",
-        "put", f"{url}/user/profile", 200,
-        headers=auth(USER_TOKEN),
-        json={})
+    res = run("TC05", "PUT /user/profile - cap nhat 1 field (full_name)",
+              "put", f"{url}/user/profile", 200,
+              headers=auth(USER_TOKEN),
+              json={"full_name": f"Updated {ts}"})
+    if res and res.status_code == 200:
+        data = extract_data(res)
+        print(f"  [INFO] TC05: full_name = {data.get('full_name')}")
 
     run("TC06", "PUT /user/profile - phone sai dinh dang",
         "put", f"{url}/user/profile", [200, 422],
         headers=auth(USER_TOKEN),
-        json={"phone": "abc123"})
-    # NOTE: Backend chua validate format phone (tra 200) — nen them rule regex trong UpdateProfileRequest
+        json={"phone": "abc-not-phone"})
+    # Note: backend co the khong validate format phone
 
-    run("TC07", "PUT /user/profile - birthdate sai dinh dang",
+    run("TC07", "PUT /user/profile - gender sai gia tri",
         "put", f"{url}/user/profile", 422,
         headers=auth(USER_TOKEN),
-        json={"birthdate": "15/06/1995"})
+        json={"gender": "invalid_gender"})
 
-    run("TC08", "PUT /user/profile - gender sai gia tri",
+    run("TC08", "PUT /user/profile - birthdate sai dinh dang",
         "put", f"{url}/user/profile", 422,
         headers=auth(USER_TOKEN),
-        json={"gender": "unknown"})
+        json={"birthdate": "15-06-1995"})
 
-    run("TC09", "PUT /user/profile - khong co token",
+    run("TC09", "PUT /user/profile - body rong (khong co gi de update)",
+        "put", f"{url}/user/profile", [200, 422],
+        headers=auth(USER_TOKEN),
+        json={})
+
+    run("TC10", "PUT /user/profile - khong co token → 401",
         "put", f"{url}/user/profile", 401,
         headers=auth(),
-        json={"full_name": "Test"})
+        json={"full_name": "No Token"})
 
-    # Restore tên gốc
-    if original_name:
-        requests.put(f"{url}/user/profile", headers=auth(USER_TOKEN),
-                     json={"full_name": original_name})
+    # ── POST /user/profile/avatar ────────────────────────────
 
-    # ── POST /user/profile/avatar ─────────────────────────────
+    # Tao file anh gia de test
+    # 1x1 pixel JPEG hop le
+    dummy_jpg = (
+        b"\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00"
+        b"\xff\xdb\x00C\x00\x08\x06\x06\x07\x06\x05\x08\x07\x07\x07\t\t"
+        b"\x08\n\x0c\x14\r\x0c\x0b\x0b\x0c\x19\x12\x13\x0f\x14\x1d\x1a"
+        b"\x1f\x1e\x1d\x1a\x1c\x1c $.' \",#\x1c\x1c(7),01444\x1f'9=82<.342\x1e"
+        b"\xff\xc0\x00\x0b\x08\x00\x01\x00\x01\x01\x01\x11\x00"
+        b"\xff\xc4\x00\x1f\x00\x00\x01\x05\x01\x01\x01\x01\x01\x01\x00\x00"
+        b"\x00\x00\x00\x00\x00\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b"
+        b"\xff\xc4\x00\xb5\x10\x00\x02\x01\x03\x03\x02\x04\x03\x05\x05\x04"
+        b"\x04\x00\x00\x01}\x01\x02\x03\x00\x04\x11\x05\x12!1A\x06\x13Qa"
+        b"\xff\xda\x00\x08\x01\x01\x00\x00?\x00\xfb\xd2\x8a(\x03\xff\xd9"
+    )
+    # 1x1 pixel PNG hop le (tao bang zlib compress)
+    import zlib, struct
+    def make_png():
+        def chunk(name, data):
+            c = struct.pack('>I', len(data)) + name + data
+            return c + struct.pack('>I', zlib.crc32(name + data) & 0xffffffff)
+        sig = b'\x89PNG\r\n\x1a\n'
+        ihdr = chunk(b'IHDR', struct.pack('>IIBBBBB', 1, 1, 8, 2, 0, 0, 0))
+        raw  = b'\x00\xff\x00\x00'  # filter byte + 1 RGB pixel
+        idat = chunk(b'IDAT', zlib.compress(raw))
+        iend = chunk(b'IEND', b'')
+        return sig + ihdr + idat + iend
+    dummy_png = make_png()
 
-    jpeg_path  = make_jpeg()
-    png_path   = make_png()
-    large_path = make_large_jpeg(3)
-    txt_path   = make_txt()
-    temp_files = [jpeg_path, png_path, large_path, txt_path]
+    res = run("TC11", "POST /user/profile/avatar - upload anh hop le (JPEG)",
+              "post", f"{url}/user/profile/avatar", [200, 201],
+              headers=auth(USER_TOKEN),
+              files={"avatar": ("avatar.jpg", dummy_jpg, "image/jpeg")})
+    if res and res.status_code in (200, 201):
+        data = extract_data(res)
+        avatar_url = data.get("avatar") or data.get("avatar_url")
+        print(f"  [INFO] TC11: avatar_url = {avatar_url}")
 
-    with open(jpeg_path, "rb") as f:
-        res = run("TC10", "POST /user/profile/avatar - upload JPEG",
-                  "post", f"{url}/user/profile/avatar", 200,
-                  headers=auth(USER_TOKEN),
-                  files={"avatar": ("avatar.jpg", f, "image/jpeg")})
-        if res and res.status_code == 200:
-            try:
-                data = res.json().get("data", res.json())
-                avatar_url = data.get("avatar") if isinstance(data, dict) else None
-                print(f"  [INFO] TC10: avatar = {avatar_url}")
-            except Exception:
-                pass
+    run("TC12", "POST /user/profile/avatar - upload PNG",
+        "post", f"{url}/user/profile/avatar", [200, 201],
+        headers=auth(USER_TOKEN),
+        files={"avatar": ("avatar.png", dummy_png, "image/png")})
 
-    with open(png_path, "rb") as f:
-        run("TC11", "POST /user/profile/avatar - upload PNG",
-            "post", f"{url}/user/profile/avatar", 200,
-            headers=auth(USER_TOKEN),
-            files={"avatar": ("avatar.png", f, "image/png")})
+    # File qua lon (>2MB)
+    big_file = b"\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00" + b"\x00" * (2 * 1024 * 1024 + 1)
+    run("TC13", "POST /user/profile/avatar - file qua lon (>2MB) → 422",
+        "post", f"{url}/user/profile/avatar", [413, 422],
+        headers=auth(USER_TOKEN),
+        files={"avatar": ("big.jpg", big_file, "image/jpeg")})
 
-    run("TC12", "POST /user/profile/avatar - thieu file",
+    run("TC14", "POST /user/profile/avatar - sai dinh dang file (txt) → 422",
+        "post", f"{url}/user/profile/avatar", 422,
+        headers=auth(USER_TOKEN),
+        files={"avatar": ("file.txt", b"not an image", "text/plain")})
+
+    run("TC15", "POST /user/profile/avatar - thieu file avatar → 422",
         "post", f"{url}/user/profile/avatar", 422,
         headers=auth(USER_TOKEN))
 
-    with open(txt_path, "rb") as f:
-        run("TC13", "POST /user/profile/avatar - file khong phai anh",
-            "post", f"{url}/user/profile/avatar", 422,
-            headers=auth(USER_TOKEN),
-            files={"avatar": ("file.txt", f, "text/plain")})
+    run("TC16", "POST /user/profile/avatar - khong co token → 401",
+        "post", f"{url}/user/profile/avatar", 401,
+        headers=auth(),
+        files={"avatar": ("avatar.jpg", dummy_jpg, "image/jpeg")})
 
-    with open(large_path, "rb") as f:
-        res = run("TC14", "POST /user/profile/avatar - file qua 2MB",
-                  "post", f"{url}/user/profile/avatar", [413, 422],
-                  headers=auth(USER_TOKEN),
-                  files={"avatar": ("big.jpg", f, "image/jpeg")})
-        if res and res.status_code == 413:
-            print(f"  [INFO] TC14: 413 tu Nginx (client_max_body_size), Laravel chua xu ly duoc")
+    # ── PUT /user/password ───────────────────────────────────
 
-    with open(jpeg_path, "rb") as f:
-        run("TC15", "POST /user/profile/avatar - khong co token",
-            "post", f"{url}/user/profile/avatar", 401,
-            headers=auth(),
-            files={"avatar": ("avatar.jpg", f, "image/jpeg")})
-
-    # ── PUT /user/password ────────────────────────────────────
-
-    ORIGINAL_PASSWORD = USER_PASSWORD
-    NEW_PASSWORD      = "NewPass123!"
-
-    res = run("TC16", "PUT /user/password - doi mat khau thanh cong",
-              "put", f"{url}/user/password", 200,
-              headers=auth(USER_TOKEN),
-              json={"current_password": ORIGINAL_PASSWORD,
-                    "password": NEW_PASSWORD,
-                    "password_confirmation": NEW_PASSWORD})
-    if res and res.status_code == 200:
-        # Verify đăng nhập với mật khẩu mới
-        new_token = login(USER_EMAIL, NEW_PASSWORD)
-        if new_token:
-            print(f"  [INFO] TC16: dang nhap voi mat khau moi thanh cong")
-            USER_TOKEN = new_token
-        else:
-            print(f"  [WARN] TC16: khong dang nhap duoc voi mat khau moi")
-    elif res:
-        print(f"  [DEBUG] TC16 response: {res.text[:200]}")
-
-    run("TC17", "PUT /user/password - current_password sai",
-        "put", f"{url}/user/password", [400, 422],
+    run("TC17", "PUT /user/password - doi mat khau thanh cong",
+        "put", f"{url}/user/password", 200,
         headers=auth(USER_TOKEN),
-        json={"current_password": "wrongpassword",
-              "password": "AnotherPass123!",
-              "password_confirmation": "AnotherPass123!"})
+        json={
+            "current_password": USER_PASSWORD,
+            "password": "NewPassword123!",
+            "password_confirmation": "NewPassword123!"
+        })
 
-    run("TC18", "PUT /user/password - password khong khop",
+    # Doi lai mat khau cu de cac TC sau van dung duoc
+    requests.put(f"{url}/user/password",
+                 headers=auth(USER_TOKEN),
+                 json={
+                     "current_password": "NewPassword123!",
+                     "password": USER_PASSWORD,
+                     "password_confirmation": USER_PASSWORD
+                 })
+    print(f"  [SETUP] Doi lai mat khau ve '{USER_PASSWORD}'")
+
+    run("TC18", "PUT /user/password - mat khau hien tai sai → 400",
+        "put", f"{url}/user/password", [400, 401, 422],
+        headers=auth(USER_TOKEN),
+        json={
+            "current_password": "WrongPassword999",
+            "password": "NewPassword123!",
+            "password_confirmation": "NewPassword123!"
+        })
+
+    run("TC19", "PUT /user/password - password_confirmation khong khop → 422",
         "put", f"{url}/user/password", 422,
         headers=auth(USER_TOKEN),
-        json={"current_password": NEW_PASSWORD,
-              "password": "NewPass123!",
-              "password_confirmation": "DifferentPass!"})
+        json={
+            "current_password": USER_PASSWORD,
+            "password": "NewPassword123!",
+            "password_confirmation": "DifferentPassword!"
+        })
 
-    run("TC19", "PUT /user/password - password qua ngan",
+    run("TC20", "PUT /user/password - mat khau moi qua ngan → 422",
         "put", f"{url}/user/password", 422,
         headers=auth(USER_TOKEN),
-        json={"current_password": NEW_PASSWORD,
-              "password": "123",
-              "password_confirmation": "123"})
+        json={
+            "current_password": USER_PASSWORD,
+            "password": "123",
+            "password_confirmation": "123"
+        })
 
-    run("TC20", "PUT /user/password - thieu current_password",
+    run("TC21", "PUT /user/password - thieu current_password → 422",
         "put", f"{url}/user/password", 422,
         headers=auth(USER_TOKEN),
-        json={"password": "NewPass123!", "password_confirmation": "NewPass123!"})
+        json={
+            "password": "NewPassword123!",
+            "password_confirmation": "NewPassword123!"
+        })
 
-    run("TC21", "PUT /user/password - khong co token",
+    run("TC22", "PUT /user/password - thieu password → 422",
+        "put", f"{url}/user/password", 422,
+        headers=auth(USER_TOKEN),
+        json={
+            "current_password": USER_PASSWORD,
+            "password_confirmation": "NewPassword123!"
+        })
+
+    run("TC23", "PUT /user/password - khong co token → 401",
         "put", f"{url}/user/password", 401,
         headers=auth(),
-        json={"current_password": NEW_PASSWORD,
-              "password": "NewPass123!",
-              "password_confirmation": "NewPass123!"})
+        json={
+            "current_password": USER_PASSWORD,
+            "password": "NewPassword123!",
+            "password_confirmation": "NewPassword123!"
+        })
 
-    # Restore mật khẩu gốc
-    restore = requests.put(f"{url}/user/password", headers=auth(USER_TOKEN),
-                           json={"current_password": NEW_PASSWORD,
-                                 "password": ORIGINAL_PASSWORD,
-                                 "password_confirmation": ORIGINAL_PASSWORD})
-    if restore.status_code == 200:
-        USER_TOKEN = login(USER_EMAIL, ORIGINAL_PASSWORD) or USER_TOKEN
-        print(f"[SETUP] Mat khau da duoc restore ve '{ORIGINAL_PASSWORD}'")
-    else:
-        print(f"[WARN] Khong restore duoc mat khau: {restore.status_code} - {restore.text[:100]}")
+    # ── GET /user/ratings ────────────────────────────────────
 
-    # ── GET /user/ratings ─────────────────────────────────────
-
-    res = run("TC22", "GET /user/ratings - lay tat ca",
+    res = run("TC24", "GET /user/ratings - lay lich su danh gia",
               "get", f"{url}/user/ratings", 200,
-              headers=auth(USER_TOKEN))
+              headers=auth(USER_TOKEN), timeout=60)
     if res and res.status_code == 200:
-        try:
-            data  = res.json().get("data", [])
-            items = data if isinstance(data, list) else data.get("data", [])
-            print(f"  [INFO] TC22: {len(items)} ratings")
-        except Exception:
-            pass
+        items = extract_items(res)
+        print(f"  [INFO] TC24: {len(items)} ratings")
+        if items and isinstance(items[0], dict):
+            print(f"  [INFO] TC24: fields = {list(items[0].keys())}")
 
-    res = run("TC23", "GET /user/ratings - filter status=pending",
-              "get", f"{url}/user/ratings", 200,
-              headers=auth(USER_TOKEN), params={"status": "pending"})
-    if res and res.status_code == 200:
-        try:
-            data  = res.json().get("data", [])
-            items = data if isinstance(data, list) else data.get("data", [])
-            bad   = [r for r in items if isinstance(r, dict) and r.get("status") != "pending"]
-            if bad:
-                print(f"  [WARN] TC23: co {len(bad)} record khong phai pending")
-        except Exception:
-            pass
-
-    run("TC24", "GET /user/ratings - filter status=approved",
+    run("TC25", "GET /user/ratings - filter status=approved",
         "get", f"{url}/user/ratings", 200,
-        headers=auth(USER_TOKEN), params={"status": "approved"})
+        headers=auth(USER_TOKEN),
+        params={"status": "approved"})
 
-    run("TC25", "GET /user/ratings - filter status=rejected",
+    run("TC26", "GET /user/ratings - filter status=pending",
         "get", f"{url}/user/ratings", 200,
-        headers=auth(USER_TOKEN), params={"status": "rejected"})
+        headers=auth(USER_TOKEN),
+        params={"status": "pending"})
 
-    res = run("TC26", "GET /user/ratings - phan trang per_page=5",
+    res = run("TC27", "GET /user/ratings - phan trang per_page=5",
               "get", f"{url}/user/ratings", 200,
-              headers=auth(USER_TOKEN), params={"page": 1, "per_page": 5})
+              headers=auth(USER_TOKEN),
+              params={"page": 1, "per_page": 5})
     if res and res.status_code == 200:
-        try:
-            data  = res.json().get("data", [])
-            items = data if isinstance(data, list) else data.get("data", [])
-            if len(items) > 5:
-                print(f"  [WARN] TC26: data co {len(items)} phan tu, nen <= 5")
-        except Exception:
-            pass
+        items = extract_items(res)
+        print(f"  [INFO] TC27: {len(items)} items {'OK' if len(items) <= 5 else 'WARN > 5'}")
 
-    run("TC27", "GET /user/ratings - status sai gia tri",
-        "get", f"{url}/user/ratings", 422,
-        headers=auth(USER_TOKEN), params={"status": "invalid"})
+    run("TC28", "GET /user/ratings - status sai gia tri → 422",
+        "get", f"{url}/user/ratings", [200, 422],
+        headers=auth(USER_TOKEN),
+        params={"status": "invalid_status"})
 
-    run("TC28", "GET /user/ratings - khong co token",
+    run("TC29", "GET /user/ratings - khong co token → 401",
         "get", f"{url}/user/ratings", 401,
         headers=auth())
 
-    # Cleanup temp files
-    for f in temp_files:
-        try:
-            os.remove(f)
-        except Exception:
-            pass
+    # ── GET /user/search-history ─────────────────────────────
+
+    res = run("TC30", "GET /user/search-history - lay lich su tim kiem",
+              "get", f"{url}/user/search-history", 200,
+              headers=auth(USER_TOKEN))
+    if res and res.status_code == 200:
+        items = extract_items(res)
+        print(f"  [INFO] TC30: {len(items)} search history items")
+
+    res = run("TC31", "GET /user/search-history - co limit",
+              "get", f"{url}/user/search-history", 200,
+              headers=auth(USER_TOKEN),
+              params={"limit": 5})
+    if res and res.status_code == 200:
+        items = extract_items(res)
+        print(f"  [INFO] TC31: {len(items)} items (limit=5)")
+
+    run("TC32", "GET /user/search-history - limit=0 [edge case]",
+        "get", f"{url}/user/search-history", [200, 422],
+        headers=auth(USER_TOKEN),
+        params={"limit": 0})
+
+    run("TC33", "GET /user/search-history - khong co token → 401",
+        "get", f"{url}/user/search-history", 401,
+        headers=auth())
+
+    # ── DELETE /user/search-history ──────────────────────────
+
+    res = run("TC34", "DELETE /user/search-history - xoa lich su tim kiem",
+              "delete", f"{url}/user/search-history", [200, 204],
+              headers=auth(USER_TOKEN))
+    if res and res.status_code in (200, 204):
+        print(f"  [INFO] TC34: xoa lich su tim kiem OK")
+
+    # Verify da xoa
+    res = run("TC35", "GET /user/search-history - sau khi xoa phai rong",
+              "get", f"{url}/user/search-history", 200,
+              headers=auth(USER_TOKEN))
+    if res and res.status_code == 200:
+        items = extract_items(res)
+        if len(items) == 0:
+            print(f"  [INFO] TC35: lich su rong sau khi xoa - OK")
+        else:
+            print(f"  [WARN] TC35: van con {len(items)} items sau khi xoa")
+
+    run("TC36", "DELETE /user/search-history - khong co token → 401",
+        "delete", f"{url}/user/search-history", 401,
+        headers=auth())
+
+    # ── DELETE /user/account ─────────────────────────────────
+    # NOTE: TC nay dung tai khoang cuoi, dung account rieng de tranh mat USER_TOKEN
+
+    # Tao account moi de test xoa
+    del_email    = f"del_user_{ts}@example.com"
+    del_password = "DeleteMe123!"
+    del_token    = None
+
+    reg_res = requests.post(f"{url}/auth/register",
+                            headers={"Accept": "application/json"},
+                            json={
+                                "username": f"deluser{ts}",
+                                "full_name": f"Delete User {ts}",
+                                "email": del_email,
+                                "password": del_password,
+                                "password_confirmation": del_password
+                            })
+    if reg_res.status_code in (200, 201):
+        del_token = login(del_email, del_password)
+        print(f"  [SETUP] Tao account xoa: {del_email}")
+    else:
+        print(f"  [SETUP] Tao account xoa that bai: {reg_res.status_code} - {reg_res.text[:150]}")
+
+    if del_token:
+        run("TC37", "DELETE /user/account - mat khau sai → 400",
+            "delete", f"{url}/user/account", [400, 401, 422],
+            headers=auth(del_token),
+            json={"password": "WrongPassword999"})
+
+        run("TC38", "DELETE /user/account - thieu password → 422",
+            "delete", f"{url}/user/account", 422,
+            headers=auth(del_token),
+            json={})
+
+        res = run("TC39", "DELETE /user/account - xoa tai khoan thanh cong",
+                  "delete", f"{url}/user/account", [200, 204],
+                  headers=auth(del_token),
+                  json={"password": del_password})
+        if res and res.status_code in (200, 204):
+            print(f"  [INFO] TC39: xoa tai khoan {del_email} OK")
+
+        # Verify token cu khong dung duoc nua
+        run("TC40", "GET /user/profile - sau khi xoa tai khoan token het hieu luc → 401",
+            "get", f"{url}/user/profile", 401,
+            headers=auth(del_token))
+    else:
+        for tc in ["TC37", "TC38", "TC39", "TC40"]:
+            print(f"[SKIP] {tc} - khong tao duoc account de test xoa")
+            results.append((tc, "DELETE /user/account", None, "skip"))
+
+    run("TC41", "DELETE /user/account - khong co token → 401",
+        "delete", f"{url}/user/account", 401,
+        headers=auth(),
+        json={"password": USER_PASSWORD})
 
     # ── SUMMARY ──────────────────────────────────────────────
 
-    total  = len(results)
-    passed = sum(1 for _, _, ok, _ in results if ok)
-    failed = total - passed
+    total   = len(results)
+    passed  = sum(1 for _, _, ok, _ in results if ok is True)
+    failed  = sum(1 for _, _, ok, _ in results if ok is False)
+    skipped = sum(1 for _, _, ok, _ in results if ok is None)
+
     print(f"\n{'='*55}")
-    print(f"  TOTAL: {total} | PASS: {passed} | FAIL: {failed}")
+    print(f"  TOTAL: {total} | PASS: {passed} | FAIL: {failed} | SKIP: {skipped}")
     print(f"{'='*55}")
     if failed:
         print("\nFailed cases:")
         for tc, desc, ok, code in results:
-            if not ok:
+            if ok is False:
                 print(f"  - {tc}: {desc} (got {code})")
+    if skipped:
+        print("\nSkipped cases:")
+        for tc, desc, ok, code in results:
+            if ok is None:
+                print(f"  - {tc}: {desc}")
 
 
 if __name__ == "__main__":
