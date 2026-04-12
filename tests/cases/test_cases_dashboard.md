@@ -1,252 +1,362 @@
-﻿# Test Cases  ADMIN DASHBOARD & REPORTS
+﻿# Test Cases — ADMIN DASHBOARD & REPORTS
 
 > Base URL: `http://localhost:8000/api/v1`
->  Admin token bắt buộc cho tất cả endpoints
+> Branch: `feat/taynd/api-admin-dashboard`
+> 🛡️ Admin token bắt buộc cho tất cả endpoints
 
 ---
 
-## 1. GET /admin/dashboard  Tổng quan
+## 1. GET /admin/dashboard/stats — Tổng quan
 
-###  TC01  Lấy dashboard thành công
+### ✅ TC01 — Lấy stats thành công
 ```http
-GET /api/v1/admin/dashboard
+GET /api/v1/admin/dashboard/stats
+Authorization: Bearer {admin_token}
 ```
 - Expected: `200 OK`
-- Verify: response có các field thống kê tổng quan (users, locations, ratings, views)
+- Verify: có các field `total_users`, `total_tours`, `total_bookings`, `total_revenue`
 
-###  TC02  Response có đủ các field cần thiết
-- Expected: `200 OK`
-- Verify: có ít nhất các field: `total_users`, `total_locations`, `total_ratings`, `total_views` (hoặc tên tương đương)
-
-###  TC03  User thường không được truy cập
-```http
-GET /api/v1/admin/dashboard
-```
+### ❌ TC02 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC04  Không có token
-```http
-GET /api/v1/admin/dashboard
-```
+### ❌ TC03 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 2. GET /admin/reports/locations  Thống kê địa điểm
+## 2. GET /admin/dashboard/revenue — Thống kê doanh thu
 
-###  TC05  Lấy thống kê không filter
+### ✅ TC05 — Lấy revenue mặc định
 ```http
-GET /api/v1/admin/reports/locations
+GET /api/v1/admin/dashboard/revenue
 ```
-- Expected: `200 OK`
-- Verify: response có data thống kê theo category hoặc district
+- Expected: `200 OK`, `data` là array theo thời gian
 
-###  TC06  Filter `from` và `to` hợp lệ
+### ✅ TC06 — Filter `period=day`
 ```http
-GET /api/v1/admin/reports/locations?from=2026-01-01&to=2026-03-31
-```
-- Expected: `200 OK`
-
-###  TC07  Filter chỉ `from`
-```http
-GET /api/v1/admin/reports/locations?from=2026-01-01
+GET /api/v1/admin/dashboard/revenue?period=day
 ```
 - Expected: `200 OK`
 
-###  TC08  Filter chỉ `to`
+### ✅ TC07 — Filter `period=week`
 ```http
-GET /api/v1/admin/reports/locations?to=2026-03-31
+GET /api/v1/admin/dashboard/revenue?period=week
 ```
 - Expected: `200 OK`
 
-###  TC09  `from` sai định dạng ngày
+### ✅ TC08 — Filter `period=month`
 ```http
-GET /api/v1/admin/reports/locations?from=31-01-2026
+GET /api/v1/admin/dashboard/revenue?period=month
+```
+- Expected: `200 OK`
+
+### ✅ TC09 — Filter `period=year`
+```http
+GET /api/v1/admin/dashboard/revenue?period=year
+```
+- Expected: `200 OK`
+
+### ✅ TC10 — Filter `from` và `to`
+```http
+GET /api/v1/admin/dashboard/revenue?from=2026-01-01&to=2026-12-31
+```
+- Expected: `200 OK`
+
+### ❌ TC11 — `period` sai giá trị → 422
+```http
+GET /api/v1/admin/dashboard/revenue?period=invalid
 ```
 - Expected: `422 Unprocessable`
 
-###  TC10  `to` sai định dạng ngày
+### ❌ TC12 — `from` sai định dạng → 422
 ```http
-GET /api/v1/admin/reports/locations?to=not-a-date
+GET /api/v1/admin/dashboard/revenue?from=31-01-2026
 ```
 - Expected: `422 Unprocessable`
 
-###  TC11  `from` > `to` (khoảng ngày ngược)
-```http
-GET /api/v1/admin/reports/locations?from=2026-12-31&to=2026-01-01
-```
-- Expected: `422 Unprocessable` hoặc `200 OK` với data rỗng
-
-###  TC12  User thường không được truy cập
+### ❌ TC13 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC13  Không có token
+### ❌ TC14 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 3. GET /admin/reports/ratings  Thống kê đánh giá
+## 3. GET /admin/dashboard/top-tours — Top tour bán chạy
 
-###  TC14  Lấy thống kê không filter
+### ✅ TC15 — Lấy top tours mặc định
+```http
+GET /api/v1/admin/dashboard/top-tours
+```
+- Expected: `200 OK`, `data` là array, mỗi item có `id`, `name`
+
+### ✅ TC16 — Giới hạn `limit=5`
+```http
+GET /api/v1/admin/dashboard/top-tours?limit=5
+```
+- Expected: `200 OK`, `data` có tối đa 5 phần tử
+
+### ✅ TC17 — Filter `from` và `to`
+```http
+GET /api/v1/admin/dashboard/top-tours?from=2026-01-01&to=2026-12-31
+```
+- Expected: `200 OK`
+
+### ❌ TC18 — `limit` không phải số → 422
+```http
+GET /api/v1/admin/dashboard/top-tours?limit=abc
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC19 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC20 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 4. GET /admin/dashboard/top-locations — Top địa điểm
+
+### ✅ TC21 — Lấy top locations mặc định
+```http
+GET /api/v1/admin/dashboard/top-locations
+```
+- Expected: `200 OK`, `data` là array, mỗi item có `id`, `name`
+
+### ✅ TC22 — Giới hạn `limit=5`
+```http
+GET /api/v1/admin/dashboard/top-locations?limit=5
+```
+- Expected: `200 OK`, `data` có tối đa 5 phần tử
+
+### ❌ TC23 — `limit` không phải số → 422
+- Expected: `422 Unprocessable`
+
+### ❌ TC24 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC25 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 5. GET /admin/dashboard/user-growth — Tăng trưởng người dùng
+
+### ✅ TC26 — Lấy user growth năm hiện tại
+```http
+GET /api/v1/admin/dashboard/user-growth
+```
+- Expected: `200 OK`
+- Verify: data theo tháng (12 phần tử hoặc tương đương)
+
+### ✅ TC27 — Filter `year=2026`
+```http
+GET /api/v1/admin/dashboard/user-growth?year=2026
+```
+- Expected: `200 OK`
+
+### ✅ TC28 — Filter `year` năm quá khứ
+```http
+GET /api/v1/admin/dashboard/user-growth?year=2025
+```
+- Expected: `200 OK`
+
+### ❌ TC29 — `year` không phải số → 422
+```http
+GET /api/v1/admin/dashboard/user-growth?year=abc
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC30 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC31 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 6. GET /admin/dashboard/booking-trend — Xu hướng đặt tour
+
+### ✅ TC32 — Lấy booking trend mặc định (30 ngày)
+```http
+GET /api/v1/admin/dashboard/booking-trend
+```
+- Expected: `200 OK`, `data` là array theo ngày
+
+### ✅ TC33 — Filter `days=7`
+```http
+GET /api/v1/admin/dashboard/booking-trend?days=7
+```
+- Expected: `200 OK`
+
+### ✅ TC34 — Filter `days=90`
+```http
+GET /api/v1/admin/dashboard/booking-trend?days=90
+```
+- Expected: `200 OK`
+
+### ❌ TC35 — `days` âm → 422
+```http
+GET /api/v1/admin/dashboard/booking-trend?days=-1
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC36 — `days` không phải số → 422
+```http
+GET /api/v1/admin/dashboard/booking-trend?days=abc
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC37 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC38 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 7. GET /admin/reports/bookings — Báo cáo đơn hàng
+
+### ✅ TC39 — Lấy báo cáo không filter
+```http
+GET /api/v1/admin/reports/bookings
+```
+- Expected: `200 OK`
+
+### ✅ TC40 — Filter `from` và `to`
+```http
+GET /api/v1/admin/reports/bookings?from=2026-01-01&to=2026-12-31
+```
+- Expected: `200 OK`
+
+### ✅ TC41 — Filter `status=confirmed`
+```http
+GET /api/v1/admin/reports/bookings?status=confirmed
+```
+- Expected: `200 OK`
+
+### ✅ TC42 — Filter `payment_status=paid`
+```http
+GET /api/v1/admin/reports/bookings?payment_status=paid
+```
+- Expected: `200 OK`
+
+### ✅ TC43 — Kết hợp tất cả filters
+```http
+GET /api/v1/admin/reports/bookings?from=2026-01-01&to=2026-12-31&status=confirmed&payment_status=paid
+```
+- Expected: `200 OK`
+
+### ❌ TC44 — `status` sai giá trị → 422
+```http
+GET /api/v1/admin/reports/bookings?status=invalid
+```
+- Expected: `422 Unprocessable`
+
+### ❌ TC45 — `from` sai định dạng → 422
+- Expected: `422 Unprocessable`
+
+### ❌ TC46 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC47 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 8. GET /admin/reports/ratings — Thống kê đánh giá
+
+### ✅ TC48 — Lấy báo cáo không filter
 ```http
 GET /api/v1/admin/reports/ratings
 ```
 - Expected: `200 OK`
-- Verify: response có data thống kê theo thời gian
 
-###  TC15  Filter `from` và `to`
+### ✅ TC49 — Filter `from` và `to`
 ```http
-GET /api/v1/admin/reports/ratings?from=2026-01-01&to=2026-03-31
+GET /api/v1/admin/reports/ratings?from=2026-01-01&to=2026-12-31
 ```
 - Expected: `200 OK`
 
-###  TC16  Filter `status=pending`
-```http
-GET /api/v1/admin/reports/ratings?status=pending
-```
-- Expected: `200 OK`
-
-###  TC17  Filter `status=approved`
+### ✅ TC50 — Filter `status=approved`
 ```http
 GET /api/v1/admin/reports/ratings?status=approved
 ```
 - Expected: `200 OK`
 
-###  TC18  Filter `status=rejected`
-```http
-GET /api/v1/admin/reports/ratings?status=rejected
-```
+### ✅ TC51 — Filter `status=pending`
 - Expected: `200 OK`
 
-###  TC19  Kết hợp `from`, `to`, `status`
-```http
-GET /api/v1/admin/reports/ratings?from=2026-01-01&to=2026-03-31&status=approved
-```
+### ✅ TC52 — Filter `status=rejected`
 - Expected: `200 OK`
 
-###  TC20  `status` sai giá trị
-```http
-GET /api/v1/admin/reports/ratings?status=invalid
-```
+### ❌ TC53 — `status` sai giá trị → 422
 - Expected: `422 Unprocessable`
 
-###  TC21  `from` sai định dạng
-```http
-GET /api/v1/admin/reports/ratings?from=not-a-date
-```
+### ❌ TC54 — `from` sai định dạng → 422
 - Expected: `422 Unprocessable`
 
-###  TC22  User thường không được truy cập
+### ❌ TC55 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC23  Không có token
+### ❌ TC56 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 4. GET /admin/reports/users  Thống kê người dùng mới
+## 9. GET /admin/reports/users — Thống kê người dùng mới
 
-###  TC24  Lấy thống kê không filter (năm hiện tại)
+### ✅ TC57 — Lấy báo cáo năm hiện tại
 ```http
 GET /api/v1/admin/reports/users
 ```
-- Expected: `200 OK`
-- Verify: response có 12 tháng hoặc data theo tháng
+- Expected: `200 OK`, data theo tháng
 
-###  TC25  Filter `year` hợp lệ
+### ✅ TC58 — Filter `year=2026`
 ```http
 GET /api/v1/admin/reports/users?year=2026
 ```
 - Expected: `200 OK`
-- Verify: data thuộc năm 2026
 
-###  TC26  Filter `year` năm quá khứ
+### ✅ TC59 — Filter `year` năm quá khứ
 ```http
 GET /api/v1/admin/reports/users?year=2025
 ```
 - Expected: `200 OK`
 
-###  TC27  `year` không phải số
-```http
-GET /api/v1/admin/reports/users?year=abc
-```
+### ❌ TC60 — `year` không phải số → 422
 - Expected: `422 Unprocessable`
 
-###  TC28  `year` quá nhỏ (vô lý)
-```http
-GET /api/v1/admin/reports/users?year=1900
-```
-- Expected: `422 Unprocessable` hoặc `200 OK` với data rỗng
-
-###  TC29  User thường không được truy cập
+### ❌ TC61 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC30  Không có token
+### ❌ TC62 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 5. GET /admin/reports/points  Thống kê giao dịch point
+## 10. GET /admin/reports/revenue-detail — Doanh thu chi tiết theo tour
 
-###  TC31  Lấy thống kê không filter
+### ✅ TC63 — Lấy báo cáo không filter
 ```http
-GET /api/v1/admin/reports/points
-```
-- Expected: `200 OK`
-- Verify: response có data thống kê giao dịch
-
-###  TC32  Filter `from` và `to`
-```http
-GET /api/v1/admin/reports/points?from=2026-01-01&to=2026-03-31
+GET /api/v1/admin/reports/revenue-detail
 ```
 - Expected: `200 OK`
 
-###  TC33  Filter `type=purchase`
+### ✅ TC64 — Filter `from` và `to`
 ```http
-GET /api/v1/admin/reports/points?type=purchase
+GET /api/v1/admin/reports/revenue-detail?from=2026-01-01&to=2026-12-31
 ```
 - Expected: `200 OK`
 
-###  TC34  Filter `type=spend`
-```http
-GET /api/v1/admin/reports/points?type=spend
-```
-- Expected: `200 OK`
-
-###  TC35  Filter `type=bonus`
-```http
-GET /api/v1/admin/reports/points?type=bonus
-```
-- Expected: `200 OK`
-
-###  TC36  Filter `type=refund`
-```http
-GET /api/v1/admin/reports/points?type=refund
-```
-- Expected: `200 OK`
-
-###  TC37  Kết hợp `from`, `to`, `type`
-```http
-GET /api/v1/admin/reports/points?from=2026-01-01&to=2026-03-31&type=purchase
-```
-- Expected: `200 OK`
-
-###  TC38  `type` sai giá trị
-```http
-GET /api/v1/admin/reports/points?type=invalid
-```
+### ❌ TC65 — `from` sai định dạng → 422
 - Expected: `422 Unprocessable`
 
-###  TC39  `from` sai định dạng
-```http
-GET /api/v1/admin/reports/points?from=not-a-date
-```
-- Expected: `422 Unprocessable`
-
-###  TC40  User thường không được truy cập
+### ❌ TC66 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC41  Không có token
+### ❌ TC67 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
@@ -255,44 +365,15 @@ GET /api/v1/admin/reports/points?from=not-a-date
 
 | TC | API | Trường hợp | Expected |
 |----|-----|-----------|----------|
-| TC01 | GET /admin/dashboard | Lấy tổng quan | 200 |
-| TC02 | GET /admin/dashboard | Đủ fields | 200 |
-| TC03 | GET /admin/dashboard | User thường | 403 |
-| TC04 | GET /admin/dashboard | Không có token | 401 |
-| TC05 | GET /admin/reports/locations | Không filter | 200 |
-| TC06 | GET /admin/reports/locations | from + to | 200 |
-| TC07 | GET /admin/reports/locations | Chỉ from | 200 |
-| TC08 | GET /admin/reports/locations | Chỉ to | 200 |
-| TC09 | GET /admin/reports/locations | from sai định dạng | 422 |
-| TC10 | GET /admin/reports/locations | to sai định dạng | 422 |
-| TC11 | GET /admin/reports/locations | from > to | 422/200 |
-| TC12 | GET /admin/reports/locations | User thường | 403 |
-| TC13 | GET /admin/reports/locations | Không có token | 401 |
-| TC14 | GET /admin/reports/ratings | Không filter | 200 |
-| TC15 | GET /admin/reports/ratings | from + to | 200 |
-| TC16 | GET /admin/reports/ratings | status=pending | 200 |
-| TC17 | GET /admin/reports/ratings | status=approved | 200 |
-| TC18 | GET /admin/reports/ratings | status=rejected | 200 |
-| TC19 | GET /admin/reports/ratings | Kết hợp filters | 200 |
-| TC20 | GET /admin/reports/ratings | status sai | 422 |
-| TC21 | GET /admin/reports/ratings | from sai định dạng | 422 |
-| TC22 | GET /admin/reports/ratings | User thường | 403 |
-| TC23 | GET /admin/reports/ratings | Không có token | 401 |
-| TC24 | GET /admin/reports/users | Không filter | 200 |
-| TC25 | GET /admin/reports/users | year=2026 | 200 |
-| TC26 | GET /admin/reports/users | year quá khứ | 200 |
-| TC27 | GET /admin/reports/users | year không phải số | 422 |
-| TC28 | GET /admin/reports/users | year=1900 | 422/200 |
-| TC29 | GET /admin/reports/users | User thường | 403 |
-| TC30 | GET /admin/reports/users | Không có token | 401 |
-| TC31 | GET /admin/reports/points | Không filter | 200 |
-| TC32 | GET /admin/reports/points | from + to | 200 |
-| TC33 | GET /admin/reports/points | type=purchase | 200 |
-| TC34 | GET /admin/reports/points | type=spend | 200 |
-| TC35 | GET /admin/reports/points | type=bonus | 200 |
-| TC36 | GET /admin/reports/points | type=refund | 200 |
-| TC37 | GET /admin/reports/points | Kết hợp filters | 200 |
-| TC38 | GET /admin/reports/points | type sai | 422 |
-| TC39 | GET /admin/reports/points | from sai định dạng | 422 |
-| TC40 | GET /admin/reports/points | User thường | 403 |
-| TC41 | GET /admin/reports/points | Không có token | 401 |
+| TC01–TC03 | GET /admin/dashboard/stats | Stats, fields, auth | 200/403/401 |
+| TC04–TC13 | GET /admin/dashboard/revenue | Revenue, period, date, auth | 200/422/403/401 |
+| TC14–TC19 | GET /admin/dashboard/top-tours | Top tours, limit, date, auth | 200/422/403/401 |
+| TC20–TC24 | GET /admin/dashboard/top-locations | Top locations, limit, auth | 200/422/403/401 |
+| TC25–TC30 | GET /admin/dashboard/user-growth | User growth, year, auth | 200/422/403/401 |
+| TC31–TC37 | GET /admin/dashboard/booking-trend | Booking trend, days, auth | 200/422/403/401 |
+| TC38–TC46 | GET /admin/reports/bookings | Bookings report, filters, auth | 200/422/403/401 |
+| TC47–TC55 | GET /admin/reports/ratings | Ratings report, filters, auth | 200/422/403/401 |
+| TC56–TC61 | GET /admin/reports/users | Users report, year, auth | 200/422/403/401 |
+| TC62–TC66 | GET /admin/reports/revenue-detail | Revenue detail, date, auth | 200/422/403/401 |
+
+**Tổng: 66 test cases** — 33 happy path ✅ · 33 error case ❌

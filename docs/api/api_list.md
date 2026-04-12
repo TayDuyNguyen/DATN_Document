@@ -355,7 +355,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## CONTACTS (Liên hệ)
 > 🌿 Branch: `feat/taynd/api-contacts`
 > 💬 `feat(contacts): public submit contact form, admin manage & reply`
-> 🧪 Test: *(chưa có script)*
+> 🧪 Test: `python test/scripts/test_contacts.py`
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
@@ -384,7 +384,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 ## CONFIG & UTILITIES
 > 🌿 Branch: `feat/taynd/api-config`
 > 💬 `feat(config): website config, weather, health check`
-> 🧪 Test: *(chưa có script)*
+> 🧪 Test: ``
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|

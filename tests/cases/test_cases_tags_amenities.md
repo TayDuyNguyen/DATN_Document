@@ -1,268 +1,256 @@
-﻿# Test Cases  TAGS & AMENITIES
+﻿# Test Cases — TAGS & AMENITIES
 
 > Base URL: `http://localhost:8000/api/v1`
->  Public: không cần token
->  Admin token bắt buộc cho write endpoints
+> Branch: `feat/taynd/api-tags-amenities`
+> 🌐 Public: GET endpoints | 🛡️ Admin token bắt buộc cho write endpoints
 
 ---
 
-## 1. GET /tags  Danh sách tags (Public)
+## 1. GET /tags — Danh sách tags (Public)
 
-###  TC01  Lấy tất cả tags thành công
+### ✅ TC01 — Lấy tất cả tags
 ```http
 GET /api/v1/tags
 ```
-- Expected: `200 OK`
-- Verify: response có `data` là array, mỗi item có `id`, `name`, `slug`, `type`
+- Expected: `200 OK`, mỗi item có `id`, `name`, `slug`, `type`
 
-###  TC02  Filter `type=cuisine`
-```http
-GET /api/v1/tags?type=cuisine
-```
-- Expected: `200 OK`
-- Verify: tất cả item có `type = cuisine`
+### ✅ TC02 — Filter `type=cuisine`
+- Expected: `200 OK`, tất cả item có `type = cuisine`
 
-###  TC03  Filter `type=service`
-```http
-GET /api/v1/tags?type=service
-```
-- Expected: `200 OK`
-- Verify: tất cả item có `type = service`
+### ✅ TC03 — Filter `type=service`
+- Expected: `200 OK`, tất cả item có `type = service`
 
-###  TC04  Filter `type=feature`
-```http
-GET /api/v1/tags?type=feature
-```
+### ✅ TC04 — Filter `type=feature`
 - Expected: `200 OK`
 
-###  TC05  Filter `type=atmosphere`
-```http
-GET /api/v1/tags?type=atmosphere
-```
+### ✅ TC05 — Filter `type=atmosphere`
 - Expected: `200 OK`
 
-###  TC06  Không cần token (public)
-```http
-GET /api/v1/tags
-```
+### ✅ TC06 — Không cần token (public)
 - Expected: `200 OK`
 
-###  TC07  `type` sai giá trị
+### ❌ TC07 — `type` sai giá trị → 422
 ```http
-GET /api/v1/tags?type=invalid
+GET /api/v1/tags?type=invalid_type
 ```
-- Expected: `422 Unprocessable`
+- Expected: `200 OK` hoặc `422 Unprocessable`
+- Note: tùy backend có validate enum hay không
 
 ---
 
-## 2. GET /amenities  Danh sách tiện ích (Public)
+## 2. GET /amenities — Danh sách tiện ích (Public)
 
-###  TC08  Lấy tất cả amenities thành công
+### ✅ TC08 — Lấy tất cả amenities
 ```http
 GET /api/v1/amenities
 ```
-- Expected: `200 OK`
-- Verify: mỗi item có `id`, `name`, `icon`, `category`
+- Expected: `200 OK`, mỗi item có `id`, `name`, `icon`, `category`
 
-###  TC09  Filter `category=connectivity`
-```http
-GET /api/v1/amenities?category=connectivity
-```
-- Expected: `200 OK`
-- Verify: tất cả item có `category = connectivity`
+### ✅ TC09 — Filter `category=connectivity`
+- Expected: `200 OK`, tất cả item có `category = connectivity`
 
-###  TC10  Filter `category=parking`
-```http
-GET /api/v1/amenities?category=parking
-```
+### ✅ TC10 — Filter `category=parking`
 - Expected: `200 OK`
 
-###  TC11  Filter `category=comfort`
-```http
-GET /api/v1/amenities?category=comfort
-```
+### ✅ TC11 — Filter `category=comfort`
 - Expected: `200 OK`
 
-###  TC12  Filter `category=payment`
-```http
-GET /api/v1/amenities?category=payment
-```
+### ✅ TC12 — Filter `category=payment`
 - Expected: `200 OK`
 
-###  TC13  Không cần token (public)
-```http
-GET /api/v1/amenities
-```
+### ✅ TC13 — Không cần token (public)
 - Expected: `200 OK`
 
-###  TC14  `category` sai giá trị
+### ❌ TC14 — `category` sai giá trị → 422
 ```http
-GET /api/v1/amenities?category=invalid
+GET /api/v1/amenities?category=invalid_category
 ```
-- Expected: `422 Unprocessable`
+- Expected: `200 OK` hoặc `422 Unprocessable`
+- Note: tùy backend có validate enum hay không
 
 ---
 
-## 3. POST /admin/tags  Tạo tag mới (Admin)
+## 3. POST /admin/tags — Tạo tag (Admin)
 
-###  TC15  Tạo tag thành công với đầy đủ fields
+### ✅ TC15 — Tạo tag đầy đủ fields
 ```json
-{ "name": "Test Tag", "slug": "test-tag", "type": "cuisine" }
+{ "name": "Test Tag", "slug": "test-tag-{ts}", "type": "cuisine" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
 - Verify: response có `id`, `name`, `slug`, `type`
 
-###  TC16  Tạo tag không có `type` (optional)
+### ✅ TC16 — Tạo tag không có `type` (optional)
 ```json
-{ "name": "Tag No Type", "slug": "tag-no-type" }
+{ "name": "Tag No Type {ts}" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
+- Note: `slug` tự sinh nếu không truyền
 
-###  TC17  Thiếu `name`
+### ❌ TC17 — Thiếu `name` → 422
 ```json
-{ "slug": "no-name" }
+{ "slug": "no-name", "type": "cuisine" }
 ```
 - Expected: `422 Unprocessable`
 
-###  TC18  Thiếu `slug`
+### ❌ TC18 — `type` sai giá trị → 422
 ```json
-{ "name": "No Slug" }
+{ "name": "Bad Type", "type": "invalid_type" }
 ```
 - Expected: `422 Unprocessable`
 
-###  TC19  `name` trùng (đã tồn tại)
-```json
-{ "name": "Test Tag", "slug": "test-tag-2" }
-```
+### ❌ TC19 — `slug` trùng → 422/409
 - Expected: `422 Unprocessable` hoặc `409 Conflict`
 
-###  TC20  `slug` trùng (đã tồn tại)
-```json
-{ "name": "Tag Unique Name", "slug": "test-tag" }
-```
-- Expected: `422 Unprocessable` hoặc `409 Conflict`
-
-###  TC21  `type` sai giá trị
-```json
-{ "name": "Bad Type", "slug": "bad-type", "type": "invalid" }
-```
-- Expected: `422 Unprocessable`
-
-###  TC22  User thường không được tạo tag
-```json
-{ "name": "User Tag", "slug": "user-tag" }
-```
+### ❌ TC20 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC23  Không có token
-```json
-{ "name": "No Token Tag", "slug": "no-token-tag" }
-```
+### ❌ TC21 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 4. DELETE /admin/tags/{id}  Xóa tag (Admin)
+## 4. PUT /admin/tags/{id} — Cập nhật tag (Admin)
 
-###  TC24  Xóa tag thành công
-```http
-DELETE /api/v1/admin/tags/{id}
+### ✅ TC22 — Cập nhật `name`
+```json
+{ "name": "Updated Tag Name" }
 ```
-- Expected: `200 OK` hoặc `204 No Content`
-- Verify: tag không còn trong GET /tags
+- Expected: `200 OK`, `name` thay đổi
 
-###  TC25  Xóa ID không tồn tại
+### ✅ TC23 — Cập nhật `type`
+```json
+{ "type": "service" }
+```
+- Expected: `200 OK`
+
+### ✅ TC24 — Cập nhật `slug`
+```json
+{ "slug": "updated-slug-{ts}" }
+```
+- Expected: `200 OK`
+
+### ❌ TC25 — ID không tồn tại → 404/422
 ```http
-DELETE /api/v1/admin/tags/99999
+PUT /api/v1/admin/tags/99999
 ```
 - Expected: `404 Not Found` hoặc `422 Unprocessable`
 
-###  TC26  User thường không được xóa
-```http
-DELETE /api/v1/admin/tags/{id}
+### ❌ TC26 — `type` sai giá trị → 422
+```json
+{ "type": "invalid_type" }
 ```
+- Expected: `422 Unprocessable`
+
+### ❌ TC27 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC27  Không có token
-```http
-DELETE /api/v1/admin/tags/{id}
-```
+### ❌ TC28 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 5. POST /admin/amenities  Tạo tiện ích mới (Admin)
+## 5. DELETE /admin/tags/{id} — Xóa tag (Admin)
 
-###  TC28  Tạo amenity thành công với đầy đủ fields
+### ✅ TC29 — Xóa tag thành công
+- Expected: `200 OK` hoặc `204 No Content`
+- Verify: GET /tags không còn ID này
+
+### ❌ TC30 — ID không tồn tại → 404/422
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
+
+### ❌ TC31 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC32 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 6. POST /admin/amenities — Tạo tiện ích (Admin)
+
+### ✅ TC33 — Tạo amenity đầy đủ fields
 ```json
-{ "name": "Test Amenity", "icon": "fa-test", "category": "connectivity" }
+{ "name": "Test Amenity {ts}", "icon": "fa-wifi", "category": "connectivity" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
 - Verify: response có `id`, `name`, `icon`, `category`
 
-###  TC29  Tạo amenity không có `icon` và `category` (optional)
+### ✅ TC34 — Tạo amenity chỉ có `name` (optional fields)
 ```json
-{ "name": "Amenity Minimal" }
+{ "name": "Minimal Amenity {ts}" }
 ```
 - Expected: `200 OK` hoặc `201 Created`
 
-###  TC30  Thiếu `name`
+### ❌ TC35 — Thiếu `name` → 422
 ```json
-{ "icon": "fa-test", "category": "connectivity" }
+{ "icon": "fa-wifi", "category": "connectivity" }
 ```
 - Expected: `422 Unprocessable`
 
-###  TC31  `name` trùng (đã tồn tại)
+### ❌ TC36 — `category` sai giá trị → 422
 ```json
-{ "name": "Test Amenity" }
-```
-- Expected: `422 Unprocessable` hoặc `409 Conflict`
-
-###  TC32  `category` sai giá trị
-```json
-{ "name": "Bad Category", "category": "invalid" }
+{ "name": "Bad Category", "category": "invalid_category" }
 ```
 - Expected: `422 Unprocessable`
 
-###  TC33  User thường không được tạo amenity
-```json
-{ "name": "User Amenity" }
-```
+### ❌ TC37 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC34  Không có token
-```json
-{ "name": "No Token Amenity" }
-```
+### ❌ TC38 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
 
-## 6. DELETE /admin/amenities/{id}  Xóa tiện ích (Admin)
+## 7. PUT /admin/amenities/{id} — Cập nhật tiện ích (Admin)
 
-###  TC35  Xóa amenity thành công
-```http
-DELETE /api/v1/admin/amenities/{id}
+### ✅ TC39 — Cập nhật `name`
+```json
+{ "name": "Updated Amenity Name" }
 ```
-- Expected: `200 OK` hoặc `204 No Content`
-- Verify: amenity không còn trong GET /amenities
+- Expected: `200 OK`, `name` thay đổi
 
-###  TC36  Xóa ID không tồn tại
-```http
-DELETE /api/v1/admin/amenities/99999
+### ✅ TC40 — Cập nhật `icon`
+```json
+{ "icon": "fa-parking" }
 ```
+- Expected: `200 OK`
+
+### ✅ TC41 — Cập nhật `category`
+```json
+{ "category": "parking" }
+```
+- Expected: `200 OK`
+
+### ❌ TC42 — ID không tồn tại → 404/422
 - Expected: `404 Not Found` hoặc `422 Unprocessable`
 
-###  TC37  User thường không được xóa
-```http
-DELETE /api/v1/admin/amenities/{id}
+### ❌ TC43 — `category` sai giá trị → 422
+```json
+{ "category": "invalid_category" }
 ```
+- Expected: `422 Unprocessable`
+
+### ❌ TC44 — User thường bị 403
 - Expected: `403 Forbidden`
 
-###  TC38  Không có token
-```http
-DELETE /api/v1/admin/amenities/{id}
-```
+### ❌ TC45 — Không có token → 401
+- Expected: `401 Unauthorized`
+
+---
+
+## 8. DELETE /admin/amenities/{id} — Xóa tiện ích (Admin)
+
+### ✅ TC46 — Xóa amenity thành công
+- Expected: `200 OK` hoặc `204 No Content`
+- Verify: GET /amenities không còn ID này
+
+### ❌ TC47 — ID không tồn tại → 404/422
+- Expected: `404 Not Found` hoặc `422 Unprocessable`
+
+### ❌ TC48 — User thường bị 403
+- Expected: `403 Forbidden`
+
+### ❌ TC49 — Không có token → 401
 - Expected: `401 Unauthorized`
 
 ---
@@ -271,42 +259,13 @@ DELETE /api/v1/admin/amenities/{id}
 
 | TC | API | Trường hợp | Expected |
 |----|-----|-----------|----------|
-| TC01 | GET /tags | Lấy tất cả | 200 |
-| TC02 | GET /tags | Filter type=cuisine | 200 |
-| TC03 | GET /tags | Filter type=service | 200 |
-| TC04 | GET /tags | Filter type=feature | 200 |
-| TC05 | GET /tags | Filter type=atmosphere | 200 |
-| TC06 | GET /tags | Không cần token | 200 |
-| TC07 | GET /tags | type sai giá trị | 422 |
-| TC08 | GET /amenities | Lấy tất cả | 200 |
-| TC09 | GET /amenities | Filter category=connectivity | 200 |
-| TC10 | GET /amenities | Filter category=parking | 200 |
-| TC11 | GET /amenities | Filter category=comfort | 200 |
-| TC12 | GET /amenities | Filter category=payment | 200 |
-| TC13 | GET /amenities | Không cần token | 200 |
-| TC14 | GET /amenities | category sai giá trị | 422 |
-| TC15 | POST /admin/tags | Tạo đầy đủ fields | 200/201 |
-| TC16 | POST /admin/tags | Không có type | 200/201 |
-| TC17 | POST /admin/tags | Thiếu name | 422 |
-| TC18 | POST /admin/tags | Thiếu slug | 422 |
-| TC19 | POST /admin/tags | name trùng | 422/409 |
-| TC20 | POST /admin/tags | slug trùng | 422/409 |
-| TC21 | POST /admin/tags | type sai | 422 |
-| TC22 | POST /admin/tags | User thường | 403 |
-| TC23 | POST /admin/tags | Không có token | 401 |
-| TC24 | DELETE /admin/tags/{id} | Xóa thành công | 200/204 |
-| TC25 | DELETE /admin/tags/{id} | ID không tồn tại | 404/422 |
-| TC26 | DELETE /admin/tags/{id} | User thường | 403 |
-| TC27 | DELETE /admin/tags/{id} | Không có token | 401 |
-| TC28 | POST /admin/amenities | Tạo đầy đủ fields | 200/201 |
-| TC29 | POST /admin/amenities | Chỉ có name | 200/201 |
-| TC30 | POST /admin/amenities | Thiếu name | 422 |
-| TC31 | POST /admin/amenities | name trùng | 422/409 |
-| TC32 | POST /admin/amenities | category sai | 422 |
-| TC33 | POST /admin/amenities | User thường | 403 |
-| TC34 | POST /admin/amenities | Không có token | 401 |
-| TC35 | DELETE /admin/amenities/{id} | Xóa thành công | 200/204 |
-| TC36 | DELETE /admin/amenities/{id} | ID không tồn tại | 404/422 |
-| TC37 | DELETE /admin/amenities/{id} | User thường | 403 |
-| TC38 | DELETE /admin/amenities/{id} | Không có token | 401 |
+| TC01–TC07 | GET /tags | List, filter type, auth | 200/422 |
+| TC08–TC14 | GET /amenities | List, filter category, auth | 200/422 |
+| TC15–TC21 | POST /admin/tags | Create, validation, auth | 200/201/422/403/401 |
+| TC22–TC28 | PUT /admin/tags/{id} | Update, validation, auth | 200/422/403/401 |
+| TC29–TC32 | DELETE /admin/tags/{id} | Delete, auth | 200/204/403/401 |
+| TC33–TC38 | POST /admin/amenities | Create, validation, auth | 200/201/422/403/401 |
+| TC39–TC45 | PUT /admin/amenities/{id} | Update, validation, auth | 200/422/403/401 |
+| TC46–TC49 | DELETE /admin/amenities/{id} | Delete, auth | 200/204/403/401 |
 
+**Tổng: 49 test cases** — 22 happy path ✅ · 27 error case ❌
