@@ -133,6 +133,10 @@
 
 - Mỗi textarea: `rows-5`
 - Helper: "Mỗi dòng = 1 mục"
+- ⚠️ **Backend nhận `inclusions` / `exclusions` là Array** — frontend cần split theo dòng trước khi gửi:
+  ```js
+  inclusions: textareaValue.split("\n").map(s => s.trim()).filter(Boolean)
+  ```
 
 ---
 
@@ -254,10 +258,12 @@
 | Load danh mục tour | GET | `/tour-categories` | Khi mount |
 | Upload thumbnail | POST | `/upload/image` | Chọn ảnh đại diện |
 | Upload thư viện | POST | `/upload/images` | Chọn nhiều ảnh |
-| Xóa ảnh Cloudinary | DELETE | `/upload/image` | Click xóa preview |
+| Xóa ảnh Cloudinary | DELETE | `/upload/image` | Click xóa preview (cần Admin token) |
 | Tạo tour | POST | `/admin/tours` | Submit form |
 
-**Body POST /admin/tours:**
+> ⚠️ **Lưu ý `available_from` / `available_to`:** Backend lưu theo UTC, lệch -7h so với giờ Việt Nam. Khi gửi `"2026-01-01"` backend trả về `"2025-12-31T17:00:00Z"`. Frontend cần hiển thị theo local time, không dùng trực tiếp chuỗi ISO từ response.
+
+### Request Body (POST /admin/tours)
 ```json
 {
   "name": "*",
@@ -266,9 +272,9 @@
   "slug": "",
   "description": "*",
   "short_desc": "*",
-  "itinerary": "",
-  "inclusions": "",
-  "exclusions": "",
+  "itinerary": [],
+  "inclusions": [],
+  "exclusions": [],
   "price_child": "",
   "price_infant": "",
   "discount_percent": "",
@@ -288,3 +294,49 @@
   "is_hot": false
 }
 ```
+
+### Success Response (201 Created)
+```json
+{
+  "code": 201,
+  "message": "Tour created successfully",
+  "data": {
+    "tour": {
+      "id": 14,
+      "name": "Bà Nà Hills - Cầu Vàng 1 ngày",
+      "slug": "ba-na-hills-cau-vang-1-ngay",
+      "tour_category_id": 1,
+      "description": "...",
+      "short_desc": "...",
+      "itinerary": [...],
+      "inclusions": ["Xe đưa đón", "Hướng dẫn viên", "Vé tham quan", "Bữa trưa"],
+      "exclusions": ["Chi phí cá nhân", "Đồ uống", "Tip hướng dẫn viên"],
+      "price_adult": "1500000",
+      "price_child": "1000000",
+      "price_infant": "500000",
+      "discount_percent": 10,
+      "duration": "1 ngày",
+      "start_time": "08:00",
+      "meeting_point": "Đà Nẵng",
+      "max_people": 20,
+      "min_people": 2,
+      "available_from": "2024-01-01",
+      "available_to": "2024-12-31",
+      "thumbnail": "...",
+      "images": [...],
+      "video_url": "...",
+      "location_ids": [...],
+      "status": "active",
+      "is_featured": true,
+      "is_hot": false,
+      "view_count": 0,
+      "booking_count": 0,
+      "created_by": null,
+      "created_at": "2024-04-20T02:15:00.000000Z",
+      "updated_at": "2024-04-20T02:15:00.000000Z"
+    }
+  }
+}
+```
+
+---

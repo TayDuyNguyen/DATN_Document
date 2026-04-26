@@ -83,7 +83,14 @@
 - Label: `12px uppercase #94A3B8`
 - Value: `20px Inter 700`
 
-> API: `GET /admin/dashboard/stats` hoặc tính từ response của `GET /tours`
+> **API thực tế — 4 request song song khi mount:**
+> ```
+> GET /tours?per_page=1                          → data.total  (Tổng tour)
+> GET /tours?status=active&per_page=1            → data.total  (Đang hoạt động)
+> GET /tours?is_featured=1&per_page=1            → data.total  (Nổi bật)
+> GET /tours?status=sold_out&per_page=1          → data.total  (Hết chỗ)
+> ```
+> Gọi `Promise.all([...])` để load song song, tránh waterfall.
 
 ---
 
@@ -241,6 +248,215 @@ Style chung: `28x28px bg #F8FAFC border #E2E8F0 radius-6 color #64748B`
 
 ---
 
+## 9. Cấu trúc Response thực tế
+
+---
+
+### GET /tours
+
+```json
+{
+  "code": 200,
+  "message": "Success",
+  "data": {
+    "current_page": 1,
+    "data": [
+      {
+        "id": 36,
+        "name": "Slug Seed Tour 1775792959",
+        "slug": "slug-tour-trung-1775792959",
+        "tour_category_id": 5,
+        "description": "Mo ta seed slug",
+        "short_desc": null,
+        "itinerary": [{"day":1,"title":"Ngay 1","content":"Noi dung"}],
+        "inclusions": null,
+        "exclusions": null,
+        "price_adult": "300000",        // string
+        "price_child": "0",             // string
+        "price_infant": "0",            // string
+        "discount_percent": 0,          // number
+        "duration": "1 ngay",
+        "start_time": null,
+        "meeting_point": null,
+        "max_people": 0,
+        "min_people": 1,
+        "available_from": null,
+        "available_to": null,
+        "thumbnail": null,
+        "images": null,
+        "video_url": null,
+        "location_ids": null,
+        "status": "available",          // "active"|"inactive"|"sold_out"
+        "is_featured": false,
+        "is_hot": false,
+        "view_count": 0,
+        "booking_count": 0,
+        "created_by": null,
+        "created_at": "2026-04-09T07:49:19.000000Z",
+        "updated_at": "2026-04-09T07:49:19.000000Z"
+      }
+    ],
+    "total": 33,
+    "per_page": 1,
+    "last_page": 33
+  }
+}
+```
+
+**TypeScript:**
+```ts
+interface Tour {
+  id: number;
+  name: string;
+  slug: string;
+  tour_category_id: number;
+  description: string;
+  short_desc: string | null;
+  itinerary: Array<{day: number; title: string; content: string}> | null;
+  inclusions: string | null;
+  exclusions: string | null;
+  price_adult: string;      // parse: parseFloat(price_adult)
+  price_child: string;
+  price_infant: string;
+  discount_percent: number;
+  duration: string;
+  start_time: string | null;
+  meeting_point: string | null;
+  max_people: number;
+  min_people: number;
+  available_from: string | null;
+  available_to: string | null;
+  thumbnail: string | null;
+  images: string[] | null;
+  video_url: string | null;
+  location_ids: number[] | null;
+  status: 'active' | 'inactive' | 'sold_out';
+  is_featured: boolean;
+  is_hot: boolean;
+  view_count: number;
+  booking_count: number;
+  created_by: number | null;
+  created_at: string;
+  updated_at: string;
+}
+// Truy cập: response.data.data (mảng), response.data.total, response.data.last_page
+```
+
+---
+
+### GET /tour-categories
+
+```json
+{
+  "code": 200,
+  "data": [
+    {
+      "id": 1,
+      "name": "Tour Bà Nà Hills",
+      "slug": "tour-ba-na-hills",
+      "description": "Các tour thuộc nhóm Tour Bà Nà Hills...",
+      "icon": "mountain",
+      "sort_order": 0,
+      "status": "active",
+      "created_at": "2026-04-08T00:45:45.000000Z",
+      "updated_at": "2026-04-08T00:45:45.000000Z"
+    }
+  ]
+}
+```
+
+**TypeScript:**
+```ts
+interface TourCategory {
+  id: number;
+  name: string;
+  slug: string;
+  description: string;
+  icon: string;
+  sort_order: number;
+  status: 'active' | 'inactive';
+  created_at: string;
+  updated_at: string;
+}
+// Truy cập: response.data (mảng trực tiếp, không wrap)
+```
+
+---
+
+### PATCH /admin/tours/{id}/status
+
+```json
+{
+  "code": 200,
+  "message": "Status updated successfully",
+  "data": {
+    "id": 1,
+    "name": "Khám phá Sun World Ba Na Hills",
+    "status": "active",
+    "...": "..."
+  }
+}
+```
+
+Trả về tour object đầy đủ sau khi update.
+
+---
+
+### PATCH /admin/tours/{id}/featured
+
+```json
+{
+  "code": 200,
+  "message": "Featured status toggled successfully",
+  "data": {
+    "id": 1,
+    "is_featured": true,
+    "...": "..."
+  }
+}
+```
+
+---
+
+### PATCH /admin/tours/{id}/hot
+
+```json
+{
+  "code": 200,
+  "message": "Hot status toggled successfully",
+  "data": {
+    "id": 1,
+    "is_hot": true,
+    "...": "..."
+  }
+}
+```
+
+---
+
+### GET /admin/tours/export
+
+- Status: `200 OK`
+- Content-Type: `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet`
+- Body: Binary Excel file (OOXML format)
+- Size: ~9KB cho 33 tours
+
+**Download đúng cách:**
+```javascript
+const response = await fetch('/api/v1/admin/tours/export?status=active', {
+  headers: { 'Authorization': `Bearer ${token}` }
+});
+const blob = await response.blob();
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = 'tours.xlsx';
+a.click();
+URL.revokeObjectURL(url);
+```
+
+---
+
 ## 8. API Mapping
 
 | Hành động | Method | Endpoint | Trigger |
@@ -249,6 +465,10 @@ Style chung: `28x28px bg #F8FAFC border #E2E8F0 radius-6 color #64748B`
 | Tìm kiếm | GET | `/tours?q=` | Nhập search (debounce 300ms) |
 | Filter danh mục | GET | `/tours?tour_category_id=` | Chọn select danh mục |
 | Filter trạng thái | GET | `/tours?status=` | Chọn select trạng thái |
+| Stats — Tổng tour | GET | `/tours?per_page=1` | Khi mount → `data.total` |
+| Stats — Đang HĐ | GET | `/tours?status=active&per_page=1` | Khi mount → `data.total` |
+| Stats — Nổi bật | GET | `/tours?is_featured=1&per_page=1` | Khi mount → `data.total` |
+| Stats — Hết chỗ | GET | `/tours?status=sold_out&per_page=1` | Khi mount → `data.total` |
 | Load danh mục (select) | GET | `/tour-categories` | Khi mount component |
 | Đổi trạng thái | PATCH | `/admin/tours/{id}/status` | Click badge → chọn trạng thái mới |
 | Bật/tắt nổi bật | PATCH | `/admin/tours/{id}/featured` | Toggle switch Nổi bật |
