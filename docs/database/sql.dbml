@@ -1,77 +1,137 @@
-// ============================================================
-// DATABASE SCHEMA - WEBSITE DU LỊCH ĐÀ NẴNG "ĐÀ NẴNG TRIP"
-// Stack: Laravel 11.x + MySQL 8.0
-// Tổng: 24 bảng | Dịch vụ tour (không có point)
-// ============================================================
+Project danangtrip_api {
+  database_type: "PostgreSQL"
+  Note: "Source of truth: danangtrip-api/database/migrations"
+}
 
-
-// ============================================================
-// BẢNG 1: users
-// Mục đích: Tài khoản khách hàng và admin/staff
-// ============================================================
 Table users {
-  id                bigint       [pk, note: 'Khóa chính, tự tăng']
-  username          varchar(50)  [unique, note: 'Tên đăng nhập']
-  email             varchar(100) [unique, note: 'Email đăng nhập']
-  password          varchar(255) [note: 'Mật khẩu đã hash']
-  full_name         varchar(100) [note: 'Họ tên đầy đủ']
-  avatar            varchar(255) [note: 'URL ảnh đại diện']
-  phone             varchar(20)  [note: 'Số điện thoại']
-  birthdate         date         [note: 'Ngày sinh']
-  gender            varchar(20)  [note: 'male | female | other']
-  city              varchar(100) [note: 'Thành phố']
-  role              varchar(20)  [note: 'user | admin | staff']
-  status            varchar(20)  [note: 'active | banned']
-  email_verified_at timestamp    [note: 'Thời điểm xác thực email']
-  last_login_at     timestamp    [note: 'Lần đăng nhập cuối']
-  remember_token    varchar(100) [note: 'Token ghi nhớ đăng nhập']
-  created_at        timestamp
-  updated_at        timestamp
+  id bigint [pk, increment]
+  username varchar(50) [not null, unique]
+  email varchar(100) [not null, unique]
+  password varchar [not null]
+  full_name varchar(100) [not null]
+  avatar varchar(255)
+  phone varchar(20)
+  birthdate date
+  gender varchar(20)
+  city varchar(100)
+  role varchar(20) [not null, default: 'user']
+  status varchar(20) [not null, default: 'pending']
+  email_verified_at timestamp
+  last_login_at timestamp
+  created_at timestamp
+  updated_at timestamp
 
   indexes {
-    email
-    status
     role
+    status
+    created_at
   }
 }
 
-
-// ============================================================
-// BẢNG 2: categories
-// Mục đích: Danh mục chính của địa điểm
-// Ví dụ: Ăn uống | Khách sạn | Địa điểm tham quan
-// ============================================================
-Table categories {
-  id          bigint       [pk]
-  name        varchar(50)  [note: 'Tên danh mục']
-  slug        varchar(60)  [unique, note: 'URL thân thiện']
-  icon        varchar(50)  [note: 'FontAwesome icon']
-  description text
-  image       varchar(255)
-  sort_order  int
-  status      varchar(20)  [note: 'active | inactive']
-  created_at  timestamp
-  updated_at  timestamp
-
-  indexes { status }
+Table password_reset_tokens {
+  email varchar [pk]
+  token varchar [not null]
+  created_at timestamp
 }
 
+Table sessions {
+  id varchar [pk]
+  user_id bigint
+  ip_address varchar(45)
+  user_agent text
+  payload text [not null]
+  last_activity int [not null]
 
-// ============================================================
-// BẢNG 3: subcategories
-// Mục đích: Danh mục con
-// Ví dụ: Ăn uống → Hải sản, Nhà hàng, Quán cà phê
-// ============================================================
-Table subcategories {
-  id          bigint      [pk]
-  category_id bigint      [note: 'FK → categories.id']
-  name        varchar(50)
-  slug        varchar(60) [unique]
+  indexes {
+    user_id
+    last_activity
+  }
+}
+
+Table cache {
+  key varchar [pk]
+  value text [not null]
+  expiration int [not null]
+
+  indexes {
+    expiration
+  }
+}
+
+Table cache_locks {
+  key varchar [pk]
+  owner varchar [not null]
+  expiration int [not null]
+
+  indexes {
+    expiration
+  }
+}
+
+Table jobs {
+  id bigint [pk, increment]
+  queue varchar [not null]
+  payload text [not null]
+  attempts int [not null]
+  reserved_at int
+  available_at int [not null]
+  created_at int [not null]
+
+  indexes {
+    queue
+  }
+}
+
+Table job_batches {
+  id varchar [pk]
+  name varchar [not null]
+  total_jobs int [not null]
+  pending_jobs int [not null]
+  failed_jobs int [not null]
+  failed_job_ids text [not null]
+  options text
+  cancelled_at int
+  created_at int [not null]
+  finished_at int
+}
+
+Table failed_jobs {
+  id bigint [pk, increment]
+  uuid varchar [not null, unique]
+  connection text [not null]
+  queue text [not null]
+  payload text [not null]
+  exception text [not null]
+  failed_at timestamp [not null]
+}
+
+Table categories {
+  id bigint [pk, increment]
+  name varchar(50) [not null]
+  slug varchar(60) [not null, unique]
+  icon varchar(50)
   description text
-  sort_order  int
-  status      varchar(20) [note: 'active | block | pending']
-  created_at  timestamp
-  updated_at  timestamp
+  image varchar(255)
+  sort_order int [not null, default: 0]
+  status varchar(20) [not null, default: 'active']
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    status
+  }
+}
+
+Table subcategories {
+  id bigint [pk, increment]
+  category_id bigint [not null]
+  name varchar(50) [not null]
+  slug varchar(60) [not null, unique]
+  description text
+  sort_order int [not null, default: 0]
+  status varchar(20) [not null, default: 'active']
+  created_at timestamp
+  updated_at timestamp
 
   indexes {
     category_id
@@ -79,412 +139,156 @@ Table subcategories {
   }
 }
 
+Table tags {
+  id bigint [pk, increment]
+  name varchar(50) [not null, unique]
+  slug varchar(60) [not null, unique]
+  type varchar(30) [not null]
+  created_at timestamp
+  updated_at timestamp
 
-// ============================================================
-// BẢNG 4: locations (BẢNG TRUNG TÂM)
-// Mục đích: Địa điểm du lịch, ăn uống, khách sạn tại Đà Nẵng
-// ============================================================
+  indexes {
+    type
+  }
+}
+
+Table amenities {
+  id bigint [pk, increment]
+  name varchar(50) [not null, unique]
+  icon varchar(50) [not null]
+  category varchar(30) [not null]
+  created_at timestamp
+  updated_at timestamp
+}
+
 Table locations {
-  id                bigint        [pk]
-  name              varchar(200)
-  slug              varchar(220)  [unique]
-  category_id       bigint        [note: 'FK → categories.id']
-  subcategory_id    bigint        [note: 'FK → subcategories.id, nullable']
-  description       text
-  short_description varchar(500)
-  address           varchar(255)
-  district          varchar(50)   [note: 'Hải Châu | Sơn Trà | Ngũ Hành Sơn | Cẩm Lệ | Thanh Khê | Liên Chiểu']
-  ward              varchar(50)
-  latitude          decimal(10,8) [note: 'Vĩ độ GPS']
-  longitude         decimal(11,8) [note: 'Kinh độ GPS']
-  phone             varchar(20)
-  email             varchar(100)
-  website           varchar(255)
-  opening_hours     text          [note: 'JSON: {"mon":"08:00-22:00","sun":"closed"}']
-  price_min         decimal(12,0)
-  price_max         decimal(12,0)
-  price_level       tinyint       [note: '1=Rẻ | 2=Trung bình | 3=Cao | 4=Sang trọng']
-  avg_rating        decimal(3,2)  [note: '0.00-5.00, tự cập nhật khi duyệt rating']
-  review_count      int
-  view_count        int
-  favorite_count    int
-  thumbnail         varchar(255)
-  images            text          [note: 'JSON array URL ảnh']
-  video_url         varchar(255)
-  status            varchar(20)   [note: 'active | inactive']
-  is_featured       boolean
-  created_by        bigint        [note: 'FK → users.id']
-  created_at        timestamp
-  updated_at        timestamp
+  id bigint [pk, increment]
+  name varchar(200) [not null]
+  slug varchar(220) [not null, unique]
+  category_id bigint [not null]
+  subcategory_id bigint
+  description text [not null]
+  short_description varchar(500) [not null]
+  address varchar(255) [not null]
+  district varchar(50) [not null]
+  ward varchar(50)
+  latitude decimal(10,8) [not null]
+  longitude decimal(11,8) [not null]
+  phone varchar(20)
+  email varchar(100)
+  website varchar(255)
+  opening_hours json
+  price_min decimal(12,2)
+  price_max decimal(12,2)
+  price_level int
+  avg_rating decimal(3,2) [not null, default: 0]
+  review_count int [not null, default: 0]
+  view_count int [not null, default: 0]
+  favorite_count int [not null, default: 0]
+  thumbnail varchar(255)
+  images json
+  video_url varchar(255)
+  status varchar(20) [not null, default: 'active']
+  is_featured boolean [not null, default: false]
+  created_by bigint
+  created_at timestamp
+  updated_at timestamp
 
   indexes {
     category_id
     subcategory_id
     district
-    status
-    is_featured
     avg_rating
     view_count
+    status
+    is_featured
   }
+
+  Note: 'Checks: latitude[-90,90], longitude[-180,180], price_min/max non-negative and min<=max. Fulltext index: locations_search_fulltext'
 }
 
-
-// ============================================================
-// BẢNG 5: tags
-// Mục đích: Nhãn mô tả đặc điểm địa điểm
-// Ví dụ: view-đẹp, giá-rẻ, wifi-miễn-phí, gần-biển
-// ============================================================
-Table tags {
-  id         bigint      [pk]
-  name       varchar(50) [unique]
-  slug       varchar(60) [unique]
-  type       varchar(30) [note: 'cuisine | service | feature | atmosphere']
-  created_at timestamp
-  updated_at timestamp
-}
-
-
-// ============================================================
-// BẢNG 6: location_tags (Trung gian locations - tags)
-// ============================================================
 Table location_tags {
-  id          bigint    [pk]
-  location_id bigint    [note: 'FK → locations.id']
-  tag_id      bigint    [note: 'FK → tags.id']
-  created_at  timestamp
+  id bigint [pk, increment]
+  location_id bigint [not null]
+  tag_id bigint [not null]
+  created_at timestamp [not null]
 
   indexes {
     (location_id, tag_id) [unique, name: 'uq_location_tag']
+    created_at
   }
 }
 
+Table location_amenities {
+  id bigint [pk, increment]
+  location_id bigint [not null]
+  amenity_id bigint [not null]
+  created_at timestamp [not null]
 
-// ============================================================
-// BẢNG 7: amenities
-// Mục đích: Tiện ích của địa điểm
-// Ví dụ: WiFi miễn phí, Bãi đỗ xe, Điều hòa
-// ============================================================
-Table amenities {
-  id         bigint      [pk]
-  name       varchar(50) [unique]
-  icon       varchar(50)
-  category   varchar(30) [note: 'connectivity | parking | comfort | payment']
+  indexes {
+    (location_id, amenity_id) [unique, name: 'uq_location_amenity']
+    created_at
+  }
+}
+
+Table search_logs {
+  id bigint [pk, increment]
+  user_id bigint
+  session_id varchar(100) [not null]
+  query varchar(255) [not null]
+  results_count int [not null, default: 0]
+  filters json
+  created_at timestamp [not null]
+
+  indexes {
+    user_id
+    session_id
+    query
+    created_at
+  }
+
+  Note: 'Postgres indexes: search_logs_query_trgm_idx (GIN trgm), search_logs_filters_gin_idx (jsonb_path_ops)'
+}
+
+Table notifications {
+  id bigint [pk, increment]
+  user_id bigint [not null]
+  type varchar(30) [not null]
+  title varchar(255) [not null]
+  content text [not null]
+  data json
+  is_read boolean [not null, default: false]
+  read_at timestamp
+  created_at timestamp [not null]
+
+  indexes {
+    (user_id, is_read)
+    created_at
+  }
+}
+
+Table blog_categories {
+  id bigint [pk, increment]
+  name varchar(50) [not null, unique]
+  slug varchar(60) [not null, unique]
+  description text
   created_at timestamp
   updated_at timestamp
 }
 
-
-// ============================================================
-// BẢNG 8: location_amenities (Trung gian locations - amenities)
-// ============================================================
-Table location_amenities {
-  id          bigint    [pk]
-  location_id bigint    [note: 'FK → locations.id']
-  amenity_id  bigint    [note: 'FK → amenities.id']
-  created_at  timestamp
-
-  indexes {
-    (location_id, amenity_id) [unique, name: 'uq_location_amenity']
-  }
-}
-
-
-// ============================================================
-// BẢNG 9: tour_categories
-// Mục đích: Danh mục tour
-// Ví dụ: Tour tham quan | Tour ẩm thực | Tour sinh thái | Tour văn hóa
-// ============================================================
-Table tour_categories {
-  id          bigint      [pk]
-  name        varchar(50) [unique]
-  slug        varchar(60) [unique]
-  description text
-  icon        varchar(50)
-  sort_order  int
-  status      varchar(20) [note: 'active | inactive']
-  created_at  timestamp
-  updated_at  timestamp
-
-  indexes { status }
-}
-
-
-// ============================================================
-// BẢNG 10: tours (Sản phẩm tour du lịch)
-// ============================================================
-Table tours {
-  id               bigint        [pk]
-  name             varchar(200)
-  slug             varchar(220)  [unique]
-  tour_category_id bigint        [note: 'FK → tour_categories.id']
-  description      text
-  short_desc       varchar(500)
-  itinerary        text          [note: 'Lịch trình chi tiết (JSON hoặc HTML)']
-  inclusions       text          [note: 'Bao gồm (JSON array)']
-  exclusions       text          [note: 'Không bao gồm (JSON array)']
-  price_adult      decimal(12,0) [note: 'Giá người lớn (VNĐ)']
-  price_child      decimal(12,0) [note: 'Giá trẻ em 5-11 tuổi (VNĐ)']
-  price_infant     decimal(12,0) [note: 'Giá em bé 0-4 tuổi (VNĐ)']
-  discount_percent int           [note: 'Phần trăm giảm giá (0-100)']
-  duration         varchar(50)   [note: 'Ví dụ: 1 ngày, 2 ngày 1 đêm']
-  start_time       varchar(50)   [note: 'Thời gian khởi hành']
-  meeting_point    varchar(255)  [note: 'Điểm tập trung']
-  max_people       int           [note: '0 = không giới hạn']
-  min_people       int           [note: 'Số người tối thiểu để tour chạy']
-  available_from   date
-  available_to     date
-  thumbnail        varchar(255)
-  images           text          [note: 'JSON array URL ảnh']
-  video_url        varchar(255)
-  location_ids     text          [note: 'JSON array ID các địa điểm trong tour']
-  status           varchar(20)   [note: 'active | inactive | sold_out']
-  is_featured      boolean
-  is_hot           boolean       [note: 'Tour hot/trending']
-  view_count       int
-  booking_count    int           [note: 'Số lượt đặt thành công']
-  created_by       bigint        [note: 'FK → users.id']
-  created_at       timestamp
-  updated_at       timestamp
-
-  indexes {
-    tour_category_id
-    status
-    is_featured
-    is_hot
-    price_adult
-    available_from
-    available_to
-  }
-}
-
-
-// ============================================================
-// BẢNG 11: tour_schedules
-// Mục đích: Lịch khởi hành cụ thể của từng tour
-// ============================================================
-Table tour_schedules {
-  id           bigint        [pk]
-  tour_id      bigint        [note: 'FK → tours.id']
-  start_date   date          [note: 'Ngày khởi hành']
-  end_date     date          [note: 'Ngày kết thúc']
-  max_people   int           [note: 'Số lượng tối đa cho ngày này']
-  booked_people int          [note: 'Số người đã đặt']
-  price_adult  decimal(12,0) [note: 'Giá đặc biệt cho ngày này (override tour price)']
-  price_child  decimal(12,0)
-  price_infant decimal(12,0)
-  status       varchar(20)   [note: 'available | full | cancelled']
-  created_at   timestamp
-  updated_at   timestamp
-
-  indexes {
-    tour_id
-    start_date
-    status
-    (tour_id, start_date) [unique, name: 'uq_tour_schedule']
-  }
-}
-
-
-// ============================================================
-// BẢNG 12: bookings (Đơn đặt chỗ - QUAN TRỌNG)
-// Mục đích: Lưu toàn bộ đơn hàng đặt tour
-// Luồng: pending → confirmed → completed | cancelled
-// ============================================================
-Table bookings {
-  id                bigint        [pk]
-  booking_code      varchar(20)   [unique, note: 'Mã đơn: DANANG-YYYYMMDD-XXXX']
-  user_id           bigint        [note: 'FK → users.id, NULL nếu khách đặt không tài khoản']
-  customer_name     varchar(100)
-  customer_email    varchar(100)
-  customer_phone    varchar(20)
-  customer_address  text
-  customer_note     text          [note: 'Yêu cầu đặc biệt']
-  total_amount      decimal(12,0) [note: 'Tổng tiền trước giảm giá']
-  discount_amount   decimal(12,0) [note: 'Số tiền giảm']
-  final_amount      decimal(12,0) [note: 'Thành tiền sau giảm giá']
-  deposit_amount    decimal(12,0) [note: 'Tiền đặt cọc (nếu có)']
-  payment_method    varchar(30)   [note: 'momo | vnpay | bank | cash']
-  payment_status    varchar(30)   [note: 'unpaid | paid | failed | refunded']
-  booking_status    varchar(30)   [note: 'pending | confirmed | cancelled | completed']
-  cancellation_reason text
-  booked_at         timestamp
-  confirmed_at      timestamp
-  cancelled_at      timestamp
-  completed_at      timestamp
-  created_at        timestamp
-  updated_at        timestamp
-
-  indexes {
-    booking_code
-    user_id
-    customer_email
-    customer_phone
-    booking_status
-    payment_status
-    booked_at
-  }
-}
-
-
-// ============================================================
-// BẢNG 13: booking_items
-// Mục đích: Chi tiết từng dòng trong đơn hàng
-// ============================================================
-Table booking_items {
-  id                bigint        [pk]
-  booking_id        bigint        [note: 'FK → bookings.id']
-  tour_id           bigint        [note: 'FK → tours.id']
-  tour_schedule_id  bigint        [note: 'FK → tour_schedules.id']
-  item_type         varchar(30)   [note: 'tour | hotel | transport | extra']
-  item_name         varchar(200)
-  travel_date       date
-  quantity_adult    int
-  quantity_child    int
-  quantity_infant   int
-  unit_price_adult  decimal(12,0)
-  unit_price_child  decimal(12,0)
-  unit_price_infant decimal(12,0)
-  subtotal          decimal(12,0)
-  status            varchar(30)   [note: 'pending | confirmed | cancelled | completed']
-  created_at        timestamp
-  updated_at        timestamp
-
-  indexes {
-    booking_id
-    tour_id
-    tour_schedule_id
-    travel_date
-  }
-}
-
-
-// ============================================================
-// BẢNG 14: payments
-// Mục đích: Lịch sử giao dịch thanh toán
-// ============================================================
-Table payments {
-  id               bigint        [pk]
-  booking_id       bigint        [note: 'FK → bookings.id']
-  transaction_code varchar(100)  [unique, note: 'Mã giao dịch từ cổng thanh toán']
-  amount           decimal(12,0)
-  payment_method   varchar(30)
-  payment_status   varchar(30)   [note: 'pending | success | failed | refunded']
-  payment_gateway  varchar(50)   [note: 'momo | vnpay | zalopay']
-  gateway_response text          [note: 'JSON response từ cổng thanh toán']
-  paid_at          timestamp
-  refunded_at      timestamp
-  refund_reason    text
-  created_at       timestamp
-  updated_at       timestamp
-
-  indexes {
-    booking_id
-    transaction_code
-    payment_status
-  }
-}
-
-
-// ============================================================
-// BẢNG 15: ratings
-// Mục đích: Đánh giá địa điểm hoặc tour (không có point)
-// Ràng buộc: Chỉ đánh giá sau khi có booking hợp lệ
-// ============================================================
-Table ratings {
-  id              bigint       [pk]
-  user_id         bigint       [note: 'FK → users.id']
-  location_id     bigint       [note: 'FK → locations.id, nullable']
-  tour_id         bigint       [note: 'FK → tours.id, nullable']
-  booking_id      bigint       [note: 'FK → bookings.id, nullable — chỉ đánh giá sau booking']
-  score           tinyint      [note: '1-5 sao']
-  comment         text
-  image_urls      text         [note: 'JSON array, tối đa 5 ảnh']
-  status          varchar(20)  [note: 'pending | approved | rejected']
-  rejected_reason varchar(255)
-  approved_by     bigint       [note: 'FK → users.id, nullable']
-  approved_at     timestamp
-  helpful_count   int
-  created_at      timestamp
-  updated_at      timestamp
-
-  indexes {
-    user_id
-    location_id
-    tour_id
-    booking_id
-    status
-    score
-    created_at
-    (user_id, location_id) [unique, name: 'uq_user_location_rating']
-    (user_id, tour_id)     [unique, name: 'uq_user_tour_rating']
-  }
-}
-
-
-// ============================================================
-// BẢNG 16: rating_images
-// Mục đích: Ảnh đính kèm trong bài đánh giá (tách riêng để dễ quản lý)
-// ============================================================
-Table rating_images {
-  id         bigint       [pk]
-  rating_id  bigint       [note: 'FK → ratings.id']
-  image_url  varchar(255)
-  sort_order tinyint
-  created_at timestamp
-
-  indexes { rating_id }
-}
-
-
-// ============================================================
-// BẢNG 17: favorites
-// Mục đích: Địa điểm yêu thích của user
-// ============================================================
-Table favorites {
-  id          bigint    [pk]
-  user_id     bigint    [note: 'FK → users.id']
-  location_id bigint    [note: 'FK → locations.id']
-  created_at  timestamp
-
-  indexes {
-    (user_id, location_id) [unique, name: 'uq_user_location_fav']
-    location_id
-  }
-}
-
-
-// ============================================================
-// BẢNG 18: blog_categories
-// Mục đích: Danh mục bài viết blog (tách biệt với categories địa điểm)
-// Ví dụ: Ẩm thực | Lưu trú | Vui chơi | Kinh nghiệm | Tin tức
-// ============================================================
-Table blog_categories {
-  id          bigint      [pk]
-  name        varchar(50) [unique]
-  slug        varchar(60) [unique]
-  description text
-  created_at  timestamp
-  updated_at  timestamp
-}
-
-
-// ============================================================
-// BẢNG 19: blog_posts
-// Mục đích: Bài viết cẩm nang du lịch Đà Nẵng
-// ============================================================
 Table blog_posts {
-  id             bigint       [pk]
-  title          varchar(255)
-  slug           varchar(280) [unique]
-  excerpt        varchar(500)
-  content        longtext
+  id bigint [pk, increment]
+  title varchar(255) [not null]
+  slug varchar(280) [not null, unique]
+  excerpt varchar(500)
+  content text [not null]
   featured_image varchar(255)
-  author_id      bigint       [note: 'FK → users.id']
-  view_count     int
-  status         varchar(20)  [note: 'draft | published | archived']
-  published_at   timestamp
-  created_at     timestamp
-  updated_at     timestamp
+  author_id bigint [not null]
+  view_count int [not null, default: 0]
+  status varchar(20) [not null, default: 'draft']
+  published_at timestamp
+  created_at timestamp
+  updated_at timestamp
 
   indexes {
     author_id
@@ -493,161 +297,350 @@ Table blog_posts {
   }
 }
 
-
-// ============================================================
-// BẢNG 20: blog_post_categories (Trung gian blog_posts - blog_categories)
-// ============================================================
 Table blog_post_categories {
-  id               bigint [pk]
-  post_id          bigint [note: 'FK → blog_posts.id']
-  blog_category_id bigint [note: 'FK → blog_categories.id']
+  id bigint [pk, increment]
+  post_id bigint [not null]
+  blog_category_id bigint [not null]
 
   indexes {
     (post_id, blog_category_id) [unique, name: 'uq_post_blog_category']
   }
 }
 
-
-// ============================================================
-// BẢNG 21: views
-// Mục đích: Ghi lại lượt xem địa điểm (kể cả guest)
-// ============================================================
-Table views {
-  id          bigint       [pk]
-  user_id     bigint       [note: 'FK → users.id, NULL nếu là guest']
-  location_id bigint       [note: 'FK → locations.id']
-  session_id  varchar(100) [note: 'Session ID để track guest']
-  time_spent  int          [note: 'Thời gian xem (giây)']
-  created_at  timestamp
-
-  indexes {
-    user_id
-    location_id
-    created_at
-    session_id
-  }
-}
-
-
-// ============================================================
-// BẢNG 22: search_logs
-// Mục đích: Lịch sử tìm kiếm — phân tích từ khóa phổ biến
-// ============================================================
-Table search_logs {
-  id            bigint       [pk]
-  user_id       bigint       [note: 'FK → users.id, NULL nếu là guest']
-  session_id    varchar(100)
-  query         varchar(255)
-  results_count int
-  filters       text         [note: 'JSON filters đã áp dụng']
-  created_at    timestamp
-
-  indexes {
-    user_id
-    query
-    created_at
-    session_id
-  }
-}
-
-
-// ============================================================
-// BẢNG 23: notifications
-// Mục đích: Thông báo hệ thống gửi đến user
-// Loại: booking_confirmed | booking_cancelled | payment_success | rating_approved
-// ============================================================
-Table notifications {
-  id         bigint       [pk]
-  user_id    bigint       [note: 'FK → users.id']
-  type       varchar(30)  [note: 'booking_confirmed | booking_cancelled | payment_success | rating_approved']
-  title      varchar(255)
-  content    text
-  data       text         [note: 'JSON data bổ sung']
-  is_read    boolean
-  read_at    timestamp
-  created_at timestamp
-
-  indexes {
-    (user_id, is_read)
-    created_at
-  }
-}
-
-
-// ============================================================
-// BẢNG 24: contacts
-// Mục đích: Form liên hệ từ khách hàng
-// ============================================================
-Table contacts {
-  id         bigint       [pk]
-  name       varchar(100)
-  email      varchar(100)
-  phone      varchar(20)
-  subject    varchar(200)
-  message    text
-  status     varchar(20)  [note: 'new | read | replied']
-  replied_by bigint       [note: 'FK → users.id, nullable']
-  replied_at timestamp
-  reply      text
+Table tour_categories {
+  id bigint [pk, increment]
+  name varchar(50) [not null, unique]
+  slug varchar(60) [not null, unique]
+  description text
+  icon varchar(50)
+  sort_order int [not null, default: 0, unique]
+  status varchar(20) [not null, default: 'active']
   created_at timestamp
   updated_at timestamp
 
   indexes {
     status
+  }
+}
+
+Table tours {
+  id bigint [pk, increment]
+  name varchar(200) [not null]
+  slug varchar(220) [not null, unique]
+  tour_category_id bigint [not null]
+  description text
+  short_desc varchar(500)
+  itinerary json
+  inclusions json
+  exclusions json
+  price_adult decimal(12,2) [not null]
+  price_child decimal(12,2) [not null, default: 0]
+  price_infant decimal(12,2) [not null, default: 0]
+  discount_percent int [not null, default: 0]
+  duration varchar(50)
+  start_time varchar(50)
+  meeting_point varchar(255)
+  max_people int [not null, default: 0]
+  min_people int [not null, default: 1]
+  available_from date
+  available_to date
+  thumbnail varchar(255)
+  images json
+  video_url varchar(255)
+  status varchar(20) [not null, default: 'active']
+  booking_availability varchar(20) [not null, default: 'open']
+  is_featured boolean [not null, default: false]
+  is_hot boolean [not null, default: false]
+  view_count int [not null, default: 0]
+  booking_count int [not null, default: 0]
+  rating_count int [not null, default: 0]
+  rating_avg decimal(3,2) [not null, default: 0]
+  created_by bigint
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    tour_category_id
+    status
+    booking_availability
+    is_featured
+    is_hot
+    price_adult
+    (available_from, available_to)
+    rating_avg
+  }
+
+  Note: 'Checks: people, non-negative prices and discount range, booking_availability in (open,sold_out). Fulltext: tours_search_fulltext. Composite index: tours_list_idx'
+}
+
+Table tour_schedules {
+  id bigint [pk, increment]
+  tour_id bigint [not null]
+  start_date date [not null]
+  end_date date [not null]
+  max_people int [not null, default: 0]
+  booked_people int [not null, default: 0]
+  price_adult decimal(12,2)
+  price_child decimal(12,2)
+  price_infant decimal(12,2)
+  status varchar(20) [not null, default: 'available']
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (tour_id, start_date) [unique, name: 'uq_tour_schedule']
+    start_date
+    status
+  }
+
+  Note: 'Check: max_people>=0 and booked_people>=0 and booked_people<=max_people'
+}
+
+Table bookings {
+  id bigint [pk, increment]
+  booking_code varchar(20) [not null, unique]
+  user_id bigint
+  customer_name varchar(100) [not null]
+  customer_email varchar(100) [not null]
+  customer_phone varchar(20) [not null]
+  customer_address text
+  customer_note text
+  total_amount decimal(12,2) [not null]
+  discount_amount decimal(12,2) [not null, default: 0]
+  final_amount decimal(12,2) [not null]
+  deposit_amount decimal(12,2) [not null, default: 0]
+  payment_method varchar(30) [not null]
+  payment_status varchar(30) [not null, default: 'unpaid']
+  booking_status varchar(30) [not null, default: 'pending']
+  cancellation_reason text
+  booked_at timestamp [not null]
+  confirmed_at timestamp
+  cancelled_at timestamp
+  completed_at timestamp
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    booking_status
+    payment_status
+    booked_at
+    created_at
+    user_id
+  }
+
+  Note: 'Checks: amounts non-negative, payment_status in (pending,success,failed,refunded,unpaid,partially_paid). Composite index: bookings_status_booked_idx'
+}
+
+Table booking_items {
+  id bigint [pk, increment]
+  booking_id bigint [not null]
+  tour_id bigint [not null]
+  tour_schedule_id bigint [not null]
+  item_type varchar(30) [not null, default: 'tour']
+  item_name varchar(200) [not null]
+  travel_date date [not null]
+  quantity_adult int [not null, default: 0]
+  quantity_child int [not null, default: 0]
+  quantity_infant int [not null, default: 0]
+  unit_price_adult decimal(12,0) [not null]
+  unit_price_child decimal(12,0) [not null]
+  unit_price_infant decimal(12,0) [not null]
+  subtotal decimal(12,0) [not null]
+  status varchar(30) [not null, default: 'pending']
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    (booking_id, tour_id)
+    travel_date
+  }
+}
+
+Table payments {
+  id bigint [pk, increment]
+  booking_id bigint [not null]
+  transaction_code varchar(100) [not null, unique]
+  amount decimal(12,2) [not null]
+  payment_method varchar(30) [not null]
+  payment_status varchar(30) [not null, default: 'pending']
+  payment_gateway varchar(50)
+  gateway_response json
+  paid_at timestamp
+  refunded_at timestamp
+  refund_reason text
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    booking_id
+    payment_status
+    payment_gateway
+    created_at
+    paid_at
+  }
+
+  Note: 'Checks: payment_status in (pending,success,failed,refunded), amount>=0. Partial index: payments_success_paid_idx'
+}
+
+Table contacts {
+  id bigint [pk, increment]
+  name varchar(100) [not null]
+  email varchar(100) [not null]
+  phone varchar(20)
+  subject varchar(200)
+  message text [not null]
+  status varchar(20) [not null, default: 'new']
+  replied_by bigint
+  replied_at timestamp
+  reply text
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    status
+  }
+}
+
+Table favorites {
+  id bigint [pk, increment]
+  user_id bigint [not null]
+  location_id bigint
+  tour_id bigint
+  created_at timestamp [not null]
+
+  indexes {
+    location_id
+    tour_id
+    created_at
+  }
+
+  Note: 'Unique partial indexes: favorites_user_location_unique, favorites_user_tour_unique. Check: num_nonnulls(location_id,tour_id)=1'
+}
+
+Table views {
+  id bigint [pk, increment]
+  user_id bigint
+  location_id bigint
+  tour_id bigint
+  session_id varchar(100) [not null]
+  time_spent int [not null, default: 0]
+  created_at timestamp [not null]
+
+  indexes {
+    user_id
+    location_id
+    tour_id
+    session_id
+    created_at
+  }
+
+  Note: 'Check: num_nonnulls(location_id,tour_id)=1'
+}
+
+Table ratings {
+  id bigint [pk, increment]
+  user_id bigint [not null]
+  location_id bigint
+  tour_id bigint
+  booking_id bigint
+  score int [not null]
+  comment text
+  image_count int [not null, default: 0]
+  status varchar(20) [not null, default: 'approved']
+  rejected_reason varchar(255)
+  approved_by bigint
+  approved_at timestamp
+  helpful_count int [not null, default: 0]
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    created_at
+    status
+    (user_id, location_id) [unique, name: 'uq_user_location_rating']
+  }
+
+  Note: 'Unique partial indexes: ratings_user_tour_unique, ratings_user_booking_unique. Checks: exactly_one_target, score 1..5, image_count>=0'
+}
+
+Table rating_images {
+  id bigint [pk, increment]
+  rating_id bigint [not null]
+  image_url varchar(255) [not null]
+  sort_order int [not null, default: 0]
+  created_at timestamp [not null]
+
+  indexes {
+    rating_id
     created_at
   }
 }
 
+Table refresh_tokens {
+  id bigint [pk, increment]
+  user_id bigint [not null]
+  token varchar(64) [not null, unique]
+  expires_at timestamp [not null]
+  used_at timestamp
+  previous_token_id bigint
+  created_at timestamp
+  updated_at timestamp
 
-// ============================================================
-// RELATIONSHIPS
-// Ký hiệu: < = one-to-many
-// ============================================================
+  indexes {
+    (user_id, created_at)
+    expires_at
+    used_at
+  }
+}
 
-// --- users ---
-Ref: users.id < locations.created_by
-Ref: users.id < tours.created_by
-Ref: users.id < bookings.user_id
-Ref: users.id < ratings.user_id
-Ref: users.id < ratings.approved_by
-Ref: users.id < favorites.user_id
-Ref: users.id < views.user_id
-Ref: users.id < notifications.user_id
-Ref: users.id < search_logs.user_id
-Ref: users.id < blog_posts.author_id
-Ref: users.id < contacts.replied_by
+Table tour_locations {
+  id bigint [pk, increment]
+  tour_id bigint [not null]
+  location_id bigint [not null]
+  created_at timestamp
 
-// --- categories & subcategories ---
-Ref: categories.id < subcategories.category_id
-Ref: categories.id < locations.category_id
-Ref: subcategories.id < locations.subcategory_id
+  indexes {
+    (tour_id, location_id) [unique, name: 'tour_locations_tour_location_unique']
+    tour_id
+    location_id
+  }
+}
 
-// --- locations ---
-Ref: locations.id < ratings.location_id
-Ref: locations.id < favorites.location_id
-Ref: locations.id < views.location_id
-Ref: locations.id < location_tags.location_id
-Ref: locations.id < location_amenities.location_id
-
-// --- tags & amenities ---
-Ref: tags.id < location_tags.tag_id
-Ref: amenities.id < location_amenities.amenity_id
-
-// --- tours ---
-Ref: tour_categories.id < tours.tour_category_id
-Ref: tours.id < tour_schedules.tour_id
-Ref: tours.id < booking_items.tour_id
-Ref: tours.id < ratings.tour_id
-
-// --- bookings ---
-Ref: bookings.id < booking_items.booking_id
-Ref: bookings.id < payments.booking_id
-Ref: bookings.id < ratings.booking_id
-Ref: tour_schedules.id < booking_items.tour_schedule_id
-
-// --- ratings ---
-Ref: ratings.id < rating_images.rating_id
-
-// --- blog ---
-Ref: blog_posts.id < blog_post_categories.post_id
-Ref: blog_categories.id < blog_post_categories.blog_category_id
+Ref: subcategories.category_id > categories.id [delete: cascade]
+Ref: locations.category_id > categories.id [delete: restrict]
+Ref: locations.subcategory_id > subcategories.id [delete: set null]
+Ref: locations.created_by > users.id [delete: set null]
+Ref: location_tags.location_id > locations.id [delete: cascade]
+Ref: location_tags.tag_id > tags.id [delete: cascade]
+Ref: location_amenities.location_id > locations.id [delete: cascade]
+Ref: location_amenities.amenity_id > amenities.id [delete: cascade]
+Ref: search_logs.user_id > users.id [delete: set null]
+Ref: notifications.user_id > users.id [delete: cascade]
+Ref: blog_posts.author_id > users.id [delete: cascade]
+Ref: blog_post_categories.post_id > blog_posts.id [delete: cascade]
+Ref: blog_post_categories.blog_category_id > blog_categories.id [delete: cascade]
+Ref: tours.tour_category_id > tour_categories.id [delete: restrict]
+Ref: tours.created_by > users.id [delete: set null]
+Ref: tour_schedules.tour_id > tours.id [delete: cascade]
+Ref: bookings.user_id > users.id [delete: set null]
+Ref: booking_items.booking_id > bookings.id [delete: cascade]
+Ref: booking_items.tour_id > tours.id [delete: cascade]
+Ref: booking_items.tour_schedule_id > tour_schedules.id [delete: cascade]
+Ref: payments.booking_id > bookings.id [delete: cascade]
+Ref: contacts.replied_by > users.id [delete: set null]
+Ref: favorites.user_id > users.id [delete: cascade]
+Ref: favorites.location_id > locations.id [delete: set null]
+Ref: favorites.tour_id > tours.id [delete: set null]
+Ref: views.user_id > users.id [delete: set null]
+Ref: views.location_id > locations.id [delete: set null]
+Ref: views.tour_id > tours.id [delete: set null]
+Ref: ratings.user_id > users.id [delete: cascade]
+Ref: ratings.location_id > locations.id [delete: cascade]
+Ref: ratings.tour_id > tours.id [delete: cascade]
+Ref: ratings.booking_id > bookings.id [delete: set null]
+Ref: ratings.approved_by > users.id [delete: set null]
+Ref: rating_images.rating_id > ratings.id [delete: cascade]
+Ref: refresh_tokens.user_id > users.id [delete: cascade]
+Ref: refresh_tokens.previous_token_id > refresh_tokens.id [delete: set null]
+Ref: tour_locations.tour_id > tours.id [delete: cascade]
+Ref: tour_locations.location_id > locations.id [delete: cascade]

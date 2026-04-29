@@ -6,5 +6,8 @@
   "tablePositions": [],
   "tableGroupCollapseStates": [],
   "stickyNoteLayouts": [],
-  "referencePaths": []
+  "referencePaths": [
+    "./sql.dbml"
+  ],
+  "note": "Schema synchronized with danangtrip-api migrations (PostgreSQL)."
 }
