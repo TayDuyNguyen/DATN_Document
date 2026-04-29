@@ -1,232 +1,223 @@
-# DanangTrip - Prompt Kịch Bản Thu Thập Dữ Liệu Thực Tế (Google/Web Search)
-Nguồn schema: `D:\DATN\danangtrip-api\database`  
-Mục tiêu: tạo prompt để gửi cho AI có Internet, tự tra cứu dữ liệu thật và xuất `INSERT INTO` PostgreSQL.
+# DanangTrip - Real Data Collection Prompts (Target: ~100 rows/table)
+Schema source: `D:\DATN\danangtrip-api\database`
 
-## Quy ước dùng chung
-- Chạy theo thứ tự từ trên xuống để không vỡ khóa ngoại.
-- Mọi prompt đều yêu cầu:
-  - Tìm dữ liệu thật qua Google/Web Search.
-  - Ưu tiên nguồn chính thống (`.gov.vn`, cổng dữ liệu mở, cơ quan quản lý, wiki chính thống).
-  - Map đúng cột/kiểu dữ liệu/độ dài/ràng buộc.
-  - Xuất SQL `INSERT INTO`.
-  - Kèm bảng tra cứu ID (`lookup`) để giữ toàn vẹn FK.
+## 1) Coverage check of current seed
+Current dataset in `D:\DATN\DATN_Tài liệu\seeder` is **NOT enough** for full DB:
+- Missing tables: `refresh_tokens`, `job_batches`
+- Very low (<10 rows): `tours`, `tour_schedules`, `bookings`, `payments`, `ratings`, `views`, `contacts`, `notifications`, `blog_posts`, `location_amenities`, ...
+- Partially filled: `locations` currently only sample rows, not full list
 
----
+Use prompts below to collect and generate more SQL until each table reaches around 100 rows.
 
-## NHÓM A - MASTER DATA (LẤY TRƯỚC)
+## 2) Global prompt rules (apply to every prompt)
+Copy this block into every AI prompt:
 
-### 1) Bảng `categories`, `subcategories`
-**Dữ liệu cần tìm:** Danh mục điểm đến du lịch, nhóm chính/phụ phù hợp Đà Nẵng - miền Trung.
+```text
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho các bảng được yêu cầu.
 
+BẮT BUỘC:
+1) Mục tiêu số lượng: tạo khoảng 100 bản ghi cho MỖI bảng được nêu trong prompt này.
+2) Ưu tiên nguồn chính thống (.gov.vn, cổng dữ liệu mở, cổng du lịch chính thức, tài liệu kỹ thuật chính thức). Nếu thiếu thì dùng nguồn uy tín lớn và ghi rõ nguồn.
+3) Ánh xạ đúng tên cột, kiểu dữ liệu, độ dài cột, CHECK/UNIQUE/FK theo PostgreSQL schema.
+4) Giữ lookup ID để đảm bảo FK (ví dụ CATEGORY_LOOKUP, LOCATION_LOOKUP, TOUR_LOOKUP...).
+5) Đầu ra bắt buộc là SQL PostgreSQL: INSERT INTO ... VALUES ...;
+6) Không trả prose dài; trả theo cấu trúc:
+   - [SOURCE_SUMMARY]
+   - [LOOKUP_TABLES]
+   - [SQL_OUTPUT]
+7) Mỗi cụm dữ liệu phải có source_url và retrieved_date.
+```
+
+## 3) Master data prompts
+
+### 3.1 categories + subcategories (100 each)
 ```text
 Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng categories và subcategories của hệ thống du lịch.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống: cổng thông tin du lịch địa phương, trang .gov.vn, cục du lịch, wiki có kiểm chứng.
-2) Sau khi thu thập dữ liệu thô, tự động ánh xạ về đúng cột:
-   - categories: id, name(<=50), slug(<=60, unique), icon(<=50), description, image(<=255), sort_order, status(active/inactive), created_at, updated_at
-   - subcategories: id, category_id(FK->categories.id), name(<=50), slug(<=60, unique), description, sort_order, status(active/inactive), created_at, updated_at
-3) Bắt buộc tạo bảng tra cứu ID:
-   - CATEGORY_LOOKUP(name -> id)
-   - SUBCATEGORY_LOOKUP(name -> id, category_id)
-4) Slug phải lowercase-kebab-case, không dấu, unique.
-5) Đầu ra bắt buộc:
-   - Khối SQL PostgreSQL INSERT INTO cho categories trước, subcategories sau.
-   - Có chú thích nguồn cho từng nhóm dữ liệu: source_url + retrieved_date.
+Schema cần map:
+- categories: id, name, slug, icon, description, image, sort_order, status, created_at, updated_at
+- subcategories: id, category_id, name, slug, description, sort_order, status, created_at, updated_at
+
+Yêu cầu thêm:
+- Tạo CATEGORY_LOOKUP và SUBCATEGORY_LOOKUP.
+- Slug phải unique, lowercase-kebab-case.
+- Mục tiêu: ~100 categories và ~100 subcategories.
+- Xuất SQL theo thứ tự: categories -> subcategories.
 ```
 
-### 2) Bảng `tags`, `amenities`
-**Dữ liệu cần tìm:** Từ khóa tiện ích/đặc trưng địa điểm du lịch và danh sách tiện nghi thực tế.
-
+### 3.2 tags + amenities (100 each)
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng tags và amenities trong hệ thống du lịch.
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng tags và amenities.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống hoặc nguồn lớn có uy tín (cổng du lịch, booking platform lớn, wiki có kiểm chứng).
-2) Map dữ liệu đúng schema:
-   - tags: id, name(unique, <=50), slug(unique, <=60), type(<=30), created_at, updated_at
-   - amenities: id, name(unique, <=50), icon(<=50), category(<=30), created_at, updated_at
-3) Chuẩn hóa taxonomy:
-   - tags.type ví dụ: cuisine, vibe, audience, activity, landscape...
-   - amenities.category ví dụ: connectivity, parking, comfort, payment...
-4) Tạo bảng tra cứu ID:
-   - TAG_LOOKUP(name->id)
-   - AMENITY_LOOKUP(name->id)
-5) Đầu ra bắt buộc là SQL INSERT INTO PostgreSQL, có source_url + retrieved_date.
+Schema:
+- tags: id, name, slug, type, created_at, updated_at
+- amenities: id, name, icon, category, created_at, updated_at
+
+Yêu cầu:
+- ~100 tags và ~100 amenities.
+- Tạo TAG_LOOKUP, AMENITY_LOOKUP.
+- Đảm bảo unique cho name/slug theo schema.
+- Xuất SQL: tags -> amenities.
 ```
 
-### 3) Bảng `tour_categories`, `blog_categories`
-**Dữ liệu cần tìm:** Danh mục tour phổ biến và danh mục bài viết du lịch.
-
+### 3.3 tour_categories + blog_categories (100 each)
 ```text
 Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng tour_categories và blog_categories.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống ngành du lịch, báo/chuyên trang du lịch uy tín, wiki có kiểm chứng.
-2) Map đúng cột:
-   - tour_categories: id, name(unique<=50), slug(unique<=60), description, icon(<=50), sort_order(unique), status(active/inactive), created_at, updated_at
-   - blog_categories: id, name(unique<=50), slug(unique<=60), description, created_at, updated_at
-3) Tạo TOUR_CATEGORY_LOOKUP và BLOG_CATEGORY_LOOKUP (name->id).
-4) Đầu ra bắt buộc SQL INSERT INTO PostgreSQL, có nguồn.
+Schema:
+- tour_categories: id, name, slug, description, icon, sort_order, status, created_at, updated_at
+- blog_categories: id, name, slug, description, created_at, updated_at
+
+Yêu cầu:
+- ~100 tour_categories và ~100 blog_categories.
+- Tạo TOUR_CATEGORY_LOOKUP và BLOG_CATEGORY_LOOKUP.
+- sort_order không trùng.
+- Xuất SQL: tour_categories -> blog_categories.
 ```
 
-### 4) Bảng `users` (seed thực tế an toàn)
-**Dữ liệu cần tìm:** Danh sách tên người Việt phổ biến, nhà mạng email domain phổ biến, mã vùng điện thoại VN.
-
+### 3.4 users (100)
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng users, nhưng không lấy dữ liệu cá nhân nhạy cảm của người thật.
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng users (dữ liệu tổng hợp/anonymized, không lấy thông tin nhạy cảm của cá nhân thật).
 
-Yêu cầu bắt buộc:
-1) Tra cứu dữ liệu thống kê công khai (họ tên phổ biến, thành phố, định dạng số điện thoại VN) từ nguồn uy tín.
-2) Tạo dữ liệu tổng hợp/anonymized và map đúng cột:
-   id, username(unique<=50), email(unique<=100), password, full_name<=100, avatar<=255, phone<=20, birthdate, gender<=20, city<=100, role<=20, status<=20, email_verified_at, last_login_at, created_at, updated_at
-3) role chỉ gồm user/admin; status theo domain hệ thống.
-4) Đầu ra bắt buộc SQL INSERT INTO PostgreSQL.
-5) Kèm source_url + retrieved_date cho các dữ liệu thống kê đã dùng.
+Schema:
+- users: id, username, email, password, full_name, avatar, phone, birthdate, gender, city, role, status, email_verified_at, last_login_at, created_at, updated_at
+
+Yêu cầu:
+- ~100 users.
+- role chỉ dùng user/admin; status theo domain.
+- username/email unique.
+- Xuất SQL users.
 ```
 
----
+## 4) Reference data prompts
 
-## NHÓM B - REFERENCE DATA (PHỤ THUỘC MASTER)
-
-### 5) Bảng `locations`, `location_tags`, `location_amenities`
-**Dữ liệu cần tìm:** Địa điểm du lịch thực tế tại Đà Nẵng (tên, địa chỉ, tọa độ, giờ mở cửa, giá tham khảo).
-
+### 4.1 locations + location_tags + location_amenities (100 each table)
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng locations, location_tags, location_amenities.
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng locations, location_tags, location_amenities tại thị trường Đà Nẵng/miền Trung.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống (.gov.vn, cổng du lịch chính thức), sau đó đến nguồn uy tín lớn (Google Maps, wiki, OTA lớn) để đối chiếu chéo.
-2) Thu thập ít nhất 200 địa điểm thật tại Đà Nẵng, có kiểm tra trùng.
-3) Map đúng cột locations:
-   id, name<=200, slug(unique<=220), category_id(FK), subcategory_id(FK nullable), description, short_description<=500, address<=255, district<=50, ward<=50,
-   latitude(decimal 10,8), longitude(decimal 11,8), phone<=20, email<=100, website<=255, opening_hours(json),
-   price_min(decimal12,2>=0), price_max(decimal12,2>=0 và >=price_min), price_level, avg_rating(0..5), review_count, view_count, favorite_count,
-   thumbnail<=255, images(json), video_url<=255, status(active/inactive), is_featured, created_by(FK users), created_at, updated_at
-4) Với bảng liên kết:
-   - location_tags: map bằng TAG_LOOKUP, không trùng (location_id, tag_id)
-   - location_amenities: map bằng AMENITY_LOOKUP, không trùng (location_id, amenity_id)
-5) Bắt buộc có LOCATION_LOOKUP(name/slug -> id) để dùng cho các bảng sau.
-6) Đầu ra: SQL INSERT INTO PostgreSQL theo thứ tự locations -> location_tags -> location_amenities.
-7) Kèm source_url và retrieved_date cho từng location hoặc cụm location.
+Schema:
+- locations: đầy đủ tất cả cột theo migration (bao gồm lat/lng, opening_hours JSON, price_min/max, status, is_featured, created_by)
+- location_tags: location_id, tag_id
+- location_amenities: location_id, amenity_id
+
+Yêu cầu:
+- ~100 locations.
+- ~100 dòng location_tags.
+- ~100 dòng location_amenities.
+- Dùng CATEGORY_LOOKUP, SUBCATEGORY_LOOKUP, TAG_LOOKUP, AMENITY_LOOKUP, USER_LOOKUP.
+- Không trùng cặp FK ở bảng pivot.
+- Xuất SQL: locations -> location_tags -> location_amenities.
 ```
 
-### 6) Bảng `tours`, `tour_locations`, `tour_schedules`
-**Dữ liệu cần tìm:** Tour thực tế tại Đà Nẵng (giá, thời lượng, lịch trình, lịch khởi hành).
-
+### 4.2 tours + tour_locations + tour_schedules (100 each table)
 ```text
 Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng tours, tour_locations, tour_schedules.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống/công ty lữ hành uy tín/cổng du lịch có thông tin đầy đủ.
-2) Thu thập tối thiểu 120 tour thật, map đúng cột tours:
-   id, name<=200, slug(unique<=220), tour_category_id(FK), description, short_desc<=500, itinerary(json), inclusions(json), exclusions(json),
-   price_adult/child/infant(decimal12,2 >=0), discount_percent(0..100), duration<=50, start_time<=50, meeting_point<=255,
-   max_people>=0, min_people>=1 và min_people<=max_people, available_from, available_to,
-   thumbnail<=255, images(json), video_url<=255, status, booking_availability(open/sold_out), is_featured, is_hot, view_count, booking_count, rating_count, rating_avg, created_by(FK), created_at, updated_at
-3) tour_locations:
-   - Dùng LOCATION_LOOKUP để map FK.
-   - Không trùng (tour_id, location_id).
-4) tour_schedules:
-   - unique (tour_id, start_date)
-   - end_date >= start_date
-   - booked_people <= max_people
-   - price override nullable nhưng nếu có phải >=0
-5) Bắt buộc tạo TOUR_LOOKUP(name/slug -> id).
-6) Đầu ra SQL INSERT INTO PostgreSQL theo thứ tự tours -> tour_locations -> tour_schedules.
-7) Kèm source_url + retrieved_date.
+Schema:
+- tours: đầy đủ cột theo migration (booking_availability chỉ open/sold_out)
+- tour_locations: tour_id, location_id, created_at
+- tour_schedules: tour_id, start_date, end_date, max_people, booked_people, price_adult, price_child, price_infant, status, created_at, updated_at
+
+Yêu cầu:
+- ~100 tours.
+- ~100 tour_locations.
+- ~100 tour_schedules.
+- schedule.status chỉ dùng available/full/cancelled.
+- booked_people <= max_people, end_date >= start_date.
+- unique (tour_id, start_date).
+- Tạo TOUR_LOOKUP.
+- Xuất SQL: tours -> tour_locations -> tour_schedules.
 ```
 
-### 7) Bảng `blog_posts`, `blog_post_categories`
-**Dữ liệu cần tìm:** Bài viết du lịch thực tế và phân loại chủ đề.
-
+### 4.3 blog_posts + blog_post_categories (100 each table)
 ```text
 Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho bảng blog_posts và blog_post_categories.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống, blog du lịch uy tín, báo điện tử uy tín.
-2) Chỉ lấy dữ liệu công khai; tóm tắt/paraphrase, không sao chép nguyên văn dài.
-3) Map đúng cột blog_posts:
-   id, title<=255, slug(unique<=280), excerpt<=500, content(longtext), featured_image<=255, author_id(FK users), view_count, status(draft/published/archived), published_at, created_at, updated_at
-4) blog_post_categories:
-   - map qua BLOG_CATEGORY_LOOKUP
-   - không trùng (post_id, blog_category_id)
-5) Đầu ra SQL INSERT INTO PostgreSQL theo thứ tự blog_posts -> blog_post_categories, có source_url + retrieved_date.
+Schema:
+- blog_posts: id, title, slug, excerpt, content, featured_image, author_id, view_count, status, published_at, created_at, updated_at
+- blog_post_categories: post_id, blog_category_id
+
+Yêu cầu:
+- ~100 blog_posts.
+- ~100 blog_post_categories.
+- Không copy dài nguyên văn; chỉ tóm tắt/paraphrase nội dung công khai.
+- Dùng USER_LOOKUP và BLOG_CATEGORY_LOOKUP.
+- Không trùng cặp (post_id, blog_category_id).
+- Xuất SQL: blog_posts -> blog_post_categories.
 ```
 
----
+## 5) Transaction & interaction prompts
 
-## NHÓM C - TRANSACTION DATA (SINH TỪ DỮ LIỆU THẬT ĐÃ THU THẬP)
-
-### 8) Bảng `bookings`, `booking_items`, `payments`
-**Dữ liệu cần tìm:** Không có public raw transaction; cần tạo giao dịch mô phỏng dựa trên dữ liệu thật đã thu thập từ tours/schedules.
-
+### 5.1 bookings + booking_items + payments (100 each table)
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho hành vi đặt tour/thanh toán (xu hướng đặt cọc, thanh toán theo đợt, tỷ lệ hủy), sau đó tạo dữ liệu giao dịch chuẩn cho bookings, booking_items, payments.
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất về hành vi đặt tour/thanh toán, sau đó sinh dữ liệu chuẩn cho bookings, booking_items, payments.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn chính thống hoặc báo cáo uy tín (cơ quan du lịch, OTA, báo cáo thị trường).
-2) Dựa trên TOUR_LOOKUP + tour_schedules + users để sinh dữ liệu transaction có phân phối thực tế.
-3) Map đúng schema:
-   - bookings: booking_code unique<=20, user_id nullable FK, customer_name/email/phone/address/note, amounts(decimal12,2, >=0), payment_method<=30, payment_status, booking_status, timestamps...
-   - booking_items: FK booking_id/tour_id/tour_schedule_id, quantity_*, unit_price_*, subtotal, travel_date, status
-   - payments: FK booking_id, transaction_code unique<=100, amount>=0, payment_status(pending/success/failed/refunded), gateway, paid_at/refunded_at, gateway_response(json)
-4) Giữ toàn vẹn:
-   - booking_items phải khớp tour và schedule có thật
-   - subtotal và tổng tiền booking hợp logic
-   - payment dòng tiền khớp trạng thái booking ở mức hợp lý nghiệp vụ
-5) Bắt buộc xuất SQL INSERT INTO PostgreSQL theo thứ tự bookings -> booking_items -> payments.
-6) Kèm source_url + retrieved_date cho dữ liệu xu hướng đã dùng.
+Schema:
+- bookings: dùng customer_note, discount_amount, final_amount, booked_at; payment_status theo CHECK
+- booking_items: bắt buộc item_type, item_name, travel_date, quantity, unit_price, subtotal
+- payments: payment_method, payment_status, payment_gateway, gateway_response, paid_at/refunded_at
+
+Yêu cầu:
+- ~100 bookings.
+- ~100 booking_items.
+- ~100 payments.
+- Dùng USER_LOOKUP, TOUR_LOOKUP, TOUR_SCHEDULE_LOOKUP.
+- Tổng tiền và trạng thái phải logic.
+- Xuất SQL: bookings -> booking_items -> payments.
 ```
 
-### 9) Bảng `ratings`, `rating_images`, `notifications`, `favorites`, `views`, `search_logs`, `contacts`
-**Dữ liệu cần tìm:** Hành vi người dùng thực tế (review pattern, thời lượng xem, truy vấn tìm kiếm, form liên hệ).
-
+### 5.2 ratings + rating_images + favorites + views + search_logs + contacts + notifications (100 each table)
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho hành vi người dùng du lịch, sau đó tạo dữ liệu chuẩn cho ratings, rating_images, notifications, favorites, views, search_logs, contacts.
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất về hành vi người dùng du lịch, sau đó sinh dữ liệu chuẩn cho ratings, rating_images, favorites, views, search_logs, contacts, notifications.
 
-Yêu cầu bắt buộc:
-1) Ưu tiên nguồn uy tín về hành vi người dùng (báo cáo OTA, UX report, phân tích thị trường) và nguồn chính thống khi có.
-2) Map đúng schema và ràng buộc:
-   - ratings: num_nonnulls(location_id,tour_id,booking_id)=1; score 1..5; image_count>=0; unique partial theo user-target; status + approved/rejected fields hợp lý
-   - rating_images: FK rating_id, sort_order
-   - notifications: FK user_id, type/title/content/data/is_read/read_at
-   - favorites: num_nonnulls(location_id,tour_id)=1; unique partial
-   - views: num_nonnulls(location_id,tour_id)=1; session_id; time_spent hợp lý
-   - search_logs: query<=255, results_count, filters(json)
-   - contacts: thông tin liên hệ hợp lệ, trạng thái xử lý
-3) Bắt buộc dùng bảng tra cứu ID:
-   USER_LOOKUP, LOCATION_LOOKUP, TOUR_LOOKUP, BOOKING_LOOKUP, RATING_LOOKUP.
-4) Đầu ra bắt buộc SQL INSERT INTO PostgreSQL theo thứ tự:
-   favorites/views/search_logs/contacts -> ratings -> rating_images -> notifications.
-5) Kèm source_url + retrieved_date cho bộ dữ liệu hành vi tham chiếu.
+Ràng buộc bắt buộc:
+- ratings: num_nonnulls(location_id, tour_id, booking_id)=1; score 1..5; image_count >=0
+- rating_images: cột image_url (không phải image_path), chỉ có created_at
+- favorites: num_nonnulls(location_id, tour_id)=1
+- views: num_nonnulls(location_id, tour_id)=1; bắt buộc session_id
+- search_logs: bắt buộc session_id
+- contacts: cột reply (không phải notes)
+- notifications: không có updated_at
+
+Yêu cầu số lượng:
+- ~100 bản ghi cho MỖI bảng trong nhóm này.
+
+Dùng lookup: USER_LOOKUP, LOCATION_LOOKUP, TOUR_LOOKUP, BOOKING_LOOKUP, RATING_LOOKUP.
+Xuất SQL theo thứ tự:
+favorites/views/search_logs/contacts -> ratings -> rating_images -> notifications.
 ```
 
----
+## 6) System tables prompts (fill missing + reach ~100)
 
-## NHÓM D - SYSTEM TABLES (TÙY CHỌN)
-
-### 10) `refresh_tokens`, `sessions`, `password_reset_tokens`, `jobs`, `job_batches`, `failed_jobs`, `cache`, `cache_locks`
-**Dữ liệu cần tìm:** Chủ yếu kỹ thuật vận hành, không ưu tiên thu thập bên ngoài.
-
+### 6.1 refresh_tokens + sessions + password_reset_tokens
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất cho mẫu vận hành hệ thống Laravel/PostgreSQL (session lifecycle, token rotation, queue failure patterns), sau đó tạo dữ liệu seed kỹ thuật cho các bảng hệ thống.
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất về mẫu vận hành auth/session của Laravel, sau đó sinh dữ liệu cho refresh_tokens, sessions, password_reset_tokens.
 
-Yêu cầu bắt buộc:
-1) Dùng nguồn tài liệu chính thức Laravel/PostgreSQL và nguồn kỹ thuật uy tín.
-2) Map đúng schema từng bảng hệ thống, đảm bảo không vi phạm unique/FK.
-3) refresh_tokens phải có chuỗi previous_token_id hợp lệ.
-4) Đầu ra SQL INSERT INTO PostgreSQL, có source_url + retrieved_date.
+Yêu cầu:
+- ~100 refresh_tokens (hiện đang thiếu).
+- ~100 sessions.
+- ~100 password_reset_tokens.
+- FK/format phải hợp lệ theo schema.
+- Xuất SQL theo thứ tự: sessions -> password_reset_tokens -> refresh_tokens.
 ```
 
----
+### 6.2 jobs + job_batches + failed_jobs + cache + cache_locks
+```text
+Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất về queue/cache patterns trong Laravel/PostgreSQL, sau đó sinh dữ liệu cho jobs, job_batches, failed_jobs, cache, cache_locks.
 
-## Checklist chạy thực tế
-1. Chạy prompt Nhóm A trước, lưu lại toàn bộ LOOKUP ID.
-2. Chạy Nhóm B bằng LOOKUP từ Nhóm A.
-3. Chạy Nhóm C bằng LOOKUP từ A+B.
-4. Kiểm tra lại bằng:
-   - unique constraint
-   - foreign key integrity
-   - check constraint
-5. Mới thực thi `INSERT` vào PostgreSQL.
+Yêu cầu:
+- ~100 jobs.
+- ~100 job_batches (hiện đang thiếu).
+- ~100 failed_jobs.
+- ~100 cache.
+- ~100 cache_locks.
+- Đảm bảo đúng kiểu dữ liệu và unique key.
+- Xuất SQL theo thứ tự: jobs -> job_batches -> failed_jobs -> cache -> cache_locks.
+```
+
+## 7) Execution order
+1. Master: `categories/subcategories -> tags/amenities -> tour_categories/blog_categories -> users`
+2. Reference: `locations/pivots -> tours/pivots/schedules -> blog_posts/pivots`
+3. Transaction: `bookings/items/payments -> interactions`
+4. System tables.
+

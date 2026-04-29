@@ -23,10 +23,10 @@ INSERT INTO tour_locations (tour_id, location_id) VALUES
 (4, 3); -- Huế tour -> Thường ghé Linh Ứng hoặc Hải Vân
 
 -- TOUR_SCHEDULES (Sample schedules for the next 7 days)
-INSERT INTO tour_schedules (tour_id, start_date, end_date, max_people, booked_people, price_adult_override, price_child_override, price_infant_override, status, created_at, updated_at) VALUES
-(1, '2024-05-01', '2024-05-01', 45, 15, NULL, NULL, NULL, 'open', NOW(), NOW()),
-(1, '2024-05-02', '2024-05-02', 45, 10, NULL, NULL, NULL, 'open', NOW(), NOW()),
-(1, '2024-05-03', '2024-05-03', 45, 45, NULL, NULL, NULL, 'sold_out', NOW(), NOW()),
-(2, '2024-05-01', '2024-05-01', 30, 12, NULL, NULL, NULL, 'open', NOW(), NOW()),
-(2, '2024-05-02', '2024-05-02', 30, 20, NULL, NULL, NULL, 'open', NOW(), NOW()),
-(3, '2024-05-01', '2024-05-01', 35, 5, NULL, NULL, NULL, 'open', NOW(), NOW());
+INSERT INTO tour_schedules (tour_id, start_date, end_date, max_people, booked_people, price_adult, price_child, price_infant, status, created_at, updated_at) VALUES
+(1, '2024-05-01', '2024-05-01', 45, 15, NULL, NULL, NULL, 'available', NOW(), NOW()),
+(1, '2024-05-02', '2024-05-02', 45, 10, NULL, NULL, NULL, 'available', NOW(), NOW()),
+(1, '2024-05-03', '2024-05-03', 45, 45, NULL, NULL, NULL, 'full', NOW(), NOW()),
+(2, '2024-05-01', '2024-05-01', 30, 12, NULL, NULL, NULL, 'available', NOW(), NOW()),
+(2, '2024-05-02', '2024-05-02', 30, 20, NULL, NULL, NULL, 'available', NOW(), NOW()),
+(3, '2024-05-01', '2024-05-01', 35, 5, NULL, NULL, NULL, 'available', NOW(), NOW());

@@ -9,5 +9,5 @@
   "referencePaths": [
     "./sql.dbml"
   ],
-  "note": "Schema synchronized with danangtrip-api migrations (PostgreSQL)."
+  "note": "Schema synchronized with d:/DATN/danangtrip-api/database/migrations (PostgreSQL), verified by php artisan migrate:fresh on 2026-04-29."
 }

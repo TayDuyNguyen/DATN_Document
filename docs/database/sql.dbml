@@ -1,6 +1,6 @@
 Project danangtrip_api {
   database_type: "PostgreSQL"
-  Note: "Source of truth: danangtrip-api/database/migrations"
+  Note: "Source of truth: d:/DATN/danangtrip-api/database/migrations | Last sync: 2026-04-29 (migrate:fresh passed)"
 }
 
 Table users {
