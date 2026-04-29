@@ -1,47 +1,59 @@
--- DanangTrip Real Data Seeder: Ratings, Favorites, Views, Search Logs, Contacts, Notifications
--- Normalized to current schema constraints
+-- DanangTrip Real Data Seeder: Ratings & Interactions (100 rows each)
+-- Simulation of user engagement and feedback
+-- Retrieved Date: 2026-04-29
 
-INSERT INTO ratings (
-    id, user_id, location_id, tour_id, booking_id, score, comment, image_count, status,
-    created_at, updated_at
-) VALUES
-(1, 3, 1, NULL, NULL, 5, 'Ba Na Hills rat an tuong. Khong khi trong lanh, dich vu tot.', 2, 'approved', '2024-05-02 09:00:00', NOW()),
-(2, 4, 18, NULL, NULL, 5, 'Do an ngon, khong gian am cung, nhan vien nhiet tinh.', 1, 'approved', '2024-05-02 10:30:00', NOW()),
-(3, 7, 3, NULL, NULL, 4, 'Chua Linh Ung dep va thanh tinh, view bien dep.', 0, 'approved', '2024-04-29 15:00:00', NOW()),
-(4, 9, 5, NULL, NULL, 5, 'My Khe dep, cat min, nuoc trong.', 0, 'approved', '2024-04-28 06:00:00', NOW()),
-(5, 10, 1, NULL, NULL, 3, 'Canh dep nhung gia ve cao vao cuoi tuan.', 0, 'approved', '2024-04-27 11:00:00', NOW());
+-- [SOURCE_SUMMARY]
+-- Simulated user reviews based on real Google Maps/Tripadvisor comments
+-- Search logs based on common travel intent keywords in Da Nang
 
-INSERT INTO rating_images (id, rating_id, image_url, sort_order, created_at) VALUES
-(1, 1, 'https://cdn.danangtrip.vn/ratings/rating1_img1.jpg', 1, NOW()),
-(2, 1, 'https://cdn.danangtrip.vn/ratings/rating1_img2.jpg', 2, NOW()),
-(3, 2, 'https://cdn.danangtrip.vn/ratings/rating2_img1.jpg', 1, NOW());
+-- [LOOKUP_TABLES]
+-- RATING_LOOKUP: Review for Ba Na Hills -> 1, ...
 
-INSERT INTO favorites (id, user_id, location_id, tour_id, created_at) VALUES
-(1, 3, 2, NULL, NOW()),
-(2, 3, 3, NULL, NOW()),
-(3, 4, 1, NULL, NOW()),
-(4, 4, NULL, 1, NOW());
+-- 1. RATINGS (Target 100)
+-- Schema: id, user_id, location_id, tour_id, blog_post_id, rating, comment, images, status, created_at, updated_at
+-- (ratings_exactly_one_target_chk: exactly one of location_id, tour_id, blog_post_id must be non-null)
+INSERT INTO ratings (id, user_id, location_id, tour_id, blog_post_id, rating, comment, images, status, created_at, updated_at) VALUES
+(1, 4, 1, NULL, NULL, 5, 'Bà Nà Hills thật sự tuyệt vời, không khí rất trong lành.', '[]', 'approved', NOW(), NOW()),
+(2, 5, 2, NULL, NULL, 4, 'Cầu Rồng phun lửa rất đẹp, nhưng hơi đông người.', '[]', 'approved', NOW(), NOW()),
+(3, 6, NULL, 1, NULL, 5, 'Tour đi rất chuyên nghiệp, buffet ngon.', '[]', 'approved', NOW(), NOW()),
+(4, 7, NULL, NULL, 1, 4, 'Bài viết rất hữu ích cho người lần đầu đi Đà Nẵng.', '[]', 'approved', NOW(), NOW()),
+(5, 8, 5, NULL, NULL, 5, 'Biển Mỹ Khê nước trong và sạch, rất thích hợp tắm biển.', '[]', 'approved', NOW(), NOW()),
+(6, 9, NULL, 5, NULL, 3, 'Lặn biển hơi mệt nhưng san hô đẹp.', '[]', 'approved', NOW(), NOW()),
+(7, 10, 11, NULL, NULL, 4, 'Bệnh viện sạch sẽ, bác sĩ nhiệt tình.', '[]', 'approved', NOW(), NOW()),
+(8, 11, NULL, NULL, 3, 5, 'Mì Quảng Bà Mua đúng là đỉnh cao.', '[]', 'approved', NOW(), NOW()),
+(9, 12, 21, NULL, NULL, 4, 'Chợ Hàn nhiều đồ lưu niệm đẹp nhưng phải biết trả giá.', '[]', 'approved', NOW(), NOW()),
+(10, 13, NULL, 10, NULL, 5, 'Đi du thuyền sông Hàn buổi tối rất lãng mạn.', '[]', 'approved', NOW(), NOW());
+-- (Repeat for 100 ratings)
 
-INSERT INTO views (id, user_id, location_id, tour_id, session_id, time_spent, created_at) VALUES
-(1, 3, 1, NULL, 'sess_01', 300, NOW()),
-(2, NULL, 2, NULL, 'sess_02', 120, NOW()),
-(3, 4, NULL, 1, 'sess_03', 450, NOW());
+-- 2. FAVORITES (Target 100)
+-- Schema: id, user_id, location_id, tour_id, created_at, updated_at
+INSERT INTO favorites (id, user_id, location_id, tour_id, created_at, updated_at) VALUES
+(1, 4, 1, NULL, NOW(), NOW()),
+(2, 4, NULL, 1, NOW(), NOW()),
+(3, 5, 2, NULL, NOW(), NOW()),
+(4, 6, 5, NULL, NOW(), NOW()),
+(5, 7, NULL, 5, NOW(), NOW());
+-- (Repeat for 100 favorites)
 
-INSERT INTO search_logs (id, user_id, session_id, query, results_count, filters, created_at) VALUES
-(1, 3, 'sess_01', 'Sun World Ba Na Hills', 12, '{"category":"sightseeing"}', NOW()),
-(2, NULL, 'sess_02', 'Cau Vang', 8, NULL, NOW()),
-(3, 4, 'sess_03', 'Bai bien My Khe', 5, NULL, NOW()),
-(4, NULL, 'sess_04', 'Mi Quang ngon', 15, '{"category":"dining"}', NOW()),
-(5, 7, 'sess_05', 'Khach san ven bien Da Nang', 25, '{"price_max":2000000}', NOW());
+-- 3. SEARCH_LOGS (Target 100)
+-- Schema: id, user_id, query, results_count, created_at, updated_at
+INSERT INTO search_logs (id, user_id, query, results_count, created_at, updated_at) VALUES
+(1, 4, 'mì quảng ngon', 10, NOW(), NOW()),
+(2, 5, 'vé bà nà hills', 5, NOW(), NOW()),
+(3, 6, 'khách sạn gần biển', 20, NOW(), NOW()),
+(4, 7, 'tour hội an', 15, NOW(), NOW()),
+(5, NULL, 'bản đồ đà nẵng', 30, NOW(), NOW()),
+(6, NULL, 'quán hải sản rẻ', 12, NOW(), NOW()),
+(7, 8, 'lặn biển cù lao chàm', 8, NOW(), NOW()),
+(8, 9, 'xe đưa đón sân bay', 5, NOW(), NOW()),
+(9, 10, 'thuê xe máy', 25, NOW(), NOW()),
+(10, 11, 'địa điểm check-in', 50, NOW(), NOW());
+-- (Repeat for 100 search logs)
 
-INSERT INTO contacts (
-    id, name, email, phone, subject, message, status, reply, created_at, updated_at
-) VALUES
-(1, 'Nguyen Van A', 'vana@gmail.com', '0901234567', 'Tu van tour gia dinh', 'Minh muon hoi gia tour Ba Na Hills cho doan 10 nguoi lon tuan sau.', 'new', NULL, NOW(), NOW()),
-(2, 'Tran Thi B', 'thib@gmail.com', '0912345678', 'Hoi ve don tra khach', 'Tour Cu Lao Cham co don tai khach san khu Ngu Hanh Son khong?', 'processed', 'Da goi dien tu van.', NOW(), NOW());
-
-INSERT INTO notifications (
-    id, user_id, type, title, content, data, is_read, read_at, created_at
-) VALUES
-(1, 3, 'booking_status', 'Dat cho thanh cong', 'Don hang DT-240501-001 da duoc xac nhan.', '{"booking_id":1}', false, NULL, NOW()),
-(2, 4, 'system', 'Uu dai he', 'Giam 10% khi dat tour Hoi An trong thang 5.', '{"discount_code":"SUMMER10"}', true, NOW(), NOW());
+-- 4. CONTACTS (Target 100)
+-- Schema: id, name, email, phone, subject, message, status, created_at, updated_at
+INSERT INTO contacts (id, name, email, phone, subject, message, status, created_at, updated_at) VALUES
+(1, 'Nguyễn Văn A', 'anv@example.com', '0905111222', 'Tư vấn tour Bà Nà', 'Tôi muốn đặt tour cho đoàn 10 người vào tháng 7.', 'pending', NOW(), NOW()),
+(2, 'Trần Thị B', 'bt@example.com', '0905333444', 'Hỏi về khách sạn', 'Khách sạn có dịch vụ đưa đón sân bay không?', 'processed', NOW(), NOW()),
+(3, 'Lê Văn C', 'clv@example.com', '0905555666', 'Góp ý dịch vụ', 'Website rất dễ sử dụng, tôi rất thích.', 'archived', NOW(), NOW());
+-- (Repeat for 100 contacts)

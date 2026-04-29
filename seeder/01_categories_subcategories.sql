@@ -1,55 +1,156 @@
--- DanangTrip Real Data Seeder: Categories & Subcategories
--- Source: Official Tourism Portals (danangfantasticity.com), Wiki, Local Travel Guides
--- Retrieved Date: 2026-04-28
+-- DanangTrip Real Data Seeder: Categories & Subcategories (Expanded)
+-- Source: VSIC, Danang Tourism Portal, Google Business categories
+-- Retrieved Date: 2026-04-29
 
--- CATEGORY_LOOKUP
--- Tham quan -> 1
--- Ẩm thực -> 2
--- Lưu trú -> 3
--- Giải trí -> 4
--- Mua sắm -> 5
+-- [SOURCE_SUMMARY]
+-- Official Vietnamese Economic Classifications (VSIC)
+-- Da Nang Tourism Portal (danangfantasticity.com)
+-- Google Business Profile Category List
 
+-- [LOOKUP_TABLES]
+-- CATEGORY_LOOKUP: Food & Dining (Local) -> 1, Food & Dining (International) -> 2, Cafes & Tea Rooms -> 3, Nightlife -> 4, ...
+-- SUBCATEGORY_LOOKUP: Street Food -> 1 (cat 1), Seafood -> 2 (cat 1), ...
+
+-- 1. CATEGORIES (Target ~40-50 main categories)
 INSERT INTO categories (id, name, slug, icon, description, image, sort_order, status, created_at, updated_at) VALUES
-(1, 'Tham quan', 'tham-quan', 'landmark', 'Các địa điểm danh lam thắng cảnh, di tích lịch sử và văn hóa tại Đà Nẵng.', 'https://danangfantasticity.com/wp-content/uploads/2023/01/sightseeing.jpg', 1, 'active', NOW(), NOW()),
-(2, 'Ẩm thực', 'am-thuc', 'restaurant', 'Khám phá thế giới ẩm thực phong phú từ đặc sản địa phương đến ẩm thực quốc tế.', 'https://danangfantasticity.com/wp-content/uploads/2023/01/dining.jpg', 2, 'active', NOW(), NOW()),
-(3, 'Lưu trú', 'luu-tru', 'hotel', 'Danh sách khách sạn, resort và homestay chất lượng tại Đà Nẵng.', 'https://danangfantasticity.com/wp-content/uploads/2023/01/accommodation.jpg', 3, 'active', NOW(), NOW()),
-(4, 'Giải trí', 'giai-tri', 'celebration', 'Các hoạt động vui chơi giải trí, công viên chủ đề và show diễn đặc sắc.', 'https://danangfantasticity.com/wp-content/uploads/2023/01/entertainment.jpg', 4, 'active', NOW(), NOW()),
-(5, 'Mua sắm', 'mua-sam', 'shopping_bag', 'Địa điểm mua sắm từ chợ truyền thống đến các trung tâm thương mại hiện đại.', 'https://danangfantasticity.com/wp-content/uploads/2023/01/shopping.jpg', 5, 'active', NOW(), NOW());
+(1, 'Ẩm thực địa phương', 'am-thuc-dia-phuong', 'restaurant', 'Các món ăn đặc sản Đà Nẵng và miền Trung.', 'https://images.unsplash.com/photo-1562967914-6cbb77312935', 1, 'active', NOW(), NOW()),
+(2, 'Ẩm thực quốc tế', 'am-thuc-quoc-te', 'restaurant_menu', 'Món Á, Âu, Mỹ và Fusion từ khắp nơi trên thế giới.', 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5', 2, 'active', NOW(), NOW()),
+(3, 'Cà phê & Trà', 'ca-phe-tra', 'coffee', 'Không gian thưởng thức cà phê và trà đạo.', 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb', 3, 'active', NOW(), NOW()),
+(4, 'Giải trí ban đêm', 'giai-tri-ban-dem', 'nightlife', 'Bar, Pub, Club và các không gian sôi động về đêm.', 'https://images.unsplash.com/photo-1514525253361-bee243870eb2', 4, 'active', NOW(), NOW()),
+(5, 'Lưu trú cao cấp', 'luu-tru-cao-cap', 'hotel', 'Resort 5 sao, khách sạn hạng sang và Villa nghỉ dưỡng.', 'https://images.unsplash.com/photo-1566073771259-6a8506099945', 5, 'active', NOW(), NOW()),
+(6, 'Lưu trú bình dân', 'luu-tru-binh-dan', 'bed', 'Homestay, Hostel, nhà nghỉ và căn hộ dịch vụ.', 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4', 6, 'active', NOW(), NOW()),
+(7, 'Danh lam thắng cảnh', 'danh-lam-thang-canh', 'landscape', 'Cầu, công viên, bãi biển và các điểm check-in nổi tiếng.', 'https://images.unsplash.com/photo-1559592413-7ce75d0e40ec', 7, 'active', NOW(), NOW()),
+(8, 'Văn hóa & Nghệ thuật', 'van-hoa-nghe-thuat', 'museum', 'Bảo tàng, phòng triển lãm và nhà hát.', 'https://images.unsplash.com/photo-1518998053574-53f1f61f9b86', 8, 'active', NOW(), NOW()),
+(9, 'Di tích lịch sử', 'di-tich-lich-su', 'history', 'Các công trình mang dấu ấn lịch sử và chiến tranh.', 'https://images.unsplash.com/photo-1582650625119-3a31f8fa2699', 9, 'active', NOW(), NOW()),
+(10, 'Thiên nhiên & Dã ngoại', 'thien-nhien-da-ngoai', 'forest', 'Núi, hang động, rừng và các khu du lịch sinh thái.', 'https://images.unsplash.com/photo-1501785888041-af3ef285b470', 10, 'active', NOW(), NOW()),
+(11, 'Điểm đến tâm linh', 'diem-den-tam-linh', 'temple', 'Chùa, nhà thờ, đền miếu và các cơ sở tôn giáo.', 'https://images.unsplash.com/photo-1528127269322-539801943592', 11, 'active', NOW(), NOW()),
+(12, 'Làng nghề truyền thống', 'lang-nghe-truyen-thong', 'handyman', 'Các làng nghề đặc trưng vùng miền.', 'https://images.unsplash.com/photo-1544654803-b69110b39e3d', 12, 'active', NOW(), NOW()),
+(13, 'Mua sắm hiện đại', 'mua-sam-hien-dai', 'shopping_cart', 'Trung tâm thương mại, siêu thị và cửa hàng miễn thuế.', 'https://images.unsplash.com/photo-1441986300917-64674bd600d8', 13, 'active', NOW(), NOW()),
+(14, 'Mua sắm truyền thống', 'mua-sam-truyen-thong', 'storefront', 'Chợ địa phương và chợ đêm.', 'https://images.unsplash.com/photo-1533900298318-6b8da08a523e', 14, 'active', NOW(), NOW()),
+(15, 'Sản phẩm đặc sản', 'san-pham-dac-san', 'redeem', 'Quà lưu niệm, đặc sản làm quà.', 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38', 15, 'active', NOW(), NOW()),
+(16, 'Vui chơi giải trí', 'vui-choi-giai-tri', 'celebration', 'Công viên chủ đề, rạp chiếu phim và khu vui chơi trong nhà.', 'https://images.unsplash.com/photo-1513885535751-8b9238bd345a', 16, 'active', NOW(), NOW()),
+(17, 'Thể thao & Gym', 'the-thao-gym', 'fitness_center', 'Phòng tập, sân golf, sân bóng đá.', 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48', 17, 'active', NOW(), NOW()),
+(18, 'Thể thao dưới nước', 'the-thao-duoi-nuoc', 'surfing', 'Lướt ván, chèo thuyền, lặn biển.', 'https://images.unsplash.com/photo-1502680390469-be75c86b636f', 18, 'active', NOW(), NOW()),
+(19, 'Sức khỏe & Spa', 'suc-khoe-spa', 'spa', 'Massage, Spa, chăm sóc sắc đẹp.', 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874', 19, 'active', NOW(), NOW()),
+(20, 'Dịch vụ y tế', 'dich-vu-y-te', 'medical_services', 'Bệnh viện, phòng khám và hiệu thuốc.', 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d', 20, 'active', NOW(), NOW()),
+(21, 'Nha khoa', 'nha-khoa', 'dentistry', 'Phòng khám nha khoa và thẩm mỹ răng.', 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5', 21, 'active', NOW(), NOW()),
+(22, 'Giáo dục đào tạo', 'giao-duc-dao-tao', 'school', 'Trường học, trung tâm ngoại ngữ.', 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b', 22, 'active', NOW(), NOW()),
+(23, 'Tài chính & Ngân hàng', 'tai-chinh-ngan-hang', 'account_balance', 'Ngân hàng, ATM, đổi ngoại tệ.', 'https://images.unsplash.com/photo-1501167786227-4cba60f6d58f', 23, 'active', NOW(), NOW()),
+(24, 'Đầu mối giao thông', 'dau-moi-giao-thong', 'directions_bus', 'Sân bay, ga tàu, bến xe.', 'https://images.unsplash.com/photo-1495313196544-7d1adf4e628f', 24, 'active', NOW(), NOW()),
+(25, 'Thuê xe', 'thue-xe', 'car_rental', 'Cho thuê xe máy, ô tô tự lái.', 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2', 25, 'active', NOW(), NOW()),
+(26, 'Vận tải công cộng', 'van-tai-cong-cong', 'local_taxi', 'Taxi, xe công nghệ, xe buýt.', 'https://images.unsplash.com/photo-1494783367193-149034c05e8f', 26, 'active', NOW(), NOW()),
+(27, 'Hành chính công', 'hanh-chinh-cong', 'gavel', 'Trung tâm hành chính, công an, bưu điện.', 'https://images.unsplash.com/photo-1523293182086-7651a899d37f', 27, 'active', NOW(), NOW()),
+(28, 'Sự kiện & Lễ hội', 'su-kien-le-hoi', 'event', 'Pháo hoa, marathon, trung tâm hội nghị.', 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30', 28, 'active', NOW(), NOW()),
+(29, 'Công nghệ & Truyền thông', 'cong-nghe-truyen-thong', 'router', 'Cửa hàng điện thoại, co-working space.', 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b', 29, 'active', NOW(), NOW()),
+(30, 'Bất động sản', 'bat-dong-san', 'real_estate_agent', 'Môi giới, cho thuê căn hộ.', 'https://images.unsplash.com/photo-1560518883-ce09059eeffa', 30, 'active', NOW(), NOW()),
+(31, 'Dịch vụ chuyên nghiệp', 'dich-vu-chuyen-nghiep', 'business_center', 'Luật sư, kế toán, dịch thuật.', 'https://images.unsplash.com/photo-1454165833767-027ff33027ef', 31, 'active', NOW(), NOW()),
+(32, 'Dịch vụ ô tô', 'dich-vu-o-to', 'build', 'Trạm xăng, sửa chữa xe, rửa xe.', 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3', 32, 'active', NOW(), NOW()),
+(33, 'Dịch vụ gia đình', 'dich-vu-gia-dinh', 'local_laundry_service', 'Giặt là, sửa chữa điện nước.', 'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60', 33, 'active', NOW(), NOW()),
+(34, 'Dịch vụ thú cưng', 'dich-vu-thu-cung', 'pets', 'Thú y, chăm sóc thú cưng.', 'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7', 34, 'active', NOW(), NOW()),
+(35, 'Logistics & Giao hàng', 'logistics-giao-hang', 'local_shipping', 'Chuyển phát nhanh, kho bãi.', 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe', 35, 'active', NOW(), NOW()),
+(36, 'Nông nghiệp & Thủy sản', 'nong-nghiep-thuy-san', 'agriculture', 'Trang trại, cảng cá.', 'https://images.unsplash.com/photo-1500382017468-9049fed747ef', 36, 'active', NOW(), NOW()),
+(37, 'Môi trường & Công cộng', 'moi-truong-cong-cong', 'recycling', 'Vệ sinh công cộng, điểm tái chế.', 'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b', 37, 'active', NOW(), NOW()),
+(38, 'Từ thiện & Xã hội', 'tu-thien-xa-hoi', 'volunteer_activism', 'Tổ chức từ thiện, trung tâm cộng đồng.', 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c', 38, 'active', NOW(), NOW());
 
--- SUBCATEGORY_LOOKUP
--- Di tích lịch sử -> 1 (cat: 1)
--- Thắng cảnh thiên nhiên -> 2 (cat: 1)
--- Bảo tàng & Văn hóa -> 3 (cat: 1)
--- Công trình kiến trúc -> 4 (cat: 1)
--- Điểm tâm linh -> 5 (cat: 1)
--- Đặc sản Đà Nẵng -> 6 (cat: 2)
--- Nhà hàng -> 7 (cat: 2)
--- Quán ăn đường phố -> 8 (cat: 2)
--- Cà phê & Bar -> 9 (cat: 2)
--- Khách sạn -> 10 (cat: 3)
--- Resort -> 11 (cat: 3)
--- Homestay & Villa -> 12 (cat: 3)
--- Khu vui chơi -> 13 (cat: 4)
--- Show diễn -> 14 (cat: 4)
--- Spa & Massage -> 15 (cat: 4)
--- Chợ truyền thống -> 16 (cat: 5)
--- Trung tâm thương mại -> 17 (cat: 5)
-
+-- 2. SUBCATEGORIES (Target ~100 rows)
 INSERT INTO subcategories (id, category_id, name, slug, description, sort_order, status, created_at, updated_at) VALUES
-(1, 1, 'Di tích lịch sử', 'di-tich-lich-su', 'Các địa danh mang đậm dấu ấn lịch sử dân tộc.', 1, 'active', NOW(), NOW()),
-(2, 1, 'Thắng cảnh thiên nhiên', 'thang-canh-thien-nhien', 'Núi non, hang động và bãi biển tuyệt đẹp.', 2, 'active', NOW(), NOW()),
-(3, 1, 'Bảo tàng & Văn hóa', 'bao-tang-van-hoa', 'Nơi lưu giữ giá trị nghệ thuật và lịch sử.', 3, 'active', NOW(), NOW()),
-(4, 1, 'Công trình kiến trúc', 'cong-trinh-kien-truc', 'Những biểu tượng kiến trúc độc đáo của thành phố.', 4, 'active', NOW(), NOW()),
-(5, 1, 'Điểm tâm linh', 'diem-tam-linh', 'Chùa chiền và các địa điểm tín ngưỡng.', 5, 'active', NOW(), NOW()),
-(6, 2, 'Đặc sản Đà Nẵng', 'dac-san-da-nang', 'Mì Quảng, bánh tráng cuốn thịt heo, hải sản...', 1, 'active', NOW(), NOW()),
-(7, 2, 'Nhà hàng', 'nha-hang', 'Không gian ẩm thực từ bình dân đến cao cấp.', 2, 'active', NOW(), NOW()),
-(8, 2, 'Quán ăn đường phố', 'quan-an-duong-pho', 'Trải nghiệm văn hóa ẩm thực lề đường đặc trưng.', 3, 'active', NOW(), NOW()),
-(9, 2, 'Cà phê & Bar', 'ca-phe-bar', 'Thưởng thức đồ uống và không gian chill.', 4, 'active', NOW(), NOW()),
-(10, 3, 'Khách sạn', 'khach-san', 'Từ tiêu chuẩn đến 5 sao sang trọng.', 1, 'active', NOW(), NOW()),
-(11, 3, 'Resort', 'resort', 'Khu nghỉ dưỡng ven biển đẳng cấp.', 2, 'active', NOW(), NOW()),
-(12, 3, 'Homestay & Villa', 'homestay-villa', 'Không gian nghỉ ngơi ấm cúng và riêng tư.', 3, 'active', NOW(), NOW()),
-(13, 4, 'Khu vui chơi', 'khu-vui-choi', 'Các công viên chủ đề và điểm giải trí gia đình.', 1, 'active', NOW(), NOW()),
-(14, 4, 'Show diễn', 'show-dien', 'Các chương trình nghệ thuật biểu diễn đặc sắc.', 2, 'active', NOW(), NOW()),
-(15, 4, 'Spa & Massage', 'spa-massage', 'Thư giãn và chăm sóc sức khỏe.', 3, 'active', NOW(), NOW()),
-(16, 5, 'Chợ truyền thống', 'cho-truyen-thong', 'Chợ Hàn, chợ Cồn và các khu chợ địa phương.', 1, 'active', NOW(), NOW()),
-(17, 5, 'Trung tâm thương mại', 'trung-tam-thuong-mai', 'Vincom, Lotte Mart và các mall hiện đại.', 2, 'active', NOW(), NOW());
+(1, 1, 'Mì Quảng', 'mi-quang', 'Món ăn đặc sản trứ danh của vùng đất Quảng Nam - Đà Nẵng.', 1, 'active', NOW(), NOW()),
+(2, 1, 'Hải sản tươi sống', 'hai-san-tuoi-song', 'Các nhà hàng hải sản ven biển.', 2, 'active', NOW(), NOW()),
+(3, 1, 'Bánh tráng cuốn thịt heo', 'banh-trang-cuon-thit-heo', 'Món ăn dân dã nhưng đậm đà hương vị.', 3, 'active', NOW(), NOW()),
+(4, 1, 'Bún mắm nêm', 'bun-mam-nem', 'Đặc sản bình dân với hương vị mắm nêm đặc trưng.', 4, 'active', NOW(), NOW()),
+(5, 2, 'Nhà hàng Hàn Quốc', 'nha-hang-han-quoc', 'Phục vụ cộng đồng người Hàn và du khách.', 1, 'active', NOW(), NOW()),
+(6, 2, 'Nhà hàng Nhật Bản', 'nha-hang-nhat-ban', 'Sashimi, Sushi và các món ăn truyền thống Nhật.', 2, 'active', NOW(), NOW()),
+(7, 2, 'Pizza & Pasta', 'pizza-pasta', 'Ẩm thực Ý phổ biến.', 3, 'active', NOW(), NOW()),
+(8, 2, 'Steakhouse', 'steakhouse', 'Nhà hàng chuyên các món bò bít tết.', 4, 'active', NOW(), NOW()),
+(9, 3, 'Cà phê đặc sản (Specialty)', 'ca-phe-specialty', 'Dành cho những tín đồ sành cà phê.', 1, 'active', NOW(), NOW()),
+(10, 3, 'Cà phê vỉa hè', 'ca-phe-via-he', 'Văn hóa cà phê đặc trưng của người Việt.', 2, 'active', NOW(), NOW()),
+(11, 3, 'Trà sữa', 'tra-sua', 'Đồ uống yêu thích của giới trẻ.', 3, 'active', NOW(), NOW()),
+(12, 4, 'Bar ven biển', 'bar-ven-bien', 'Thưởng thức đồ uống trong tiếng sóng biển.', 1, 'active', NOW(), NOW()),
+(13, 4, 'Sky Bar', 'sky-bar', 'Tầm nhìn bao quát thành phố từ trên cao.', 2, 'active', NOW(), NOW()),
+(14, 4, 'Craft Beer (Bia thủ công)', 'craft-beer', 'Xu hướng bia mới lạ.', 3, 'active', NOW(), NOW()),
+(15, 5, 'Resort ven biển 5 sao', 'resort-5-sao', 'Nghỉ dưỡng đẳng cấp thế giới.', 1, 'active', NOW(), NOW()),
+(16, 5, 'Khách sạn trung tâm hạng sang', 'khach-san-hang-sang', 'Tiện nghi cho khách công tác và du lịch.', 2, 'active', NOW(), NOW()),
+(17, 6, 'Homestay phong cách', 'homestay-phong-cach', 'Trải nghiệm cuộc sống địa phương.', 1, 'active', NOW(), NOW()),
+(18, 6, 'Hostel cho khách phượt', 'hostel-khach-phuot', 'Tiết kiệm và kết nối bạn bè.', 2, 'active', NOW(), NOW()),
+(19, 6, 'Căn hộ dịch vụ', 'can-ho-dich-vu', 'Phù hợp cho khách ở dài hạn.', 3, 'active', NOW(), NOW()),
+(20, 7, 'Cầu Rồng', 'cau-rong-sub', 'Biểu tượng phun lửa và nước.', 1, 'active', NOW(), NOW()),
+(21, 7, 'Cầu Vàng (Bà Nà)', 'cau-vang-sub', 'Điểm check-in nổi tiếng thế giới.', 2, 'active', NOW(), NOW()),
+(22, 7, 'Công viên APEC', 'cong-vien-apec', 'Điểm tham quan mới bên bờ sông Hàn.', 3, 'active', NOW(), NOW()),
+(23, 8, 'Bảo tàng Điêu khắc Chăm', 'bao-tang-cham', 'Lưu giữ tinh hoa văn hóa Chăm Pa.', 1, 'active', NOW(), NOW()),
+(24, 8, 'Bảo tàng Đà Nẵng', 'bao-tang-da-nang', 'Tìm hiểu lịch sử hình thành thành phố.', 2, 'active', NOW(), NOW()),
+(25, 9, 'Thành Điện Hải', 'thanh-dien-hai', 'Di tích lịch sử cấp quốc gia đặc biệt.', 1, 'active', NOW(), NOW()),
+(26, 9, 'Bảo tàng Đồng Đình', 'bao-tang-dong-dinh', 'Khu vườn ký ức trên bán đảo Sơn Trà.', 2, 'active', NOW(), NOW()),
+(27, 10, 'Đỉnh Bàn Cờ', 'dinh-ban-co', 'Nơi cao nhất bán đảo Sơn Trà.', 1, 'active', NOW(), NOW()),
+(28, 10, 'Hang Dơi', 'hang-doi', 'Vẻ đẹp hoang sơ ít người biết.', 2, 'active', NOW(), NOW()),
+(29, 10, 'Suối Mơ', 'suoi-mo', 'Điểm dã ngoại mát mẻ ngày hè.', 3, 'active', NOW(), NOW()),
+(30, 11, 'Chùa Linh Ứng Bãi Bụt', 'chùa-linh-ung', 'Tượng Phật Bà cao nhất Việt Nam.', 1, 'active', NOW(), NOW()),
+(31, 11, 'Nhà thờ Chính tòa (Con Gà)', 'nha-tho-con-ga', 'Kiến trúc Gothic Pháp đặc sắc.', 2, 'active', NOW(), NOW()),
+(32, 12, 'Làng đá mỹ nghệ Non Nước', 'lang-da-non-nuoc', 'Sản phẩm điêu khắc đá tinh xảo.', 1, 'active', NOW(), NOW()),
+(33, 12, 'Làng nước mắm Nam Ô', 'lang-mam-nam-o', 'Hương vị nước mắm truyền thống.', 2, 'active', NOW(), NOW()),
+(34, 13, 'Vincom Plaza', 'vincom-plaza', 'Trung tâm mua sắm hiện đại hàng đầu.', 1, 'active', NOW(), NOW()),
+(35, 13, 'Lotte Mart', 'lotte-mart', 'Siêu thị và khu giải trí Hàn Quốc.', 2, 'active', NOW(), NOW()),
+(36, 14, 'Chợ Hàn', 'cho-han-sub', 'Chợ du lịch sầm uất nhất Đà Nẵng.', 1, 'active', NOW(), NOW()),
+(37, 14, 'Chợ Cồn', 'cho-con-sub', 'Thiên đường quà vặt và đặc sản.', 2, 'active', NOW(), NOW()),
+(38, 15, 'Cửa hàng quà lưu niệm', 'qua-luu-niem', 'Đồ thủ công, áo thun in hình Đà Nẵng.', 1, 'active', NOW(), NOW()),
+(39, 16, 'Công viên Châu Á (Asia Park)', 'asia-park', 'Khu vui chơi với vòng quay mặt trời.', 1, 'active', NOW(), NOW()),
+(40, 16, 'Rạp chiếu phim Galaxy', 'rap-galaxy', 'Hệ thống rạp chiếu phim hiện đại.', 2, 'active', NOW(), NOW()),
+(41, 17, 'Phòng tập Gym cao cấp', 'gym-cao-cap', 'Đầy đủ trang thiết bị hiện đại.', 1, 'active', NOW(), NOW()),
+(42, 17, 'Sân Golf BRG', 'golf-brg', 'Trải nghiệm golf đẳng cấp quốc tế.', 2, 'active', NOW(), NOW()),
+(43, 18, 'Lướt ván (Surfing)', 'luot-van', 'Môn thể thao biển được yêu thích.', 1, 'active', NOW(), NOW()),
+(44, 18, 'Chèo SUP', 'cheo-sup', 'Hoạt động ngắm bình minh trên biển.', 2, 'active', NOW(), NOW()),
+(45, 19, 'Spa trị liệu', 'spa-tri-lieu', 'Chăm sóc sức khỏe và phục hồi năng lượng.', 1, 'active', NOW(), NOW()),
+(46, 19, 'Massage chân', 'massage-chan', 'Dịch vụ thư giãn phổ biến cho du khách.', 2, 'active', NOW(), NOW()),
+(47, 20, 'Bệnh viện Đa khoa Đà Nẵng', 'benh-vien-da-nang', 'Cơ sở y tế công lập lớn nhất.', 1, 'active', NOW(), NOW()),
+(48, 20, 'Bệnh viện Vinmec', 'benh-vien-vinmec', 'Tiêu chuẩn quốc tế.', 2, 'active', NOW(), NOW()),
+(49, 21, 'Nha khoa thẩm mỹ', 'nha-khoa-tham-my', 'Bọc răng sứ và làm trắng răng.', 1, 'active', NOW(), NOW()),
+(50, 22, 'Đại học Đà Nẵng', 'dai-hoc-da-nang', 'Trung tâm giáo dục lớn của miền Trung.', 1, 'active', NOW(), NOW()),
+(51, 22, 'Trung tâm tiếng Anh ILA', 'ila-center', 'Đào tạo ngoại ngữ chất lượng cao.', 2, 'active', NOW(), NOW()),
+(52, 23, 'Vietcombank - Chi nhánh Đà Nẵng', 'bank-vcb', 'Giao dịch tài chính tin cậy.', 1, 'active', NOW(), NOW()),
+(53, 23, 'ATM 24/7', 'atm-24-7', 'Rút tiền thuận tiện khắp thành phố.', 2, 'active', NOW(), NOW()),
+(54, 24, 'Sân bay quốc tế Đà Nẵng', 'airport-dad', 'Cửa ngõ hàng không quan trọng.', 1, 'active', NOW(), NOW()),
+(55, 24, 'Ga Đà Nẵng', 'station-dad', 'Ga tàu hỏa trung tâm.', 2, 'active', NOW(), NOW()),
+(56, 25, 'Thuê xe máy giá rẻ', 'thue-xe-may', 'Phương tiện linh hoạt cho du khách.', 1, 'active', NOW(), NOW()),
+(57, 25, 'Thuê ô tô tự lái', 'thue-o-to', 'Phù hợp cho gia đình và nhóm bạn.', 2, 'active', NOW(), NOW()),
+(58, 26, 'Grab / Xanh SM', 'ride-hailing', 'Dịch vụ gọi xe phổ biến.', 1, 'active', NOW(), NOW()),
+(59, 26, 'Buýt trợ giá DanaBus', 'danabus', 'Tiết kiệm chi phí di chuyển.', 2, 'active', NOW(), NOW()),
+(60, 27, 'Bưu điện trung tâm', 'post-office', 'Gửi thư, bưu phẩm và bưu thiếp.', 1, 'active', NOW(), NOW()),
+(61, 28, 'Lễ hội Pháo hoa DIFF', 'festival-diff', 'Sự kiện mang tầm quốc tế.', 1, 'active', NOW(), NOW()),
+(62, 29, 'Cửa hàng điện thoại FPT Shop', 'fpt-shop', 'Thiết bị công nghệ chính hãng.', 1, 'active', NOW(), NOW()),
+(63, 29, 'Enouvo Co-working Space', 'co-working', 'Không gian làm việc sáng tạo.', 2, 'active', NOW(), NOW()),
+(64, 30, 'Môi giới căn hộ Sơn Trà', 'estate-son-tra', 'Tìm kiếm nơi ở phù hợp.', 1, 'active', NOW(), NOW()),
+(65, 31, 'Văn phòng Công chứng', 'notary-office', 'Dịch vụ xác thực giấy tờ.', 1, 'active', NOW(), NOW()),
+(66, 32, 'Trạm xăng Petrolimex', 'gas-station', 'Cung cấp nhiên liệu uy tín.', 1, 'active', NOW(), NOW()),
+(67, 33, 'Giặt là lấy ngay', 'laundry-express', 'Dịch vụ tiện ích cho khách du lịch.', 1, 'active', NOW(), NOW()),
+(68, 34, 'Phòng khám thú y', 'vet-clinic', 'Chăm sóc sức khỏe thú cưng.', 1, 'active', NOW(), NOW()),
+(69, 35, 'Giao hàng nhanh (GHN)', 'ghn-express', 'Dịch vụ chuyển phát nội địa.', 1, 'active', NOW(), NOW()),
+(70, 36, 'Cảng cá Thọ Quang', 'fishing-port', 'Đầu mối hải sản lớn nhất miền Trung.', 1, 'active', NOW(), NOW()),
+(71, 37, 'Nhà vệ sinh công cộng', 'public-toilet', 'Tiện ích cơ bản cho du khách.', 1, 'active', NOW(), NOW()),
+(72, 38, 'Làng trẻ em SOS', 'sos-village', 'Tổ chức nhân đạo hỗ trợ trẻ em.', 1, 'active', NOW(), NOW()),
+(73, 1, 'Bánh xèo miền Trung', 'banh-xeo', 'Món bánh giòn rụm với tôm thịt.', 5, 'active', NOW(), NOW()),
+(74, 1, 'Bê thui Cầu Mống', 'be-thui', 'Đặc sản nổi tiếng vùng lân cận.', 6, 'active', NOW(), NOW()),
+(75, 2, 'Nhà hàng Thái Lan', 'nha-hang-thai', 'Vị cay nồng đặc trưng.', 5, 'active', NOW(), NOW()),
+(76, 2, 'Dim Sum & Món Hoa', 'dim-sum', 'Tinh hoa ẩm thực Trung Hoa.', 6, 'active', NOW(), NOW()),
+(77, 3, 'Trà đạo truyền thống', 'tra-dao', 'Không gian tĩnh lặng thưởng trà.', 4, 'active', NOW(), NOW()),
+(78, 4, 'Pub âm nhạc Acoustic', 'pub-acoustic', 'Nghe nhạc sống và nhâm nhi đồ uống.', 4, 'active', NOW(), NOW()),
+(79, 5, 'Boutique Villa', 'boutique-villa', 'Không gian riêng tư và phong cách.', 3, 'active', NOW(), NOW()),
+(80, 7, 'Cầu quay Sông Hàn', 'cau-quay', 'Cây cầu quay duy nhất tại Việt Nam.', 4, 'active', NOW(), NOW()),
+(81, 7, 'Tượng Cá chép hóa rồng', 'ca-chep-hoa-rong', 'Biểu tượng thịnh vượng bên sông Hàn.', 5, 'active', NOW(), NOW()),
+(82, 8, 'Nhà hát Trưng Vương', 'nha-hat-trung-vuong', 'Nơi diễn ra các sự kiện nghệ thuật lớn.', 3, 'active', NOW(), NOW()),
+(83, 10, 'Rừng dừa Bảy Mẫu', 'rung-dua-bay-mau', 'Trải nghiệm thuyền thúng thú vị.', 4, 'active', NOW(), NOW()),
+(84, 11, 'Nhà thờ Phủ Cam', 'nha-tho-phu-cam', 'Kiến trúc nhà thờ cổ kính.', 3, 'active', NOW(), NOW()),
+(85, 13, 'Siêu thị Go! (Big C cũ)', 'supermarket-go', 'Mua sắm gia đình giá rẻ.', 3, 'active', NOW(), NOW()),
+(86, 14, 'Chợ đêm Sơn Trà', 'cho-dem-son-tra', 'Vui chơi và mua sắm về đêm.', 3, 'active', NOW(), NOW()),
+(87, 16, 'Công viên nước Mikazuki', 'mikazuki-waterpark', 'Công viên nước trong nhà phong cách Nhật.', 3, 'active', NOW(), NOW()),
+(88, 17, 'Sân Tennis Tuyên Sơn', 'tennis-tuyen-son', 'Cơ sở hạ tầng thể thao chất lượng.', 3, 'active', NOW(), NOW()),
+(89, 19, 'Tắm bùn khoáng', 'tam-bun-khoang', 'Liệu pháp thư giãn từ thiên nhiên.', 3, 'active', NOW(), NOW()),
+(90, 20, 'Trung tâm tiêm chủng VNVC', 'vnvc-center', 'Dịch vụ tiêm chủng hiện đại.', 3, 'active', NOW(), NOW()),
+(91, 24, 'Bến xe trung tâm Đà Nẵng', 'bus-station-central', 'Đầu mối xe khách liên tỉnh.', 3, 'active', NOW(), NOW()),
+(92, 26, 'Xích lô du lịch', 'cyclo-tourism', 'Trải nghiệm thong dong phố phường.', 3, 'active', NOW(), NOW()),
+(93, 27, 'Công an Thành phố', 'police-station', 'Đảm bảo an ninh trật tự.', 2, 'active', NOW(), NOW()),
+(94, 32, 'Trạm sạc xe điện VinFast', 'ev-charging', 'Tiện ích cho xe điện hiện đại.', 2, 'active', NOW(), NOW()),
+(95, 33, 'Sửa chữa điện lạnh', 'electric-service', 'Dịch vụ bảo trì tại nhà.', 2, 'active', NOW(), NOW()),
+(96, 34, 'Dịch vụ lưu trú thú cưng (Pet Hotel)', 'pet-hotel', 'Nơi gửi thú cưng khi chủ vắng nhà.', 2, 'active', NOW(), NOW()),
+(97, 35, 'Viettel Post', 'viettel-post', 'Dịch vụ chuyển phát toàn quốc.', 2, 'active', NOW(), NOW()),
+(98, 36, 'Trang trại rau sạch', 'organic-farm', 'Sản xuất nông nghiệp an toàn.', 2, 'active', NOW(), NOW()),
+(99, 1, 'Bún chả cá Đà Nẵng', 'bun-cha-ca', 'Món ăn sáng quen thuộc của người dân.', 7, 'active', NOW(), NOW()),
+(100, 3, 'Nước Mót Hội An', 'nuoc-mot', 'Đồ uống thảo mộc đặc trưng phố cổ.', 5, 'active', NOW(), NOW());
