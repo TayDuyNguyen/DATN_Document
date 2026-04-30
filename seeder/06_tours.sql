@@ -80,22 +80,3 @@ CROSS JOIN generate_series(1, 2)
 WHERE t.id > 20
 ON CONFLICT DO NOTHING;
 
--- 4. TOUR_TAGS (Pivots)
-INSERT INTO tour_tags (tour_id, tag_id, created_at)
-SELECT 
-    t.id, 
-    (random() * 29 + 1)::int, 
-    NOW()
-FROM tours t
-CROSS JOIN generate_series(1, 3)
-ON CONFLICT DO NOTHING;
-
--- 5. TOUR_AMENITIES (Pivots)
-INSERT INTO tour_amenities (tour_id, amenity_id, created_at)
-SELECT 
-    t.id, 
-    (random() * 19 + 1)::int, 
-    NOW()
-FROM tours t
-CROSS JOIN generate_series(1, 3)
-ON CONFLICT DO NOTHING;

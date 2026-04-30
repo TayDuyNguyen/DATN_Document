@@ -2,7 +2,7 @@
 -- FILE: 02_tags_amenities.sql
 
 -- 1. TAGS (Target 100)
-INSERT INTO tags (id, name, slug, type, status, created_at, updated_at) VALUES
+INSERT INTO tags (id, name, slug, type, created_at, updated_at) VALUES
 (1, 'Gần biển', 'gan-bien', 'location', 'active', NOW(), NOW()),
 (2, 'Trung tâm thành phố', 'trung-tam-thanh-pho', 'location', 'active', NOW(), NOW()),
 (3, 'View sông', 'view-song', 'location', 'active', NOW(), NOW()),
@@ -106,7 +106,7 @@ INSERT INTO tags (id, name, slug, type, status, created_at, updated_at) VALUES
 (100, 'Đổi mới', 'innovation', 'social', 'active', NOW(), NOW());
 
 -- 2. AMENITIES (Target 100)
-INSERT INTO amenities (id, name, slug, icon, status, created_at, updated_at) VALUES
+INSERT INTO amenities (id, name, icon, category, created_at, updated_at) VALUES
 (1, 'Wifi miễn phí', 'free-wifi', 'wifi', 'active', NOW(), NOW()),
 (2, 'Hồ bơi', 'swimming-pool', 'pool', 'active', NOW(), NOW()),
 (3, 'Chỗ đậu xe miễn phí', 'free-parking', 'parking', 'active', NOW(), NOW()),

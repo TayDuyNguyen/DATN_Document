@@ -2,7 +2,7 @@
 -- FILE: 03_tour_blog_categories.sql
 
 -- 1. TOUR_CATEGORIES (Target 100)
-INSERT INTO tour_categories (id, name, slug, description, image, status, created_at, updated_at) VALUES
+INSERT INTO tour_categories (id, name, slug, description, icon, sort_order, status, created_at, updated_at) VALUES
 (1, 'Tour Bà Nà Hills', 'tour-ba-na-hills', 'Khám phá đỉnh núi Chúa, Cầu Vàng và làng Pháp.', 'https://images.unsplash.com/photo-1590766948562-3f69bb15664a', 'active', NOW(), NOW()),
 (2, 'Tour Phố Cổ Hội An', 'tour-hoi-an', 'Tìm về nét hoài cổ của thương cảng sầm uất.', 'https://images.unsplash.com/photo-1559592413-7ce75d0e40ec', 'active', NOW(), NOW()),
 (3, 'Tour Cố Đô Huế', 'tour-hue', 'Hành trình di sản qua các lăng tẩm và cung điện.', 'https://images.unsplash.com/photo-1582650625119-3a31f8fa2699', 'active', NOW(), NOW()),
@@ -107,7 +107,7 @@ INSERT INTO tour_categories (id, name, slug, description, image, status, created
 (100, 'Tour Khám Phá Hang Gió', 'tour-hang-gio', 'Thử thách mạo hiểm tại danh thắng mới.', NULL, 'active', NOW(), NOW());
 
 -- 2. BLOG_CATEGORIES (Target 100)
-INSERT INTO blog_categories (id, name, slug, description, image, status, created_at, updated_at) VALUES
+INSERT INTO blog_categories (id, name, slug, description, created_at, updated_at) VALUES
 (1, 'Cẩm Nang Du Lịch', 'cam-nang-du-lich', 'Kinh nghiệm từ A-Z cho chuyến đi của bạn.', NULL, 'active', NOW(), NOW()),
 (2, 'Review Ẩm Thực', 'review-am-thuc', 'Những quán ăn ngon nức tiếng không thể bỏ qua.', NULL, 'active', NOW(), NOW()),
 (3, 'Địa Điểm Check-in', 'dia-diem-check-in', 'Tổng hợp những tọa độ sống ảo cực chất.', NULL, 'active', NOW(), NOW()),
