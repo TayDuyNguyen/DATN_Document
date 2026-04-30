@@ -36,9 +36,9 @@ SELECT
 FROM generate_series(1, 100) AS i;
 
 -- 4. REFRESH_TOKENS (Target 100)
-INSERT INTO refresh_tokens (id, user_id, token, expires_at, created_at, updated_at)
+-- Do not seed explicit `id` to avoid breaking sequence and login inserts.
+INSERT INTO refresh_tokens (user_id, token, expires_at, created_at, updated_at)
 SELECT 
-    i, 
     (i % 90) + 1, 
     md5(i::text || 'refresh_secret_' || NOW()), 
     NOW() + INTERVAL '30 days', 
@@ -50,10 +50,11 @@ FROM generate_series(1, 100) AS i;
 INSERT INTO password_reset_tokens (email, token, created_at)
 SELECT 
     u.email, 
-    md5(u.email || 'reset_' || i), 
-    NOW() - (i * INTERVAL '1 hour')
-FROM generate_series(1, 100) AS i
-JOIN users u ON u.id = (i % 90) + 1;
+    md5(u.email || 'reset_' || u.id), 
+    NOW() - (u.id * INTERVAL '1 hour')
+FROM users u
+ORDER BY u.id
+LIMIT 100;
 
 -- 6. CACHE_LOCKS (Target 100)
 INSERT INTO cache_locks (key, owner, expiration)
