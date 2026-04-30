@@ -10,7 +10,7 @@ INSERT INTO tags (id, name, slug, type, status, created_at, updated_at) VALUES
 (5, 'Sôi động', 'soi-dong', 'atmosphere', 'active', NOW(), NOW()),
 (6, 'Sang trọng', 'sang-trong', 'style', 'active', NOW(), NOW()),
 (7, 'Bình dân', 'binh-dan', 'style', 'active', NOW(), NOW()),
-(8, 'Hiện đại', 'hien-dai', 'style', 'active', NOW(), NOW()),
+(8, 'Hiện đại', 'hien-dai', 'style',    'active', NOW(), NOW()),
 (9, 'Cổ điển', 'co-dien', 'style', 'active', NOW(), NOW()),
 (10, 'Lãng mạn', 'lang-man', 'atmosphere', 'active', NOW(), NOW()),
 (11, 'Gia đình', 'gia-dinh', 'audience', 'active', NOW(), NOW()),

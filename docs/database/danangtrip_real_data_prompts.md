@@ -16,6 +16,30 @@ Prompt dưới đây nhằm mục tiêu:
    (`sessions`, `password_reset_tokens`, `refresh_tokens`, `jobs`, `job_batches`,
    `failed_jobs`, `cache`, `cache_locks`) thay vì placeholder.
 
+### 1.1 Gap thực tế hiện tại (từ bộ SQL đang có)
+
+Đây là các bảng còn thiếu/chưa đủ mạnh so với mục tiêu ~100 rows/bảng:
+
+- **Thiếu hoàn toàn (0 rows):**
+  - `refresh_tokens`
+  - `job_batches`
+
+- **Rất thiếu (1-10 rows):**
+  - `blog_categories` (8), `blog_posts` (5), `blog_post_categories` (7)
+  - `tours` (4), `tour_locations` (5), `tour_schedules` (6)
+  - `bookings` (4), `booking_items` (4), `payments` (3)
+  - `ratings` (5), `rating_images` (3), `favorites` (4), `views` (3), `contacts` (2), `notifications` (2), `search_logs` (5)
+  - `sessions` (2), `password_reset_tokens` (1), `jobs` (2), `failed_jobs` (1), `cache` (2), `cache_locks` (1)
+
+- **Thiếu nhiều (11-30 rows):**
+  - `categories` (5), `subcategories` (17)
+  - `tags` (22), `amenities` (22)
+  - `tour_categories` (10)
+  - `users` (20)
+  - `locations` (7), `location_tags` (7), `location_amenities` (3)
+
+=> Bạn cần thu thập thêm dữ liệu cho **toàn bộ bảng**, ưu tiên theo thứ tự FK ở mục `## 7) Execution order`.
+
 ## 2) Global prompt rules (apply to every prompt)
 
 Copy this block into every AI prompt:
@@ -288,20 +312,23 @@ favorites/views/search_logs/contacts -> ratings -> rating_images -> notification
 ### 6.1 refresh_tokens + sessions + password_reset_tokens
 
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất về mẫu vận hành auth/session của Laravel, sau đó sinh dữ liệu cho refresh_tokens, sessions, password_reset_tokens.
+Không cần web search cho nhóm bảng kỹ thuật này. Hãy sinh dữ liệu synthetic nhưng hợp lệ tuyệt đối theo schema cho refresh_tokens, sessions, password_reset_tokens.
 
 Yêu cầu:
 - ~100 refresh_tokens (hiện đang thiếu).
 - ~100 sessions.
 - ~100 password_reset_tokens.
-- FK/format phải hợp lệ theo schema.
+- FK/format phải hợp lệ theo schema:
+  - sessions: id, user_id(nullable), ip_address(nullable), user_agent(nullable), payload, last_activity
+  - password_reset_tokens: email(pk), token, created_at
+  - refresh_tokens: id, user_id(FK users), token(unique length 64), expires_at, used_at(nullable), previous_token_id(nullable FK refresh_tokens), created_at, updated_at
  - Xuất SQL theo thứ tự: sessions -> password_reset_tokens -> refresh_tokens. (FILE: `10_system_tables.sql`)
 ```
 
 ### 6.2 jobs + job_batches + failed_jobs + cache + cache_locks
 
 ```text
-Hãy sử dụng công cụ tìm kiếm Google (Web Search) để thu thập dữ liệu thực tế và chính xác nhất về queue/cache patterns trong Laravel/PostgreSQL, sau đó sinh dữ liệu cho jobs, job_batches, failed_jobs, cache, cache_locks.
+Không cần web search cho nhóm bảng kỹ thuật này. Hãy sinh dữ liệu synthetic nhưng hợp lệ tuyệt đối theo schema cho jobs, job_batches, failed_jobs, cache, cache_locks.
 
 Yêu cầu:
 - ~100 jobs.
@@ -309,7 +336,12 @@ Yêu cầu:
 - ~100 failed_jobs.
 - ~100 cache.
 - ~100 cache_locks.
-- Đảm bảo đúng kiểu dữ liệu và unique key.
+- Đảm bảo đúng kiểu dữ liệu và unique key:
+  - jobs: id, queue, payload, attempts(unsigned tinyint), reserved_at(nullable int), available_at(int), created_at(int)
+  - job_batches: id(pk string), name, total_jobs, pending_jobs, failed_jobs, failed_job_ids, options(nullable), cancelled_at(nullable), created_at, finished_at(nullable)
+  - failed_jobs: id, uuid(unique), connection, queue, payload, exception, failed_at
+  - cache: key(pk), value, expiration
+  - cache_locks: key(pk), owner, expiration
 - Xuất SQL theo thứ tự: jobs -> job_batches -> failed_jobs -> cache -> cache_locks. (FILE: `10_system_tables.sql`)
 ```
 
@@ -319,3 +351,94 @@ Yêu cầu:
 2. Reference: `locations/pivots -> tours/pivots/schedules -> blog_posts/pivots`
 3. Transaction: `bookings/items/payments -> interactions`
 4. System tables.
+
+## 8) Orchestrator prompt (để AI tự thu thập theo vòng lặp)
+
+Copy prompt này cho AI có Web Search để nó tự chạy end-to-end:
+
+```text
+Bạn là Data Collection Orchestrator cho DanangTrip.
+
+MỤC TIÊU:
+- Tạo dữ liệu SQL seed cho toàn bộ 33 bảng theo schema migration PostgreSQL hiện tại.
+- Mỗi bảng đạt khoảng 100 rows.
+- Output tách đúng 10 file SQL theo thiết kế seed hiện tại.
+
+NGUYÊN TẮC:
+1) Bắt buộc dùng Web Search cho bảng nghiệp vụ/master/reference.
+2) Bảng kỹ thuật hệ thống (sessions, refresh_tokens, jobs...) dùng synthetic data hợp lệ schema, không cần Web Search.
+3) Không được dùng cột ngoài schema. Nếu không chắc: bỏ cột đó.
+4) Luôn duy trì lookup IDs để giữ FK.
+
+LUỒNG THỰC THI BẮT BUỘC:
+Step A - Scan schema:
+- Đọc migration/DBML, lập TABLE_SCHEMA_MAP (table -> columns, type, nullable, unique, FK, check).
+
+Step B - Generate theo batch:
+- Sinh SQL theo đúng thứ tự FK ở mục Execution order.
+- Mỗi batch chỉ trả dữ liệu cho đúng file đích.
+
+Step C - Self-validate trước khi trả:
+- Kiểm tra nội bộ:
+  - FK có tồn tại trong lookup không.
+  - Unique key không trùng trong cùng file.
+  - CHECK constraints (score 1..5, num_nonnulls..., status enum...) hợp lệ.
+  - Date/Timestamp/JSON đúng format.
+
+Step D - Gap-aware refill:
+- Nếu bảng nào <100 rows, tự sinh thêm delta rows cho đúng bảng đó.
+- Không được sửa/ghi đè dữ liệu đã hợp lệ, chỉ append.
+
+Step E - Output chuẩn:
+- Trả duy nhất 3 block:
+  - [SOURCE_SUMMARY]
+  - [LOOKUP_TABLES]
+  - [SQL_OUTPUT]
+- Trong [SQL_OUTPUT], mỗi file bắt đầu bằng:
+  -- FILE: <filename>.sql
+
+KẾT THÚC:
+- Chỉ trả SQL và lookup, không giải thích dài.
+```
+
+## 9) Prompt bổ sung cho vòng “kiểm tra sau thu thập”
+
+```text
+Bạn là SQL QA Auditor cho seed DanangTrip.
+
+Input:
+- 10 file SQL đã thu thập.
+- Schema migration/DBML hiện tại.
+
+Nhiệm vụ:
+1) Đếm số rows theo từng bảng.
+2) Đối chiếu schema: cột thừa/thiếu/sai kiểu.
+3) Đối chiếu ràng buộc: FK/UNIQUE/CHECK.
+4) Xuất GAP_REPORT:
+   - table_name
+   - current_rows
+   - target_rows(100)
+   - missing_rows
+   - errors_found
+5) Sinh PATCH_SQL chỉ cho phần thiếu/sai (append-only, không drop dữ liệu hợp lệ).
+
+Output:
+- [GAP_REPORT]
+- [PATCH_SQL]
+```
+
+## 10) Prompt bổ sung cho vòng “sửa lỗi migrate/seed fail”
+
+```text
+Bạn là Seeder Incident Responder.
+
+Khi nhận log lỗi `php artisan migrate:fresh --seed`:
+1) Trích xuất chính xác bảng/cột/constraint gây lỗi.
+2) Chỉ ra file SQL nào gây lỗi.
+3) Sinh SQL patch tối thiểu để sửa lỗi đó.
+4) Không thay đổi phần đã đúng.
+5) Trả về:
+   - [ROOT_CAUSE]
+   - [FIX_SQL]
+   - [RETRY_ORDER]
+```
