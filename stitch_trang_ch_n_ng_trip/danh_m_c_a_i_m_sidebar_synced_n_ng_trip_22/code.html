@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chi tiết Giao dịch - Đà Nẵng Trip Support</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --border: #E2E8F0;
+            --text-main: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --bg-page: #F8FAFC;
+            --radius-card: 16px;
+            --radius-btn: 10px;--status-paid-bg: #D1FAE5;
+            --status-paid-text: #10B981;
+            --status-pending-bg: #FEF3C7;
+            --status-pending-text: #F59E0B;
+            --status-refunded-bg: #EEF2FF;
+            --status-refunded-text: #6366F1;
+            --status-failed-bg: #FEE2E2;
+            --status-failed-text: #EF4444;
+            --note-bg: #FDFBF7;}
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+        }
+        .btn-primary {
+            background-color: #6366F1;
+            color: white;
+            border-radius: var(--radius-btn);
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #4F46E5;
+        }
+        .btn-ghost {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--text-secondary);
+            border-radius: var(--radius-btn);
+            transition: all 0.2s;
+        }
+        .btn-ghost:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 24px;
+            bottom: -8px;
+            width: 2px;
+            background-color: var(--border);
+            transform: translateX(-50%);
+        }
+        .timeline-item:last-child .timeline-line::after {
+            display: none;
+        }.scroll-thin::-webkit-scrollbar {
+            width: 6px;
+        }
+        .scroll-thin::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .scroll-thin::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-blue-500/20">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Admin Panel</p>
+</div>
+</div>
+<nav class="space-y-1.5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-medium text-sm">Tổng quan</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-medium text-sm">Đơn hàng</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-blue-600 shadow-sm" href="#"><span class="material-symbols-outlined">payments</span><span class="font-medium text-sm">Giao dịch</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">group</span><span class="font-medium text-sm">Khách hàng</span></a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<div class="flex justify-between items-start mb-6">
+<div>
+<nav class="flex items-center gap-2 mb-1">
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Đơn hàng &amp; Thanh toán</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Danh sách Giao dịch</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-muted)]">TXN-20260406-001</span>
+</nav>
+<div class="flex items-center gap-3 mt-1">
+<h2 class="text-2xl font-bold text-[var(--text-main)]">TXN-20260406-001</h2>
+<span class="px-2.5 py-1 bg-[var(--status-paid-bg)] text-[var(--status-paid-text)] rounded-full text-[11px] font-bold uppercase">Giao dịch Đã Hoàn Tất</span>
+</div>
+<p class="text-[13px] text-[var(--text-muted)] mt-1">
+                    Giao dịch lúc 06/04/2026 14:35 · Cập nhật 06/04/2026 14:36
+                </p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-5 py-2.5 btn-primary font-semibold text-sm shadow-sm">
+<span class="material-symbols-outlined text-lg">currency_exchange</span>
+                    Hoàn tiền
+                </button>
+</div>
+</div>
+<div class="flex gap-8 items-start">
+<div class="flex-1 space-y-6">
+<section class="card p-6">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-[var(--primary)]">
+<span class="material-symbols-outlined text-xl">payments</span>
+</div>
+<h3 class="text-sm font-semibold text-[var(--text-main)]">Thông tin giao dịch</h3>
+</div>
+<div class="grid grid-cols-2 gap-y-6 gap-x-12">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Mã giao dịch</span>
+<div>
+<p class="text-sm font-bold text-[var(--text-main)]">TXN-20260406-001</p>
+<p class="text-[12px] text-[var(--text-muted)]">GD-001</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Mã đơn hàng</span>
+<a class="text-sm font-bold text-[var(--primary)] hover:underline" href="#">#BK-1008</a>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Cổng thanh toán</span>
+<div>
+<span class="px-2.5 py-1 bg-[#FFE0D4] text-[#FF6B35] border border-[rgba(255,107,53,0.2)] rounded-full text-[11px] font-bold uppercase">MoMo</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Số tiền</span>
+<p class="text-sm font-bold text-[var(--text-main)]">2.450.000 đ</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Ngày giao dịch</span>
+<p class="text-sm font-medium text-[var(--text-main)]">06/04/2026 14:35</p>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Mã tham chiếu</span>
+<p class="text-[13px] font-mono text-[var(--text-secondary)]">MOMO20260406001</p>
+</div>
+<div class="col-span-2 flex flex-col gap-1">
+<span class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">Ghi chú thanh toán</span>
+<p class="text-sm text-[var(--text-secondary)] italic">—</p>
+</div>
+</div>
+</section>
+<section class="card p-6">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-500">
+<span class="material-symbols-outlined text-xl">person</span>
+</div>
+<h3 class="text-sm font-semibold text-[var(--text-main)]">Thông tin khách hàng</h3>
+</div>
+<div class="flex items-start gap-5">
+<div class="w-14 h-14 rounded-full border-2 border-[var(--border)] overflow-hidden shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/a/default-user=s80-p"/>
+</div>
+<div class="flex-1">
+<h4 class="text-base font-bold text-[var(--text-main)]">Nguyễn Văn An</h4>
+<div class="flex gap-6 mt-2">
+<a class="flex items-center gap-1.5 text-[13px] text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors" href="mailto:nguyenvan.an@email.com">
+<span class="material-symbols-outlined text-[16px] text-[var(--text-muted)]">mail</span>
+                                    nguyenvan.an@email.com
+                                </a>
+<a class="flex items-center gap-1.5 text-[13px] text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors" href="tel:0901234567">
+<span class="material-symbols-outlined text-[16px] text-[var(--text-muted)]">call</span>
+                                    0901234567
+                                </a>
+</div>
+<button class="mt-4 px-4 py-2 border border-[var(--border)] rounded-lg text-[var(--primary)] font-semibold text-[13px] flex items-center gap-2 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+                                Xem hồ sơ khách hàng
+                            </button>
+</div>
+</div>
+</section>
+<section class="card p-6">
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-500">
+<span class="material-symbols-outlined text-xl">history</span>
+</div>
+<h3 class="text-sm font-semibold text-[var(--text-main)]">Lịch sử trạng thái giao dịch chi tiết</h3>
+</div>
+</div>
+<div class="space-y-0 pl-2">
+<div class="timeline-item flex gap-6 relative">
+<div class="timeline-line shrink-0 relative flex justify-center w-6">
+<div class="w-3 h-3 rounded-full bg-[var(--status-paid-text)] ring-4 ring-emerald-50 z-10"></div>
+</div>
+<div class="pb-8 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<span class="px-2 py-0.5 bg-[var(--status-paid-bg)] text-[var(--status-paid-text)] rounded-full text-[10px] font-bold uppercase tracking-wider">Giao dịch Đã Hoàn Tất</span>
+<p class="text-[13px] text-[var(--text-secondary)] mt-2 font-medium">Hệ thống ghi nhận thanh toán thành công qua MoMo (Ref: MOMO20260406001)</p>
+</div>
+<div class="text-[12px] text-[var(--text-muted)] font-medium bg-slate-50 px-2 py-1 rounded">
+                                        06/04/2026 14:36:12
+                                    </div>
+</div>
+</div>
+</div>
+<div class="timeline-item flex gap-6 relative">
+<div class="timeline-line shrink-0 relative flex justify-center w-6">
+<div class="w-3 h-3 rounded-full bg-[var(--status-pending-text)] ring-4 ring-amber-50 z-10"></div>
+</div>
+<div class="pb-8 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<span class="px-2 py-0.5 bg-[var(--status-pending-bg)] text-[var(--status-pending-text)] rounded-full text-[10px] font-bold uppercase tracking-wider">Đang Chờ Thanh Toán</span>
+<p class="text-[13px] text-[var(--text-secondary)] mt-2 font-medium">Khách hàng nhấn nút thanh toán, yêu cầu được chuyển hướng đến cổng MoMo</p>
+</div>
+<div class="text-[12px] text-[var(--text-muted)] font-medium bg-slate-50 px-2 py-1 rounded">
+                                        06/04/2026 14:35:45
+                                    </div>
+</div>
+</div>
+</div>
+<div class="timeline-item flex gap-6 relative">
+<div class="timeline-line shrink-0 relative flex justify-center w-6">
+<div class="w-3 h-3 rounded-full bg-slate-300 ring-4 ring-slate-50 z-10"></div>
+</div>
+<div class="pb-2 flex-1">
+<div class="flex justify-between items-start">
+<div>
+<span class="px-2 py-0.5 bg-slate-100 text-slate-500 rounded-full text-[10px] font-bold uppercase tracking-wider">Giao dịch khởi tạo</span>
+<p class="text-[13px] text-[var(--text-secondary)] mt-2 font-medium">Bản ghi giao dịch thanh toán được tạo đồng bộ với đơn hàng #BK-1008</p>
+</div>
+<div class="text-[12px] text-[var(--text-muted)] font-medium bg-slate-50 px-2 py-1 rounded">
+                                        06/04/2026 14:35:01
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="card overflow-hidden">
+<div class="p-6 border-b border-[var(--border)] flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-xl">sticky_note_2</span>
+</div>
+<h3 class="text-sm font-semibold text-[var(--text-main)]">Ghi chú nội bộ (CS Support)</h3>
+</div>
+<button class="text-[var(--primary)] text-[12px] font-bold hover:underline uppercase tracking-wider">Lưu ghi chú</button>
+</div>
+<div class="bg-[var(--note-bg)] p-1">
+<textarea class="w-full bg-transparent border-none focus:ring-0 p-5 text-[14px] text-[var(--text-main)] min-h-[160px] scroll-thin" placeholder="Thêm thông tin nội bộ về giao dịch này cho đồng nghiệp hoặc tham chiếu sau này..."></textarea>
+</div>
+<div class="px-6 py-3 border-t border-[var(--border)] bg-white">
+<p class="text-[11px] text-[var(--text-muted)] italic">Chỉ quản trị viên và hỗ trợ viên mới có thể xem ghi chú này.</p>
+</div>
+</section>
+<section class="card overflow-hidden">
+<div class="px-6 py-5 border-b border-[var(--border)] flex items-center gap-2 bg-slate-50/30">
+<div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center text-amber-500">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+</div>
+<h3 class="text-sm font-semibold text-[var(--text-main)]">Đơn hàng liên quan</h3>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start">
+<div>
+<a class="text-lg font-bold text-[var(--primary)] hover:underline" href="#">#BK-1008</a>
+<p class="text-[14px] text-[var(--text-secondary)] mt-1 font-medium">Tour Bà Nà Hills - Cáp treo &amp; Ăn trưa</p>
+<p class="text-[12px] text-[var(--text-muted)] mt-1">Ngày đặt: 06/04/2026 14:30</p>
+</div>
+<span class="px-2.5 py-1 bg-[#D1FAE5] text-[#10B981] rounded-full text-[11px] font-bold uppercase">HOÀN TẤT</span>
+</div>
+<div class="h-px bg-slate-100 my-5"></div>
+<div class="flex justify-between text-[13px]">
+<span class="text-[var(--text-secondary)]">Số lượng khách: <span class="font-bold text-[var(--text-main)] ml-1">2 Người lớn · 1 Trẻ em</span></span>
+<span class="text-[var(--text-secondary)]">Tổng giá trị đơn hàng: <span class="font-bold text-[var(--text-main)] text-base ml-1">2.450.000 đ</span></span>
+</div>
+<button class="w-full mt-6 py-2.5 btn-ghost font-bold text-[13px] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                            Xem chi tiết đơn hàng
+                        </button>
+</div>
+</section>
+</div>
+<aside class="w-[320px] sticky top-8 space-y-4">
+<div class="card p-5">
+<h4 class="text-sm font-bold text-[var(--text-main)] mb-5">Tóm tắt giao dịch</h4>
+<div class="space-y-4">
+<div class="flex justify-between text-[13px]">
+<span class="text-[var(--text-secondary)]">Số tiền giao dịch</span>
+<span class="font-semibold text-[var(--text-main)]">2.450.000 đ</span>
+</div>
+<div class="flex justify-between text-[13px]">
+<span class="text-[var(--text-secondary)]">Phí giao dịch</span>
+<span class="font-semibold text-[var(--text-muted)]">0 đ</span>
+</div>
+<div class="h-px bg-slate-100"></div>
+<div class="flex justify-between items-baseline">
+<span class="text-[13px] font-bold text-[var(--text-main)]">TỔNG CỘNG</span>
+<span class="text-lg font-bold text-[var(--primary)]">2.450.000 đ</span>
+</div>
+</div>
+<div class="mt-6 pt-5 border-t border-slate-100 flex justify-between items-center">
+<span class="text-[13px] text-[var(--text-muted)]">Phương thức</span>
+<span class="px-2.5 py-1 bg-[#FFE0D4] text-[#FF6B35] border border-[rgba(255,107,53,0.2)] rounded-full text-[10px] font-bold uppercase">MoMo</span>
+</div>
+</div>
+<div class="card p-5">
+<h4 class="text-sm font-bold text-[var(--text-main)] mb-4">Thao tác</h4>
+<div class="space-y-3">
+<button class="w-full py-2.5 btn-primary font-bold text-[13px] flex items-center justify-center gap-2 shadow-sm shadow-indigo-100">
+<span class="material-symbols-outlined text-[18px]">currency_exchange</span>
+                            Yêu cầu hoàn tiền
+                        </button>
+<button class="w-full py-2.5 btn-ghost font-bold text-[13px] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span>
+                            Xem đơn hàng
+                        </button>
+<button class="w-full py-2.5 btn-ghost font-bold text-[13px] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person</span>
+                            Hồ sơ khách hàng
+                        </button>
+</div>
+</div>
+<div class="card p-5 bg-slate-50/50">
+<h4 class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-4">Thông tin nhanh</h4>
+<div class="space-y-3">
+<div class="flex justify-between text-[12px]">
+<span class="text-[var(--text-secondary)]">Mã GD</span>
+<span class="font-bold text-[var(--text-main)]">TXN-20260406-001</span>
+</div>
+<div class="flex justify-between text-[12px]">
+<span class="text-[var(--text-secondary)]">Mã đơn</span>
+<a class="font-bold text-[var(--primary)] hover:underline" href="#">#BK-1008</a>
+</div>
+<div class="flex justify-between items-center text-[12px]">
+<span class="text-[var(--text-secondary)]">Trạng thái</span>
+<span class="px-2 py-0.5 bg-[var(--status-paid-bg)] text-[var(--status-paid-text)] rounded-full text-[9px] font-bold uppercase">PAID</span>
+</div>
+<div class="flex justify-between text-[12px]">
+<span class="text-[var(--text-secondary)]">Số tiền</span>
+<span class="font-bold text-[var(--text-main)]">2.450.000 đ</span>
+</div>
+<div class="flex justify-between text-[12px]">
+<span class="text-[var(--text-secondary)]">Thời gian</span>
+<span class="text-[var(--text-secondary)] font-medium">06/04 14:35</span>
+</div>
+<div class="flex justify-between text-[12px]">
+<span class="text-[var(--text-secondary)]">Cập nhật</span>
+<span class="text-[var(--text-muted)] font-medium">14:36:12</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+<div class="bg-white rounded-[16px] w-full max-w-[440px] shadow-2xl overflow-hidden">
+<div class="p-6 border-b border-[var(--border)] flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-500">
+<span class="material-symbols-outlined">currency_exchange</span>
+</div>
+<h3 class="text-base font-bold text-[var(--text-main)]">Hoàn tiền giao dịch này?</h3>
+</div>
+<div class="p-6 space-y-5">
+<p class="text-[14px] text-[var(--text-secondary)] leading-relaxed">
+                    Giao dịch <span class="font-bold text-[var(--text-main)]">TXN-20260406-001</span> số tiền <span class="font-bold text-[var(--text-main)]">2.450.000 đ</span> sẽ được hoàn lại cho khách hàng qua cổng MoMo.
+                </p>
+<div>
+<label class="block text-[13px] font-semibold text-[var(--text-main)] mb-1.5">Lý do hoàn tiền <span class="text-red-500">*</span></label>
+<textarea class="w-full px-4 py-3 border border-[var(--border)] rounded-[10px] text-sm outline-none focus:ring-1 focus:ring-[var(--primary)] focus:border-[var(--primary)] transition-all resize-none" placeholder="Nhập lý do hoàn tiền..." rows="3"></textarea>
+</div>
+<div class="p-4 bg-[#FEF3C7] border border-[#FDE68A] rounded-xl flex items-start gap-3">
+<span class="material-symbols-outlined text-[20px] text-[#92400E] shrink-0">warning</span>
+<p class="text-[12px] text-[#92400E] leading-relaxed">
+                        Thao tác này không thể hoàn tác. Tiền sẽ được hệ thống xử lý hoàn trả qua phương thức thanh toán gốc của khách hàng.
+                    </p>
+</div>
+</div>
+<div class="p-6 bg-slate-50/50 flex gap-3 justify-end">
+<button class="px-6 py-2.5 btn-ghost font-bold text-sm">Đóng</button>
+<button class="px-6 py-2.5 btn-primary font-bold text-sm shadow-md shadow-indigo-100">Xác nhận hoàn tiền</button>
+</div>
+</div>
+</div>
+
+</body></html>

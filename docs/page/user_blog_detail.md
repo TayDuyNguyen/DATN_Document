@@ -208,3 +208,16 @@ Mỗi card (same style as blog list card):
 | Load danh mục (sidebar) | GET | `/blog/categories` | Khi mount |
 
 > Bài viết liên quan và bài phổ biến trong sidebar có thể lấy từ cùng `GET /blog` với filter `category_id` của bài hiện tại.
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Slug | Bắt buộc có slug; nếu slug rỗng chuyển 404 |
+| Không tìm thấy | Nếu `GET /blog/{slug}` trả 404, hiển thị trang bài viết không tồn tại và CTA về `/blog` |
+| Bài chưa publish | Public không hiển thị bài `draft`/`archived`; admin preview cần route riêng nếu có |
+| Nội dung rỗng | Nếu content rỗng, hiển thị excerpt hoặc thông báo đang cập nhật |
+| Ảnh lỗi | Dùng ảnh placeholder, không làm vỡ hero/sidebar |
+| Related posts | Nếu không có bài liên quan, ẩn section thay vì hiển thị danh sách rỗng |

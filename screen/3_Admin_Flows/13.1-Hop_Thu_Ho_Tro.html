@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hộp thư Hỗ trợ - Support Inbox</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0F172A;
+            --accent: #334155;
+            --blue-action: #2563EB;
+            --success: #059669;
+            --warning: #D97706;
+            --danger: #DC2626;
+            --bg-sidebar: #0F172A;
+            --bg-list: #F8FAFC;
+            --bg-content: #FFFFFF;
+            --border-color: #E2E8F0;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-list);
+            color: #1E293B;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+        .inbox-item {
+            transition: all 0.15s ease-in-out;
+        }
+        .inbox-item:hover {
+            background-color: #F1F5F9;
+        }
+        .inbox-item.active {
+            background-color: #EFF6FF;
+            border-left: 4px solid var(--blue-action);
+        }
+        .status-pill {
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="antialiased h-screen overflow-hidden">
+<div class="flex h-full">
+<aside class="w-16 md:w-64 h-full bg-[var(--bg-sidebar)] flex flex-col shrink-0 z-50">
+<div class="p-4 md:p-6 border-b border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-black text-xl">S</div>
+<div class="hidden md:block">
+<h1 class="text-white font-bold text-sm leading-none tracking-tight">SUPPORT PORTAL</h1>
+<p class="text-slate-500 text-[10px] mt-1 uppercase font-bold">Admin Triage</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 p-2 space-y-1 mt-4">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="hidden md:block font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white bg-blue-600/10 border border-blue-600/20 group" href="#">
+<span class="material-symbols-outlined text-xl">inbox</span>
+<span class="hidden md:block font-medium text-sm">Hộp thư hỗ trợ</span>
+<span class="hidden md:flex ml-auto bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded-md font-bold">12</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="hidden md:block font-medium text-sm">Khách hàng</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-all group" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="hidden md:block font-medium text-sm">Cài đặt</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800 mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs text-white">AD</div>
+<div class="hidden md:block">
+<p class="text-white text-xs font-bold">Administrator</p>
+<p class="text-slate-500 text-[10px]">Staff ID: #001</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col h-full bg-slate-100 overflow-hidden">
+<header class="h-14 shrink-0 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-40">
+<div class="flex items-center gap-4">
+<h2 class="text-base font-bold text-slate-800 flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">mail</span>
+                    Danh sách Liên hệ
+                </h2>
+<div class="h-4 w-[1px] bg-slate-200"></div>
+<div class="flex gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-red-500"></span>
+<span class="text-[11px] font-bold text-slate-500 uppercase">12 MỚI</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="text-[11px] font-bold text-slate-500 uppercase">186 ĐÃ ĐỌC</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-3 py-1.5 border border-slate-200 text-slate-600 text-xs font-bold rounded-md hover:bg-slate-50 flex items-center gap-2">
+<span class="material-symbols-outlined text-base">download</span>
+                    Xuất Excel
+                </button>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<div class="w-[380px] shrink-0 border-r border-slate-200 flex flex-col bg-white overflow-hidden">
+<div class="p-3 border-b border-slate-100 bg-slate-50/50">
+<div class="relative mb-2">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-lg">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-slate-200 rounded-md focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Tìm kiếm liên hệ..." type="text"/>
+</div>
+<div class="flex gap-2">
+<select class="flex-1 text-[11px] font-bold py-1 px-2 border border-slate-200 rounded-md bg-white outline-none">
+<option>Tất cả trạng thái</option>
+<option>Mới</option>
+<option>Đã đọc</option>
+<option>Đã trả lời</option>
+</select>
+<button class="p-1 border border-slate-200 rounded-md bg-white hover:bg-slate-50">
+<span class="material-symbols-outlined text-base text-slate-500">filter_list</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<div class="inbox-item active p-4 border-b border-slate-100 cursor-pointer relative">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-slate-900 truncate pr-4">Nguyễn Văn An</span>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">14:30</span>
+</div>
+<h4 class="text-xs font-bold text-slate-800 mb-1 truncate">Hỏi về tour Bà Nà Hills</h4>
+<p class="text-[11px] text-slate-500 line-clamp-1">Xin chào, tôi muốn hỏi về giá tour Bà Nà Hills cho đoàn 10 người...</p>
+<div class="flex items-center justify-between mt-2">
+<span class="status-pill bg-red-100 text-red-600">Mới</span>
+<span class="material-symbols-outlined text-red-500 text-sm animate-pulse">priority_high</span>
+</div>
+</div>
+<div class="inbox-item p-4 border-b border-slate-100 cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-medium text-slate-700 truncate pr-4">Trần Thị Bích</span>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">11:15</span>
+</div>
+<h4 class="text-xs font-medium text-slate-700 mb-1 truncate">Phản hồi về dịch vụ khách sạn</h4>
+<p class="text-[11px] text-slate-500 line-clamp-1">Dịch vụ tại khách sạn rất tốt, nhân viên thân thiện và nhiệt tình...</p>
+<div class="flex items-center justify-between mt-2">
+<span class="status-pill bg-amber-100 text-amber-600">Đã đọc</span>
+</div>
+</div>
+<div class="inbox-item p-4 border-b border-slate-100 cursor-pointer opacity-80">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-medium text-slate-700 truncate pr-4">Lê Minh Tuấn</span>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">Hôm qua</span>
+</div>
+<h4 class="text-xs font-medium text-slate-700 mb-1 truncate">Yêu cầu hủy tour Đã Nẵng</h4>
+<p class="text-[11px] text-slate-500 line-clamp-1">Do có việc đột xuất, tôi muốn yêu cầu hoàn tiền tour...</p>
+<div class="flex items-center justify-between mt-2">
+<span class="status-pill bg-emerald-100 text-emerald-600">Đã trả lời</span>
+</div>
+</div>
+<div class="inbox-item p-4 border-b border-slate-100 cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-slate-900 truncate pr-4">Phạm Thu Hà</span>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">Hôm qua</span>
+</div>
+<h4 class="text-xs font-bold text-slate-800 mb-1 truncate">Góp ý cải thiện website</h4>
+<p class="text-[11px] text-slate-500 line-clamp-1">Giao diện website cần được tối ưu hóa cho di động tốt hơn...</p>
+<div class="flex items-center justify-between mt-2">
+<span class="status-pill bg-red-100 text-red-600">Mới</span>
+</div>
+</div>
+<div class="inbox-item p-4 border-b border-slate-100 cursor-pointer">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-medium text-slate-700 truncate pr-4">Hoàng Văn Đức</span>
+<span class="text-[10px] text-slate-400 whitespace-nowrap">04/04</span>
+</div>
+<h4 class="text-xs font-medium text-slate-700 mb-1 truncate">Hỏi về giá tour đi Hội An</h4>
+<p class="text-[11px] text-slate-500 line-clamp-1">Cho tôi hỏi tour Hội An xuất phát từ Đà Nẵng lúc mấy giờ...</p>
+<div class="flex items-center justify-between mt-2">
+<span class="status-pill bg-amber-100 text-amber-600">Đã đọc</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex flex-col bg-white overflow-hidden">
+<div class="h-14 border-b border-slate-100 flex items-center justify-between px-6 bg-slate-50/30 shrink-0">
+<div class="flex items-center gap-3">
+<button class="h-8 px-4 bg-blue-600 text-white text-xs font-bold rounded-md hover:bg-blue-700 flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-base">reply</span>
+                            Trả lời
+                        </button>
+<button class="h-8 px-3 border border-slate-200 text-slate-600 text-xs font-bold rounded-md hover:bg-white hover:border-slate-300 flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-base">drafts</span>
+                            Đánh dấu đã đọc
+                        </button>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-md transition-all" title="Xóa">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+<div class="h-4 w-[1px] bg-slate-200 mx-1"></div>
+<button class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-md transition-all">
+<span class="material-symbols-outlined text-xl">more_vert</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar">
+<div class="max-w-3xl">
+<div class="flex items-start gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 text-xl font-black">NA</div>
+<div>
+<h3 class="text-lg font-bold text-slate-900">Nguyễn Văn An</h3>
+<div class="flex items-center gap-2 text-sm text-slate-500 mt-1">
+<span>an.nguyen@example.com</span>
+<span>•</span>
+<span>0905 123 456</span>
+</div>
+<div class="mt-2 text-[11px] text-slate-400 flex items-center gap-2">
+<span>Ngày gửi: 06/04/2026 14:30</span>
+<span>(2 giờ trước)</span>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-100 pt-6">
+<h1 class="text-xl font-extrabold text-slate-800 mb-6">Hỏi về tour Bà Nà Hills</h1>
+<div class="space-y-4 text-slate-600 leading-relaxed text-sm">
+<p>Xin chào Ban Quản trị,</p>
+<p>Tôi dự định tổ chức một chuyến đi tham quan Bà Nà Hills cho gia đình và bạn bè (khoảng 10 người lớn) vào cuối tháng này. Tôi muốn hỏi về gói tour trọn gói bao gồm vé cáp treo, ăn trưa buffet và xe đưa đón tận nơi.</p>
+<p>Ngoài ra, cho tôi hỏi thêm là nếu đoàn có người cao tuổi thì có được hưởng ưu đãi gì đặc biệt không? Và quy trình đặt cọc cũng như thanh toán như thế nào?</p>
+<p>Rất mong nhận được phản hồi sớm từ quý công ty để tôi kịp sắp xếp lịch trình.</p>
+<p>Trân trọng,<br/>Nguyễn Văn An</p>
+</div>
+</div>
+<div class="mt-12 p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200">
+<p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3">Thông tin đính kèm</p>
+<div class="flex items-center gap-3">
+<div class="p-2 bg-white border border-slate-200 rounded-md flex items-center gap-2 cursor-pointer hover:border-blue-300">
+<span class="material-symbols-outlined text-red-500">description</span>
+<span class="text-xs font-medium">lich_trinh_du_kien.pdf</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-slate-100 bg-white">
+<div class="border border-slate-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-100 focus-within:border-blue-400 transition-all">
+<textarea class="w-full p-3 text-sm resize-none outline-none border-none min-h-[80px]" placeholder="Nhập nội dung phản hồi nhanh..." rows="2"></textarea>
+<div class="px-3 py-2 bg-slate-50 flex justify-between items-center border-t border-slate-100">
+<div class="flex gap-2">
+<button class="p-1.5 text-slate-400 hover:text-blue-600 rounded-md">
+<span class="material-symbols-outlined text-xl">attach_file</span>
+</button>
+<button class="p-1.5 text-slate-400 hover:text-blue-600 rounded-md">
+<span class="material-symbols-outlined text-xl">sentiment_satisfied</span>
+</button>
+</div>
+<button class="px-4 py-1.5 bg-blue-600 text-white text-xs font-bold rounded-md hover:bg-blue-700 transition-colors">
+                                Gửi phản hồi
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4">
+<div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"></div>
+<div class="relative bg-white w-full max-w-[400px] rounded-2xl shadow-2xl overflow-hidden p-8 border border-slate-200">
+<div class="w-14 h-14 bg-red-100 text-red-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+<span class="material-symbols-outlined text-3xl">delete_forever</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 text-center mb-2">Xóa liên hệ này?</h3>
+<p class="text-slate-500 text-center mb-8 text-sm leading-relaxed">
+            Liên hệ từ <span class="font-bold text-slate-800">Nguyễn Văn An</span> sẽ bị xóa vĩnh viễn khỏi hệ thống. Hành động này không thể hoàn tác.
+        </p>
+<div class="flex gap-3">
+<button class="flex-1 py-2.5 text-slate-500 font-bold text-sm hover:bg-slate-50 rounded-lg transition-all">Hủy</button>
+<button class="flex-1 py-2.5 bg-red-600 text-white font-bold text-sm rounded-lg shadow-lg shadow-red-100 hover:bg-red-700 transition-all">Xác nhận Xóa</button>
+</div>
+</div>
+</div>
+
+</body></html>

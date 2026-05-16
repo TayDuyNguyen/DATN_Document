@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh mục con - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Quicksand:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-page: #F8FAFC;
+            --surface: #FFFFFF;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --primary: #3B82F6;--primary-subtle: #EFF6FF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --earthy: #8B5E3C;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            font-size: 13px;
+        }
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Quicksand', sans-serif;
+        }
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#111827] flex flex-col z-50 custom-scrollbar">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white font-bold text-2xl font-heading">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none font-heading">Đà Nẵng Trip</h1>
+<p class="text-[#94A3B8] text-[10px] mt-1 uppercase tracking-wider font-semibold">Admin Panel</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#94A3B8] hover:text-white hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-medium text-sm">Bảng điều khiển</span>
+</a>
+<div class="pt-4 pb-2 px-4">
+<p class="text-[10px] font-bold text-[#475569] uppercase tracking-widest">Nội dung</p>
+</div>
+<div class="space-y-1">
+<button class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-[#94A3B8] hover:text-white hover:bg-white/5 transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="font-medium text-sm">Quản lý Tour</span>
+</div>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+<div class="pl-12 space-y-1">
+<a class="block py-2 text-sm text-[#94A3B8] hover:text-white transition-all" href="#">Danh sách Tour</a>
+<a class="block py-2 text-sm text-[#94A3B8] hover:text-white transition-all" href="#">Danh mục</a>
+<a class="block py-2 text-sm text-[#94A3B8] hover:text-white transition-all" href="#">Lịch khởi hành</a>
+</div>
+</div>
+<div class="space-y-1">
+<button class="w-full flex items-center justify-between px-4 py-2.5 rounded-xl text-white bg-white/5 transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="font-medium text-sm">Quản lý Địa điểm</span>
+</div>
+<span class="material-symbols-outlined text-sm">expand_less</span>
+</button>
+<div class="pl-12 space-y-1">
+<a class="block py-2 text-sm text-[#94A3B8] hover:text-white transition-all" href="#">Danh sách Địa điểm</a>
+<a class="block py-2 text-sm text-[var(--primary)] font-bold" href="#">Danh mục</a>
+</div>
+</div>
+<div class="pt-4 pb-2 px-4">
+<p class="text-[10px] font-bold text-[#475569] uppercase tracking-widest">Hệ thống</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#94A3B8] hover:text-white hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+<span class="font-medium text-sm">Đơn hàng</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#94A3B8] hover:text-white hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">star</span>
+<span class="font-medium text-sm">Đánh giá</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#94A3B8] hover:text-white hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="font-medium text-sm">Người dùng</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#94A3B8] hover:text-white hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="font-medium text-sm">Thông báo</span>
+<span class="ml-auto w-5 h-5 bg-[#EF4444] text-white text-[10px] flex items-center justify-center rounded-full">3</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-white/5">
+<button class="w-full flex items-center gap-3 px-4 py-2.5 rounded-xl text-[#EF4444] hover:bg-red-500/10 transition-all font-semibold">
+<span class="material-symbols-outlined text-xl">logout</span>
+<span class="text-sm">Đăng xuất</span>
+</button>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<div class="mb-6">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-[12px] font-medium text-[var(--text-secondary)]">Quản lý Địa điểm</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-primary)]">Danh mục</span>
+</div>
+<h2 class="text-2xl font-bold text-[var(--text-primary)] font-heading">Danh mục Địa điểm</h2>
+<p class="text-[13px] text-[var(--text-secondary)] mt-1">Sáng tạo và sắp xếp các nhóm địa điểm cho du khách</p>
+</div>
+<div class="inline-flex gap-0 bg-white border border-[var(--border)] p-1 rounded-xl mb-6">
+<a class="px-6 py-2 text-[13px] font-medium text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors" href="#">Danh mục</a>
+<a class="px-6 py-2 text-[13px] font-semibold bg-[var(--primary)] text-white rounded-lg shadow-sm" href="#">Danh mục con</a>
+</div>
+<div class="grid grid-cols-3 gap-6 mb-8">
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 bg-blue-50 text-[var(--primary)] rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">account_tree</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-1">TỔNG DANH MỤC CON</p>
+<p class="text-2xl font-bold text-[var(--text-primary)] font-heading">24</p>
+</div>
+</div>
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 bg-emerald-50 text-[var(--success)] rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-1">ĐANG HOẠT ĐỘNG</p>
+<p class="text-2xl font-bold text-[var(--success)] font-heading">18</p>
+</div>
+</div>
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 bg-indigo-50 text-indigo-500 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">location_on</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-widest mb-1">TỔNG ĐỊA ĐIỂM</p>
+<p class="text-2xl font-bold text-indigo-500 font-heading">124</p>
+</div>
+</div>
+</div>
+<div class="flex gap-6 items-start">
+<div class="flex-1 space-y-4">
+<div class="flex items-center justify-between bg-white p-4 rounded-2xl border border-[var(--border)] shadow-sm">
+<div class="flex gap-3">
+<div class="relative w-56">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)] text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 border border-[var(--border)] rounded-xl text-sm focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] outline-none" placeholder="Tìm danh mục con..." type="text"/>
+</div>
+<select class="text-sm border-[var(--border)] rounded-xl px-3 py-2 bg-white focus:ring-0 focus:border-[var(--primary)] w-48">
+<option>Tất cả danh mục cha</option>
+<option>🏖️ Bãi biển &amp; Biển</option>
+<option>🏛️ Di tích lịch sử</option>
+</select>
+<select class="text-sm border-[var(--border)] rounded-xl px-3 py-2 bg-white focus:ring-0 focus:border-[var(--primary)]">
+<option>Tất cả trạng thái</option>
+<option>Hoạt động</option>
+<option>Tạm dừng</option>
+</select>
+</div>
+<span class="text-[var(--text-muted)] text-xs font-medium italic">24 danh mục con hiện có</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4">
+<div class="card p-4 hover:border-[var(--primary)] transition-all group relative bg-white">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl shadow-sm border border-blue-100">🏖️</div>
+<div>
+<h4 class="font-bold text-[15px] text-[var(--text-primary)] font-heading">Bãi biển Đà Nẵng</h4>
+<p class="text-[11px] text-[var(--text-muted)] font-medium">slug: bai-bien-da-nang</p>
+</div>
+</div>
+<span class="bg-blue-50 text-blue-600 border border-blue-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">🏖️ Bãi biển</span>
+</div>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-1 mb-4">Các bãi tắm nổi tiếng quanh thành phố Đà Nẵng.</p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-50">
+<div class="flex items-center gap-4">
+<div>
+<span class="text-[11px] font-bold text-[var(--text-primary)]">8</span>
+<span class="text-[10px] text-[var(--text-muted)] ml-1">địa điểm</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-50 text-[var(--success)] rounded-lg text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--success)]"></span>
+                                    ACTIVE
+                                </div>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-slate-50 hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-red-50 hover:text-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="card p-4 hover:border-[var(--primary)] transition-all group relative bg-white">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-xl shadow-sm border border-orange-100">🏛️</div>
+<div>
+<h4 class="font-bold text-[15px] text-[var(--text-primary)] font-heading">Đền chùa</h4>
+<p class="text-[11px] text-[var(--text-muted)] font-medium">slug: den-chua</p>
+</div>
+</div>
+<span class="bg-orange-50 text-orange-600 border border-orange-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">🏛️ Di tích</span>
+</div>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-1 mb-4">Danh sách các ngôi chùa cổ và kiến trúc tâm linh.</p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-50">
+<div class="flex items-center gap-4">
+<div>
+<span class="text-[11px] font-bold text-[var(--text-primary)]">6</span>
+<span class="text-[10px] text-[var(--text-muted)] ml-1">địa điểm</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-50 text-[var(--success)] rounded-lg text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--success)]"></span>
+                                    ACTIVE
+                                </div>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-slate-50 hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-red-50 hover:text-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="card p-4 hover:border-[var(--primary)] transition-all group relative bg-white">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-yellow-50 text-yellow-600 rounded-xl flex items-center justify-center text-xl shadow-sm border border-yellow-100">🍜</div>
+<div>
+<h4 class="font-bold text-[15px] text-[var(--text-primary)] font-heading">Quán ăn đường phố</h4>
+<p class="text-[11px] text-[var(--text-muted)] font-medium">slug: quan-an-duong-pho</p>
+</div>
+</div>
+<span class="bg-yellow-50 text-yellow-600 border border-yellow-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">🍜 Ẩm thực</span>
+</div>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-1 mb-4">Những gánh hàng rong và quán ăn vỉa hè nức tiếng.</p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-50">
+<div class="flex items-center gap-4">
+<div>
+<span class="text-[11px] font-bold text-[var(--text-primary)]">12</span>
+<span class="text-[10px] text-[var(--text-muted)] ml-1">địa điểm</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-emerald-50 text-[var(--success)] rounded-lg text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-[var(--success)]"></span>
+                                    ACTIVE
+                                </div>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-slate-50 hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-red-50 hover:text-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="card p-4 hover:border-[var(--primary)] transition-all group relative bg-slate-50/50">
+<div class="flex items-start justify-between mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-pink-50 text-pink-600 rounded-xl flex items-center justify-center text-xl shadow-sm border border-pink-100 opacity-60">🦐</div>
+<div>
+<h4 class="font-bold text-[15px] text-[var(--text-primary)] font-heading">Nhà hàng hải sản</h4>
+<p class="text-[11px] text-[var(--text-muted)] font-medium">slug: hai-san</p>
+</div>
+</div>
+<span class="bg-yellow-50 text-yellow-600 border border-yellow-100 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">🍜 Ẩm thực</span>
+</div>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-1 mb-4 opacity-75">Hệ thống các nhà hàng hải sản ven biển.</p>
+<div class="flex items-center justify-between pt-3 border-t border-slate-200">
+<div class="flex items-center gap-4">
+<div>
+<span class="text-[11px] font-bold text-[var(--text-primary)]">7</span>
+<span class="text-[10px] text-[var(--text-muted)] ml-1">địa điểm</span>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-0.5 bg-red-50 text-[var(--error)] rounded-lg text-[10px] font-bold">
+                                    PAUSED
+                                </div>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-slate-50 hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+<button class="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--text-secondary)] hover:bg-red-50 hover:text-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-100/50 rounded-xl p-4 flex items-center gap-3 border border-dashed border-slate-300">
+<span class="material-symbols-outlined text-slate-400">drag_indicator</span>
+<p class="text-xs text-[var(--text-secondary)] font-medium">Bạn có thể kéo thả để sắp xếp thứ tự hiển thị các danh mục này trên ứng dụng.</p>
+</div>
+</div>
+<div class="w-[400px] sticky top-8">
+<div class="card p-6 shadow-xl border-t-4 border-t-[var(--primary)]">
+<div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-50">
+<div class="flex items-center gap-2">
+<h3 class="text-[18px] font-bold text-[var(--text-primary)] font-heading">Thêm danh mục con</h3>
+<span class="bg-emerald-50 text-[var(--success)] text-[10px] font-bold px-2 py-0.5 rounded-full">MỚI</span>
+</div>
+<button class="w-8 h-8 rounded-lg hover:bg-slate-100 flex items-center justify-center text-[var(--text-muted)] transition-all">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="space-y-5">
+<div>
+<label class="block text-[12px] font-bold text-[var(--text-primary)] mb-2">Danh mục cha <span class="text-red-500">*</span></label>
+<select class="w-full border-[var(--border)] rounded-xl px-4 py-2.5 text-sm focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] transition-all">
+<option disabled="" selected="">Chọn danh mục cha cho nhóm này...</option>
+<option>🏖️ Bãi biển &amp; Biển</option>
+<option>🏛️ Di tích lịch sử</option>
+<option>🍜 Ẩm thực</option>
+</select>
+</div>
+<div>
+<label class="block text-[12px] font-bold text-[var(--text-primary)] mb-2">Tên danh mục con <span class="text-red-500">*</span></label>
+<input class="w-full border-[var(--border)] rounded-xl px-4 py-2.5 text-sm focus:ring-[var(--primary)]/20 focus:border-[var(--primary)]" placeholder="Ví dụ: Bãi biển Đà Nẵng" type="text"/>
+</div>
+<div class="relative">
+<label class="block text-[12px] font-bold text-[var(--text-primary)] mb-2">Đường dẫn (Slug)</label>
+<input class="w-full border-[var(--border)] rounded-xl px-4 py-2.5 text-sm bg-slate-50 text-[var(--text-secondary)]" placeholder="bai-bien-da-nang" type="text"/>
+<span class="absolute right-3 top-[38px] bg-blue-50 text-[var(--primary)] text-[10px] font-bold px-2 py-0.5 rounded-md">Tự động</span>
+<p class="text-[11px] text-[var(--text-muted)] mt-1 ml-1">Đường dẫn thân thiện cho SEO, tự động tạo từ tên.</p>
+</div>
+<div>
+<label class="block text-[12px] font-bold text-[var(--text-primary)] mb-2">Mô tả ngắn</label>
+<textarea class="w-full border-[var(--border)] rounded-xl px-4 py-2.5 text-sm focus:ring-[var(--primary)]/20 focus:border-[var(--primary)] resize-none" placeholder="Hãy viết vài lời giới thiệu truyền cảm hứng cho danh mục này..." rows="3"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-[12px] font-bold text-[var(--text-primary)] mb-2">Thứ tự hiển thị</label>
+<input class="w-full border-[var(--border)] rounded-xl px-4 py-2.5 text-sm" placeholder="1" type="number"/>
+<p class="text-[11px] text-[var(--text-muted)] mt-1">Số nhỏ hơn sẽ hiện trước.</p>
+</div>
+<div class="flex flex-col">
+<label class="block text-[12px] font-bold text-[var(--text-primary)] mb-2">Trạng thái</label>
+<div class="flex items-center justify-between py-2 px-3 bg-slate-50 rounded-xl border border-slate-100">
+<span class="text-xs font-semibold text-[var(--text-primary)]">Kích hoạt</span>
+<button class="w-10 h-5.5 bg-[var(--primary)] rounded-full relative flex items-center px-1 transition-all" type="button">
+<div class="w-4 h-4 bg-white rounded-full ml-auto shadow-sm"></div>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-[var(--bg-page)] border border-[var(--border)] rounded-xl p-4">
+<label class="block text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider mb-3">XEM TRƯỚC GIAO DIỆN</label>
+<div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-[var(--border)] shadow-sm">
+<div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-lg shadow-inner">🏖️</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-0.5">
+<span class="text-[10px] font-bold bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded-full">BÃI BIỂN</span>
+<p class="font-bold text-[var(--text-primary)] text-sm">Tên danh mục con...</p>
+</div>
+<p class="text-[11px] text-[var(--text-muted)] leading-none italic">slug-se-hien-o-day</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 py-3 border border-[var(--border)] text-[var(--text-secondary)] font-bold rounded-xl hover:bg-slate-50 hover:text-[var(--error)] hover:border-[var(--error)]/30 transition-all font-heading" type="button">Hủy bỏ</button>
+<button class="flex-[1.5] py-3 bg-[var(--primary)] text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20 font-heading" type="submit">Tạo danh mục</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-[100] hidden">
+<div class="bg-white w-[420px] rounded-3xl p-8 shadow-2xl">
+<div class="flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-red-50 text-[var(--error)] rounded-full flex items-center justify-center mb-6 shadow-sm border border-red-100">
+<span class="material-symbols-outlined text-4xl">warning_amber</span>
+</div>
+<h4 class="text-xl font-bold text-[var(--text-primary)] font-heading mb-2">Xác nhận xóa danh mục?</h4>
+<p class="text-[var(--text-secondary)] text-sm mb-6">Bạn đang thực hiện xóa danh mục con <span class="font-bold text-[var(--text-primary)] text-blue-600">[Tên]</span>. Hành động này không thể hoàn tác.</p>
+</div>
+<div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8">
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-amber-500 shrink-0">report_problem</span>
+<p class="text-[13px] text-amber-800 leading-relaxed font-medium">
+                        Cảnh báo: Nếu có bất kỳ địa điểm nào đang thuộc danh mục này, chúng sẽ bị mất phân loại và cần được gán lại thủ công.
+                    </p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 px-4 py-3 border border-[var(--border)] text-[var(--text-secondary)] font-bold rounded-xl hover:bg-slate-50 transition-all font-heading">Hủy bỏ</button>
+<button class="flex-1 px-4 py-3 bg-[var(--error)] text-white font-bold rounded-xl hover:bg-red-700 transition-all shadow-lg shadow-red-500/20 font-heading">Xác nhận xóa</button>
+</div>
+</div>
+</div>
+
+</body></html>

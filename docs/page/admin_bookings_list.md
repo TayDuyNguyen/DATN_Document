@@ -168,8 +168,8 @@ Mỗi thẻ: `bg white border #E2E8F0 radius-12 p-16 flex items-center gap-12`
 | Button | Icon | Điều kiện hiện | Hover | Action |
 |--------|------|----------------|-------|--------|
 | Xem | `visibility` | Luôn hiện | `#0066CC` | `/admin/bookings/{id}` |
-| Xác nhận | `check_circle` | status=pending | `#10B981` | `POST /admin/bookings/{id}/confirm` |
-| Hủy | `cancel` | status=pending/confirmed | `#EF4444` | Confirm dialog → `POST /admin/bookings/{id}/cancel` |
+| Xác nhận | `check_circle` | status=pending | `#10B981` | `PATCH /admin/bookings/{id}/status` body `booking_status=confirmed` |
+| Hủy | `cancel` | status=pending/confirmed | `#EF4444` | Confirm dialog → `PATCH /admin/bookings/{id}/status` body `booking_status=cancelled` |
 
 Style chung: `28x28px bg #F8FAFC border #E2E8F0 radius-6 color #64748B`
 
@@ -226,8 +226,8 @@ Style chung: `28x28px bg #F8FAFC border #E2E8F0 radius-6 color #64748B`
 | Filter TT đơn | GET | `/admin/bookings?status=` | Chọn select |
 | Filter TT thanh toán | GET | `/admin/bookings?payment_status=` | Chọn select |
 | Filter ngày | GET | `/admin/bookings?date_from=&date_to=` | Chọn date range |
-| Xác nhận đơn | POST | `/admin/bookings/{id}/confirm` | Click button xác nhận |
-| Hủy đơn | POST | `/admin/bookings/{id}/cancel` | Confirm dialog |
-| Bulk xác nhận | POST | `/admin/bookings/{id}/confirm` (loop) | Bulk action |
-| Bulk hủy | POST | `/admin/bookings/{id}/cancel` (loop) | Bulk action |
+| Xác nhận đơn | PATCH | `/admin/bookings/{id}/status` | Click button xác nhận, body `booking_status=confirmed` |
+| Hủy đơn | PATCH | `/admin/bookings/{id}/status` | Confirm dialog, body `booking_status=cancelled`, `cancellation_reason` |
+| Bulk xác nhận | PATCH | `/admin/bookings/{id}/status` (loop) | Bulk action, body `booking_status=confirmed` |
+| Bulk hủy | PATCH | `/admin/bookings/{id}/status` (loop) | Bulk action, body `booking_status=cancelled` |
 | Xuất Excel | GET | `/admin/bookings/export?status=&payment_status=&date_from=&date_to=` | Click "Xuất Excel" |

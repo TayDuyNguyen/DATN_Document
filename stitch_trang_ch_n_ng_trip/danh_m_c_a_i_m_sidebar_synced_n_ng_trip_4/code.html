@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh sách Người dùng - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --bg-page: #F8FAFC;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --radius-card: 16px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .user-block {
+            transition: all 150ms ease;
+            position: relative;
+        }
+        .user-block:hover {
+            background-color: #F8FAFC;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .status-border-active {
+            border-left: 4px solid var(--success);
+        }
+        .status-border-banned {
+            border-left: 4px solid var(--error);
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white font-bold text-2xl">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Admin Panel</p>
+</div>
+</div>
+<nav class="space-y-1.5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-medium text-sm">Tổng quan</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-medium text-sm">Đơn hàng</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">rate_review</span><span class="font-medium text-sm">Đánh giá</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-blue-600 shadow-sm" href="#"><span class="material-symbols-outlined">group</span><span class="font-medium text-sm">Người dùng</span></a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<div class="flex justify-between items-start mb-6">
+<div>
+<nav class="flex items-center gap-2 mb-1">
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Người dùng</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Danh sách Người dùng</span>
+</nav>
+<h2 class="text-2xl font-bold text-[var(--text-primary)]">Danh sách Người dùng</h2>
+<p class="text-[14px] text-[var(--text-secondary)]">Quản lý tài khoản người dùng hệ thống</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white border border-[var(--border)] text-[var(--text-secondary)] rounded-[10px] text-[14px] font-semibold hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                Xuất Excel
+            </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-[var(--primary)] text-white rounded-[10px] text-[14px] font-semibold shadow-[0_4px_12px_rgba(0,102,204,0.25)] hover:bg-[#004999] transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Thêm người dùng
+            </button>
+</div>
+</div>
+<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EFF6FF] flex items-center justify-center text-[var(--primary)]">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">TỔNG NGƯỜI DÙNG</p>
+<p class="text-2xl font-bold text-[var(--text-primary)]">4.850</p>
+</div>
+</div>
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#D1FAE5] flex items-center justify-center text-[var(--success)]">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">ĐANG HOẠT ĐỘNG</p>
+<p class="text-2xl font-bold text-[var(--success)]">4.712</p>
+</div>
+</div>
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#FEE2E2] flex items-center justify-center text-[var(--error)]">
+<span class="material-symbols-outlined">block</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">BỊ KHÓA</p>
+<p class="text-2xl font-bold text-[var(--error)]">138</p>
+</div>
+</div>
+<div class="card p-5 flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center text-[#6366F1]">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-muted)] uppercase tracking-wider">ADMIN &amp; STAFF</p>
+<p class="text-2xl font-bold text-[#6366F1]">8</p>
+</div>
+</div>
+</div>
+<div class="card p-5 mb-6">
+<div class="flex gap-3 flex-wrap items-center">
+<div class="flex-1 min-w-[280px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-[var(--text-muted)]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 border border-[var(--border)] rounded-[10px] text-[14px] outline-none focus:ring-2 focus:ring-[var(--primary)]/20 focus:border-[var(--primary)]" placeholder="Tìm theo tên, email, username..." type="text"/>
+</div>
+<select class="w-[160px] px-3 py-2.5 border border-[var(--border)] rounded-[10px] text-[14px] bg-white text-[var(--text-secondary)] outline-none focus:ring-2 focus:ring-[var(--primary)]/20">
+<option>Tất cả Role</option>
+<option>Người dùng (user)</option>
+<option>Staff (staff)</option>
+<option>Admin (admin)</option>
+</select>
+<select class="w-[160px] px-3 py-2.5 border border-[var(--border)] rounded-[10px] text-[14px] bg-white text-[var(--text-secondary)] outline-none focus:ring-2 focus:ring-[var(--primary)]/20">
+<option>Tất cả Trạng thái</option>
+<option>Đang hoạt động</option>
+<option>Bị khóa</option>
+</select>
+<button class="px-6 py-2.5 bg-[var(--primary)] text-white rounded-[10px] text-[14px] font-semibold hover:opacity-90">Lọc</button>
+<button class="px-4 py-2.5 border border-[var(--border)] text-[var(--text-secondary)] rounded-[10px] text-[14px] font-medium hover:text-[var(--error)]">Đặt lại</button>
+</div>
+</div>
+<div class="card overflow-hidden">
+<div class="px-6 py-4 border-b border-[var(--border)] flex justify-between items-center bg-[#F8FAFC]">
+<div class="flex items-center gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="w-4 h-4 rounded border-[var(--border)] text-[var(--primary)] focus:ring-[var(--primary)]" type="checkbox"/>
+<span class="text-sm font-medium text-[var(--text-secondary)]">Chọn tất cả</span>
+</label>
+<div class="h-4 w-px bg-[var(--border)]"></div>
+<div class="flex items-center gap-2">
+<span class="text-[13px] font-bold text-[var(--primary)]">Đã chọn 3</span>
+<button class="bg-[#D1FAE5] text-[#10B981] rounded-lg px-3 py-1.5 text-[12px] font-bold uppercase hover:bg-[#bbf7d0]">Kích hoạt</button>
+<button class="bg-[#FEE2E2] text-[#EF4444] rounded-lg px-3 py-1.5 text-[12px] font-bold uppercase hover:bg-[#fecaca]">Khóa tài khoản</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-[13px] text-[var(--text-muted)]">Hiển thị 1–10 / 4.850 người dùng</span>
+<select class="text-[13px] border-[var(--border)] rounded-lg py-1 px-3 bg-white text-[var(--text-secondary)] outline-none focus:border-[var(--primary)]">
+<option>10 / trang</option>
+<option>20 / trang</option>
+<option>50 / trang</option>
+</select>
+</div>
+</div>
+<div class="bg-[#F8FAFC] p-4 space-y-3">
+<div class="bg-white border border-[var(--border)] rounded-xl p-4 flex items-center gap-6 user-block status-border-active">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-[var(--border)] text-[var(--primary)]" type="checkbox"/>
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-[var(--border)] object-cover" src="https://lh3.googleusercontent.com/a/default-user=s80-p"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-3">
+<h4 class="text-base font-bold text-[var(--text-primary)]">Nguyễn Văn An</h4>
+<span class="px-2.5 py-1 bg-[#F1F5F9] text-[var(--text-secondary)] rounded-full text-[10px] font-bold tracking-wider uppercase">USER</span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-[11px] text-[var(--text-muted)] font-medium">@nguyenvanan</span>
+<span class="w-1 h-1 rounded-full bg-[var(--border)]"></span>
+<span class="text-[11px] text-[var(--text-muted)] truncate">nguyenvanan@gmail.com</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-[var(--border)] text-center shrink-0">
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">12</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đơn hàng</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">5</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đánh giá</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">15/03/26</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">3 tháng trước</p>
+</div>
+</div>
+<div class="w-32 flex flex-col items-center justify-center gap-1 shrink-0">
+<span class="w-full py-1.5 text-center bg-[#D1FAE5] text-[var(--success)] rounded-lg text-[11px] font-bold border border-[var(--success)]/20">HOẠT ĐỘNG</span>
+</div>
+<div class="flex gap-1.5 shrink-0">
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--warning)] hover:border-[var(--warning)] transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--error)] hover:border-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</div>
+<div class="bg-white border border-[var(--border)] rounded-xl p-4 flex items-center gap-6 user-block status-border-active">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-[var(--border)] text-[var(--primary)]" type="checkbox"/>
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-[var(--border)] object-cover" src="https://lh3.googleusercontent.com/a/default-user=s80-p"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-3">
+<h4 class="text-base font-bold text-[var(--text-primary)]">Trần Thị Bích</h4>
+<span class="px-2.5 py-1 bg-[#F1F5F9] text-[var(--text-secondary)] rounded-full text-[10px] font-bold tracking-wider uppercase">USER</span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-[11px] text-[var(--text-muted)] font-medium">@tranbich</span>
+<span class="w-1 h-1 rounded-full bg-[var(--border)]"></span>
+<span class="text-[11px] text-[var(--text-muted)] truncate">tranbich@gmail.com</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-[var(--border)] text-center shrink-0">
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">8</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đơn hàng</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">3</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đánh giá</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">20/02/26</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">4 tháng trước</p>
+</div>
+</div>
+<div class="w-32 flex flex-col items-center justify-center gap-1 shrink-0">
+<span class="w-full py-1.5 text-center bg-[#D1FAE5] text-[var(--success)] rounded-lg text-[11px] font-bold border border-[var(--success)]/20">HOẠT ĐỘNG</span>
+</div>
+<div class="flex gap-1.5 shrink-0">
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--warning)] hover:border-[var(--warning)] transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--error)] hover:border-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</div>
+<div class="bg-white border border-[var(--border)] rounded-xl p-4 flex items-center gap-6 user-block status-border-active">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-[var(--border)] text-[var(--primary)]" type="checkbox"/>
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-[var(--border)] object-cover" src="https://lh3.googleusercontent.com/a/default-user=s80-p"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-3">
+<h4 class="text-base font-bold text-[var(--text-primary)]">Admin Duy Tây</h4>
+<span class="px-2.5 py-1 bg-[#EEF2FF] text-[#6366F1] rounded-full text-[10px] font-bold tracking-wider uppercase">ADMIN</span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-[11px] text-[var(--text-muted)] font-medium">@admin</span>
+<span class="w-1 h-1 rounded-full bg-[var(--border)]"></span>
+<span class="text-[11px] text-[var(--text-muted)] truncate">admin@danangtrip.vn</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-[var(--border)] text-center shrink-0">
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">0</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đơn hàng</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">0</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đánh giá</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">01/01/26</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Hệ thống</p>
+</div>
+</div>
+<div class="w-32 flex flex-col items-center justify-center gap-1 shrink-0">
+<span class="w-full py-1.5 text-center bg-[#D1FAE5] text-[var(--success)] rounded-lg text-[11px] font-bold border border-[var(--success)]/20">HOẠT ĐỘNG</span>
+</div>
+<div class="flex gap-1.5 shrink-0">
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--warning)] hover:border-[var(--warning)] transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--error)] hover:border-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</div>
+<div class="bg-white border border-[var(--border)] rounded-xl p-4 flex items-center gap-6 user-block status-border-banned">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-[var(--border)] text-[var(--primary)]" type="checkbox"/>
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-[var(--border)] object-cover" src="https://lh3.googleusercontent.com/a/default-user=s80-p"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-3">
+<h4 class="text-base font-bold text-[var(--text-primary)]">Lê Minh Tuấn</h4>
+<span class="px-2.5 py-1 bg-[#F1F5F9] text-[var(--text-secondary)] rounded-full text-[10px] font-bold tracking-wider uppercase">USER</span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-[11px] text-[var(--text-muted)] font-medium">@leminhtuan</span>
+<span class="w-1 h-1 rounded-full bg-[var(--border)]"></span>
+<span class="text-[11px] text-[var(--text-muted)] truncate">leminhtuanxxx@gmail.com</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-[var(--border)] text-center shrink-0">
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">2</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đơn hàng</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">1</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đánh giá</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">10/03/26</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">3 tháng trước</p>
+</div>
+</div>
+<div class="w-32 flex flex-col items-center justify-center gap-1 shrink-0">
+<span class="w-full py-1.5 text-center bg-[#FEE2E2] text-[var(--error)] rounded-lg text-[11px] font-bold border border-[var(--error)]/20">BỊ KHÓA</span>
+</div>
+<div class="flex gap-1.5 shrink-0">
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--warning)] hover:border-[var(--warning)] transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--success)] hover:border-[var(--success)] transition-all">
+<span class="material-symbols-outlined text-[20px]">lock_open</span>
+</button>
+</div>
+</div>
+<div class="bg-white border border-[var(--border)] rounded-xl p-4 flex items-center gap-6 user-block status-border-active">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 rounded border-[var(--border)] text-[var(--primary)]" type="checkbox"/>
+<img alt="Avatar" class="w-12 h-12 rounded-full border-2 border-[var(--border)] object-cover" src="https://lh3.googleusercontent.com/a/default-user=s80-p"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-3">
+<h4 class="text-base font-bold text-[var(--text-primary)]">Staff Hoa</h4>
+<span class="px-2.5 py-1 bg-[#EFF6FF] text-[var(--primary)] rounded-full text-[10px] font-bold tracking-wider uppercase">STAFF</span>
+</div>
+<div class="flex items-center gap-3 mt-1">
+<span class="text-[11px] text-[var(--text-muted)] font-medium">@staffhoa</span>
+<span class="w-1 h-1 rounded-full bg-[var(--border)]"></span>
+<span class="text-[11px] text-[var(--text-muted)] truncate">staff@danangtrip.vn</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-8 px-8 border-x border-[var(--border)] text-center shrink-0">
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">0</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đơn hàng</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">0</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Đánh giá</p>
+</div>
+<div>
+<p class="text-sm font-bold text-[var(--text-primary)]">05/01/26</p>
+<p class="text-[10px] text-[var(--text-muted)] uppercase font-bold">Hệ thống</p>
+</div>
+</div>
+<div class="w-32 flex flex-col items-center justify-center gap-1 shrink-0">
+<span class="w-full py-1.5 text-center bg-[#D1FAE5] text-[var(--success)] rounded-lg text-[11px] font-bold border border-[var(--success)]/20">HOẠT ĐỘNG</span>
+</div>
+<div class="flex gap-1.5 shrink-0">
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--primary)] hover:border-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--warning)] hover:border-[var(--warning)] transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center bg-[#F8FAFC] border border-[var(--border)] rounded-lg text-[var(--text-secondary)] hover:text-[var(--error)] hover:border-[var(--error)] transition-all">
+<span class="material-symbols-outlined text-[20px]">block</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 flex justify-between items-center bg-[#F8FAFC] border-t border-[var(--border)]">
+<span class="text-[13px] text-[var(--text-secondary)]">Hiển thị 1–10 trong tổng số 4.850 người dùng</span>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[var(--border)] bg-white text-[var(--text-secondary)] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-[var(--primary)] text-white text-[13px] font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[var(--border)] bg-white text-[var(--text-secondary)] text-[13px] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">2</button>
+<span class="mx-1 text-[var(--text-muted)] text-[13px]">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[var(--border)] bg-white text-[var(--text-secondary)] text-[13px] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">485</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-[var(--border)] bg-white text-[var(--text-secondary)] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] flex items-center justify-center p-4 hidden">
+<div class="bg-white rounded-[20px] w-full max-w-[400px] shadow-2xl overflow-hidden">
+<div class="p-8 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-2xl bg-[#FEE2E2] flex items-center justify-center text-[var(--error)] mb-6">
+<span class="material-symbols-outlined text-[32px]">warning</span>
+</div>
+<h3 class="text-lg font-bold text-[var(--text-primary)] mb-2">Xóa tài khoản này?</h3>
+<p class="text-sm text-[var(--text-secondary)] leading-relaxed mb-6">
+                Tài khoản của <span class="font-bold text-[var(--text-primary)]">[Tên]</span> sẽ bị xóa vĩnh viễn khỏi hệ thống.
+            </p>
+<div class="w-full bg-[#FEF3C7] border border-[var(--warning)]/30 rounded-xl p-4 text-left">
+<p class="text-[13px] text-[#92400E] leading-relaxed">
+<span class="font-bold">⚠ Cảnh báo:</span> Tất cả đơn hàng, đánh giá, yêu thích và thông báo của người dùng này sẽ bị xóa theo.
+                </p>
+</div>
+</div>
+<div class="px-8 pb-8 flex gap-3">
+<button class="flex-1 px-4 py-3 bg-[#F8FAFC] border border-[var(--border)] text-[var(--text-secondary)] rounded-xl text-sm font-bold hover:bg-slate-100 transition-all">Hủy</button>
+<button class="flex-1 px-4 py-3 bg-[var(--error)] text-white rounded-xl text-sm font-bold hover:bg-[#DC2626] shadow-lg shadow-red-500/20 transition-all">Xóa tài khoản</button>
+</div>
+</div>
+</div>
+
+</body></html>

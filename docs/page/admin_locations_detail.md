@@ -287,3 +287,17 @@ Ghost style: `border #E2E8F0 bg white text #64748B radius-10 py-10 full-width 13
 | Đổi trạng thái | PATCH | `/admin/locations/{id}/status` | Click dropdown trạng thái |
 | Bật/tắt nổi bật | PATCH | `/admin/locations/{id}/featured` | Toggle |
 | Xóa địa điểm | DELETE | `/admin/locations/{id}` | Confirm dialog |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Load detail | Nếu slug không tồn tại, hiển thị 404 nội bộ và CTA về `/admin/locations` |
+| Ảnh rỗng | Dùng thumbnail mặc định, không để gallery vỡ layout |
+| Đánh giá rỗng | Hiển thị "Chưa có đánh giá"; rating stats mặc định 0 ở tất cả mức sao |
+| Đổi trạng thái | Chỉ nhận `active` hoặc `inactive`; nếu đang featured mà chuyển inactive thì tắt featured ở UI |
+| Toggle featured | Chỉ cho bật featured khi địa điểm `active` |
+| Xóa địa điểm | Bắt buộc confirm; nếu địa điểm còn rating/favorite/view thì ưu tiên soft delete hoặc chuyển inactive |
+| API lỗi | Mỗi khu vực ảnh/rating/stats có retry riêng; không chặn toàn bộ màn detail |

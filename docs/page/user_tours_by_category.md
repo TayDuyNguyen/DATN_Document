@@ -85,3 +85,16 @@ Toolbar bên trái:
 | Filter thời lượng | GET | `/tour-categories/{slug}/tours?duration=` | Chọn checkbox |
 | Filter ngày | GET | `/tour-categories/{slug}/tours?available_from=&available_to=` | Chọn date range |
 | Sắp xếp | GET | `/tour-categories/{slug}/tours?sort=&order=` | Chọn select |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Slug danh mục | Bắt buộc; nếu không tồn tại hiển thị 404 category và CTA về `/tours` |
+| Khoảng giá | `price_min <= price_max`; giá âm reset về rỗng |
+| Ngày khởi hành | `available_from <= available_to`; ngày quá khứ chỉ hiển thị nếu nghiệp vụ cho phép xem lịch cũ |
+| Duration | Chỉ nhận các duration option có trong filter metadata hoặc config |
+| Empty list | Hiển thị "Chưa có tour phù hợp" và CTA xóa bộ lọc |
+| Pagination | Nếu page vượt tổng trang, quay về page cuối hợp lệ |

@@ -36,6 +36,8 @@ Giữ nguyên: Header · Sidebar (item "Đơn đặt tour" active) · Footer
 **Bên phải** (`flex gap-8`):
 - Button "In hóa đơn": `border #E2E8F0 bg white text #64748B radius-10 px-16 py-10` icon `print`
   → `GET /user/bookings/{id}/invoice` (PDF)
+- Button "Hành khách": `border #E2E8F0 bg white text #64748B radius-10 px-16 py-10` icon `group`
+  → mở section hành khách, gọi `GET /user/bookings/{id}/passengers`
 - Button "Hủy đơn" (nếu status=pending/confirmed):
   `border #FEE2E2 bg white text #EF4444 radius-10 px-16 py-10` icon `cancel`
   hover `bg #FEE2E2`
@@ -193,5 +195,30 @@ Mỗi item: `flex items-center gap-12`
 | Hành động | Method | Endpoint | Trigger |
 |-----------|--------|----------|---------|
 | Load chi tiết | GET | `/user/bookings/{id}` | Khi mount |
+| Load hành khách | GET | `/user/bookings/{id}/passengers` | Khi mở section "Hành khách" |
+| Cập nhật hành khách | PUT | `/user/bookings/{id}/passengers` | Trước khi đơn được xác nhận, submit form hành khách |
+| Load timeline | GET | `/user/bookings/{id}/timeline` | Khi mount hoặc mở section "Lịch sử trạng thái" |
 | Hủy đơn | POST | `/user/bookings/{id}/cancel` | Confirm dialog |
 | In hóa đơn | GET | `/user/bookings/{id}/invoice` | Click "In hóa đơn" |
+
+---
+
+## Section bổ sung theo flow bán tour
+
+### Danh sách hành khách
+
+| Thành phần | Nội dung |
+|---|---|
+| API | `GET /user/bookings/{id}/passengers` |
+| API cập nhật | `PUT /user/bookings/{id}/passengers` |
+| Trường nhập | `full_name`, `passenger_type`, `gender`, `birthdate`, `phone`, `email`, `identity_number`, `note` |
+| Điều kiện sửa | Chỉ cho sửa khi đơn chưa `confirmed` hoặc theo rule vận hành được cấu hình |
+| Validation | Người lớn phải có họ tên; trẻ em/em bé cần ngày sinh để kiểm tra độ tuổi; số khách không vượt số lượng đã đặt |
+
+### Timeline trạng thái
+
+| Thành phần | Nội dung |
+|---|---|
+| API | `GET /user/bookings/{id}/timeline` |
+| Hiển thị | Đặt tour, xác nhận, thanh toán, hủy/hoàn tiền, hoàn tất |
+| Empty state | Nếu API planned chưa sẵn sàng, dựng timeline từ `booking_status`, `payment_status`, `created_at`, `updated_at` trong `GET /user/bookings/{id}` |

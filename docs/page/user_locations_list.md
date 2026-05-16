@@ -210,8 +210,9 @@ Mỗi location card (horizontal):
 | Sắp xếp | GET | `/locations?sort=&order=` | Chọn select sắp xếp |
 | Load danh mục (sidebar) | GET | `/categories` | Khi mount |
 | Load quận (sidebar) | GET | `/locations/districts` | Khi mount |
-| Toggle yêu thích (🔐) | POST/DELETE | `/user/favorites` | Click icon yêu thích |
-| Kiểm tra yêu thích (🔐) | GET | `/user/favorites/check/{id}` | Khi render card |
+| Thêm yêu thích (🔐) | POST | `/user/favorites` | Click icon yêu thích khi chưa lưu |
+| Xóa yêu thích (🔐) | DELETE | `/user/favorites` | Click icon yêu thích khi đã lưu |
+| Kiểm tra yêu thích (🔐) | GET | `/user/favorites/check?location_id={id}` | Khi render card |
 
 **Query params của `/locations`:**
 

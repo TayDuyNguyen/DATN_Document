@@ -17,7 +17,8 @@
 │  Section 1: Thông tin đơn hàng       │  Card 1: Tóm tắt TT      │
 │  Section 2: Thông tin khách hàng     │  Card 2: Thao tác        │
 │  Section 3: Chi tiết tour đặt        │  Card 3: Thông tin nhanh │
-│  Section 4: Lịch sử trạng thái       │                          │
+│  Section 4: Danh sách hành khách     │                          │
+│  Section 5: Lịch sử trạng thái       │                          │
 └──────────────────────────────────────┴──────────────────────────┘
 ```
 
@@ -58,7 +59,7 @@
 | Button | Điều kiện | Style | Action |
 |--------|-----------|-------|--------|
 | In hóa đơn | Luôn hiện | `border #E2E8F0 bg white text #64748B radius-10 px-16 py-10` icon `print` | `GET /user/bookings/{id}/invoice` |
-| Xác nhận | status=pending | `bg #10B981 text white radius-10 px-20 py-10` icon `check_circle` | `POST /admin/bookings/{id}/confirm` |
+| Xác nhận | status=pending | `bg #10B981 text white radius-10 px-20 py-10` icon `check_circle` | `PATCH /admin/bookings/{id}/status` body `booking_status=confirmed` |
 
 ---
 
@@ -213,9 +214,9 @@ Title: `"Thao tác" 14px Inter 600 #1E293B mb-12`
 
 | Button | Điều kiện | Style | Action |
 |--------|-----------|-------|--------|
-| Xác nhận đơn | status=pending | `bg #10B981 text white radius-10 py-10 full-width` icon `check_circle` | `POST /admin/bookings/{id}/confirm` |
-| Hoàn thành đơn | status=confirmed | `bg #0066CC text white radius-10 py-10 full-width` icon `task_alt` | `POST /admin/bookings/{id}/complete` |
-| Hủy đơn hàng | status=pending/confirmed | `border #FEE2E2 bg white text #EF4444 radius-10 py-10 full-width` icon `cancel` hover `bg #FEE2E2` | Confirm dialog → `POST /admin/bookings/{id}/cancel` |
+| Xác nhận đơn | status=pending | `bg #10B981 text white radius-10 py-10 full-width` icon `check_circle` | `PATCH /admin/bookings/{id}/status` body `booking_status=confirmed` |
+| Hoàn thành đơn | status=confirmed | `bg #0066CC text white radius-10 py-10 full-width` icon `task_alt` | `PATCH /admin/bookings/{id}/status` body `booking_status=completed` |
+| Hủy đơn hàng | status=pending/confirmed | `border #FEE2E2 bg white text #EF4444 radius-10 py-10 full-width` icon `cancel` hover `bg #FEE2E2` | Confirm dialog → `PATCH /admin/bookings/{id}/status` body `booking_status=cancelled` |
 | In hóa đơn | Luôn hiện | ghost style icon `print` | `GET /user/bookings/{id}/invoice` |
 | Xem khách hàng | Luôn hiện | ghost style icon `person` | `/admin/users/{user_id}` |
 
@@ -268,8 +269,32 @@ Rows (`space-y-10 flex justify-between items-start 13px`):
 | Hành động | Method | Endpoint | Trigger |
 |-----------|--------|----------|---------|
 | Load chi tiết | GET | `/admin/bookings/{id}` | Khi mount |
-| Xác nhận đơn | POST | `/admin/bookings/{id}/confirm` | Click button / confirm dialog |
-| Hủy đơn | POST | `/admin/bookings/{id}/cancel` | Confirm dialog hủy |
-| Hoàn thành đơn | POST | `/admin/bookings/{id}/complete` | Confirm dialog hoàn thành |
+| Load hành khách | GET | `/admin/bookings/{id}/passengers` | Khi mở section/tab "Hành khách" |
+| Load timeline | GET | `/admin/bookings/{id}/timeline` | Khi mount hoặc mở section "Lịch sử trạng thái" |
+| Xác nhận đơn | PATCH | `/admin/bookings/{id}/status` | Click button / confirm dialog, body `booking_status=confirmed` |
+| Hủy đơn | PATCH | `/admin/bookings/{id}/status` | Confirm dialog hủy, body `booking_status=cancelled`, `cancellation_reason` |
+| Hoàn thành đơn | PATCH | `/admin/bookings/{id}/status` | Confirm dialog hoàn thành, body `booking_status=completed` |
 | Đổi trạng thái | PATCH | `/admin/bookings/{id}/status` | Dự phòng |
 | In hóa đơn | GET | `/user/bookings/{id}/invoice` | Click "In hóa đơn" |
+
+---
+
+## 6. Section bổ sung theo flow bán tour
+
+### Danh sách hành khách
+
+| Thành phần | Nội dung |
+|---|---|
+| API | `GET /admin/bookings/{id}/passengers` |
+| Hiển thị | Họ tên, loại khách (`adult`/`child`/`infant`), ngày sinh, giới tính, số giấy tờ, ghi chú |
+| Empty state | "Đơn này chưa có thông tin hành khách" |
+| Lý do nghiệp vụ | Admin cần kiểm tra danh sách khách trước ngày khởi hành và khi xuất danh sách điều hành tour |
+
+### Timeline trạng thái
+
+| Thành phần | Nội dung |
+|---|---|
+| API | `GET /admin/bookings/{id}/timeline` |
+| Nguồn dữ liệu | `booking_status_histories`, `payment_status_histories` |
+| Hiển thị | Thời gian, trạng thái cũ, trạng thái mới, người thao tác, ghi chú |
+| Lý do nghiệp vụ | Truy vết thay đổi đơn hàng/thanh toán, tránh mất lịch sử khi admin đổi trạng thái |

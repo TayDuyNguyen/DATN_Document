@@ -116,3 +116,17 @@ hover `bg #F8FAFC`
 | Đánh dấu 1 đã đọc | PATCH | `/user/notifications/{id}/read` | Click vào item |
 | Đánh dấu tất cả đã đọc | PATCH | `/user/notifications/read-all` | Click button header |
 | Xóa thông báo | DELETE | `/user/notifications/{id}` | Click button xóa |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Filter `is_read` | Chỉ nhận `true`, `false` hoặc bỏ trống |
+| Đánh dấu đã đọc | Nếu item đã đọc, không gọi lại API |
+| Read all | Disable button khi unread count = 0 |
+| Xóa thông báo | Confirm nhẹ hoặc undo toast trong 5 giây nếu UI hỗ trợ |
+| Pagination | Khi xóa item cuối trang, tự load lại trang hợp lệ |
+| Empty state | Tab "Chưa đọc" và "Tất cả" có nội dung empty riêng |
+| Realtime | Nếu có polling/websocket sau này, merge theo `id`, không duplicate item |

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --muted-bg: #F1F5F9;
+            --page-bg: #F3F4F6;
+            --muted-border: #E2E8F0;
+            --text-main: #1E293B;
+            --text-muted: #94A3B8;
+            --sidebar-width: 280px;
+        }
+        @layer utilities {
+            .pulse {
+                animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            @keyframes pulse-ring {
+                0%, 100% { opacity: 1; }
+                50% { opacity: .5; }
+            }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--page-bg);
+            color: var(--text-main);
+        }
+        .form-input-focus:focus {
+            border-color: #1D4ED8 !important;box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.1);
+            outline: none;
+        }
+    </style>
+<title>Đổi mật khẩu - Đà Nẵng Trip</title>
+</head>
+<body class="min-h-screen flex flex-col">
+<header class="sticky top-0 z-[100] w-full bg-white border-b border-[var(--muted-border)] shadow-sm">
+<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-[var(--primary)] p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[#E1FF00] text-2xl font-bold">explore</span>
+</div>
+<h1 class="text-[#0A192F] text-xl font-black tracking-tighter italic">ĐÀ NẴNG<span class="text-[var(--primary)]">TRIP</span></h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer">
+<span class="material-symbols-outlined text-[22px] text-[var(--text-muted)]">notifications</span>
+<div class="w-2 h-2 bg-[#EF4444] rounded-full absolute top-0 right-0 pulse"></div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-semibold text-[var(--text-main)] hidden sm:block">Minh Anh</span>
+<img alt="Avatar" class="w-8 h-8 rounded-full border border-[var(--muted-border)] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkNhci2IDHaFehZdzo0SEsT_o8mJownFPIe-Ej0smygt9PAe8XtZ37W4qw_8Feyi90qehqr95gRHEEWqOJlJHw0j1EA5uov0p4J3d1IUDypdzgOXe4sm6noK7D1MhDD4hg1Hez00Hf1_3N1An1Jf5938a9PcxYYK-F7BGrqL-DoEJkwFPOF80eGwlS3tkHIC-yvQBfNsoGI_-Fmn6gPzMAwtLW26X2vo4rbEh422q6l97QzhWLFCyqGVVFOg_aU6M2Q0xzoX0hzQ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="bg-white border-b border-[var(--muted-border)]">
+<div class="max-w-[1400px] mx-auto px-6 py-4">
+<nav class="flex text-[13px] font-medium text-[var(--text-muted)]">
+<a class="hover:text-[var(--primary)] transition-colors" href="/">Trang chủ</a>
+<span class="mx-2">/</span>
+<span class="text-[var(--text-main)]">Đổi mật khẩu</span>
+</nav>
+</div>
+</div>
+<main class="flex-1 max-w-[1400px] mx-auto w-full px-6 py-8 flex flex-col md:flex-row gap-8">
+<aside class="w-full md:w-[var(--sidebar-width)] flex-shrink-0">
+<div class="bg-white border border-[var(--muted-border)] rounded-2xl overflow-hidden shadow-sm sticky top-24">
+<div class="p-6 text-center border-b border-slate-100 bg-slate-50/30">
+<div class="relative w-24 h-24 mx-auto mb-4 group">
+<img alt="User Avatar" class="w-24 h-24 rounded-full border-4 border-white object-cover shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkNhci2IDHaFehZdzo0SEsT_o8mJownFPIe-Ej0smygt9PAe8XtZ37W4qw_8Feyi90qehqr95gRHEEWqOJlJHw0j1EA5uov0p4J3d1IUDypdzgOXe4sm6noK7D1MhDD4hg1Hez00Hf1_3N1An1Jf5938a9PcxYYK-F7BGrqL-DoEJkwFPOF80eGwlS3tkHIC-yvQBfNsoGI_-Fmn6gPzMAwtLW26X2vo4rbEh422q6l97QzhWLFCyqGVVFOg_aU6M2Q0xzoX0hzQ"/>
+<div class="absolute inset-0 bg-black/40 rounded-full flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-white text-xl">camera_alt</span>
+<span class="text-[10px] text-white font-bold mt-1 uppercase tracking-tight">Đổi ảnh</span>
+</div>
+</div>
+<h2 class="text-base font-bold text-[var(--text-main)]">Minh Anh</h2>
+<p class="text-[12px] text-[var(--text-muted)]">minhanh.nguyen@gmail.com</p>
+<span class="inline-block bg-blue-50 text-[var(--primary)] text-[10px] font-bold px-3 py-1 rounded-full mt-3 border border-blue-100 uppercase tracking-wider">Thành viên</span>
+</div>
+<nav class="py-2">
+<a class="flex items-center gap-3 px-6 py-3.5 text-[var(--text-main)] hover:bg-slate-50 transition-all font-medium" href="/profile">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">person</span>
+<span class="text-sm">Hồ sơ cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 bg-blue-50 border-l-4 border-[var(--primary)] text-[var(--primary)] font-semibold transition-all" href="/profile/password">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="text-sm">Đổi mật khẩu</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 text-[var(--text-main)] hover:bg-slate-50 transition-all font-medium" href="/bookings">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">shopping_cart</span>
+<span class="text-sm">Đơn đặt tour</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 text-[var(--text-main)] hover:bg-slate-50 transition-all font-medium" href="/favorites">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">favorite</span>
+<span class="text-sm">Địa điểm yêu thích</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 text-[var(--text-main)] hover:bg-slate-50 transition-all font-medium" href="/profile/ratings">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">star</span>
+<span class="text-sm">Đánh giá của tôi</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 text-[var(--text-main)] hover:bg-slate-50 transition-all font-medium border-b border-slate-50" href="/notifications">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">notifications</span>
+<span class="text-sm">Thông báo</span>
+</a>
+<div class="mt-2">
+<a class="flex items-center gap-3 px-6 py-3.5 text-red-500 hover:bg-red-50 transition-all font-medium" href="/profile/delete">
+<span class="material-symbols-outlined text-[20px]">delete_forever</span>
+<span class="text-sm">Xóa tài khoản</span>
+</a>
+</div>
+</nav>
+</div>
+</aside>
+<div class="flex-1 flex justify-start">
+<div class="bg-white border border-[var(--muted-border)] rounded-2xl shadow-sm w-full max-w-[480px] overflow-hidden self-start">
+<div class="p-8 border-b border-slate-50">
+<h3 class="text-[18px] font-semibold text-[var(--text-main)]">Thiết lập mật khẩu mới</h3>
+<p class="text-[13px] text-[var(--text-muted)] mt-1">Vui lòng nhập mật khẩu hiện tại và tạo mật khẩu mới an toàn</p>
+</div>
+<form class="p-8">
+<div class="space-y-6">
+<div class="space-y-2">
+<label class="block text-[13px] font-semibold text-[var(--text-main)]">Mật khẩu hiện tại <span class="text-red-500">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">lock</span>
+<input class="w-full pl-11 pr-11 border-[var(--muted-border)] rounded-xl py-3 text-sm transition-all form-input-focus" placeholder="Nhập mật khẩu hiện tại" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" type="button">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+</div>
+<div class="h-px bg-slate-100 my-2"></div>
+<div class="space-y-2">
+<label class="block text-[13px] font-semibold text-[var(--text-main)]">Mật khẩu mới <span class="text-red-500">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">lock</span>
+<input class="w-full pl-11 pr-11 border-[var(--muted-border)] rounded-xl py-3 text-sm transition-all form-input-focus" placeholder="Tạo mật khẩu mới" type="password" value="Mypass123"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" type="button">
+<span class="material-symbols-outlined text-lg">visibility_off</span>
+</button>
+</div>
+<div class="mt-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
+<div class="flex justify-between items-center mb-2">
+<span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Độ mạnh mật khẩu</span>
+<span class="text-[11px] font-bold text-[#0066CC]">Mạnh</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 rounded-full flex gap-1">
+<div class="h-full w-1/4 rounded-full bg-[#0066CC]"></div>
+<div class="h-full w-1/4 rounded-full bg-[#0066CC]"></div>
+<div class="h-full w-1/4 rounded-full bg-[#0066CC]"></div>
+<div class="h-full w-1/4 rounded-full bg-slate-200"></div>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#10B981] text-[16px]">check_circle</span>
+<span class="text-[12px] text-slate-600">Tối thiểu 8 ký tự</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#10B981] text-[16px]">check_circle</span>
+<span class="text-[12px] text-slate-600">Có ít nhất một chữ hoa</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#10B981] text-[16px]">check_circle</span>
+<span class="text-[12px] text-slate-600">Có ít nhất một chữ số</span>
+</div>
+</div>
+</div>
+</div>
+<div class="h-px bg-slate-100 my-2"></div>
+<div class="space-y-2">
+<label class="block text-[13px] font-semibold text-[var(--text-main)]">Xác nhận mật khẩu mới <span class="text-red-500">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-lg">lock</span>
+<input class="w-full pl-11 pr-11 border-[var(--muted-border)] rounded-xl py-3 text-sm transition-all form-input-focus" placeholder="Nhập lại mật khẩu mới" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600" type="button">
+<span class="material-symbols-outlined text-lg">visibility</span>
+</button>
+</div>
+<div class="flex items-center gap-2 mt-2">
+<span class="material-symbols-outlined text-[#EF4444] text-[16px]">cancel</span>
+<span class="text-[12px] text-[#EF4444]">Mật khẩu xác nhận không khớp</span>
+</div>
+</div>
+<div class="text-right">
+<a class="text-[12px] text-[var(--primary)] hover:underline font-medium" href="/forgot-password">Quên mật khẩu?</a>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 flex items-center justify-end gap-3">
+<button class="px-6 py-2.5 text-sm font-semibold text-[var(--text-muted)] hover:text-red-500 border border-[var(--muted-border)] rounded-xl hover:bg-slate-50 transition-all" type="reset">
+                            Hủy
+                        </button>
+<button class="px-6 py-2.5 bg-[var(--primary)] text-white text-sm font-semibold rounded-xl hover:bg-blue-700 shadow-md transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" disabled="" type="submit">
+                            Đổi mật khẩu
+                        </button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<footer class="bg-[#0A192F] text-white pt-16 pb-8 mt-12">
+<div class="max-w-[1400px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<div class="bg-[var(--primary)] p-1 rounded-lg">
+<span class="material-symbols-outlined text-[#E1FF00] text-xl font-bold">explore</span>
+</div>
+<h2 class="text-white text-xl font-black italic uppercase">ĐÀ NẴNG<span class="text-[var(--primary)]">TRIP</span></h2>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        Nền tảng du lịch hàng đầu, mang đến cho bạn những trải nghiệm độc đáo và đáng nhớ nhất tại thành phố biển xinh đẹp.
+                    </p>
+</div>
+<div>
+<h4 class="text-sm font-black uppercase tracking-widest mb-6">Liên kết</h4>
+<ul class="space-y-3 text-slate-400 text-[13px] font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Về chúng tôi</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Liên hệ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-black uppercase tracking-widest mb-6">Hỗ trợ</h4>
+<ul class="space-y-3 text-slate-400 text-[13px] font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Trung tâm trợ giúp</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Câu hỏi thường gặp</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Hướng dẫn đặt tour</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 text-center">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-widest">© 2026 Đà Nẵng Trip. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+</body></html>

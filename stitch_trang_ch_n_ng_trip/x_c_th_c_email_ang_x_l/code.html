@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Azure Explorer - Xác thực Email</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#004395",
+                    "on-error": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-fixed-dim": "#ffb59d",
+                    "on-secondary-fixed-variant": "#832600",
+                    "tertiary-container": "#0064d6",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface-variant": "#414753",
+                    "outline-variant": "#c1c6d5",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "on-secondary-fixed": "#390c00",
+                    "secondary": "#ab3500",
+                    "primary-fixed": "#d7e3ff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#dfe8ff",
+                    "primary": "#004e9f",
+                    "surface-bright": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "surface-container": "#e5eeff",
+                    "outline": "#727784",
+                    "surface-tint": "#005cba",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-container": "#fe6a34",
+                    "inverse-surface": "#213145",
+                    "on-secondary-container": "#5d1900",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-primary-fixed-variant": "#00458e",
+                    "on-tertiary-fixed": "#001a42",
+                    "primary-container": "#0066cc",
+                    "background": "#f8f9ff",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#aac7ff",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed": "#ffdbd0",
+                    "on-background": "#0b1c30",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001b3e",
+                    "on-tertiary-container": "#e1e8ff",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#004da7",
+                    "on-surface": "#0b1c30",
+                    "inverse-primary": "#aac7ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        @keyframes custom-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-slow-spin {
+            animation: custom-spin 1.5s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased flex flex-col min-h-screen">
+<!-- TopNavBar (Shared Component Shell) -->
+<!-- Suppression logic: Transactional flow, but minimal header requested -->
+<header class="top-0 left-0 w-full flex justify-center items-center py-8 px-6 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">travel_explore</span>
+</div>
+<span class="text-2xl font-black tracking-tighter text-[#004e9f] dark:text-[#d3e4fe]">Azure Explorer</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-6 py-12">
+<div class="w-full max-w-md">
+<!-- Central Editorial Card -->
+<div class="bg-surface-container-lowest rounded-xl p-10 text-center flex flex-col items-center gap-8 shadow-[0_32px_64px_-12px_rgba(11,28,48,0.08)]">
+<!-- Loading Spinner Container -->
+<div class="relative w-20 h-20 flex items-center justify-center">
+<!-- Outer rotating ring -->
+<div class="absolute inset-0 border-4 border-surface-container rounded-full"></div>
+<div class="absolute inset-0 border-4 border-primary-container border-t-transparent rounded-full animate-slow-spin"></div>
+<!-- Center Icon -->
+<span class="material-symbols-outlined text-primary-container text-[48px]">mark_email_read</span>
+</div>
+<div class="space-y-3">
+<h1 class="text-[20px] font-bold tracking-tight text-on-surface">
+                        Đang xác thực email...
+                    </h1>
+<p class="text-[14px] leading-relaxed text-on-surface-variant opacity-70 px-4">
+                        Hệ thống đang kiểm tra thông tin của bạn. Vui lòng chờ trong giây lát để hoàn tất quá trình đăng ký.
+                    </p>
+</div>
+<!-- Subtle Decorative Element (Editorial touch) -->
+<div class="w-12 h-1 bg-surface-container-high rounded-full"></div>
+<!-- Security Assurance -->
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-primary text-sm">verified_user</span>
+<span class="text-[11px] font-medium uppercase tracking-wider text-primary">Bảo mật đa tầng</span>
+</div>
+</div>
+<!-- Contextual Branding Image (Editorial Layout) -->
+<div class="mt-12 opacity-40 grayscale flex justify-center">
+<img alt="Skyline" class="max-w-[200px]" data-alt="minimalist line art illustration of Da Nang city skyline featuring the Dragon Bridge and high-rise buildings in soft cerulean blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8MLB_wIXczVXsM90hm8sXPKFL6KtmCaziMitSpMWx4CgS_VszZMZMqhu1UdL9nY_-jX9S0D0RGEGImMMVHGCjbkli9r_dg-b6x8GIM7oFIF3DMfisj6pdiaatJDxOAn5m-cF9fUJDYFJLcCXc5E9Fk0k7bWYf03dcXYlEjaL8EwNQAOhwZmev5t37jqGi8O5itbC97oDIzBTG6KCFmcrvMpCGDUNBUMc1pX0SSsyWIP7XQzBL3Y8ApOWXDscQ8Wm4gKLZcu2C9A"/>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 bg-[#f8f9ff] dark:bg-[#0b1c30]">
+<div class="flex flex-col items-center gap-4 w-full text-center px-6">
+<div class="flex gap-6 text-[#0b1c30] dark:text-white opacity-50 font-['Inter'] text-sm leading-relaxed">
+<a class="hover:text-[#0066cc] hover:opacity-100 transition-all cursor-pointer" href="#">Privacy Policy</a>
+<a class="hover:text-[#0066cc] hover:opacity-100 transition-all cursor-pointer" href="#">Terms of Service</a>
+<a class="hover:text-[#0066cc] hover:opacity-100 transition-all cursor-pointer" href="#">Help Center</a>
+</div>
+<p class="font-['Inter'] text-sm leading-relaxed opacity-60 text-[#004e9f] dark:text-[#d3e4fe]">
+                © 2024 Azure Explorer. All rights reserved.
+            </p>
+</div>
+</footer>
+</body></html>

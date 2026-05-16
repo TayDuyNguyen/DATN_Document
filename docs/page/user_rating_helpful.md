@@ -43,3 +43,16 @@
 | Hành động | Method | Endpoint | Trigger |
 |-----------|--------|----------|---------|
 | Đánh dấu hữu ích | POST | `/ratings/{id}/helpful` | Click button |
+
+---
+
+## Validation & Flow
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Đăng nhập | Nếu chưa đăng nhập, mở login modal hoặc điều hướng `/login` |
+| Một lần/user | Mỗi user chỉ đánh dấu hữu ích một lần cho cùng rating |
+| Không tự đánh dấu | Không cho user đánh dấu hữu ích đánh giá của chính mình |
+| Optimistic update | Tăng `helpful_count` tạm thời, rollback nếu API lỗi |
+| Rating không tồn tại | Nếu API trả 404, ẩn action khỏi card |
+| Chống spam | Disable button trong lúc request đang chạy |

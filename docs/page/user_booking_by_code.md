@@ -44,3 +44,15 @@ Màn này được truy cập từ:
 | Load chi tiết | GET | `/user/bookings/code/{booking_code}` | Khi mount |
 | Hủy đơn | POST | `/user/bookings/{id}/cancel` | Confirm dialog (dùng id từ response) |
 | In hóa đơn | GET | `/user/bookings/{id}/invoice` | Click "In hóa đơn" (dùng id từ response) |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Booking code | Bắt buộc, trim whitespace, chấp nhận dạng `BK-1008` hoặc format backend quy định |
+| Không tìm thấy | Nếu API trả 404, hiển thị "Không tìm thấy đơn đặt tour" và CTA về `/bookings` |
+| Không thuộc user | Nếu API trả 403, hiển thị thông báo không có quyền xem đơn |
+| Hủy đơn | Chỉ cho hủy khi `booking_status` thuộc `pending` hoặc `confirmed` theo rule backend |
+| In hóa đơn | Chỉ bật khi response có `id`; nếu booking chưa đủ dữ liệu invoice thì hiển thị retry |

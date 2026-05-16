@@ -89,4 +89,19 @@ Toolbar bên trái:
 | Filter mức giá | GET | `/categories/{slug}/locations?price_level=` | Chọn radio mức giá |
 | Filter danh mục con | GET | `/categories/{slug}/locations?subcategory_id=` | Click pill subcategory |
 | Sắp xếp | GET | `/categories/{slug}/locations?sort=&order=` | Chọn select sắp xếp |
-| Toggle yêu thích (🔐) | POST/DELETE | `/user/favorites` | Click icon yêu thích |
+| Thêm yêu thích (🔐) | POST | `/user/favorites` | Click icon yêu thích khi chưa lưu |
+| Xóa yêu thích (🔐) | DELETE | `/user/favorites` | Click icon yêu thích khi đã lưu |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Slug danh mục | Bắt buộc; nếu không tồn tại hiển thị 404 category và CTA về `/locations` |
+| Category id | Nếu cần load `/categories/{id}`, id phải lấy từ response slug/category list, không hardcode |
+| District | Chỉ nhận district có trong `GET /locations/districts` |
+| Price level | Chỉ nhận các mức giá hệ thống hỗ trợ |
+| Subcategory | `subcategory_id` phải thuộc category hiện tại |
+| Empty list | Hiển thị "Chưa có địa điểm trong danh mục này" và CTA xóa bộ lọc |
+| Pagination | Nếu page vượt tổng trang, quay về page cuối hợp lệ |

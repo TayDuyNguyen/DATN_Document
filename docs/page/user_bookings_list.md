@@ -129,3 +129,16 @@ Mỗi booking card:
 |-----------|--------|----------|---------|
 | Load danh sách | GET | `/user/bookings?status=&page=1&per_page=10` | Khi mount, đổi tab |
 | Hủy đơn | POST | `/user/bookings/{id}/cancel` | Confirm dialog |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Status tab | Chỉ nhận `all`, `pending`, `confirmed`, `completed`, `cancelled` hoặc mapping tương ứng backend |
+| Page/per_page | `page >= 1`, `per_page` tối đa 50 |
+| Hủy đơn | Chỉ hiện action khi đơn `pending` hoặc `confirmed`; backend vẫn là nguồn quyết định cuối |
+| Lý do hủy | Optional nhưng nếu nhập thì trim và giới hạn độ dài hợp lý |
+| Empty list | Mỗi tab có empty text riêng; tab tất cả có CTA về `/tours` |
+| Refresh sau action | Sau khi hủy, cập nhật item hiện tại và unread/notification nếu có, không bắt buộc reload toàn trang |

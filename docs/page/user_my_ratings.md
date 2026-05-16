@@ -143,3 +143,17 @@ Images (nếu có): `flex gap-8 mt-12`
 | Sửa đánh giá | PUT | `/ratings/{id}` | Submit modal sửa |
 | Xóa đánh giá | DELETE | `/ratings/{id}` | Confirm dialog |
 | Upload ảnh | POST | `/upload/images` | Chọn ảnh trong modal |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Type filter | Chỉ nhận `all`, `location`, `tour`; giá trị lạ reset về `all` |
+| Status filter | Nếu có, chỉ nhận `pending`, `approved`, `rejected` |
+| Quyền sửa/xóa | Chỉ cho thao tác trên đánh giá của user hiện tại |
+| Sửa đánh giá | Dùng rule từ `user_rating_edit_modal.md` |
+| Xóa đánh giá | Dùng confirm từ `user_rating_delete.md` |
+| Empty list | Hiển thị CTA khám phá địa điểm/tour để viết đánh giá |
+| API lỗi | Giữ danh sách cũ nếu đang refetch, hiển thị retry inline |

@@ -88,7 +88,7 @@ Giữ nguyên: Header · Breadcrumb · Sidebar (item "Xóa tài khoản" active,
   - "Hủy": `border #E2E8F0 bg white text #64748B radius-10 px-20 py-10`
   - "Xóa vĩnh viễn": `bg #EF4444 text white radius-10 px-20 py-10 14px 600`
     hover `bg #DC2626`
-    → `DELETE /user/account`
+    → planned `DELETE /user/account`
 
 ---
 
@@ -107,7 +107,7 @@ Giữ nguyên: Header · Breadcrumb · Sidebar (item "Xóa tài khoản" active,
 
 | Hành động | Method | Endpoint | Trigger |
 |-----------|--------|----------|---------|
-| Xóa tài khoản | DELETE | `/user/account` | Confirm dialog → xác nhận |
+| Xóa tài khoản | DELETE | planned `/user/account` | Confirm dialog → xác nhận |
 
 **Body:**
 ```json

@@ -133,4 +133,18 @@
 |-----------|--------|----------|---------|
 | Load gợi ý | GET | `/recommendations?limit=12` | Khi mount |
 | Filter loại | GET | `/recommendations?limit=12&type=location` hoặc `?type=tour` | Click tab |
-| Toggle yêu thích | POST/DELETE | `/user/favorites` | Click icon yêu thích |
+| Thêm yêu thích | POST | `/user/favorites` | Click icon yêu thích khi chưa lưu |
+| Xóa yêu thích | DELETE | `/user/favorites` | Click icon yêu thích khi đã lưu |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Đăng nhập | Nếu chưa đăng nhập, chuyển `/login` hoặc hiển thị CTA đăng nhập |
+| Limit | `limit` từ 1 đến 24, mặc định 12 |
+| Type filter | Chỉ nhận `all`, `location`, `tour`; giá trị lạ reset về `all` |
+| Chưa đủ dữ liệu | Nếu API trả rỗng, fallback hiển thị địa điểm nổi bật/tour hot |
+| Toggle yêu thích | Dùng body/query `location_id` hoặc `tour_id` đúng loại card |
+| API lỗi | Hiển thị fallback discovery thay vì màn trắng |

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lịch khởi hành - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-page: #F8FAFC;
+            --surface: #FFFFFF;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --primary: #0066CC;
+            --primary-subtle: #B3D9FF;
+            --primary-dark: #004999;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(30, 41, 59, 0.1);
+            border-radius: 10px;
+        }
+        .sidebar-active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        .calendar-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            display: block;
+            margin: 2px auto 0;
+        }
+        .magazine-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#1E293B] flex flex-col py-6 px-4 z-50 custom-scrollbar">
+<div class="mb-10 px-2 text-white">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-[#0066CC] rounded-lg flex items-center justify-center text-white font-black text-xl">D</div>
+<h1 class="text-xl font-black tracking-tight">Đà Nẵng Trip</h1>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mt-1">Adventure Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm">Bảng điều khiển</span>
+</a>
+<div class="pt-4 space-y-1">
+<p class="px-3 text-[10px] font-bold text-slate-500 uppercase mb-2">QUẢN LÝ TOUR</p>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="text-sm">Quản lý Tour</span>
+</div>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</a>
+<div class="ml-3 border-l border-slate-700/50 space-y-1">
+<a class="flex items-center gap-3 pl-8 py-2 rounded-xl text-slate-400 text-xs font-medium hover:text-white transition-colors" href="#">
+<span>Danh sách Tour</span>
+</a>
+<a class="flex items-center gap-3 pl-8 py-2 rounded-xl text-slate-400 text-xs font-medium hover:text-white transition-colors" href="#">
+<span>Danh mục</span>
+</a>
+<a class="flex items-center gap-3 pl-8 py-2 rounded-xl text-white text-xs font-bold sidebar-active" href="#">
+<span>Lịch khởi hành</span>
+</a>
+</div>
+</div>
+<div class="pt-4 space-y-1 text-slate-400">
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl font-semibold hover:bg-slate-800 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="text-sm">Quản lý Địa điểm</span>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl font-semibold hover:bg-slate-800 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+<span class="text-sm">Đơn hàng</span>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">star</span>
+<span class="text-sm">Đánh giá</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm">Người dùng</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto pt-6">
+<button class="w-full bg-slate-800 text-slate-300 py-2.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-red-500/10 hover:text-red-400 transition-all border border-slate-700">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Đăng xuất</span>
+</button>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<header class="flex items-center justify-between mb-8">
+<div>
+<nav class="flex items-center gap-2 mb-1">
+<span class="text-[12px] font-medium text-[#94A3B8]">Quản lý Tour</span>
+<span class="text-[#E2E8F0] material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-[12px] font-medium text-[#94A3B8]">Lịch khởi hành</span>
+</nav>
+<h2 class="text-2xl font-bold text-[#1E293B]">Lịch khởi hành</h2>
+<p class="text-sm text-[#64748B]">Quản lý toàn bộ lịch khởi hành của các tour</p>
+</div>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-[#0066CC] text-white rounded-[10px] text-sm font-semibold hover:bg-[#004999] shadow-[0_4px_12px_rgba(0,102,204,0.25)] transition-all">
+<span class="material-symbols-outlined text-lg">add</span>
+                Thêm lịch
+            </button>
+</header>
+<div class="grid grid-cols-4 gap-4 mb-8">
+<div class="bg-white border border-[#E2E8F0] rounded-[12px] p-4 flex items-center gap-3 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+<div class="w-9 h-9 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+</div>
+<div>
+<p class="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider">TỔNG LỊCH</p>
+<p class="text-xl font-bold text-[#1E293B]">24</p>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-[12px] p-4 flex items-center gap-3 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+<div class="w-9 h-9 bg-[#D1FAE5] rounded-lg flex items-center justify-center text-[#10B981]">
+<span class="material-symbols-outlined text-xl">event_available</span>
+</div>
+<div>
+<p class="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider text-[#10B981]">CÒN CHỖ</p>
+<p class="text-xl font-bold text-[#10B981]">18</p>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-[12px] p-4 flex items-center gap-3 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+<div class="w-9 h-9 bg-[#FEE2E2] rounded-lg flex items-center justify-center text-[#EF4444]">
+<span class="material-symbols-outlined text-xl">event_busy</span>
+</div>
+<div>
+<p class="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider text-[#EF4444]">ĐẦY CHỖ</p>
+<p class="text-xl font-bold text-[#EF4444]">4</p>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-[12px] p-4 flex items-center gap-3 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+<div class="w-9 h-9 bg-[#F1F5F9] rounded-lg flex items-center justify-center text-[#94A3B8]">
+<span class="material-symbols-outlined text-xl">cancel</span>
+</div>
+<div>
+<p class="text-[12px] font-bold text-[#94A3B8] uppercase tracking-wider">ĐÃ HỦY</p>
+<p class="text-xl font-bold text-[#94A3B8]">2</p>
+</div>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-[16px] p-6 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-[#1E293B] flex items-center gap-2">
+<span class="material-symbols-outlined text-[#0066CC]">date_range</span>
+                    Tháng 4, 2026
+                </h3>
+<div class="flex gap-2">
+<button class="w-8 h-8 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#64748B] hover:bg-slate-50 transition-all">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#64748B] hover:bg-slate-50 transition-all">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-px bg-slate-100 rounded-xl overflow-hidden border border-[#E2E8F0]">
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase">T2</div>
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase">T3</div>
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase">T4</div>
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase">T5</div>
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase">T6</div>
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase text-[#0066CC]">T7</div>
+<div class="bg-slate-50 py-2 text-center text-[11px] font-bold text-[#94A3B8] uppercase text-[#EF4444]">CN</div>
+<div class="bg-white h-14 p-2 text-slate-300">30</div>
+<div class="bg-white h-14 p-2 text-slate-300">31</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">1</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">2</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">3</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">4</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">5</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">6</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">7</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">8</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">9</div>
+<div class="bg-[#EFF6FF] h-14 p-2 font-bold text-[#0066CC]">10<span class="calendar-dot bg-[#94A3B8]"></span></div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">11</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">12</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">13</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">14</div>
+<div class="bg-[#EFF6FF] h-14 p-2 font-bold text-[#0066CC]">15<span class="calendar-dot bg-[#0066CC]"></span></div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">16</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">17</div>
+<div class="bg-[#EFF6FF] h-14 p-2 font-bold text-[#0066CC]">18<span class="calendar-dot bg-[#0066CC]"></span></div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">19</div>
+<div class="bg-[#EFF6FF] h-14 p-2 font-bold text-[#0066CC]">20<span class="calendar-dot bg-[#0066CC]"></span></div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">21</div>
+<div class="bg-[#EFF6FF] h-14 p-2 font-bold text-[#0066CC]">22<span class="calendar-dot bg-[#EF4444]"></span></div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">23</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">24</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">25</div>
+<div class="bg-white h-14 p-2 font-medium text-[#64748B]">26</div>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-[16px] p-5 mb-8 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+<div class="flex flex-wrap gap-3 items-center">
+<div class="flex-1 min-w-[280px] relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] text-lg">search</span>
+<input class="w-full border-[#E2E8F0] rounded-[10px] pl-10 pr-4 py-2 text-sm focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none" placeholder="Tìm theo tên tour..." type="text"/>
+</div>
+<select class="w-[220px] border-[#E2E8F0] rounded-[10px] px-4 py-2 text-sm focus:ring-1 focus:ring-[#0066CC] outline-none bg-white">
+<option>Tất cả tour</option>
+<option>Bà Nà Hills - Cầu Vàng</option>
+<option>Hội An - Show Ký ức</option>
+<option>Cù Lao Chàm</option>
+</select>
+<select class="w-[160px] border-[#E2E8F0] rounded-[10px] px-4 py-2 text-sm focus:ring-1 focus:ring-[#0066CC] outline-none bg-white">
+<option>Tất cả trạng thái</option>
+<option>Còn chỗ</option>
+<option>Đầy chỗ</option>
+<option>Đã hủy</option>
+</select>
+<div class="flex items-center gap-2">
+<div class="relative w-[150px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8] text-sm">calendar_today</span>
+<input class="w-full border-[#E2E8F0] rounded-[10px] pl-8 pr-2 py-2 text-[13px]" placeholder="Từ ngày" type="text"/>
+</div>
+<span class="text-[#94A3B8]">—</span>
+<div class="relative w-[150px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#94A3B8] text-sm">calendar_today</span>
+<input class="w-full border-[#E2E8F0] rounded-[10px] pl-8 pr-2 py-2 text-[13px]" placeholder="Đến ngày" type="text"/>
+</div>
+</div>
+<button class="bg-[#0066CC] text-white rounded-[10px] px-6 py-2 text-sm font-semibold hover:bg-[#004999] transition-all">
+                    Lọc
+                </button>
+</div>
+<div class="flex gap-2 mt-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] rounded-full text-[12px] font-medium">
+                    Tháng: 04/2026
+                    <button class="material-symbols-outlined text-[14px]">close</button>
+</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<div class="magazine-card bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all cursor-pointer">
+<div class="relative h-48">
+<img alt="Bà Nà Hills" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjAqu5KmrmnIemrbenWr6NOPF5Mjf8lYrtDkE5kF2wBjDPapQs56l5mVHTO_fwarZX8CqgMKgn-eYdww88E8TQgP4LCX43g-Y0VIZ0ZEOvLTAlVadpR069jxlMhpc8GlvaqR1VL08LTKZN4oLKishxj8W4bbtSDK-cO4toSpNfof4j1eRYTk9QY9yZB1S-uhoSfIwQTGfMsCjbUSs6pnxBg2Ke44HRP9khTATyUzGYYHubFiB1Kv5_18m7lmfYAgdBZ0ZM9aMjWQ"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="text-[11px] font-bold text-[#10B981]">CÒN CHỖ</span>
+</div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">Tham quan</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h4 class="text-base font-bold text-[#1E293B] hover:text-[#0066CC] transition-colors mb-1">Bà Nà Hills - Cầu Vàng</h4>
+<div class="flex items-center gap-2 text-[#94A3B8]">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[12px]">1 ngày</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-[#94A3B8] uppercase">Khởi hành</p>
+<p class="text-base font-bold text-[#1E293B]">15/04/2026</p>
+<p class="text-[11px] text-[#94A3B8]">Thứ Tư</p>
+</div>
+</div>
+<div class="bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl p-3 flex justify-between items-center mb-4">
+<div>
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Trạng thái chỗ</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold text-[#1E293B]">12 / 20</span>
+<div class="w-20 bg-[#E2E8F0] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#0066CC] h-full" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Giá riêng</p>
+<p class="text-sm italic text-[#94A3B8]">Theo tour</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-xs font-bold text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] transition-all">Chi tiết</button>
+<button class="w-10 h-10 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#64748B] hover:text-[#F59E0B] hover:border-[#F59E0B]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="magazine-card bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all cursor-pointer">
+<div class="relative h-48">
+<img alt="Bà Nà Hills" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_X-e2w5k6Esdw758HCpBadJrefrpCAxmBbC_UwEENbssh6dtWtiQ1_D_GC4AruQrJ2bZemHVBu7G0uTZsNj7WQNUtNy3ntZDZqFyNViTCMM4Ggf9_AGMzr0eeDwTaMd5o9tAB9vdD4pidXgJHWrspo9I6rAoD2uGs-h-LCcljhzYRZPxB1AMfYTS8mjgB-xgdVqagNhBYvahhFb0dRgNZDUufNEsktTq9TuSjwObUoxXNqU_yglzBlblmKtzb5q0Tk5SsapNgew"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="text-[11px] font-bold text-[#EF4444]">ĐẦY CHỖ</span>
+</div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">Tham quan</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h4 class="text-base font-bold text-[#1E293B] hover:text-[#0066CC] transition-colors mb-1">Bà Nà Hills - Cầu Vàng</h4>
+<div class="flex items-center gap-2 text-[#94A3B8]">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[12px]">1 ngày</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-[#94A3B8] uppercase">Khởi hành</p>
+<p class="text-base font-bold text-[#1E293B]">22/04/2026</p>
+<p class="text-[11px] text-[#94A3B8]">Thứ Ba</p>
+</div>
+</div>
+<div class="bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl p-3 flex justify-between items-center mb-4">
+<div>
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Trạng thái chỗ</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold text-[#EF4444]">20 / 20</span>
+<div class="w-20 bg-[#E2E8F0] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#EF4444] h-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Giá riêng</p>
+<p class="text-sm font-bold text-[#FF6B35]">900.000đ</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-xs font-bold text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] transition-all">Chi tiết</button>
+<button class="w-10 h-10 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#64748B] hover:text-[#F59E0B] hover:border-[#F59E0B]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="magazine-card bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all cursor-pointer">
+<div class="relative h-48">
+<img alt="Hội An" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDI48XkcMb1k18Ee2CWDWXo2U50KrlG9Bo1b6Hj6PZzuKzF7sbtLbjrxTEJBoSe6jcugDkr84E-_tTUZKJuUbllIIiSs3lehXxdH9inMqHDTscWQrWNN_T-PhAkb9En2TV0ZSa6ZIMejwl4ogulUPpTW-A7P6JcLSLHXkLEFlbgr88Z0fY9vR6otEy3bvQfwcpgUNFTzqA8IRbw9oxfp3L1Jzf209bz9rGPWn6JrlIxbQgQVLmTfyMuqYMiS5uYZpAD4YHki2G_w"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="text-[11px] font-bold text-[#10B981]">CÒN CHỖ</span>
+</div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">Văn hóa</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h4 class="text-base font-bold text-[#1E293B] hover:text-[#0066CC] transition-colors mb-1">Hội An - Show Ký ức</h4>
+<div class="flex items-center gap-2 text-[#94A3B8]">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[12px]">Buổi tối</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-[#94A3B8] uppercase">Khởi hành</p>
+<p class="text-base font-bold text-[#1E293B]">18/04/2026</p>
+<p class="text-[11px] text-[#94A3B8]">Thứ Sáu</p>
+</div>
+</div>
+<div class="bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl p-3 flex justify-between items-center mb-4">
+<div>
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Trạng thái chỗ</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold text-[#1E293B]">8 / 15</span>
+<div class="w-20 bg-[#E2E8F0] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#0066CC] h-full" style="width: 53%"></div>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Giá riêng</p>
+<p class="text-sm italic text-[#94A3B8]">Theo tour</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-xs font-bold text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] transition-all">Chi tiết</button>
+<button class="w-10 h-10 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#64748B] hover:text-[#F59E0B] hover:border-[#F59E0B]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="magazine-card bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all cursor-pointer">
+<div class="relative h-48">
+<img alt="Cù Lao Chàm" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDBDFWHtfZj_8Zn-1PZeXl-61dnZ_61x4OrK8flK6sz76QDqKzYS8ybtc1Pu7a0gDQmsZzHCzkYKRO0ygrvS9T_dJdyO6v2MxjTB0jYrseSDn_Nkcc6lhIviyDuAaqDxXfEpNHA7-hXAIrnA8fDJVf0lEWigNb1wC0A6pGOR5da4F2RACPBlncou4B3OUd04KNVEe0UbfHWnDdaxrIT1Ww_o5VuMmiCqgYx1TBn7u2hPlMXtEajmuBlR0qMvBKUn9utComBzX97A"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="text-[11px] font-bold text-[#10B981]">CÒN CHỖ</span>
+</div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider shadow-sm">Sinh thái</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h4 class="text-base font-bold text-[#1E293B] hover:text-[#0066CC] transition-colors mb-1">Cù Lao Chàm</h4>
+<div class="flex items-center gap-2 text-[#94A3B8]">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[12px]">1 ngày</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-[#94A3B8] uppercase">Khởi hành</p>
+<p class="text-base font-bold text-[#1E293B]">20/04/2026</p>
+<p class="text-[11px] text-[#94A3B8]">Chủ Nhật</p>
+</div>
+</div>
+<div class="bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl p-3 flex justify-between items-center mb-4">
+<div>
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Trạng thái chỗ</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-sm font-bold text-[#1E293B]">0 / 12</span>
+<div class="w-20 bg-[#E2E8F0] h-1.5 rounded-full overflow-hidden">
+<div class="bg-[#0066CC] h-full" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase">Giá riêng</p>
+<p class="text-sm font-bold text-[#FF6B35]">1.300.000đ</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-xs font-bold text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] transition-all">Chi tiết</button>
+<button class="w-10 h-10 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#64748B] hover:text-[#F59E0B] hover:border-[#F59E0B]">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+</div>
+<div class="magazine-card bg-white border border-[#E2E8F0] rounded-[16px] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-all cursor-pointer opacity-80">
+<div class="relative h-48 grayscale">
+<img alt="Ngũ Hành Sơn" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD68KWLlufQudO_IOP4-HuP0n_AGb0VO3oSruXVpQJuo5rtgDsBp9hXsJCzAXMshSpBkIUXDhLjwalPb7t9A71mqla9l4l59FlaLRGvuGwgkhdkOfyZkIeeyovDC4HnjPJWSwSAhknNaJz2H6HBWcrL-6cnghrtkVxdhFcH7YqhytQ58_WZZJE-BLIirSY_RTXPeffh9aB8vSvzMALHfte16X7oyRrxYqnQLarGkArHNPc7HUfST2KiUx2p_nAV7GpB9YVlEMz8aA"/>
+<div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur rounded-full shadow-sm">
+<span class="text-[11px] font-bold text-[#94A3B8]">ĐÃ HỦY</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col">
+<h4 class="text-base font-bold text-[#1E293B] mb-1">Ngũ Hành Sơn</h4>
+<div class="flex items-center gap-2 text-[#94A3B8]">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span class="text-[12px]">Nửa ngày</span>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-[#94A3B8] uppercase text-muted">Khởi hành</p>
+<p class="text-base font-bold text-[#94A3B8]">10/03/2026</p>
+</div>
+</div>
+<div class="bg-[#F8FAFC] border border-[#F1F5F9] rounded-xl p-3 flex justify-between items-center mb-4">
+<p class="text-[13px] text-[#94A3B8]">Lịch trình đã bị hủy</p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-[#F8FAFC] border border-[#E2E8F0] rounded-lg text-xs font-bold text-[#94A3B8] cursor-not-allowed">Đã lưu trữ</button>
+<button class="w-10 h-10 flex items-center justify-center border border-[#E2E8F0] rounded-lg text-[#EF4444] hover:bg-red-50">
+<span class="material-symbols-outlined text-lg">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center gap-4 py-8 border-t border-[#E2E8F0]">
+<p class="text-[13px] text-[#64748B]">Đang hiển thị 1–5 trên tổng số 24 lịch khởi hành</p>
+<button class="px-8 py-3 bg-white border border-[#E2E8F0] text-[#0066CC] rounded-full text-sm font-bold shadow-sm hover:shadow-md transition-all">
+                Xem thêm lịch trình
+            </button>
+</div>
+</main>
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm hidden">
+<div class="bg-white rounded-[24px] w-full max-w-[400px] shadow-2xl overflow-hidden">
+<div class="p-8 flex flex-col items-center text-center">
+<div class="w-14 h-14 bg-[#FEE2E2] rounded-2xl flex items-center justify-center text-[#EF4444] mb-4">
+<span class="material-symbols-outlined text-3xl">warning_amber</span>
+</div>
+<h3 class="text-xl font-bold text-[#1E293B] mb-2">Xóa lịch khởi hành?</h3>
+<p class="text-sm text-[#64748B] leading-relaxed mb-6">
+                    Lịch ngày 15/04/2026 của tour <strong>Bà Nà Hills</strong> sẽ bị xóa vĩnh viễn khỏi hệ thống.
+                </p>
+<div class="bg-[#FEF3C7] border border-[#F59E0B]/30 rounded-xl p-4 text-left flex gap-3 mb-8">
+<span class="material-symbols-outlined text-[#F59E0B] text-xl">error</span>
+<p class="text-[12px] font-medium text-[#92400E]">
+                        Nếu đã có đơn đặt cho lịch này, hãy hủy hoặc chuyển đơn của khách trước khi xóa.
+                    </p>
+</div>
+<div class="flex gap-3 w-full">
+<button class="flex-1 py-3 border border-[#E2E8F0] text-[#64748B] text-sm font-bold rounded-xl hover:bg-slate-50">Hủy bỏ</button>
+<button class="flex-1 py-3 bg-[#EF4444] text-white text-sm font-bold rounded-xl hover:bg-[#DC2626] shadow-lg shadow-red-500/20">Xóa lịch</button>
+</div>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0066cc",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 md:px-20 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-8 flex items-center justify-center bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">explore</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Đà Nẵng Trip</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="flex size-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</header>
+<main class="flex flex-1 flex-col items-center justify-center px-4 py-12 md:py-20">
+<div class="max-w-[960px] w-full flex flex-col items-center text-center">
+<!-- 404 Illustration -->
+<div class="w-full max-w-md mb-8 relative aspect-video rounded-xl overflow-hidden bg-primary/5 flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<!-- Abstract Illustration representation with icons -->
+<div class="relative flex flex-col items-center gap-4">
+<div class="flex gap-8 items-end">
+<span class="material-symbols-outlined text-6xl text-primary/40">moped</span>
+<span class="material-symbols-outlined text-8xl text-primary animate-bounce">map</span>
+<span class="material-symbols-outlined text-6xl text-primary/40">location_on</span>
+</div>
+<div class="h-2 w-32 bg-slate-200 dark:bg-slate-700 rounded-full blur-sm opacity-50"></div>
+</div>
+</div>
+<!-- Error Message -->
+<div class="flex flex-col gap-4 mb-8">
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                            Oops! Bạn đã lạc đường rồi!
+                        </h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg md:text-xl font-normal leading-normal max-w-2xl mx-auto">
+                            Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển. Đừng lo, hãy để chúng tôi dẫn lối bạn về lại trung tâm thành phố.
+                        </p>
+</div>
+<!-- Action Button -->
+<div class="flex justify-center mb-16">
+<button class="flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-8 bg-primary text-white text-lg font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined mr-2">home</span>
+<span class="truncate">Về trang chủ</span>
+</button>
+</div>
+<!-- Recommendations Section -->
+<div class="w-full text-left">
+<h3 class="text-slate-900 dark:text-white text-2xl font-bold leading-tight tracking-[-0.015em] mb-6">
+                            Hoặc khám phá các địa điểm hot tại Đà Nẵng
+                        </h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+<!-- Card 1: Bà Nà Hills -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] w-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Cầu Vàng Bà Nà Hills Đà Nẵng lung linh" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuASQ4pjZvghowj-x8nJEPD_tVt5q0tdrcjitY8UFE7QBECd4BN5JoILbBwHw00c6WUI72gtqYV2d91wkKNOcSxl8Bl3N7EFsN4p2BX678yq1m0RP6CduetGKIjKW1R6mfyrOpxXO8dJHpCNbFevcdGGQtaPkQTTKQlA-FbRzSKrTU_Ll_rkIqllOe1Icsd9CkTosAjyLG9xArb4XalGLHHYyu9BdlC8pe2-95WRsAqMVrNQeTm6tdUTeLNbddTWQ_vXN2Bkb9fm9Q')">
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-slate-900 dark:text-white font-bold text-lg mb-1">Bà Nà Hills</h4>
+<div class="flex items-center text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+                                        Hòa Vang, Đà Nẵng
+                                    </div>
+</div>
+</div>
+<!-- Card 2: Cầu Rồng -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] w-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Cầu Rồng Đà Nẵng phun lửa ban đêm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcV4Wc7O3nm1DeeyN_cd8xin5MpNHIJy5omA7PuIzgVnuqcvGGvaEfamZiMLbh1dBnGgJQRhEsMdwp9e-21Ca7DFUiv9he6g7hAfUpui_D9diEAuRrtFr6H7FBjjxBIPbksDcKwbnNR7VGTVtrIzaVJRpwOyNR-6XcKXNM6DP648dQexq2sSNZG-Yx7AVmEHQvBo6Rl-xJZRjbn5-JGnr43-MuzziNcBSr38YSAxhzsKjWUTPBc5nrU1ON4FH43mWdw1hEQgk-JQ')">
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-slate-900 dark:text-white font-bold text-lg mb-1">Cầu Rồng</h4>
+<div class="flex items-center text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1">location_on</span>
+                                        Hải Châu, Đà Nẵng
+                                    </div>
+</div>
+</div>
+<!-- Card 3: Bún chả cá -->
+<div class="group flex flex-col bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-shadow">
+<div class="aspect-[4/3] w-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Tô bún chả cá Đà Nẵng đặc sản thơm ngon" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0pSZyaRLQs46I-B7zxZkRrn3ZjQVK6pluY54g0Mx5KzJ4pvROqqJFOLiLKj8PYa26XWyU6yv3E0dHsBBeeBA4-TP6GxP2XSivv_Myslh9zYUlmQHbfdeMnIH1qjRKrkwnbF3sT_B6luj9_3viwrlDzeIU_ShOBvf2sNBi5iNLSp20TNJ53JfFyhipzj5WfIai11rX4mATPhSP6qXdzj0UGrGyDNCAl84p84KqLo09qkHWR1LlcPlVRcIs2lNVNBD5PWHaslHx6A')">
+</div>
+</div>
+<div class="p-4">
+<h4 class="text-slate-900 dark:text-white font-bold text-lg mb-1">Bún chả cá</h4>
+<div class="flex items-center text-primary text-sm font-medium">
+<span class="material-symbols-outlined text-sm mr-1">restaurant</span>
+                                        Ẩm thực Đà Nẵng
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="py-10 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+<div class="max-w-[960px] mx-auto px-6 text-center text-slate-500 dark:text-slate-400 text-sm">
+<p>© 2024 Đà Nẵng Trip. Khám phá vẻ đẹp Việt Nam.</p>
+</div>
+</footer>
+</div>
+</div>
+</body></html>

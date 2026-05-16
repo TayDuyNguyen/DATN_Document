@@ -235,7 +235,8 @@ Mỗi loại (Người lớn / Trẻ em / Em bé):
 | Kiểm tra còn chỗ | POST | `/tours/{id}/check-availability` | Khi chọn đủ ngày + số người |
 | Kiểm tra đã đánh giá (🔐) | GET | `/ratings/check?tour_id={id}` | Khi mount + đã đăng nhập |
 | Gửi đánh giá (🔐) | POST | `/ratings` | Submit modal |
-| Toggle yêu thích (🔐) | POST/DELETE | `/user/favorites` | Click button yêu thích |
+| Thêm yêu thích (🔐) | POST | `/user/favorites` | Click button yêu thích khi chưa lưu |
+| Xóa yêu thích (🔐) | DELETE | `/user/favorites` | Click button yêu thích khi đã lưu |
 
 **Body POST /tours/{id}/check-availability:**
 ```json

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh sách Bài viết - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --bg-page: #F8FAFC;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,102,204,0.25);
+            transition: background 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #004999;
+        }
+        .input-base {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .input-base:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
+        }
+        .status-badge {
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 9999px;
+            padding: 4px 10px;
+            text-transform: uppercase;
+        }
+        .article-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(0,0,0,0.1);
+        }
+        .action-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            border: 1px solid var(--border);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white font-bold text-2xl">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Admin Panel</p>
+</div>
+</div>
+<nav class="space-y-1.5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-medium text-sm">Tổng quan</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-medium text-sm">Đơn hàng</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-blue-600 shadow-sm" href="#"><span class="material-symbols-outlined">article</span><span class="font-medium text-sm">Blog</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">group</span><span class="font-medium text-sm">Người dùng</span></a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<div class="flex justify-between items-start mb-6">
+<div>
+<nav class="flex items-center gap-2 mb-1">
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Blog</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Danh sách Bài viết</span>
+</nav>
+<h2 class="text-2xl font-bold text-[var(--text-primary)]">Danh sách Bài viết</h2>
+<p class="text-[14px] font-normal text-[var(--text-secondary)]">Quản lý nội dung blog du lịch Đà Nẵng</p>
+</div>
+<button class="btn-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Thêm bài viết
+            </button>
+</div>
+<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="card p-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-[#EFF6FF] text-[#0066CC] rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined">article</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-wider">TỔNG BÀI VIẾT</p>
+<p class="text-xl font-bold text-[var(--text-primary)]">48</p>
+</div>
+</div>
+<div class="card p-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-[#D1FAE5] text-[#10B981] rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-wider">ĐÃ XUẤT BẢN</p>
+<p class="text-xl font-bold text-[#10B981]">32</p>
+</div>
+</div>
+<div class="card p-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-[#FEF3C7] text-[#F59E0B] rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-wider">BẢN NHÁP</p>
+<p class="text-xl font-bold text-[#F59E0B]">12</p>
+</div>
+</div>
+<div class="card p-4 flex items-center gap-4">
+<div class="w-12 h-12 bg-[#F1F5F9] text-[#94A3B8] rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined">archive</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-[var(--text-muted)] tracking-wider">LƯU TRỮ</p>
+<p class="text-xl font-bold text-[#94A3B8]">4</p>
+</div>
+</div>
+</div>
+<div class="card p-5 mb-6">
+<div class="flex flex-wrap gap-3">
+<div class="flex-1 min-w-[280px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-[var(--text-muted)]">search</span>
+<input class="input-base w-full pl-10" placeholder="Tìm theo tiêu đề bài viết..." type="text"/>
+</div>
+<select class="input-base w-[180px]">
+<option>Tất cả danh mục</option>
+<option>Tham quan</option>
+<option>Ẩm thực</option>
+<option>Sự kiện</option>
+<option>Sinh thái</option>
+</select>
+<select class="input-base w-[160px]">
+<option>Tất cả trạng thái</option>
+<option>Đã xuất bản</option>
+<option>Bản nháp</option>
+<option>Lưu trữ</option>
+</select>
+<button class="bg-[var(--primary)] text-white px-5 py-2.5 rounded-[10px] font-semibold text-sm">Lọc</button>
+<button class="border border-[var(--border)] text-[var(--text-secondary)] px-5 py-2.5 rounded-[10px] font-semibold text-sm hover:text-[var(--error)]">Đặt lại</button>
+</div>
+<div class="flex items-center gap-2 mt-4">
+<span class="text-[12px] font-medium text-[var(--text-secondary)]">Đang lọc:</span>
+<div class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] rounded-full px-3 py-1 text-[12px] flex items-center gap-1.5">
+                    Danh mục: Tham quan
+                    <span class="material-symbols-outlined text-[14px] cursor-pointer">close</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+<div class="card article-card group overflow-hidden flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Bà Nà Hills" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2ul6bi0lcEZrdq0FXsPlQ9JibiI2rR5yZwHMICX-rW4Ze1yynh94YVT2KgEJFxr18RtIBy6GDeYZg7dKfcxL-YJXPtrvpPWeWxa79zLgwjCY7-26Bs-y9t4g5ycntaXuCNB8mfZLLIUFQ8oVOBO41hzcXpn3ocTNwmJa90b9TxWI0N3qYytdAIGUtFt4Txk8jO5m78TSYr9UF2RWw7RPgJlL8T9S_AMq6iFOYx7wtPzXo2LURlAyYBPBRw8M9UAqTjDGOOz0WcQ"/>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="action-btn hover:text-[var(--primary)] hover:border-[var(--primary)]" title="Xem">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="action-btn hover:text-[var(--warning)] hover:border-[var(--warning)]" title="Sửa">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="action-btn hover:text-[var(--error)] hover:border-[var(--error)]" title="Xóa">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="status-badge bg-[#D1FAE5] text-[#10B981]">ĐÃ XUẤT BẢN</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Tham quan</span>
+</div>
+<h3 class="text-[15px] font-bold text-[var(--text-primary)] leading-snug line-clamp-1 hover:text-[var(--primary)] cursor-pointer mb-1">Khám phá Bà Nà Hills: Đường lên tiên cảnh</h3>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-2 mb-4">Cùng trải nghiệm hệ thống cáp treo đạt kỷ lục thế giới và chiêm ngưỡng Cầu Vàng nổi tiếng...</p>
+<div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCURACEe0ebE0iAn9yzdejZKG2rZvPKJ5xLfiuWSddD0x9-XshCG0Kr0PJC3_TARJOU2GWxZ5MYuLoLDC4qce2xb2urZFMKCmO3Wyr4H5W_gBEGHiEt8OUdo-lxPDycnz5VGtgsO27UL1iUG0jvjPzpI3DyQApYBigt1TOe7r8xpFVuzZyWRgol7_3bqDEOtoQiFl9YWdVyawMu3vebQdLikQGTSQhU74au6YkLg_17D832gY-4PUCg1fke_TAREI4SQBepUuC0bQ"/>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-primary)] leading-none">Minh Tú</p>
+<p class="text-[10px] text-[var(--text-muted)] mt-0.5">15/03/2026</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[var(--text-secondary)]">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="text-[12px] font-semibold">2.4K</span>
+</div>
+</div>
+</div>
+</div>
+<div class="card article-card group overflow-hidden flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Ẩm thực" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjMMdSCxhV2dcdh6eSN7er5FIKc4-25pzPPcGW8B6-8jpiyiHKQpckBPCmZeug_MRLYEnYLa9CqnaiB6f9XcRJGTcQ74Cqx1imq86Q4E5IZLLWBGtNlAqsjW8kK_4Y3BWhCa88U6CIQY4nXZ37yK_XisC7Sxfd5gfPBaaifAlw1mEIoQ_oFirjrHuLYlQOHZRnde4QJNTJ8uuOCE2u7GM7DHvOT0-RxEOgu0qLdJDL4XWKSXGTYMChf34hoxRsrowmHkQ8pK2cMA"/>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="action-btn hover:text-[var(--primary)] hover:border-[var(--primary)]"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="action-btn hover:text-[var(--warning)] hover:border-[var(--warning)]"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="action-btn hover:text-[var(--error)] hover:border-[var(--error)]"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="status-badge bg-[#D1FAE5] text-[#10B981]">ĐÃ XUẤT BẢN</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Ẩm thực</span>
+</div>
+<h3 class="text-[15px] font-bold text-[var(--text-primary)] leading-snug line-clamp-1 hover:text-[var(--primary)] cursor-pointer mb-1">Top 10 quán ăn Đà Nẵng không thể bỏ qua</h3>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-2 mb-4">Từ Mỳ Quảng đến Bánh xèo, khám phá hương vị tinh hoa ẩm thực địa phương đặc sắc nhất...</p>
+<div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDROrPczDXpW4N4_Y-chdAt35CLHytliM1cfEZaOSQWGwmXRBZxilYBb2ylHU9iA1EQyit__guP3jwBMhsOepKG_g_j33FVQ6ibc6x_kCzUamEGsUx2r7hfKOH8-lTzIRWAd-U0XE5jRuOeHYluSBpFCsH0RTYCvY11zPTXJ-lx1wD4-qnJ3WRUsnlyPn5GBuW5hYkahmV4koGv00n_zl6uMuGT2sRdiEMMASt0lyjpDok5kbfvS0_WzWt5Qf6MCbpkFozowv-n-w"/>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-primary)] leading-none">Lan Anh</p>
+<p class="text-[10px] text-[var(--text-muted)] mt-0.5">20/03/2026</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[var(--text-secondary)]">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="text-[12px] font-semibold">1.8K</span>
+</div>
+</div>
+</div>
+</div>
+<div class="card article-card group overflow-hidden flex flex-col">
+<div class="relative h-48 bg-slate-100 flex items-center justify-center overflow-hidden">
+<img alt="Hội An" class="w-full h-full object-cover grayscale opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBHi5Ra4TLdVWAoZKgjciMsShMIDtncqohcaXFIwNa1tmW5Kywd6DaNQFppTwoDM3Zs2bYGuijzU1jA_bRSR4rcr1wokDl0HfgTMl8iGH60rXuYUVeKXjZQDP_u0psyK-QL4xv7hy6xwC0zmQJIWOtguhJZ3fbIjGEb2lRCaZrXjw9cyfFNRC11FQS0QDL03mf8CzCh0iIe6X26yUtPk6EgCQdjnQv1QKFe8e13_PD3zL4ZQPHvDTYji5lrBxoAmuF99SW_MwBFA"/>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="action-btn hover:text-[var(--primary)] hover:border-[var(--primary)]"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="action-btn hover:text-[var(--warning)] hover:border-[var(--warning)]"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="action-btn hover:text-[var(--error)] hover:border-[var(--error)]"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="status-badge bg-[#FEF3C7] text-[#F59E0B]">BẢN NHÁP</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Tham quan</span>
+</div>
+<h3 class="text-[15px] font-bold text-[var(--text-primary)] leading-snug line-clamp-1 hover:text-[var(--primary)] cursor-pointer mb-1">Hướng dẫn du lịch Hội An tự túc</h3>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-2 mb-4">Mọi thứ bạn cần biết để có một chuyến tham quan Phố Cổ trọn vẹn và tiết kiệm nhất...</p>
+<div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbJNOc8W43Ak8cQkqY5K8nQfx6ferOsdldukQLWZv_4QU2whBzQyA_tK4GN877FKt5ie8fQoPaa2pGVi4AXD4Of7n1pDIwDPdY9chJ4MwXPlG9eBF_AHfg2QOEEdufDrsz1u_UgB59mDvtEsXsSOV0aD_qRjJjDe4HxeW4eutobxM8fJg8Vp2nG4yEQLDtGk7hIzezHWHj5zhIeNdybrvig1ADDKZ7LuffwlebVJY1H4JsctWU4ySyxJBYD9uGhtNpHctt6F50NA"/>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-primary)] leading-none">Minh Tú</p>
+<p class="text-[10px] text-[var(--text-muted)] mt-0.5">01/04/2026</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[var(--text-secondary)]">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="text-[12px] font-semibold">0</span>
+</div>
+</div>
+</div>
+</div>
+<div class="card article-card group overflow-hidden flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Cù Lao Chàm" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7fO_RnU0TFbkLH2-hiZm-zWLRxfCKrL0f77IqVsUR58lQaUODbbb9bpq32GQ19LPEL2wpMHNCLLXqdpmNaMitMHFz76mlm9L7KwMItPzudLtCImsSFNIX0QxznPWY2z-7ojZ8koZ_tudL_CokUORLpFeS3me-N5IKdR3v6BRd1QpFRibnW0hm_jad-cTsZtVa6jaZ52KKPbFoHjAiEq-DphMptwimYWeqp-mYFq5NPkQWYs2H64lG6Zedh_uuG1_Tky58wHtiBg"/>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="action-btn hover:text-[var(--primary)] hover:border-[var(--primary)]"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="action-btn hover:text-[var(--warning)] hover:border-[var(--warning)]"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="action-btn hover:text-[var(--error)] hover:border-[var(--error)]"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+<div class="absolute top-3 left-3">
+<span class="bg-[#FEF3C7] text-[#F59E0B] text-[9px] font-bold px-2 py-0.5 rounded-full border border-[#FDE68A]">LÊN LỊCH: 20/04</span>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="status-badge bg-[#FEF3C7] text-[#F59E0B]">BẢN NHÁP</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Sinh thái</span>
+</div>
+<h3 class="text-[15px] font-bold text-[var(--text-primary)] leading-snug line-clamp-1 hover:text-[var(--primary)] cursor-pointer mb-1">Mùa hè rực rỡ ở Cù Lao Chàm</h3>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-2 mb-4">Trải nghiệm lặn ngắm san hô và thưởng thức hải sản tươi sống tại khu dự trữ sinh quyển...</p>
+<div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk_Q8NaSbtEvAQFLmKN_ZB4_OBbhdxzEE1R-h56ANIRGfF8KfKq-7y6kWJkxgJHwvPqD4_k1N3U5z7plryLolDRNUprxFjgGZZjzE8CfkGfiZIHRNNTy8e5bCiUWCr9LK7QWHTaxG0dWdLlqKYw6cNQMVKfQS0gGlODlmiq1DH-cWOz0f_-OVFkEOVK-sWeQrGqeBH437DrQe-SXkzdDlGg-jbY4lddNU0r1OZg054l_6YEN7enNjjyV5-0N37l17AQxaptxk09A"/>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-primary)] leading-none">Lan Anh</p>
+<p class="text-[10px] text-[var(--text-muted)] mt-0.5">02/04/2026</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[var(--text-secondary)]">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="text-[12px] font-semibold">0</span>
+</div>
+</div>
+</div>
+</div>
+<div class="card article-card group overflow-hidden flex flex-col opacity-80">
+<div class="relative h-48 overflow-hidden grayscale">
+<img alt="Fireworks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMVy95lBi6vgH3uI0ml-sgIdluEfLWBffLKIo2LKYimHMjqpDQj8G7xTEqBiNKo3bX8JLTchNK4ojzrN-KXrdjeanJkizD0Y29dpaq0v47fha4w3IF4ydyl7bePCcTi-5dJ6wPILAPYmmIzUwUlwJwzmSuYnx66ytWbtDAD0VOQL79QhYjsXL-vcZNNAHbXHi54MXmFv_UMI0VojHJLG46fGauDl_5MiCRfn9fhVFUQi7hosyx5jMiF8nl3VPpggAt_CYlV5ojsA"/>
+<div class="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="action-btn hover:text-[var(--primary)] hover:border-[var(--primary)]"><span class="material-symbols-outlined text-[18px]">visibility</span></button>
+<button class="action-btn hover:text-[var(--warning)] hover:border-[var(--warning)]"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="action-btn hover:text-[var(--error)] hover:border-[var(--error)]"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</div>
+<div class="absolute bottom-3 left-3">
+<span class="status-badge bg-[#F1F5F9] text-[#94A3B8]">LƯU TRỮ</span>
+</div>
+</div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex flex-wrap gap-1.5 mb-2">
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-full text-[10px] font-bold uppercase">Sự kiện</span>
+</div>
+<h3 class="text-[15px] font-bold text-[var(--text-primary)] leading-snug line-clamp-1 hover:text-[var(--primary)] cursor-pointer mb-1">Lễ hội pháo hoa quốc tế 2025</h3>
+<p class="text-[12px] text-[var(--text-secondary)] line-clamp-2 mb-4">Nhìn lại những màn trình diễn pháo hoa đỉnh cao bên bờ sông Hàn thơ mộng...</p>
+<div class="mt-auto pt-4 border-t border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<img alt="Author" class="w-6 h-6 rounded-full border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi6KdqRlI5C5G9C6k3PrAePErBKQEb6TAksVSQDQWjAjEPTQYrWAVeDVi2RHpaBB9irmQldWDIPkjb6ZqKet5r_AHhH8GN5QWse4v_uQutgxcF6583GIThJKDF-TsSDH9Bp_6gVayioEEjWb5d3nJ1fsVpYKdcim4uipUwgNqvTphgYHIx2ipO8KE_x6H6JJ2hZg_baK7U8gQ5GuBAmify7fI_7UH_nkjeOb_Jhr5MXQSy8l5Gl6FLsx7ll_1ZsSo6UjlHh_oXlA"/>
+<div>
+<p class="text-[11px] font-bold text-[var(--text-primary)] leading-none">Admin</p>
+<p class="text-[10px] text-[var(--text-muted)] mt-0.5">10/01/2026</p>
+</div>
+</div>
+<div class="flex items-center gap-1 text-[var(--text-secondary)]">
+<span class="material-symbols-outlined text-[16px]">visibility</span>
+<span class="text-[12px] font-semibold">856</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card overflow-hidden">
+<div class="px-6 py-4 flex items-center justify-between bg-[#F8FAFC]">
+<p class="text-[13px] text-[var(--text-secondary)]">Hiển thị 1–10 trong tổng số 48 bài viết</p>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center text-[var(--text-muted)] hover:bg-white hover:border hover:border-[var(--border)] rounded-lg">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center bg-[var(--primary)] text-white font-bold text-[13px] rounded-lg">1</button>
+<button class="w-8 h-8 flex items-center justify-center text-[var(--text-secondary)] hover:bg-white hover:border hover:border-[var(--border)] rounded-lg text-[13px] font-semibold">2</button>
+<button class="w-8 h-8 flex items-center justify-center text-[var(--text-secondary)] hover:bg-white hover:border hover:border-[var(--border)] rounded-lg text-[13px] font-semibold">3</button>
+<span class="px-1 text-[var(--text-muted)]">...</span>
+<button class="w-8 h-8 flex items-center justify-center text-[var(--text-secondary)] hover:bg-white hover:border hover:border-[var(--border)] rounded-lg text-[13px] font-semibold">5</button>
+<button class="w-8 h-8 flex items-center justify-center text-[var(--text-muted)] hover:bg-white hover:border hover:border-[var(--border)] rounded-lg">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 bg-slate-900/40 z-[100] hidden flex items-center justify-center p-4">
+<div class="bg-white rounded-[20px] w-full max-w-[400px] p-6 shadow-2xl">
+<div class="flex flex-col items-center text-center mb-6">
+<div class="w-16 h-16 bg-[#FEE2E2] text-[var(--error)] rounded-2xl flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[32px]">warning_amber</span>
+</div>
+<h4 class="text-lg font-bold text-[var(--text-primary)]">Xóa bài viết này?</h4>
+<p class="text-sm text-[var(--text-secondary)] mt-2">Bài viết <strong>[Tiêu đề]</strong> sẽ bị xóa vĩnh viễn.</p>
+<div class="bg-[#FEF3C7] border border-[#FDE68A] rounded-xl p-3 mt-4 flex items-start gap-2 text-left">
+<span class="material-symbols-outlined text-[18px] text-[#92400E]">warning</span>
+<p class="text-[13px] text-[#92400E] font-medium leading-tight">Tất cả danh mục liên kết sẽ bị gỡ theo.</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-2.5 text-[var(--text-secondary)] font-semibold text-sm hover:text-[var(--text-primary)]">Hủy</button>
+<button class="flex-1 py-2.5 bg-[var(--error)] text-white rounded-xl text-sm font-semibold hover:bg-[#DC2626] transition-colors">Xóa bài viết</button>
+</div>
+</div>
+</div>
+
+</body></html>

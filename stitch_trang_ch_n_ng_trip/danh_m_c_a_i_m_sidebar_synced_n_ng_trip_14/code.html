@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bảng điều khiển cho người kiểm duyệt - Moderator's Daily Brief</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Roboto+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --primary-dark: #004C99;
+            --pending: #F59E0B;
+            --approved: #10B981;
+            --rejected: #EF4444;
+            --bg-dark: #0F172A;
+            --text-main: #1E293B;
+            --text-sub: #64748B;
+            --border: #E2E8F0;
+            --bg-body: #F8FAFC;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+        .mono-font {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 10px;
+        }
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+        }
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+        }
+        .badge-pill {
+            padding: 2px 10px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .btn-approve {
+            background-color: var(--approved);
+            color: white;
+            transition: all 0.2s;
+        }
+        .btn-approve:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+        }
+        .btn-reject {
+            background-color: white;
+            color: var(--rejected);
+            border: 1px solid var(--rejected);
+            transition: all 0.2s;
+        }
+        .btn-reject:hover {
+            background-color: #FEF2F2;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+<div class="flex min-h-screen">
+<aside class="w-64 bg-[#0F172A] hidden lg:flex flex-col shrink-0">
+<div class="p-6 border-b border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white">
+<span class="material-symbols-outlined font-bold">verified_user</span>
+</div>
+<div>
+<h1 class="text-white font-bold text-sm leading-none tracking-tight">MODERATOR</h1>
+<p class="text-slate-500 text-[10px] mt-1 uppercase font-bold">Daily Brief</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 p-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-xl">grid_view</span>
+<span class="font-medium text-sm">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-[var(--primary)] shadow-lg shadow-blue-900/20" href="#">
+<span class="material-symbols-outlined text-xl">rate_review</span>
+<span class="font-medium text-sm">Kiểm duyệt ĐG</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined text-xl">history</span>
+<span class="font-medium text-sm">Lịch sử xử lý</span>
+</a>
+</nav>
+<div class="p-4 border-t border-slate-800">
+<div class="bg-slate-800/50 rounded-xl p-4">
+<p class="text-[10px] text-slate-500 font-bold uppercase mb-2">Hiệu suất hôm nay</p>
+<div class="flex justify-between items-end">
+<span class="text-white font-bold text-lg">124</span>
+<span class="text-emerald-400 text-[10px] font-bold">Hoàn thành 85%</span>
+</div>
+<div class="w-full bg-slate-700 h-1.5 rounded-full mt-2">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto custom-scrollbar h-screen">
+<header class="sticky-header border-b border-slate-200">
+<div class="px-8 py-5 flex items-center justify-between gap-4">
+<div>
+<nav class="text-[11px] font-semibold text-[#94A3B8] uppercase tracking-wider">Hệ thống / Kiểm duyệt</nav>
+<h2 class="text-2xl font-bold text-[#1E293B]">Báo cáo &amp; Kiểm duyệt Đánh giá</h2>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 bg-white border border-slate-200 rounded-xl p-1.5">
+<button class="px-4 py-1.5 text-xs font-bold bg-slate-100 text-slate-600 rounded-lg">Hôm nay</button>
+<button class="px-4 py-1.5 text-xs font-bold text-slate-500 hover:bg-slate-50 rounded-lg">7 ngày qua</button>
+</div>
+<button class="flex items-center gap-2 border border-[#E2E8F0] bg-white h-10 px-4 rounded-xl text-slate-600 text-sm font-semibold hover:bg-slate-50">
+<span class="material-symbols-outlined text-xl">download</span>
+                        Xuất báo cáo
+                    </button>
+</div>
+</div>
+</header>
+<div class="p-8 space-y-6">
+<section class="grid grid-cols-4 gap-6">
+<div class="card p-5 border-l-4 border-l-[var(--pending)] relative overflow-hidden">
+<div class="flex justify-between items-start z-10 relative">
+<div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">ĐÁNH GIÁ CHỜ DUYỆT</p>
+<h3 class="text-3xl font-black text-[var(--pending)] mt-1">18</h3>
+<p class="text-[11px] font-semibold text-amber-600 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">priority_high</span> Cần xử lý gấp
+                            </p>
+</div>
+<div class="p-3 bg-amber-50 rounded-2xl text-[var(--pending)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">pending</span>
+</div>
+</div>
+</div>
+<div class="card p-5 border-l-4 border-l-[var(--approved)]">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">ĐÃ DUYỆT HÔM NAY</p>
+<h3 class="text-3xl font-black text-[var(--approved)] mt-1">986</h3>
+<p class="text-[11px] font-bold text-emerald-500 mt-2">↑ +8.3% so với hôm qua</p>
+</div>
+<div class="p-3 bg-emerald-50 rounded-2xl text-[var(--approved)]">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+</div>
+</div>
+<div class="card p-5 border-l-4 border-l-[var(--primary)]">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">TỔNG ĐÁNH GIÁ</p>
+<h3 class="text-3xl font-black text-[#1E293B] mt-1">1.024</h3>
+<p class="text-[11px] font-semibold text-slate-400 mt-2">Trong 30 ngày qua</p>
+</div>
+<div class="p-3 bg-blue-50 rounded-2xl text-[var(--primary)]">
+<span class="material-symbols-outlined text-2xl">rate_review</span>
+</div>
+</div>
+</div>
+<div class="card p-5 border-l-4 border-l-amber-400">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-widest">ĐIỂM TRUNG BÌNH</p>
+<h3 class="text-3xl font-black text-amber-500 mt-1">4.7 ★</h3>
+<div class="flex items-center gap-0.5 mt-2">
+<span class="material-symbols-outlined text-xs text-amber-400" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-xs text-amber-400" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-xs text-amber-400" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-xs text-amber-400" style="font-variation-settings: 'FILL' 1">star</span>
+<span class="material-symbols-outlined text-xs text-amber-400" style="font-variation-settings: 'FILL' 1">star_half</span>
+</div>
+</div>
+<div class="p-3 bg-amber-50 rounded-2xl text-amber-500">
+<span class="material-symbols-outlined text-2xl">star_rate</span>
+</div>
+</div>
+</div>
+</section>
+<section class="card overflow-hidden">
+<div class="flex items-center justify-between px-6 py-5 border-b border-slate-200">
+<div class="flex items-center gap-4">
+<h4 class="text-lg font-bold text-[#1E293B]">Danh sách kiểm duyệt nhanh</h4>
+<span class="badge-pill bg-amber-100 text-amber-700">18 yêu cầu đang chờ</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center border border-slate-200 rounded-xl px-3 py-2 bg-slate-50">
+<span class="material-symbols-outlined text-lg text-slate-400 mr-2">search</span>
+<input class="bg-transparent border-none p-0 text-sm focus:ring-0 w-64" placeholder="Tìm kiếm đánh giá, khách hàng..." type="text"/>
+</div>
+<select class="border-slate-200 rounded-xl text-sm h-10 px-3 bg-white">
+<option>Loại: Tất cả</option>
+<option>Tour</option>
+<option>Địa điểm</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-slate-50/50 border-b border-slate-200">
+<tr>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest w-[200px]">Người dùng</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest">Nội dung đánh giá</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest w-[120px]">Số sao</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest w-[140px]">Ngày gửi</th>
+<th class="px-6 py-4 text-[11px] font-bold text-slate-400 uppercase tracking-widest w-[220px] text-right">Thao tác nhanh</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center text-[var(--primary)] font-bold text-xs">HN</div>
+<div>
+<p class="text-sm font-bold text-slate-800">Hoàng Nam</p>
+<p class="text-[10px] text-slate-400 font-medium">nam.hoang@email.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mb-1">
+<span class="badge-pill bg-blue-50 text-blue-600 text-[9px]">Tour</span>
+<span class="text-xs font-bold text-slate-700">Tour Bà Nà Hills - Cầu Vàng</span>
+</div>
+<p class="text-sm text-slate-600 line-clamp-1 italic">"Chuyến đi rất tuyệt vời, hướng dẫn viên nhiệt tình, cảnh đẹp không thể chê..."</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold text-slate-800">5.0</span>
+<span class="material-symbols-outlined text-amber-400 text-lg" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm text-slate-800 font-medium">Hôm nay</span>
+<span class="text-[10px] text-slate-400 font-bold">14:30</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="btn-reject px-4 py-2 rounded-xl text-xs font-bold">Từ chối</button>
+<button class="btn-approve px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> Duyệt
+                                        </button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 font-bold text-xs">PT</div>
+<div>
+<p class="text-sm font-bold text-slate-800">Phan Tuyết</p>
+<p class="text-[10px] text-slate-400 font-medium">ptuyet@email.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mb-1">
+<span class="badge-pill bg-indigo-50 text-indigo-600 text-[9px]">Địa điểm</span>
+<span class="text-xs font-bold text-slate-700">Ngũ Hành Sơn - Đà Nẵng</span>
+</div>
+<p class="text-sm text-slate-600 line-clamp-1 italic">"Có chút đông đúc vào cuối tuần nhưng phong cảnh vẫn rất ấn tượng..."</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold text-slate-800">4.0</span>
+<span class="material-symbols-outlined text-amber-400 text-lg" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm text-slate-800 font-medium">Hôm nay</span>
+<span class="text-[10px] text-slate-400 font-bold">11:15</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="btn-reject px-4 py-2 rounded-xl text-xs font-bold">Từ chối</button>
+<button class="btn-approve px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> Duyệt
+                                        </button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-xs">MT</div>
+<div>
+<p class="text-sm font-bold text-slate-800">Minh Tuấn</p>
+<p class="text-[10px] text-slate-400 font-medium">tuan.minh@email.com</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="mb-1">
+<span class="badge-pill bg-blue-50 text-blue-600 text-[9px]">Tour</span>
+<span class="text-xs font-bold text-slate-700">Cù Lao Chàm Biển Xanh</span>
+</div>
+<p class="text-sm text-slate-600 line-clamp-1 italic">"Nước biển trong xanh, hải sản tươi ngon. Tuyệt vời cho kỳ nghỉ hè..."</p>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-1">
+<span class="text-sm font-bold text-slate-800">5.0</span>
+<span class="material-symbols-outlined text-amber-400 text-lg" style="font-variation-settings: 'FILL' 1">star</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<div class="flex flex-col">
+<span class="text-sm text-slate-800 font-medium">Hôm qua</span>
+<span class="text-[10px] text-slate-400 font-bold">16:45</span>
+</div>
+</td>
+<td class="px-6 py-5 text-right">
+<div class="flex justify-end gap-2">
+<button class="btn-reject px-4 py-2 rounded-xl text-xs font-bold">Từ chối</button>
+<button class="btn-approve px-4 py-2 rounded-xl text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check_circle</span> Duyệt
+                                        </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="flex items-center justify-between px-6 py-4 bg-slate-50/50 border-t border-slate-200">
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Hiển thị 1–10 / 18 yêu cầu chờ duyệt</span>
+<div class="flex items-center gap-2">
+<button class="h-8 w-8 flex items-center justify-center border border-slate-200 bg-white rounded-lg text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="h-8 w-8 flex items-center justify-center rounded-lg bg-[var(--primary)] text-white text-xs font-bold shadow-sm">1</button>
+<button class="h-8 w-8 flex items-center justify-center rounded-lg bg-white border border-slate-200 text-xs font-bold text-slate-600 hover:border-[var(--primary)]">2</button>
+<button class="h-8 w-8 flex items-center justify-center border border-slate-200 bg-white rounded-lg text-slate-600 hover:border-[var(--primary)] transition-colors">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-12 gap-6 pb-8">
+<div class="card col-span-12 lg:col-span-4 p-5">
+<div class="flex items-center justify-between mb-6">
+<h4 class="text-sm font-bold text-[#1E293B]">Phân bố số sao</h4>
+<span class="text-[11px] font-bold text-amber-500 bg-amber-50 px-2 py-1 rounded-lg">Trung bình 4.7 ★</span>
+</div>
+<div class="space-y-3">
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-bold">
+<span class="text-slate-500">5 ★</span>
+<span class="text-slate-800">512 (50%)</span>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full rounded-full" style="width: 50%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-bold">
+<span class="text-slate-500">4 ★</span>
+<span class="text-slate-800">324 (32%)</span>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-blue-500 h-full rounded-full" style="width: 32%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-bold">
+<span class="text-slate-500">3 ★</span>
+<span class="text-slate-800">142 (14%)</span>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 14%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-bold">
+<span class="text-slate-500">2 ★</span>
+<span class="text-slate-800">26 (2%)</span>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full rounded-full" style="width: 2%"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[11px] font-bold">
+<span class="text-slate-500">1 ★</span>
+<span class="text-slate-800">20 (2%)</span>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-rose-500 h-full rounded-full" style="width: 2%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="card col-span-12 lg:col-span-4 p-5">
+<h4 class="text-sm font-bold text-[#1E293B] mb-4">Trạng thái xử lý</h4>
+<div class="flex items-center gap-6">
+<div class="relative w-32 h-32 flex-shrink-0">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#f1f5f9" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="var(--approved)" stroke-dasharray="241.9 251.3" stroke-dashoffset="0" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="var(--pending)" stroke-dasharray="4.5 251.3" stroke-dashoffset="-241.9" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="var(--rejected)" stroke-dasharray="4.8 251.3" stroke-dashoffset="-246.4" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-black text-slate-800 leading-none">1.024</span>
+<span class="text-[8px] font-bold text-slate-400 uppercase tracking-tighter">Tổng ĐG</span>
+</div>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[var(--approved)]"></span>
+<span class="text-[11px] font-bold text-slate-500">Đã duyệt</span>
+</div>
+<span class="text-[11px] font-black text-slate-800">96.3%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[var(--pending)]"></span>
+<span class="text-[11px] font-bold text-slate-500">Chờ duyệt</span>
+</div>
+<span class="text-[11px] font-black text-slate-800">1.8%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[var(--rejected)]"></span>
+<span class="text-[11px] font-bold text-slate-500">Từ chối</span>
+</div>
+<span class="text-[11px] font-black text-slate-800">1.9%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="card col-span-12 lg:col-span-4 p-5">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-sm font-bold text-[#1E293B]">Xu hướng gửi mới</h4>
+<div class="flex bg-slate-50 p-1 rounded-lg">
+<button class="px-2 py-0.5 text-[9px] font-bold bg-white text-blue-600 rounded shadow-sm">Ngày</button>
+<button class="px-2 py-0.5 text-[9px] font-bold text-slate-500">Tuần</button>
+</div>
+</div>
+<div class="h-[120px] w-full relative mt-2">
+<svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 800 200">
+<defs>
+<linearGradient id="lineGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#0066CC" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#0066CC" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,180 Q100,160 200,170 T400,100 T600,120 T800,80" fill="url(#lineGrad)" stroke="none"></path>
+<path d="M0,180 Q100,160 200,170 T400,100 T600,120 T800,80" fill="none" stroke="#0066CC" stroke-width="3"></path>
+<circle cx="200" cy="170" fill="white" r="3.5" stroke="#0066CC" stroke-width="2"></circle>
+<circle cx="400" cy="100" fill="white" r="3.5" stroke="#0066CC" stroke-width="2"></circle>
+<circle cx="600" cy="120" fill="white" r="3.5" stroke="#0066CC" stroke-width="2"></circle>
+</svg>
+<div class="flex justify-between mt-2 text-[9px] text-slate-400 font-bold uppercase tracking-wider">
+<span>Thứ 2</span>
+<span>Thứ 4</span>
+<span>Hôm nay</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex justify-center gap-4">
+<div class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+<span class="text-[10px] font-bold text-slate-500">Đánh giá mới</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+
+</body></html>

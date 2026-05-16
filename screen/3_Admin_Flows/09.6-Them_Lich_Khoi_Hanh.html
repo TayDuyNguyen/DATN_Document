@@ -1,0 +1,323 @@
+<html class="light" lang="vi"><head></head><body class="antialiased">```html
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thêm lịch khởi hành - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-page: #F8FAFC;
+            --surface: #FFFFFF;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --primary: #0066CC;
+            --primary-subtle: #B3D9FF;
+            --primary-dark: #004999;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .sidebar-active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        input::placeholder {
+            color: #94A3B8;
+        }
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+    </style>
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#1E293B] flex flex-col py-6 px-4 z-50 custom-scrollbar">
+<div class="mb-10 px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-[#0066CC] rounded-lg flex items-center justify-center text-white font-black text-xl">D</div>
+<h1 class="text-xl font-black tracking-tight text-white">Đà Nẵng Trip</h1>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mt-1">Adventure Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm">Bảng điều khiển</span>
+</a>
+<div class="pt-4 space-y-1">
+<p class="px-3 text-[10px] font-bold text-slate-500 uppercase mb-2">QUẢN LÝ TOUR</p>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="text-sm">Quản lý Tour</span>
+</div>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</a>
+<div class="ml-3 border-l border-slate-700/50 space-y-1">
+<a class="flex items-center gap-3 pl-8 py-2 rounded-xl text-slate-400 text-xs font-medium hover:text-white transition-colors" href="#">
+<span>Danh sách Tour</span>
+</a>
+<a class="flex items-center gap-3 pl-8 py-2 rounded-xl text-slate-400 text-xs font-medium hover:text-white transition-colors" href="#">
+<span>Danh mục</span>
+</a>
+<a class="flex items-center gap-3 pl-8 py-2 rounded-xl text-white text-xs font-bold sidebar-active" href="#">
+<span>Lịch khởi hành</span>
+</a>
+</div>
+</div>
+<div class="pt-4 space-y-1">
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="text-sm">Quản lý Địa điểm</span>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+<span class="text-sm">Đơn hàng</span>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">star</span>
+<span class="text-sm">Đánh giá</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 font-semibold hover:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm">Người dùng</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto pt-6 space-y-4">
+<div class="p-4 bg-slate-800/50 rounded-2xl border border-slate-700/50">
+<p class="text-xs font-bold text-white">Hệ thống ổn định</p>
+<div class="mt-2 w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[95%]"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">95% server load</p>
+</div>
+<button class="w-full bg-slate-800 text-slate-300 py-2.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-red-500/10 hover:text-red-400 transition-all border border-slate-700">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Đăng xuất</span>
+</button>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<div class="flex items-start justify-between mb-8">
+<div>
+<nav class="flex items-center gap-2 mb-2">
+<span class="text-[12px] font-medium text-[#94A3B8]">Quản lý Tour</span>
+<span class="text-[#E2E8F0] material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-[12px] font-medium text-[#94A3B8]">Bà Nà Hills - Cầu Vàng</span>
+<span class="text-[#E2E8F0] material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-[12px] font-medium text-[#94A3B8]">Thêm lịch khởi hành</span>
+</nav>
+<h2 class="text-2xl font-bold text-[#1E293B]">Thêm lịch khởi hành</h2>
+<div class="mt-4 inline-flex items-center gap-3 bg-[#EFF6FF] border border-[#B3D9FF] rounded-[10px] px-3.5 py-2">
+<img alt="Tour thumb" class="w-8 h-8 rounded-md object-cover border border-[#E2E8F0]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRmRwjZwnXZTLBTahThcYgxXPSScW065dc3uFV18FdhbGcgqjmmK4DuaqFXxlBHRWVpM2CuzLtEVsH47KJZAfJkIOF8U95-VAhG0_Kfwo9FsCpkvseSHvcuhn54nAF-6LRGpaybNVvBZL3W0ay6QiITsEWI3ARq0RrC3ZKi4qUtR2sYYSSnzcJ3Yg2ES_RZ3XBKzeKqa7QAZ0x-UKDw0U4_e1MPKrZNy49_iUIBg94ZabXTMzPqQfQPXV31RuptyUT4Jvcwe3o6g"/>
+<div class="flex items-center gap-2">
+<span class="text-[13px] font-bold text-[#0066CC]">Tour: Bà Nà Hills - Cầu Vàng</span>
+<span class="bg-white border border-[#B3D9FF] text-[#0066CC] text-[11px] font-bold px-2 py-0.5 rounded-full">Tham quan</span>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 border border-[#E2E8F0] bg-white text-[#64748B] rounded-[10px] text-sm font-semibold hover:border-[#EF4444] hover:text-[#EF4444] transition-all">Hủy</button>
+<button class="px-5 py-2.5 bg-[#0066CC] text-white rounded-[10px] text-sm font-bold shadow-[0_4px_12px_rgba(0,102,204,0.25)] hover:bg-[#004999] transition-all">Thêm lịch</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-8 max-w-[1280px] mx-auto">
+<div class="col-span-8">
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06)]">
+<div class="flex items-center gap-2.5 mb-6 pb-4 border-b border-[#F1F5F9]">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-xl">calendar_month</span>
+</div>
+<h3 class="text-[15px] font-bold text-[#1E293B]">Thông tin lịch khởi hành</h3>
+<span class="bg-[#D1FAE5] text-[#10B981] text-[10px] font-black px-2 py-0.5 rounded-full uppercase ml-1">MỚI</span>
+</div>
+<div class="grid grid-cols-2 gap-x-6 gap-y-5">
+<div class="col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Ngày khởi hành <span class="text-[#EF4444]">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] text-lg">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] bg-[#EF4444]/[0.04] border-[#EF4444] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none" type="date" value="2024-01-01"/>
+</div>
+<p class="mt-1 text-[11px] text-[#EF4444] font-medium">Ngày khởi hành phải từ hôm nay trở đi</p>
+</div>
+<div class="col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Ngày kết thúc <span class="text-[#EF4444]">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] text-lg">calendar_today</span>
+<input class="w-full pl-10 pr-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none" type="date"/>
+</div>
+<p class="mt-1 text-[11px] text-[#94A3B8]">Thường trùng ngày KH với tour 1 ngày</p>
+</div>
+<div class="col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Số người tối đa <span class="text-[#EF4444]">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] text-lg">group</span>
+<input class="w-full pl-10 pr-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none" min="1" placeholder="20" type="number"/>
+</div>
+<p class="mt-1 text-[11px] text-[#94A3B8]">Tối đa người có thể đặt cho lịch này</p>
+</div>
+<div class="col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Trạng thái</label>
+<div class="relative">
+<select class="w-full px-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none appearance-none bg-white">
+<option value="available">🟢 Còn chỗ</option>
+<option value="full">🔴 Đầy chỗ</option>
+<option value="cancelled">⚪ Đã hủy</option>
+</select>
+<span class="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] pointer-events-none">expand_more</span>
+</div>
+</div>
+<div class="col-span-2 relative py-4">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-[#F1F5F9]"></div></div>
+<div class="relative flex justify-center">
+<span class="bg-white px-3 text-[10px] font-bold uppercase tracking-widest text-[#94A3B8]">GIÁ RIÊNG (tùy chọn)</span>
+</div>
+</div>
+<div class="col-span-1">
+<div class="flex items-center justify-between mb-1.5">
+<label class="text-[13px] font-bold text-[#1E293B]">Giá người lớn</label>
+<span class="bg-[#FFE0D4] text-[#FF6B35] text-[10px] font-bold px-2 py-0.5 rounded-full">GIÁ RIÊNG</span>
+</div>
+<div class="relative">
+<input class="w-full px-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none pr-10" placeholder="Để trống = dùng giá tour" type="number" value="900000"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#64748B] font-medium">đ</span>
+</div>
+<p class="mt-1 text-[11px] text-[#94A3B8]">Ghi đè giá tour cho lịch này</p>
+</div>
+<div class="col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Giá trẻ em</label>
+<div class="relative">
+<input class="w-full px-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none pr-10" placeholder="Để trống = dùng giá tour" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#64748B] font-medium">đ</span>
+</div>
+</div>
+<div class="col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Giá em bé</label>
+<div class="relative">
+<input class="w-full px-4 py-2 border-[#E2E8F0] rounded-[10px] text-[14px] focus:ring-1 focus:ring-[#0066CC] focus:border-[#0066CC] outline-none pr-10" placeholder="Để trống = dùng giá tour" type="number"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-[14px] text-[#64748B] font-medium">đ</span>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-[#F1F5F9] flex justify-end gap-3">
+<button class="px-5 py-2.5 border border-[#E2E8F0] bg-white text-[#64748B] rounded-[10px] text-sm font-semibold hover:border-[#EF4444] hover:text-[#EF4444] transition-all">Hủy</button>
+<button class="px-5 py-2.5 bg-[#0066CC] text-white rounded-[10px] text-sm font-bold shadow-[0_4px_12px_rgba(0,102,204,0.25)] hover:bg-[#004999] transition-all">Thêm lịch</button>
+</div>
+</div>
+</div>
+<div class="col-span-4">
+<div class="sticky top-8">
+<div class="bg-white border border-[#E2E8F0] rounded-2xl shadow-[0_1px_3px_rgba(0,0,0,0.06)] overflow-hidden">
+<div class="px-5 py-4 bg-[#F8FAFC] border-b border-[#E2E8F0] flex items-center justify-between">
+<span class="text-[10px] font-black uppercase tracking-widest text-[#94A3B8]">XEM TRƯỚC</span>
+<span class="material-symbols-outlined text-lg text-[#94A3B8]">visibility</span>
+</div>
+<div class="p-5 space-y-4">
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-lg">event</span>
+</div>
+<div class="flex-1">
+<p class="text-[11px] text-[#94A3B8] font-medium uppercase leading-tight">Ngày KH</p>
+<p class="text-[13px] font-bold text-[#1E293B]">15/04/2026 (Thứ Tư)</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-lg">event_repeat</span>
+</div>
+<div class="flex-1">
+<p class="text-[11px] text-[#94A3B8] font-medium uppercase leading-tight">Ngày KT</p>
+<p class="text-[13px] font-bold text-[#1E293B]">15/04/2026</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-lg">group</span>
+</div>
+<div class="flex-1">
+<p class="text-[11px] text-[#94A3B8] font-medium uppercase leading-tight">Tối đa</p>
+<p class="text-[13px] font-bold text-[#1E293B]">20 người</p>
+</div>
+</div>
+<div class="pt-2 border-t border-[#F1F5F9] mt-2"></div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-lg">payments</span>
+</div>
+<div class="flex-1">
+<p class="text-[11px] text-[#94A3B8] font-medium uppercase leading-tight">Giá Người lớn</p>
+<p class="text-[13px] font-bold text-[#FF6B35]">900.000 đ</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-lg">child_care</span>
+</div>
+<div class="flex-1">
+<p class="text-[11px] text-[#94A3B8] font-medium uppercase leading-tight">Giá Trẻ em</p>
+<p class="text-[13px] font-bold text-[#1E293B]">Theo tour</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 bg-[#EFF6FF] rounded-lg flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-lg">circle</span>
+</div>
+<div class="flex-1">
+<p class="text-[11px] text-[#94A3B8] font-medium uppercase leading-tight">Trạng thái</p>
+<span class="inline-flex items-center bg-[#D1FAE5] text-[#10B981] text-[10px] font-black px-2.5 py-0.5 rounded-full mt-0.5">CÒN CHỖ</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 p-4 border border-dashed border-[#E2E8F0] rounded-xl bg-white/50">
+<h4 class="text-[12px] font-bold text-[#1E293B] flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-base text-[#F59E0B]">lightbulb</span>
+                            Mẹo nhập liệu nhanh
+                        </h4>
+<ul class="text-[11px] text-[#64748B] space-y-1.5 list-disc pl-4">
+<li>Dùng phím <b>Tab</b> để di chuyển nhanh giữa các ô.</li>
+<li>Để trống các ô <b>Giá riêng</b> nếu muốn sử dụng giá niêm yết của tour.</li>
+<li>Ngày kết thúc tự động cập nhật theo ngày khởi hành nếu là tour 1 ngày.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-8 right-8 z-[200] flex items-center gap-3 bg-[#D1FAE5] text-[#10B981] px-5 py-3 rounded-xl shadow-lg border border-[#10B981]/20 hidden">
+<span class="material-symbols-outlined">check_circle</span>
+<span class="text-sm font-bold">Thêm lịch thành công!</span>
+</div>
+
+```</body></html>

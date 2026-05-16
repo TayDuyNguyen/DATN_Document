@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --accent: #E1FF00;
+            --hot: #FF3D00;
+            --dark-navy: #0A192F;
+        }
+        @layer utilities {
+            .shadow-modal {
+                box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15);
+            }
+            .hide-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .hide-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .bg-mesh {
+                background-color: #f8fafc;
+                background-image: 
+                    radial-gradient(at 0% 0%, rgba(0, 102, 204, 0.03) 0px, transparent 50%),
+                    radial-gradient(at 100% 0%, rgba(225, 255, 0, 0.03) 0px, transparent 50%);
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0066CC",
+                        "accent": "#E1FF00",
+                        "hot-pink": "#FF007A",
+                        "hot-orange": "#FF3D00",
+                        "dark-navy": "#0A192F",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<title>Chi tiết Địa điểm - Đà Nẵng Trip</title>
+</head>
+<body class="bg-mesh font-display text-slate-900 min-h-screen">
+<header class="sticky top-0 z-[100] w-full bg-white/90 backdrop-blur-xl border-b border-slate-100 shadow-sm">
+<div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg rotate-12">
+<span class="material-symbols-outlined text-accent text-3xl font-bold">explore</span>
+</div>
+<h1 class="text-dark-navy text-2xl font-black tracking-tighter italic uppercase">ĐÀ NẴNG<span class="text-primary">TRIP</span></h1>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-slate-600 hover:text-primary transition-all font-bold text-sm uppercase tracking-widest" href="/">Trang chủ</a>
+<a class="text-primary transition-all font-bold text-sm uppercase tracking-widest border-b-2 border-primary" href="#">Địa điểm</a>
+<a class="text-slate-600 hover:text-primary transition-all font-bold text-sm uppercase tracking-widest" href="#">Tour</a>
+<a class="text-slate-600 hover:text-primary transition-all font-bold text-sm uppercase tracking-widest" href="#">Blog</a>
+<a class="text-slate-600 hover:text-primary transition-all font-bold text-sm uppercase tracking-widest" href="#">Liên hệ</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-primary/10 hover:text-primary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 border-l border-slate-200 pl-4 ml-2">
+<div class="text-right hidden sm:block">
+<div class="text-xs font-black text-dark-navy">Nguyễn An</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Thành viên Kim cương</div>
+</div>
+<img alt="Avatar" class="w-10 h-10 rounded-full border-2 border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKKkDgJkEPkzPQG-Mykzmgm5EhGxh6CJ3v0XbSjrnTA6Tx7r9qoR9QulQsr96XxnA7h5V6x2K4VzRBJcACaAtXUDZ-hI0e13OOEp90M7SsD-3tw-wFtVaigu8ZdfQp5HCUc0S5-SauDAoosAhKH-988d81gR5LScfOfDe1d9sO5bVgbtPthZV3iz48vywAfN_4eEwCWQ6RAKahL5Qwf9hlIJKCEkjgl9rBJ3HNyAJTNrdwbDRDHM7Hn1S6rzHh3xH9k3KwghopJg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[1200px] mx-auto px-6 py-8">
+<div class="flex flex-wrap justify-between items-center mb-6 gap-4">
+<nav class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-slate-400">
+<a class="hover:text-primary" href="#">Trang chủ</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<a class="hover:text-primary" href="#">Địa điểm</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-dark-navy">Cầu Rồng Đà Nẵng</span>
+</nav>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl border border-[#EF4444] bg-[#FEE2E2] text-[#EF4444] font-bold text-sm transition-all shadow-sm">
+<span class="material-symbols-outlined fill-1">favorite</span>
+                    Đã yêu thích
+                </button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl border border-slate-200 bg-white text-slate-600 font-bold text-sm hover:bg-slate-50 transition-all">
+<span class="material-symbols-outlined">share</span>
+                    Chia sẻ
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-4 grid-rows-2 gap-3 h-[500px] mb-12 rounded-[2rem] overflow-hidden shadow-2xl">
+<div class="col-span-2 row-span-2 relative group cursor-pointer overflow-hidden">
+<img alt="Cầu Rồng" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh4vrBc-_W6JKZsvd0J_tt5JudrX6I7zCQwR3kKhjCWIvKIYfUh5QApv3WNFWY5cPrOXwhIOTZVsq0nHR4j14ZEofZTKHh_6FO4bg-5EsT5rrDLoJvLijWKjvQbxG_1s6N8F-i8JnxqE_I28jHvqbFq32G-mh-Ap96lxG2w1Sw2ltL_IaxcvIFqkCmfRkm6Brh_ep5QRsy_dimy0DV0PuE-iBPUGJ-PKuH8z3TavomXk8CiGzMII4cVaCRrXXar1AtnROyrA2QJw"/>
+<div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all"></div>
+</div>
+<div class="col-span-1 row-span-1 overflow-hidden">
+<img alt="Detail 1" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPEvGp2OU0hqpuh61p2UuXKmBbWkBTy-W-ATrNHOJpD3KsGjYDfdgKFkFGDxP_GPr1K4bC0ZzgkmqdunqNPNKw14zxFPfHjAsesjWtbuqjZekjHrh77XfTTtU7unpe_PL-iUSKLeLYoqO8B5g6Gjxui6K72TxzQgYdIwfGxPxrNcMmZ6N0zZu27r33JHYELipMjHzkd9qnKi9HDR1e9tEQNTOHUZSy5b7gaQb1-MzkDH7WBynfSsUMkjnPtL7xnPaeR0mf6Lx5ow"/>
+</div>
+<div class="col-span-1 row-span-1 overflow-hidden">
+<img alt="Detail 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW2YKRQ_ILrNyuHfexWlvqDlBuoqM8MLIzxIPtRHFzErcXbuSSdKoT9dDRB2PW6iRR25U7uCHioGUGdhYwWtGDoe8Bx2tnXxBOCNnPA23UlZm25dJVrQdU666TLQtBUb2iuQN3p-8mHEdcNJTo6gh7FLp96OJB6QFGAnGVfQNBc3v937FoX6IhtVdaeTxctiN34dS1fbdBgH2Dhu9pti6xmJXIpK5jx2NUrepzCkIwxJfjeyIfdI9uzHNyLtx9HB_RDG5uGcEelA"/>
+</div>
+<div class="col-span-2 row-span-1 relative group overflow-hidden">
+<img alt="Detail 3" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkUfPF3Rg8wFLY3Y89A1HRizRPRISgNaoH7jyMpbPotWy5H7Gb3XTSzU1bsGnTqpWDKicY4-130F8fhjGtUhxxOEfFCpFu28ILx40eiEKkI0pFvz1_mcvOTC5kU61-deC41G_Z7Qgs_15KWIG9b5ZoA_xOF6RUIOu9gR-CsIJimhFH7lpRih6_m6NvNsYVMI9dmiz3cIobZmZtMhA-qkbL0TN9xPOUBdYHd0nL0QljvHeyMfEY56x0GlGXKJcb51gUNMCMqAw1fA"/>
+<button class="absolute bottom-6 right-6 px-6 py-3 bg-white/90 backdrop-blur rounded-2xl text-dark-navy font-black text-xs uppercase tracking-widest shadow-xl hover:bg-white transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">grid_view</span>
+                    Xem tất cả 24 ảnh
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<div class="lg:col-span-2">
+<div class="mb-10">
+<div class="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-[0.2em] mb-3">
+<span class="material-symbols-outlined text-sm">verified</span> Địa điểm uy tín
+                    </div>
+<h2 class="text-5xl font-black text-dark-navy italic uppercase tracking-tighter mb-4 leading-none">Cầu Rồng <span class="text-primary">Đà Nẵng</span></h2>
+<div class="flex flex-wrap items-center gap-6 mb-8">
+<div class="flex items-center gap-1 text-yellow-500 font-bold">
+<span class="material-symbols-outlined fill-1">star</span>
+<span class="text-xl">4.9</span>
+<span class="text-slate-400 font-medium text-sm ml-1">(2,450 đánh giá)</span>
+</div>
+<div class="flex items-center gap-2 text-slate-500 font-bold text-sm">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                            Nguyễn Văn Linh, Phước Ninh, Hải Châu, Đà Nẵng
+                        </div>
+</div>
+<p class="text-slate-600 leading-relaxed text-lg mb-8">
+                        Cầu Rồng là một trong những biểu tượng đặc trưng nhất của thành phố Đà Nẵng. Với thiết kế độc đáo hình con rồng uốn lượn hướng ra biển Đông, cây cầu không chỉ là huyết mạch giao thông mà còn là điểm đến du lịch không thể bỏ qua, đặc biệt là màn phun lửa và phun nước vào cuối tuần.
+                    </p>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold text-slate-600">#CheckinDanang</span>
+<span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold text-slate-600">#CauRong</span>
+<span class="px-4 py-2 bg-slate-100 rounded-full text-xs font-bold text-slate-600">#BieuTuongDaNang</span>
+</div>
+</div>
+<div class="bg-white rounded-[2rem] border border-slate-100 p-8 mb-12 shadow-sm">
+<h3 class="text-xl font-black text-dark-navy uppercase italic mb-8 border-l-4 border-primary pl-4">Tiện ích &amp; Đặc điểm</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">camera_alt</span>
+</div>
+<span class="text-sm font-bold text-slate-700">Chụp ảnh đẹp</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">directions_walk</span>
+</div>
+<span class="text-sm font-bold text-slate-700">Phố đi bộ</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_parking</span>
+</div>
+<span class="text-sm font-bold text-slate-700">Gửi xe gần đó</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<span class="text-sm font-bold text-slate-700">Sự kiện cuối tuần</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">sell</span>
+</div>
+<span class="text-sm font-bold text-slate-700">Tham quan miễn phí</span>
+</div>
+</div>
+</div>
+<div class="mt-16">
+<div class="flex justify-between items-end mb-10 border-b-2 border-slate-100 pb-6">
+<div>
+<h3 class="text-3xl font-black text-dark-navy uppercase italic tracking-tighter leading-none mb-2">Cộng đồng <span class="text-primary">Đánh giá</span></h3>
+<p class="text-slate-400 font-bold text-sm uppercase tracking-widest">Chia sẻ trải nghiệm của bạn</p>
+</div>
+<button class="px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-2xl font-black uppercase tracking-widest text-sm transition-all flex items-center gap-2 shadow-lg shadow-primary/5">
+<span class="material-symbols-outlined">rate_review</span>
+                            Viết đánh giá
+                        </button>
+</div>
+<div class="space-y-8">
+<div class="bg-white rounded-[2rem] border border-slate-100 p-8 hover:shadow-xl transition-all group">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<img alt="Reviewer" class="w-12 h-12 rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGF3Akw7IfnpjenstzBEsDueWJo9O95CrxqndfijD018fN5lVM01KJYXnVMopcFgz_DcKHHZ888ApWLtQqlQn7-J5tGnq7vmqEshZyqKPVcRtYgEnqcJ46X1h5_WeN2NMWEm3VlSSb5hrJucgHQzTvuG5AxVZsMuGlbPCuUonaFhI36ULBIGArlU6Dw7NsU3-v4ok0nVmM3NAq-cZQDsNoXsQc0c7DJUJvatjhUJjoGbkhTEV1VK5U5ztBPZmnxmoAVXfeahuahg"/>
+<div>
+<div class="font-black text-dark-navy">Trần Minh Tâm</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">2 ngày trước • Đã trải nghiệm</div>
+</div>
+</div>
+<div class="flex text-yellow-500">
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+</div>
+</div>
+<p class="text-slate-600 leading-relaxed mb-6 font-medium">
+                                "Cầu Rồng thực sự rất hùng vĩ vào ban đêm. Mình đã đến xem phun lửa vào 21:00 tối Thứ 7, không khí rất náo nhiệt. Mọi người nên đến sớm khoảng 30p để chọn được vị trí đẹp nhé!"
+                            </p>
+<div class="grid grid-cols-4 gap-3 mb-6">
+<img alt="R1" class="aspect-square object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzmiTHKO7YXcxdP-KmGTnyR7R3jEK6iyZ8M6NZwl09pmgaSQvOp6-QEpcrzvapE3AjVJLWMpfkK5lqJzgKA1ElpGwf3UEaKPEN6-FEc7Lh68Yfo71OiMTUyi5h_DCrPFL-0VUMBlXg0rS0aBeiQMa4TvH_L4gUJ26gAqdZbAqpk-VK3fxtDj1lLqalb1WdzSjIxhT2uBVRKBG3NOnus-cSXQjEcDKf6lFQEj3Pa6hvijsK1iR4SbWGx-ZeesWlZSsmWUT6N6jdpw"/>
+<img alt="R2" class="aspect-square object-cover rounded-xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW2YKRQ_ILrNyuHfexWlvqDlBuoqM8MLIzxIPtRHFzErcXbuSSdKoT9dDRB2PW6iRR25U7uCHioGUGdhYwWtGDoe8Bx2tnXxBOCNnPA23UlZm25dJVrQdU666TLQtBUb2iuQN3p-8mHEdcNJTo6gh7FLp96OJB6QFGAnGVfQNBc3v937FoX6IhtVdaeTxctiN34dS1fbdBgH2Dhu9pti6xmJXIpK5jx2NUrepzCkIwxJfjeyIfdI9uzHNyLtx9HB_RDG5uGcEelA"/>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-slate-50">
+<button class="flex items-center gap-2 text-slate-400 hover:text-primary transition-all group/btn">
+<span class="material-symbols-outlined text-xl group-hover/btn:scale-110 transition-transform">thumb_up_off_alt</span>
+<span class="text-xs font-black uppercase tracking-widest">Hữu ích (12)</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-[2rem] border border-slate-100 p-8 hover:shadow-xl transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="flex items-center gap-4">
+<img alt="Reviewer" class="w-12 h-12 rounded-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUyTKZL8dUgW5vswprykcSRD7aB0XbTpHCPRw019WqR3XS84Gr1BCV5esnl6EufIXMQyHVE1NtSieWrCdpzUuBxv4XagUYvshj7EqCzzIMx2v8M-hLKqeEV-FRqedOrU8H59IgnLSn81wYJfDez-h42gd9k1HdtwqWtrF_nRLLx3jGIOrcNkvKbQ5YIeqXGvvSb4CPWc3iUPb2-mrOHYC14NvyegMpPVNOv8wKj1PLAaXibUB8Ly1_a-6hXTy8yv7I6YCs9TQMWA"/>
+<div>
+<div class="font-black text-dark-navy">Lê Minh Anh</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase">1 tuần trước</div>
+</div>
+</div>
+<div class="flex text-yellow-500">
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined fill-1 text-sm">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<p class="text-slate-600 leading-relaxed mb-6 font-medium">
+                                "Rất đẹp, đặc biệt là khi đi du thuyền trên sông Hàn ngắm cầu từ xa. Tuy nhiên đoạn phun lửa hơi đông người nên đi cùng trẻ nhỏ cần lưu ý."
+                            </p>
+<div class="flex items-center justify-between pt-6 border-t border-slate-50">
+<button class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-xl fill-1">thumb_up</span>
+<span class="text-xs font-black uppercase tracking-widest">Hữu ích (13)</span>
+</button>
+<button class="text-slate-400 hover:text-primary transition-all">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-4 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-2xl text-slate-500 font-black uppercase tracking-widest text-xs transition-all">
+                        Xem tất cả đánh giá
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-1">
+<div class="sticky top-28 space-y-8">
+<div class="bg-white rounded-[2.5rem] border border-slate-100 p-8 shadow-2xl shadow-primary/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-[5rem]"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Trạng thái</div>
+<div class="flex items-center gap-2 text-green-500 font-bold">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                        Đang mở cửa
+                                    </div>
+</div>
+<button class="w-12 h-12 rounded-2xl border border-[#EF4444] bg-[#FEE2E2] text-[#EF4444] flex items-center justify-center transition-all shadow-sm">
+<span class="material-symbols-outlined fill-1">favorite</span>
+</button>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<span class="text-sm font-medium">Cả ngày (Phun lửa 21:00 T7, CN)</span>
+</div>
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined text-primary">payments</span>
+<span class="text-sm font-medium">Miễn phí tham quan</span>
+</div>
+<div class="flex items-center gap-3 text-slate-600">
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="text-sm font-medium">Không có thông tin</span>
+</div>
+</div>
+<button class="w-full py-4 bg-dark-navy text-white hover:bg-primary rounded-2xl font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-dark-navy/10 flex items-center justify-center gap-2 mb-4">
+<span class="material-symbols-outlined">map</span>
+                                Chỉ đường ngay
+                            </button>
+<button class="w-full py-4 border-2 border-primary text-primary hover:bg-primary/5 rounded-2xl font-black uppercase tracking-widest text-sm transition-all">
+                                Viết đánh giá
+                            </button>
+</div>
+</div>
+<div class="bg-white rounded-[2.5rem] border border-slate-100 p-4 shadow-sm h-64 overflow-hidden relative">
+<img alt="Map" class="w-full h-full object-cover rounded-[1.8rem] opacity-60 grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAdxGTX7aTcH0mNwCZEcGK50NNGe3RVYe8IjXEXMX0QkHFONFWWGJRAUqrsadTTC7WKyhQqpnN5oe-_uECs_squedLV2A0s4kSo6W1kjQIvhe3DxGDtQ8kQ0rBowsQUMzFGuijizWaCSRGgvM9cZTl-lsRvCZ7mXJyE6o0GfktPSqG5n-ge3Ij9tuAnQtjpU40-O2iKddAHV9cE5EuqU2oqbftfGg1n3PwWrt0SDe_fNlHH1uTCJwVb5ywMA-7mCb-FbpIETPj_Q"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-white p-3 rounded-2xl shadow-xl shadow-primary/30">
+<span class="material-symbols-outlined text-3xl font-bold">location_on</span>
+</div>
+</div>
+<div class="absolute bottom-6 left-6 right-6">
+<button class="w-full bg-white/90 backdrop-blur py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-dark-navy shadow-lg">Xem bản đồ lớn</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/50 backdrop-blur-sm">
+<div class="bg-white w-full max-w-[500px] rounded-[2rem] shadow-modal overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="px-8 py-6 border-b border-slate-100 flex items-center justify-between">
+<h3 class="text-lg font-bold text-[#1E293B]">Viết đánh giá</h3>
+<button class="text-slate-400 hover:text-dark-navy">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-8">
+<div class="text-center mb-8">
+<div class="flex gap-2 justify-center mb-2">
+<span class="material-symbols-outlined text-[36px] text-[#F59E0B] fill-1 cursor-pointer">star</span>
+<span class="material-symbols-outlined text-[36px] text-[#F59E0B] fill-1 cursor-pointer">star</span>
+<span class="material-symbols-outlined text-[36px] text-[#F59E0B] fill-1 cursor-pointer">star</span>
+<span class="material-symbols-outlined text-[36px] text-[#F59E0B] fill-1 cursor-pointer">star</span>
+<span class="material-symbols-outlined text-[36px] text-slate-200 cursor-pointer">star</span>
+</div>
+<div class="text-[13px] font-medium text-[#94A3B8]">Tốt</div>
+</div>
+<div class="mb-6">
+<textarea class="w-full min-h-[120px] border-[#E2E8F0] rounded-xl px-4 py-3 text-sm focus:ring-primary focus:border-primary placeholder:text-slate-400 transition-all" placeholder="Chia sẻ trải nghiệm của bạn về địa điểm này..."></textarea>
+<div class="text-[11px] text-[#94A3B8] text-right mt-1 font-medium">0/500</div>
+</div>
+<div class="mb-2">
+<div class="border-2 border-dashed border-[#E2E8F0] rounded-xl p-6 text-center cursor-pointer hover:border-primary hover:bg-[#EFF6FF] transition-all group">
+<span class="material-symbols-outlined text-[32px] text-[#94A3B8] group-hover:text-primary">add_photo_alternate</span>
+<div class="text-[13px] text-[#64748B] mt-2 font-medium">Thêm ảnh (tối đa 5)</div>
+<input class="hidden" multiple="" type="file"/>
+</div>
+</div>
+<div class="grid grid-cols-5 gap-2 mb-6">
+<div class="relative w-[60px] h-[60px]">
+<img alt="Preview" class="w-full h-full object-cover rounded-lg border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzmiTHKO7YXcxdP-KmGTnyR7R3jEK6iyZ8M6NZwl09pmgaSQvOp6-QEpcrzvapE3AjVJLWMpfkK5lqJzgKA1ElpGwf3UEaKPEN6-FEc7Lh68Yfo71OiMTUyi5h_DCrPFL-0VUMBlXg0rS0aBeiQMa4TvH_L4gUJ26gAqdZbAqpk-VK3fxtDj1lLqalb1WdzSjIxhT2uBVRKBG3NOnus-cSXQjEcDKf6lFQEj3Pa6hvijsK1iR4SbWGx-ZeesWlZSsmWUT6N6jdpw"/>
+<button class="absolute -top-1.5 -right-1.5 w-5 h-5 bg-dark-navy text-white rounded-full flex items-center justify-center hover:bg-red-500 transition-colors">
+<span class="material-symbols-outlined text-[12px] font-bold">close</span>
+</button>
+</div>
+</div>
+<div class="flex justify-end gap-3 pt-6 border-t border-[#F1F5F9]">
+<button class="px-6 py-2.5 border border-[#E2E8F0] bg-white text-[#64748B] rounded-xl text-sm font-bold hover:bg-slate-50 transition-all">Hủy</button>
+<button class="px-6 py-2.5 bg-[#0066CC] text-white rounded-xl text-sm font-bold shadow-lg shadow-primary/20 hover:bg-blue-700 transition-all">Gửi đánh giá</button>
+</div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[300] flex items-center gap-3 px-6 py-4 bg-[#FEE2E2] text-[#EF4444] rounded-2xl shadow-2xl border border-[#EF4444]/20 animate-in slide-in-from-bottom-5 duration-500">
+<span class="material-symbols-outlined font-bold">favorite</span>
+<span class="font-black text-sm uppercase tracking-widest">Đã thêm vào yêu thích ❤️</span>
+</div>
+<section class="max-w-[1200px] mx-auto px-6 py-20 border-t border-slate-100">
+<h2 class="text-3xl font-black text-dark-navy uppercase italic tracking-tighter mb-12">Địa điểm <span class="text-primary">Lân cận</span></h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-3xl overflow-hidden mb-4 shadow-lg">
+<img alt="My Khe" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkVHjIv_86zohHkfNhUlBgG8AvssdAP5BwxhrNrJEgECXQ_-P_0y5Ex1g3g3aqT2wbHx8Nkz99r-6RfTZVEpf5m1zl8XcorH0jQQCsTECkmKKYj8lisknMPbZnS1umcYnUVowjREHED7VKkv2mh6wo9YC4XHM9tc0Jw3e9x_Z25yOlHjML0kaO3HEUeg0-9bhCMxfBIT4q1nubWtrE6jOumWVuz19Al5jNvHCDjbZ_vzqkRS-v2UyXRgmkllZjoXGzckU8oXbCoQ"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[8px] font-black px-3 py-1 rounded-lg uppercase">Bãi biển • 1.5km</div>
+</div>
+<h4 class="text-lg font-black text-dark-navy group-hover:text-primary transition-colors">Bãi biển Mỹ Khê</h4>
+<div class="flex items-center gap-1 text-yellow-500 text-xs mt-1">
+<span class="material-symbols-outlined text-sm fill-1">star</span> 4.8 (10K+)
+                </div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-3xl overflow-hidden mb-4 shadow-lg">
+<img alt="Museum" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkUfPF3Rg8wFLY3Y89A1HRizRPRISgNaoH7jyMpbPotWy5H7Gb3XTSzU1bsGnTqpWDKicY4-130F8fhjGtUhxxOEfFCpFu28ILx40eiEKkI0pFvz1_mcvOTC5kU61-deC41G_Z7Qgs_15KWIG9b5ZoA_xOF6RUIOu9gR-CsIJimhFH7lpRih6_m6NvNsYVMI9dmiz3cIobZmZtMhA-qkbL0TN9xPOUBdYHd0nL0QljvHeyMfEY56x0GlGXKJcb51gUNMCMqAw1fA"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[8px] font-black px-3 py-1 rounded-lg uppercase">Văn hóa • 0.8km</div>
+</div>
+<h4 class="text-lg font-black text-dark-navy group-hover:text-primary transition-colors">Bảo tàng Điêu khắc Chăm</h4>
+<div class="flex items-center gap-1 text-yellow-500 text-xs mt-1">
+<span class="material-symbols-outlined text-sm fill-1">star</span> 4.6 (1.2K)
+                </div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative aspect-video rounded-3xl overflow-hidden mb-4 shadow-lg">
+<img alt="Bridge" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxVjdLpL69uYyozLTt_gmk8dq6ZwZT-mbLytvySnoHzMEaJ72TYrbPpknffmS7gci4gD4QOslyoCBP6S-2kifvtRIRT1lrtSJbygjWJfUVzbZ_5rBITXne1sOGRv0EE2Q9x7twplIj_PnO4C4tbeCaD5p3hSQqHrT2zWZ_1qGVYGVCURlzLQH8R0oM5uMgJY7yZJA8vF-jveYArULUboJUkpwW95QAe8H4HxlvgUmGAsaa6SQwoJQ0F7CrLyF9RUCKZG1GQ8WNFw"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[8px] font-black px-3 py-1 rounded-lg uppercase">Danh thắng • 1.2km</div>
+</div>
+<h4 class="text-lg font-black text-dark-navy group-hover:text-primary transition-colors">Cầu Sông Hàn</h4>
+<div class="flex items-center gap-1 text-yellow-500 text-xs mt-1">
+<span class="material-symbols-outlined text-sm fill-1">star</span> 4.7 (3.5K)
+                </div>
+</div>
+</div>
+</section>
+<footer class="bg-dark-navy text-white pt-24 pb-12 overflow-hidden relative">
+<div class="max-w-[1400px] mx-auto px-6 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
+<div>
+<div class="flex items-center gap-2 mb-8">
+<div class="bg-primary p-1.5 rounded-lg rotate-12">
+<span class="material-symbols-outlined text-accent text-3xl font-bold">explore</span>
+</div>
+<h2 class="text-white text-2xl font-black tracking-tighter italic uppercase">ĐÀ NẴNG<span class="text-primary">TRIP</span></h2>
+</div>
+<p class="text-slate-400 font-medium leading-relaxed mb-10 text-sm">
+                        Nền tảng du lịch năng động nhất Đà Nẵng, giúp bạn hoạch định chuyến đi hoàn hảo.
+                    </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-primary transition-all group" href="#"><span class="material-symbols-outlined group-hover:text-white text-slate-400">public</span></a>
+<a class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-primary transition-all group" href="#"><span class="material-symbols-outlined group-hover:text-white text-slate-400">share</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-lg font-black uppercase tracking-widest mb-10 italic">KHÁM PHÁ</h4>
+<ul class="space-y-6 text-slate-400 font-bold uppercase tracking-widest text-[10px]">
+<li><a class="hover:text-accent transition-colors" href="#">Địa điểm nổi bật</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Tour trong ngày</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Cẩm nang du lịch</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-black uppercase tracking-widest mb-10 italic">HỖ TRỢ</h4>
+<ul class="space-y-6 text-slate-400 font-bold uppercase tracking-widest text-[10px]">
+<li><a class="hover:text-accent transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Điều khoản sử dụng</a></li>
+<li><a class="hover:text-accent transition-colors" href="#">Liên hệ ngay</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-black uppercase tracking-widest mb-10 italic">LIÊN HỆ</h4>
+<div class="space-y-6">
+<div class="flex items-center gap-4 text-slate-400 text-sm font-bold tracking-wider">
+<span class="material-symbols-outlined text-primary">call</span> 1900 6789
+                        </div>
+<div class="flex items-center gap-4 text-slate-400 text-sm font-bold tracking-wider">
+<span class="material-symbols-outlined text-primary">alternate_email</span> hello@danangtrip.vn
+                        </div>
+</div>
+</div>
+</div>
+<div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+<p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 ĐÀ NẴNG TRIP. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+
+</body></html>

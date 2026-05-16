@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tạo Người dùng - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --bg-page: #F8FAFC;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --radius-card: 16px;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+        }
+        .input-base {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+        .input-base:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.15);
+        }
+        .label-base {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .required {
+            color: var(--error);
+        }
+        .helper-text {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white font-bold text-2xl">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Admin Panel</p>
+</div>
+</div>
+<nav class="space-y-1.5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-medium text-sm">Tổng quan</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-medium text-sm">Đơn hàng</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">rate_review</span><span class="font-medium text-sm">Đánh giá</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-blue-600 shadow-sm" href="#"><span class="material-symbols-outlined">group</span><span class="font-medium text-sm">Người dùng</span></a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 p-8 min-h-screen">
+<div class="flex justify-between items-start mb-6">
+<div>
+<nav class="flex items-center gap-2 mb-1">
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Người dùng</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Danh sách Người dùng</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-secondary)]">Tạo mới</span>
+</nav>
+<h2 class="text-2xl font-bold text-[var(--text-primary)]">Tạo Người dùng mới</h2>
+<p class="text-sm text-[var(--text-secondary)]">Thêm tài khoản người dùng vào hệ thống</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-white border border-[var(--border)] text-[var(--text-secondary)] rounded-[10px] text-sm font-semibold hover:border-[var(--error)] hover:text-[var(--error)] transition-all">Hủy</button>
+<button class="px-5 py-2.5 bg-[var(--primary)] text-white rounded-[10px] text-sm font-semibold shadow-[0_4px_12px_rgba(0,102,204,0.25)] hover:bg-[#004999] transition-all">Tạo người dùng</button>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-1">
+<div class="card p-0 overflow-hidden">
+<form>
+<div class="p-6 border-b-2 border-slate-100">
+<div class="space-y-4">
+<div>
+<label class="label-base">Họ và tên <span class="required">*</span></label>
+<input class="input-base" placeholder="Nhập họ và tên đầy đủ" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="label-base">Username <span class="required">*</span></label>
+<div class="relative">
+<span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[var(--text-muted)]">@</span>
+<input class="input-base pl-8" placeholder="nguyenvanan" type="text"/>
+</div>
+<p class="helper-text">Chỉ dùng chữ thường, số và gạch dưới</p>
+</div>
+<div>
+<label class="label-base">Email <span class="required">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">mail</span>
+<input class="input-base pl-10" placeholder="example@email.com" type="email"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="label-base">Mật khẩu <span class="required">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">lock</span>
+<input class="input-base pl-10 pr-10" placeholder="Nhập mật khẩu" type="password"/>
+<button class="absolute right-3.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" type="button">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</div>
+<p class="helper-text">Tối thiểu 8 ký tự, bao gồm chữ và số</p>
+</div>
+<div>
+<label class="label-base">Xác nhận mật khẩu <span class="required">*</span></label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">lock</span>
+<input class="input-base pl-10" placeholder="Nhập lại mật khẩu" type="password"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-slate-50/50">
+<div class="relative mb-6 flex items-center justify-center">
+<div class="absolute inset-0 flex items-center"><div class="w-full border-t border-slate-200"></div></div>
+<span class="relative bg-white px-3 text-[10px] font-bold tracking-widest text-[var(--text-muted)] uppercase">Thông tin bổ sung</span>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="label-base">Số điện thoại</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">phone</span>
+<input class="input-base pl-10" placeholder="0905 xxx xxx" type="tel"/>
+</div>
+</div>
+<div>
+<label class="label-base">Ngày sinh</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">cake</span>
+<input class="input-base pl-10" type="date"/>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="label-base">Giới tính</label>
+<select class="input-base">
+<option>Chưa chọn</option>
+<option>Nam</option>
+<option>Nữ</option>
+<option>Khác</option>
+</select>
+</div>
+<div>
+<label class="label-base">Thành phố</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[18px] text-[var(--text-muted)]">location_on</span>
+<input class="input-base pl-10" placeholder="Đà Nẵng" type="text"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-6 py-4 bg-white border-t border-slate-100 flex justify-end gap-3">
+<button class="px-5 py-2 border border-[var(--border)] text-[var(--text-secondary)] rounded-lg text-sm font-semibold hover:border-[var(--error)] hover:text-[var(--error)]" type="button">Hủy</button>
+<button class="px-5 py-2 bg-[var(--primary)] text-white rounded-lg text-sm font-semibold shadow-md hover:bg-[#004999]" type="submit">Tạo người dùng</button>
+</div>
+</form>
+</div>
+</div>
+<div class="w-[320px]">
+<div class="sticky top-6 space-y-4">
+<div class="card p-5 border-2 border-blue-50 bg-blue-50/10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-[20px] text-[var(--primary)]">bolt</span>
+<h3 class="text-[14px] font-bold">Cài đặt nhanh</h3>
+</div>
+<div class="grid grid-cols-1 gap-2">
+<button class="flex items-center justify-between p-2.5 bg-white border border-slate-200 rounded-xl hover:border-[var(--primary)] hover:bg-blue-50/50 transition-all text-left">
+<div>
+<p class="text-xs font-bold text-[var(--text-primary)]">Mặc định: User</p>
+<p class="text-[10px] text-[var(--text-muted)]">Quyền cơ bản, Kích hoạt ngay</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-[var(--success)]">check_circle</span>
+</button>
+<button class="flex items-center justify-between p-2.5 bg-white border border-slate-200 rounded-xl hover:border-[var(--primary)] hover:bg-blue-50/50 transition-all text-left">
+<div>
+<p class="text-xs font-bold text-[var(--text-primary)]">Mặc định: Staff</p>
+<p class="text-[10px] text-[var(--text-muted)]">Quyền hỗ trợ, Kích hoạt ngay</p>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-300">add_circle</span>
+</button>
+</div>
+</div>
+<div class="card p-5">
+<h3 class="text-[14px] font-bold mb-4">Cấu hình tài khoản</h3>
+<div class="space-y-5">
+<div>
+<label class="label-base">Phân quyền</label>
+<div class="space-y-2">
+<label class="flex items-start gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition-all">
+<input checked="" class="mt-1 text-[var(--primary)] focus:ring-[var(--primary)]" name="role" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold">Người dùng</span>
+<span class="px-2 py-0.5 bg-[#F1F5F9] text-[#64748B] text-[10px] font-bold rounded-full">USER</span>
+</div>
+<p class="text-[11px] text-[var(--text-muted)] mt-0.5">Khách hàng thông thường</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition-all">
+<input class="mt-1 text-[var(--primary)] focus:ring-[var(--primary)]" name="role" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold">Nhân viên</span>
+<span class="px-2 py-0.5 bg-[#EFF6FF] text-[#0066CC] text-[10px] font-bold rounded-full">STAFF</span>
+</div>
+<p class="text-[11px] text-[var(--text-muted)] mt-0.5">Nhân viên hỗ trợ</p>
+</div>
+</label>
+<label class="flex items-start gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition-all">
+<input class="mt-1 text-[var(--primary)] focus:ring-[var(--primary)]" name="role" type="radio"/>
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold">Quản trị</span>
+<span class="px-2 py-0.5 bg-[#EEF2FF] text-[#6366F1] text-[10px] font-bold rounded-full">ADMIN</span>
+</div>
+<p class="text-[11px] text-[var(--text-muted)] mt-0.5">Quản trị viên toàn quyền</p>
+</div>
+</label>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+<div>
+<p class="text-sm font-semibold">Kích hoạt ngay</p>
+<p class="text-[11px] text-[var(--text-muted)]">Có thể đăng nhập ngay</p>
+</div>
+<button class="w-10 h-6 bg-[var(--primary)] rounded-full relative transition-all" type="button">
+<span class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></span>
+</button>
+</div>
+<div class="pt-4 space-y-2">
+<button class="w-full py-3 bg-[var(--primary)] text-white rounded-xl text-sm font-bold shadow-lg shadow-blue-500/20 hover:bg-[#004999] transition-all">Tạo người dùng</button>
+<button class="w-full py-3 bg-white border border-slate-200 text-[var(--text-secondary)] rounded-xl text-sm font-bold hover:border-[var(--error)] hover:text-[var(--error)] transition-all">Hủy</button>
+</div>
+</div>
+</div>
+<div class="card p-5 bg-[#EFF6FF] border-[#B3D9FF]">
+<h3 class="text-[13px] font-bold text-[var(--primary)] mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span> Lưu ý
+                        </h3>
+<ul class="space-y-2">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[14px] text-[var(--primary)] mt-0.5">arrow_forward</span>
+<span class="text-[12px] text-[var(--text-primary)]">Username phải là duy nhất trong hệ thống</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[14px] text-[var(--primary)] mt-0.5">arrow_forward</span>
+<span class="text-[12px] text-[var(--text-primary)]">Mật khẩu nên có ít nhất 8 ký tự</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+</body></html>

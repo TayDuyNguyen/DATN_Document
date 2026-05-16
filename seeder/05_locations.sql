@@ -108,6 +108,16 @@ INSERT INTO locations (id, name, slug, category_id, address, district, latitude,
 (99, 'Hilton Da Nang', 'hilton-da-nang', 3, '50 Bach Dang, Da Nang', '50 Bach Dang', 16.0785, 108.2245, 'Modern luxury in the heart of the city with river views.', 'Modern city luxury hotel.', '{"mon": "00:00-23:59"}', 3500000, 15000000, 'active', false, 6, NOW(), NOW()),
 (100, 'Four Points by Sheraton', 'four-points-sheraton-danang', 3, '118-120 Vo Nguyen Giap, Da Nang', '118-120 Vo Nguyen Giap', 16.0742, 108.2458, 'Stunning ocean views and upscale amenities on the coastline.', 'Upscale oceanfront hotel.', '{"mon": "00:00-23:59"}', 2500000, 10000000, 'active', false, 7, NOW(), NOW());
 
+-- price_level was not in INSERT list (column nullable); derive 1–4 for admin UI from typical spend (VND)
+-- COALESCE (not IFNULL) for PostgreSQL compatibility; works on MySQL/MariaDB too
+UPDATE locations SET price_level = CASE
+    WHEN COALESCE(price_min, 0) <= 0 AND COALESCE(price_max, 0) <= 0 THEN 1
+    WHEN GREATEST(COALESCE(price_min, 0), COALESCE(price_max, 0)) < 100000 THEN 2
+    WHEN GREATEST(COALESCE(price_min, 0), COALESCE(price_max, 0)) < 500000 THEN 3
+    ELSE 4
+END
+WHERE price_level IS NULL;
+
 -- 2. LOCATION_TAGS (Pivots)
 -- Link real tags to real locations
 INSERT INTO location_tags (location_id, tag_id, created_at) VALUES

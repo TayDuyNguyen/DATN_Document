@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chỉnh sửa Bài viết - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --bg-page: #F8FAFC;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 12px rgba(0,102,204,0.15);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .card {
+            background: #FFFFFF;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .toolbar-btn {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+        .toolbar-btn:hover {
+            background-color: #EFF6FF;
+            color: var(--primary);
+        }
+        .toolbar-btn.active {
+            background-color: #EFF6FF;
+            color: var(--primary);
+            border: 1px solid #B3D9FF;
+        }
+        .editor-area:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-xl flex items-center justify-center text-white font-bold text-2xl">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold">Admin Panel</p>
+</div>
+</div>
+<nav class="space-y-1.5">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">dashboard</span><span class="font-medium text-sm">Tổng quan</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">receipt_long</span><span class="font-medium text-sm">Đơn hàng</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-blue-600 shadow-sm" href="#"><span class="material-symbols-outlined">article</span><span class="font-medium text-sm">Blog</span></a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-400 hover:text-white transition-all" href="#"><span class="material-symbols-outlined">group</span><span class="font-medium text-sm">Người dùng</span></a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 min-h-screen">
+<header class="sticky top-0 z-40 bg-[var(--bg-page)]/80 backdrop-blur-md px-8 py-5 border-b border-slate-200">
+<div class="max-w-[1200px] mx-auto flex justify-between items-center">
+<div>
+<nav class="flex items-center gap-2 mb-1">
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Blog</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--text-muted)]">Khám phá Bà Nà Hills</span>
+<span class="material-symbols-outlined text-[14px] text-[var(--text-muted)]">chevron_right</span>
+<span class="text-[12px] font-medium text-[var(--primary)]">Chỉnh sửa</span>
+</nav>
+<h2 class="text-2xl font-bold text-[var(--text-primary)]">Chỉnh sửa Bài viết</h2>
+<p class="text-[14px] font-medium text-[var(--text-secondary)]">Kinh nghiệm du lịch Bà Nà Hills tự túc mới nhất 2024</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2.5 bg-white border border-[#E2E8F0] text-[var(--text-secondary)] rounded-xl text-sm font-semibold hover:border-[var(--error)] hover:text-[var(--error)] transition-all">Hủy</button>
+<button class="px-5 py-2.5 bg-white border border-[#E2E8F0] text-[var(--text-secondary)] rounded-xl text-sm font-semibold hover:border-[var(--primary)] hover:text-[var(--primary)] flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                        Xem bài viết
+                    </button>
+<button class="px-5 py-2.5 bg-[var(--primary)] text-white rounded-xl text-sm font-semibold shadow-[0_4px_14px_rgba(0,102,204,0.25)] hover:bg-[#004999] transition-all">Lưu thay đổi</button>
+</div>
+</div>
+</header>
+<div class="max-w-[1200px] mx-auto px-8 py-8 flex gap-8">
+<div class="flex-1 space-y-8">
+<div class="flex items-center gap-4 mb-2 px-1">
+<div class="flex-1 h-2 bg-blue-600 rounded-full"></div>
+<div class="flex-1 h-2 bg-blue-600 rounded-full"></div>
+<span class="text-[12px] font-bold text-blue-600 uppercase tracking-wider ml-2">Hoàn tất nội dung</span>
+</div>
+<section class="card p-6 border-l-4 border-l-blue-600">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-sm">01</div>
+<div>
+<h3 class="text-lg font-bold text-[var(--text-primary)]">Thông tin chung</h3>
+<p class="text-[13px] text-[var(--text-secondary)]">Tiêu đề, đường dẫn và tóm tắt bài viết</p>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-[12px] font-bold text-[var(--text-muted)] mb-1 uppercase tracking-wider">Tiêu đề bài viết</label>
+<input class="w-full text-[20px] font-semibold text-[var(--text-primary)] bg-transparent border-0 border-b border-[#E2E8F0] px-0 py-3 focus:ring-0 focus:border-b-2 focus:border-[var(--primary)] placeholder:text-[var(--text-muted)]" type="text" value="Kinh nghiệm du lịch Bà Nà Hills tự túc mới nhất 2024"/>
+<p class="text-[11px] text-[var(--text-muted)] text-right mt-1.5">52/200</p>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-tight">URL:</span>
+<div class="flex-1 flex items-center bg-slate-50 border border-[#E2E8F0] rounded-lg px-3 py-2 focus-within:border-[var(--primary)] focus-within:bg-white transition-all">
+<input class="flex-1 bg-transparent border-0 p-0 text-[13px] text-[var(--text-secondary)] focus:ring-0 font-medium" type="text" value="kinh-nghiem-du-lich-ba-na-hills-tu-tuc-2024"/>
+</div>
+</div>
+<div class="bg-[#FEF3C7] border border-amber-500/30 rounded-lg p-3 mt-3 flex items-start gap-2">
+<span class="material-symbols-outlined text-[18px] text-[#F59E0B]">warning_amber</span>
+<p class="text-[12px] text-[#92400E] leading-relaxed">Thay đổi slug sẽ làm thay đổi URL bài viết. Các link cũ sẽ không còn hoạt động trên các công cụ tìm kiếm.</p>
+</div>
+<p class="text-[11px] text-[var(--text-muted)] mt-1.5 ml-10">danangtrip.vn/blog/<span class="text-blue-600 font-medium">kinh-nghiem-du-lich-ba-na-hills-tu-tuc-2024</span></p>
+</div>
+<div>
+<label class="block text-[13px] font-bold text-[var(--text-primary)] mb-2 uppercase tracking-wide">Mô tả ngắn (Excerpt)</label>
+<textarea class="w-full bg-white border border-[#E2E8F0] rounded-xl px-4 py-3 text-[14px] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] resize-none focus:border-[var(--primary)] focus:ring-4 focus:ring-blue-50 transition-all" rows="3">Tổng hợp trọn bộ kinh nghiệm đi Bà Nà Hills 2024: Cách mua vé, phương tiện di chuyển, các địa điểm check-in không thể bỏ lỡ và lịch trình tham quan tối ưu nhất cho gia đình.</textarea>
+<p class="text-[11px] text-[var(--text-muted)] text-right mt-1.5">185/300</p>
+</div>
+</div>
+</section>
+<section class="card p-6 border-l-4 border-l-blue-600">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center font-bold text-lg shadow-sm">02</div>
+<div>
+<h3 class="text-lg font-bold text-[var(--text-primary)]">Nội dung chi tiết</h3>
+<p class="text-[13px] text-[var(--text-secondary)]">Soạn thảo nội dung bài viết với công cụ Rich Text</p>
+</div>
+</div>
+<div class="border border-[#E2E8F0] rounded-xl overflow-hidden focus-within:border-[var(--primary)] focus-within:ring-4 focus-within:ring-blue-50 transition-all">
+<div class="bg-[#F8FAFC] border-b border-[#E2E8F0] px-3 py-2 flex items-center gap-1.5 flex-wrap">
+<button class="toolbar-btn active"><span class="material-symbols-outlined text-[18px]">format_bold</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_italic</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_underlined</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">strikethrough_s</span></button>
+<div class="w-px h-5 bg-[#E2E8F0] mx-1"></div>
+<button class="flex items-center gap-1 px-2 py-1 text-[13px] font-medium text-[var(--text-secondary)] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-md transition-colors">
+                                Đoạn văn <span class="material-symbols-outlined text-[16px]">arrow_drop_down</span>
+</button>
+<div class="w-px h-5 bg-[#E2E8F0] mx-1"></div>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_list_bulleted</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_list_numbered</span></button>
+<div class="w-px h-5 bg-[#E2E8F0] mx-1"></div>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">link</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">image</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_quote</span></button>
+<div class="w-px h-5 bg-[#E2E8F0] mx-1"></div>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_align_left</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_align_center</span></button>
+<button class="toolbar-btn"><span class="material-symbols-outlined text-[18px]">format_align_right</span></button>
+</div>
+<div class="p-6 min-h-[500px] text-[15px] leading-relaxed text-[var(--text-primary)] editor-area" contenteditable="true">
+<h2 class="text-xl font-bold mb-4">1. Thời điểm lý tưởng đi Bà Nà Hills</h2>
+<p class="mb-4">Theo kinh nghiệm của chúng tôi, thời điểm đẹp nhất để tham quan Bà Nà là từ tháng 3 đến tháng 9. Lúc này thời tiết Đà Nẵng khô ráo, ít mưa, trời trong xanh cực kỳ phù hợp để check-in Cầu Vàng hay Làng Pháp.</p>
+<p class="mb-4">Nếu bạn muốn trải nghiệm không khí se lạnh như Đà Lạt, hãy chọn đi vào dịp cuối năm. Tuy nhiên cần lưu ý theo dõi dự báo thời tiết vì mùa này thường có sương mù dày đặc.</p>
+<img alt="Ba Na Hills" class="rounded-xl my-6 w-full object-cover h-[300px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA3PKE0aDehdZSmeM9wYekcgi7b9vO4qFDZmDecFgA_mm4oOp2qdEZNe6rDhVMzevqLpsRl_gF7dUySALGuSeoawzEcdd4esLNyn1YAJFR4Ekt3OExqzXZSjAoWtN9UNlZQed-yK8ml7msysCY8CSwvAbpFbkM39lDQ5KkLY-X_Oa7OR-9pRSx4oLVC1BB-9HTf4E-74KNp6sDuiU_UOGyPhKfADykjphCCFhTNzT8qM5l0IcLvgOM-pAZu6wCef6iu-AFBDyGNw"/>
+<h2 class="text-xl font-bold mb-4">2. Cách di chuyển từ trung tâm Đà Nẵng</h2>
+<p class="mb-4">Có 3 cách phổ biến để đến Bà Nà Hills:</p>
+<ul class="list-disc pl-6 mb-4 space-y-2">
+<li>Thuê xe máy tự túc (100k-150k/ngày)</li>
+<li>Đặt xe bus đưa đón (khoảng 150k khứ hồi)</li>
+<li>Đi Taxi hoặc Grab (300k-400k/chiều)</li>
+</ul>
+</div>
+</div>
+</section>
+</div>
+<div class="w-[340px] space-y-4">
+<div class="card p-5 sticky top-24">
+<h3 class="text-[14px] font-bold text-[var(--text-primary)] mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-blue-600">send</span>
+                        Cài đặt Xuất bản
+                    </h3>
+<div class="space-y-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 w-4 h-4 text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" name="status" type="radio"/>
+<div>
+<span class="text-[13px] font-bold text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">Bản nháp (draft)</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-[#FEF3C7] text-[#F59E0B] text-[9px] font-bold px-1.5 py-0.5 rounded uppercase tracking-wider">BẢN NHÁP</span>
+</div>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input checked="" class="mt-1 w-4 h-4 text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" name="status" type="radio"/>
+<div>
+<span class="text-[13px] font-bold text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">Đã xuất bản (published)</span>
+<div class="flex flex-col gap-1 mt-1">
+<span class="bg-[#D1FAE5] text-[#10B981] text-[9px] font-bold px-1.5 py-0.5 rounded w-fit uppercase tracking-wider">XUẤT BẢN</span>
+<span class="text-[11px] text-[var(--text-secondary)]">Đã xuất bản lúc: 15/03/2026 09:30</span>
+</div>
+</div>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 w-4 h-4 text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" name="status" type="radio"/>
+<div>
+<span class="text-[13px] font-bold text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">Lên lịch (scheduled)</span>
+</div>
+</label>
+</div>
+<div class="mt-6 pt-5 border-t border-[#F1F5F9]">
+<label class="block text-[10px] font-bold text-[var(--text-muted)] mb-4 uppercase tracking-[1.5px]">THÔNG TIN BÀI VIẾT</label>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-[12px] text-[var(--text-secondary)]">Ngày tạo</span>
+<span class="text-[13px] font-medium text-[var(--text-primary)]">15/03/2026 09:30</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[12px] text-[var(--text-secondary)]">Cập nhật</span>
+<span class="text-[13px] font-medium text-[var(--text-primary)]">01/04/2026 14:22</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[12px] text-[var(--text-secondary)]">Tác giả</span>
+<span class="text-[13px] font-medium text-[var(--text-primary)]">Admin Duy Tây</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[12px] text-[var(--text-secondary)]">Lượt xem</span>
+<span class="text-[13px] font-bold text-[#0066CC]">2.4K lượt</span>
+</div>
+</div>
+</div>
+<div class="mt-6 space-y-3">
+<button class="w-full py-3 bg-[var(--primary)] text-white rounded-xl text-sm font-bold shadow-md hover:bg-[#004999] transition-all">Lưu thay đổi</button>
+<button class="w-full py-3 bg-white border border-[#E2E8F0] text-[var(--text-secondary)] rounded-xl text-sm font-bold hover:bg-slate-50 transition-all">Hủy thay đổi</button>
+</div>
+</div>
+<div class="card p-5">
+<h3 class="text-[14px] font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-blue-600">category</span>
+                        Danh mục
+                    </h3>
+<div class="space-y-3 max-h-[180px] overflow-y-auto pr-2 custom-scrollbar">
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" type="checkbox"/>
+<span class="text-[13px] font-semibold text-[var(--primary)]">Tham quan</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" type="checkbox"/>
+<span class="text-[13px] font-medium text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">Ẩm thực</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="w-4 h-4 rounded text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" type="checkbox"/>
+<span class="text-[13px] font-semibold text-[var(--primary)]">Cẩm nang du lịch</span>
+</label>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="w-4 h-4 rounded text-[var(--primary)] focus:ring-[var(--primary)] border-[#E2E8F0]" type="checkbox"/>
+<span class="text-[13px] font-medium text-[var(--text-primary)] group-hover:text-[var(--primary)] transition-colors">Sự kiện</span>
+</label>
+</div>
+<button class="w-full mt-5 py-2.5 bg-[#EFF6FF]/60 border border-dashed border-[#B3D9FF] text-[var(--primary)] rounded-lg text-[12px] font-bold flex items-center justify-center gap-2 hover:bg-[#EFF6FF] transition-all">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Thêm danh mục mới
+                    </button>
+</div>
+<div class="card p-5">
+<h3 class="text-[14px] font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-blue-600">image</span>
+                        Ảnh đại diện
+                    </h3>
+<div class="relative group h-40 w-full rounded-xl overflow-hidden border border-[#E2E8F0]">
+<img alt="Featured image" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_baYWVS4r6ETbsDZraO2LbuXIvlnlR9Nf6hN4XfbXDyoKjCBymEEZumnNca8vMe1_dnDnMnlhDpgWMizKscEtPtZltgtqmiuU5SUIBD2P2hIdXw4mu-XwDdmHGJ9D49gp8Y3gws6qXmdtasrgH41GRKflM4uJI9bqDpoZXpb3GEo5dH2ktGQYS6ekAORBt7hOlyacrx9dJnPogEf_4Ba6OqkwOeR5YNYGR2N6K1VetW7ECvXNVZGz5NSwUefKCXnV-4iak12_Lg"/>
+<div class="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-sm p-3 flex justify-between items-center">
+<div>
+<p class="text-[11px] text-white/70 font-medium">Ảnh hiện tại</p>
+<p class="text-[10px] text-white/50">banahills-thumb.jpg</p>
+</div>
+<button class="bg-white/20 hover:bg-white/30 text-white border border-white/30 rounded-md px-3 py-1.5 text-[12px] font-semibold transition-all">Thay đổi</button>
+</div>
+</div>
+</div>
+<div class="card p-5">
+<h3 class="text-[14px] font-bold text-[var(--text-primary)] mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-blue-600">bolt</span>
+                        Thao tác nhanh
+                    </h3>
+<div class="space-y-3">
+<button class="flex items-center justify-center gap-2 w-full py-2.5 border border-[#E2E8F0] bg-white text-[var(--text-secondary)] rounded-xl text-[13px] font-semibold hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                            Xem bài viết
+                        </button>
+<button class="flex items-center justify-center gap-2 w-full py-2.5 border border-[#E2E8F0] bg-white text-[var(--text-secondary)] rounded-xl text-[13px] font-semibold hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+                            Nhân bản bài viết
+                        </button>
+<button class="flex items-center justify-center gap-2 w-full py-2.5 border border-[#FEE2E2] bg-white text-[#EF4444] rounded-xl text-[13px] font-semibold hover:bg-[#FEE2E2] transition-all">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                            Xóa bài viết
+                        </button>
+</div>
+</div>
+<div class="bg-blue-100 border border-blue-200 rounded-2xl p-6">
+<h3 class="text-[15px] font-bold text-[#0066CC] mb-5 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+                        Cẩm nang chỉnh sửa
+                    </h3>
+<ul class="space-y-5">
+<li class="flex items-start gap-3">
+<div class="bg-white/50 p-1 rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-[#0066CC]">verified_user</span>
+</div>
+<p class="text-[14px] text-[#1E293B] leading-relaxed">
+<strong class="text-[#004999]">Tối ưu hóa SEO:</strong> Đảm bảo tiêu đề chứa các từ khóa trọng tâm như "Bà Nà Hills", "kinh nghiệm" để thu hút người tìm kiếm.
+                            </p>
+</li>
+<li class="flex items-start gap-3">
+<div class="bg-white/50 p-1 rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-[#0066CC]">link_off</span>
+</div>
+<p class="text-[14px] text-[#1E293B] leading-relaxed">
+<strong class="text-[#004999]">Lưu ý Slug:</strong> Tránh thay đổi Slug thường xuyên vì sẽ làm đứt gãy các liên kết cũ đã chia sẻ trên mạng xã hội.
+                            </p>
+</li>
+<li class="flex items-start gap-3">
+<div class="bg-white/50 p-1 rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-[#0066CC]">aspect_ratio</span>
+</div>
+<p class="text-[14px] text-[#1E293B] leading-relaxed">
+<strong class="text-[#004999]">Ảnh đại diện:</strong> Luôn sử dụng ảnh chất lượng cao với tỷ lệ 16:9 để bài viết hiển thị chuyên nghiệp trên mọi thiết bị.
+                            </p>
+</li>
+<li class="flex items-start gap-3">
+<div class="bg-white/50 p-1 rounded-lg">
+<span class="material-symbols-outlined text-[20px] text-[#0066CC]">spellcheck</span>
+</div>
+<p class="text-[14px] text-[#1E293B] leading-relaxed">
+<strong class="text-[#004999]">Rà soát nội dung:</strong> Sử dụng nút "Xem bài viết" thường xuyên để kiểm tra hiển thị thực tế trước khi lưu các thay đổi quan trọng.
+                            </p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] bg-[#D1FAE5] border border-[#10B981] px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 opacity-0 pointer-events-none transition-all">
+<span class="material-symbols-outlined text-[#10B981]">check_circle</span>
+<span class="text-sm font-bold text-[#065F46]">Cập nhật bài viết thành công!</span>
+</div>
+
+</body></html>

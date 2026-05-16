@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Lato', sans-serif;
+                @apply bg-[#F8FAFC] text-[#1E293B];
+            }
+        }
+        :root {
+            --primary: #0066CC;
+            --accent: #10B981;
+            --secondary: #FF6B35;
+            --muted: #64748B;
+            --border: #E2E8F0;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+    </style>
+<title>Đặt tour: Bà Nà Hills - Cầu Vàng | Đà Nẵng Trip</title>
+</head>
+<body>
+<header class="bg-white border-b border-[#E2E8F0] py-4 px-6 sticky top-0 z-[100] flex justify-between items-center h-16">
+<div class="flex items-center gap-3">
+<div class="bg-[var(--primary)] p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl font-bold">explore</span>
+</div>
+<span class="text-sm font-medium text-[#64748B] truncate max-w-[200px] md:max-w-none">
+                Đặt tour: Bà Nà Hills - Cầu Vàng
+            </span>
+</div>
+<a class="text-[13px] font-bold text-[var(--primary)] flex items-center gap-1 hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+            Quay lại
+        </a>
+</header>
+<div class="bg-white border-b border-[#E2E8F0] py-6">
+<div class="flex justify-center items-center gap-0 max-w-[600px] mx-auto px-4">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-bold bg-[var(--primary)] text-white">1</div>
+<span class="text-[13px] font-bold text-[var(--primary)] whitespace-nowrap">Thông tin đặt tour</span>
+</div>
+<div class="flex-1 h-[1px] bg-[#E2E8F0] mx-4"></div>
+<div class="flex items-center gap-2 opacity-50">
+<div class="w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-bold bg-[#E2E8F0] text-[#94A3B8]">2</div>
+<span class="text-[13px] font-medium text-[#94A3B8] whitespace-nowrap">Thanh toán</span>
+</div>
+<div class="flex-1 h-[1px] bg-[#E2E8F0] mx-4"></div>
+<div class="flex items-center gap-2 opacity-50">
+<div class="w-7 h-7 rounded-full flex items-center justify-center text-[13px] font-bold bg-[#E2E8F0] text-[#94A3B8]">3</div>
+<span class="text-[13px] font-medium text-[#94A3B8] whitespace-nowrap">Xác nhận</span>
+</div>
+</div>
+</div>
+<main class="max-w-[1200px] mx-auto px-4 py-10 flex flex-col lg:flex-row gap-8">
+<div class="flex-1 space-y-6">
+<section class="bg-white border border-[#E2E8F0] rounded-2xl p-6">
+<h2 class="text-base font-bold text-[#1E293B] mb-4">Chọn ngày khởi hành</h2>
+<div class="border border-[#E2E8F0] rounded-xl p-4">
+<div class="flex justify-between items-center mb-6">
+<span class="text-[15px] font-bold text-[#1E293B]">Tháng 4, 2026</span>
+<div class="flex gap-2">
+<button class="w-7 h-7 border border-[#E2E8F0] rounded-lg flex items-center justify-center text-[#64748B] hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-7 h-7 border border-[#E2E8F0] rounded-lg flex items-center justify-center text-[#64748B] hover:bg-slate-50">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="calendar-grid mb-2">
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">T2</div>
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">T3</div>
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">T4</div>
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">T5</div>
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">T6</div>
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">T7</div>
+<div class="text-[11px] font-bold text-[#94A3B8] text-center pb-2">CN</div>
+<div class="h-8 flex items-center justify-center text-[#E2E8F0] text-[13px]">29</div>
+<div class="h-8 flex items-center justify-center text-[#E2E8F0] text-[13px]">30</div>
+<div class="h-8 flex items-center justify-center text-[#E2E8F0] text-[13px]">31</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">1</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">2</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">3</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">4</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">5</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">6</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer border border-[var(--primary)] text-[var(--primary)]">7</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">8</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">9</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">10</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">11</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">12</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">13</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">14</div>
+<div class="h-8 flex items-center justify-center text-white text-[13px] bg-[var(--primary)] rounded-full cursor-pointer">15</div>
+<div class="h-8 flex items-center justify-center text-[#94A3B8] text-[13px] line-through cursor-not-allowed">16</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">17</div>
+<div class="h-8 flex items-center justify-center text-[#1E293B] text-[13px] hover:bg-[#EFF6FF] hover:text-[var(--primary)] rounded-full cursor-pointer">18</div>
+</div>
+</div>
+<div class="bg-[#FFF5F0] border border-[#FF6B3533] rounded-xl p-4 mt-4 flex justify-between items-center">
+<div>
+<div class="text-sm font-bold text-[#1E293B]">15/04/2026 (Thứ Tư)</div>
+<div class="text-xs text-[var(--accent)] font-bold mt-0.5">Còn 8/20 chỗ</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-20 h-1 bg-[#E2E8F0] rounded-full overflow-hidden">
+<div class="h-full bg-[var(--secondary)]" style="width: 40%;"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-white border border-[#E2E8F0] rounded-2xl p-6">
+<h2 class="text-base font-bold text-[#1E293B] mb-4">Số lượng người</h2>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-3 border-b border-[#F1F5F9]">
+<div>
+<div class="text-sm font-bold text-[#1E293B]">Người lớn</div>
+<div class="text-xs text-[#94A3B8] font-medium">850.000 đ/người</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-[#E2E8F0] flex items-center justify-center text-[#64748B] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+<span class="material-symbols-outlined text-lg">remove</span>
+</button>
+<span class="w-8 text-center text-[18px] font-black">2</span>
+<button class="w-8 h-8 rounded-full bg-[var(--primary)] flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-[#F1F5F9]">
+<div>
+<div class="text-sm font-bold text-[#1E293B]">Trẻ em (5-12 tuổi)</div>
+<div class="text-xs text-[#94A3B8] font-medium">500.000 đ/người</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-[#E2E8F0] flex items-center justify-center text-[#64748B] hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+<span class="material-symbols-outlined text-lg">remove</span>
+</button>
+<span class="w-8 text-center text-[18px] font-black">1</span>
+<button class="w-8 h-8 rounded-full bg-[var(--primary)] flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center py-3 border-b border-[#F1F5F9]">
+<div>
+<div class="text-sm font-bold text-[#1E293B]">Em bé (&lt; 5 tuổi)</div>
+<div class="text-xs text-[#94A3B8] font-medium">Miễn phí</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-[#E2E8F0] flex items-center justify-center text-[#64748B] opacity-40 cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-lg">remove</span>
+</button>
+<span class="w-8 text-center text-[18px] font-black">0</span>
+<button class="w-8 h-8 rounded-full bg-[var(--primary)] flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+<span class="material-symbols-outlined text-lg">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 mt-6 space-y-2">
+<div class="flex justify-between text-[13px] font-medium">
+<span class="text-[#64748B]">Người lớn × 2</span>
+<span class="text-[#1E293B]">1.700.000 đ</span>
+</div>
+<div class="flex justify-between text-[13px] font-medium">
+<span class="text-[#64748B]">Trẻ em × 1</span>
+<span class="text-[#1E293B]">500.000 đ</span>
+</div>
+<div class="pt-2 mt-2 border-t border-[#E2E8F0] flex justify-between items-center">
+<span class="text-[13px] font-bold text-[#1E293B]">TỔNG CỘNG</span>
+<span class="text-[18px] font-black text-[var(--secondary)]">2.200.000 đ</span>
+</div>
+</div>
+</section>
+<section class="bg-white border border-[#E2E8F0] rounded-2xl p-6">
+<h2 class="text-base font-bold text-[#1E293B] mb-1">Thông tin khách hàng</h2>
+<p class="text-[13px] text-[#94A3B8] mb-6">Thông tin này dùng để liên hệ và xác nhận đặt tour</p>
+<div class="bg-[#EFF6FF] border border-[#B3D9FF] rounded-xl p-3 mb-6 flex justify-between items-center">
+<span class="text-[13px] font-medium text-[var(--primary)]">Điền từ hồ sơ của bạn</span>
+<button class="text-[13px] font-bold text-[var(--primary)] hover:underline">Điền ngay</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Họ và tên <span class="text-red-500">*</span></label>
+<input class="w-full rounded-lg border-[#E2E8F0] focus:ring-[var(--primary)] focus:border-[var(--primary)] text-sm px-4 py-2.5" placeholder="Nhập họ và tên khách hàng" type="text"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Email <span class="text-red-500">*</span></label>
+<input class="w-full rounded-lg border-[#E2E8F0] focus:ring-[var(--primary)] focus:border-[var(--primary)] text-sm px-4 py-2.5" placeholder="example@email.com" type="email"/>
+</div>
+<div class="col-span-2 md:col-span-1">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Số điện thoại <span class="text-red-500">*</span></label>
+<input class="w-full rounded-lg border-[#E2E8F0] focus:ring-[var(--primary)] focus:border-[var(--primary)] text-sm px-4 py-2.5" placeholder="Nhập số điện thoại" type="tel"/>
+</div>
+<div class="col-span-2">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Địa chỉ</label>
+<input class="w-full rounded-lg border-[#E2E8F0] focus:ring-[var(--primary)] focus:border-[var(--primary)] text-sm px-4 py-2.5" placeholder="Nhập địa chỉ của bạn" type="text"/>
+</div>
+<div class="col-span-2">
+<label class="block text-[13px] font-bold text-[#1E293B] mb-1.5">Ghi chú</label>
+<textarea class="w-full rounded-lg border-[#E2E8F0] focus:ring-[var(--primary)] focus:border-[var(--primary)] text-sm px-4 py-2.5" placeholder="Yêu cầu đặc biệt, dị ứng thức ăn, v.v..." rows="3"></textarea>
+</div>
+</div>
+</section>
+<section class="bg-white border border-[#E2E8F0] rounded-2xl p-6">
+<h2 class="text-base font-bold text-[#1E293B] mb-4">Phương thức thanh toán</h2>
+<div class="space-y-3">
+<label class="flex items-center justify-between p-4 border-2 border-[var(--primary)] bg-[#EFF6FF] rounded-xl cursor-pointer">
+<div class="flex items-center gap-3">
+<input checked="" class="w-4 h-4 text-[var(--primary)] focus:ring-[var(--primary)]" name="payment" type="radio"/>
+<img alt="MoMo" class="w-8 h-8 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2CZ43CsmUXzMcvvB4NA2rOIbUNVc7IVDPsbogI9w34AJPkKQlta94-UAwyIe_QCSOnRCEg7UgDaqFY-TOhDXrp_4Z7biCLPSVVgVRxPamGKgxE1XkggDdhPfCkTxMnhGRnjXF3gxfpDYcpPQu3FKrhis5ra7y_5VkucsICkzPKMp4UrGsfZa4wdYDAyrYHtHanSlNdtsZFnm779zVir1yGNr1-SApChhv79iKw6rqKfRi5qKwwJ2DHBoYqeptnyz0ubf6oVm_tw"/>
+<span class="text-sm font-bold text-[#1E293B]">Ví MoMo</span>
+</div>
+<span class="bg-[#D1FAE5] text-[var(--accent)] text-[11px] font-black px-2.5 py-0.5 rounded-full">Phổ biến</span>
+</label>
+<label class="flex items-center justify-between p-4 border-2 border-[#E2E8F0] bg-white rounded-xl cursor-pointer hover:border-slate-300">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-[var(--primary)] focus:ring-[var(--primary)]" name="payment" type="radio"/>
+<img alt="VNPay" class="w-8 h-8 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHM-5xmfkyzkkQzAgsaby8ijgKzvbtnyD_j7GOdLe0YwF-u4KCoAGTfdoDQW5vNgdAfnt21Qo8uvMXD9FMnrynV9SZRN4BpiDyhA93gf0yNVnpEIfxFec_7oPIDoMW7ecIftKZLdqhrq4WnSytuLibEOW7_juKydWKMmk7mCfT5a-kcigqqCvSj7Wz4s95Lkwjv4pwIcXeid4sii7ThXTKFXH0uUw3gqFS2TGZb4bDdmXTshbkoH2YDBvupSHAupR8Bjvdm_sRvQ"/>
+<span class="text-sm font-bold text-[#1E293B]">VNPay</span>
+</div>
+</label>
+<label class="flex items-center justify-between p-4 border-2 border-[#E2E8F0] bg-white rounded-xl cursor-pointer hover:border-slate-300">
+<div class="flex items-center gap-3">
+<input class="w-4 h-4 text-[var(--primary)] focus:ring-[var(--primary)]" name="payment" type="radio"/>
+<img alt="ZaloPay" class="w-8 h-8 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBTj_apc5jF8qVe1Yy9_D8WW6f4IdRqUFItZuyzZEbELcej2Z1D6dGba6zMFFsOrTWXLJ-4hSyqP3lNwci9URDiv9AWRm1DoxP1DrUIS5MeR8hJY_WZpvmJM5JHcswqgMV8clEFD5nk2zKykFuA2OREm7NcjWpDkqTe9XW5TYspNlnmdOEtWQVQ-SUaX-RKPCxQTEJ-B6dVd4aaJCuNRKvnu7Taumo0NMLFSR6MEBXPjD8depEc8DHnTBW7h8c7VvBIMKd9EJVw"/>
+<span class="text-sm font-bold text-[#1E293B]">ZaloPay</span>
+</div>
+</label>
+</div>
+</section>
+<div class="space-y-6">
+<div class="flex items-start gap-2.5 px-2">
+<input class="mt-0.5 w-4 h-4 rounded text-[var(--primary)] focus:ring-[var(--primary)]" id="terms" type="checkbox"/>
+<label class="text-[13px] text-[#64748B] leading-snug" for="terms">
+                        Tôi đồng ý với <a class="text-[var(--primary)] font-bold hover:underline" href="#">Điều khoản sử dụng</a> và <a class="text-[var(--primary)] font-bold hover:underline" href="#">Chính sách hủy tour</a> của Đà Nẵng Trip.
+                    </label>
+</div>
+<button class="w-full bg-[var(--secondary)] hover:bg-[#E55A2B] text-white font-black py-4 rounded-xl text-base shadow-[0_4px_12px_rgba(255,107,53,0.25)] flex items-center justify-center gap-2 transition-all group">
+                    Tiếp tục thanh toán
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<aside class="w-full lg:w-[360px]">
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-5 sticky top-24">
+<div class="flex gap-4 mb-5 pb-5 border-b border-[#F1F5F9]">
+<img alt="Bà Nà Hills" class="w-20 h-20 rounded-xl object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW2YKRQ_ILrNyuHfexWlvqDlBuoqM8MLIzxIPtRHFzErcXbuSSdKoT9dDRB2PW6iRR25U7uCHioGUGdhYwWtGDoe8Bx2tnXxBOCNnPA23UlZm25dJVrQdU666TLQtBUb2iuQN3p-8mHEdcNJTo6gh7FLp96OJB6QFGAnGVfQNBc3v937FoX6IhtVdaeTxctiN34dS1fbdBgH2Dhu9pti6xmJXIpK5jx2NUrepzCkIwxJfjeyIfdI9uzHNyLtx9HB_RDG5uGcEelA"/>
+<div class="flex-1">
+<h3 class="text-sm font-bold text-[#1E293B] line-clamp-2 leading-tight">Tour Bà Nà Hills - Cầu Vàng (Combo Buffet)</h3>
+<div class="mt-1.5 flex flex-wrap gap-2">
+<span class="bg-[#FFE0D4] text-[var(--secondary)] text-[10px] font-black px-2 py-0.5 rounded-full uppercase">Trong ngày</span>
+</div>
+<div class="mt-2 flex items-center gap-1.5 text-[#94A3B8] text-[12px] font-medium">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                            10 tiếng
+                        </div>
+</div>
+</div>
+<div class="space-y-3 mb-5 pb-5 border-b border-[#F1F5F9]">
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-[#94A3B8] font-medium">Ngày khởi hành</span>
+<span class="text-[#1E293B] font-bold">15/04/2026</span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-[#94A3B8] font-medium">Giờ khởi hành</span>
+<span class="text-[#1E293B] font-bold">07:00</span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-[#94A3B8] font-medium">Điểm tập trung</span>
+<span class="text-[#1E293B] font-bold text-right ml-4">Cổng Bà Nà Hills</span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-[#94A3B8] font-medium">Người lớn</span>
+<span class="text-[#1E293B] font-bold">× 2</span>
+</div>
+<div class="flex justify-between items-center text-[13px]">
+<span class="text-[#94A3B8] font-medium">Trẻ em</span>
+<span class="text-[#1E293B] font-bold">× 1</span>
+</div>
+</div>
+<div class="bg-[#F8FAFC] rounded-xl p-4 mb-5 space-y-2.5">
+<div class="flex justify-between text-[13px] font-medium text-[#64748B]">
+<span>Người lớn × 2</span>
+<span>1.700.000 đ</span>
+</div>
+<div class="flex justify-between text-[13px] font-medium text-[#64748B]">
+<span>Trẻ em × 1</span>
+<span>500.000 đ</span>
+</div>
+<div class="h-[1px] bg-[#E2E8F0] my-2"></div>
+<div class="flex justify-between items-center">
+<span class="text-[13px] font-bold text-[#1E293B]">TỔNG CỘNG</span>
+<span class="text-[18px] font-black text-[var(--secondary)]">2.200.000 đ</span>
+</div>
+</div>
+<div class="bg-[#FEF3C7] border border-[#F59E0B33] rounded-xl p-3.5 flex gap-3">
+<span class="material-symbols-outlined text-[#F59E0B] text-[20px] shrink-0">info</span>
+<p class="text-[12px] text-[#92400E] font-medium leading-relaxed">
+                        Hủy miễn phí trước 24 giờ kể từ lúc khởi hành. Hủy trong vòng 24 giờ sẽ chịu phí 50% tổng đơn hàng.
+                    </p>
+</div>
+</div>
+</aside>
+</main>
+<footer class="bg-white border-t border-[#E2E8F0] py-8">
+<div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="bg-[var(--primary)] p-1 rounded-lg">
+<span class="material-symbols-outlined text-white text-xl font-bold">explore</span>
+</div>
+<h2 class="text-[#1E293B] text-lg font-black tracking-tighter italic">ĐÀ NẴNG<span class="text-[var(--primary)]">TRIP</span></h2>
+</div>
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase tracking-[0.1em]">© 2026 ĐÀ NẴNG TRIP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU.</p>
+<div class="flex gap-6">
+<a class="text-[11px] font-bold text-[#94A3B8] hover:text-[var(--primary)] uppercase" href="#">Quyền riêng tư</a>
+<a class="text-[11px] font-bold text-[#94A3B8] hover:text-[var(--primary)] uppercase" href="#">Điều khoản</a>
+</div>
+</div>
+</footer>
+
+</body></html>

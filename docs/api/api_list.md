@@ -40,7 +40,6 @@
 | GET | `/categories` | 🌐 | Danh sách tất cả danh mục (kèm subcategories) | — | **categories** (SELECT), *subcategories* (JOIN) |
 | GET | `/categories/{id}` | 🌐 | Chi tiết 1 danh mục | path: `id` | **categories** (SELECT), *subcategories* (JOIN) |
 | GET | `/categories/{slug}/locations` | 🌐 | Địa điểm theo danh mục | path: `slug`, `?page &per_page &sort &order` | **locations** (SELECT WHERE category slug), *categories* (JOIN) |
-| GET | `/districts` | 🌐 | Danh sách quận (dùng để lọc) | — | *(static: Hải Châu, Sơn Trà, Ngũ Hành Sơn, Cẩm Lệ, Thanh Khê, Liên Chiểu)* |
 | POST | `/admin/categories` | 🛡️ | Tạo danh mục mới | body: `name`* `slug` `icon` `description` `image` `sort_order` `status` | **categories** (INSERT) |
 | PUT | `/admin/categories/{id}` | 🛡️ | Cập nhật danh mục | path: `id`, body: *(same as POST, all optional)* | **categories** (UPDATE) |
 | DELETE | `/admin/categories/{id}` | 🛡️ | Xóa danh mục | path: `id` | **categories** (DELETE), *subcategories*, *locations* (CHECK FK) |
@@ -59,16 +58,15 @@
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
-GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem chi tiết)	Trải nghiệm user tốt hơn
 | GET | `/locations` | 🌐 | Danh sách địa điểm (filter, sort, paginate) | `?category_id &subcategory_id &district &price_level &sort &order &page &per_page` | **locations** (SELECT), *categories*, *subcategories* (JOIN) |
 | GET | `/locations/featured` | 🌐 | Danh sách địa điểm nổi bật | `?limit` (default: 8) | **locations** (SELECT WHERE is_featured=1) |
 | GET | `/locations/nearby` | 🌐 | Địa điểm gần vị trí hiện tại | `?lat`* `&lng`* `&radius` (km, default: 5) | **locations** (SELECT Haversine) |
-| GET |/locations/districts	|🌐	| Danh sách quận có địa điểm (dynamic)|	locations (SELECT DISTINCT district) |
+| GET | `/locations/districts` | 🌐 | Danh sách quận có địa điểm (dynamic, dùng cho filter địa điểm) | — | **locations** (SELECT DISTINCT district) |
 | GET | `/locations/{slug}` | 🌐 | Chi tiết địa điểm theo slug | path: `slug` | **locations** (SELECT), *categories*, *subcategories*, *tags*, *amenities* (JOIN) |
 | GET | `/locations/{id}/images` | 🌐 | Danh sách ảnh của địa điểm | path: `id` | **locations** (SELECT thumbnail, images) |
 | GET | `/locations/{id}/ratings` | 🌐 | Danh sách đánh giá của địa điểm | path: `id`, `?page &per_page` | **ratings** (SELECT), *users*, *rating_images* (JOIN) |
-| GET |	/locations/{id}/rating-stats |	🌐 | Phân bố số sao (5 sao:12, 4 sao:8...)	| ratings (GROUP BY score) |
-| GET |	/locations/{id}/nearby |	🌐	| Địa điểm lân cận (gợi ý sau khi xem chi tiết)	| locations (Haversine, limit 6) | 
+| GET | `/locations/{id}/rating-stats` | 🌐 | Phân bố số sao của địa điểm | path: `id` | **ratings** (GROUP BY score) |
+| GET | `/locations/{id}/nearby` | 🌐 | Địa điểm lân cận sau khi xem chi tiết | path: `id`, `?limit` | **locations** (Haversine, limit 6) |
 | POST | `/locations/{id}/view` | 🌐 | Ghi nhận lượt xem | path: `id`, body: `session_id` | **views** (INSERT), **locations** (UPDATE view_count) |
 | POST | `/admin/locations` | 🛡️ | Tạo địa điểm mới | body: `name`* `category_id`* `description`* `short_description`* `address`* `district`* `latitude`* `longitude`* `subcategory_id slug phone email website opening_hours price_min price_max price_level thumbnail images video_url status is_featured` | **locations** (INSERT) |
 | PUT | `/admin/locations/{id}` | 🛡️ | Cập nhật địa điểm | path: `id`, body: *(same as POST, all optional)* | **locations** (UPDATE) |
@@ -158,9 +156,9 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 | GET | `/admin/bookings` | 🛡️ | Danh sách tất cả đơn hàng | `?status &payment_status &date_from &date_to &search &page &per_page` | **bookings** (SELECT), *users*, *booking_items* (JOIN) |
 | GET | `/admin/bookings/{id}` | 🛡️ | Chi tiết đơn hàng | path: `id` | **bookings** (SELECT), *booking_items*, *tours*, *tour_schedules*, *payments*, *users* (JOIN) |
 | PATCH | `/admin/bookings/{id}/status` | 🛡️ | Cập nhật trạng thái đơn | path: `id`, body: `booking_status`* (`pending`\|`confirmed`\|`cancelled`\|`completed`) | **bookings** (UPDATE booking_status) |
-| POST | `/admin/bookings/{id}/confirm` | 🛡️ | Xác nhận đơn hàng | path: `id` | **bookings** (UPDATE booking_status=confirmed, confirmed_at), **notifications** (INSERT) |
-| POST | `/admin/bookings/{id}/cancel` | 🛡️ | Hủy đơn hàng | path: `id`, body: `cancellation_reason` | **bookings** (UPDATE booking_status=cancelled, cancelled_at), **tour_schedules** (UPDATE booked_people), **notifications** (INSERT) |
-| POST | `/admin/bookings/{id}/complete` | 🛡️ | Hoàn thành đơn | path: `id` | **bookings** (UPDATE booking_status=completed, completed_at) |
+| POST | `/admin/bookings/{id}/confirm` | 🛡️ Planned | Xác nhận đơn hàng bằng route action riêng | path: `id` | **Cần bổ sung route/controller**. Hiện dùng `PATCH /admin/bookings/{id}/status` với `booking_status=confirmed` |
+| POST | `/admin/bookings/{id}/cancel` | 🛡️ Planned | Hủy đơn hàng bằng route action riêng | path: `id`, body: `cancellation_reason` | **Cần bổ sung route/controller**. Hiện dùng `PATCH /admin/bookings/{id}/status` với `booking_status=cancelled` |
+| POST | `/admin/bookings/{id}/complete` | 🛡️ Planned | Hoàn thành đơn bằng route action riêng | path: `id` | **Cần bổ sung route/controller**. Hiện dùng `PATCH /admin/bookings/{id}/status` với `booking_status=completed` |
 | GET | `/admin/bookings/export` | 🛡️ | Export danh sách đơn hàng Excel | `?status &payment_status &date_from &date_to` | **bookings** (SELECT) |
 
 ---
@@ -212,9 +210,9 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
 | GET | `/user/favorites` | 🔐 | Danh sách địa điểm đã lưu | `?page &per_page` | **favorites** (SELECT), *locations*, *categories* (JOIN) |
-| GET | `/user/favorites/check/{location_id}` | 🔐 | Kiểm tra đã yêu thích chưa | path: `location_id` | **favorites** (SELECT WHERE user_id AND location_id) |
-| POST | `/user/favorites` | 🔐 | Thêm vào yêu thích | body: `location_id`* | **favorites** (INSERT), **locations** (UPDATE favorite_count) |
-| DELETE | `/user/favorites/{location_id}` | 🔐 | Xóa khỏi yêu thích | path: `location_id` | **favorites** (DELETE), **locations** (UPDATE favorite_count) |
+| GET | `/user/favorites/check` | 🔐 | Kiểm tra đã yêu thích chưa | query: một trong `location_id` hoặc `tour_id` | **favorites** (SELECT WHERE user_id AND target) |
+| POST | `/user/favorites` | 🔐 | Thêm vào yêu thích | body: một trong `location_id` hoặc `tour_id` | **favorites** (INSERT), **locations/tours** (UPDATE favorite_count nếu service hỗ trợ) |
+| DELETE | `/user/favorites` | 🔐 | Xóa khỏi yêu thích | body/query: một trong `location_id` hoặc `tour_id` | **favorites** (DELETE), **locations/tours** (UPDATE favorite_count nếu service hỗ trợ) |
 
 ---
 
@@ -230,9 +228,9 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 | POST | `/user/profile/avatar` | 🔐 | Upload ảnh đại diện | body: `avatar`* (file, max 2MB) | **users** (UPDATE avatar) |
 | PUT | `/user/password` | 🔐 | Đổi mật khẩu | body: `current_password`* `password`* `password_confirmation`* | **users** (UPDATE password) |
 | GET | `/user/ratings` | 🔐 | Lịch sử đánh giá của mình | `?status &page &per_page` | **ratings** (SELECT), *locations*, *tours*, *rating_images* (JOIN) |
-| GET | `/user/search-history` | 🔐 | Lấy lịch sử tìm kiếm | `?limit` | **search_logs** (SELECT WHERE user_id) |
-| DELETE | `/user/search-history` | 🔐 | Xóa lịch sử tìm kiếm | — | **search_logs** (DELETE WHERE user_id) |
-| DELETE | `/user/account` | 🔐 | Xóa tài khoản (có confirm) | body: `password`* | **users** (DELETE or soft delete) |
+| GET | `/user/search-history` | 🔐 Planned | Lấy lịch sử tìm kiếm | `?limit` | **Cần bổ sung API**. DB `search_logs` đã có |
+| DELETE | `/user/search-history` | 🔐 Planned | Xóa lịch sử tìm kiếm | — | **Cần bổ sung API**. DB `search_logs` đã có |
+| DELETE | `/user/account` | 🔐 Planned | Xóa tài khoản (có confirm) | body: `password`* | **Cần bổ sung API**. DB `users` đã có |
 
 ---
 
@@ -330,6 +328,7 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 | GET | `/admin/reports/bookings` | 🛡️ | Báo cáo đơn hàng | `?from &to &status &payment_status` | **bookings** (SELECT GROUP BY status, DATE) |
 | GET | `/admin/reports/ratings` | 🛡️ | Thống kê đánh giá theo thời gian | `?from &to &status` | **ratings** (SELECT GROUP BY DATE, status) |
 | GET | `/admin/reports/users` | 🛡️ | Thống kê người dùng mới | `?year` | **users** (SELECT GROUP BY MONTH(created_at)) |
+| GET | `/admin/reports/locations` | 🛡️ | Báo cáo hiệu quả địa điểm: lượt xem, yêu thích, đánh giá, phân bố danh mục/quận | `?from &to &category_id &district &status` | **locations**, **views**, **favorites**, **ratings** (SELECT aggregate) |
 | GET | `/admin/reports/revenue-detail` | 🛡️ | Báo cáo doanh thu chi tiết (theo tour) | `?from &to` | **payments**, **bookings**, **booking_items** (SELECT JOIN) |
 
 ---
@@ -388,9 +387,10 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 
 | Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
 |--------|----------|-------|-------|---------|---------|
-| GET | `/config` | 🌐 | Lấy cấu hình website (hotline, email, logo, meta) | — | **settings** (SELECT) |
-| GET | `/weather` | 🌐 | Lấy thời tiết Đà Nẵng hiện tại (có cache) | — | — *(external API)* |
-| GET | `/health` | 🌐 | Kiểm tra server health | — | — |
+| GET | `/ping` | 🌐 | Kiểm tra nhanh API server | — | — |
+| GET | `/config` | 🌐 Planned | Lấy cấu hình website (hotline, email, logo, meta) | — | **Cần bổ sung API + bảng/settings hoặc config file** |
+| GET | `/weather` | 🌐 Planned | Lấy thời tiết Đà Nẵng hiện tại (có cache) | — | **Cần bổ sung API hoặc external integration** |
+| GET | `/health` | 🌐 Planned | Kiểm tra server health/monitoring | — | **Cần bổ sung nếu cần endpoint monitoring riêng** |
 
 ---
 
@@ -419,3 +419,105 @@ GET	/locations/{id}/nearby	🌐	Địa điểm lân cận (gợi ý sau khi xem 
 | Upload | — | 3 | — | `feat/taynd/api-upload` |
 | Config & Utilities | 3 | — | — | `feat/taynd/api-config` |
 | **Tổng** | **46** | **41** | **97** | |
+
+---
+
+## Ghi chú mở rộng theo benchmark travel.com.vn
+
+Xem chi tiết API planned tại `travel_com_flow_api.md`.
+
+Các nhóm API nên ưu tiên nếu muốn đi theo flow bán tour giống travel.com.vn:
+
+| Ưu tiên | Nhóm API | Mục đích |
+|---|---|---|
+| Cao | `GET /tours/filters` | Metadata bộ lọc: điểm khởi hành, điểm đến, dòng tour, khoảng giá |
+| Cao | Mở rộng `GET /tours` | Lọc theo `departure_from`, `departure_to`, `tour_line`, `transport_type`, `hotel_rating` |
+| Cao | Mở rộng `POST /bookings` | Nhận `passengers[]`, `promotion_code`, `accepted_terms` |
+| Cao | `GET /config` | Hotline, footer, payment methods, policy links |
+| Trung bình | Promotions | Coupon/ưu đãi/quà tặng |
+| Trung bình | Landing pages | Nội dung SEO cho `/du-lich-da-nang` |
+| Trung bình | Cart | Giỏ hàng trước checkout |
+| Thấp | Flight/hotel/visa | Planned sau core tour booking |
+
+---
+
+## API PLANNED — FLOW BÁN TOUR NÂNG CAO
+
+> Các API dưới đây là danh sách cần bổ sung để hệ thống đi theo flow bán tour giống travel.com.vn.  
+> Trạng thái: tài liệu nghiệp vụ/planned, chưa chắc đã có route trong `danangtrip-api`.
+
+### LANDING PAGES
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/landing-pages/{slug}` | 🌐 Planned | Lấy nội dung landing điểm đến/dòng tour | path: `slug` | **landing_pages** |
+| GET | `/admin/landing-pages` | 🛡️ Planned | Danh sách landing pages | `?page_type &status &page &per_page` | **landing_pages** |
+| POST | `/admin/landing-pages` | 🛡️ Planned | Tạo landing page | body: `slug`* `page_type`* `title`* `intro` `hero_image` `seo_title` `seo_description` `filters` `content_blocks` | **landing_pages** |
+| PUT | `/admin/landing-pages/{id}` | 🛡️ Planned | Cập nhật landing page | path: `id`, body: same as POST optional | **landing_pages** |
+| PATCH | `/admin/landing-pages/{id}/status` | 🛡️ Planned | Publish/unpublish landing | body: `status`* | **landing_pages** |
+| DELETE | `/admin/landing-pages/{id}` | 🛡️ Planned | Xóa landing page | path: `id` | **landing_pages** |
+
+### TOUR FILTERS & TOUR EXTENSIONS
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/tours/filters` | 🌐 Planned | Metadata bộ lọc tour | — | **tours**, **tour_schedules**, **tour_categories** |
+| GET | `/tours` | 🌐 Update | Bổ sung filter nâng cao | `?departure_from &departure_to &tour_line &tour_type &transport_type &hotel_rating &promotion` | **tours**, *tour_schedules* |
+| GET | `/tours/{slug}` | 🌐 Update | Bổ sung mã tour, dòng tour, phương tiện, policy, ưu đãi | path: `slug` | **tours**, *promotions*, *tour_locations* |
+| GET | `/tours/{id}/schedules` | 🌐 Update | Bổ sung mã lịch, nơi đi, hạn nhận khách, chỗ còn nhận | path: `id` | **tour_schedules** |
+
+### PASSENGERS
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| POST | `/bookings` | 🔐 Update | Tạo booking kèm danh sách hành khách | body thêm `passengers[]`, `promotion_code`, `accepted_terms` | **bookings**, **booking_items**, **booking_passengers**, *booking_promotions* |
+| GET | `/user/bookings/{id}/passengers` | 🔐 Planned | User xem hành khách của booking | path: `id` | **booking_passengers** |
+| PUT | `/user/bookings/{id}/passengers` | 🔐 Planned | User cập nhật hành khách trước khi xác nhận | body: `passengers[]` | **booking_passengers** |
+| GET | `/admin/bookings/{id}/passengers` | 🛡️ Planned | Admin xem danh sách hành khách | path: `id` | **booking_passengers** |
+
+### PROMOTIONS
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/promotions` | 🌐 Planned | Danh sách ưu đãi public | `?tour_id &tour_category_id &tour_line` | **promotions**, **promotion_targets** |
+| POST | `/promotions/validate` | 🔐 Planned | Kiểm tra mã giảm giá trước checkout | body: `code`* `tour_id` `amount` | **promotions**, **promotion_targets** |
+| GET | `/admin/promotions` | 🛡️ Planned | Danh sách promotion | `?status &q &from &to &page &per_page` | **promotions** |
+| GET | `/admin/promotions/{id}` | 🛡️ Planned | Chi tiết promotion | path: `id` | **promotions**, **promotion_targets** |
+| POST | `/admin/promotions` | 🛡️ Planned | Tạo promotion | body: `code` `name`* `discount_type`* `discount_value` `gift_name` `starts_at` `ends_at` `usage_limit` `min_order_amount` `targets[]` | **promotions**, **promotion_targets** |
+| PUT | `/admin/promotions/{id}` | 🛡️ Planned | Cập nhật promotion | path: `id`, body optional | **promotions**, **promotion_targets** |
+| PATCH | `/admin/promotions/{id}/status` | 🛡️ Planned | Bật/tắt promotion | body: `status`* | **promotions** |
+| DELETE | `/admin/promotions/{id}` | 🛡️ Planned | Xóa promotion | path: `id` | **promotions** |
+
+### CART
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/cart` | 🌐/🔐 Planned | Lấy giỏ hàng theo user/session | header/query `X-Session-Id` | **carts**, **cart_items** |
+| POST | `/cart/items` | 🌐/🔐 Planned | Thêm tour schedule vào giỏ | body: `tour_id`* `tour_schedule_id`* `quantity_adult`* `quantity_child` `quantity_infant` | **cart_items** |
+| PUT | `/cart/items/{id}` | 🌐/🔐 Planned | Cập nhật số khách trong giỏ | body: quantities | **cart_items** |
+| DELETE | `/cart/items/{id}` | 🌐/🔐 Planned | Xóa item khỏi giỏ | path: `id` | **cart_items** |
+| POST | `/cart/checkout` | 🔐 Planned | Tạo booking từ giỏ hàng | body: customer + passengers + payment_method | **bookings**, **booking_items**, **booking_passengers** |
+
+### SETTINGS / CONFIG
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/config` | 🌐 Planned | Config public: hotline, footer, social, payment methods, policies | — | **site_settings** |
+| GET | `/admin/settings` | 🛡️ Planned | Admin xem toàn bộ config | `?group` | **site_settings** |
+| PUT | `/admin/settings` | 🛡️ Planned | Cập nhật nhiều setting | body: `settings[]` | **site_settings** |
+
+### TIMELINE / HISTORY
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/user/bookings/{id}/timeline` | 🔐 Planned | Timeline đơn của user | path: `id` | **booking_status_histories**, **payment_status_histories** |
+| GET | `/admin/bookings/{id}/timeline` | 🛡️ Planned | Timeline đầy đủ cho admin | path: `id` | **booking_status_histories**, **payment_status_histories** |
+
+### SERVICE EXTENSIONS — PHASE SAU
+
+| Method | Endpoint | Quyền | Mô tả | Request | Bảng DB |
+|--------|----------|-------|-------|---------|---------|
+| GET | `/flights/search` | 🌐 Planned | Tìm chuyến bay | query flight search | Planned external integration |
+| GET | `/hotels/search` | 🌐 Planned | Tìm khách sạn | query hotel search | Planned external integration |
+| GET | `/flight-hotels/search` | 🌐 Planned | Tìm combo bay + khách sạn | query combo search | Planned external integration |
+| GET | `/visa/products` | 🌐 Planned | Dịch vụ visa | — | Planned |

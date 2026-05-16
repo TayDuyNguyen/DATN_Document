@@ -46,7 +46,7 @@ Mỗi favorite card:
   - Button xóa yêu thích: `absolute top-12 right-12 w-36 h-36 bg white/90 rounded-full flex items-center justify-center`
     icon `favorite #EF4444` (filled)
     hover: `bg #FEE2E2` · icon scale 1.1
-    Click → confirm xóa → `DELETE /user/favorites/{location_id}`
+    Click → confirm xóa → `DELETE /user/favorites` body/query `location_id`
 - Body (`p-16`):
   - `flex items-center gap-8 mb-8`:
     - Danh mục badge
@@ -114,5 +114,5 @@ Khi click icon xóa:
 | Hành động | Method | Endpoint | Trigger |
 |-----------|--------|----------|---------|
 | Load danh sách | GET | `/user/favorites?page=1&per_page=12` | Khi mount, đổi trang |
-| Xóa yêu thích | DELETE | `/user/favorites/{location_id}` | Click icon xóa |
+| Xóa yêu thích | DELETE | `/user/favorites` | Click icon xóa, gửi `location_id` |
 | Hoàn tác xóa | POST | `/user/favorites` | Click "Hoàn tác" trong toast |

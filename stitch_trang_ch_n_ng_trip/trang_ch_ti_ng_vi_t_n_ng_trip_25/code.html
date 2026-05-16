@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --secondary: #FF6B35;
+            --slate-50: #F8FAFC;
+            --slate-100: #F1F5F9;
+            --slate-200: #E2E8F0;
+            --slate-400: #94A3B8;
+            --slate-600: #475569;
+            --slate-900: #0F172A;
+            --emerald-600: #059669;
+            --red-600: #DC2626;
+        }
+        @layer base {
+            body {
+                font-family: 'Inter', sans-serif;
+                @apply bg-slate-50 text-slate-900;
+            }
+        }
+        @layer utilities {
+            .shadow-card {
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0066CC",
+                        "secondary": "#FF6B35",
+                        "accent-blue": "#EFF6FF",
+                        "accent-orange": "#FFE0D4",
+                    }
+                },
+            },
+        }
+    </script>
+<title>Bà Nà Hills - Cầu Vàng | Chi tiết Tour - Đà Nẵng Trip</title>
+</head>
+<body>
+<header class="sticky top-0 z-[100] w-full bg-white border-b border-slate-200 shadow-sm">
+<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl font-bold">explore</span>
+</div>
+<h1 class="text-slate-900 text-xl font-bold tracking-tight uppercase">ĐÀ NẴNG<span class="text-primary">TRIP</span></h1>
+</div>
+<nav class="hidden lg:flex items-center gap-8">
+<a class="text-slate-600 hover:text-primary transition-colors font-medium text-sm" href="#">Trang chủ</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-medium text-sm" href="#">Địa điểm</a>
+<a class="text-primary font-bold text-sm" href="#">Tour</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-medium text-sm" href="#">Blog</a>
+<a class="text-slate-600 hover:text-primary transition-colors font-medium text-sm" href="#">Liên hệ</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="px-5 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-all rounded-lg uppercase">Đăng nhập</button>
+<button class="px-5 py-2 text-sm font-semibold bg-primary text-white hover:bg-blue-700 transition-all rounded-lg uppercase">Đăng ký</button>
+</div>
+</div>
+</header>
+<div class="bg-white border-b border-slate-200">
+<div class="max-w-[1200px] mx-auto px-6 py-3">
+<nav class="text-slate-400 text-[13px] font-medium">
+<a class="hover:text-primary transition-colors" href="#">Trang chủ</a>
+<span class="mx-2">/</span>
+<a class="hover:text-primary transition-colors" href="#">Tour</a>
+<span class="mx-2">/</span>
+<span class="text-slate-600">Bà Nà Hills - Cầu Vàng</span>
+</nav>
+</div>
+</div>
+<section class="max-w-[1200px] mx-auto px-6 py-8">
+<div class="grid grid-cols-12 gap-4 h-[480px]">
+<div class="col-span-8 overflow-hidden rounded-l-2xl">
+<img alt="Bà Nà Hills" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW2YKRQ_ILrNyuHfexWlvqDlBuoqM8MLIzxIPtRHFzErcXbuSSdKoT9dDRB2PW6iRR25U7uCHioGUGdhYwWtGDoe8Bx2tnXxBOCNnPA23UlZm25dJVrQdU666TLQtBUb2iuQN3p-8mHEdcNJTo6gh7FLp96OJB6QFGAnGVfQNBc3v937FoX6IhtVdaeTxctiN34dS1fbdBgH2Dhu9pti6xmJXIpK5jx2NUrepzCkIwxJfjeyIfdI9uzHNyLtx9HB_RDG5uGcEelA"/>
+</div>
+<div class="col-span-4 grid grid-rows-2 gap-4">
+<div class="overflow-hidden rounded-tr-2xl">
+<img alt="Cầu Vàng" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPEvGp2OU0hqpuh61p2UuXKmBbWkBTy-W-ATrNHOJpD3KsGjYDfdgKFkFGDxP_GPr1K4bC0ZzgkmqdunqNPNKw14zxFPfHjAsesjWtbuqjZekjHrh77XfTTtU7unpe_PL-iUSKLeLYoqO8B5g6Gjxui6K72TxzQgYdIwfGxPxrNcMmZ6N0zZu27r33JHYELipMjHzkd9qnKi9HDR1e9tEQNTOHUZSy5b7gaQb1-MzkDH7WBynfSsUMkjnPtL7xnPaeR0mf6Lx5ow"/>
+</div>
+<div class="relative overflow-hidden rounded-br-2xl">
+<img alt="Pháp cổ" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 cursor-pointer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh4vrBc-_W6JKZsvd0J_tt5JudrX6I7zCQwR3kKhjCWIvKIYfUh5QApv3WNFWY5cPrOXwhIOTZVsq0nHR4j14ZEofZTKHh_6FO4bg-5EsT5rrDLoJvLijWKjvQbxG_1s6N8F-i8JnxqE_I28jHvqbFq32G-mh-Ap96lxG2w1Sw2ltL_IaxcvIFqkCmfRkm6Brh_ep5QRsy_dimy0DV0PuE-iBPUGJ-PKuH8z3TavomXk8CiGzMII4cVaCRrXXar1AtnROyrA2QJw"/>
+<button class="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg text-sm font-bold shadow-lg flex items-center gap-2 text-slate-900 border border-slate-200">
+<span class="material-symbols-outlined text-lg">grid_view</span>
+                        Xem tất cả ảnh
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<div class="max-w-[1200px] mx-auto px-6 pb-24 flex flex-col lg:flex-row gap-10">
+<div class="flex-1 min-w-0">
+<div class="mb-8">
+<h1 class="text-[28px] font-bold text-slate-900 tracking-tight leading-tight">Tour Bà Nà Hills - Cầu Vàng: Trải nghiệm đẳng cấp trên mây</h1>
+<div class="flex items-center gap-3 mt-4">
+<span class="bg-accent-blue text-primary text-[12px] font-semibold px-4 py-1 rounded-full uppercase tracking-wider">Tham quan</span>
+<span class="bg-blue-50 text-primary text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1 border border-blue-100">
+<span class="material-symbols-outlined text-sm fill-1">star</span> NỔI BẬT
+                    </span>
+<span class="bg-secondary text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-sm fill-1">local_fire_department</span> HOT
+                    </span>
+</div>
+</div>
+<div class="grid grid-cols-1 border border-slate-200 rounded-2xl p-6 bg-white mb-8 divide-y divide-slate-100">
+<div class="grid grid-cols-[120px_1fr] py-3 first:pt-0">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-[18px] text-primary">schedule</span>
+<span class="text-[12px] font-bold uppercase tracking-wider">Thời lượng</span>
+</div>
+<span class="text-[14px] font-semibold text-slate-900 text-left">1 ngày</span>
+</div>
+<div class="grid grid-cols-[120px_1fr] py-3">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-[18px] text-primary">group</span>
+<span class="text-[12px] font-bold uppercase tracking-wider">Sức chứa</span>
+</div>
+<span class="text-[14px] font-semibold text-slate-900 text-left">Tối đa 20 · Tối thiểu 2 người</span>
+</div>
+<div class="grid grid-cols-[120px_1fr] py-3">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-[18px] text-primary">access_time</span>
+<span class="text-[12px] font-bold uppercase tracking-wider">Khởi hành</span>
+</div>
+<span class="text-[14px] font-semibold text-slate-900 text-left">07:00 sáng hàng ngày</span>
+</div>
+<div class="grid grid-cols-[120px_1fr] py-3">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-[18px] text-primary">flag</span>
+<span class="text-[12px] font-bold uppercase tracking-wider">Tập trung</span>
+</div>
+<span class="text-[14px] font-semibold text-slate-900 text-left">Trước cổng khu du lịch Bà Nà Hills</span>
+</div>
+<div class="grid grid-cols-[120px_1fr] py-3 last:pb-0">
+<div class="flex items-center gap-2 text-slate-400">
+<span class="material-symbols-outlined text-[18px] text-primary">star</span>
+<span class="text-[12px] font-bold uppercase tracking-wider">Đánh giá</span>
+</div>
+<span class="text-[14px] font-semibold text-slate-900 text-left">4.8 · 128 đánh giá</span>
+</div>
+</div>
+<section class="mb-10">
+<h2 class="text-lg font-bold text-slate-900 mb-4">Giới thiệu tour</h2>
+<div class="text-[15px] text-slate-600 leading-[1.8] space-y-4">
+<p>Khám phá Bà Nà Hills - chốn bồng lai tiên cảnh tại Đà Nẵng với hệ thống cáp treo đạt nhiều kỷ lục thế giới. Bạn sẽ được chiêm ngưỡng Cầu Vàng (Golden Bridge) nổi tiếng, dạo bước qua Làng Pháp cổ kính và tận hưởng không khí ôn đới mát mẻ quanh năm trên đỉnh núi Chúa.</p>
+</div>
+<button class="mt-4 text-[13px] font-bold text-primary flex items-center gap-1 hover:underline">
+                    Xem thêm <span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+</section>
+<section class="mb-10">
+<h2 class="text-lg font-bold text-slate-900 mb-6">Lịch trình chi tiết</h2>
+<div class="relative space-y-0 pl-4 border-l-2 border-slate-100 ml-2">
+<div class="relative pb-6 last:pb-0">
+<div class="absolute -left-[17px] top-1.5 w-4 h-4 rounded-full border-2 border-primary bg-white"></div>
+<div class="flex items-baseline gap-3">
+<span class="text-[15px] font-bold text-slate-900 whitespace-nowrap">07:30</span>
+<p class="text-[14px] text-slate-600 leading-relaxed">Đón khách tại điểm hẹn trung tâm Đà Nẵng, khởi hành đi Bà Nà Hills.</p>
+</div>
+</div>
+<div class="relative pb-6 last:pb-0">
+<div class="absolute -left-[17px] top-1.5 w-4 h-4 rounded-full border-2 border-primary bg-white"></div>
+<div class="flex items-baseline gap-3">
+<span class="text-[15px] font-bold text-slate-900 whitespace-nowrap">08:30</span>
+<p class="text-[14px] text-slate-600 leading-relaxed">Lên cáp treo, tham quan Cầu Vàng, hầm rượu Debay và vườn hoa Le Jardin D'Amour.</p>
+</div>
+</div>
+<div class="relative pb-6 last:pb-0">
+<div class="absolute -left-[17px] top-1.5 w-4 h-4 rounded-full border-2 border-primary bg-white"></div>
+<div class="flex items-baseline gap-3">
+<span class="text-[15px] font-bold text-slate-900 whitespace-nowrap">11:30</span>
+<p class="text-[14px] text-slate-600 leading-relaxed">Thưởng thức buffet trưa cao cấp. Tự do khám phá Làng Pháp và Fantasy Park.</p>
+</div>
+</div>
+<div class="relative pb-6 last:pb-0">
+<div class="absolute -left-[17px] top-1.5 w-4 h-4 rounded-full border-2 border-primary bg-white"></div>
+<div class="flex items-baseline gap-3">
+<span class="text-[15px] font-bold text-slate-900 whitespace-nowrap">16:00</span>
+<p class="text-[14px] text-slate-600 leading-relaxed">Xuống núi bằng cáp treo, xe đưa đoàn trở về điểm đón ban đầu. Kết thúc tour.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+<div class="p-6 bg-emerald-50/30 rounded-2xl border border-emerald-100/50">
+<h3 class="text-[15px] font-bold text-emerald-600 mb-4 flex items-center gap-2 uppercase tracking-wide">
+<span class="material-symbols-outlined text-[20px]">check_circle</span> Bao gồm
+                    </h3>
+<ul class="space-y-2.5">
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-emerald-500 mt-0.5">check</span>
+                            Xe đưa đón đời mới, máy lạnh suốt tuyến
+                        </li>
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-emerald-500 mt-0.5">check</span>
+                            Vé cáp treo Bà Nà Hills khứ hồi
+                        </li>
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-emerald-500 mt-0.5">check</span>
+                            Bữa trưa buffet cao cấp tại nhà hàng
+                        </li>
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-emerald-500 mt-0.5">check</span>
+                            Hướng dẫn viên chuyên nghiệp
+                        </li>
+</ul>
+</div>
+<div class="p-6 bg-red-50/30 rounded-2xl border border-red-100/50">
+<h3 class="text-[15px] font-bold text-red-600 mb-4 flex items-center gap-2 uppercase tracking-wide">
+<span class="material-symbols-outlined text-[20px]">cancel</span> Không bao gồm
+                    </h3>
+<ul class="space-y-2.5">
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-red-400 mt-0.5">close</span>
+                            Chi phí cá nhân &amp; đồ uống
+                        </li>
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-red-400 mt-0.5">close</span>
+                            Tiền tips (không bắt buộc)
+                        </li>
+<li class="flex items-start gap-3 text-[14px] text-slate-700">
+<span class="material-symbols-outlined text-[16px] text-red-400 mt-0.5">close</span>
+                            Phí trò chơi có thưởng tại Fantasy Park
+                        </li>
+</ul>
+</div>
+</section>
+<section class="mb-10">
+<h2 class="text-lg font-bold text-slate-900 mb-4">Điểm tập trung</h2>
+<div class="flex items-center gap-3 mb-4 p-4 border border-slate-200 rounded-xl bg-white">
+<span class="material-symbols-outlined text-primary text-[24px]">location_on</span>
+<p class="text-[14px] font-medium text-slate-700">Cổng khu du lịch Bà Nà Hills, Hòa Vang, Đà Nẵng</p>
+</div>
+<div class="h-[240px] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200">
+<iframe allowfullscreen="" height="100%" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.776664972621!2d107.99479637583623!3d16.0121759406563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141f62c696e594d%3A0x286307613589b251!2zQsOgIE7DoCBIaWxscw!5e0!3m2!1svi!2s!4v1715678000000!5m2!1svi!2s" style="border:0;" width="100%"></iframe>
+</div>
+</section>
+<section class="mt-12 pt-12 border-t border-slate-200">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-lg font-bold text-slate-900">Đánh giá khách hàng</h2>
+<div class="flex items-center gap-3">
+<span class="text-3xl font-black text-slate-900">4.8</span>
+<div class="flex flex-col">
+<div class="flex text-amber-400 text-sm">★★★★★</div>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">128 đánh giá</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="p-6 bg-white border border-slate-200 rounded-2xl">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="User" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC92AK9tJs0pdfxiJ1X9pkJZQ4yWx2WGlATlhU2nvg6yDXl-fIk_MLjXKOg9O_zsPAuWYJht6zwLxP3WgvRoJon9Wzqu8bFjjIji1W5HTJDiOkMjicssUQYB32TG6Y1wjpwkULDfMA1P3RJ9cNafYNskecuAOOjkEs_U1GWSZpknM7ndWWfxNwD_k87jWG6NDfZJ1GrJAuGu42vdi0-u1qFeZuQDPnUBynqSQClnxR-ZZk6xdu1Bn-5A8Bg2x5-VeQkssFj4U_irA"/>
+</div>
+<div>
+<h4 class="text-[14px] font-bold text-slate-900">Minh Tuấn</h4>
+<p class="text-[11px] text-slate-400 font-bold">Hôm qua · Đã trải nghiệm</p>
+</div>
+</div>
+<div class="text-amber-400 text-xs font-bold">★★★★★</div>
+</div>
+<p class="text-[14px] text-slate-600 leading-relaxed">Tour rất chuyên nghiệp. HDV am hiểu kiến thức và cực kỳ nhiệt tình hỗ trợ đoàn chụp ảnh. Buffet trưa ngon và đa dạng món.</p>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-slate-200 rounded-xl text-sm font-bold text-primary hover:bg-slate-50 transition-all uppercase tracking-wide">Tất cả đánh giá</button>
+</section>
+</div>
+<aside class="w-full lg:w-[380px] shrink-0">
+<div class="bg-white border border-slate-200 rounded-2xl p-6 sticky top-24 shadow-sm">
+<div class="flex items-end gap-2 mb-8 pb-6 border-b border-slate-100">
+<div class="flex flex-col">
+<span class="text-slate-400 line-through text-[14px]">1.000.000 đ</span>
+<div class="flex items-baseline gap-1">
+<span class="text-[32px] font-black text-secondary tracking-tight">850.000 đ</span>
+<span class="text-[14px] text-slate-500 font-medium">/khách</span>
+</div>
+</div>
+<span class="bg-red-50 text-red-600 text-[12px] font-bold px-2 py-1 rounded-md border border-red-100 mb-2">-15%</span>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-[12px] font-bold text-slate-500 uppercase tracking-widest mb-3">Ngày khởi hành *</label>
+<div class="border border-slate-200 rounded-xl p-4">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[14px] font-bold text-slate-900">Tháng 5, 2026</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-900"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-slate-900"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-1 text-center mb-2">
+<div class="text-[10px] font-bold text-slate-400">T2</div>
+<div class="text-[10px] font-bold text-slate-400">T3</div>
+<div class="text-[10px] font-bold text-slate-400">T4</div>
+<div class="text-[10px] font-bold text-slate-400">T5</div>
+<div class="text-[10px] font-bold text-slate-400">T6</div>
+<div class="text-[10px] font-bold text-slate-400">T7</div>
+<div class="text-[10px] font-bold text-slate-400">CN</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-300">28</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-300">29</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-300">30</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-900 font-medium hover:bg-slate-50 rounded-lg cursor-pointer">1</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-900 font-medium hover:bg-slate-50 rounded-lg cursor-pointer">2</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-900 font-medium hover:bg-slate-50 rounded-lg cursor-pointer">3</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-900 font-medium hover:bg-slate-50 rounded-lg cursor-pointer">4</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-900 font-medium hover:bg-slate-50 rounded-lg cursor-pointer">5</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-white bg-primary font-bold rounded-lg shadow-sm cursor-pointer">6</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-400 line-through">7</div>
+<div class="h-8 flex items-center justify-center text-[12px] text-slate-900 font-medium hover:bg-slate-50 rounded-lg cursor-pointer">8</div>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between text-[12px]">
+<span class="text-primary font-bold">06/05/2026</span>
+<span class="text-slate-500">Còn 12/20 chỗ</span>
+</div>
+</div>
+<div>
+<label class="block text-[12px] font-bold text-slate-500 uppercase tracking-widest mb-3">Số lượng hành khách *</label>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[14px] font-bold text-slate-900">Người lớn</p>
+<p class="text-[12px] text-slate-400">850.000 đ/khách</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-100"><span class="material-symbols-outlined text-lg">remove</span></button>
+<span class="text-[16px] font-bold text-slate-900 w-4 text-center">2</span>
+<button class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-primary hover:bg-slate-100"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[14px] font-bold text-slate-900">Trẻ em</p>
+<p class="text-[12px] text-slate-400">650.000 đ (1m - 1m4)</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 hover:bg-slate-100"><span class="material-symbols-outlined text-lg">remove</span></button>
+<span class="text-[16px] font-bold text-slate-900 w-4 text-center">1</span>
+<button class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-primary hover:bg-slate-100"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-slate-50 rounded-xl p-5 border border-slate-100">
+<h4 class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-4">Tạm tính</h4>
+<table class="w-full">
+<tbody class="divide-y divide-slate-200/60">
+<tr class="py-2 flex justify-between">
+<td class="text-[14px] text-slate-600 py-2">Người lớn (×2)</td>
+<td class="text-[14px] text-slate-900 font-bold py-2">1.700.000 đ</td>
+</tr>
+<tr class="py-2 flex justify-between">
+<td class="text-[14px] text-slate-600 py-2">Trẻ em (×1)</td>
+<td class="text-[14px] text-slate-900 font-bold py-2">650.000 đ</td>
+</tr>
+<tr class="pt-4 flex justify-between items-baseline">
+<td class="text-[15px] text-slate-900 font-bold">TỔNG CỘNG</td>
+<td class="text-secondary text-[24px] font-black">2.350.000 đ</td>
+</tr>
+</tbody>
+</table>
+<div class="mt-4 flex items-center gap-2 text-[12px] font-bold text-emerald-600">
+<span class="material-symbols-outlined text-lg">check_circle</span> ✓ Còn chỗ trống
+                        </div>
+</div>
+<div class="space-y-3">
+<button class="w-full bg-secondary text-white py-4 rounded-xl text-base font-bold shadow-lg shadow-orange-100 hover:bg-[#E55A2B] transition-all uppercase tracking-wide">Đặt ngay</button>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-2.5 border border-slate-200 rounded-xl text-[13px] font-bold text-slate-600 flex items-center justify-center gap-2 hover:bg-slate-50">
+<span class="material-symbols-outlined text-lg">favorite</span> Lưu lại
+                            </button>
+<button class="py-2.5 border border-slate-200 rounded-xl text-[13px] font-bold text-slate-600 flex items-center justify-center gap-2 hover:bg-slate-50">
+<span class="material-symbols-outlined text-lg">share</span> Chia sẻ
+                            </button>
+</div>
+</div>
+<div class="pt-2 space-y-3 border-t border-slate-100">
+<div class="flex items-center gap-3 text-[12px] text-slate-500">
+<span class="material-symbols-outlined text-[18px] text-emerald-500">verified_user</span>
+                            Đặt chỗ miễn phí, hủy linh hoạt 24h
+                        </div>
+<div class="flex items-center gap-3 text-[12px] text-slate-500">
+<span class="material-symbols-outlined text-[18px] text-primary">support_agent</span>
+                            Hỗ trợ khách hàng 24/7
+                        </div>
+<div class="flex items-center gap-3 text-[12px] text-slate-500">
+<span class="material-symbols-outlined text-[18px] text-amber-500">security</span>
+                            Thanh toán an toàn, bảo mật
+                        </div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<div class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 px-6 py-3 flex lg:hidden justify-between items-center z-[110] shadow-lg">
+<div class="flex flex-col">
+<span class="text-[18px] font-black text-secondary">850.000 đ</span>
+<span class="text-[11px] text-slate-400 font-bold uppercase">/ người lớn</span>
+</div>
+<button class="bg-secondary text-white px-8 py-3 rounded-xl text-[15px] font-bold hover:bg-[#E55A2B]">Đặt ngay</button>
+</div>
+<footer class="bg-slate-900 text-white pt-20 pb-10">
+<div class="max-w-[1400px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<div class="bg-primary p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-white text-2xl font-bold">explore</span>
+</div>
+<h2 class="text-white text-xl font-bold uppercase tracking-tight">ĐÀ NẴNG<span class="text-primary">TRIP</span></h2>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed mb-6">Nền tảng du lịch hàng đầu Đà Nẵng, mang đến cho bạn những trải nghiệm độc bản, tin cậy và chuyên nghiệp nhất.</p>
+</div>
+<div>
+<h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 mb-6">Khám phá</h4>
+<ul class="space-y-4 text-slate-400 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Địa điểm nổi bật</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tour trong ngày</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Ẩm thực địa phương</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 mb-6">Hỗ trợ</h4>
+<ul class="space-y-4 text-slate-400 text-sm font-medium">
+<li><a class="hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Liên hệ trực tiếp</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50 mb-6">Liên hệ</h4>
+<div class="space-y-4 text-sm text-slate-400 font-medium">
+<div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">call</span><span>1900 6789</span></div>
+<div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">alternate_email</span><span>hello@danangtrip.vn</span></div>
+<div class="flex items-start gap-3"><span class="material-symbols-outlined text-primary text-[20px]">location_on</span><span>Sơn Trà, Đà Nẵng</span></div>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="text-slate-500 text-[10px] font-bold uppercase tracking-[0.2em]">© 2026 ĐÀ NẴNG TRIP. TẤT CẢ QUYỀN ĐƯỢC BẢO LƯU.</p>
+<div class="flex gap-8 text-slate-500 font-bold text-[10px] uppercase tracking-widest">
+<a class="hover:text-white transition-colors" href="#">Riêng tư</a>
+<a class="hover:text-white transition-colors" href="#">Điều khoản</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>

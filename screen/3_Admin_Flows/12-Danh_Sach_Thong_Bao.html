@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh sách Thông báo - Hoạt động Hệ thống</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #5570F1;
+            --primary-soft: #EFF6FF;
+            --success: #10B981;
+            --success-soft: #D1FAE5;
+            --warning: #F59E0B;
+            --warning-soft: #FEF3C7;
+            --peach: #FFEDD5;
+            --cream: #FFFDF9;
+            --bg-page: #FDFBFA;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .chat-bubble {
+            border-radius: 24px;
+            transition: all 0.2s ease;
+        }
+        .chat-bubble:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+        }
+        .unread-tint {
+            background-color: var(--cream);
+            border: 2px solid var(--warning-soft);
+        }
+        .quick-filter-btn {
+            transition: all 0.2s;
+        }
+        .quick-filter-btn:hover {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E2E8F0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold text-opacity-60">Trung tâm quản trị</p>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-semibold text-sm">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-[var(--primary)]/20 border border-[var(--primary)]/30" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-semibold text-sm">Thông báo</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">label</span>
+<span class="font-semibold text-sm">Tags &amp; Tiện ích</span>
+</a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 min-h-screen pb-12">
+<header class="px-10 py-10 bg-white/50 backdrop-blur-md sticky top-0 z-40 border-b border-slate-100">
+<div class="max-w-[1000px] mx-auto flex justify-between items-center">
+<div>
+<nav class="flex items-center gap-2 mb-2">
+<span class="text-[12px] font-bold text-slate-400 uppercase tracking-widest">Hệ thống</span>
+<span class="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
+<span class="text-[12px] font-bold text-[var(--primary)] uppercase tracking-widest">Hộp thư hoạt động</span>
+</nav>
+<h2 class="text-3xl font-extrabold text-[var(--text-primary)]">Xin chào, hôm nay có gì mới? ✨</h2>
+<p class="text-[15px] text-[var(--text-secondary)] mt-1">Xem chi tiết các cuộc trò chuyện và thông báo hệ thống.</p>
+</div>
+<button class="flex items-center gap-3 px-6 py-4 bg-[var(--primary)] text-white rounded-3xl text-sm font-extrabold shadow-xl hover:shadow-[var(--primary)]/20 transition-all transform hover:-translate-y-1">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                    Gửi thông báo mới
+                </button>
+</div>
+</header>
+<div class="max-w-[1000px] mx-auto px-10 pt-10">
+<div class="grid grid-cols-3 gap-6 mb-10">
+<div class="bg-[var(--primary-soft)] rounded-[32px] p-6 flex items-center gap-5 border border-blue-100/50">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[var(--primary)] shadow-sm">
+<span class="material-symbols-outlined text-3xl">inbox</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[var(--primary)] uppercase tracking-wider">Tổng tin</p>
+<h4 class="text-2xl font-black text-blue-900">1.248</h4>
+</div>
+</div>
+<div class="bg-[var(--success-soft)] rounded-[32px] p-6 flex items-center gap-5 border border-green-100/50">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[var(--success)] shadow-sm">
+<span class="material-symbols-outlined text-3xl">mark_email_read</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[var(--success)] uppercase tracking-wider">Đã đọc</p>
+<h4 class="text-2xl font-black text-green-900">986</h4>
+</div>
+</div>
+<div class="bg-[var(--warning-soft)] rounded-[32px] p-6 flex items-center gap-5 border border-yellow-100/50">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[var(--warning)] shadow-sm">
+<span class="material-symbols-outlined text-3xl">chat_bubble</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[var(--warning)] uppercase tracking-wider">Chưa đọc</p>
+<h4 class="text-2xl font-black text-yellow-900">262</h4>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3 overflow-x-auto pb-2 custom-scrollbar">
+<button class="quick-filter-btn flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-700 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-lg text-slate-400">apps</span>
+                        Tất cả
+                    </button>
+<button class="quick-filter-btn flex items-center gap-2 px-5 py-2.5 bg-blue-50 border border-blue-100 rounded-full text-sm font-bold text-blue-600 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-lg">confirmation_number</span>
+                        Đặt tour
+                    </button>
+<button class="quick-filter-btn flex items-center gap-2 px-5 py-2.5 bg-orange-50 border border-orange-100 rounded-full text-sm font-bold text-orange-600 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-lg">star</span>
+                        Đánh giá
+                    </button>
+<button class="quick-filter-btn flex items-center gap-2 px-5 py-2.5 bg-green-50 border border-green-100 rounded-full text-sm font-bold text-green-600 whitespace-nowrap shadow-sm">
+<span class="material-symbols-outlined text-lg">sell</span>
+                        Khuyến mãi
+                    </button>
+</div>
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-2xl text-sm focus:ring-4 focus:ring-blue-500/10 outline-none transition-all placeholder:text-slate-300" placeholder="Tìm tên người nhận..." type="text"/>
+</div>
+</div>
+<div class="space-y-6">
+<div>
+<h5 class="text-[11px] font-black text-slate-400 uppercase tracking-[2px] mb-6 flex items-center gap-4">
+                        Hôm nay, 06 Tháng 4
+                        <span class="h-[1px] flex-1 bg-slate-100"></span>
+</h5>
+<div class="space-y-4">
+<div class="chat-bubble bg-white p-5 border border-slate-100 flex items-start gap-5 shadow-sm">
+<div class="relative">
+<img alt="avatar" class="w-14 h-14 rounded-[20px] border-2 border-white shadow-md bg-blue-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTEDqyrmR8s-gXD5wE75nuZGYO8-Q4Y6hLfZew4KP6l_xkPTMd-IJJjhv8YQBvr3a0civYGG8k5nu0pJm12QMcZPd9uIbK1zpPVXTNmNwFkKW8qXPYdHL6Jc3FGRn_CxYNFdpmyJ754eH-S3v10Gnn0f1dTy21zfrpDkJ_HGMrJQk7FZcHdhqs9e46jygAXv_QSkBhRBPXl2wVpa5ExXXzWefWBujwvi3XEheMW-pDtzPwg1NJDJOo7EnGW0rV5R2tmnOQvLYrdg"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[12px] text-blue-500 font-bold">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-base text-slate-800">Bạn có thông báo mới từ <span class="text-[var(--primary)]">Nguyễn Văn An</span>!</h4>
+<span class="text-[12px] font-bold text-slate-400">14:30</span>
+</div>
+<p class="text-[14px] text-slate-500 line-clamp-1 mb-3">Đơn đặt tour #BK-1008 đã được hệ thống xác nhận thành công...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="bg-[var(--primary-soft)] text-[var(--primary)] text-[10px] font-black px-3 py-1 rounded-full uppercase">ĐẶT TOUR</span>
+<button class="text-[12px] font-bold text-[var(--primary)] hover:underline">Xem chi tiết cuộc trò chuyện</button>
+</div>
+<button class="p-2 text-slate-300 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+<div class="chat-bubble unread-tint p-5 flex items-start gap-5 shadow-sm relative">
+<div class="absolute top-5 right-5 w-2 h-2 bg-[var(--warning)] rounded-full animate-pulse"></div>
+<div class="relative">
+<img alt="avatar" class="w-14 h-14 rounded-[20px] border-2 border-white shadow-md bg-orange-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsrNxohSYSKAZWVKeHo5fneJy1mi2Joj_ZLFmVJ0dcnkuYA1xdzlW25TkdtO3bTGiPmNOGJ-BU1pT2fcPaEo20QjEoJGRmLnuP7vyJq1Dz2jpGQgJbcz-TTGzahdRPRLRyNEi2SiPteM9GB9izQUc54qapYQdFHx767AmZRjr5eQtxxo7-AdAgzR_CzU-mwpF_ZAyViuw_UhVZy5SJNkQ2Zu6JgshyAkfTabC2cmx0zBGrWWSZqN26-VDZZeJJePQIT2YbKTTiOg"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-extrabold text-base text-slate-900">Phản hồi mới từ <span class="text-orange-600">Trần Thị Bích</span> 🌟</h4>
+<span class="text-[12px] font-bold text-slate-500">11:15</span>
+</div>
+<p class="text-[14px] text-slate-600 font-semibold line-clamp-1 mb-3">"Chuyến đi rất tuyệt vời, cảm ơn sự hỗ trợ nhiệt tình của..."</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="bg-[var(--warning-soft)] text-[var(--warning)] text-[10px] font-black px-3 py-1 rounded-full uppercase">ĐÁNH GIÁ</span>
+<button class="text-[12px] font-bold text-orange-600 hover:underline">Phản hồi ngay</button>
+</div>
+<button class="p-2 text-slate-300 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6">
+<h5 class="text-[11px] font-black text-slate-400 uppercase tracking-[2px] mb-6 flex items-center gap-4">
+                        Hôm qua, 05 Tháng 4
+                        <span class="h-[1px] flex-1 bg-slate-100"></span>
+</h5>
+<div class="space-y-4">
+<div class="chat-bubble bg-white p-5 border border-slate-100 flex items-start gap-5 shadow-sm opacity-80">
+<div class="relative">
+<img alt="avatar" class="w-14 h-14 rounded-[20px] border-2 border-white shadow-md bg-green-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrgOsrtOe5reLAHj9t6i-C0Dcyon0ukqp1M_j22sI4catQ2nDeDTl2ZGW51659FeoRvCX6dxqnLUKTS4kR79HGw7_4af5NXFlDeO_lASwbXOoEm-CRlwqwkF8y57a23SD1AatdMM3NnzPdV1Z0bdl0hBbs3XS8HG6k-vSwq0t7B4pYa9z1Gna_SIWFpH-0xJHQ8RZYe2TZjEOnXAeVfJ_RPRQITbXVcx40TGjvY83HOokVv818KtuSjczsbspbh0fa0j6AswKCPg"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[12px] text-green-500 font-bold">check_circle</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-base text-slate-800"><span class="text-green-600">Phạm Thu Hà</span> đã nhận được quà tặng! 🎁</h4>
+<span class="text-[12px] font-bold text-slate-400">08:00</span>
+</div>
+<p class="text-[14px] text-slate-500 line-clamp-1 mb-3">Chương trình khuyến mãi mùa hè 2026 đã được gửi đến hộp thư người dùng...</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="bg-[#FFE0D4] text-[#FF6B35] text-[10px] font-black px-3 py-1 rounded-full uppercase">KHUYẾN MÃI</span>
+<button class="text-[12px] font-bold text-[#FF6B35] hover:underline">Xem thống kê chiến dịch</button>
+</div>
+<button class="p-2 text-slate-300 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+<div class="chat-bubble bg-slate-50 p-5 border border-dashed border-slate-200 flex items-start gap-5 shadow-none">
+<div class="w-14 h-14 rounded-[20px] bg-slate-200 flex items-center justify-center text-slate-400">
+<span class="material-symbols-outlined text-3xl">settings_suggest</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-base text-slate-700">Hệ thống đã được cập nhật ⚙️</h4>
+<span class="text-[12px] font-bold text-slate-400">10:00 - 04/04</span>
+</div>
+<p class="text-[14px] text-slate-400 line-clamp-1 mb-3">Tối ưu hóa hiệu suất và sửa lỗi vặt trong quá trình thanh toán tour.</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="bg-slate-200 text-slate-600 text-[10px] font-black px-3 py-1 rounded-full uppercase">HỆ THỐNG</span>
+</div>
+<button class="p-2 text-slate-300 hover:text-red-500 transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-between items-center bg-white px-8 py-6 rounded-[32px] border border-slate-100 shadow-sm">
+<p class="text-sm font-bold text-slate-400">Hiển thị 1–10 trong tổng số 1.248 tin</p>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl bg-[var(--primary)] text-white font-bold shadow-lg shadow-blue-500/20">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all">3</button>
+<span class="mx-2 text-slate-300">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-all">125</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-xl text-slate-400 hover:bg-slate-50 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4">
+<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md"></div>
+<div class="relative bg-white w-full max-w-sm rounded-[40px] shadow-2xl overflow-hidden p-10 text-center border border-white">
+<div class="w-24 h-24 bg-red-50 text-red-500 rounded-[32px] flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-5xl">delete_sweep</span>
+</div>
+<h3 class="text-2xl font-black text-slate-900 mb-3">Xóa tin này nhé?</h3>
+<p class="text-slate-500 mb-8 text-[15px] leading-relaxed">
+                Nội dung cuộc trò chuyện sẽ biến mất vĩnh viễn khỏi hệ thống của chúng mình đấy ạ.
+            </p>
+<div class="flex flex-col gap-3">
+<button class="w-full py-4 bg-red-500 text-white font-black text-sm rounded-2xl shadow-xl shadow-red-200 hover:bg-red-600 transition-all transform active:scale-95">Đồng ý, hãy xóa nó</button>
+<button class="w-full py-4 text-slate-400 font-bold text-sm hover:text-slate-900 transition-all">Mình đổi ý rồi, quay lại nhé</button>
+</div>
+</div>
+</div>
+
+</body></html>

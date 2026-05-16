@@ -342,3 +342,17 @@ Ghost style: `border #E2E8F0 bg white text #64748B radius-10 py-10 full-width 13
 | Bật/tắt hot | PATCH | `/admin/tours/{id}/hot` | Toggle |
 | Xóa tour | DELETE | `/admin/tours/{id}` | Confirm dialog |
 | Xóa lịch | DELETE | `/admin/tour-schedules/{id}` | Confirm trong bảng lịch |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Load detail | Nếu `GET /tours/{slug}` trả 404, hiển thị trạng thái "Tour không tồn tại" và CTA quay lại danh sách |
+| Đổi trạng thái tour | `active`, `inactive`, `sold_out`; không cho chuyển `sold_out` nếu vẫn còn lịch `available` còn chỗ mà chưa có xác nhận |
+| Xóa tour | Bắt buộc confirm; nếu tour đã có booking thì API nên từ chối hoặc chỉ cho chuyển `inactive` |
+| Toggle nổi bật/hot | Optimistic update được phép nhưng phải rollback nếu API lỗi |
+| Xóa lịch | Không cho xóa lịch đã có booking; đề xuất chuyển `status=cancelled` thay vì delete cứng |
+| Ratings rỗng | Hiển thị "Chưa có đánh giá" và vẫn giữ card rating stats |
+| Schedules rỗng | Hiển thị CTA "Thêm lịch khởi hành" nếu user có quyền |

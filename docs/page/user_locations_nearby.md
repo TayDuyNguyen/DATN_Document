@@ -189,7 +189,8 @@ Mỗi location card (horizontal compact):
 | Đổi bán kính | GET | `/locations/nearby?lat=&lng=&radius={km}` | Click radius pill |
 | Filter danh mục | GET | `/locations/nearby?lat=&lng=&radius=&category_id=` | Chọn filter |
 | Cập nhật vị trí | — | Browser Geolocation API | Click "Cập nhật vị trí" |
-| Toggle yêu thích (🔐) | POST/DELETE | `/user/favorites` | Click icon yêu thích |
+| Thêm yêu thích (🔐) | POST | `/user/favorites` | Click icon yêu thích khi chưa lưu |
+| Xóa yêu thích (🔐) | DELETE | `/user/favorites` | Click icon yêu thích khi đã lưu |
 
 **Query params của `/locations/nearby`:**
 

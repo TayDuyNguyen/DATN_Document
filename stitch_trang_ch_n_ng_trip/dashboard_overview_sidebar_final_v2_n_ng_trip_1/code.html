@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Danh sách Tour - Đà Nẵng Trip Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Montserrat:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --bg-page: #F8FAFC;
+            --surface: #FFFFFF;
+            --border: #E2E8F0;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+            --text-muted: #94A3B8;
+            --primary: #0066CC;
+            --primary-subtle: #B3D9FF;
+            --primary-dark: #004999;
+            --accent: #FF6B35;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+        }
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .tree-line {
+            position: relative;
+        }
+        .tree-line::before {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            border-left: 1px dashed rgba(255,255,255,0.1);
+            z-index: 1;
+        }
+        .tree-item-dot::after {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            width: 12px;
+            height: 1px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+        }
+        tr:hover .action-btns {
+            opacity: 1;
+        }
+        .table-condensed th {
+            padding: 8px 12px;
+            font-size: 10px;
+        }
+        .table-condensed td {
+            padding: 6px 12px;
+            height: 52px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Sidebar -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-[#1E293B] flex flex-col py-6 px-4 z-50 custom-scrollbar shadow-2xl">
+<div class="mb-10 px-2">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-[#0066CC] rounded-lg flex items-center justify-center text-white font-black text-xl">D</div>
+<h1 class="text-xl font-black tracking-tight text-white">Đà Nẵng Trip</h1>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mt-1">Adventure Admin</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-bold bg-[#0066CC] shadow-lg shadow-blue-500/20 transition-all duration-200" href="/admin/dashboard">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="text-sm">Bảng điều khiển</span>
+</a>
+<div class="pt-4 space-y-1">
+<p class="px-3 text-[10px] font-bold text-slate-500 uppercase mb-2">QUẢN LÝ TOUR</p>
+<button class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 font-semibold hover:bg-slate-800 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="text-sm">Quản lý Tour</span>
+</div>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<div class="tree-line ml-3 space-y-1">
+<a class="relative flex items-center gap-3 pl-8 py-2 rounded-xl text-white text-xs font-medium hover:text-white transition-colors tree-item-dot bg-white/5" href="/admin/tours">
+<span>Danh sách Tour</span>
+</a>
+<a class="relative flex items-center gap-3 pl-8 py-2 rounded-xl text-slate-400 text-xs font-medium hover:text-white transition-colors tree-item-dot" href="/admin/tour-categories">
+<span>Danh mục</span>
+</a>
+<a class="relative flex items-center gap-3 pl-8 py-2 rounded-xl text-slate-400 text-xs font-medium hover:text-white transition-colors tree-item-dot" href="/admin/tour-schedules">
+<span>Lịch khởi hành</span>
+</a>
+</div>
+</div>
+<div class="space-y-1">
+<button class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 font-semibold hover:bg-slate-800 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">location_on</span>
+<span class="text-sm">Quản lý Địa điểm</span>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+<div class="space-y-1">
+<button class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-slate-300 font-semibold hover:bg-slate-800 transition-colors">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">shopping_cart</span>
+<span class="text-sm">Đơn hàng</span>
+</div>
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 font-semibold hover:bg-slate-800 transition-colors" href="/admin/ratings">
+<span class="material-symbols-outlined text-xl">star</span>
+<span class="text-sm">Đánh giá</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 font-semibold hover:bg-slate-800 transition-colors" href="/admin/users">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="text-sm">Người dùng</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-300 font-semibold hover:bg-slate-800 transition-colors" href="/admin/notifications">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="text-sm">Thông báo</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4 pt-6">
+<div class="p-4 bg-slate-800/50 rounded-2xl border border-slate-700/50">
+<p class="text-xs font-bold text-white">Hệ thống ổn định</p>
+<div class="mt-2 w-full bg-slate-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-emerald-500 h-full w-[95%]"></div>
+</div>
+<p class="text-[10px] text-slate-400 mt-1">95% server load</p>
+</div>
+<button class="w-full bg-slate-800 text-slate-300 py-2.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2 hover:bg-red-500/10 hover:text-red-400 transition-all border border-slate-700">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Đăng xuất</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 p-8 min-h-screen">
+<div class="flex items-center justify-between mb-8">
+<div>
+<nav class="flex items-center gap-2 mb-2">
+<a class="text-[11px] font-bold text-[#94A3B8] uppercase tracking-wider hover:text-[#0066CC]" href="#">Quản lý Tour</a>
+<span class="text-[#E2E8F0] material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-[11px] font-bold text-[#0066CC] uppercase tracking-wider">Danh sách Tour</span>
+</nav>
+<h2 class="text-2xl font-bold text-[#1E293B] tracking-tight font-montserrat">Danh sách Tour</h2>
+<p class="text-sm text-[#64748B] mt-0.5">Quản lý toàn bộ sản phẩm tour du lịch</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center gap-2 px-4 py-2.5 bg-white border border-[#E2E8F0] rounded-xl text-sm font-bold text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] transition-all shadow-sm">
+<span class="material-symbols-outlined text-lg">download</span>
+                    Xuất Excel
+                </button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-[#0066CC] text-white rounded-xl text-sm font-bold hover:bg-[#004999] shadow-lg shadow-[#0066CC]/20 transition-all">
+<span class="material-symbols-outlined text-lg">add</span>
+                    Thêm Tour mới
+                </button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-4 mb-6 shadow-sm">
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative flex-1 min-w-[280px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#94A3B8] text-lg">search</span>
+<input class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border-[#E2E8F0] rounded-xl text-sm focus:ring-4 focus:ring-[#0066CC]/10 focus:border-[#0066CC] outline-none transition-all placeholder:text-slate-400" placeholder="Tìm theo tên tour, mã tour..." type="text"/>
+</div>
+<div class="flex items-center gap-3">
+<select class="w-[180px] bg-white border-[#E2E8F0] rounded-xl text-sm font-medium py-2.5 px-3 outline-none focus:border-[#0066CC] focus:ring-2 focus:ring-[#0066CC]/5">
+<option value="all">Tất cả danh mục</option>
+<option value="1">Tham quan</option>
+<option value="2">Nghỉ dưỡng</option>
+</select>
+<select class="w-[150px] bg-white border-[#E2E8F0] rounded-xl text-sm font-medium py-2.5 px-3 outline-none focus:border-[#0066CC] focus:ring-2 focus:ring-[#0066CC]/5">
+<option value="all">Trạng thái</option>
+<option value="active">Đang hoạt động</option>
+<option value="inactive">Tạm dừng</option>
+<option value="sold_out">Hết chỗ</option>
+</select>
+<select class="w-[130px] bg-white border-[#E2E8F0] rounded-xl text-sm font-medium py-2.5 px-3 outline-none focus:border-[#0066CC] focus:ring-2 focus:ring-[#0066CC]/5">
+<option value="all">Loại tour</option>
+<option value="featured">Nổi bật</option>
+<option value="hot">Tour Hot</option>
+</select>
+</div>
+<button class="px-8 py-2.5 bg-[#0066CC] text-white rounded-xl text-sm font-bold hover:bg-[#004999] transition-all shadow-md shadow-[#0066CC]/10">Lọc</button>
+</div>
+<div class="flex gap-2 mt-4 pt-4 border-t border-slate-50 items-center">
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Đang lọc:</span>
+<div class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] rounded-lg px-3 py-1.5 text-[11px] font-bold flex items-center gap-2">
+                    Danh mục: Tham quan
+                    <button class="hover:text-error transition-colors flex"><span class="material-symbols-outlined text-[14px]">close</span></button>
+</div>
+<button class="ml-2 text-[11px] font-bold text-slate-400 hover:text-error uppercase tracking-wider transition-colors">Xóa tất cả</button>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="grid grid-cols-4 gap-4 mb-6">
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-[#EFF6FF] rounded-xl flex items-center justify-center text-[#0066CC]">
+<span class="material-symbols-outlined text-2xl">inventory_2</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-[#94A3B8] uppercase tracking-wider mb-1">Tổng tour</p>
+<p class="text-2xl font-bold text-[#1E293B]">48</p>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-[#D1FAE5] rounded-xl flex items-center justify-center text-[#10B981]">
+<span class="material-symbols-outlined text-2xl">check_circle</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-success uppercase tracking-wider mb-1">Đang hoạt động</p>
+<p class="text-2xl font-bold text-[#1E293B]">35</p>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-[#FEF3C7] rounded-xl flex items-center justify-center text-[#F59E0B]">
+<span class="material-symbols-outlined text-2xl">star</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-warning uppercase tracking-wider mb-1">Nổi bật</p>
+<p class="text-2xl font-bold text-[#1E293B]">12</p>
+</div>
+</div>
+<div class="bg-white border border-[#E2E8F0] rounded-2xl p-5 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 bg-[#FEE2E2] rounded-xl flex items-center justify-center text-[#EF4444]">
+<span class="material-symbols-outlined text-2xl">block</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-error uppercase tracking-wider mb-1">Hết chỗ</p>
+<p class="text-2xl font-bold text-[#1E293B]">3</p>
+</div>
+</div>
+</div>
+<!-- Data Table Section -->
+<div class="bg-white border border-[#E2E8F0] rounded-2xl shadow-sm overflow-hidden">
+<div class="px-6 py-5 border-b border-[#E2E8F0] flex justify-between items-center bg-white">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2">
+<input class="w-4 h-4 rounded border-[#E2E8F0] text-[#0066CC] focus:ring-[#0066CC]" type="checkbox"/>
+<span class="text-xs font-bold text-[#0066CC] uppercase tracking-wider">Đã chọn 3</span>
+</div>
+<div class="flex gap-2">
+<button class="bg-[#D1FAE5] text-[#10B981] px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#A7F3D0] transition-colors border border-success/10">Kích hoạt</button>
+<button class="bg-[#FEF3C7] text-[#F59E0B] px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FDE68A] transition-colors border border-warning/10">Tạm dừng</button>
+<button class="bg-[#FEE2E2] text-[#EF4444] px-4 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest hover:bg-[#FECACA] transition-colors border border-error/10">Xóa</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-medium text-[#94A3B8]">Hiển thị 1–10 / 48 tour</span>
+<select class="text-xs font-bold border-[#E2E8F0] rounded-xl px-3 py-1.5 outline-none focus:border-[#0066CC] bg-slate-50">
+<option>10 / trang</option>
+<option>20 / trang</option>
+<option>50 / trang</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse table-condensed">
+<thead class="bg-[#F8FAFC] border-b border-[#E2E8F0]">
+<tr class="text-[10px] uppercase font-bold text-[#94A3B8] tracking-[0.15em]">
+<th class="w-10"></th>
+<th class="w-12">#</th>
+<th class="min-w-[300px] cursor-pointer group">
+<div class="flex items-center gap-1">
+                                    Tour <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 text-[#0066CC]">swap_vert</span>
+</div>
+</th>
+<th class="w-32 cursor-pointer group">
+<div class="flex items-center gap-1">
+                                    Giá <span class="material-symbols-outlined text-[14px] opacity-0 group-hover:opacity-100 text-[#0066CC]">swap_vert</span>
+</div>
+</th>
+<th class="w-24">Lịch</th>
+<th class="w-28">Đánh giá</th>
+<th class="w-24 cursor-pointer group">
+<div class="flex items-center gap-1 text-primary">
+                                    Lượt bán <span class="material-symbols-outlined text-[14px]">arrow_downward</span>
+</div>
+</th>
+<th class="w-32 text-center">Trạng thái</th>
+<th class="w-20 text-center">Nổi bật</th>
+<th class="w-20 text-center">Hot</th>
+<th class="w-24 text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100">
+<!-- Row 1 -->
+<tr class="hover:bg-[#F8FAFC] transition-colors group">
+<td><input class="w-4 h-4 rounded border-[#E2E8F0] text-[#0066CC] focus:ring-[#0066CC]" type="checkbox"/></td>
+<td class="text-xs text-[#94A3B8] font-bold">01</td>
+<td>
+<div class="flex items-center gap-3">
+<img alt="" class="w-10 h-10 rounded-xl object-cover border border-[#E2E8F0] shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOYW0RxAlEHZBdyK-S6rQ9TJhG0HemQs9h42-KFNj_YG6OGBql61VhFmnjF5n7UEvVhHyHIM8p3aYAlPekPe30uzgpPSyXhheR5VUauDxRACxqCbEmjnbGlAbDvOAX79gmEiHt1LldF3aF1c-1-LcRPnc5d1M0L7qBHQkmG5M7ug62AUdjS0-sScpRFDEen2cr65xL2ksUgsdz7I_pI4uG8KFJzI9spdDkCMX0lEK_YZwvbsdqRMSmF_Iy3qB8G08L_4lUDNBfEQ"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#1E293B] truncate hover:text-[#0066CC] cursor-pointer">Bà Nà Hills - Cầu Vàng</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] font-bold text-[#94A3B8]">TOUR-001</span>
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider">Tham quan</span>
+</div>
+</div>
+</div>
+</td>
+<td>
+<p class="text-sm font-bold text-[#1E293B]">850.000 đ</p>
+<p class="text-[10px] font-medium text-[#94A3B8]">/ người</p>
+</td>
+<td class="text-sm font-bold text-[#10B981]">5 lịch</td>
+<td>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-[#1E293B]">4.9</span>
+<span class="text-[10px] font-medium text-[#94A3B8]">(428)</span>
+</div>
+</td>
+<td class="text-sm font-bold text-[#1E293B]">428</td>
+<td class="text-center">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#D1FAE5] text-[#10B981] border border-[#10B981]/20">
+                                    HOẠT ĐỘNG
+                                </span>
+</td>
+<td class="text-center">
+<button class="relative w-8 h-4 bg-[#0066CC] rounded-full inline-flex items-center transition-colors">
+<span class="w-3 h-3 bg-white rounded-full ml-4 transition-all shadow-sm"></span>
+</button>
+</td>
+<td class="text-center">
+<button class="relative w-8 h-4 bg-[#FF6B35] rounded-full inline-flex items-center transition-colors">
+<span class="w-3 h-3 bg-white rounded-full ml-4 transition-all shadow-sm"></span>
+</button>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-1.5">
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-[#0066CC] hover:border-[#0066CC] transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-[#F59E0B] hover:border-[#F59E0B] transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-error hover:border-error transition-all">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- More rows -->
+<tr class="hover:bg-[#F8FAFC] transition-colors group">
+<td><input class="w-4 h-4 rounded border-[#E2E8F0] text-[#0066CC] focus:ring-[#0066CC]" type="checkbox"/></td>
+<td class="text-xs text-[#94A3B8] font-bold">02</td>
+<td>
+<div class="flex items-center gap-3">
+<img alt="" class="w-10 h-10 rounded-xl object-cover border border-[#E2E8F0] shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbXiBqFXCPUs3VvRFG3mFS0LJRsQmVvrpZF3nbUJFGGQ-j4jI_bHAUsM1lZpCUmMCT0Xz5Gu5jfpTsrXJ4E2MgzwHTYMjsYycIsbAPGzVfTV0t8PY0J5B8YZKSobueUz8auW7lOa_rXby10WLpaSbJ5JFf2W1TcOqd0APgevEb_7M6lM64gc52s7Lz6OjcSNltliB_a82IFPKI-LmgUA3YZcCjkGQsadVwPLjI_g4dpW6zFm_tp3DcH6v4dPuHUyR3sP-70hj7Iw"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#1E293B] truncate hover:text-[#0066CC] cursor-pointer">Phố cổ Hội An - Show Ký ức</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] font-bold text-[#94A3B8]">TOUR-002</span>
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider">Văn hóa</span>
+</div>
+</div>
+</div>
+</td>
+<td>
+<p class="text-sm font-bold text-[#1E293B]">650.000 đ</p>
+<p class="text-[10px] font-medium text-[#94A3B8]">/ người</p>
+</td>
+<td class="text-sm font-bold text-[#10B981]">3 lịch</td>
+<td>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-[#1E293B]">4.8</span>
+<span class="text-[10px] font-medium text-[#94A3B8]">(385)</span>
+</div>
+</td>
+<td class="text-sm font-bold text-[#1E293B]">385</td>
+<td class="text-center">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#D1FAE5] text-[#10B981] border border-[#10B981]/20">
+                                    HOẠT ĐỘNG
+                                </span>
+</td>
+<td class="text-center">
+<button class="relative w-8 h-4 bg-[#0066CC] rounded-full inline-flex items-center transition-colors">
+<span class="w-3 h-3 bg-white rounded-full ml-4 transition-all shadow-sm"></span>
+</button>
+</td>
+<td class="text-center">
+<button class="relative w-8 h-4 bg-[#E2E8F0] rounded-full inline-flex items-center transition-colors">
+<span class="w-3 h-3 bg-white rounded-full ml-1 transition-all shadow-sm"></span>
+</button>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-1.5">
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-[#0066CC] hover:border-[#0066CC] transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-[#F59E0B] hover:border-[#F59E0B] transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-error hover:border-error transition-all">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-[#F8FAFC] transition-colors group">
+<td><input class="w-4 h-4 rounded border-[#E2E8F0] text-[#0066CC] focus:ring-[#0066CC]" type="checkbox"/></td>
+<td class="text-xs text-[#94A3B8] font-bold">03</td>
+<td>
+<div class="flex items-center gap-3">
+<img alt="" class="w-10 h-10 rounded-xl object-cover border border-[#E2E8F0] shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlrcnND2hj-fAL-KN59CM6uvW_lSMZEQmp6VB6WUA6MVrPGiGTuoVk7kkNkj2_pjgBbeferNcYCh74fDQGGo1eb7-UyzjA9IGi5xhuq3UC-9zPxt-JhvDkz9UdR8Z1VSU-r1-mB2agyrSsvG87gmxA8uFzHit88dVKhdgWDdIGI89QTXhYRtNkdGph72UNCiU6KLitFvOOrAtlY_IAQAwIOBa6dmfxjRpMlmqPyewukYa2CE8ardr06uQQlIu6aQT4JFJWsrydMg"/>
+<div class="flex-1 min-w-0">
+<h4 class="text-sm font-bold text-[#1E293B] truncate hover:text-[#0066CC] cursor-pointer">Ngũ Hành Sơn - Làng đá</h4>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[10px] font-bold text-[#94A3B8]">TOUR-003</span>
+<span class="bg-[#EFF6FF] text-[#0066CC] border border-[#B3D9FF] px-2 py-0.5 rounded-lg text-[9px] font-bold uppercase tracking-wider">Lịch sử</span>
+</div>
+</div>
+</div>
+</td>
+<td>
+<p class="text-sm font-bold text-[#1E293B]">450.000 đ</p>
+<p class="text-[10px] font-medium text-[#94A3B8]">/ người</p>
+</td>
+<td class="text-sm font-bold text-[#10B981]">2 lịch</td>
+<td>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm font-bold text-[#1E293B]">4.7</span>
+<span class="text-[10px] font-medium text-[#94A3B8]">(312)</span>
+</div>
+</td>
+<td class="text-sm font-bold text-[#1E293B]">312</td>
+<td class="text-center">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#D1FAE5] text-[#10B981] border border-[#10B981]/20">
+                                    HOẠT ĐỘNG
+                                </span>
+</td>
+<td class="text-center">
+<button class="relative w-8 h-4 bg-[#E2E8F0] rounded-full inline-flex items-center transition-colors">
+<span class="w-3 h-3 bg-white rounded-full ml-1 transition-all shadow-sm"></span>
+</button>
+</td>
+<td class="text-center">
+<button class="relative w-8 h-4 bg-[#E2E8F0] rounded-full inline-flex items-center transition-colors">
+<span class="w-3 h-3 bg-white rounded-full ml-1 transition-all shadow-sm"></span>
+</button>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-1.5">
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-[#0066CC] hover:border-[#0066CC] transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-[#F59E0B] hover:border-[#F59E0B] transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-xl bg-slate-50 border border-[#E2E8F0] text-slate-500 hover:text-error hover:border-error transition-all">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-5 flex justify-between items-center bg-[#F8FAFC] border-t border-[#E2E8F0]">
+<p class="text-xs font-bold text-[#64748B] uppercase tracking-wider">Hiển thị 1–10 trong tổng số 48 tour</p>
+<div class="flex items-center gap-1.5">
+<button class="w-9 h-9 flex items-center justify-center rounded-xl border border-[#E2E8F0] bg-white text-[#94A3B8] opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-xl bg-[#0066CC] text-white font-bold text-xs shadow-md shadow-[#0066CC]/20">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-xl border border-[#E2E8F0] bg-white text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] font-bold text-xs transition-all">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-xl border border-[#E2E8F0] bg-white text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] font-bold text-xs transition-all">3</button>
+<span class="text-[#94A3B8] px-1 text-xs font-bold">...</span>
+<button class="w-9 h-9 flex items-center justify-center rounded-xl border border-[#E2E8F0] bg-white text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] font-bold text-xs transition-all">5</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-xl border border-[#E2E8F0] bg-white text-[#64748B] hover:border-[#0066CC] hover:text-[#0066CC] transition-all">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Delete Confirmation Modal (Hidden) -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm hidden">
+<div class="bg-white rounded-2xl w-full max-w-md shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="p-6 flex items-center gap-4 border-b border-[#E2E8F0]">
+<div class="w-12 h-12 bg-[#FEE2E2] rounded-xl flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-2xl">warning</span>
+</div>
+<h3 class="text-lg font-bold text-[#1E293B]">Xóa tour này?</h3>
+</div>
+<div class="p-6">
+<p class="text-sm text-[#64748B] leading-relaxed font-medium">Tour <strong class="text-slate-900">Bà Nà Hills - Cầu Vàng</strong> sẽ bị xóa vĩnh viễn khỏi hệ thống. Hành động này không thể hoàn tác.</p>
+<div class="mt-4 p-4 bg-[#FEF3C7] border border-[#F59E0B]/30 rounded-xl flex gap-3">
+<span class="material-symbols-outlined text-warning text-xl">error</span>
+<p class="text-[13px] font-bold text-[#92400E]">Lưu ý: Tất cả lịch khởi hành và dữ liệu đặt chỗ liên quan sẽ bị xóa theo.</p>
+</div>
+</div>
+<div class="px-6 py-4 bg-[#F8FAFC] border-t border-[#E2E8F0] flex justify-end gap-3">
+<button class="px-5 py-2.5 border border-[#E2E8F0] bg-white text-[#64748B] rounded-xl text-sm font-bold hover:bg-slate-50 transition-all">Hủy bỏ</button>
+<button class="px-5 py-2.5 bg-error text-white rounded-xl text-sm font-bold hover:bg-[#DC2626] shadow-lg shadow-error/20 transition-all">Xóa tour</button>
+</div>
+</div>
+</div>
+</body></html>

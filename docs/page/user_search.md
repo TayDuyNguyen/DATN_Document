@@ -141,7 +141,7 @@ Footer dropdown:
 
 ### 4.3 Lịch sử tìm kiếm (🔐 Đã đăng nhập)
 
-**API: `GET /user/search-history?limit=5`**
+**API planned: `GET /user/search-history?limit=5`**
 
 - Title: "Tìm kiếm gần đây" — `16px Inter 600 #1E293B mb-16 mt-32`
 - `flex flex-col gap-4`:
@@ -150,7 +150,7 @@ Footer dropdown:
     - Left: icon `history 16px #94A3B8` + keyword `13px #1E293B`
     - Right: icon `close 14px #94A3B8` hover `#EF4444` → xóa item
   - Click → điền vào search input + submit
-- Button "Xóa lịch sử": `12px #EF4444` → `DELETE /user/search-history`
+- Button "Xóa lịch sử": `12px #EF4444` → planned `DELETE /user/search-history`
 
 ---
 
@@ -241,8 +241,8 @@ Mỗi tour card:
 | Autocomplete | GET | `/search/suggestions?q=&limit=5` | Nhập text (debounce 300ms) |
 | Từ khóa phổ biến | GET | `/search/popular?limit=10&days=30` | Khi mount (query rỗng) |
 | Xu hướng | GET | `/search/trending?limit=10` | Khi mount (query rỗng) |
-| Lịch sử tìm kiếm (🔐) | GET | `/user/search-history?limit=5` | Khi mount + đã đăng nhập |
-| Xóa lịch sử (🔐) | DELETE | `/user/search-history` | Click "Xóa lịch sử" |
+| Lịch sử tìm kiếm (🔐) | GET | planned `/user/search-history?limit=5` | Khi mount + đã đăng nhập |
+| Xóa lịch sử (🔐) | DELETE | planned `/user/search-history` | Click "Xóa lịch sử" |
 | Load danh mục (filter) | GET | `/categories` | Khi mount |
 
 **Query params của `/search`:**

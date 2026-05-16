@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gửi Thông báo - Power Sender's Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --primary-soft: #EFF6FF;
+            --success: #10B981;
+            --success-soft: #D1FAE5;
+            --warning: #F59E0B;
+            --warning-soft: #FEF3C7;
+            --danger: #EF4444;
+            --danger-soft: #FEE2E2;
+            --text-main: #1E293B;
+            --text-muted: #64748B;
+            --text-light: #94A3B8;
+            --bg-page: #F8FAFC;
+        }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+        }
+        .form-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 24px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+        }
+        .input-base {
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 10px 14px;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .input-base:focus {
+            border-color: var(--primary);
+            ring: 2px solid var(--primary-soft);
+            outline: none;
+        }
+        .mode-toggle-btn {
+            transition: all 0.2s;
+        }
+        .preview-card {
+            transition: all 0.3s ease;
+        }
+        .character-counter {
+            font-size: 11px;
+            color: var(--text-light);
+            text-align: right;
+            margin-top: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#1E293B] flex flex-col z-50">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-10 h-10 bg-[var(--primary)] rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">D</div>
+<div>
+<h1 class="text-white font-bold text-lg leading-none tracking-tight">Đà Nẵng Trip</h1>
+<p class="text-slate-400 text-[10px] mt-1 uppercase tracking-widest font-bold text-opacity-60">Trung tâm quản trị</p>
+</div>
+</div>
+<nav class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-semibold text-sm">Tổng quan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-white bg-[var(--primary)]/20 border border-[var(--primary)]/30" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-semibold text-sm">Thông báo</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:text-white hover:bg-slate-700/50 transition-all" href="#">
+<span class="material-symbols-outlined">label</span>
+<span class="font-semibold text-sm">Tags &amp; Tiện ích</span>
+</a>
+</nav>
+</div>
+</aside>
+<main class="ml-64 min-h-screen pb-12">
+<header class="px-10 py-8 sticky top-0 bg-white/80 backdrop-blur-md z-40 border-b border-slate-100">
+<div class="max-w-[800px] mx-auto flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-2 mb-2">
+<span class="text-[12px] font-bold text-[var(--text-light)] uppercase tracking-widest">Thông báo</span>
+<span class="material-symbols-outlined text-[14px] text-slate-300">chevron_right</span>
+<span class="text-[12px] font-bold text-[var(--primary)] uppercase tracking-widest">Gửi thông báo</span>
+</nav>
+<h2 class="text-3xl font-extrabold text-[var(--text-main)]">Gửi Thông báo ✨</h2>
+<p class="text-[14px] text-[var(--text-muted)] mt-1">Gửi thông báo đến người dùng hệ thống</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 border border-slate-200 text-[var(--text-muted)] font-bold text-sm rounded-xl hover:border-[var(--danger)] hover:text-[var(--danger)] transition-all bg-white">
+                        Hủy
+                    </button>
+<button class="px-6 py-3 bg-[var(--primary)] text-white font-extrabold text-sm rounded-xl shadow-lg shadow-blue-200 flex items-center gap-2 hover:translate-y-[-2px] transition-all">
+<span class="material-symbols-outlined text-lg">send</span>
+                        Gửi thông báo
+                    </button>
+</div>
+</div>
+</header>
+<div class="max-w-[800px] mx-auto px-10 pt-8">
+<div class="flex gap-0 bg-white border border-slate-200 rounded-[14px] p-1.5 inline-flex mb-8 shadow-sm">
+<button class="px-6 py-2 bg-[var(--primary)] text-white rounded-xl text-[13px] font-bold shadow-md">Gửi cá nhân</button>
+<button class="px-6 py-2 bg-transparent text-[var(--text-muted)] rounded-xl text-[13px] font-semibold hover:text-[var(--primary)]">Gửi hàng loạt</button>
+</div>
+<div class="form-card p-8 space-y-8">
+<div class="flex items-center gap-3 pb-5 border-b border-slate-50">
+<div class="w-10 h-10 bg-[var(--primary-soft)] rounded-xl flex items-center justify-center text-[var(--primary)]">
+<span class="material-symbols-outlined font-bold">send</span>
+</div>
+<h3 class="text-lg font-bold text-[var(--text-main)]">Nội dung thông báo</h3>
+</div>
+<div class="space-y-6">
+<div class="group">
+<label class="block text-[13px] font-bold text-[var(--text-main)] mb-2 uppercase tracking-wide">Người nhận *</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-light)]">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:ring-4 focus:ring-blue-500/5 focus:bg-white outline-none transition-all placeholder:text-slate-400" placeholder="Tìm theo tên, email, username..." type="text"/>
+</div>
+<div class="mt-4 flex items-center gap-3 bg-[var(--primary-soft)] border border-blue-200 rounded-2xl px-4 py-3">
+<img alt="Selected User" class="w-9 h-9 rounded-full border-2 border-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTEDqyrmR8s-gXD5wE75nuZGYO8-Q4Y6hLfZew4KP6l_xkPTMd-IJJjhv8YQBvr3a0civYGG8k5nu0pJm12QMcZPd9uIbK1zpPVXTNmNwFkKW8qXPYdHL6Jc3FGRn_CxYNFdpmyJ754eH-S3v10Gnn0f1dTy21zfrpDkJ_HGMrJQk7FZcHdhqs9e46jygAXv_QSkBhRBPXl2wVpa5ExXXzWefWBujwvi3XEheMW-pDtzPwg1NJDJOo7EnGW0rV5R2tmnOQvLYrdg"/>
+<div class="flex-1">
+<p class="text-sm font-bold text-[var(--primary)]">Nguyễn Văn An</p>
+<p class="text-[11px] text-[var(--text-muted)]">an.nguyen@example.com</p>
+</div>
+<button class="text-[var(--text-light)] hover:text-[var(--danger)] transition-colors">
+<span class="material-symbols-outlined text-lg">close</span>
+</button>
+</div>
+</div>
+<div>
+<label class="block text-[13px] font-bold text-[var(--text-main)] mb-2 uppercase tracking-wide">Loại thông báo *</label>
+<select class="w-full input-base bg-slate-50 cursor-pointer">
+<option value="booking">🛒 Đặt tour (booking)</option>
+<option value="rating">⭐ Đánh giá (rating)</option>
+<option value="system">⚙️ Hệ thống (system)</option>
+<option value="promotion">🏷️ Khuyến mãi (promotion)</option>
+</select>
+</div>
+<div>
+<label class="block text-[13px] font-bold text-[var(--text-main)] mb-2 uppercase tracking-wide">Tiêu đề *</label>
+<input class="w-full input-base bg-slate-50" placeholder="Nhập tiêu đề thông báo..." type="text"/>
+<p class="character-counter">0/100</p>
+</div>
+<div>
+<label class="block text-[13px] font-bold text-[var(--text-main)] mb-2 uppercase tracking-wide">Nội dung</label>
+<textarea class="w-full input-base bg-slate-50 resize-none" placeholder="Nhập nội dung thông báo..." rows="4"></textarea>
+<p class="character-counter">0/500</p>
+</div>
+<div class="pt-4">
+<p class="text-[11px] font-black text-[var(--text-light)] uppercase tracking-widest mb-4 flex items-center gap-3">
+                            Xem trước hiển thị
+                            <span class="h-[1px] flex-1 bg-slate-100"></span>
+</p>
+<div class="preview-card bg-slate-50 border border-slate-100 rounded-[24px] p-6 shadow-sm">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-[var(--primary)] shadow-sm border border-blue-50">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</div>
+<div class="flex-1">
+<h4 class="font-extrabold text-base text-[var(--text-main)]">Tiêu đề thông báo</h4>
+<p class="text-[14px] text-[var(--text-muted)] mt-1 line-clamp-2 leading-relaxed">Nội dung thông báo sẽ xuất hiện ở đây khi bạn bắt đầu nhập...</p>
+<div class="flex items-center gap-4 mt-4">
+<span class="bg-[var(--primary-soft)] text-[var(--primary)] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter">LOẠI TIN</span>
+<span class="text-[11px] font-bold text-[var(--text-light)]">Vừa xong</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-50">
+<div class="flex justify-between items-center cursor-pointer group">
+<label class="text-[13px] font-bold text-[var(--text-muted)] group-hover:text-[var(--primary)] transition-colors">Dữ liệu bổ sung (JSON data)</label>
+<span class="material-symbols-outlined text-[var(--text-light)] group-hover:text-[var(--primary)] transition-colors">expand_more</span>
+</div>
+<div class="mt-4">
+<textarea class="w-full input-base bg-slate-50 font-mono text-xs" placeholder='{"booking_id": "BK-1008", "url": "/bookings/1008"}' rows="3"></textarea>
+<p class="text-[11px] text-[var(--text-light)] mt-2 italic">JSON format. Dùng để điều hướng khi người dùng click thông báo.</p>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 flex justify-end gap-3">
+<button class="px-8 py-3.5 border border-slate-200 text-[var(--text-muted)] font-bold text-sm rounded-2xl hover:bg-slate-50 transition-all">Hủy</button>
+<button class="px-8 py-3.5 bg-[var(--primary)] text-white font-extrabold text-sm rounded-2xl shadow-xl shadow-blue-200 flex items-center gap-2 hover:translate-y-[-2px] transition-all">
+<span class="material-symbols-outlined text-[20px]">send</span>
+                        Gửi ngay bây giờ
+                    </button>
+</div>
+</div>
+<div class="mt-10 bg-blue-50/50 border border-blue-100/50 rounded-[28px] p-8">
+<h4 class="text-[var(--primary)] font-bold text-sm mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">lightbulb</span>
+                    💡 Một số lưu ý nhỏ
+                </h4>
+<div class="grid grid-cols-2 gap-x-8 gap-y-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[var(--primary)] text-sm mt-0.5">arrow_forward</span>
+<p class="text-[12px] text-[var(--text-main)] leading-relaxed">Tiêu đề nên ngắn gọn, súc tích (dưới 100 ký tự) để hiển thị tốt nhất trên di động.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[var(--primary)] text-sm mt-0.5">arrow_forward</span>
+<p class="text-[12px] text-[var(--text-main)] leading-relaxed">Dữ liệu bổ sung giúp bạn tạo liên kết sâu (deep link) dẫn trực tiếp đến trang chi tiết.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[var(--primary)] text-sm mt-0.5">arrow_forward</span>
+<p class="text-[12px] text-[var(--text-main)] leading-relaxed">Gửi hàng loạt sẽ gửi đến 4.850 người dùng. Hãy kiểm tra kỹ nội dung trước khi gửi.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-[var(--primary)] text-sm mt-0.5">arrow_forward</span>
+<p class="text-[12px] text-[var(--text-main)] leading-relaxed">Thông báo sẽ xuất hiện ngay lập tức trong ứng dụng và qua email người dùng.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="hidden fixed inset-0 z-[100] flex items-center justify-center px-4">
+<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-md"></div>
+<div class="relative bg-white w-full max-w-md rounded-[40px] shadow-2xl overflow-hidden p-10 text-center border border-white">
+<div class="w-20 h-20 bg-[var(--warning-soft)] text-[var(--warning)] rounded-[28px] flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-4xl">warning_amber</span>
+</div>
+<h3 class="text-2xl font-black text-slate-900 mb-3">Xác nhận gửi hàng loạt?</h3>
+<p class="text-slate-500 mb-8 text-[15px] leading-relaxed">
+                Thông báo sẽ được gửi đến <span class="font-bold text-slate-900">4.850 người dùng</span>. Hành động này không thể hoàn tác đâu ạ.
+            </p>
+<div class="flex flex-col gap-3">
+<button class="w-full py-4 bg-[var(--primary)] text-white font-black text-sm rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-700 transition-all transform active:scale-95">Xác nhận và Gửi đi</button>
+<button class="w-full py-4 text-slate-400 font-bold text-sm hover:text-slate-900 transition-all">Quay lại kiểm tra</button>
+</div>
+</div>
+</div>
+
+</body></html>

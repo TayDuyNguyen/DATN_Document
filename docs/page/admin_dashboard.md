@@ -666,3 +666,17 @@ GET /admin/reports/revenue-detail?from=2026-01-01&to=2026-12-31
 - Các tab filter (period, days, status) → chỉ gọi lại API tương ứng, không reload toàn trang.
 - Phân trang bảng đơn hàng → gọi lại `GET /admin/bookings` với `page` mới.
 - Tất cả API yêu cầu header `Authorization: Bearer {token}` (role admin/staff).
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Date range | `from <= to`; không cho chọn khoảng ngày tương lai nếu báo cáo chỉ tính dữ liệu đã phát sinh |
+| Period | Chỉ nhận `day`, `week`, `month`, `year`; mặc định `day` khi giá trị không hợp lệ |
+| Days filter | `booking-trend.days` chỉ nhận số nguyên dương, khuyến nghị tối đa 365 |
+| Limit top list | `limit` tối thiểu 1, tối đa 20; mặc định 5 hoặc 10 theo API |
+| Empty chart | Nếu API trả mảng rỗng, hiển thị biểu đồ rỗng kèm text "Chưa có dữ liệu trong khoảng thời gian này" |
+| API lỗi | Giữ layout dashboard, từng card lỗi hiển thị retry riêng, không làm trắng toàn màn |
+| Permission | Nếu role không phải admin/staff, chuyển 403 thay vì gọi API dashboard |

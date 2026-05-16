@@ -213,3 +213,16 @@ Style chung: `28x28px bg #F8FAFC border #E2E8F0 radius-6 color #64748B`
 | Bulk lưu trữ | PATCH | `/admin/blog-posts/{id}/status` (loop) | Bulk action |
 | Bulk xóa | DELETE | `/admin/blog-posts/{id}` (loop) | Bulk action |
 | Xóa 1 bài | DELETE | `/admin/blog-posts/{id}` | Confirm dialog |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Search | Debounce tối thiểu 300ms, trim keyword trước khi gọi API |
+| Status filter | Chỉ nhận `draft`, `published`, `archived` hoặc bỏ trống |
+| Category filter | `category_id` phải tồn tại trong `GET /admin/blog-categories` |
+| Bulk action | Chỉ bật khi có ít nhất 1 bài được chọn; confirm trước bulk delete |
+| Đổi trạng thái | Khi publish nếu thiếu title/content thì API trả validation và UI hiển thị lỗi |
+| Empty state | Phân biệt "chưa có bài viết" và "không có kết quả theo bộ lọc" |

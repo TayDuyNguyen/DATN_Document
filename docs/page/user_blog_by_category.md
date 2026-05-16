@@ -58,3 +58,15 @@ Bài đầu tiên của danh mục đó (không phải bài đầu tiên toàn b
 | Load bài viết theo danh mục | GET | `/blog?category_id={id}&page=1&per_page=9` | Khi mount với category_id |
 | Load danh mục | GET | `/blog/categories` | Khi mount |
 | Đổi trang | GET | `/blog?category_id={id}&page=` | Click pagination |
+
+---
+
+## Validation & States
+
+| Hạng mục | Quy tắc |
+|---|---|
+| Category id | Bắt buộc là số hoặc id hợp lệ từ `GET /blog/categories` |
+| Category không tồn tại | Hiển thị 404 category và CTA về `/blog` |
+| Empty list | Hiển thị "Chưa có bài viết trong danh mục này" và danh sách danh mục khác |
+| Pagination | `page >= 1`; nếu vượt tổng trang, quay về trang cuối hợp lệ |
+| SEO | Title/meta lấy theo tên danh mục; fallback "Cẩm nang du lịch Đà Nẵng" |

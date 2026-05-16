@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary: #0066CC;
+            --secondary: #FF6B35;
+            --danger: #EF4444;
+            --muted-bg: #F1F5F9;
+            --page-bg: #F8FAFC;
+            --content-bg: #FDFDFD;
+            --action-bg: #F4F8FC;
+            --muted-border: #E2E8F0;
+            --text-main: #1E293B;
+            --text-muted: #94A3B8;
+            --sidebar-width: 280px;--notif-booking-bg: #E6F7FF;
+            --notif-booking-strip: #0066CC;
+            --notif-rating-bg: #FFFBE6;
+            --notif-rating-strip: #F59E0B;
+            --notif-system-bg: #F8FAFC;
+            --notif-system-strip: #64748B;
+            --notif-promotion-bg: #FFF2EB;
+            --notif-promotion-strip: #FF6B35;
+        }
+        @layer utilities {
+            .shadow-card-hover {
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            }
+            .pulse {
+                animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            @keyframes pulse-ring {
+                0%, 100% { opacity: 1; }
+                50% { opacity: .5; }
+            }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--page-bg);
+            color: var(--text-main);
+        }
+        .notif-item {
+            transition: all 0.2s ease;
+        }
+        .notif-action-btn {
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .notif-item:hover .notif-action-btn {
+            opacity: 1;
+        }
+    </style>
+<title>Thông báo - Đà Nẵng Trip</title>
+</head>
+<body class="min-h-screen flex flex-col">
+<header class="sticky top-0 z-[100] w-full bg-white border-b border-[var(--muted-border)] shadow-sm">
+<div class="max-w-[1400px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-[var(--primary)] p-1.5 rounded-lg">
+<span class="material-symbols-outlined text-[#E1FF00] text-2xl font-bold">explore</span>
+</div>
+<h1 class="text-[#0A192F] text-xl font-black tracking-tighter italic">ĐÀ NẴNG<span class="text-[var(--primary)]">TRIP</span></h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative cursor-pointer">
+<span class="material-symbols-outlined text-[22px] text-[var(--primary)]">notifications</span>
+<div class="w-2 h-2 bg-[#EF4444] rounded-full absolute top-0 right-0 pulse"></div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm font-semibold text-[#0F172A]/85 hidden sm:block">Minh Anh</span>
+<img alt="Avatar" class="w-8 h-8 rounded-full border border-[var(--muted-border)] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkNhci2IDHaFehZdzo0SEsT_o8mJownFPIe-Ej0smygt9PAe8XtZ37W4qw_8Feyi90qehqr95gRHEEWqOJlJHw0j1EA5uov0p4J3d1IUDypdzgOXe4sm6noK7D1MhDD4hg1Hez00Hf1_3N1An1Jf5938a9PcxYYK-F7BGrqL-DoEJkwFPOF80eGwlS3tkHIC-yvQBfNsoGI_-Fmn6gPzMAwtLW26X2vo4rbEh422q6l97QzhWLFCyqGVVFOg_aU6M2Q0xzoX0hzQ"/>
+</div>
+</div>
+</div>
+</header>
+<div class="bg-white border-b border-[#E2E8F0]">
+<div class="max-w-[1400px] mx-auto px-6 py-4">
+<nav class="flex text-[13px] font-medium text-[#94A3B8]">
+<a class="hover:text-[var(--primary)] transition-colors" href="/">Trang chủ</a>
+<span class="mx-2">/</span>
+<span class="text-[#1E293B]">Thông báo</span>
+</nav>
+</div>
+</div>
+<main class="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12 flex flex-col md:flex-row gap-10">
+<aside class="w-full md:w-[var(--sidebar-width)] flex-shrink-0">
+<div class="bg-white border border-[var(--muted-border)] rounded-2xl overflow-hidden shadow-sm sticky top-24">
+<div class="p-6 text-center border-b border-slate-100 bg-slate-50/30">
+<div class="relative w-24 h-24 mx-auto mb-4">
+<img alt="User Avatar" class="w-24 h-24 rounded-full border-4 border-white object-cover shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkNhci2IDHaFehZdzo0SEsT_o8mJownFPIe-Ej0smygt9PAe8XtZ37W4qw_8Feyi90qehqr95gRHEEWqOJlJHw0j1EA5uov0p4J3d1IUDypdzgOXe4sm6noK7D1MhDD4hg1Hez00Hf1_3N1An1Jf5938a9PcxYYK-F7BGrqL-DoEJkwFPOF80eGwlS3tkHIC-yvQBfNsoGI_-Fmn6gPzMAwtLW26X2vo4rbEh422q6l97QzhWLFCyqGVVFOg_aU6M2Q0xzoX0hzQ"/>
+</div>
+<h2 class="text-base font-bold text-[#0F172A]/85">Minh Anh</h2>
+<p class="text-[12px] text-[var(--text-muted)]">minhanh.nguyen@gmail.com</p>
+<span class="inline-block bg-blue-50 text-[var(--primary)] text-[10px] font-bold px-3 py-1 rounded-full mt-3 border border-blue-100 uppercase tracking-wider">Thành viên</span>
+</div>
+<nav class="py-2">
+<a class="flex items-center gap-3 px-6 py-3.5 text-[#0F172A]/85 hover:bg-slate-50 transition-all font-medium" href="/profile">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">person</span>
+<span class="text-sm">Hồ sơ cá nhân</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 text-[#0F172A]/85 hover:bg-slate-50 transition-all font-medium" href="/bookings">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">shopping_cart</span>
+<span class="text-sm">Đơn đặt tour</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 text-[#0F172A]/85 hover:bg-slate-50 transition-all font-medium" href="/favorites">
+<span class="material-symbols-outlined text-[20px] text-[var(--text-muted)]">favorite</span>
+<span class="text-sm">Địa điểm yêu thích</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3.5 bg-blue-50 border-l-4 border-[var(--primary)] text-[var(--primary)] font-semibold transition-all" href="/notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="text-sm">Thông báo</span>
+</a>
+</nav>
+</div>
+</aside>
+<section class="flex-1">
+<div class="bg-[var(--action-bg)] border border-blue-100 rounded-2xl p-6 mb-8">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<h2 class="text-[20px] font-bold text-[#1E293B]">Thông báo</h2>
+<span class="bg-[#FEE2E2] text-[#EF4444] text-[12px] font-semibold rounded-full px-2.5 py-1 ml-2">3 chưa đọc</span>
+</div>
+<button class="bg-white border border-[#E2E8F0] text-[var(--primary)] text-[13px] font-semibold px-4 py-2.5 rounded-xl hover:bg-[#EFF6FF] transition-colors">
+                        Đánh dấu tất cả đã đọc
+                    </button>
+</div>
+</div>
+<div class="flex gap-0 border-b border-[#E2E8F0] mb-6">
+<button class="px-6 py-3 border-b-2 border-[var(--primary)] text-[var(--primary)] text-sm font-bold">
+                    Tất cả
+                </button>
+<button class="px-6 py-3 text-[#64748B] text-sm font-medium hover:text-[var(--primary)] transition-colors">
+                    Chưa đọc (3)
+                </button>
+</div>
+<div class="flex flex-col bg-white border border-[#F1F5F9] rounded-2xl overflow-hidden shadow-sm">
+<div class="notif-item flex gap-4 px-5 py-4 border-b border-[#F1F5F9] cursor-pointer hover:bg-[#F8FAFC] bg-[#EFF6FF] relative border-l-4 border-[var(--notif-booking-strip)]">
+<div class="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center bg-[var(--notif-booking-bg)]">
+<span class="material-symbols-outlined text-[20px] text-[var(--notif-booking-strip)]">shopping_cart</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h4 class="text-[14px] font-bold text-[#1E293B] leading-tight mb-1">
+<span class="text-[var(--notif-booking-strip)] font-extrabold mr-1">[BK]</span> Đặt tour thành công
+                            </h4>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-[var(--primary)] rounded-full"></div>
+<button class="notif-action-btn w-6 h-6 border border-[#E2E8F0] rounded-md bg-white flex items-center justify-center hover:border-[#EF4444] hover:text-[#EF4444] transition-all">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</div>
+<p class="text-[13px] text-[#94A3B8] line-clamp-2">Đơn đặt tour "Khám phá Ngũ Hành Sơn" của bạn đã được xác nhận. Vui lòng kiểm tra chi tiết trong mục Đơn đặt tour.</p>
+<p class="text-[11px] text-[#94A3B8] mt-2 font-medium">2 giờ trước</p>
+</div>
+</div>
+<div class="notif-item flex gap-4 px-5 py-4 border-b border-[#F1F5F9] cursor-pointer hover:bg-[#F8FAFC] bg-[#EFF6FF] relative border-l-4 border-[var(--notif-rating-strip)]">
+<div class="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center bg-[var(--notif-rating-bg)]">
+<span class="material-symbols-outlined text-[20px] text-[var(--notif-rating-strip)]">star</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h4 class="text-[14px] font-bold text-[#1E293B] leading-tight mb-1">
+<span class="text-[var(--notif-rating-strip)] font-extrabold mr-1">[RT]</span> Đánh giá của bạn đã được duyệt
+                            </h4>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-[var(--primary)] rounded-full"></div>
+<button class="notif-action-btn w-6 h-6 border border-[#E2E8F0] rounded-md bg-white flex items-center justify-center hover:border-[#EF4444] hover:text-[#EF4444] transition-all">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</div>
+<p class="text-[13px] text-[#94A3B8] line-clamp-2">Cảm ơn bạn đã đóng góp ý kiến cho "Bãi biển Mỹ Khê". Đánh giá của bạn hiện đã hiển thị công khai.</p>
+<p class="text-[11px] text-[#94A3B8] mt-2 font-medium">5 giờ trước</p>
+</div>
+</div>
+<div class="notif-item flex gap-4 px-5 py-4 border-b border-[#F1F5F9] cursor-pointer hover:bg-[#F8FAFC] bg-[#EFF6FF] relative border-l-4 border-[var(--notif-promotion-strip)]">
+<div class="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center bg-[var(--notif-promotion-bg)]">
+<span class="material-symbols-outlined text-[20px] text-[var(--notif-promotion-strip)]">local_offer</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h4 class="text-[14px] font-bold text-[#1E293B] leading-tight mb-1">
+<span class="text-[var(--notif-promotion-strip)] font-extrabold mr-1">[PR]</span> Ưu đãi 20% cho tour Bà Nà Hills
+                            </h4>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-[var(--primary)] rounded-full"></div>
+<button class="notif-action-btn w-6 h-6 border border-[#E2E8F0] rounded-md bg-white flex items-center justify-center hover:border-[#EF4444] hover:text-[#EF4444] transition-all">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</div>
+<p class="text-[13px] text-[#94A3B8] line-clamp-2">Đừng bỏ lỡ mã giảm giá đặc biệt dành riêng cho bạn. Áp dụng đến hết tuần này.</p>
+<p class="text-[11px] text-[#94A3B8] mt-2 font-medium">1 ngày trước</p>
+</div>
+</div>
+<div class="notif-item flex gap-4 px-5 py-4 border-b border-[#F1F5F9] cursor-pointer hover:bg-[#F8FAFC] bg-white relative border-l-4 border-[var(--notif-system-strip)]">
+<div class="w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center bg-[var(--notif-system-bg)]">
+<span class="material-symbols-outlined text-[20px] text-[var(--notif-system-strip)]">info</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between">
+<h4 class="text-[14px] font-medium text-[#64748B] leading-tight mb-1">
+<span class="text-[var(--notif-system-strip)] font-extrabold mr-1">[SY]</span> Cập nhật chính sách bảo mật
+                            </h4>
+<div class="flex items-center gap-2">
+<button class="notif-action-btn w-6 h-6 border border-[#E2E8F0] rounded-md bg-white flex items-center justify-center hover:border-[#EF4444] hover:text-[#EF4444] transition-all">
+<span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+</div>
+</div>
+<p class="text-[13px] text-[#94A3B8] line-clamp-2">Chúng tôi vừa cập nhật một số điều khoản trong chính sách bảo mật để phục vụ bạn tốt hơn.</p>
+<p class="text-[11px] text-[#94A3B8] mt-2 font-medium">3 ngày trước</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center mt-8">
+<button class="bg-white border border-[#E2E8F0] text-[#64748B] text-[13px] font-bold px-6 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+                    Tải thêm thông báo
+                </button>
+</div>
+</section>
+</main>
+<footer class="bg-[#0A192F] text-white pt-16 pb-8 mt-12">
+<div class="max-w-[1400px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+<div class="col-span-1 md:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<div class="bg-[var(--primary)] p-1 rounded-lg">
+<span class="material-symbols-outlined text-[#E1FF00] text-xl font-bold">explore</span>
+</div>
+<h2 class="text-white text-xl font-black italic uppercase">ĐÀ NẴNG<span class="text-[var(--primary)]">TRIP</span></h2>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed max-w-sm">
+                        Nền tảng du lịch hàng đầu, mang đến cho bạn những trải nghiệm độc đáo và đáng nhớ nhất tại thành phố biển xinh đẹp.
+                    </p>
+</div>
+<div>
+<h4 class="text-sm font-black uppercase tracking-widest mb-6">Liên kết</h4>
+<ul class="space-y-3 text-slate-400 text-[13px] font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Về chúng tôi</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Liên hệ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-black uppercase tracking-widest mb-6">Hỗ trợ</h4>
+<ul class="space-y-3 text-slate-400 text-[13px] font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Trung tâm trợ giúp</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Câu hỏi thường gặp</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Hướng dẫn đặt tour</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-800 text-center">
+<p class="text-slate-500 text-xs font-bold uppercase tracking-widest">© 2026 Đà Nẵng Trip. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+</body></html>
