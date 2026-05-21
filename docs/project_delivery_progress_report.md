@@ -1,6 +1,6 @@
 # Báo cáo Theo dõi Tiến độ Triển khai Dự án
 
-> Ngày cập nhật: 21/05/2026  
+> Ngày cập nhật: 22/05/2026  
 > Phạm vi theo dõi:
 > - `D:\DATN\danangtrip-web`
 > - `D:\DATN\danangtrip-admin`
@@ -30,15 +30,15 @@
 | Chỉ số | Giá trị |
 |---|---:|
 | Tổng màn chính của dự án | 35 |
-| Hoàn thành theo tổng màn | 7 |
+| Hoàn thành theo tổng màn | 8 |
 | Đang làm theo tổng màn | 0 |
-| Chưa làm theo tổng màn | 28 |
-| % hoàn thành theo tổng màn | 20.0% |
+| Chưa làm theo tổng màn | 27 |
+| % hoàn thành theo tổng màn | 22.9% |
 | Tổng màn đang theo dõi | 11 |
-| Hoàn thành | 7 |
+| Hoàn thành | 8 |
 | Đang làm | 0 |
-| Chưa làm | 4 |
-| % hoàn thành trong phạm vi theo dõi | 63.6% |
+| Chưa làm | 3 |
+| % hoàn thành trong phạm vi theo dõi | 72.7% |
 
 ### 1.2 Schedule / Timeline
 
@@ -51,7 +51,7 @@
 | 19/05/2026 | `tour-departure-select` | Hoàn thành |
 | 21/05/2026 | `user-bookings-list` | Hoàn thành |
 | 21/05/2026 | `user-booking-detail` | Hoàn thành |
-| Kế tiếp | `user-booking-by-code` | Chưa làm |
+| 22/05/2026 | `user-booking-by-code` | Hoàn thành |
 | Kế tiếp | `user-booking-invoice` | Chưa làm |
 | Backlog gần | `favorites` | Chưa làm |
 | Backlog gần | `notifications` | Chưa làm |
@@ -67,8 +67,8 @@
 | 5 | `tour-departure-select` | Chọn lịch khởi hành | `/tours/{slug}/departures` hoặc modal tương ứng | Hoàn thành | Đã có `deploy-report` ngày `2026-05-19` |
 | 6 | `user-bookings-list` | Lịch sử đặt tour | `/bookings` | Hoàn thành | Đã có `deploy-report` ngày `2026-05-21`; vòng `09-testing` đã được chốt |
 | 7 | `user-booking-detail` | Chi tiết đơn đặt tour | `/bookings/{id}` | Hoàn thành | Đã có `deploy-report` ngày `2026-05-21`; route thật đã tồn tại ở `src/app/[locale]/(main)/(protected)/bookings/[id]/page.tsx` |
-| 8 | `user_booking_by_code.md` | Đơn đặt theo mã đơn | `/bookings/code/{code}` | Chưa làm | Có tài liệu màn nhưng chưa có `deploy-report`; đang đứng sau booking detail |
-| 9 | `user_booking_invoice.md` | Hóa đơn booking | `/bookings/{id}/invoice` | Chưa làm | Hiện vẫn là action trong flow booking detail, chưa tách thành delivery độc lập |
+| 8 | `user-booking-by-code` | Đơn đặt theo mã đơn | `/bookings/code/{code}` | Hoàn thành | Đã có `deploy-report` ngày `2026-05-21`; PR `feat/DATN-80-user-booking-by-code` đã merge vào `dev` |
+| 9 | `user_booking_invoice.md` | Hóa đơn booking | `/bookings/{id}/invoice` | Chưa làm | Cần harden action invoice trong booking detail theo đúng contract PDF; đây là màn/action kế tiếp |
 | 10 | `favorites` | Yêu thích | Theo route repo reality | Chưa làm | API và doc có, nhưng chưa được ưu tiên bằng trục hậu booking |
 | 11 | `notifications` | Thông báo người dùng | Theo route repo reality | Chưa làm | Có tài liệu nhưng chưa vào rollout hiện tại |
 
@@ -77,7 +77,7 @@
 | STT | Doc / Feature | Màn hình | Route | Trạng thái | Route/code hiện có | API readiness | Lý do / Ghi chú | Khuyến nghị |
 |---:|---|---|---|---|---|---|---|---|
 | 1 | `user_booking_detail.md` | Chi tiết đơn đặt tour | `/bookings/{id}` | Hoàn thành | Đã có route detail thật | Ready + Partial | `GET /user/bookings/{id}`, `invoice`, `cancel` có thật; residual risk backend encoding đã được ghi trong deploy report | Đã xong |
-| 2 | `user_booking_by_code.md` | Đơn đặt theo mã đơn | `/bookings/code/{booking_code}` | Chưa làm | Chưa có | Ready | API có thật; rất hợp sau booking detail | Làm ngay sau màn hiện tại |
+| 2 | `user_booking_by_code.md` | Đơn đặt theo mã đơn | `/bookings/code/{booking_code}` | Hoàn thành | Đã có route thật `src/app/[locale]/(main)/(protected)/bookings/code/[bookingCode]/page.tsx` | Ready | API có thật; đã reuse booking detail display | Đã xong |
 | 3 | `user_favorites.md` | Yêu thích | `/favorites` | Chưa làm | Chưa có | Ready | Bộ API favorites đã có đầy đủ | Ưu tiên cao |
 | 4 | `user_notifications.md` | Thông báo | `/notifications` | Chưa làm | Chưa có | Ready | Bộ API notifications user đã có đầy đủ | Ưu tiên cao |
 | 5 | `user_profile_password.md` | Đổi mật khẩu | `/profile/password` | Chưa làm | Chưa có route riêng | Ready | `PUT /user/password` có thật | Ưu tiên cao |
@@ -89,7 +89,7 @@
 | 11 | `user_profile.md` | Hồ sơ cá nhân | `/profile` | Cần hardening | Đã có route/page | Ready | Route có thật nhưng chưa có artifact delivery riêng trong pipeline hiện tại | Hardening |
 | 12 | `user_recommendations.md` | Gợi ý cho bạn | `/recommendations` | Chưa làm | Chưa có route riêng | Ready | `GET /recommendations` có thật | Làm sau auth/account |
 | 13 | `user_my_ratings.md` | Đánh giá của tôi | `/profile/ratings` | Chưa làm | Chưa có | Ready | `GET /user/ratings` có thật | Làm sau profile |
-| 14 | `user_booking_invoice.md` | Hóa đơn booking | `/bookings/{id}/invoice` | Chưa làm | Chưa có màn riêng | Ready | API download invoice có thật; hiện mới là action trong flow booking detail | Làm sau booking-by-code |
+| 14 | `user_booking_invoice.md` | Hóa đơn booking | `/bookings/{id}/invoice` | Chưa làm | Hiện đang là action JSON/print trong booking detail, chưa đúng PDF contract | Ready | API `GET /user/bookings/{id}/invoice` trả PDF; cần harden download/preview và error states | Làm ngay |
 | 15 | `user_home.md` | Trang chủ | `/` | Cần hardening | Đã có | Partial | Route có thật; docs còn nhắc `GET /weather`, `GET /config` là planned nên cần fallback rõ | Hardening |
 | 16 | `user_search.md` | Tìm kiếm | `/search` | Cần hardening | Đã có | Ready + Planned | Search core API có thật; search-history vẫn planned | Hardening |
 | 17 | `user_locations_list.md` | Danh sách địa điểm | `/locations` | Cần hardening | Đã có | Ready | Route và API có thật | Hardening |
@@ -109,17 +109,28 @@
 
 | Giai đoạn | Danh sách màn |
 |---|---|
-| Làm ngay | `user-booking-by-code`, `user-favorites`, `user-notifications`, `user-profile-password`, `user-verify-email` |
+| Làm ngay | `user-booking-invoice`, `user-favorites`, `user-notifications`, `user-profile-password`, `user-verify-email` |
 | Hardening tiếp theo | `user-profile`, `user-home`, `user-search`, `user-locations-list`, `user-location-detail`, `user-tours-list`, `user-blog-list`, `user-blog-detail`, `user-destination-tour-landing` |
-| Backlog mở rộng | `user-recommendations`, `user-my-ratings`, `user-locations-by-category`, `user-locations-nearby`, `user-tours-by-category`, `user-blog-by-category`, `user-booking-invoice`, `user-profile-delete`, `user-cart` |
+| Backlog mở rộng | `user-recommendations`, `user-my-ratings`, `user-locations-by-category`, `user-locations-nearby`, `user-tours-by-category`, `user-blog-by-category`, `user-profile-delete`, `user-cart` |
 
 ### 1.6 Nhận định ngắn
 
 | Nhận định | Giải thích |
 |---|---|
-| Trục đặt tour gần khép kín | Đã có detail tour, booking, payment, departure select, bookings list và booking detail |
-| Điểm hở lớn nhất hiện tại | `user-booking-by-code` vì booking detail đã xong nhưng chưa có màn tra cứu đơn theo mã |
-| Ưu tiên sau màn vừa hoàn thành | `user-booking-by-code`, rồi mới đến `invoice`, `favorites`, `notifications` |
+| Trục đặt tour gần khép kín | Đã có detail tour, booking, payment, departure select, bookings list, booking detail và booking lookup theo mã |
+| Điểm hở lớn nhất hiện tại | `user-booking-invoice` vì API invoice trả PDF nhưng UI hiện vẫn chưa được harden đúng contract |
+| Ưu tiên sau màn vừa hoàn thành | `user-booking-invoice`, rồi mới đến `favorites`, `notifications` |
+
+---
+
+## 2. Dự án `danangtrip-admin`
+
+### 2.0 Kiểm kê màn thực tế từ tài liệu
+
+| Hạng mục | Số lượng | Ghi chú |
+|---|---:|---|
+| Tổng file `admin_*` trong `docs/page` | 40 | Tất cả đều là screen spec cấp dự án admin |
+| Tổng màn chính của admin | 40 | Đây là mẫu số đúng để theo dõi tiến độ màn hình |
 
 ---
 
@@ -138,21 +149,11 @@
 | Chỉ số | Giá trị |
 |---|---:|
 | Tổng màn chính của dự án | 40 |
-| Hoàn thành theo tổng màn | 9 |
+| Hoàn thành theo tổng màn | 11 |
 | Đang làm theo tổng màn | 0 |
-| Chưa làm theo tổng màn | 31 |
-| % hoàn thành theo tổng màn | 22.5% |
+| Chưa làm theo tổng màn | 29 |
+| % hoàn thành theo tổng màn | 27.5% |
 | Tổng màn đang theo dõi | 15 |
-| Hoàn thành | 9 |
-| Đang làm | 0 |
-| Chưa làm | 6 |
-| % hoàn thành trong phạm vi theo dõi | 60.0% |
-
-### 2.2 Schedule / Timeline
-
-| Mốc thời gian | Màn hình | Kết quả |
-|---|---|---|
-| 11/05/2026 | `create-new-location-danang-trip` | Hoàn thành |
 | 12/05/2026 | `location-detail` | Hoàn thành |
 | 13/05/2026 | `location-categories` | Hoàn thành |
 | 17/05/2026 | `admin-bookings-list` | Hoàn thành |
@@ -161,7 +162,8 @@
 | 20/05/2026 | `admin-tour-schedule-edit` | Hoàn thành |
 | 21/05/2026 | `admin-bookings-detail` | Hoàn thành |
 | 21/05/2026 | `admin-payments-detail` | Hoàn thành |
-| Backlog gần | `admin_reports_ratings` | Chưa làm |
+| 22/05/2026 | `admin-dashboard` | Hoàn thành |
+| 22/05/2026 | `admin_reports_ratings` | Hoàn thành |
 | Backlog gần | `admin_reports_locations` | Chưa làm |
 | Backlog gần | `admin_reports_users` | Chưa làm |
 | Planned backlog | `admin_promotions` | Chưa làm |
@@ -181,26 +183,26 @@
 | 7 | `admin-tour-schedule-edit` | Chỉnh sửa lịch khởi hành | Route edit schedule admin | Hoàn thành | Đã có `deploy-report` ngày `2026-05-20` |
 | 8 | `admin-bookings-detail` | Chi tiết đơn hàng | `/admin/bookings/{id}` | Hoàn thành | Đã có `deploy-report` cập nhật mới nhất ngày `2026-05-21` |
 | 9 | `admin-payments-detail` | Chi tiết giao dịch | `/admin/payments/{id}` | Hoàn thành | Đã có `deploy-report` ngày `2026-05-21`; route/page thật đã tồn tại ở `src/pages/Payments/PaymentDetail/index.tsx` |
-| 10 | `admin_reports_ratings.md` | Báo cáo đánh giá | `/admin/reports/ratings` | Chưa làm | Mới dừng ở mức tài liệu; chưa có artifact triển khai |
-| 11 | `admin_reports_locations.md` | Báo cáo địa điểm | `/admin/reports/locations` | Chưa làm | Mới dừng ở mức tài liệu; chưa có dấu hiệu vào sprint hiện tại |
-| 12 | `admin_reports_users.md` | Báo cáo người dùng | `/admin/reports/users` | Chưa làm | Mới dừng ở mức tài liệu; chưa có `deploy-report` |
-| 13 | `admin_promotions.md` | Quản lý khuyến mãi | `/admin/promotions` | Chưa làm | Flow planned; chưa phải ưu tiên delivery gần |
-| 14 | `admin_site_settings.md` | Cấu hình website | `/admin/settings` | Chưa làm | Flow planned; chưa vào rollout hiện tại |
-| 15 | `admin_landing_pages.md` | Quản lý landing pages | Route landing pages admin | Chưa làm | Flow planned; ưu tiên thấp hơn booking/payment operations |
+| 10 | `admin-dashboard` | Dashboard | `/dashboard` | Hoàn thành | Đã có `deploy-report` ngày `2026-05-21`; PR `feat/DATN-79-admin-dashboard` đã merge vào `dev` |
+| 11 | `admin_reports_ratings.md` | Báo cáo đánh giá | `/admin/reports/ratings` | Hoàn thành | Đã hoàn tất triển khai màn hình Báo cáo Đánh giá và Moderation kèm kiểm tra Quality Gate 100% |
+| 12 | `admin_reports_locations.md` | Báo cáo địa điểm | `/admin/reports/locations` | Chưa làm | Mới dừng ở mức tài liệu; chưa có dấu hiệu vào sprint hiện tại |
+| 13 | `admin_reports_users.md` | Báo cáo người dùng | `/admin/reports/users` | Chưa làm | Mới dừng ở mức tài liệu; chưa có `deploy-report` |
+| 14 | `admin_promotions.md` | Quản lý khuyến mãi | `/admin/promotions` | Chưa làm | Flow planned; chưa phải ưu tiên delivery gần |
+| 15 | `admin_site_settings.md` | Cấu hình website | `/admin/settings` | Chưa làm | Flow planned; chưa vào rollout hiện tại |
 
 ### 2.4 Danh sách đầy đủ các màn admin cần làm trong tương lai
 
 | STT | Doc / Feature | Màn hình | Route | Trạng thái | Route/code hiện có | API readiness | Lý do / Ghi chú | Khuyến nghị |
 |---:|---|---|---|---|---|---|---|---|
 | 1 | `admin_payments_detail.md` | Chi tiết giao dịch | `/admin/payments/{id}` | Hoàn thành | Đã có route detail thật | Ready | `GET /admin/payments/{id}` và `POST /admin/payments/{id}/refund` có thật; Step 10 đã chốt `READY` | Đã xong |
-| 2 | `admin_dashboard.md` | Dashboard | `/admin/dashboard` | Chưa làm | Chưa thấy delivery artifact riêng | Ready | APIs dashboard có thật theo inventory admin | Ưu tiên cao |
+| 2 | `admin_dashboard.md` | Dashboard | `/dashboard` | Hoàn thành | Đã có delivery artifact riêng | Ready | APIs dashboard có thật theo inventory admin; route repo reality là `/dashboard` | Đã xong |
 | 3 | `admin_users_list.md` | Danh sách người dùng | `/admin/users` | Chưa làm | Chưa có | Ready | Core admin management screen | Ưu tiên cao |
 | 4 | `admin_users_detail.md` | Chi tiết người dùng | `/admin/users/{id}` | Chưa làm | Chưa có | Ready | Hợp lý sau user list | Ưu tiên cao |
 | 5 | `admin_users_create.md` | Tạo người dùng | `/admin/users/create` | Chưa làm | Chưa có | Ready | API create có thật theo inventory | Ưu tiên cao |
 | 6 | `admin_users_edit.md` | Chỉnh sửa người dùng | `/admin/users/{id}/edit` | Chưa làm | Chưa có | Ready | API update có thật theo inventory | Ưu tiên cao |
 | 7 | `admin_reports_bookings.md` | Báo cáo đơn hàng | `/admin/reports/bookings` | Chưa làm | Chưa có | Ready | API report bookings có thật theo docs | Ưu tiên cao |
 | 8 | `admin_reports_revenue.md` | Báo cáo doanh thu | `/admin/reports/revenue` | Chưa làm | Chưa có | Ready | API revenue/report/export đã có trong inventory | Ưu tiên cao |
-| 9 | `admin_reports_ratings.md` | Báo cáo đánh giá | `/admin/reports/ratings` | Chưa làm | Chưa có | Ready | Nằm trong nhóm report còn thiếu delivery | Ưu tiên cao |
+| 9 | `admin_reports_ratings.md` | Báo cáo đánh giá | `/admin/reports/ratings` | Hoàn thành | Đã có delivery artifact | Ready | Hoàn thành màn hình dashboard glassmorphism | Đã xong |
 | 10 | `admin_reports_locations.md` | Báo cáo địa điểm | `/admin/reports/locations` | Chưa làm | Chưa có | Ready | Nằm trong nhóm report còn thiếu delivery | Ưu tiên cao |
 | 11 | `admin_reports_users.md` | Báo cáo người dùng | `/admin/reports/users` | Chưa làm | Chưa có | Ready | Nằm trong nhóm report còn thiếu delivery | Ưu tiên cao |
 | 12 | `admin_contacts.md` | Liên hệ hỗ trợ | `/admin/contacts` | Chưa làm | Chưa có | Ready | List/detail/reply là khối quản trị độc lập | Làm sau reports hoặc cùng support tools |
@@ -234,8 +236,8 @@
 
 | Giai đoạn | Danh sách màn |
 |---|---|
-| Làm ngay | `admin-dashboard` |
-| Ưu tiên cao kế tiếp | `admin-users-list/detail/create/edit`, `admin-reports-bookings`, `admin-reports-revenue`, `admin-reports-ratings`, `admin-reports-locations`, `admin-reports-users` |
+| Làm ngay / Đã xong | `admin_reports_ratings` |
+| Ưu tiên cao kế tiếp | `admin-reports-bookings`, `admin-reports-revenue`, `admin-reports-locations`, `admin-reports-users`, `admin-users-list/detail/create/edit` |
 | Giai đoạn support/CMS | `admin-contacts`, `admin-notifications-list/send`, `admin-blog-posts-list/create/edit`, `admin-blog-categories`, `admin-ratings-list`, `admin-tags-amenities` |
 | Giai đoạn catalog operations | `admin-locations-list/edit/subcategories`, `admin-tours-list/create/edit/detail`, `admin-tour-categories`, `admin-tour-schedules-list` |
 | Hardening đã có nền | `admin-locations-create`, `admin-locations-detail`, `admin-location-categories`, `admin-tour-schedules-create`, `admin-tour-schedules-edit` |
@@ -245,22 +247,22 @@
 
 | Nhận định | Giải thích |
 |---|---|
-| Trục vận hành booking admin đã khá đầy | Đã có booking list, booking detail, payment list và payment detail |
-| Điểm hở lớn nhất hiện tại | `admin-dashboard` vì trên repo đã có route/page/API/hook nền nhưng chưa có delivery artifact riêng trong pipeline |
-| Backlog sau màn vừa hoàn thành | Bộ `admin_reports_*`, users management, rồi mới đến các flow planned như promotions/settings/landing pages |
+| Trục vận hành booking admin đã khá đầy | Đã có booking list, booking detail, payment list, payment detail và dashboard |
+| Điểm hở lớn nhất hiện tại | Nhóm các màn báo cáo tiếp theo (`admin_reports_bookings`, `admin_reports_revenue`) và quản lý người dùng |
+| Backlog sau màn vừa hoàn thành | Bộ `admin_reports_*` còn lại, users management, rồi mới đến các flow planned như promotions/settings/landing pages |
 
 ---
 
 ## 3. Kết luận chung
 
-| Dự án | Tổng màn chính | Hoàn thành | Đang làm | Chưa làm | % hoàn thành theo tổng màn | Màn đang làm |
+| Dự án | Tổng màn chính | Hoàn thành | Đang làm | Chưa làm | % hoàn thành theo tổng màn | Màn kế tiếp đã chốt prompt |
 |---|---:|---:|---:|---:|---:|---|
-| `danangtrip-web` | 35 | 7 | 0 | 28 | 20.0% | Chưa chốt màn đang làm mới |
-| `danangtrip-admin` | 40 | 9 | 0 | 31 | 22.5% | Chưa chốt màn đang làm mới |
+| `danangtrip-web` | 35 | 8 | 0 | 27 | 22.9% | `user-booking-invoice` |
+| `danangtrip-admin` | 40 | 11 | 0 | 29 | 27.5% | `admin_reports_bookings` / `admin_reports_revenue` |
 
 | Kết luận | Diễn giải |
 |---|---|
-| Hai dự án đang đi đúng trục hậu booking | Web đã khép `booking detail`, admin đã khép `payment detail` |
-| Có thể chọn màn tiếp theo | Hai màn vừa được kiểm tra đều đã có `deploy-report` ngày `2026-05-21`, nên không còn trạng thái `Đang làm` trong báo cáo này |
+| Hai dự án đang đi đúng trục hậu booking | Web đã khép lookup theo mã booking, admin đã khép dashboard vận hành |
+| Có thể chọn màn tiếp theo | Màn `admin_reports_ratings` đã hoàn thành và push lên `dev`. Màn tiếp theo sẽ là `user-booking-invoice` (web) và `admin_reports_bookings` / `admin_reports_revenue` (admin) |
 | Báo cáo này nên cập nhật sau mỗi lần có `deploy-report` mới | Khi một màn đi hết pipeline, chỉ cần đổi trạng thái và tính lại % |
 | Nguồn backlog tương lai đã được gộp vào báo cáo này | Không cần tách riêng roadmap cho `web` hay `admin` nữa |
