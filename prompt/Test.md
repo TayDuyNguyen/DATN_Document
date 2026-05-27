@@ -2,7 +2,7 @@ D:\DATN\DATN_Document\docs\project_delivery_progress_report.md => cập nhật t
 
 
 D:\DATN\danangtrip-web
-D:\DATN\DATN_Document
+D:\DATN\DATN_Tài liệu
 D:\DATN\danangtrip-admin
 D:\DATN\danangtrip-api
 => tôi đã thực hiện code xong bây giờ hãy đọc codegraph và file cập nhật tiến độ thực hiện màn tiếp theo 

@@ -1,6 +1,6 @@
 # Báo cáo Theo dõi Tiến độ Triển khai Dự án
 
-> Ngày cập nhật: 25/05/2026  
+> Ngày cập nhật: 27/05/2026  
 > Phạm vi theo dõi:
 > - `D:\DATN\danangtrip-web`
 > - `D:\DATN\danangtrip-admin`
@@ -15,75 +15,68 @@
 
 ---
 
-## 0.0.12 Current delivery override - 2026-05-25
+## 0.0.12 Current delivery override - 2026-05-27
 
-Phan nay la nguon chuan moi nhat sau khi doc lai `.codegraph/codegraph.db` cua `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` luc `2026-05-25 22:23` va doi chieu lai repo `dev`:
-
-- Web dev head co merge PR `feat/DATN-93/user-profile-delete`: `b924596 Merge pull request #61`.
-- Admin dev head co merge PR `feat/DATN-92/admin-blog-posts-list`: `22f4f08 Merge pull request #57`.
-- API dev head co merge PR `feat/DATN-93/api-admin-blog-filters`: `3759d19 Merge pull request #90`.
-
-Neu cac phan cu ben duoi con khoa `user-profile-delete` hoac `admin_blog_posts_list` la man tiep theo, xem chung la da loi thoi vi hai man nay da co code, artifact Step 10 va da merge vao `dev`.
+Phần này là nguồn chuẩn mới nhất sau khi đọc lại `.codegraph/codegraph.db` của `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` lúc sáng `2026-05-27` và đối chiếu lại route/page/API hiện có trong repo.
+Nếu các phần cũ bên dưới còn khóa `admin_blog_posts_list`, `user-profile-delete`, hoặc `user-cart` là màn kế tiếp thì xem là đã lỗi thời vì các phần này đã có code và artifact delivery/planning mới hơn.
 
 ### Completed since previous override
 
 | Project | Completed screen / work item | Route / API | Evidence |
 |---|---|---|---|
-| Web | `user-profile-delete` | `/profile/delete` | Codegraph/repo xac nhan `src/app/[locale]/(main)/(protected)/profile/delete/page.tsx`, `DeleteAccountFormContainer`, `DeleteAccountForm`, `useProfileDeleteMutation`, `deleteAccountSchema`, sidebar/mobile nav link va i18n `settings/common`. Artifacts: `2026-05-25__user-profile-delete__test-report.md`, deploy report va review. |
-| Admin | `admin_blog_posts_list` | `/admin/blog-posts` | Codegraph/repo xac nhan `src/pages/Blog/BlogPostList/index.tsx`, `BlogTable`, route constant/lazy route, sidebar link, `blogApi`, `useBlogQueries`, mapper/types va i18n. Artifacts Step 10: `2026-05-24__admin_blog_posts_list__deploy-report.md`, review. |
-| API | User account deletion | `DELETE /api/v1/user/account` | Codegraph/repo xac nhan `ProfileController::deleteAccount`, `ProfileService::deleteAccount`, `DeleteAccountRequest`, `BookingRepositoryInterface`, `RatingRepositoryInterface`, va `tests/Feature/UserProfileDeleteTest.php`. |
-| API | Admin blog list/filter/stat support | `GET /admin/blog-posts` plus blog CRUD/status routes | Codegraph/repo xac nhan `IndexAdminBlogRequest`, `BlogService`, `BlogPostRepository`, admin blog routes, category route support, sort/search/status/category filters va stats payload. |
+| Web | `user-profile-delete` | `/profile/delete`, `DELETE /user/account` | Có route App Router `src/app/[locale]/(main)/(protected)/profile/delete/page.tsx`, form/container/hook delete account trong `src/features/profile`, sidebar/mobile nav đã trỏ tới màn xóa tài khoản, API `DELETE /user/account` có trong `routes/api.php`, deploy artifact `2026-05-25__user-profile-delete__deploy-report.md`. |
+| Web | `user-cart` | `/cart`, `/cart/*` API | Có route `src/app/[locale]/(main)/(public)/cart/page.tsx`, feature folder `src/features/cart` gồm container/list/item/summary/sync/hooks/schema, API có `GET /cart`, `POST /cart/items`, `PUT/DELETE /cart/items/{id}`, `DELETE /cart`, `POST /cart/merge`, deploy artifact `2026-05-25__user-cart-api-planning__deploy-report.md`. |
+| Web hardening | Guest favorites localStorage + merge after login | `/locations/{slug}`, `/user/favorites` | Khách vãng lai lưu favorite bằng `localStorage`, khi đăng nhập cùng trình duyệt thì merge vào DB qua API favorites; nút favorite chi tiết địa điểm chuyển đỏ khi đã lưu. |
+| Web hardening | Location/blog rich text and weather correction | `/locations/{slug}`, `/blog/{slug}`, `/` | Description/blog content giữ xuống dòng bằng `whitespace-pre-wrap`; weather service tách nhãn thời tiết hiện tại khỏi xác suất mưa dự báo, giảm cache xuống 5 phút, bỏ fallback nắng giả. |
+| Admin | `admin_blog_posts_list` | `/admin/blog-posts` | Có `src/pages/Blog/BlogPostList`, route `ROUTES.BLOG_POSTS`, API/hook/mapper/i18n blog, deploy artifact `2026-05-24__admin_blog_posts_list__deploy-report.md`. |
+| Admin | `admin_blog_posts_create` | `/admin/blog-posts/create` | Có `src/pages/Blog/BlogPostCreate`, markdown editor, featured image uploader, validation schema, create post/category/upload hooks, route lazy import thật, deploy artifact `2026-05-25__admin_blog_posts_create__deploy-report.md`. |
+| Admin hardening | Location create form fixes | `/admin/locations/create` | Form create location đã xử lý Enter focus vào field thiếu, geocode địa chỉ cập nhật bản đồ, input giá VNĐ ổn định, opening hours hỗ trợ nhiều dòng, upload ảnh deferred đến lúc lưu, nút lưu có loading và reset form sau thành công. |
+| API | Cart and account delete readiness | `/cart/*`, `DELETE /user/account` | `routes/api.php` xác nhận đủ protected cart endpoints và `DELETE /user/account`; `CartController` có index/store/update/destroy/clear/merge. |
 
 ### Current locked screens for next implementation
 
 | Project | Last completed screen | Next locked screen | Route | Current code status | Reason |
 |---|---|---|---|---|---|
-| Web | `user-profile-delete` | `TBD - user-cart/API planning review needed` | Candidate: `/cart` | Codegraph scan chua thay route/component/API cart trong web/api. | `user-profile-delete` da khop API va da xong. Item web con lai dang noi bat la `user-cart`, nhung can chot API/flow truoc khi khoa prompt. |
-| Admin | `admin_blog_posts_list` | `admin_blog_posts_create` | `/admin/blog-posts/create` | Admin route hien dang redirect create/edit/detail ve list; API `POST /admin/blog-posts` da ton tai. | Sau list CMS blog, create la man tiep theo tu nhien de mo kha nang quan tri noi dung. Edit/detail co the lam sau create. |
+| Web | `user-cart` | `web_route_api_next_screen_review` | Candidate: auth hardening, checkout/cart-to-booking polish, or existing public route hardening | Prompt web đã khóa vòng review route/API để chọn một màn cụ thể ở Step 03; codegraph đã thấy `/profile/delete` và `/cart` có route/page thật. | Không nên khóa tiếp theo theo dữ liệu cũ; cần chọn màn dựa trên mức còn thiếu của flow thanh toán/booking hoặc hardening các route đã có. |
+| Admin | `admin_blog_posts_create` | `admin_blog_posts_edit` | `/admin/blog-posts/{id}/edit` | Route constant có `BLOG_POSTS_EDIT` nhưng router hiện redirect edit/detail về list; chưa có page edit/detail thật. | Sau list/create, edit là bước hợp lý để khép CRUD bài viết admin. |
+| API | Cart/account/blog support | `TBD theo màn tiếp theo` | N/A | Cart, account delete, admin blog list/create đã có backend support cơ bản. | API chỉ cần mở rộng khi chọn màn mới có contract thiếu. |
 
 ### Updated counts
 
 | Project | Total main screens | Deploy-completed | In progress | Not started | Completion % | Next selected screen |
 |---|---:|---:|---:|---:|---:|---|
-| Web | 35 | 21 | 0 | 14 | 60.0% | `TBD - user-cart/API planning review needed` |
-| Admin | 40 | 22 | 0 | 18 | 55.0% | `admin_blog_posts_create` |
+| Web | 35 | 22 | 0 | 13 | 62.9% | `web_route_api_next_screen_review` |
+| Admin | 40 | 23 | 0 | 17 | 57.5% | `admin_blog_posts_edit` |
 
 ### Updated code-level counts
 
 | Project | Total documented main screens | Screens with route/page code | Screens without route/page code | Code coverage |
 |---|---:|---:|---:|---:|
-| Web | 35 | 33 | 2 | 94.3% |
-| Admin | 40 | 30 | 10 | 75.0% |
+| Web | 35 | 34 | 1 | 97.1% |
+| Admin | 40 | 31 | 9 | 77.5% |
 
 ### Codegraph / repo verification notes
 
 | Project | Codegraph snapshot | Verification |
 |---|---|---|
-| Web | `files=339`, `nodes=2818`, `edges=5672`, `unresolved_refs=0`, mtime `2026-05-25 22:23` | Repo scan thay route `/profile/delete`, delete-account feature components/hook/service/i18n va Step 09/10 artifacts. Khong thay cart route/API san sang. |
-| Admin | `files=329`, `nodes=3047`, `edges=6886`, `unresolved_refs=0`, mtime `2026-05-25 22:23` | Repo scan thay `/admin/blog-posts` lazy route, list page, table/filter/status/delete UI, API/hook/mapper/types/i18n. Create/edit/detail dang redirect ve list. |
-| API | `files=452`, `nodes=4342`, `edges=6218`, `unresolved_refs=0`, mtime `2026-05-25 22:23` | Repo scan thay `DELETE /user/account`, `UserProfileDeleteTest`, admin blog filter/stat support va blog CRUD/status/category routes. |
+| Web | `files=355`, `nodes=3020`, `edges=5774`, mtime `2026-05-27 08:47:33` | Codegraph/repo scan thấy `/profile/delete`, `/cart`, `src/features/cart`, local favorites utility, auth merge favorites, weather service updates, location/blog rich text hardening. |
+| Admin | `files=334`, `nodes=3185`, `edges=7306`, mtime `2026-05-27 08:47:31` | Codegraph/repo scan thấy `src/pages/Blog/BlogPostList`, `src/pages/Blog/BlogPostCreate`, route lazy imports, blog API/hooks/mapper/i18n; edit/detail blog vẫn redirect về list. |
+| API | `files=459`, `nodes=4409`, `edges=6360`, mtime `2026-05-27 08:47:40` | Codegraph/repo scan thấy cart endpoints, `CartController`, `DELETE /user/account`, favorites protected routes, admin blog routes và notifications routes. |
 
 ### Validation snapshot
 
 | Project | Validation |
 |---|---|
-| Web | `npm run prepush:check` PASS theo artifact `2026-05-25__user-profile-delete__test-report.md`; backend profile delete suite `php vendor/bin/phpunit --filter UserProfileDeleteTest` PASS `4 tests / 14 assertions`; deploy report ghi build quality `100% SUCCESS`. |
-| Admin | `npm run prepush:check` PASS theo deploy report `2026-05-24__admin_blog_posts_list__deploy-report.md`; lint/typecheck/build/Playwright console smoke PASS. |
-| API | PHP syntax checks PASS cho blog request/repository/service theo admin deploy artifact; route scan xac nhan endpoint profile delete va admin blog CRUD/status. |
-
-### Selection notes
-
-| Project | Notes |
-|---|---|
-| Web | `user-profile-delete` da xong va da co API backend. Khong nen khoa `user-cart` thang vao implementation khi codegraph chua thay API/route san sang; nen chay mot vong planning/API readiness truoc. |
-| Admin | `admin_blog_posts_list` da xong. `admin_blog_posts_create` la ung vien tiep theo vi list da co CTA tao moi, API create da co, va create/edit/detail hien van redirect ve list. |
+| Web | `npm run build` PASS ngày `2026-05-27` sau các thay đổi favorites/weather/text formatting. Deploy artifacts gần nhất cho `user-profile-delete` và `user-cart-api-planning` đều ghi quality gates PASS. |
+| Admin | `npm run build` PASS trong các lần hardening admin location create; deploy artifacts `admin_blog_posts_list` và `admin_blog_posts_create` ghi lint/typecheck/build/console smoke PASS. |
+| API | Route scan xác nhận các endpoints mới; trước đó PHP syntax/route checks đã PASS. Cảnh báo local `imagick` DLL khi chạy PHP là non-blocking. |
 
 ### Next execution order
 
-1. Admin: cap nhat prompt `danangtrip-admin/.agent/skills/STACK_SKILLS_INDEX.md` sang `admin_blog_posts_create`, route `/admin/blog-posts/create`, sau do chay Step 01 -> Step 10.
-2. Web: chay vong planning/API readiness cho `user-cart`; chi khoa prompt khi co API/flow gio hang ro rang.
-3. API: neu chon web `user-cart`, can bo sung/chot cart contract truoc; neu chon admin blog create, API `POST /admin/blog-posts` da co nhung can kiem tra upload/validation contract.
-4. Completed screens chi hardening-only: `user-locations-by-category`, `user-locations-nearby`, `user-tours-by-category`, `user-blog-by-category`, `user-profile-delete`, `admin_contacts`, `admin_notifications_list`, `admin_notifications_send`, `admin_blog_posts_list`, users cluster, reports cluster, booking invoice.
+1. Admin: khóa tiếp `admin_blog_posts_edit`, thay redirect `/admin/blog-posts/:id/edit` bằng page edit thật, tái dùng form create ở chế độ edit.
+2. Admin: sau edit, làm `admin_blog_posts_detail` nếu tài liệu yêu cầu detail riêng; hiện router cũng đang redirect `/admin/blog-posts/:id` về list.
+3. Web: chạy prompt `web_route_api_next_screen_review` để chọn tiếp giữa checkout/cart-to-booking polish, auth/account hardening còn thiếu, hoặc public route hardening.
+4. API: chỉ mở rộng contract khi màn được chọn thiếu endpoint; cart/account/blog support hiện đã đủ cho các màn vừa hoàn thành.
 
 ---
 
@@ -1106,12 +1099,12 @@ Phan nay la trang thai tien trinh moi nhat sau khi doc lai 2 du an `danangtrip-w
 
 | Dự án | Tổng màn chính | Hoàn thành | Đang làm | Chưa làm | % hoàn thành theo tổng màn | Màn kế tiếp đã chốt prompt |
 |---|---:|---:|---:|---:|---:|---|
-| `danangtrip-web` | 35 | 21 | 0 | 14 | 60.0% | `TBD - user-cart/API planning review needed` |
-| `danangtrip-admin` | 40 | 22 | 0 | 18 | 55.0% | `admin_blog_posts_create` |
+| `danangtrip-web` | 35 | 22 | 0 | 13 | 62.9% | `web_route_api_next_screen_review` |
+| `danangtrip-admin` | 40 | 23 | 0 | 17 | 57.5% | `admin_blog_posts_edit` |
 
 | Kết luận | Diễn giải |
 |---|---|
-| Hai dự án đang đi đúng trục hậu booking | Web đã khép lookup theo mã booking, favorites, notifications, ratings, recommendations, locations category/nearby, tours category, blog category và profile delete; admin đã khép dashboard, reports, users cluster, contacts support, notifications list/send và blog posts list |
-| Có thể chọn màn tiếp theo | Web nên chạy planning/API readiness cho `user-cart` vì codegraph chưa thấy cart route/API sẵn sàng. Admin nên chuyển sang `admin_blog_posts_create` vì list đã có CTA tạo mới và backend `POST /admin/blog-posts` đã tồn tại |
+| Hai dự án đang đi đúng trục hậu booking | Web đã khép lookup theo mã booking, favorites, notifications, ratings, recommendations, locations category/nearby, tours category, blog category, profile delete và cart; admin đã khép dashboard, reports, users cluster, contacts support, notifications list/send, blog posts list/create |
+| Có thể chọn màn tiếp theo | Web đã khóa prompt `web_route_api_next_screen_review` để chọn màn cụ thể ở Step 03 vì các gaps lớn trước đó (`user-profile-delete`, `user-cart`) đã có code. Admin chuyển sang `admin_blog_posts_edit` vì list/create đã xong nhưng edit/detail blog hiện vẫn redirect về list |
 | Báo cáo này nên cập nhật sau mỗi lần có `deploy-report` mới | Khi một màn đi hết pipeline, chỉ cần đổi trạng thái và tính lại % |
 | Nguồn backlog tương lai đã được gộp vào báo cáo này | Không cần tách riêng roadmap cho `web` hay `admin` nữa |
