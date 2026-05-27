@@ -15,6 +15,127 @@
 
 ---
 
+## 0.0.14 Current delivery override - 2026-05-27 late evening
+
+Phan nay la nguon chuan moi nhat sau khi doc lai `.codegraph/codegraph.db` cua `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` luc `2026-05-27 22:41` va doi chieu lai repo thuc te.
+Tieu chi moi theo yeu cau hien tai: neu man da co route/page/component/service that trong codegraph thi khong chon lai lam "man chua co code"; man do chi con la hardening/closeout neu thieu artifact.
+
+### Completed / code-confirmed since previous override
+
+| Project | Screen / work item | Route / API | Evidence |
+|---|---|---|---|
+| Web | `user-profile` | `/profile`, `GET/PUT /user/profile`, `POST /user/profile/avatar` | Codegraph/repo xac nhan `src/app/[locale]/(main)/(protected)/profile/page.tsx`, `ProfileEditFormContainer`, `ProfileEditForm`, `useProfileUpdateMutation`, `useProfileAvatarMutation`, `profile.service.ts`; backend co 3 route profile/avatar trong `routes/api.php`. Theo tieu chi codegraph-first, man nay khong con la next screen. |
+| Web | `user_booking_invoice` | `GET /user/bookings/{id}/invoice` | Doc ghi ro "Khong co man rieng"; repo da co `bookingService.invoice()` va download action trong `BookingDetailClient.tsx`. Khong tao route/page rieng tru khi doi scope. |
+| Web | Remaining public/account backlog candidates | `/cart`, `/profile/delete`, `/profile/ratings`, `/profile/recommendations`, `/nearby`, `/categories/{slug}/locations`, `/tour-categories/{slug}/tours` | Codegraph/repo deu thay page/component/API support that; cac bang cu ben duoi neu con ghi "No route/page found" cho cac man nay thi xem la loi thoi. |
+
+### Current locked screens for next implementation
+
+| Project | Last completed / code-confirmed item | Next locked screen / task | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `user-profile` | `user-home-hardening` | `/` | Route/page and `src/features/home` components already exist; no dedicated deploy artifact found for home. | Khong con man web main route/page thieu code that ro rang. Chuyen sang hardening man co tac dong cao nhat: trang chu, vi docs co hero/search/weather/statistics/featured locations/tours/blog va repo co nhieu API/fallback can closeout. |
+| Admin | `admin_blog_posts_edit` | `admin_blog_posts_detail` | `/admin/blog-posts/:id` | Router hien van redirect `/admin/blog-posts/:id` ve list; chua co page detail that. | Sau list/create/edit, detail van la gap that trong CRUD blog posts. |
+| API | Profile/cart/recommendations/ratings/category/invoice/blog support | `TBD theo man tiep theo` | N/A | Cac endpoint can cho web hardening va admin blog detail da co. | API chi can mo rong neu Step 01 cua man tiep theo phat hien contract thieu. |
+
+### Updated counts
+
+| Project | Total main screens | Deploy/code-completed | In progress | Not started | Completion % | Next selected screen |
+|---|---:|---:|---:|---:|---:|---|
+| Web | 35 | 23 | 1 | 11 | 65.7% | `user-home-hardening` |
+| Admin | 40 | 24 | 0 | 16 | 60.0% | `admin_blog_posts_detail` |
+
+### Updated code-level counts
+
+| Project | Total documented main screens | Screens with route/page or intentional action code | Screens without route/page code | Code coverage |
+|---|---:|---:|---:|---:|
+| Web | 35 | 35 | 0 | 100.0% |
+| Admin | 40 | 32 | 8 | 80.0% |
+
+### Codegraph / repo verification notes
+
+| Project | Codegraph snapshot | Verification |
+|---|---|---|
+| Web | `files=363`, `nodes=3087`, `edges=6185`, mtime `2026-05-27 22:41:04` | Route scan thay profile, cart, profile delete, ratings, recommendations, locations category, nearby, tours category, blog/category query handling and invoice action/service. `user_home.md` maps to `/` with `src/app/[locale]/(main)/page.tsx` and `src/features/home`. |
+| Admin | `files=340`, `nodes=3280`, `edges=6838`, mtime `2026-05-27 21:54:15` | Codegraph/repo scan thay `BlogPostEdit`; detail route `/admin/blog-posts/:id` van redirect ve list. |
+| API | `files=461`, `nodes=4423`, `edges=6334`, mtime `2026-05-27 21:54:23` | API co profile/avatar, recommendations, ratings, locations nearby/category, tour category, cart, booking invoice va admin blog show/status. |
+
+### Validation snapshot
+
+| Project | Validation |
+|---|---|
+| Web | Cac artifacts hien co ghi PASS cho route/API review, cart/profile-delete/category/nearby/tours/blog hardening; `user-home` chua co deploy artifact rieng nen duoc chon lam hardening tiep theo. |
+| Admin | `admin_blog_posts_edit` deploy report ghi lint/typecheck/build/prepush PASS; `admin_blog_posts_detail` chua co artifact va chua co page. |
+| API | Route/codegraph support san sang cho cac man tiep theo; khong can doi API truoc khi chay Step 01. |
+
+### Next execution order
+
+1. Web: chay `user-home-hardening` cho route `/`, tap trung doi chieu `user_home.md` voi `src/features/home`, weather/statistics/featured locations/tours/blog, loading/error/empty states, navigation/search, responsive va deploy artifact.
+2. Admin: lam `admin_blog_posts_detail` cho route `/admin/blog-posts/:id`; hien route nay van redirect ve list.
+3. API: chi mo rong khi Step 01/03 cua hai man tren phat hien contract thieu.
+4. Sau khi mot muc di het Step 10, cap nhat lai counts va conclusion.
+
+---
+
+## 0.0.13 Current delivery override - 2026-05-27 evening
+
+Phan nay la nguon chuan moi nhat sau khi doc lai `.codegraph/codegraph.db` cua `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` luc toi `2026-05-27` va doi chieu voi repo/artifact hien co.
+Neu cac phan cu ben duoi con khoa `web_route_api_next_screen_review` hoac `admin_blog_posts_edit` la man tiep theo thi xem la da loi thoi: web da chon duoc `user-profile`, admin da co page edit blog that.
+
+### Completed since previous override
+
+| Project | Completed screen / work item | Route / API | Evidence |
+|---|---|---|---|
+| Web | `web_route_api_next_screen_review` | Locked next screen: `/profile` | Artifact `2026-05-27__web_route_api_next_screen_review__deploy-report.md` ghi quality gates PASS va chon `user-profile`; codegraph/repo thay `src/app/[locale]/(main)/(protected)/profile/page.tsx`, `ProfileEditFormContainer`, `useProfileUpdateMutation`, `useProfileAvatarMutation`, `profile.service.ts` voi `GET/PUT /user/profile` va `POST /user/profile/avatar`. |
+| Web hardening | `tour-booking-capacity-limits` | `/tours/{slug}/book`, `/cart` | Artifact `2026-05-27__tour-booking-capacity-limits__deploy-report.md` ghi lint/typecheck/routes/build/prepush PASS; passenger counter duoc clamp theo capacity, checkout bi khoa khi vuot so cho, header/z-index/cursor pointer duoc fix. |
+| Admin | `admin_blog_posts_edit` | `/admin/blog-posts/edit/:id` | Codegraph thay `src/pages/Blog/BlogPostEdit/index.tsx` va cac component form/uploader/dialog; router da lazy import `BlogPostEdit`; `BlogTable` navigate den `ROUTES.BLOG_POSTS_EDIT`; deploy artifact `2026-05-27__admin_blog_posts_edit__deploy-report.md` ghi lint/typecheck/build/prepush PASS. |
+| API | Mail delivery unification via Brevo API | `POST https://api.brevo.com/v3/smtp/email` | Codegraph thay `app/Services/BrevoMailService.php`, `app/Mail/ResetPasswordMail.php`; notification job, OTP resend va password reset deu di qua `BrevoMailService::sendMailable`; khong con `Mail::` trong `app/`; manual test Brevo API tra `201` voi `messageId`. |
+
+### Current locked screens for next implementation
+
+| Project | Last completed screen / work item | Next locked screen | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `web_route_api_next_screen_review` | `user-profile` | `/profile` | Route/page/form/hook/service da co trong repo; can chay dedicated closeout/review rieng neu tach delivery artifact cho man profile. | Review da chon `user-profile`; day la account screen co API that va da co implementation/hardening trong worktree. |
+| Admin | `admin_blog_posts_edit` | `admin_blog_posts_detail` | `/admin/blog-posts/:id` | Router hien van redirect `/admin/blog-posts/:id` ve list; chua co page detail that. | Sau list/create/edit, detail la buoc hop ly de khep CRUD blog posts neu tai lieu yeu cau route detail rieng. |
+| API | Brevo mail + profile/cart/blog support | `TBD theo man tiep theo` | N/A | Cart/account/profile/avatar/blog/admin notification/mail API support da co. | API chi can mo rong khi man tiep theo thieu contract. |
+
+### Updated counts
+
+| Project | Total main screens | Deploy-completed | In progress | Not started | Completion % | Next selected screen |
+|---|---:|---:|---:|---:|---:|---|
+| Web | 35 | 22 | 1 | 12 | 62.9% | `user-profile` |
+| Admin | 40 | 24 | 0 | 16 | 60.0% | `admin_blog_posts_detail` |
+
+### Updated code-level counts
+
+| Project | Total documented main screens | Screens with route/page code | Screens without route/page code | Code coverage |
+|---|---:|---:|---:|---:|
+| Web | 35 | 34 | 1 | 97.1% |
+| Admin | 40 | 32 | 8 | 80.0% |
+
+### Codegraph / repo verification notes
+
+| Project | Codegraph snapshot | Verification |
+|---|---|---|
+| Web | `files=363`, `nodes=3087`, `edges=5952`, mtime `2026-05-27 21:54:58` | Codegraph/repo scan thay `BookingSidebar`, `CartContainer`, `/profile/delete`, `/profile` edit container, profile update/avatar hooks va cart sync. |
+| Admin | `files=340`, `nodes=3280`, `edges=6838`, mtime `2026-05-27 21:54:15` | Codegraph/repo scan thay `BlogPostEdit`, edit components, route lazy import va table edit navigation; detail route van redirect ve list. |
+| API | `files=461`, `nodes=4423`, `edges=6334`, mtime `2026-05-27 21:54:23` | Codegraph/repo scan thay `BrevoMailService`, `ResetPasswordMail`, notification mail job, account/profile/cart support va auth mail flows qua Brevo API. |
+
+### Validation snapshot
+
+| Project | Validation |
+|---|---|
+| Web | `web_route_api_next_screen_review` va `tour-booking-capacity-limits` artifacts deu ghi `npm run prepush:check` PASS; route check xac nhan 29 route entries. |
+| Admin | `admin_blog_posts_edit` deploy report ghi lint/typecheck/build/prepush PASS, khong co blocking issue. |
+| API | `php -l` PASS cac file mail/service/model/job lien quan; `php artisan test` PASS 12 tests / 48 assertions; manual Brevo API test local tra HTTP `201`. |
+
+### Next execution order
+
+1. Web: neu tiep tuc web, dong goi/closeout rieng `user-profile` tren route `/profile` vi review da chon xong va code da co form cap nhat profile/avatar.
+2. Admin: lam `admin_blog_posts_detail` neu muon khep CRUD blog post; route `/admin/blog-posts/:id` hien van redirect ve list.
+3. API: giu mot duong mail duy nhat qua Brevo API; tren Render chi can `BREVO_API_*` va `MAIL_FROM_*`, khong can SMTP port 587.
+4. Khi mot trong cac muc tren di het Step 10, cap nhat lai bang count va phan conclusion.
+
+---
+
 ## 0.0.12 Current delivery override - 2026-05-27
 
 Phần này là nguồn chuẩn mới nhất sau khi đọc lại `.codegraph/codegraph.db` của `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` lúc sáng `2026-05-27` và đối chiếu lại route/page/API hiện có trong repo.
@@ -1099,12 +1220,12 @@ Phan nay la trang thai tien trinh moi nhat sau khi doc lai 2 du an `danangtrip-w
 
 | Dự án | Tổng màn chính | Hoàn thành | Đang làm | Chưa làm | % hoàn thành theo tổng màn | Màn kế tiếp đã chốt prompt |
 |---|---:|---:|---:|---:|---:|---|
-| `danangtrip-web` | 35 | 22 | 0 | 13 | 62.9% | `web_route_api_next_screen_review` |
-| `danangtrip-admin` | 40 | 23 | 0 | 17 | 57.5% | `admin_blog_posts_edit` |
+| `danangtrip-web` | 35 | 23 | 1 | 11 | 65.7% | `user-home-hardening` |
+| `danangtrip-admin` | 40 | 24 | 0 | 16 | 60.0% | `admin_blog_posts_detail` |
 
 | Kết luận | Diễn giải |
 |---|---|
-| Hai dự án đang đi đúng trục hậu booking | Web đã khép lookup theo mã booking, favorites, notifications, ratings, recommendations, locations category/nearby, tours category, blog category, profile delete và cart; admin đã khép dashboard, reports, users cluster, contacts support, notifications list/send, blog posts list/create |
-| Có thể chọn màn tiếp theo | Web đã khóa prompt `web_route_api_next_screen_review` để chọn màn cụ thể ở Step 03 vì các gaps lớn trước đó (`user-profile-delete`, `user-cart`) đã có code. Admin chuyển sang `admin_blog_posts_edit` vì list/create đã xong nhưng edit/detail blog hiện vẫn redirect về list |
+| Hai dự án đang đi đúng trục hậu booking | Web đã khép lookup theo mã booking, favorites, notifications, ratings, recommendations, locations category/nearby, tours category, blog category, profile delete, cart, profile edit/avatar và invoice action; admin đã khép dashboard, reports, users cluster, contacts support, notifications list/send, blog posts list/create/edit |
+| Có thể chọn màn tiếp theo | Web không còn màn main route/page thiếu code thật rõ ràng; chọn `user-home-hardening` cho route `/` vì đây là màn tác động cao và chưa có deploy artifact riêng. Admin tiếp theo là `admin_blog_posts_detail` vì list/create/edit đã xong nhưng route `/admin/blog-posts/:id` vẫn redirect về list |
 | Báo cáo này nên cập nhật sau mỗi lần có `deploy-report` mới | Khi một màn đi hết pipeline, chỉ cần đổi trạng thái và tính lại % |
 | Nguồn backlog tương lai đã được gộp vào báo cáo này | Không cần tách riêng roadmap cho `web` hay `admin` nữa |
