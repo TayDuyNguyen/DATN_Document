@@ -1,6 +1,6 @@
 # Báo cáo Theo dõi Tiến độ Triển khai Dự án
 
-> Ngày cập nhật: 27/05/2026  
+> Ngày cập nhật: 28/05/2026  
 > Phạm vi theo dõi:
 > - `D:\DATN\danangtrip-web`
 > - `D:\DATN\danangtrip-admin`
@@ -12,6 +12,149 @@
 >   - `Phạm vi delivery đang theo dõi` theo các màn đã có `deploy-report` hoặc đã được chốt là màn kế tiếp trong rollout hiện tại
 > - Với `danangtrip-web`, không tính 5 file component-spec của nhóm rating vào tổng số màn chính.
 > - Trạng thái dùng 3 mức: `Chưa làm`, `Đang làm`, `Hoàn thành`.
+
+---
+
+## 0.0.16 Current delivery override - 2026-05-28 repo-reality correction
+
+Phan nay la nguon chuan moi nhat sau khi quet lai route/page thuc te trong `D:\DATN\danangtrip-web\src\app`, doi chieu `docs/page`, `WORKING_STATE.md`, `HANDOFF.md` va artifact delivery trong `D:\DATN\danangtrip-web\.agent\artifacts`.
+Muc tieu cua ban cap nhat nay la tach ro:
+
+- `Da closeout delivery`: co `deploy-report` va `review` hoac hardening closeout ro rang
+- `Da co code that`: co route/page/component flow that trong repo nhung chua co closeout artifact rieng
+
+Neu cac phan cu ben duoi mau thuan voi muc nay thi uu tien dung muc `0.0.16`.
+
+### Web repo reality summary
+
+| Metric | Value |
+|---|---:|
+| Documented main web screens | 35 |
+| Screens with real route/page code | 35 |
+| Screens with dedicated deploy closeout | 22 |
+| Screens implemented in code but not closeout yet | 13 |
+| Screens missing route/page code | 0 |
+| Delivery closeout completion | 62.9% |
+| Code implementation coverage | 100.0% |
+
+### Web screens with dedicated closeout evidence
+
+| Screen | Route | Evidence |
+|---|---|---|
+| `user_contact` | `/contact` | `2026-05-10__contact__deploy-report.md`, `review.md` |
+| `user_tour_detail` | `/tours/[slug]` | `2026-05-16__tour-detail__deploy-report.md`, `review.md` |
+| `user_tour_booking` | `/tours/[slug]/book` | `2026-05-17__tour-booking__deploy-report.md`, `review.md` |
+| `user_payment` | `/payment` | `2026-05-17__tour-payment__deploy-report.md`, `review.md` |
+| `user_tour_departure_select` | `/tours/[slug]/departures` | `2026-05-19__tour-departure-select__deploy-report.md`, `review.md` |
+| `user_bookings_list` | `/profile/bookings` | `2026-05-21__user-bookings-list__deploy-report.md`, `review.md` |
+| `user_booking_by_code` | `/profile/bookings/code/[bookingCode]` | `2026-05-21__user-booking-by-code__deploy-report.md`, `review.md` |
+| `user_booking_detail` | `/profile/bookings/[id]` | `2026-05-21__user-booking-detail__deploy-report.md`, `review.md` |
+| `user_favorites` | `/profile/favorites` | `2026-05-22__favorites__deploy-report.md`, `review.md` |
+| `user_notifications` | `/profile/notifications` | `2026-05-22__notifications__deploy-report.md`, cong them hardening nesting trong `WORKING_STATE.md` 2026-05-28 |
+| `user_verify_email` | `/verify-email` | `2026-05-22__user-verify-email__deploy-report.md`, `review.md` |
+| `user_forgot_password` | `/forgot-password` | `2026-05-23__user-forgot-password__deploy-report.md`, `review.md` |
+| `user_my_ratings` | `/profile/ratings` | `2026-05-23__user-my-ratings__deploy-report.md`, `review.md` |
+| `user_recommendations` | `/profile/recommendations` | `2026-05-23__user-recommendations__deploy-report.md`, `review.md` |
+| `user_reset_password` | `/reset-password` | `2026-05-23__user-reset-password__deploy-report.md`, `review.md` |
+| `user_blog_by_category` | `/blog?category=*` | `2026-05-24__user-blog-by-category__deploy-report.md`, `review.md` |
+| `user_locations_by_category` | `/categories/[slug]/locations` | `2026-05-23__user-locations-by-category__deploy-report.md`, `review.md` |
+| `user_locations_nearby` | `/nearby` | `2026-05-24__user-locations-nearby__deploy-report.md`, `review.md` |
+| `user_tours_by_category` | `/tour-categories/[slug]/tours` | `2026-05-24__user-tours-by-category__deploy-report.md`, `review.md` |
+| `user_cart` | `/cart` | `2026-05-25__user-cart-api-planning__deploy-report.md`, `2026-05-25__user-cart__review.md` |
+| `user_profile_delete` | `/profile/delete` | `2026-05-25__user-profile-delete__deploy-report.md`, `review.md` |
+| `user_home` | `/` | `2026-05-27__user-home-hardening__deploy-report.md`, `review.md` |
+
+### Web screens with real code but no dedicated closeout artifact yet
+
+| Screen | Route | Repo evidence |
+|---|---|---|
+| `user_blog_detail` | `/blog/[slug]` | `src/app/[locale]/(main)/(public)/blog/[slug]/page.tsx` |
+| `user_blog_list` | `/blog` | `src/app/[locale]/(main)/(public)/blog/page.tsx` |
+| `user_booking_invoice` | Action from `/profile/bookings/[id]` | booking invoice flow exists in feature/service level, but no dedicated deploy closeout artifact |
+| `user_destination_tour_landing` | `/du-lich-da-nang` | `src/app/[locale]/(main)/(public)/du-lich-da-nang/page.tsx` |
+| `user_location_detail` | `/locations/[slug]` | `src/app/[locale]/(main)/(public)/locations/[slug]/page.tsx` |
+| `user_locations_list` | `/locations` | `src/app/[locale]/(main)/(public)/locations/page.tsx` |
+| `user_login` | `/login` | `src/app/[locale]/(auth)/login/page.tsx` |
+| `user_payment_result` | `/payment/result` | `src/app/[locale]/(main)/(protected)/payment/result/page.tsx` |
+| `user_profile` | `/profile` | `src/app/[locale]/(main)/(protected)/profile/page.tsx`, profile edit flow da co hook/service that |
+| `user_profile_password` | `/profile/password` | `src/app/[locale]/(main)/(protected)/profile/password/page.tsx`, co analysis/spec/test artifact nhung chua co deploy-report |
+| `user_register` | `/register` | `src/app/[locale]/(auth)/register/page.tsx` |
+| `user_search` | `/search` | `src/app/[locale]/(main)/(public)/search/page.tsx`, `src/features/search/*` |
+| `user_tours_list` | `/tours` | `src/app/[locale]/(main)/(public)/tours/page.tsx` |
+
+### Corrected current conclusion for web
+
+1. Web hien khong con man documented nao bi thieu route/page code.
+2. Web chi moi closeout delivery ro rang cho `22/35` man chinh.
+3. Co `13/35` man da co code that, nhung chua nen dem la hoan thanh delivery neu chua co artifact closeout rieng.
+4. Man hop ly tiep theo van la `user-search-hardening`, vi `/search` da co code that va la man public co gia tri cao nhung chua co closeout.
+
+### Corrected current locked screens / next recommendation
+
+| Project | Last delivery-closed item | Next recommended screen / task | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `user-home-hardening` | `user-search-hardening` | `/search` | Da co route/page that tai `src/app/[locale]/(main)/(public)/search/page.tsx` va feature folder `src/features/search`, nhung chua co deploy/report artifact rieng. | Day la man public da co implementation that, de closeout se tang `delivery completion` thuc su thay vi chi tang `code coverage`. |
+| Admin | `admin_blog_posts_detail` | `admin_blog_categories` | `/admin/blog-categories` | API/category endpoint da co, page/route admin category van la gap ro rang. | Khong thay doi so voi ket luan truoc. |
+| API | profile/blog/category support | `TBD theo man tiep theo` | N/A | API dang o vai tro support. | Chi mo rong khi Step 01 cua man tiep theo phat hien gap moi. |
+
+## 0.0.15 Current delivery override - 2026-05-28
+
+Phan nay la nguon chuan moi nhat sau khi doi chieu lai repo thuc te va codegraph/repo reality cua `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` sau khi checkout/pull `dev` ngay `2026-05-28`.
+Neu cac phan cu ben duoi mau thuan voi muc nay thi uu tien dung muc `0.0.15`.
+
+### Completed / code-confirmed since previous override
+
+| Project | Screen / work item | Route / API | Evidence |
+|---|---|---|---|
+| Web | `user-home-hardening` | `/` | Co deploy/report artifact `2026-05-27__user-home-hardening__deploy-report.md` va `review.md`; repo reality co `src/app/[locale]/(main)/page.tsx` + `src/features/home`; working state 2026-05-28 ghi Step 10 da xong va `npm run prepush:check` PASS. |
+| Web hardening | `profile-notifications-nesting` | `/profile/notifications` | Working state 2026-05-28 ghi notifications page da duoc nest vao `ProfileLayoutWrapper`, breadcrumb/settings i18n da cap nhat, middleware protected route da verify. Day la hardening item trong cum profile, khong tinh thanh main screen doc lap moi. |
+| Admin | `admin_blog_posts_detail` | `/admin/blog-posts/:id`, `GET /admin/blog-posts/{id}` | Repo reality thay `src/pages/Blog/BlogPostDetail/index.tsx`, lazy route trong `src/routes/index.tsx`, route constant `BLOG_POSTS_DETAIL`, artifact Step 01-10 co du den `2026-05-28__admin_blog_posts_detail__deploy-report.md` va `review.md`; `WORKING_STATE.md` admin ghi hoan tat. |
+| API | `profile/account/blog support` tiep tuc ready | `GET/PUT /user/profile`, `POST /user/profile/avatar`, `DELETE /user/account`, `GET /admin/blog-posts/{id}` | Route scan thay `ProfileController`, `MediaController`, `UpdateProfileRequest`, `AvatarProfileRequest`, admin blog show/update/status routes trong `routes/api.php`; khong co gap contract blocking cho cac cum vua closeout. |
+
+### Current locked screens / next recommendation
+
+| Project | Last completed / code-confirmed item | Next recommended screen / task | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `user-home-hardening` | `user-search-hardening` | `/search` | Route/page that tai `src/app/[locale]/(main)/(public)/search/page.tsx`; feature folder `src/features/search` co `SearchResultsClient`, `SearchFiltersSheet`, `SearchResultCard`, `SearchGrid`; chua thay deploy artifact rieng cho search. | Sau khi home da co deploy artifact rieng, search la man public high-traffic tiep theo da co code that nhung chua co closeout artifact. |
+| Admin | `admin_blog_posts_detail` | `admin_blog_categories` | `/admin/blog-categories` | API/category endpoint da co trong `src/constants/endpoints.ts` va backend co `/admin/blog-categories`; repo reality chua thay page/route module rieng trong `src/pages/Blog`. | Sau list/create/edit/detail blog post, blog categories la gap CRUD/CMS hop ly tiep theo va hien chua co page that. |
+| API | profile/blog/category support | `TBD theo man tiep theo` | N/A | API cho `search` khong can endpoint moi; API cho `admin_blog_categories` da co nen co the bat dau tu admin truoc khi mo rong backend. | API hien dang o trang thai supporting repo, chi can mo rong neu Step 01 cua man tiep theo phat hien gap moi. |
+
+### Updated counts
+
+| Project | Total main screens | Deploy/code-completed | In progress | Not started | Completion % | Next selected screen |
+|---|---:|---:|---:|---:|---:|---|
+| Web | 35 | 24 | 0 | 11 | 68.6% | `user-search-hardening` |
+| Admin | 40 | 25 | 0 | 15 | 62.5% | `admin_blog_categories` |
+
+### Updated code-level counts
+
+| Project | Total documented main screens | Screens with route/page or intentional action code | Screens without route/page code | Code coverage |
+|---|---:|---:|---:|---:|
+| Web | 35 | 35 | 0 | 100.0% |
+| Admin | 40 | 33 | 7 | 82.5% |
+
+### Codegraph / repo verification notes
+
+| Project | Verification |
+|---|---|
+| Web | Repo reality xac nhan `/profile`, `/profile/delete`, `/profile/ratings`, `/profile/recommendations`, `/nearby`, `/categories/{slug}/locations`, `/tour-categories/{slug}/tours`, `/cart`, `/search`, `/` deu co route/page/component code that. `user-home-hardening` da co artifact rieng; `search` chua co artifact closeout rieng. |
+| Admin | Repo reality xac nhan `BlogPostList`, `BlogPostCreate`, `BlogPostEdit`, `BlogPostDetail` deu co page that va router lazy import. Khong thay page/route rieng cho `blog categories`, nen day la gap ro rang nhat trong cum CMS blog. |
+| API | Route reality xac nhan profile/avatar/account/blog/blog-categories support da co trong `routes/api.php`; cac cum tiep theo co the bat dau khong can doi backend discovery vong dau. |
+
+### Validation snapshot
+
+| Project | Validation |
+|---|---|
+| Web | `WORKING_STATE.md` 2026-05-28 ghi `npm run prepush:check` PASS cho `user-home-hardening` + `profile-notifications-nesting`; deploy artifact home da ton tai. |
+| Admin | `admin_blog_posts_detail` co deploy/report artifact moi nhat ngay `2026-05-28`; `WORKING_STATE.md` ghi Steps 1-10 hoan tat va prepush check PASS. |
+| API | Route/controller/request scan khong thay blocking gap cho profile/account/blog/blog-categories support. |
+
+### Next execution order
+
+1. Web: neu tiep tuc web, chot `user-search-hardening` cho route `/search`, vi day la man public da co code that nhung chua co delivery artifact rieng.
+2. Admin: neu tiep tuc admin, lam `admin_blog_categories` vi cum blog posts da co list/create/edit/detail con category page van chua co page that.
+3. API: giu vai tro supporting repo; chi mo rong contract neu Step 01/03 cua hai man tren phat hien gap moi.
+4. Sau moi artifact Step 10 moi, cap nhat lai bang counts va doi `next selected screen`.
 
 ---
 
