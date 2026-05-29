@@ -1,8 +1,8 @@
-# Màn hình: Danh sách Đánh giá
+# Màn hình: Quản lý Đánh giá
 
 > Route: `/admin/ratings`
 > Quyền: 🛡️ Admin / Staff
-> Mô tả: Duyệt và quản lý đánh giá của khách hàng cho địa điểm và tour. Dùng card list thay vì table truyền thống — mỗi đánh giá là 1 card với inline actions.
+> Mô tả: Quản lý đánh giá của khách hàng cho địa điểm và tour. Không dùng luồng duyệt trước khi hiển thị; màn này tập trung vào xem danh sách, lọc, xem chi tiết, ẩn và xóa khi cần. Dùng card list thay vì table truyền thống.
 
 ---
 
@@ -12,7 +12,7 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │  HEADER: Breadcrumb + Tiêu đề + [Xuất Excel]                    │
 ├─────────────────────────────────────────────────────────────────┤
-│  STATS ROW: [Tổng ĐG] [Chờ duyệt ●] [Đã duyệt] [Đã từ chối]   │
+│  STATS ROW: [Tổng ĐG] [Đang hiển thị] [Đã ẩn] [Chưa xử lý]    │
 ├─────────────────────────────────────────────────────────────────┤
 │  FILTER BAR: Search + Loại + Trạng thái + Số sao + Lọc         │
 ├─────────────────────────────────────────────────────────────────┤
@@ -30,7 +30,7 @@
 |---------|-------|
 | Breadcrumb | `12px Inter 500 #94A3B8` — "Đánh giá / Danh sách Đánh giá" |
 | Title | `24px Inter 700 #1E293B` — "Danh sách Đánh giá" |
-| Subtitle | `14px Inter 400 #64748B` — "Duyệt và quản lý đánh giá của khách hàng" |
+| Subtitle | `14px Inter 400 #64748B` — "Theo dõi, ẩn và xóa đánh giá của khách hàng" |
 | Button "Xuất Excel" | `border #E2E8F0 bg white text #64748B radius-10 px-16 py-10` icon `download` | `GET /admin/ratings/export` |
 
 ---
@@ -42,9 +42,9 @@
 | Thẻ | Icon | Icon bg | Value | Label | Value color | Ghi chú |
 |-----|------|---------|-------|-------|-------------|---------|
 | Tổng đánh giá | `rate_review` | `#EFF6FF` | `1.024` | "TỔNG ĐÁNH GIÁ" | `#1E293B` | |
-| Chờ duyệt | `pending` | `#FEF3C7` | `18` | "CHỜ DUYỆT" | `#F59E0B` | Pulse animation trên dot (urgent) |
-| Đã duyệt | `check_circle` | `#D1FAE5` | `986` | "ĐÃ DUYỆT" | `#10B981` | |
-| Đã từ chối | `cancel` | `#FEE2E2` | `20` | "ĐÃ TỪ CHỐI" | `#EF4444` | |
+| Đang hiển thị | `check_circle` | `#D1FAE5` | `986` | "ĐANG HIỂN THỊ" | `#10B981` | |
+| Đã ẩn | `cancel` | `#FEE2E2` | `20` | "ĐÃ ẨN" | `#EF4444` | |
+| Chưa xử lý | `pending` | `#FEF3C7` | `0` | "CHƯA XỬ LÝ" | `#F59E0B` | Chỉ để phát hiện dữ liệu legacy bất thường |
 
 ---
 
@@ -58,7 +58,7 @@
 |---------|-------|--------|
 | Search | `flex-1 min-280px` | Placeholder "Tìm theo tên khách hàng, tên tour/địa điểm..." · debounce 300ms |
 | Select Loại | `150px` | Tất cả / Địa điểm (location) / Tour (tour) |
-| Select Trạng thái | `160px` | Tất cả / Chờ duyệt (pending) / Đã duyệt (approved) / Đã từ chối (rejected) |
+| Select Trạng thái | `160px` | Tất cả / Đang hiển thị (approved) / Đã ẩn (rejected) / Chưa xử lý (pending) |
 | Select Số sao | `140px` | Tất cả / ★★★★★ 5 sao / ★★★★ 4 sao / ★★★ 3 sao / ★★ 2 sao / ★ 1 sao |
 | Button Lọc | `auto` | `bg #0066CC text white radius-10 px-20 py-10` |
 | Button Đặt lại | `auto` | Chỉ hiện khi có filter · hover `text #EF4444` |
@@ -75,8 +75,7 @@
 **Bên trái:**
 - Checkbox "Chọn tất cả"
 - Khi có item được chọn: `"Đã chọn 3" 13px 600 #0066CC` + bulk actions:
-  - "Duyệt tất cả": `bg #D1FAE5 text #10B981 radius-8 px-12 py-6 12px 600`
-  - "Từ chối tất cả": `bg #FEE2E2 text #EF4444`
+  - "Ẩn đã chọn": `bg #FEE2E2 text #EF4444`
   - "Xóa": `bg #FEE2E2 text #EF4444`
 
 **Bên phải:**
@@ -110,9 +109,9 @@ Mỗi card: `border-b #F1F5F9 px-24 py-20`
   - location: `bg #EEF2FF text #6366F1 border rgba(99,102,241,0.2)` icon `location_on 12px` "Địa điểm"
   - tour: `bg #EFF6FF text #0066CC border #B3D9FF` icon `tour 12px` "Tour"
 - Badge trạng thái (`11px 700 rounded-full px-10 py-4`):
-  - pending: `bg #FEF3C7 text #F59E0B` "CHỜ DUYỆT"
-  - approved: `bg #D1FAE5 text #10B981` "ĐÃ DUYỆT"
-  - rejected: `bg #FEE2E2 text #EF4444` "ĐÃ TỪ CHỐI"
+  - pending: `bg #FEF3C7 text #F59E0B` "CHƯA XỬ LÝ"
+  - approved: `bg #D1FAE5 text #10B981` "ĐANG HIỂN THỊ"
+  - rejected: `bg #FEE2E2 text #EF4444` "ĐÃ ẨN"
 
 ### 5.2 Row 2 — Target (`flex items-center gap-8 mt-10 ml-68`)
 - Thumbnail: `32x32px radius-6 object-cover border #E2E8F0`
@@ -132,7 +131,7 @@ Mỗi card: `border-b #F1F5F9 px-24 py-20`
 ### 5.5 Row 5 — Rejected reason (`mt-8 ml-68`, chỉ hiện nếu status=rejected)
 - `bg #FEE2E2 border rgba(239,68,68,0.2) radius-8 px-12 py-8`
 - icon `info 14px #EF4444` + text `12px #EF4444`:
-  "Lý do từ chối: [rejected_reason]"
+  "Lý do ẩn: [rejected_reason]"
 
 ### 5.6 Row 6 — Actions (`flex items-center gap-8 mt-12 ml-68`)
 
@@ -140,21 +139,14 @@ Mỗi card: `border-b #F1F5F9 px-24 py-20`
 
 | Status | Buttons hiện |
 |--------|-------------|
-| pending | "Duyệt" (xanh) + "Từ chối" (đỏ outline) + "Xóa" (ghost) |
-| approved | "Hủy duyệt" (ghost) + "Xóa" (ghost) |
+| pending | "Ẩn đánh giá" (vàng) + "Xóa" (ghost) |
+| approved | "Ẩn đánh giá" (vàng) + "Xóa" (ghost) |
 | rejected | "Xóa" (ghost) |
 
-**Button "Duyệt"** (status=pending):
-- `bg #10B981 text white radius-8 px-14 py-7 13px 600` icon `check` · hover `bg #059669`
-- → `PATCH /admin/ratings/{id}/approve`
-
-**Button "Từ chối"** (status=pending):
-- `border #FEE2E2 bg white text #EF4444 radius-8 px-14 py-7 13px 600` icon `close` · hover `bg #FEE2E2`
-- → Mở inline reject form bên dưới
-
-**Button "Hủy duyệt"** (status=approved):
+**Button "Ẩn đánh giá"** (status=pending hoặc approved):
 - `border #E2E8F0 bg white text #64748B radius-8 px-14 py-7 13px 600` · hover `border #F59E0B text #F59E0B`
-- → `PATCH /admin/ratings/{id}/reject`
+- → Mở inline hide form bên dưới
+- submit `PATCH /admin/ratings/{id}/reject`
 
 **Button "Xóa"** (luôn hiện):
 - `border #E2E8F0 bg white text #94A3B8 radius-8 px-14 py-7 13px 600` icon `delete` · hover `border #EF4444 text #EF4444`
@@ -167,14 +159,14 @@ Mỗi card: `border-b #F1F5F9 px-24 py-20`
 
 ## 6. Inline Reject Form
 
-Hiện ngay bên dưới Row 6 khi click "Từ chối":
+Hiện ngay bên dưới Row 6 khi click "Ẩn đánh giá":
 `bg #FEF3C7 border rgba(245,158,11,0.2) radius-10 p-14 mt-8 ml-68`
 
-- Label: `"Lý do từ chối *" 12px Inter 600 #92400E mb-6`
-- Textarea: `rows-2 placeholder "Nhập lý do từ chối..." border rgba(245,158,11,0.3) radius-8 px-12 py-8 13px bg white` · focus `border #F59E0B`
+- Label: `"Lý do ẩn *" 12px Inter 600 #92400E mb-6`
+- Textarea: `rows-2 placeholder "Nhập lý do ẩn..." border rgba(245,158,11,0.3) radius-8 px-12 py-8 13px bg white` · focus `border #F59E0B`
 - `flex justify-end gap-8 mt-8`:
   - "Hủy": `border #E2E8F0 bg white text #64748B radius-8 px-12 py-6 12px`
-  - "Xác nhận từ chối": `bg #F59E0B text white radius-8 px-12 py-6 12px 600`
+  - "Xác nhận ẩn": `bg #F59E0B text white radius-8 px-12 py-6 12px 600`
     → `PATCH /admin/ratings/{id}/reject` · body: `{ rejected_reason }`
 
 ---
@@ -218,10 +210,8 @@ Hiện ngay bên dưới Row 6 khi click "Từ chối":
 | Filter loại | GET | `/admin/ratings?location_id=` hoặc `?tour_id=` | Chọn select loại |
 | Filter trạng thái | GET | `/admin/ratings?status=` | Chọn select |
 | Filter số sao | GET | `/admin/ratings?score=` | Chọn select |
-| Duyệt đánh giá | PATCH | `/admin/ratings/{id}/approve` | Click "Duyệt" |
-| Từ chối đánh giá | PATCH | `/admin/ratings/{id}/reject` | Submit inline reject form |
+| Ẩn đánh giá | PATCH | `/admin/ratings/{id}/reject` | Submit inline hide form |
 | Xóa đánh giá | DELETE | `/admin/ratings/{id}` | Confirm dialog |
-| Bulk duyệt | PATCH | `/admin/ratings/{id}/approve` (loop) | Bulk action |
-| Bulk từ chối | PATCH | `/admin/ratings/{id}/reject` (loop) | Bulk action |
+| Bulk ẩn | PATCH | `/admin/ratings/{id}/reject` (loop) | Bulk action |
 | Bulk xóa | DELETE | `/admin/ratings/{id}` (loop) | Bulk action |
 | Xuất Excel | GET | `/admin/ratings/export?status=&date_from=&date_to=` | Click "Xuất Excel" |

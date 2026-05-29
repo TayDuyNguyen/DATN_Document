@@ -1,6 +1,6 @@
 # Báo cáo Theo dõi Tiến độ Triển khai Dự án
 
-> Ngày cập nhật: 28/05/2026  
+> Ngày cập nhật: 29/05/2026  
 > Phạm vi theo dõi:
 > - `D:\DATN\danangtrip-web`
 > - `D:\DATN\danangtrip-admin`
@@ -12,6 +12,102 @@
 >   - `Phạm vi delivery đang theo dõi` theo các màn đã có `deploy-report` hoặc đã được chốt là màn kế tiếp trong rollout hiện tại
 > - Với `danangtrip-web`, không tính 5 file component-spec của nhóm rating vào tổng số màn chính.
 > - Trạng thái dùng 3 mức: `Chưa làm`, `Đang làm`, `Hoàn thành`.
+
+---
+
+## 0.0.17 Current delivery override - 2026-05-29 codegraph-backed repo reality
+
+Phan nay la nguon chuan moi nhat sau khi doi chieu lai `D:\DATN\danangtrip-web\.codegraph\codegraph.db`, `D:\DATN\danangtrip-admin\.codegraph\codegraph.db` va repo reality hien tai.
+Muc tieu cua ban cap nhat nay la giu tieu chi `codegraph-first`: man nao da co route/page/component flow that trong repo thi khong tiep tuc xem la `chua co code`.
+
+Neu cac phan cu ben duoi mau thuan voi muc nay thi uu tien dung muc `0.0.17`.
+
+### Codegraph snapshot
+
+| Project | Snapshot |
+|---|---|
+| Web | `.codegraph/codegraph.db` mtime `2026-05-28 08:24` |
+| Admin | `.codegraph/codegraph.db` mtime `2026-05-29 08:09` |
+
+### Completed / code-confirmed since previous override
+
+| Project | Screen / work item | Route / API | Evidence |
+|---|---|---|---|
+| Admin | `admin_blog_categories` | `/admin/blog-categories` | Repo reality da co `src/pages/Blog/BlogCategories/index.tsx`, route lazy import trong `src/routes/index.tsx`, route constant `ROUTES.BLOG_CATEGORIES`, sidebar link, i18n labels, drag-and-drop UI va API reorder support cho `blog-categories`. |
+| Admin route hardening | `admin category route normalization` | `/admin/blog-categories`, `/admin/location-categories`, `/admin/tour-categories` | Router admin da chuan hoa route theo ten chuc nang; URL cu `/admin/locations/categories` va `/admin/tours/categories` da co redirect sang route moi. |
+| Web hardening | `search all-mode filters clarification` | `/search?type=all` | Repo reality xac nhan `SearchFiltersSheet.tsx` da bo `Quận/Huyện` khoi mode `all`, doi label thanh `Danh mục địa điểm` va `Danh mục tour`, build web PASS. |
+| API | `blog category reorder support` | `PATCH /admin/blog-categories/reorder` | Backend da co model/repository/service/request/controller support reorder va migration them `sort_order` cho `blog_categories`. |
+
+### Web repo reality summary
+
+| Metric | Value |
+|---|---:|
+| Documented main web screens | 35 |
+| Screens with real route/page code | 35 |
+| Screens with dedicated deploy closeout | 22 |
+| Screens implemented in code but not closeout yet | 13 |
+| Screens missing route/page code | 0 |
+| Delivery closeout completion | 62.9% |
+| Code implementation coverage | 100.0% |
+
+### Admin repo reality summary
+
+| Metric | Value |
+|---|---:|
+| Documented main admin screens | 40 |
+| Screens with real route/page code | 34 |
+| Screens without route/page code | 6 |
+| Code implementation coverage | 85.0% |
+| Screens with dedicated deploy closeout evidence | 25 |
+| Screens implemented in code but not closeout yet | 9 |
+
+### Admin screens still missing route/page code
+
+| Screen | Expected route / area | Note |
+|---|---|---|
+| `admin_landing_pages` | `/admin/landing-pages` | Docs-level backlog, chua thay page/route that |
+| `admin_promotions` | `/admin/promotions` | Planned backlog, chua thay page/route that |
+| `admin_ratings_list` | `/admin/ratings` | API support san sang, nhung chua thay page/route that |
+| `admin_site_settings` | `/admin/settings` | Sidebar co menu settings nhung chua thay page/route that theo doc screen rieng |
+| `admin_subcategories` | `/admin/subcategories` hoac module tuong ung | Chua thay page/route that rieng |
+| `admin_tags_amenities` | `/admin/tags-amenities` hoac split module | Chua thay page/route that rieng |
+
+### Corrected current locked screens / next recommendation
+
+| Project | Last delivery-closed item | Next recommended screen / task | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `user-home-hardening` | `user-search-hardening` | `/search` | Da co route/page that va tiep tuc duoc hardening trong filter/search UX, nhung chua co deploy/report artifact rieng. | Day van la man public high-traffic da co implementation that nhung chua du closeout delivery. |
+| Admin | `admin_blog_posts_detail` | `admin_ratings_list` | `/admin/ratings` | `admin_blog_categories` da co code that; `admin_ratings_list` la man quan tri tiep theo van con thieu route/page code ro rang. | Chon man tiep theo theo tieu chi codegraph-first: uu tien man thieu code that thuc su, khong chon lai `blog categories`. |
+| API | blog/search/category support | `TBD theo man tiep theo` | N/A | API dang o vai tro support; da bo sung reorder cho blog categories va search filter hardening. | Chi mo rong them khi Step 01 cua man tiep theo phat hien gap moi. |
+
+### Updated counts
+
+| Project | Total main screens | Deploy/code-completed | In progress | Not started | Completion % | Next selected screen |
+|---|---:|---:|---:|---:|---:|---|
+| Web | 35 | 24 | 0 | 11 | 68.6% | `user-search-hardening` |
+| Admin | 40 | 26 | 0 | 14 | 65.0% | `admin_ratings_list` |
+
+### Updated code-level counts
+
+| Project | Total documented main screens | Screens with route/page or intentional action code | Screens without route/page code | Code coverage |
+|---|---:|---:|---:|---:|
+| Web | 35 | 35 | 0 | 100.0% |
+| Admin | 40 | 34 | 6 | 85.0% |
+
+### Validation snapshot
+
+| Project | Validation |
+|---|---|
+| Web | Search filter wording/layout hardening da build PASS ngay `2026-05-29`; route `/search` van chua co deploy artifact closeout rieng. |
+| Admin | `blog-categories` va route normalization da `npm run build` PASS, `npm run lint` PASS voi warning cu; chua co Step 10 artifact closeout rieng cho `admin_blog_categories`. |
+| API | Cac file PHP va migration moi cho `blog-categories reorder` da `php -l` PASS; can chay migration de persist `sort_order` thuc te. |
+
+### Corrected current conclusion
+
+1. `danangtrip-web` van giu nguyen ket luan: `0` man documented bi thieu route/page code; viec con lai chu yeu la hardening va closeout.
+2. `danangtrip-admin` da giam so man thieu code tu `7` xuong `6` nho `admin_blog_categories` da co code that.
+3. `admin_blog_categories` khong nen tiep tuc bi xem la next screen chua code; neu tiep tuc admin thi man hop ly tiep theo la `admin_ratings_list`.
+4. `danangtrip-api` hien da mo rong them support reorder cho `blog-categories`, nen cum category admin da day du hon cho vong hardening tiep theo.
 
 ---
 
