@@ -1,4 +1,4 @@
-# Báo cáo Theo dõi Tiến độ Triển khai Dự án
+﻿# Báo cáo Theo dõi Tiến độ Triển khai Dự án
 
 > Ngày cập nhật: 29/05/2026  
 > Phạm vi theo dõi:
@@ -12,6 +12,188 @@
 >   - `Phạm vi delivery đang theo dõi` theo các màn đã có `deploy-report` hoặc đã được chốt là màn kế tiếp trong rollout hiện tại
 > - Với `danangtrip-web`, không tính 5 file component-spec của nhóm rating vào tổng số màn chính.
 > - Trạng thái dùng 3 mức: `Chưa làm`, `Đang làm`, `Hoàn thành`.
+
+---
+
+## 0.0.19 Current delivery override - 2026-05-30
+
+Phan nay la nguon chuan moi nhat sau khi hoan thanh dmin_site_settings va user-search-hardening (session 2026-05-29/30).
+
+Neu cac phan cu ben duoi mau thuan voi muc nay thi uu tien dung muc `0.0.19`.
+
+### Completed / code-confirmed since 0.0.18
+
+| Project | Screen / work item | Route / API | Evidence |
+|---|---|---|---|
+| Admin | `admin_site_settings` | `/admin/settings` | Repo reality co `src/pages/Settings/index.tsx`, 8 components, route lazy import trong `src/routes/index.tsx`, route constant `ROUTES.SETTINGS`, sidebar entry. Backend: settings migration, model, repository, service, Redis cache, controller (admin + public). Deploy report: `2026-05-30__admin_site_settings__deploy-report.md`. prepush:check PASS 7/7 Playwright (bao gom `/admin/settings`). |
+| Web | `user-search-hardening` | `/search` | Deploy report `2026-05-29__user-search-hardening__deploy-report.md` xac nhan: interaction tracking (`handleResultClick`), `useSearchDiscovery` integration, empty-state trending pills, UI visibility improvements (tab glow, border contrast). TypeScript PASS, ESLint PASS. |
+| Admin + Web | `admin_site_settings` dynamic config consumer | `GET /config` | `danangtrip-web/src/components/layout/Footer.tsx` da dung dynamic config. Payment gateway toggles (PayOS/VNPay/MoMo/ZaloPay/COD) driven by config. |
+
+### Web repo reality summary
+
+| Metric | Value |
+|---|---|
+| Documented main web screens | 35 |
+| Screens with real route/page code | 35 |
+| Screens with dedicated deploy closeout | 25 |
+| Screens implemented in code but not closeout yet | 10 |
+| Screens missing route/page code | 0 |
+| Delivery closeout completion | 71.4% |
+| Code implementation coverage | 100.0% |
+
+### Admin repo reality summary
+
+| Metric | Value |
+|---|---|
+| Documented main admin screens | 40 |
+| Screens with route/page or intentional action code | 38 |
+| Screens without route/page or module-level implementation | 2 |
+| Code implementation coverage | 95.0% |
+| Screens with dedicated deploy closeout evidence | 26 |
+| Screens implemented in code but not closeout yet | 12 |
+
+### Admin screens still missing route/page code
+
+| Screen | Expected route / area | Note |
+|---|---|---|
+| `admin_landing_pages` | `/admin/landing-pages` | Docs-level planned backlog; chua thay route/page hoac API that trong repo hien tai |
+| `admin_promotions` | `/admin/promotions` | Docs-level planned; chua thay route/page hoac API that trong repo hien tai - chon lam man tiep theo |
+
+### Corrected current locked screens / next recommendation
+
+| Project | Last delivery-closed item | Next recommended screen / task | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `user-search-hardening` | `user-blog-list-hardening` | `/blog` | Da co route/page that va feature components, nhung chua co deploy/review artifact rieng. | Blog la man public co gia tri cao voi featured post, category tabs, pagination, sidebar. |
+| Admin | `admin_site_settings` | `admin_promotions` | `/admin/promotions` | Chua co route/page hoac API that trong repo hien tai. | Sau settings, promotions la man admin con thieu code that va co doc spec day du nhat. |
+| API | settings + blog + search support | `admin_promotions` backend | N/A | Promotions chua co contract trong routes/api.php. | Can tao migration/model/repo/service/controller cho promotions khi chay Step 01-03. |
+
+### Updated counts
+
+| Project | Total main screens | Deploy/code-completed | In progress | Not started | Completion % | Next selected screen |
+|---|---:|---:|---:|---:|---:|---|
+| Web | 35 | 25 | 0 | 10 | 71.4% | `user-blog-list-hardening` |
+| Admin | 40 | 30 | 0 | 10 | 75.0% | `admin_promotions` |
+
+### Updated code-level counts
+
+| Project | Total documented main screens | Screens with route/page or intentional action code | Screens without route/page code | Code coverage |
+|---|---:|---:|---:|---:|
+| Web | 35 | 35 | 0 | 100.0% |
+| Admin | 40 | 38 | 2 | 95.0% |
+
+### Validation snapshot
+
+| Project | Validation |
+|---|---|
+| Admin | prepush:check PASS 7/7 Playwright sau khi them `/admin/settings` vao console-errors.spec.ts. Deploy report va review artifact duoc tao. |
+| Web | Deploy report `2026-05-29__user-search-hardening__deploy-report.md` ghi TypeScript PASS + ESLint PASS. Session-2 hardening them interaction tracking va UI visibility improvements. |
+| API | Settings API (GET/PUT), image upload/delete, public `/config` endpoint deu hoat dong. Redis cache invalidation on PUT. Hotline regex cap nhat cho phep spaces. |
+
+### Corrected current conclusion
+
+1. `danangtrip-admin` tang code coverage tu 92.5% len 95.0% nho `admin_site_settings` da co route/page that.
+2. `danangtrip-web` tang delivery closeout tu 68.6% len 71.4% nho `user-search-hardening` co deploy artifact.
+3. Next admin: `admin_promotions` - man chua co code that, co doc spec day du.
+4. Next web: `user-blog-list-hardening` - man da co code that, chua co deploy closeout rieng.
+
+---
+## 0.0.18 Current delivery override - 2026-05-29 late-night codegraph refresh
+
+Phan nay la nguon chuan moi nhat sau khi doi chieu lai `D:\DATN\danangtrip-web\.codegraph\codegraph.db`,
+`D:\DATN\danangtrip-admin\.codegraph\codegraph.db`, `D:\DATN\danangtrip-api\.codegraph\codegraph.db`
+voi repo reality luc `2026-05-29 23:52`.
+
+Muc tieu cua ban cap nhat nay la sua cac diem dang bi dem thieu trong admin theo tieu chi `codegraph-first`:
+
+- Neu da co route/page that trong repo thi khong tiep tuc xem la `chua co code`
+- Neu khong co route rieng nhung da co `intentional action code` trong module dang live thi dem la `implemented at feature level`
+- Chi giu o nhom `missing` cac man thuc su chua thay route/page/module flow trong repo hien tai
+
+Neu cac phan cu ben duoi mau thuan voi muc nay thi uu tien dung muc `0.0.18`.
+
+### Codegraph snapshot
+
+| Project | Snapshot |
+|---|---|
+| Web | `.codegraph/codegraph.db` mtime `2026-05-29 23:52:27` |
+| Admin | `.codegraph/codegraph.db` mtime `2026-05-29 23:52:28` |
+| API | `.codegraph/codegraph.db` mtime `2026-05-29 23:52:30` |
+
+### Corrected / code-confirmed since previous override
+
+| Project | Screen / work item | Route / API | Evidence |
+|---|---|---|---|
+| Admin | `admin_ratings_list` | `/admin/ratings` | Repo reality da co `src/pages/Ratings/index.tsx`, route constant `ROUTES.RATINGS = /admin/ratings`, lazy route trong `src/routes/index.tsx`, sidebar entry `sidebar.ratings`, va admin rating API `/admin/ratings`, `/admin/ratings/{id}/approve`, `/admin/ratings/{id}/reject`, `/admin/ratings/{id}` trong `routes/api.php`. |
+| Admin | `admin_subcategories` | feature-level trong cum category/location | Khong thay route standalone rieng, nhung docs da cho phep man nay la tab/module. Repo reality da co `src/pages/Locations/LocationCategories/index.tsx` + backend `/admin/subcategories/*`, nen khong nen tiep tuc xem la `missing code`; hien hop ly hon khi xem la implemented inside category management. |
+| Admin | `admin_tags_amenities` | feature-level trong cum location | Repo reality da co `useLocationTagsQuery`, `useLocationAmenitiesQuery`, `locationApi.getTags/getAmenities`, UI `TagSelector`, va form/location detail xu ly `tags` + `amenities`. Chua co route standalone `/admin/tags-amenities`, nhung chuc nang inventory-level da co code that trong module location. |
+
+### Web repo reality summary
+
+| Metric | Value |
+|---|---:|
+| Documented main web screens | 35 |
+| Screens with real route/page code | 35 |
+| Screens with dedicated deploy closeout | 22 |
+| Screens implemented in code but not closeout yet | 13 |
+| Screens missing route/page code | 0 |
+| Delivery closeout completion | 62.9% |
+| Code implementation coverage | 100.0% |
+
+### Admin repo reality summary
+
+| Metric | Value |
+|---|---:|
+| Documented main admin screens | 40 |
+| Screens with route/page or intentional action code | 37 |
+| Screens without route/page or module-level implementation | 3 |
+| Code implementation coverage | 92.5% |
+| Screens with dedicated deploy closeout evidence | 25 |
+| Screens implemented in code but not closeout yet | 12 |
+
+### Admin screens still missing route/page code
+
+| Screen | Expected route / area | Note |
+|---|---|---|
+| `admin_landing_pages` | `/admin/landing-pages` | Docs-level planned backlog; chua thay route/page hoac API that trong repo hien tai |
+| `admin_promotions` | `/admin/promotions` | Docs-level planned backlog; chua thay route/page hoac API that trong repo hien tai |
+| `admin_site_settings` | `/admin/settings` | Sidebar da co placeholder path, nhung chua thay route/page lazy import hoac API `/admin/settings` that trong repo hien tai |
+
+### Corrected current locked screens / next recommendation
+
+| Project | Last delivery-closed item | Next recommended screen / task | Route | Current code status | Reason |
+|---|---|---|---|---|---|
+| Web | `user-home-hardening` | `user-search-hardening` | `/search` | Da co route/page that va da tiep tuc duoc hardening, nhung van chua co deploy/report artifact rieng. | Van la man public high-traffic co gia tri closeout cao nhat phia web. |
+| Admin | `admin_blog_posts_detail` | `admin_site_settings` | `/admin/settings` | Sidebar da tro den `/admin/settings` nhung chua thay page/route that, cung chua thay API admin settings trong `routes/api.php`. | Sau khi loai `admin_ratings_list` khoi nhom missing va dem `subcategories` / `tags_amenities` o muc feature-level, `site settings` tro thanh gap delivery ro rang va user-facing nhat ben admin. |
+| API | reports/ratings/category/location support | `TBD theo man tiep theo` | N/A | API dang support tot cho ratings, reports, subcategories, tags va amenities; chua thay contract that cho settings/promotions/landing pages. | Chi mo rong backend khi chot man admin tiep theo va Step 01 xac nhan gap contract moi. |
+
+### Updated counts
+
+| Project | Total main screens | Deploy/code-completed | In progress | Not started | Completion % | Next selected screen |
+|---|---:|---:|---:|---:|---:|---|
+| Web | 35 | 24 | 0 | 11 | 68.6% | `user-search-hardening` |
+| Admin | 40 | 29 | 0 | 11 | 72.5% | `admin_site_settings` |
+
+### Updated code-level counts
+
+| Project | Total documented main screens | Screens with route/page or intentional action code | Screens without route/page code | Code coverage |
+|---|---:|---:|---:|---:|
+| Web | 35 | 35 | 0 | 100.0% |
+| Admin | 40 | 37 | 3 | 92.5% |
+
+### Validation snapshot
+
+| Project | Validation |
+|---|---|
+| Web | Codegraph refresh khong thay doi ket luan web: `/search` van da co page/feature that, nhung closeout artifact rieng van chua du. |
+| Admin | Route reality xac nhan `Ratings`, `RatingsReport`, `BookingsReport`, `RevenueReport`, `LocationReport`, `UsersReport`, `BlogCategories` deu da co lazy route/page that. `LocationCategories` + `LocationForm` xac nhan `subcategories`, `tags`, `amenities` khong con nen bi dem la `missing code`. |
+| API | `routes/api.php` xac nhan co `/admin/ratings`, `/admin/reports/*`, `/admin/subcategories/*`, `/tags`, `/amenities`; van chua thay `/admin/settings`, `/admin/promotions`, `/admin/landing-pages`. |
+
+### Corrected current conclusion
+
+1. `danangtrip-web` khong thay doi ket luan: `0` man documented bi thieu route/page code; cong viec con lai van la hardening va closeout.
+2. `danangtrip-admin` nen duoc tang code coverage tu `85.0%` len `92.5%`, vi `admin_ratings_list` da co route/page that va `admin_subcategories` / `admin_tags_amenities` da co module-level implementation.
+3. `admin_ratings_list` khong nen tiep tuc bi xem la next screen chua code; `admin_site_settings` hien la gap admin ro rang hon ca theo route placeholder va docs planning.
+4. Cac backlog admin con thieu code that thuc su hien tai chi con `admin_site_settings`, `admin_promotions`, `admin_landing_pages`.
 
 ---
 

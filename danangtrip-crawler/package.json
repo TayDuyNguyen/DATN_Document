@@ -1,0 +1,25 @@
+{
+  "name": "danangtrip-crawler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone data collection pipeline for DanangTrip tourism data.",
+  "type": "module",
+  "scripts": {
+    "crawl:mock": "tsx src/cli/crawl.ts --source=mock-places",
+    "crawl:curated": "tsx src/cli/crawl.ts --source=curated-danang-locations",
+    "crawl:overpass": "tsx src/cli/crawl.ts --source=overpass-danang-pois --output=data/overpass-danang-pois.json",
+    "filter:overpass": "node scripts/filter-overpass-quality.mjs",
+    "enrich:pexels": "node scripts/enrich-pexels-images.mjs",
+    "seed:overpass": "node scripts/generate-overpass-seed.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
