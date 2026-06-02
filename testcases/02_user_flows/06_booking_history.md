@@ -1,45 +1,97 @@
-# Man hinh Lich su & Chi tiet Dat cho (Booking History & Booking Detail)
+# Chi tiết booking của người dùng - Test Cases
 
-## Pham vi
+## 1. Tổng quan màn hình
 
-- Route danh sach: `/profile/bookings` hoac `/[locale]/profile/bookings`
-- Route chi tiet: `/profile/bookings/[id]`, `/profile/bookings/code/[bookingCode]` hoac locale tuong ung
-- API lien quan: Danh sach booking ca nhan, chi tiet booking theo id/code, huy booking, tai hoa don, thanh toan lai, danh gia tour sau khi hoan thanh.
-- Vai tro: Nguoi dung da dang nhap (User).
+* Đường dẫn route: `/[locale]/profile/bookings/[id]`, `/[locale]/profile/bookings/code/[bookingCode]`
+* File source chính: `D:\DATN\danangtrip-web\src\app\[locale]\(main)\(protected)\profile\bookings\[id]\page.tsx`, `D:\DATN\danangtrip-web\src\app\[locale]\(main)\(protected)\profile\bookings\code\[bookingCode]\page.tsx`
+* Component liên quan: `BookingDetailClient`, `BookingStatusTimeline`, `BookingTourInfoCard`, `BookingCustomerInfoCard`, `BookingPriceSummaryCard`, `CancelBookingDialog`
+* API/service sử dụng: `bookingService.detail(id)`, `bookingService.detailByCode(bookingCode)`, `bookingService.invoice(id)`, `bookingService.cancel(id)`, `paymentService.retry(bookingCode)`
+* Quyền truy cập: User đã đăng nhập; guest bị protected layout chặn
+* Mục đích màn hình: Cho người dùng xem chi tiết booking, tải/in hóa đơn, hủy booking nếu còn hợp lệ, tiếp tục thanh toán và đặt lại tour đã hủy.
 
-## Dieu kien truoc
+## 2. Điều kiện tiền đề
 
-- Tai khoan: Da dang nhap, co booking o nhieu trang thai: pending, confirmed, completed, cancelled; co booking online payment unpaid/failed/partially_paid.
-- Moi truong: Local dev server (`http://localhost:3000`).
+* Dữ liệu cần có: booking của user hiện tại với trạng thái pending, confirmed, completed, cancelled; payment status success, pending, failed, unpaid, partially_paid.
+* Tài khoản cần dùng: user sở hữu booking; user khác không sở hữu booking; guest.
+* Trạng thái hệ thống: API booking, invoice và payment retry hoạt động.
+* Quyền user/admin/staff: user chỉ xem booking của mình; admin/staff không dùng màn này.
 
-## Test cases
+## 3. Danh sách chức năng chính
 
-### Phan 1: Lich su dat cho (`/profile/bookings`)
+* Load booking detail theo id hoặc bookingCode.
+* Hiển thị loading skeleton, error/empty state.
+* Hiển thị timeline trạng thái booking.
+* Hiển thị thông tin tour, khách hàng, tổng tiền.
+* Tải hóa đơn khi payment success.
+* In hóa đơn bằng `window.print()`.
+* Hủy booking khi pending/confirmed và chưa qua ngày đi.
+* Tiếp tục thanh toán với gateway online.
+* Hiển thị lý do hủy và CTA đặt lại khi booking cancelled.
 
-| TT | Test Case ID | Chuc nang | Mo ta Test Case | Dieu kien tien quyet | Buoc thuc hien | Du lieu test | Ket qua mong doi | Ket qua thuc te | Status | Ghi chu |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | TC_HISTORY_001 | Danh sach don hang | Xem danh sach booking ca nhan | User co booking | Truy cap `/vi/profile/bookings`. | | Hien thi card/bang booking gom ma don, ten tour, ngay khoi hanh, tong tien, booking status va payment status. | | | |
-| 2 | TC_HISTORY_002 | Bo loc trang thai | Loc booking theo trang thai | Co nhieu status | Click lan luot cac tab/filter status. | Pending/Confirmed/Completed/Cancelled | Danh sach cap nhat dung status da chon, co empty state neu khong co du lieu. | | | |
-| 3 | TC_HISTORY_003 | Mo chi tiet | Dieu huong sang booking detail | Co booking trong danh sach | Click "Xem chi tiet" tren mot booking. | | Chuyen den `/vi/profile/bookings/[id]` hoac route code tuong ung. | | | |
-| 4 | TC_HISTORY_004 | Huy booking tu danh sach | Huy booking pending/confirmed chua qua ngay di | Booking co the huy | Click cancel tren card, nhap ly do, confirm. | Ly do: Thay doi ke hoach | Booking cap nhat sang cancelled, nut huy bien mat, danh sach refetch/cap nhat. | | | |
-| 5 | TC_HISTORY_005 | Danh gia sau khi hoan thanh | Viet review cho tour completed | Booking completed va chua review | Click Review Now, chon sao, nhap noi dung, gui. | 5 sao, "Tour rat vui" | Toast thanh cong, nut review cap nhat/an, review xuat hien tren tour detail neu API dong bo. | | | |
+## 4. Test cases chi tiết
 
-### Phan 2: Chi tiet dat cho (`/profile/bookings/[id]` hoac `/profile/bookings/code/[bookingCode]`)
+| ID | Nhóm chức năng | Test case | Tiền điều kiện | Bước thực hiện | Dữ liệu test | Kết quả mong đợi | Mức độ ưu tiên | Loại test |
+| -- | -------------- | --------- | -------------- | -------------- | ------------ | ---------------- | -------------- | --------- |
+| USER_BOOKING_DETAIL_001 | Auth | Guest truy cập detail | Chưa đăng nhập | 1. Mở `/vi/profile/bookings/1`. | guest | Protected route chuyển sang login hoặc chặn truy cập; không gọi detail với token rỗng. | High | Permission |
+| USER_BOOKING_DETAIL_002 | Load theo id | Mở detail bằng id hợp lệ | User sở hữu booking | 1. Mở `/vi/profile/bookings/101`.<br>2. Chờ load. | id=101 | Header, booking code, timeline, tour card, customer card, price summary hiển thị đúng. | High | Functional |
+| USER_BOOKING_DETAIL_003 | Load theo code | Mở detail bằng bookingCode | User sở hữu booking | 1. Mở `/vi/profile/bookings/code/BK20260601001`. | bookingCode | Dữ liệu giống route id; breadcrumb hiển thị booking detail. | High | Functional |
+| USER_BOOKING_DETAIL_004 | Invalid id | Booking id không tồn tại | User đăng nhập | 1. Mở `/vi/profile/bookings/999999`. | invalid id | Hiển thị error/empty card, nút quay lại danh sách và retry. | High | Negative |
+| USER_BOOKING_DETAIL_005 | Không sở hữu | User xem booking người khác | Booking thuộc user khác | 1. Mở detail id của user khác. | id khác owner | API 403/404; UI không lộ dữ liệu booking; có error/back. | High | Permission |
+| USER_BOOKING_DETAIL_006 | Loading | Skeleton khi API chậm | Delay API | 1. Mở detail. | delay 2s | Hiển thị skeleton header/timeline/tour/customer/summary; không nhấp nháy data cũ. | Medium | UI |
+| USER_BOOKING_DETAIL_007 | Retry | Retry sau lỗi API | Mock lỗi rồi phục hồi | 1. Mở detail lỗi.<br>2. Click Retry. | 500 -> 200 | Gọi lại API và render data sau khi thành công. | Medium | API |
+| USER_BOOKING_DETAIL_008 | Back | Quay lại danh sách booking | Detail đang mở | 1. Click nút back. | | Điều hướng về `/profile/bookings` đúng locale. | Medium | Functional |
+| USER_BOOKING_DETAIL_009 | Timeline pending | Timeline booking pending | Booking pending | 1. Mở detail pending.<br>2. Quan sát timeline. | pending | Mốc pending/current hiển thị đúng; mốc sau chưa completed. | High | UI |
+| USER_BOOKING_DETAIL_010 | Timeline confirmed | Timeline booking confirmed | Booking confirmed | 1. Mở detail confirmed. | confirmed | Timeline thể hiện đã xác nhận; action hủy còn hiển thị nếu chưa qua ngày. | High | UI |
+| USER_BOOKING_DETAIL_011 | Timeline completed | Timeline booking completed | Booking completed | 1. Mở detail completed. | completed | Timeline completed; không hiển thị nút hủy; có thể tải invoice nếu paid. | High | UI |
+| USER_BOOKING_DETAIL_012 | Timeline cancelled | Timeline booking cancelled | Booking cancelled | 1. Mở detail cancelled. | cancelled | Hiển thị trạng thái cancelled, lý do hủy nếu có, CTA đặt lại nếu có tour slug. | High | UI |
+| USER_BOOKING_DETAIL_013 | Tour card | Hiển thị tour info | Booking có item tour | 1. Quan sát BookingTourInfoCard. | item có thumbnail | Hiển thị ảnh/tên tour/ngày đi/số lượng; ảnh fallback nếu thiếu thumbnail. | High | Functional |
+| USER_BOOKING_DETAIL_014 | Thiếu item | Booking không có item | API trả booking_items rỗng | 1. Mở detail. | items=[] | UI hiển thị error/empty vì source yêu cầu `item`; không crash. | High | Edge Case |
+| USER_BOOKING_DETAIL_015 | Customer info | Hiển thị khách hàng | Booking có customer fields | 1. Quan sát BookingCustomerInfoCard. | name/email/phone | Hiển thị đúng thông tin khách, address/note fallback nếu trống. | Medium | Functional |
+| USER_BOOKING_DETAIL_016 | Price summary | Hiển thị tổng tiền | Booking có discount/deposit | 1. Quan sát summary. | total/discount/final | Tiền format VND đúng; không NaN khi discount=0. | High | Functional |
+| USER_BOOKING_DETAIL_017 | Invoice unpaid | Tải hóa đơn khi chưa paid | payment_status != success | 1. Click download invoice. | pending/unpaid | Toast warning `invoice_unpaid_error`; không gọi download blob. | High | Validation |
+| USER_BOOKING_DETAIL_018 | Invoice success | Tải hóa đơn thành công | payment_status success | 1. Click download invoice. | success | Gọi `bookingService.invoice`; tải file `invoice-{booking_code}.pdf`; toast success. | High | Functional |
+| USER_BOOKING_DETAIL_019 | Invoice 401 | Tải invoice khi token hết hạn | Token expired | 1. Click download invoice. | 401 | Điều hướng login theo source; không treo loading. | High | Permission |
+| USER_BOOKING_DETAIL_020 | Invoice blob lỗi | API invoice trả blob lỗi JSON | Mock lỗi blob | 1. Click download invoice. | error blob | Parse message từ blob nếu có; toast lỗi rõ ràng. | Medium | API |
+| USER_BOOKING_DETAIL_021 | Invoice empty | API invoice trả rỗng | Mock empty blob | 1. Click download invoice. | empty | Toast lỗi server; không tạo file hỏng. | Medium | Negative |
+| USER_BOOKING_DETAIL_022 | Print | In hóa đơn | Detail loaded | 1. Click print icon. | | Gọi `window.print()`; print-only header hiển thị khi in; action buttons ẩn trong print. | Medium | Functional |
+| USER_BOOKING_DETAIL_023 | Can cancel pending | Hủy booking pending | pending, travelDate tương lai | 1. Click cancel.<br>2. Nhập lý do hợp lệ.<br>3. Submit. | lý do >= 10 ký tự | Gọi `bookingService.cancel`; dialog đóng; detail refetch; status cancelled. | High | Functional |
+| USER_BOOKING_DETAIL_024 | Can cancel confirmed | Hủy booking confirmed | confirmed, chưa qua ngày đi | 1. Click cancel.<br>2. Submit reason. | confirmed | Hủy thành công nếu API cho phép; slot được backend xử lý; UI cập nhật. | High | Functional |
+| USER_BOOKING_DETAIL_025 | Cannot cancel completed | Không hủy completed | completed | 1. Mở detail. | completed | Nút cancel không hiển thị. | High | Permission |
+| USER_BOOKING_DETAIL_026 | Cannot cancel cancelled | Không hủy booking đã hủy | cancelled | 1. Mở detail. | cancelled | Nút cancel không hiển thị; chỉ hiển thị lý do/đặt lại. | High | Permission |
+| USER_BOOKING_DETAIL_027 | Cannot cancel past date | Không hủy khi ngày đi đã qua | pending/confirmed nhưng travelDate quá khứ | 1. Mở detail. | travelDate yesterday | Nút cancel không hiển thị do `isPast=true`. | High | Edge Case |
+| USER_BOOKING_DETAIL_028 | Cancel reason invalid | Lý do hủy quá ngắn | Có thể hủy | 1. Mở dialog.<br>2. Nhập dưới 10 ký tự.<br>3. Submit. | `Hủy` | Validation `cancel_reason_min_error`; không gọi API. | High | Validation |
+| USER_BOOKING_DETAIL_029 | Cancel API lỗi | API cancel lỗi | Có thể hủy | 1. Submit lý do hợp lệ khi API 500. | 500 | Dialog không đóng hoặc hiển thị lỗi; status không đổi. | High | API |
+| USER_BOOKING_DETAIL_030 | Retry payment visible | Booking còn nợ online | payment_method online, status pending/failed/unpaid/partially_paid, booking không cancelled | 1. Mở detail. | payos + failed | Panel continue payment hiển thị. | High | Functional |
+| USER_BOOKING_DETAIL_031 | Retry payment hidden COD/bank | Payment method không online | bank_transfer hoặc booking cancelled | 1. Mở detail. | bank_transfer | Panel continue payment không hiển thị nếu không thuộc online methods hoặc đã cancelled. | Medium | Edge Case |
+| USER_BOOKING_DETAIL_032 | Select retry gateway | Chọn cổng thanh toán lại | Panel hiển thị | 1. Click PayOS/VNPAY/MoMo/ZaloPay. | gateways enabled | Gateway active được highlight; không đổi booking data. | High | Functional |
+| USER_BOOKING_DETAIL_033 | Retry payment success | Retry trả payment_url | Panel hiển thị | 1. Chọn gateway.<br>2. Click continue payment. | payment_url | Gọi `paymentService.retry` với bookingCode/payment_method; redirect đến URL. | High | Functional |
+| USER_BOOKING_DETAIL_034 | Retry payment missing URL | API retry không trả URL | Panel hiển thị | 1. Click retry. | no URL | Toast lỗi payment link; không redirect undefined. | High | Negative |
+| USER_BOOKING_DETAIL_035 | Retry payment API lỗi | API retry 500 | Panel hiển thị | 1. Click retry. | 500 | Toast retry_failed; nút hết loading. | High | API |
+| USER_BOOKING_DETAIL_036 | App config gateway | Cổng bị tắt | appConfig payment momo=false | 1. Mở detail.<br>2. Quan sát options. | momo disabled | Cổng tắt không hiển thị; fallback PayOS nếu method hiện tại không enabled. | Medium | Edge Case |
+| USER_BOOKING_DETAIL_037 | Rebook cancelled | Đặt lại booking đã hủy | Booking cancelled và item.tour.slug có giá trị | 1. Click nút đặt lại. | tour slug | Điều hướng `/tours/{slug}` đúng locale. | Medium | Functional |
+| USER_BOOKING_DETAIL_038 | Rebook missing slug | Booking cancelled thiếu tour slug | tour null/slug null | 1. Mở detail. | no tour | Không hiển thị nút đặt lại hoặc không crash. | Medium | Edge Case |
+| USER_BOOKING_DETAIL_039 | Locale route | Detail booking tiếng Anh | Locale en | 1. Mở `/en/profile/bookings/101`. | en | Text dịch theo locale; back/rebook/payment giữ locale. | Medium | Regression |
+| USER_BOOKING_DETAIL_040 | Responsive | Detail trên mobile | Viewport 375px | 1. Mở detail.<br>2. Kiểm tra action icons, summary, timeline. | mobile | Layout 1 cột, action không tràn, timeline không bị cắt, print hidden đúng. | High | Responsive |
 
-| TT | Test Case ID | Chuc nang | Mo ta Test Case | Dieu kien tien quyet | Buoc thuc hien | Du lieu test | Ket qua mong doi | Ket qua thuc te | Status | Ghi chu |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 6 | TC_BOOKINGDETAIL_001 | Tai chi tiet booking | Hien thi chi tiet booking theo id | Booking id/code hop le | Truy cap detail booking. | Booking bat ky | Hien thi header, ma booking, timeline status, tour card, customer info, price summary va action buttons. | | | |
-| 7 | TC_BOOKINGDETAIL_002 | Loading skeleton | Kiem tra skeleton khi dang tai | API phan hoi cham | Mo route detail. | | Hien thi skeleton header, timeline, tour card, customer card va price summary. | | | |
-| 8 | TC_BOOKINGDETAIL_003 | Error/retry/back | Kiem tra booking khong ton tai | ID/code khong hop le | Truy cap route sai, click Retry va Back. | | Hien thi error/empty card; Retry goi lai API; Back ve `/profile/bookings`. | | | |
-| 9 | TC_BOOKINGDETAIL_004 | Download invoice unpaid | Chan tai hoa don khi chua thanh toan success | Booking payment_status khac `success` | Click nut download invoice. | Payment pending/unpaid | Hien toast warning invoice_unpaid_error, khong goi download blob. | | | |
-| 10 | TC_BOOKINGDETAIL_005 | Download invoice success | Tai hoa don khi da thanh toan | Booking payment_status `success` | Click nut download invoice. | | Goi API invoice, tao file `invoice-[booking_code].pdf`, toast thanh cong, nut loading trong luc tai. | | | |
-| 11 | TC_BOOKINGDETAIL_006 | Print invoice | Kiem tra in hoa don | Booking detail da tai | Click nut print. | | Goi `window.print()`, print-only invoice header hien khi in, action buttons an trong print. | | | |
-| 12 | TC_BOOKINGDETAIL_007 | Huy booking detail | Huy booking pending/confirmed chua qua ngay di | Booking canCancel = true | Click icon huy, nhap ly do trong CancelBookingDialog, submit. | Ly do: Khong sap xep duoc thoi gian | Dialog dong, detail refetch, booking status thanh cancelled va hien cancellation reason. | | | |
-| 13 | TC_BOOKINGDETAIL_008 | Khong the huy | Kiem tra booking khong huy duoc | Booking completed/cancelled hoac da qua ngay di | Mo detail booking. | | Nut huy khong hien; khong co cach submit cancel. | | | |
-| 14 | TC_BOOKINGDETAIL_009 | Thanh toan lai | Kiem tra continue payment | Booking online payment pending/failed/unpaid/partially_paid va chua cancelled | Chon gateway PayOS/VNPay/MoMo/ZaloPay neu enabled, click continue payment. | Gateway: PayOS | Gateway active duoc highlight; retryPayment goi voi bookingCode va payment_method; nut loading khi dang xu ly. | | | |
-| 15 | TC_BOOKINGDETAIL_010 | Booking cancelled | Kiem tra giao dien booking da huy | Booking status `cancelled`, co cancellation_reason | Mo detail. | | Hien panel ly do huy va nut dat lai neu co tour slug; click dat lai chuyen den `/tours/[slug]`. | | | |
-| 16 | TC_BOOKINGDETAIL_011 | Responsive | Kiem tra mobile layout | | Mo viewport 375px va 768px. | | Header action icon khong tran, grid detail xep 1 cot, price summary/documents khong che noi dung. | | | |
+## 5. Test data đề xuất
 
-## Ghi chu
+* Booking pending online unpaid, confirmed paid, completed success, cancelled có lý do.
+* Booking có item thiếu ảnh, item rỗng, booking của user khác.
+* Payment methods: payos, vnpay, momo, zalopay, bank_transfer.
+* Invoice API: success blob, 401, error blob JSON, empty response.
 
-- Route `/dashboard` cu khong phai route chinh cua booking history theo code hien tai; booking history nam trong profile.
+## 6. Checklist regression
+
+* User không xem được booking của người khác.
+* Invoice chỉ tải khi payment_status success.
+* Hủy booking chỉ hiện khi pending/confirmed và chưa qua ngày đi.
+* Retry payment không hiện cho cancelled/bank_transfer.
+* Route id và route bookingCode cùng render đúng.
+* Mobile không vỡ timeline/summary.
+
+## 7. Ghi chú kỹ thuật
+
+* Logic route lấy từ `profile/bookings/[id]/page.tsx` và `profile/bookings/code/[bookingCode]/page.tsx`.
+* Client logic lấy từ `BookingDetailClient.tsx`.
+* Validation hủy lấy từ `cancelBookingSchema` trong `booking.schema.ts`.
+* Rủi ro cao: quyền sở hữu booking, invoice blob error, retry payment redirect, điều kiện `isPast` tính theo client date.
