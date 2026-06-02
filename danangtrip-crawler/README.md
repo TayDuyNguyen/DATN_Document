@@ -379,7 +379,7 @@ Current generated data:
 raw Overpass items: 942
 clean pending-review items: 580
 rejected items: 360
-Pexels-enriched candidate items: 472
+Pexels-enriched candidate items: 580
 ```
 
 Recommended next step:

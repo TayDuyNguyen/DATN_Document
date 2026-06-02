@@ -714,6 +714,10 @@ Table crawl_items {
   normalized_payload json
   status varchar(50) [not null, default: 'raw']
   duplicate_of_id bigint
+  duplicate_source_table varchar(100)
+  duplicate_source_id bigint
+  duplicate_match_score decimal(5,2)
+  duplicate_reason text
   reviewed_by bigint
   reviewed_at timestamp
   published_entity_type varchar(100)
@@ -725,9 +729,10 @@ Table crawl_items {
     (source_id, external_id) [unique, name: 'crawl_items_source_external_unique']
     (entity_type, status)
     external_id
+    (duplicate_source_table, duplicate_source_id)
   }
 
-  Note: 'Stores crawled Overpass/Pexels/Nominatim data in pending_review before publishing to locations/tours/blog_posts.'
+  Note: 'Stores crawled Overpass/Pexels/Nominatim data in pending_review before publishing to locations/tours/blog_posts. Duplicate source columns are added by 15_crawl_duplicate_matching_seed.sql for production dedupe.'
 }
 
 Table crawl_logs {

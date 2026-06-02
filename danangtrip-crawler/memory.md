@@ -220,10 +220,10 @@ Full enrichment was attempted after setting `PEXELS_ENRICH_LIMIT=580`, but Pexel
 Current result after resume-safe rerun:
 
 - Total clean items: 580
-- Total items with Pexels images: 472
-- Remaining items without Pexels images: 108
-- Last run stopped on throttle at `Nha tro Tan Canh`.
-- `../database-seeders/14_pexels_image_enrichment_seed.sql` currently updates only the 472 items that have image candidates.
+- Total items with Pexels images: 580
+- Remaining items without Pexels images: 0
+- Last successful full resume run: 2026-06-01
+- `../database-seeders/14_pexels_image_enrichment_seed.sql` currently updates all 580 clean items that have image candidates.
 
 Notes:
 
@@ -231,6 +231,40 @@ Notes:
 - `.gitignore` was added to ignore `.env` and `node_modules/`.
 - Pexels images are candidates only. Admin review is still required because search results may be close but not always exact for each place.
 - The enrichment script is now resume-safe: it preserves existing images, skips already enriched items, and stops early when Pexels throttles requests.
+
+Duplicate matching and controlled publish seeds were added on 2026-06-01.
+
+Generated files:
+
+- `../database-seeders/15_crawl_duplicate_matching_seed.sql`
+- `../database-seeders/16_crawl_publish_approved_locations.sql`
+
+Behavior:
+
+- `15_crawl_duplicate_matching_seed.sql` adds production duplicate metadata columns to `crawl_items` and matches staging records against production `locations` by slug/name slug and GPS distance up to 150m.
+- `16_crawl_publish_approved_locations.sql` publishes only `crawl_items.status = 'approved'`, skips records with `duplicate_source_id`, inserts into `locations.status = 'inactive'`, and marks staging rows as `published`.
+- `16_crawl_publish_approved_locations.sql` is not imported automatically. It should be run only after admin review.
+- `danangtrip-api/database/seeders/CrawlerSeeder.php` now imports 11, 12, 13, 14, and 15 so staging, quality, images, and duplicate metadata are prepared together.
+
+Database seeder encoding was normalized on 2026-06-01.
+
+Command:
+
+```powershell
+npm.cmd run normalize:seeders
+```
+
+Result:
+
+- `01_categories_subcategories.sql` through `09_ratings_interactions.sql` were changed.
+- `10_system_tables.sql` already had no non-ASCII content.
+- `rg -n "[^\x00-\x7F]" D:\DATN\DATN_Document\database-seeders` returned no matches.
+- Added `scripts/normalize-database-seeders.mjs` and package script `normalize:seeders`.
+
+Rule:
+
+- All SQL seed files must remain ASCII / Vietnamese without diacritics.
+- If old data has mojibake such as `NhÃ  hÃ ng`, run `npm.cmd run normalize:seeders` before committing.
 
 ## Implementation Guardrails
 

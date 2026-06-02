@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-31T10:56:51.634Z",
+  "generatedAt": "2026-06-01T15:18:38.902Z",
   "input": {
     "file": "data/overpass-danang-pois-clean.json",
     "total": 580
@@ -8,22 +8,15 @@
     "limit": 580,
     "photosPerItem": 3,
     "requestDelayMs": 750,
-    "selectedMissingItems": 326,
-    "newlyEnrichedItems": 218,
-    "totalItemsWithImages": 472,
-    "failures": 1,
-    "throttled": true
+    "selectedMissingItems": 108,
+    "newlyEnrichedItems": 108,
+    "totalItemsWithImages": 580,
+    "failures": 0,
+    "throttled": false
   },
   "output": {
     "file": "data/overpass-danang-pois-enriched.json",
     "sqlSeed": "../database-seeders/14_pexels_image_enrichment_seed.sql"
   },
-  "failures": [
-    {
-      "externalId": "osm-node-3495233433",
-      "name": "Nha tro Tan Canh",
-      "query": "Nha tro Tan Canh khach san homestay Da Nang Vietnam hotel resort",
-      "message": "Pexels request failed 429: {\"status\":429,\"code\":\"Too Many Requests\",\"message\":\"Throttle limit exceeded\"}"
-    }
-  ]
+  "failures": []
 }
