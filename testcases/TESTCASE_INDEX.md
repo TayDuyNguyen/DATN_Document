@@ -6,14 +6,16 @@
 * Admin Web: `D:\DATN\danangtrip-admin`
 * Test case folder: `D:\DATN\DATN_Tài liệu\testcases`
 
-## Màn hình detail/modal/panel đã tạo mới theo source code
+## Màn hình detail/modal/panel đã tạo mới hoặc cập nhật theo source code
 
 | Screen | Route | File Source | Test Case File | Status |
 | ------ | ----- | ----------- | -------------- | ------ |
 | Chi tiết tour | `/[locale]/tours/[slug]` | `danangtrip-web/src/app/[locale]/(main)/(public)/tours/[slug]/page.tsx` | `01_guest_flows/07_tour_detail.md` | Updated |
 | Chọn lịch khởi hành và đặt tour | `/[locale]/tours/[slug]/departures`, `/[locale]/tours/[slug]/book` | `danangtrip-web/src/app/[locale]/(main)/(public)/tours/[slug]/departures/page.tsx`, `danangtrip-web/src/app/[locale]/(main)/(protected)/tours/[slug]/book/page.tsx` | `01_guest_flows/17_tour_departures.md` | Updated |
+| Đặt lại mật khẩu | `/[locale]/reset-password` | `danangtrip-web/src/app/[locale]/(auth)/reset-password/page.tsx` | `01_guest_flows/21_reset_password.md` | Created |
 | Chi tiết booking người dùng | `/[locale]/profile/bookings/[id]`, `/[locale]/profile/bookings/code/[bookingCode]` | `danangtrip-web/src/app/[locale]/(main)/(protected)/profile/bookings/[id]/page.tsx`, `danangtrip-web/src/app/[locale]/(main)/(protected)/profile/bookings/code/[bookingCode]/page.tsx` | `02_user_flows/06_booking_history.md` | Updated |
 | Kết quả thanh toán | `/[locale]/payment/result` | `danangtrip-web/src/app/[locale]/(main)/(protected)/payment/result/page.tsx` | `02_user_flows/12_payment_result.md` | Created |
+| Dashboard Thành viên | `/[locale]/dashboard`, `/dashboard/users`, `/dashboard/settings` | `danangtrip-web/src/app/[locale]/(main)/(protected)/dashboard/*` | `02_user_flows/13_user_dashboard.md` | Created |
 | Chi tiết địa điểm | `/[locale]/locations/[slug]` | `danangtrip-web/src/app/[locale]/(main)/(public)/locations/[slug]/page.tsx` | `01_guest_flows/19_location_detail.md` | Created |
 | Chi tiết bài viết blog | `/[locale]/blog/[slug]` | `danangtrip-web/src/app/[locale]/(main)/(public)/blog/[slug]/page.tsx` | `01_guest_flows/20_blog_detail.md` | Created |
 | Admin chi tiết booking | `/admin/bookings/detail/:id` | `danangtrip-admin/src/pages/Bookings/BookingDetail/index.tsx` | `03_admin_flows/04b_booking_detail.md` | Updated |
@@ -25,6 +27,8 @@
 | Admin lịch khởi hành tour | `/admin/tours/schedules`, `/admin/tours/:id/schedules/create`, `/admin/tours/schedules/edit/:id` | `danangtrip-admin/src/pages/Tours/TourSchedules/index.tsx`, `TourScheduleCreate/index.tsx`, `TourScheduleEdit/index.tsx` | `03_admin_flows/03h_tour_schedule_detail.md` | Created |
 | Admin chi tiết liên hệ panel | `/admin/contacts?id=:id` | `danangtrip-admin/src/pages/Contacts/index.tsx`, `ContactDetailPanel.tsx` | `03_admin_flows/09_contacts.md` | Updated |
 | Admin quản lý đánh giá | `/admin/ratings` | `danangtrip-admin/src/pages/Ratings/index.tsx` | `03_admin_flows/08_ratings.md` | Updated |
+| Admin Báo cáo thống kê | `/admin/reports/revenue`, `/admin/reports/bookings`, `/admin/reports/locations`, `/admin/reports/ratings`, `/admin/reports/users` | `danangtrip-admin/src/pages/Reports/*` | `03_admin_flows/10_reports.md` | Updated |
+| Admin Quản lý trang đích | `/admin/landing-pages` | `danangtrip-admin/src/pages/LandingPages/index.tsx` | `03_admin_flows/18_landing_pages.md` | Created |
 
 ## Test case cũ đang tồn tại và được liên kết với các màn còn lại
 
@@ -70,16 +74,7 @@
 | Location categories | `/admin/location-categories` | `danangtrip-admin/src/pages/Locations/LocationCategories/index.tsx` | `03_admin_flows/16_location_categories.md` | Existing |
 | Blog categories | `/admin/blog-categories` | `danangtrip-admin/src/pages/Blog/BlogCategories/index.tsx` | `03_admin_flows/17_blog_categories.md` | Existing |
 
-## Cần bổ sung sâu hơn nếu mở rộng ngoài màn detail
-
-| Screen | Route | File Source | Test Case File | Status |
-| ------ | ----- | ----------- | -------------- | ------ |
-| Landing pages admin | `/admin/landing-pages` | `danangtrip-admin/src/pages/LandingPages/index.tsx` | Chưa có file riêng | Need Review |
-| Admin report ratings/bookings/revenue/locations/users | `/admin/reports/*` | `danangtrip-admin/src/pages/Reports/*` | `03_admin_flows/10_reports.md` | Need Review |
-| User dashboard admin-like | `/[locale]/dashboard`, `/[locale]/dashboard/users`, `/[locale]/dashboard/settings` | `danangtrip-web/src/app/[locale]/(main)/(protected)/dashboard/*` | Chưa có file riêng | Need Review |
-
 ## Ghi chú
 
-* Các file chi tiết mới đã được nhập lại vào file đánh số tương ứng hoặc đổi thành tên đánh số mới để dễ theo dõi theo flow.
-* Không còn file chi tiết mới dạng `*_testcases.md` nằm rời rạc trong các nhóm flow.
-* Những màn `Need Review` có route trong source nhưng chưa được viết sâu ở mức file riêng trong lần cập nhật này.
+* Tất cả các màn hình "Need Review" trước đây đều đã được hoàn thiện hóa bằng tài liệu chi tiết bám sát logic source code thực tế.
+* Các liên kết và trạng thái mới đã được cập nhật đầy đủ và chính xác vào bảng chỉ mục.

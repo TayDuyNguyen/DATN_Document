@@ -1,0 +1,37 @@
+[
+  {
+    "name": "vietnam-travel-airports",
+    "url": "https://vietnam.travel/node/887",
+    "category_hint": "di-chuyen"
+  },
+  {
+    "name": "vietnam-travel-transport-within-vietnam",
+    "url": "https://vietnam.travel/plan-your-trip/transport-within-vietnam",
+    "category_hint": "di-chuyen"
+  },
+  {
+    "name": "vietnam-travel-plan-your-trip",
+    "url": "https://vietnam.travel/plan-your-trip",
+    "category_hint": "kinh-nghiem"
+  },
+  {
+    "name": "vietnam-travel-motorbike-hoi-an-hue",
+    "url": "https://vietnam.travel/node/705",
+    "category_hint": "di-chuyen"
+  },
+  {
+    "name": "vietnam-travel-da-nang-insider-list",
+    "url": "https://vietnam.travel/things-to-do/must-do-da-nang-an-insider-list",
+    "category_hint": "kinh-nghiem"
+  },
+  {
+    "name": "vietnam-travel-da-nang-livable-city",
+    "url": "https://vietnam.travel/things-to-do/4-reasons-da-nang-is-vietnam-most-livable-city",
+    "category_hint": "kinh-nghiem"
+  },
+  {
+    "name": "danangfantasticity-weather-da-nang",
+    "url": "https://danangfantasticity.com/en/about-danang/weather-da-nang.html",
+    "category_hint": "thoi-tiet"
+  }
+]

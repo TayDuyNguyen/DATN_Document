@@ -1,0 +1,302 @@
+[
+  {
+    "id": 1,
+    "name": "Tour Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "1250000.00",
+    "duration": "1 ngày",
+    "start_time": "08:00",
+    "meeting_point": "Văn phòng Đà Nẵng / Khách sạn trung tâm",
+    "thumbnail": null
+  },
+  {
+    "id": 2,
+    "name": "Tour Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "category_slug": "tour-hoi-an",
+    "price_adult": "750000.00",
+    "duration": "7 giờ",
+    "start_time": "14:00",
+    "meeting_point": "Đà Nẵng / Hội An",
+    "thumbnail": null
+  },
+  {
+    "id": 3,
+    "name": "Tour Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "450000.00",
+    "duration": "4 giờ",
+    "start_time": "08:00",
+    "meeting_point": "Đà Nẵng",
+    "thumbnail": null
+  },
+  {
+    "id": 4,
+    "name": "Tour Cù Lao Chàm Lặn Ngắm San Hô",
+    "category_slug": "tour-hue",
+    "price_adult": "650000.00",
+    "duration": "1 ngày",
+    "start_time": "08:00",
+    "meeting_point": "Cảng Cửa Đại",
+    "thumbnail": null
+  },
+  {
+    "id": 5,
+    "name": "Tour Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "1050000.00",
+    "duration": "1 ngày",
+    "start_time": "07:30",
+    "meeting_point": "Đà Nẵng",
+    "thumbnail": null
+  },
+  {
+    "id": 6,
+    "name": "Tour Thánh Địa Mỹ Sơn nửa ngày",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "550000.00",
+    "duration": "5 giờ",
+    "start_time": "08:00",
+    "meeting_point": "Đà Nẵng / Hội An",
+    "thumbnail": null
+  },
+  {
+    "id": 7,
+    "name": "Tour Đà Nẵng City - Những Cây Cầu",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "350000.00",
+    "duration": "4 giờ",
+    "start_time": "08:30",
+    "meeting_point": "Đà Nẵng",
+    "thumbnail": null
+  },
+  {
+    "id": 8,
+    "name": "Tour Đèo Hải Vân & Lăng Cô - Ô tô",
+    "category_slug": "tour-hue",
+    "price_adult": "850000.00",
+    "duration": "1 ngày",
+    "start_time": "08:00",
+    "meeting_point": "Đà Nẵng",
+    "thumbnail": null
+  },
+  {
+    "id": 9,
+    "name": "Tour Đêm Phố Cổ Hội An & Ăn Tối",
+    "category_slug": "tour-am-thuc",
+    "price_adult": "600000.00",
+    "duration": "5 giờ",
+    "start_time": "16:00",
+    "meeting_point": "Đà Nẵng",
+    "thumbnail": null
+  },
+  {
+    "id": 10,
+    "name": "Tour Bà Nà Hills Đêm (Sun World Night)",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "950000.00",
+    "duration": "1 ngày",
+    "start_time": "15:30",
+    "meeting_point": "Cáp treo Bà Nà",
+    "thumbnail": null
+  },
+  {
+    "id": 11,
+    "name": "Tour VinWonders Nam Hội An Full Day",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "900000.00",
+    "duration": "1 ngày",
+    "start_time": "09:00",
+    "meeting_point": "Đà Nẵng / Hội An",
+    "thumbnail": null
+  },
+  {
+    "id": 12,
+    "name": "Tour Suối Khoáng Nóng Thần Tài Relax",
+    "category_slug": "tour-bien-dao",
+    "price_adult": "850000.00",
+    "duration": "1 ngày",
+    "start_time": "08:30",
+    "meeting_point": "Đà Nẵng",
+    "thumbnail": null
+  },
+  {
+    "id": 13,
+    "name": "Tour Trekking Bán Đảo Sơn Trà",
+    "category_slug": "tour-mao-hiem",
+    "price_adult": "700000.00",
+    "duration": "6 giờ",
+    "start_time": "06:00",
+    "meeting_point": "Sơn Trà",
+    "thumbnail": null
+  },
+  {
+    "id": 14,
+    "name": "Tour Khám Phá Bạch Mã National Park",
+    "category_slug": "tour-mao-hiem",
+    "price_adult": "1100000.00",
+    "duration": "1 ngày",
+    "start_time": "07:30",
+    "meeting_point": "Đà Nẵng / Huế",
+    "thumbnail": null
+  },
+  {
+    "id": 15,
+    "name": "Street Food Tour Đà Nẵng bằng Xe Máy",
+    "category_slug": "tour-am-thuc",
+    "price_adult": "650000.00",
+    "duration": "4 giờ",
+    "start_time": "18:00",
+    "meeting_point": "Khách sạn trung tâm",
+    "thumbnail": null
+  },
+  {
+    "id": 16,
+    "name": "Tour Làm Nông Dân Làng Rau Trà Quế",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "500000.00",
+    "duration": "4 giờ",
+    "start_time": "08:30",
+    "meeting_point": "Làng Trà Quế",
+    "thumbnail": null
+  },
+  {
+    "id": 17,
+    "name": "Tour Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "200000.00",
+    "duration": "2 giờ",
+    "start_time": "19:30",
+    "meeting_point": "Bến tàu Bạch Đằng",
+    "thumbnail": null
+  },
+  {
+    "id": 18,
+    "name": "Tour Đầm Phá Tam Giang & Sunset",
+    "category_slug": "tour-hue",
+    "price_adult": "750000.00",
+    "duration": "6 giờ",
+    "start_time": "14:30",
+    "meeting_point": "Huế",
+    "thumbnail": null
+  },
+  {
+    "id": 19,
+    "name": "Tour Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "150000.00",
+    "duration": "2 giờ",
+    "start_time": "19:00",
+    "meeting_point": "Bến Tòa Khâm",
+    "thumbnail": null
+  },
+  {
+    "id": 20,
+    "name": "Tour Snorkeling Bán Đảo Sơn Trà",
+    "category_slug": "tour-mao-hiem",
+    "price_adult": "600000.00",
+    "duration": "6 giờ",
+    "start_time": "08:30",
+    "meeting_point": "Cảng Tiên Sa",
+    "thumbnail": null
+  },
+  {
+    "id": 21,
+    "name": "Tour Tiết Kiệm Tour Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "category_slug": "tour-hoi-an",
+    "price_adult": "892643.55",
+    "duration": "7 giờ",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 22,
+    "name": "Tour Khám Phá Tour Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "466962.46",
+    "duration": "4 giờ",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 23,
+    "name": "Tour Khám Phá Tour Cù Lao Chàm Lặn Ngắm San Hô",
+    "category_slug": "tour-hue",
+    "price_adult": "773905.95",
+    "duration": "1 ngày",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 24,
+    "name": "Tour Khám Phá Tour Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "1214918.14",
+    "duration": "1 ngày",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 25,
+    "name": "Tour Cao Cấp Tour Thánh Địa Mỹ Sơn nửa ngày",
+    "category_slug": "tour-thien-nhien",
+    "price_adult": "606909.42",
+    "duration": "5 giờ",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 26,
+    "name": "Tour Tiết Kiệm Tour Đà Nẵng City - Những Cây Cầu",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "405626.30",
+    "duration": "4 giờ",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 27,
+    "name": "Tour Khám Phá Tour Đèo Hải Vân & Lăng Cô - Ô tô",
+    "category_slug": "tour-hue",
+    "price_adult": "975393.24",
+    "duration": "1 ngày",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 28,
+    "name": "Tour Khám Phá Tour Đêm Phố Cổ Hội An & Ăn Tối",
+    "category_slug": "tour-am-thuc",
+    "price_adult": "717625.25",
+    "duration": "5 giờ",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 29,
+    "name": "Tour Khám Phá Tour Bà Nà Hills Đêm (Sun World Night)",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "1008866.36",
+    "duration": "1 ngày",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  },
+  {
+    "id": 30,
+    "name": "Tour Cao Cấp Tour VinWonders Nam Hội An Full Day",
+    "category_slug": "tour-ba-na-hills",
+    "price_adult": "1000228.29",
+    "duration": "1 ngày",
+    "start_time": null,
+    "meeting_point": null,
+    "thumbnail": null
+  }
+]

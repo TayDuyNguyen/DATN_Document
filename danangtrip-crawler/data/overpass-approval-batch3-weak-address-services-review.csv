@@ -1,0 +1,174 @@
+approve_for_seed,entity_type,external_id,name,category_slug,address,latitude,longitude,quality_score,signal_count,signals,image_count,source_url
+True,restaurant,osm-node-5485445021,Lam Vien Restaurant,am-thuc-dia-phuong,Da Nang,16.0422313,108.2466636,100,4,"website, phone, opening_hours, cuisine",3,https://www.openstreetmap.org/node/5485445021
+True,restaurant,osm-node-6109158033,Monsieur Crepes,am-thuc-dia-phuong,Da Nang,16.0482129,108.2456498,100,4,"website, phone, opening_hours, cuisine",3,https://www.openstreetmap.org/node/6109158033
+True,restaurant,osm-node-4805182821,Suon Nuong Cao Boi,am-thuc-dia-phuong,Da Nang,16.062368,108.203722,100,4,"website, phone, opening_hours, cuisine",3,https://www.openstreetmap.org/node/4805182821
+True,restaurant,osm-node-4352266089,Babylon Steakgarden,am-thuc-dia-phuong,Da Nang,16.0417737,108.2483585,96,3,"website, opening_hours, cuisine",3,https://www.openstreetmap.org/node/4352266089
+True,restaurant,osm-node-4430018990,LUNA pub,am-thuc-dia-phuong,Da Nang,16.0798099,108.223011,96,3,"website, opening_hours, cuisine",3,https://www.openstreetmap.org/node/4430018990
+True,restaurant,osm-way-1109970012,Tru Vu Tra Quan,ca-phe-tra-sua,Da Nang,15.9978276,107.9862426,92,2,"website, cuisine",3,https://www.openstreetmap.org/way/1109970012
+True,restaurant,osm-node-5484764821,Bun cha ca 109,am-thuc-dia-phuong,Da Nang,16.0743887,108.2207958,91,2,"phone, cuisine",3,https://www.openstreetmap.org/node/5484764821
+True,restaurant,osm-node-4352266389,Burger Bros,am-thuc-dia-phuong,Da Nang,16.0485431,108.246541,91,2,"opening_hours, cuisine",3,https://www.openstreetmap.org/node/4352266389
+True,restaurant,osm-node-5864570785,Quan Chay Hang Ngay,am-thuc-dia-phuong,Da Nang,16.0566224,108.1774621,91,2,"opening_hours, cuisine",3,https://www.openstreetmap.org/node/5864570785
+True,restaurant,osm-node-5271605921,Xuan Toi,am-thuc-dia-phuong,Da Nang,16.0787176,108.2297231,91,2,"opening_hours, cuisine",3,https://www.openstreetmap.org/node/5271605921
+True,hotel,osm-node-4401223296,Mercure Hotels,khach-san-homestay,Da Nang,15.9973976,107.9882316,99,3,"website, phone, opening_hours",3,https://www.openstreetmap.org/node/4401223296
+False,restaurant,osm-node-3893467887,Karma Waters,am-thuc-dia-phuong,Da Nang,16.0765579,108.2203123,89,1,website,3,https://www.openstreetmap.org/node/3893467887
+False,restaurant,osm-node-4352266689,Nha hang nam hien,am-thuc-dia-phuong,Da Nang,16.0560809,108.2452639,89,1,website,3,https://www.openstreetmap.org/node/4352266689
+False,restaurant,osm-node-4279350990,Pho Bac Hai,am-thuc-dia-phuong,Da Nang,16.0662091,108.2238218,89,1,website,3,https://www.openstreetmap.org/node/4279350990
+False,restaurant,osm-node-5397903222,Am Thuc Chay Da Nang,am-thuc-dia-phuong,Da Nang,16.0651438,108.221835,88,1,opening_hours,3,https://www.openstreetmap.org/node/5397903222
+False,restaurant,osm-node-6109275899,BBQ Grill Roaster,am-thuc-dia-phuong,Da Nang,16.048356,108.2466278,88,1,opening_hours,3,https://www.openstreetmap.org/node/6109275899
+False,restaurant,osm-node-5898266285,Bun Cha Ha Noi,am-thuc-dia-phuong,Da Nang,16.0746282,108.218807,88,1,phone,3,https://www.openstreetmap.org/node/5898266285
+False,restaurant,osm-node-6109480851,Issun Boshi,am-thuc-dia-phuong,Da Nang,16.0489959,108.2467271,88,1,opening_hours,3,https://www.openstreetmap.org/node/6109480851
+False,restaurant,osm-node-5487860421,Minh Quang,am-thuc-dia-phuong,Da Nang,16.0512864,108.2377222,88,1,opening_hours,3,https://www.openstreetmap.org/node/5487860421
+False,restaurant,osm-node-2747371589,Mr Duc's,am-thuc-dia-phuong,Da Nang,16.0660927,108.2233715,88,1,phone,3,https://www.openstreetmap.org/node/2747371589
+False,restaurant,osm-node-5484776621,Pho 29,am-thuc-dia-phuong,Da Nang,16.066153,108.2227599,88,1,phone,3,https://www.openstreetmap.org/node/5484776621
+False,restaurant,osm-node-5484788221,Tre vie,am-thuc-dia-phuong,Da Nang,16.0662328,108.2244753,88,1,phone,3,https://www.openstreetmap.org/node/5484788221
+False,restaurant,osm-node-6109480872,Vallhalla GRILL,am-thuc-dia-phuong,Da Nang,16.0484563,108.2465774,88,1,opening_hours,3,https://www.openstreetmap.org/node/6109480872
+False,restaurant,osm-node-5401407621,24 7,am-thuc-dia-phuong,Da Nang,16.0685698,108.2432035,87,1,cuisine,3,https://www.openstreetmap.org/node/5401407621
+False,restaurant,osm-node-4755851322,Bun Thit Nuong Ba Ngoc,am-thuc-dia-phuong,Da Nang,16.0777523,108.2165181,87,1,cuisine,3,https://www.openstreetmap.org/node/4755851322
+False,restaurant,osm-node-4289580589,KFC,am-thuc-dia-phuong,Da Nang,16.0712358,108.2185085,87,1,cuisine,3,https://www.openstreetmap.org/node/4289580589
+False,restaurant,osm-node-5539964821,KFC,am-thuc-dia-phuong,Da Nang,16.0668458,108.2135577,87,1,cuisine,3,https://www.openstreetmap.org/node/5539964821
+False,restaurant,osm-node-4844817359,Kim Dy Restaurant,am-thuc-dia-phuong,Da Nang,16.0652476,108.223499,87,1,cuisine,3,https://www.openstreetmap.org/node/4844817359
+False,restaurant,osm-node-4729384190,Lau & Nuong,am-thuc-dia-phuong,Da Nang,16.0660595,108.223402,87,1,cuisine,3,https://www.openstreetmap.org/node/4729384190
+False,restaurant,osm-node-6303318585,Local SeaFood Market&Restaurant,am-thuc-dia-phuong,Da Nang,16.1014736,108.2582066,87,1,cuisine,3,https://www.openstreetmap.org/node/6303318585
+False,restaurant,osm-node-4985355119,Lotteria,am-thuc-dia-phuong,Da Nang,16.0347403,108.2293072,87,1,cuisine,3,https://www.openstreetmap.org/node/4985355119
+False,restaurant,osm-node-6357894214,Lotteria,am-thuc-dia-phuong,Da Nang,16.0660834,108.2200417,87,1,cuisine,3,https://www.openstreetmap.org/node/6357894214
+False,restaurant,osm-node-5947469388,Pho 139,am-thuc-dia-phuong,Da Nang,16.0422624,108.2412865,87,1,cuisine,3,https://www.openstreetmap.org/node/5947469388
+False,restaurant,osm-node-4436185493,Quan Com Ga A.HAI,am-thuc-dia-phuong,Da Nang,16.0653281,108.2203147,87,1,cuisine,3,https://www.openstreetmap.org/node/4436185493
+False,restaurant,osm-node-1992479743,Tao Do,am-thuc-dia-phuong,Da Nang,16.0568235,108.2207613,87,1,cuisine,3,https://www.openstreetmap.org/node/1992479743
+False,restaurant,osm-node-729406475,Trung Nguyen Coffee,ca-phe-tra-sua,Da Nang,16.0311905,108.2242256,87,1,cuisine,3,https://www.openstreetmap.org/node/729406475
+False,restaurant,osm-node-4496285792,Vueng Beo Hoi Quan,am-thuc-dia-phuong,Da Nang,16.0555881,108.2457892,87,1,cuisine,3,https://www.openstreetmap.org/node/4496285792
+False,restaurant,osm-node-729406633,157Coffee,ca-phe-tra-sua,Da Nang,16.0713724,108.2024467,84,0,,3,https://www.openstreetmap.org/node/729406633
+False,restaurant,osm-node-729406419,324Coffee,ca-phe-tra-sua,Da Nang,16.0569901,108.2128107,84,0,,3,https://www.openstreetmap.org/node/729406419
+False,restaurant,osm-node-729406594,352Coffee,ca-phe-tra-sua,Da Nang,16.0549851,108.218971,84,0,,3,https://www.openstreetmap.org/node/729406594
+False,restaurant,osm-node-729406588,42Coffee,ca-phe-tra-sua,Da Nang,16.0645165,108.2097208,84,0,,3,https://www.openstreetmap.org/node/729406588
+False,restaurant,osm-node-729406471,55Coffee,ca-phe-tra-sua,Da Nang,16.0733415,108.1775719,84,0,,3,https://www.openstreetmap.org/node/729406471
+False,restaurant,osm-node-729406490,74Coffee,ca-phe-tra-sua,Da Nang,16.0721044,108.1787467,84,0,,3,https://www.openstreetmap.org/node/729406490
+False,restaurant,osm-node-729406411,AnhLinh Coffee,ca-phe-tra-sua,Da Nang,16.0703982,108.2013201,84,0,,3,https://www.openstreetmap.org/node/729406411
+False,restaurant,osm-node-729406417,AnhLinh Coffee,ca-phe-tra-sua,Da Nang,16.0851302,108.2196914,84,0,,3,https://www.openstreetmap.org/node/729406417
+False,restaurant,osm-node-729406581,AnhLinh Coffee,ca-phe-tra-sua,Da Nang,16.069094,108.2015631,84,0,,3,https://www.openstreetmap.org/node/729406581
+False,restaurant,osm-node-4259583468,Au Lac,am-thuc-dia-phuong,Da Nang,16.0711878,108.2174617,84,0,,3,https://www.openstreetmap.org/node/4259583468
+False,restaurant,osm-node-4541141193,Ba Duong Banh Xeo,am-thuc-dia-phuong,Da Nang,16.0652255,108.2194342,84,0,,3,https://www.openstreetmap.org/node/4541141193
+False,restaurant,osm-node-6146787785,Ba Vui Xoi Ga 25k,am-thuc-dia-phuong,Da Nang,16.0641275,108.2210621,84,0,,3,https://www.openstreetmap.org/node/6146787785
+False,restaurant,osm-node-729406557,BachDat Coffee,ca-phe-tra-sua,Da Nang,16.0624685,108.2176904,84,0,,3,https://www.openstreetmap.org/node/729406557
+False,restaurant,osm-node-5083724023,Bahn My Chay,am-thuc-dia-phuong,Da Nang,16.0586131,108.2112385,84,0,,3,https://www.openstreetmap.org/node/5083724023
+False,restaurant,osm-node-6147077585,Banh Beo Ba Be,am-thuc-dia-phuong,Da Nang,16.0629478,108.2191193,84,0,,3,https://www.openstreetmap.org/node/6147077585
+False,restaurant,osm-node-6146985085,Banh Canh Nga,am-thuc-dia-phuong,Da Nang,16.0731703,108.2207901,84,0,,3,https://www.openstreetmap.org/node/6146985085
+False,restaurant,osm-node-6146979985,Banh Canh Thu,am-thuc-dia-phuong,Da Nang,16.0730481,108.220801,84,0,,3,https://www.openstreetmap.org/node/6146979985
+False,restaurant,osm-node-6147083886,Banh Canh Van,am-thuc-dia-phuong,Da Nang,16.0600258,108.2183956,84,0,,3,https://www.openstreetmap.org/node/6147083886
+False,restaurant,osm-node-5461718921,Banh Mi,am-thuc-dia-phuong,Da Nang,16.0715283,108.2124559,84,0,,3,https://www.openstreetmap.org/node/5461718921
+False,restaurant,osm-node-4326474789,Banh trang Tran,am-thuc-dia-phuong,Da Nang,16.0692226,108.205109,84,0,,3,https://www.openstreetmap.org/node/4326474789
+False,restaurant,osm-node-5977538086,"Banh xeo, Bun thit nuong k25/16",am-thuc-dia-phuong,Da Nang,16.0661084,108.2231021,84,0,,3,https://www.openstreetmap.org/node/5977538086
+False,restaurant,osm-node-729406512,BaoNgoc Coffee,ca-phe-tra-sua,Da Nang,16.0993814,108.1356382,84,0,,3,https://www.openstreetmap.org/node/729406512
+False,restaurant,osm-node-729406422,BaoNhi Coffee,ca-phe-tra-sua,Da Nang,16.0822257,108.2399242,84,0,,3,https://www.openstreetmap.org/node/729406422
+False,restaurant,osm-node-729406553,BaoTran Coffee,ca-phe-tra-sua,Da Nang,16.0948767,108.2443642,84,0,,3,https://www.openstreetmap.org/node/729406553
+False,restaurant,osm-node-729406534,BarCa Phe Quynh Anh,ca-phe-tra-sua,Da Nang,16.0697796,108.2173544,84,0,,3,https://www.openstreetmap.org/node/729406534
+False,restaurant,osm-node-4281430501,Be Man,am-thuc-dia-phuong,Da Nang,16.0818092,108.2472755,84,0,,3,https://www.openstreetmap.org/node/4281430501
+False,restaurant,osm-node-5942230789,Bo ne,am-thuc-dia-phuong,Da Nang,16.0701223,108.2228896,84,0,,3,https://www.openstreetmap.org/node/5942230789
+False,restaurant,osm-node-4451141191,Bun cha,am-thuc-dia-phuong,Da Nang,16.0082442,108.2583234,84,0,,3,https://www.openstreetmap.org/node/4451141191
+False,restaurant,osm-node-6147100486,Bun Cha Ca Hon,am-thuc-dia-phuong,Da Nang,16.0725373,108.2207906,84,0,,3,https://www.openstreetmap.org/node/6147100486
+False,restaurant,osm-node-5947469394,bun cha ha noi 58 Thai phien,am-thuc-dia-phuong,Da Nang,16.0651171,108.2218944,84,0,,3,https://www.openstreetmap.org/node/5947469394
+False,restaurant,osm-node-5993039994,Bun cha va beo 120,am-thuc-dia-phuong,Da Nang,16.0614101,108.2107771,84,0,,3,https://www.openstreetmap.org/node/5993039994
+False,restaurant,osm-node-6147117085,Bun Mam Ba Dong,am-thuc-dia-phuong,Da Nang,16.0574457,108.2181871,84,0,,3,https://www.openstreetmap.org/node/6147117085
+False,restaurant,osm-node-4675884490,Bun mam Ba Thuyen,am-thuc-dia-phuong,Da Nang,16.067356,108.2074353,84,0,,3,https://www.openstreetmap.org/node/4675884490
+False,restaurant,osm-node-6146805186,Bun Mam Co Loc,am-thuc-dia-phuong,Da Nang,16.0675517,108.2201686,84,0,,3,https://www.openstreetmap.org/node/6146805186
+False,restaurant,osm-node-6146772485,Bun Mam Van 20k,am-thuc-dia-phuong,Da Nang,16.0667417,108.2170505,84,0,,3,https://www.openstreetmap.org/node/6146772485
+False,restaurant,osm-node-6147119285,Bun Thit Nuong Ba Trai,am-thuc-dia-phuong,Da Nang,16.078513,108.2173327,84,0,,3,https://www.openstreetmap.org/node/6147119285
+False,restaurant,osm-node-6001904585,Bun thit nuong Nga 191,am-thuc-dia-phuong,Da Nang,16.0658388,108.2237856,84,0,,3,https://www.openstreetmap.org/node/6001904585
+False,restaurant,osm-node-729406610,Ca Phe 54,ca-phe-tra-sua,Da Nang,16.0701198,108.1505084,84,0,,3,https://www.openstreetmap.org/node/729406610
+False,restaurant,osm-node-729406392,Ca Phe 83,ca-phe-tra-sua,Da Nang,16.0785765,108.2193388,84,0,,3,https://www.openstreetmap.org/node/729406392
+False,restaurant,osm-node-729406463,Ca Phe Bien Nho,ca-phe-tra-sua,Da Nang,16.0559075,108.2444179,84,0,,3,https://www.openstreetmap.org/node/729406463
+False,restaurant,osm-node-729406618,Ca Phe Brown,ca-phe-tra-sua,Da Nang,16.0715138,108.2117833,84,0,,3,https://www.openstreetmap.org/node/729406618
+False,restaurant,osm-node-729406462,Ca Phe Cam Ni,ca-phe-tra-sua,Da Nang,16.0525482,108.1796323,84,0,,3,https://www.openstreetmap.org/node/729406462
+False,restaurant,osm-node-729406437,Ca Phe Chieu Tim,ca-phe-tra-sua,Da Nang,16.0860629,108.2405662,84,0,,3,https://www.openstreetmap.org/node/729406437
+False,restaurant,osm-node-729406550,Ca Phe Giai Khat Thanh Van,ca-phe-tra-sua,Da Nang,16.0546458,108.2399741,84,0,,3,https://www.openstreetmap.org/node/729406550
+False,restaurant,osm-node-729406446,Ca Phe Giai Khat Yen Trang,ca-phe-tra-sua,Da Nang,16.0864224,108.2407112,84,0,,3,https://www.openstreetmap.org/node/729406446
+False,restaurant,osm-node-729406589,Ca Phe Hoang Uyen,ca-phe-tra-sua,Da Nang,16.0682022,108.1937456,84,0,,3,https://www.openstreetmap.org/node/729406589
+False,restaurant,osm-node-729406615,Ca Phe Hung,ca-phe-tra-sua,Da Nang,16.0784395,108.2184863,84,0,,3,https://www.openstreetmap.org/node/729406615
+False,restaurant,osm-node-729406608,Ca Phe Huong Ngoc Lan,ca-phe-tra-sua,Da Nang,16.0562723,108.1659995,84,0,,3,https://www.openstreetmap.org/node/729406608
+False,restaurant,osm-node-729406577,Ca Phe Huong Xuan,ca-phe-tra-sua,Da Nang,16.0569523,108.1673985,84,0,,3,https://www.openstreetmap.org/node/729406577
+False,restaurant,osm-node-729406575,Ca Phe Jet,ca-phe-tra-sua,Da Nang,16.059902,108.2123879,84,0,,3,https://www.openstreetmap.org/node/729406575
+False,restaurant,osm-node-729406643,Ca Phe Legend,ca-phe-tra-sua,Da Nang,16.0516239,108.1699937,84,0,,3,https://www.openstreetmap.org/node/729406643
+False,restaurant,osm-node-729406518,Ca Phe Ly Thong,ca-phe-tra-sua,Da Nang,16.0515208,108.1700258,84,0,,3,https://www.openstreetmap.org/node/729406518
+False,restaurant,osm-node-729406479,Ca Phe May Chieu,ca-phe-tra-sua,Da Nang,16.0344483,108.2238466,84,0,,3,https://www.openstreetmap.org/node/729406479
+False,restaurant,osm-node-729406432,Ca Phe New Life,ca-phe-tra-sua,Da Nang,16.0659805,108.2200312,84,0,,3,https://www.openstreetmap.org/node/729406432
+False,restaurant,osm-node-729406457,Ca Phe Paris Da,ca-phe-tra-sua,Da Nang,16.0733682,108.214039,84,0,,3,https://www.openstreetmap.org/node/729406457
+False,restaurant,osm-node-729406520,Ca Phe Phuong Linh,ca-phe-tra-sua,Da Nang,16.0567117,108.1779206,84,0,,3,https://www.openstreetmap.org/node/729406520
+False,restaurant,osm-node-729406502,Ca Phe Phuong Nam,ca-phe-tra-sua,Da Nang,16.0535155,108.1693858,84,0,,3,https://www.openstreetmap.org/node/729406502
+False,restaurant,osm-node-729406629,Ca Phe Quynh Huong,ca-phe-tra-sua,Da Nang,16.063238,108.1668484,84,0,,3,https://www.openstreetmap.org/node/729406629
+False,restaurant,osm-node-729406500,Ca Phe Thanh Huyen,ca-phe-tra-sua,Da Nang,16.0687947,108.1668088,84,0,,3,https://www.openstreetmap.org/node/729406500
+False,restaurant,osm-node-729406556,Ca Phe Thanh Thanh,ca-phe-tra-sua,Da Nang,16.058284,108.1774163,84,0,,3,https://www.openstreetmap.org/node/729406556
+False,restaurant,osm-node-729406528,Ca Phe Thanh Tuan,ca-phe-tra-sua,Da Nang,16.0516806,108.1699776,84,0,,3,https://www.openstreetmap.org/node/729406528
+False,restaurant,osm-node-729406402,Ca Phe Thuan,ca-phe-tra-sua,Da Nang,16.0515981,108.1700044,84,0,,3,https://www.openstreetmap.org/node/729406402
+False,restaurant,osm-node-729406632,Ca Phe Trau Cau,ca-phe-tra-sua,Da Nang,16.0711817,108.1550681,84,0,,3,https://www.openstreetmap.org/node/729406632
+False,restaurant,osm-node-729406461,Ca Phe Trung,ca-phe-tra-sua,Da Nang,16.056491,108.1666315,84,0,,3,https://www.openstreetmap.org/node/729406461
+False,restaurant,osm-node-729406559,Ca Phe Van Anh,ca-phe-tra-sua,Da Nang,16.0712642,108.1928766,84,0,,3,https://www.openstreetmap.org/node/729406559
+False,restaurant,osm-node-729406480,Ca Phe Vuon Noi,ca-phe-tra-sua,Da Nang,16.0478859,108.1814933,84,0,,3,https://www.openstreetmap.org/node/729406480
+False,restaurant,osm-node-729406626,Cafe 50,ca-phe-tra-sua,Da Nang,16.0641453,108.2214904,84,0,,3,https://www.openstreetmap.org/node/729406626
+False,restaurant,osm-node-729406637,Cafe Anh,ca-phe-tra-sua,Da Nang,16.0178588,108.2068294,84,0,,3,https://www.openstreetmap.org/node/729406637
+False,restaurant,osm-node-729406565,Cafe Anh Linh,ca-phe-tra-sua,Da Nang,16.0687243,108.2015572,84,0,,3,https://www.openstreetmap.org/node/729406565
+False,restaurant,osm-node-729406653,Cafe Den Bin,ca-phe-tra-sua,Da Nang,16.0733879,108.2200581,84,0,,3,https://www.openstreetmap.org/node/729406653
+False,restaurant,osm-node-729406393,Cafe Dong Xanh,ca-phe-tra-sua,Da Nang,16.0640577,108.2208466,84,0,,3,https://www.openstreetmap.org/node/729406393
+False,restaurant,osm-node-729406496,Cafe Giai Khat 310,ca-phe-tra-sua,Da Nang,16.0665269,108.2069313,84,0,,3,https://www.openstreetmap.org/node/729406496
+False,restaurant,osm-node-729406465,Cafe Giai Khat 417,ca-phe-tra-sua,Da Nang,16.0693105,108.2051503,84,0,,3,https://www.openstreetmap.org/node/729406465
+False,restaurant,osm-node-729406592,Cafe Giai Khat Loc Vung,ca-phe-tra-sua,Da Nang,16.0710734,108.1433576,84,0,,3,https://www.openstreetmap.org/node/729406592
+False,restaurant,osm-node-729406630,Cafe Golden Fish,ca-phe-tra-sua,Da Nang,16.0707745,108.218733,84,0,,3,https://www.openstreetmap.org/node/729406630
+False,restaurant,osm-node-729406613,Cafe Hai Quynh,ca-phe-tra-sua,Da Nang,16.0534176,108.2176226,84,0,,3,https://www.openstreetmap.org/node/729406613
+False,restaurant,osm-node-729406611,Cafe Kieu Diem,ca-phe-tra-sua,Da Nang,16.0705631,108.1479335,84,0,,3,https://www.openstreetmap.org/node/729406611
+False,restaurant,osm-node-729406508,Cafe Manila,ca-phe-tra-sua,Da Nang,16.068639,108.1504425,84,0,,3,https://www.openstreetmap.org/node/729406508
+False,restaurant,osm-node-729406606,Cafe Mat Trang Xanh,ca-phe-tra-sua,Da Nang,16.0628102,108.1567579,84,0,,3,https://www.openstreetmap.org/node/729406606
+False,restaurant,osm-node-729406536,Cafe Matrix,ca-phe-tra-sua,Da Nang,16.0689122,108.1511345,84,0,,3,https://www.openstreetmap.org/node/729406536
+False,restaurant,osm-node-729406620,Cafe New Style,ca-phe-tra-sua,Da Nang,16.0161779,108.2022267,84,0,,3,https://www.openstreetmap.org/node/729406620
+False,restaurant,osm-node-729406538,Cafe Tay Son,ca-phe-tra-sua,Da Nang,16.068661,108.2087874,84,0,,3,https://www.openstreetmap.org/node/729406538
+False,restaurant,osm-node-729406602,Cafe Thanh Thuy,ca-phe-tra-sua,Da Nang,16.0626452,108.1571871,84,0,,3,https://www.openstreetmap.org/node/729406602
+False,restaurant,osm-node-729406524,Cafe Thien Thanh,ca-phe-tra-sua,Da Nang,16.1113228,108.1296022,84,0,,3,https://www.openstreetmap.org/node/729406524
+False,restaurant,osm-node-729406391,Cafe Truc Phuong,ca-phe-tra-sua,Da Nang,16.0684586,108.1500026,84,0,,3,https://www.openstreetmap.org/node/729406391
+False,restaurant,osm-node-729406385,Cafe Win,ca-phe-tra-sua,Da Nang,16.0746726,108.2187015,84,0,,3,https://www.openstreetmap.org/node/729406385
+False,restaurant,osm-node-729406485,Cafe Yen Nhi,ca-phe-tra-sua,Da Nang,16.0209679,108.2120651,84,0,,3,https://www.openstreetmap.org/node/729406485
+False,restaurant,osm-node-729406439,Cafe153,ca-phe-tra-sua,Da Nang,16.0905214,108.2428407,84,0,,3,https://www.openstreetmap.org/node/729406439
+False,hotel,osm-node-10600854557,The Memory - Danang,khach-san-homestay,Da Nang,16.0669994,108.2430093,91,1,website,3,https://www.openstreetmap.org/node/10600854557
+False,hotel,osm-node-4728565395,Gon Go,khach-san-homestay,Da Nang,15.9747831,108.1380052,90,1,opening_hours,3,https://www.openstreetmap.org/node/4728565395
+False,hotel,osm-node-4347925793,Truong Son Tung 5,khach-san-homestay,Da Nang,16.0586832,108.2460005,90,1,opening_hours,3,https://www.openstreetmap.org/node/4347925793
+False,hotel,osm-node-4299663593,1812 Boutique hostel,khach-san-homestay,Da Nang,16.0694815,108.2424446,86,0,,3,https://www.openstreetmap.org/node/4299663593
+False,hotel,osm-node-12167891418,An House,khach-san-homestay,Da Nang,16.0619012,108.2452014,86,0,,3,https://www.openstreetmap.org/node/12167891418
+False,hotel,osm-node-6332534548,Angel Hotels,khach-san-homestay,Da Nang,16.0486026,108.2481857,86,0,,3,https://www.openstreetmap.org/node/6332534548
+False,hotel,osm-node-12167891417,Arrive Apartment,khach-san-homestay,Da Nang,16.0621868,108.2454565,86,0,,3,https://www.openstreetmap.org/node/12167891417
+False,hotel,osm-node-12164803912,Baan Taley Da Nang,khach-san-homestay,Da Nang,16.0509565,108.2466457,86,0,,3,https://www.openstreetmap.org/node/12164803912
+False,hotel,osm-node-4755840322,Bookaholic,khach-san-homestay,Da Nang,16.0861573,108.2185184,86,0,,3,https://www.openstreetmap.org/node/4755840322
+False,hotel,osm-node-12167716643,Calix,khach-san-homestay,Da Nang,16.0617296,108.2373536,86,0,,3,https://www.openstreetmap.org/node/12167716643
+False,hotel,osm-node-12168408897,Calla Lily,khach-san-homestay,Da Nang,16.0490512,108.2467206,86,0,,3,https://www.openstreetmap.org/node/12168408897
+False,hotel,osm-node-4582707890,CaPhe Giai Khat 78,ca-phe-tra-sua,Da Nang,16.0593521,108.2084405,86,0,,3,https://www.openstreetmap.org/node/4582707890
+False,hotel,osm-node-6643623494,D&C Hotel,khach-san-homestay,Da Nang,16.0661345,108.2310854,86,0,,3,https://www.openstreetmap.org/node/6643623494
+False,hotel,osm-node-11896424870,Da nang beach hotel,khach-san-homestay,Da Nang,16.0529309,108.244791,86,0,,3,https://www.openstreetmap.org/node/11896424870
+False,hotel,osm-node-4396866289,Da Nang Petro Hotel,khach-san-homestay,Da Nang,16.0752564,108.2226322,86,0,,3,https://www.openstreetmap.org/node/4396866289
+False,hotel,osm-node-7095281754,Dai A,khach-san-homestay,Da Nang,16.065957,108.2226034,86,0,,3,https://www.openstreetmap.org/node/7095281754
+False,hotel,osm-node-2987457465,Danang Riverside,khach-san-homestay,Da Nang,16.0624934,108.2304346,86,0,,3,https://www.openstreetmap.org/node/2987457465
+False,hotel,osm-node-5295016121,Dang Ha Hotel,khach-san-homestay,Da Nang,16.0744739,108.2416778,86,0,,3,https://www.openstreetmap.org/node/5295016121
+False,hotel,osm-node-12167609734,Do Hai,khach-san-homestay,Da Nang,16.0601454,108.2139664,86,0,,3,https://www.openstreetmap.org/node/12167609734
+False,hotel,osm-node-11934076219,Dr. Dan Hotel & Apartment,khach-san-homestay,Da Nang,16.1055133,108.2594805,86,0,,3,https://www.openstreetmap.org/node/11934076219
+False,hotel,osm-node-11896430969,Dream house homestay,khach-san-homestay,Da Nang,16.0498482,108.2450698,86,0,,3,https://www.openstreetmap.org/node/11896430969
+False,hotel,osm-node-6976178456,Dreams Hotel,khach-san-homestay,Da Nang,16.0420845,108.248275,86,0,,3,https://www.openstreetmap.org/node/6976178456
+False,hotel,osm-node-12168408886,Ecogreen Boutique,khach-san-homestay,Da Nang,16.0495831,108.2467755,86,0,,3,https://www.openstreetmap.org/node/12168408886
+False,hotel,osm-node-6332534540,Elena,khach-san-homestay,Da Nang,16.0488744,108.2483821,86,0,,3,https://www.openstreetmap.org/node/6332534540
+False,hotel,osm-node-7105401510,Evelyn Hotel,khach-san-homestay,Da Nang,16.0687296,108.2240722,86,0,,3,https://www.openstreetmap.org/node/7105401510
+False,hotel,osm-node-7079687848,FC Hotel & Coffee,khach-san-homestay,Da Nang,16.0697171,108.2241967,86,0,,3,https://www.openstreetmap.org/node/7079687848
+False,hotel,osm-node-3893467765,Funtastic Beach Hostel,khach-san-homestay,Da Nang,16.0683414,108.2438326,86,0,,3,https://www.openstreetmap.org/node/3893467765
+False,hotel,osm-node-3159486161,Funtastic Danang Hostel,khach-san-homestay,Da Nang,16.071774,108.214645,86,0,,3,https://www.openstreetmap.org/node/3159486161
+False,hotel,osm-node-11938896470,Fusion Resort & Villas,khach-san-homestay,Da Nang,15.9724202,108.2822877,86,0,,3,https://www.openstreetmap.org/node/11938896470
+False,hotel,osm-node-12167716640,Gemma,khach-san-homestay,Da Nang,16.0615288,108.2364112,86,0,,3,https://www.openstreetmap.org/node/12167716640
+False,hotel,osm-node-7608069985,Gia Bao Homestay,khach-san-homestay,Da Nang,16.0393074,108.2476055,86,0,,3,https://www.openstreetmap.org/node/7608069985
+False,hotel,osm-node-12167891403,Golden Sun,khach-san-homestay,Da Nang,16.0627565,108.242083,86,0,,3,https://www.openstreetmap.org/node/12167891403
+False,hotel,osm-node-3673190359,Ha Bong Hotel,khach-san-homestay,Da Nang,16.068082,108.2437616,86,0,,3,https://www.openstreetmap.org/node/3673190359
+False,hotel,osm-node-4862929421,Hachi Hostel,khach-san-homestay,Da Nang,16.0720991,108.2184383,86,0,,3,https://www.openstreetmap.org/node/4862929421
+False,hotel,osm-node-11878409048,Haka Boutique Hotel,khach-san-homestay,Da Nang,16.0789591,108.2446667,86,0,,3,https://www.openstreetmap.org/node/11878409048
+False,hotel,osm-node-12167716639,Hiyori Garden Tower,khach-san-homestay,Da Nang,16.0613917,108.2353554,86,0,,3,https://www.openstreetmap.org/node/12167716639
+False,hotel,osm-node-5729312621,hoang kim khach san,khach-san-homestay,Da Nang,16.1308058,108.119611,86,0,,3,https://www.openstreetmap.org/node/5729312621
+False,hotel,osm-node-2987533633,Hoang Linh,khach-san-homestay,Da Nang,16.0672663,108.2241581,86,0,,3,https://www.openstreetmap.org/node/2987533633
+False,hotel,osm-node-4967908922,Home,khach-san-homestay,Da Nang,15.9798181,108.249729,86,0,,3,https://www.openstreetmap.org/node/4967908922
+False,hotel,osm-node-11423755656,Hotel de Marseille,khach-san-homestay,Da Nang,15.9969473,107.9880352,86,0,,3,https://www.openstreetmap.org/node/11423755656
+False,hotel,osm-node-11427607734,Hotel de Paris,khach-san-homestay,Da Nang,15.9975206,107.987915,86,0,,3,https://www.openstreetmap.org/node/11427607734
+False,hotel,osm-node-11423815712,Hotel de Strasbourg,khach-san-homestay,Da Nang,15.9972684,107.9867889,86,0,,3,https://www.openstreetmap.org/node/11423815712
+False,hotel,osm-node-4659470491,Hung binh hotel,khach-san-homestay,Da Nang,16.0824068,108.2204617,86,0,,3,https://www.openstreetmap.org/node/4659470491
+False,hotel,osm-node-9921305987,Huy Hoang Hotel,khach-san-homestay,Da Nang,16.0721459,108.1939154,86,0,,3,https://www.openstreetmap.org/node/9921305987
+False,hotel,osm-node-2986079833,Jimy,khach-san-homestay,Da Nang,16.072038,108.2428221,86,0,,3,https://www.openstreetmap.org/node/2986079833
+False,hotel,osm-node-12167891419,K House,khach-san-homestay,Da Nang,16.0615602,108.2452591,86,0,,3,https://www.openstreetmap.org/node/12167891419
+False,hotel,osm-node-5424056421,Kara Beachside hotel,khach-san-homestay,Da Nang,16.0439303,108.2469894,86,0,,3,https://www.openstreetmap.org/node/5424056421
+False,hotel,osm-node-12167716642,Khanh Vinh,khach-san-homestay,Da Nang,16.0621372,108.2373514,86,0,,3,https://www.openstreetmap.org/node/12167716642

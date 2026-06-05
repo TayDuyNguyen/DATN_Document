@@ -1,0 +1,1 @@
+PHP Warning:  PHP Startup: Unable to load dynamic library 'imagick' (tried: ext\imagick (The specified module could not be found), ext\php_imagick.dll (The specified module could not be found)) in Unknown on line 0

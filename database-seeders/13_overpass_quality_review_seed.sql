@@ -1,6 +1,6 @@
 -- DanangTrip Crawler Quality Review Seed
 -- FILE: 13_overpass_quality_review_seed.sql
--- Generated: 2026-05-31T08:17:05.173Z
+-- Generated: 2026-06-03T01:15:57.489Z
 -- Clean: 580
 -- Rejected: 360
 
@@ -971,7 +971,7 @@ WHERE ci.source_id = s.id
   AND ci.status NOT IN ('approved', 'published');
 
 INSERT INTO crawl_logs (job_id, level, message, context_json, created_at)
-SELECT j.id, 'INFO', 'Applied Overpass quality filter', '{"generatedAt":"2026-05-31T08:17:05.173Z","input":{"total":942,"uniqueAfterDedupe":940},"output":{"clean":580,"rejected":360},"cleanByEntity":{"location":180,"restaurant":220,"hotel":180},"rejectedByEntity":{"restaurant":261,"location":38,"hotel":61},"cleanByCategory":{"cong-vien-nuoc":3,"bao-tang-di-tich":19,"check-in-noi-tieng":116,"cong-vien-vuon-hoa":29,"hang-dong-nui-non":13,"am-thuc-dia-phuong":148,"ca-phe-tra-sua":73,"khach-san-homestay":179},"rejectedTopReasons":{"weak_address":359,"over_entity_limit":359,"name_too_long":1,"generic_or_suspicious_name":1},"minScore":58,"maxPerEntity":{"location":180,"restaurant":220,"hotel":180}}'::jsonb, NOW()
+SELECT j.id, 'INFO', 'Applied Overpass quality filter', '{"generatedAt":"2026-06-03T01:15:57.489Z","input":{"total":942,"uniqueAfterDedupe":940},"output":{"clean":580,"rejected":360},"cleanByEntity":{"location":180,"restaurant":220,"hotel":180},"rejectedByEntity":{"restaurant":261,"location":38,"hotel":61},"cleanByCategory":{"cong-vien-nuoc":3,"bao-tang-di-tich":19,"check-in-noi-tieng":116,"cong-vien-vuon-hoa":29,"hang-dong-nui-non":13,"am-thuc-dia-phuong":148,"ca-phe-tra-sua":73,"khach-san-homestay":179},"rejectedTopReasons":{"weak_address":359,"over_entity_limit":359,"name_too_long":1,"generic_or_suspicious_name":1},"minScore":58,"maxPerEntity":{"location":180,"restaurant":220,"hotel":180}}'::jsonb, NOW()
 FROM crawl_jobs j
 JOIN crawl_sources s ON s.id = j.source_id
 WHERE s.name = 'overpass-danang-pois'

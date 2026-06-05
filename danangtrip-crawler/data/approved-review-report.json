@@ -1,0 +1,32 @@
+{
+  "locations": {
+    "total": 6,
+    "approved": 4,
+    "rejected": 0,
+    "pending": 2
+  },
+  "tours": {
+    "total": 36,
+    "approved": 34,
+    "rejected": 2,
+    "pending": 0
+  },
+  "tourLocations": {
+    "total": 61,
+    "approved": 57,
+    "rejected": 2,
+    "pending": 2
+  },
+  "tourSchedules": {
+    "total": 144,
+    "approved": 136,
+    "rejected": 8,
+    "pending": 0
+  },
+  "policy": {
+    "doesNotPublishDb": true,
+    "doesNotCreateSqlSeed": true,
+    "reviewFilesOnly": true,
+    "fallbackLocationsRequireManualCoordinateReview": true
+  }
+}

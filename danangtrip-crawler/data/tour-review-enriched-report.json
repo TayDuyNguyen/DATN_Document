@@ -1,0 +1,20 @@
+{
+  "input": "data/tour-staging-enriched.json",
+  "outputs": {
+    "json": "data/tour-review-enriched.json",
+    "csv": "data/tour-review-enriched.csv"
+  },
+  "total": 36,
+  "pendingReview": 36,
+  "missingPrice": 0,
+  "missingDuration": 0,
+  "missingItinerary": 17,
+  "missingInclusions": 7,
+  "fewImages": 0,
+  "itemsWithInferredFields": 4,
+  "policy": {
+    "approveForSeedDefault": false,
+    "manualReviewRequired": true,
+    "doesNotPublishDb": true
+  }
+}

@@ -1,0 +1,6 @@
+approve_for_seed,title,slug,category_hint,category_id,source_name,source_url,review_flags
+False,My Son Sanctuary,my-son-sanctuary,diem-den,3,danangfantasticity-my-son-sanctuary,https://danangfantasticity.com/en/my-son-sanctuary,redirected_source_url
+False,3 perfect days in Danang,3-perfect-days-in-danang-danangfantasticity-da-nang-3-days,lich-trinh,5,danangfantasticity-da-nang-3-days,https://danangfantasticity.com/en/discovery/3-perfect-days-in-danang,"deduped_slug, redirected_source_url"
+False,Da Nang’s Mountain Tourism – A Return to Origin in the Truong Son Range,da-nang-s-mountain-tourism-a-return-to-origin-in-the-truong-son-range,cam-nang-da-nang,24,danangfantasticity-mountain-tourism,https://danangfantasticity.com/en/da-nangs-mountain-tourism,redirected_source_url
+False,Hai Van Pass,hai-van-pass-danangfantasticity-hai-van-pass-legacy,diem-den,3,danangfantasticity-hai-van-pass-legacy,https://danangfantasticity.com/en/natural/hai-van-pass-old-2,deduped_slug
+False,Post,post,thoi-tiet,11,danangfantasticity-weather-da-nang,https://danangfantasticity.com/en/about-danang/weather-da-nang.html,"missing_facts, low_text_volume"

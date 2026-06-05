@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-06-03T08:53:56.092425+00:00",
+  "sourceFile": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog_guide_sources.json",
+  "rawOutput": "data\\blog-guides-batch2-raw.json",
+  "normalizedOutput": "data\\blog-guides-batch2-normalized.json",
+  "totalSources": 9,
+  "success": 7,
+  "failures": 2,
+  "failureDetails": [
+    {
+      "source": {
+        "name": "vietnam-travel-ba-na-hills",
+        "url": "https://www.vietnam.travel/things-to-do/explore-ba-na-hills",
+        "category_hint": "diem-den"
+      },
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.vietnam.travel'. (_ssl.c:1010)",
+      "crawled_at": "2026-06-03T08:53:56.092425+00:00"
+    },
+    {
+      "source": {
+        "name": "vietnam-travel-da-nang-food",
+        "url": "https://www.vietnam.travel/things-to-do/da-nangs-special-pork-rolls",
+        "category_hint": "am-thuc"
+      },
+      "error": "[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'www.vietnam.travel'. (_ssl.c:1010)",
+      "crawled_at": "2026-06-03T08:53:56.092425+00:00"
+    }
+  ],
+  "policy": "Text-only crawl. No images generated. Content is summarized for review, source_url is retained."
+}

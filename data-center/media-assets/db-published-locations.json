@@ -1,0 +1,2222 @@
+[
+    {
+        "id": 113,
+        "slug": "139nguyen-ducedm",
+        "name": "139nguyen ducedm",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-7143487885",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/7143487885",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 114,
+        "slug": "4-seasons-danang-hostel",
+        "name": "4 Seasons Danang Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5893704690",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5893704690",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 115,
+        "slug": "a-nang-com-chay-2",
+        "name": "a Nang Com Chay 2",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5804107053",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5804107053",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 116,
+        "slug": "a-tri",
+        "name": "A tri",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5911447385",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5911447385",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 117,
+        "slug": "adela",
+        "name": "Adela",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12163654196",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12163654196",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 118,
+        "slug": "altara-suites",
+        "name": "Altara Suites",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12030866669",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12030866669",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 119,
+        "slug": "alyssa-hotel",
+        "name": "Alyssa hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11888983269",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11888983269",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 120,
+        "slug": "aria-da-nang",
+        "name": "Aria Da Nang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-9243903065",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/9243903065",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 121,
+        "slug": "art-in-paradise-da-nang-3d-museum",
+        "name": "Art in Paradise Da Nang 3D Museum",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-node-5817580453",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5817580453",
+        "entity_type": "location"
+    },
+    {
+        "id": 122,
+        "slug": "babylon-steakgarden",
+        "name": "Babylon Steakgarden",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4352266089",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4352266089",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 123,
+        "slug": "bai-bien-my-khe",
+        "name": "Bai bien My Khe",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-relation-19000664",
+        "source_url": "https:\/\/www.openstreetmap.org\/relation\/19000664",
+        "entity_type": "location"
+    },
+    {
+        "id": 124,
+        "slug": "bai-bien-son-tra",
+        "name": "Bai Bien Son Tra",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-12647208262",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12647208262",
+        "entity_type": "location"
+    },
+    {
+        "id": 125,
+        "slug": "bai-bien-tien-sa",
+        "name": "Bai bien Tien Sa",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-way-630377259",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/630377259",
+        "entity_type": "location"
+    },
+    {
+        "id": 126,
+        "slug": "bai-tam-non-nuoc",
+        "name": "Bai tam Non Nuoc",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-way-1204900824",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/1204900824",
+        "entity_type": "location"
+    },
+    {
+        "id": 127,
+        "slug": "ban-co-peak",
+        "name": "Ban Co Peak",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-1538334281",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/1538334281",
+        "entity_type": "location"
+    },
+    {
+        "id": 128,
+        "slug": "banh-beo-291-nguyen-chi-thanh",
+        "name": "Banh beo 291 Nguyen Chi Thanh",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-2988814633",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/2988814633",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 129,
+        "slug": "banh-mi",
+        "name": "Banh mi",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4656790491",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4656790491",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 130,
+        "slug": "banh-mi-cham-pate",
+        "name": "Banh mi cham Pate",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152597685",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152597685",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 131,
+        "slug": "banh-xeo-ba-duong",
+        "name": "Banh Xeo Ba Duong",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4541527689",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4541527689",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 132,
+        "slug": "bao-an-macrobiotic",
+        "name": "Bao An Macrobiotic",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5947469393",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5947469393",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 133,
+        "slug": "bao-tang-da-nang",
+        "name": "Bao tang Da Nang",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-way-302618031",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/302618031",
+        "entity_type": "location"
+    },
+    {
+        "id": 134,
+        "slug": "bao-tang-ho-chi-minh",
+        "name": "Bao tang Ho Chi Minh",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-way-303341669",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/303341669",
+        "entity_type": "location"
+    },
+    {
+        "id": 135,
+        "slug": "bao-tang-phat-giao",
+        "name": "Bao tang Phat giao",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-node-8474743417",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/8474743417",
+        "entity_type": "location"
+    },
+    {
+        "id": 136,
+        "slug": "bao-tang-quan-khu-5",
+        "name": "Bao tang Quan khu 5",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-way-118691767",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/118691767",
+        "entity_type": "location"
+    },
+    {
+        "id": 137,
+        "slug": "barney-s-danang-backpacker-s-hostel",
+        "name": "Barney's Danang Backpacker's Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4483622590",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4483622590",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 138,
+        "slug": "be-thui",
+        "name": "Be thui",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4118223691",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4118223691",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 139,
+        "slug": "be-thui-100",
+        "name": "be thui 100",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4109054391",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4109054391",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 140,
+        "slug": "bella-boutique-villa",
+        "name": "bella boutique Villa",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6313525388",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6313525388",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 141,
+        "slug": "bien-vang-hotel",
+        "name": "Bien Vang Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4401174794",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4401174794",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 142,
+        "slug": "bo-ne-quoc-minh",
+        "name": "Bo Ne Quoc Minh",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4755650721",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4755650721",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 143,
+        "slug": "bun-bo-ba-dieu",
+        "name": "Bun Bo Ba Dieu",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6147088185",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6147088185",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 144,
+        "slug": "bun-cha-ca-109",
+        "name": "Bun cha ca 109",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5484764821",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5484764821",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 145,
+        "slug": "bun-cha-ca-thuy",
+        "name": "Bun cha ca Thuy",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4080898314",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4080898314",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 146,
+        "slug": "bun-cha-hue-chi",
+        "name": "Bun Cha Hue Chi",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5123239421",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5123239421",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 147,
+        "slug": "bun-mam-van",
+        "name": "Bun Mam Van",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152685685",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152685685",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 148,
+        "slug": "ca-phe-that",
+        "name": "Ca phe That",
+        "status": "inactive",
+        "category_slug": "ca-phe-tra-sua",
+        "external_id": "osm-node-729406601",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/729406601",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 149,
+        "slug": "caphe-huy",
+        "name": "CaPhe Huy",
+        "status": "inactive",
+        "category_slug": "ca-phe-tra-sua",
+        "external_id": "osm-node-729406580",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/729406580",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 150,
+        "slug": "cau-nguyen-van-troi-bridge",
+        "name": "Cau Nguyen Van Troi Bridge",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-5276547123",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5276547123",
+        "entity_type": "location"
+    },
+    {
+        "id": 151,
+        "slug": "cau-song-han",
+        "name": "Cau Song Han",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-7276380289",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/7276380289",
+        "entity_type": "location"
+    },
+    {
+        "id": 152,
+        "slug": "cau-thuan-phuoc",
+        "name": "Cau Thuan Phuoc",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-5273999121",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5273999121",
+        "entity_type": "location"
+    },
+    {
+        "id": 153,
+        "slug": "cau-tran-thi-ly",
+        "name": "Cau Tran Thi Ly",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-5273998823",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5273998823",
+        "entity_type": "location"
+    },
+    {
+        "id": 154,
+        "slug": "cau-vang",
+        "name": "Cau Vang",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-way-683416736",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/683416736",
+        "entity_type": "location"
+    },
+    {
+        "id": 155,
+        "slug": "caytao-coffee",
+        "name": "CayTao Coffee",
+        "status": "inactive",
+        "category_slug": "ca-phe-tra-sua",
+        "external_id": "osm-node-729406478",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/729406478",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 156,
+        "slug": "cents-hotel",
+        "name": "Cents Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5583697622",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5583697622",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 157,
+        "slug": "chachi-homestay",
+        "name": "ChaChi homestay",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5727675826",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5727675826",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 158,
+        "slug": "chao-dinh-duong-huyen-tram",
+        "name": "CHAO DINH DUONG HUYEN TRAM",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6071963085",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6071963085",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 159,
+        "slug": "che-thai-lien",
+        "name": "Che Thai Lien",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6151185387",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6151185387",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 160,
+        "slug": "cherry-hotel-apartments",
+        "name": "Cherry Hotel & Apartments",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12145093701",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12145093701",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 161,
+        "slug": "chi-hoa",
+        "name": "Chi Hoa",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5249863422",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5249863422",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 162,
+        "slug": "chi-house-hotel-apartment",
+        "name": "Chi House Hotel & Apartment",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-10294581427",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10294581427",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 163,
+        "slug": "chipa-homestay",
+        "name": "ChiPa Homestay",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11715209969",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11715209969",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 164,
+        "slug": "cho-dem-helio",
+        "name": "Cho dem Helio",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-7301996085",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/7301996085",
+        "entity_type": "location"
+    },
+    {
+        "id": 165,
+        "slug": "com-tam-co-nga",
+        "name": "Com Tam Co Nga",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4605114489",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4605114489",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 166,
+        "slug": "cong-vien-apec",
+        "name": "Cong Vien APEC",
+        "status": "inactive",
+        "category_slug": "cong-vien-vuon-hoa",
+        "external_id": "osm-way-675604354",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/675604354",
+        "entity_type": "location"
+    },
+    {
+        "id": 167,
+        "slug": "cong-vien-bien-dong",
+        "name": "Cong vien Bien Dong",
+        "status": "inactive",
+        "category_slug": "cong-vien-vuon-hoa",
+        "external_id": "osm-way-149699484",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/149699484",
+        "entity_type": "location"
+    },
+    {
+        "id": 168,
+        "slug": "cong-vien-nguyen-van-linh",
+        "name": "Cong vien Nguyen Van Linh",
+        "status": "inactive",
+        "category_slug": "cong-vien-vuon-hoa",
+        "external_id": "osm-way-1254909519",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/1254909519",
+        "entity_type": "location"
+    },
+    {
+        "id": 169,
+        "slug": "cut-lon-me-ba-lanh",
+        "name": "Cut lon me Ba Lanh",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152615685",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152615685",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 170,
+        "slug": "dai-long-hotel",
+        "name": "Dai Long hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4326820491",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4326820491",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 171,
+        "slug": "dan-oasis-hotel",
+        "name": "Dan Oasis Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4759000238",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4759000238",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 172,
+        "slug": "danang-backpackers-hostel",
+        "name": "Danang Backpackers Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4166666089",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4166666089",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 173,
+        "slug": "de-nghia",
+        "name": "De nghia",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4118236589",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4118236589",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 174,
+        "slug": "deo-hai-van",
+        "name": "Deo Hai Van",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-1036552571",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/1036552571",
+        "entity_type": "location"
+    },
+    {
+        "id": 175,
+        "slug": "diamond-beach",
+        "name": "Diamond Beach",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12119724802",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12119724802",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 176,
+        "slug": "doi-gio",
+        "name": "Doi gio",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5293335937",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5293335937",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 177,
+        "slug": "dtc-hotel",
+        "name": "DTC Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-10314394611",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10314394611",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 178,
+        "slug": "ecodanang",
+        "name": "Ecodanang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4287074189",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4287074189",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 179,
+        "slug": "faifo-hotel",
+        "name": "Faifo Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4199987426",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4199987426",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 180,
+        "slug": "fantasy-park",
+        "name": "Fantasy Park",
+        "status": "inactive",
+        "category_slug": "cong-vien-nuoc",
+        "external_id": "osm-node-10154412164",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10154412164",
+        "entity_type": "location"
+    },
+    {
+        "id": 181,
+        "slug": "fedora-hostel",
+        "name": "Fedora Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11584401669",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11584401669",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 182,
+        "slug": "flora-hotel",
+        "name": "Flora Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4611974790",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4611974790",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 183,
+        "slug": "fusion-suites",
+        "name": "Fusion Suites",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4550531390",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4550531390",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 184,
+        "slug": "goom-vegan",
+        "name": "Goom Vegan",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5793917955",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5793917955",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 185,
+        "slug": "green-balcony-hostel-coffee",
+        "name": "Green Balcony Hostel & Coffee",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6054437786",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6054437786",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 186,
+        "slug": "hai-san-nam-danh",
+        "name": "Hai san Nam Danh",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6151186386",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6151186386",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 187,
+        "slug": "hai-van-quan",
+        "name": "Hai Van Quan",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-way-466418347",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/466418347",
+        "entity_type": "location"
+    },
+    {
+        "id": 188,
+        "slug": "hai-yen-hotel",
+        "name": "Hai Yen Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-10294581428",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10294581428",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 189,
+        "slug": "hana-homestay-danang",
+        "name": "Hana Homestay Danang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-10768167105",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10768167105",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 190,
+        "slug": "hang-s-kitchen",
+        "name": "Hang's Kitchen",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4694652890",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4694652890",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 191,
+        "slug": "hau-sua-tom-hum",
+        "name": "Hau Sua & Tom Hum",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4351989390",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4351989390",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 192,
+        "slug": "herriott",
+        "name": "Herriott",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544450819",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544450819",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 193,
+        "slug": "hilary-hotel",
+        "name": "Hilary Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6712140863",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6712140863",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 194,
+        "slug": "hilton-garden-inn-da-nang",
+        "name": "Hilton Garden Inn Da Nang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6125276061",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6125276061",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 195,
+        "slug": "hoang-phuong-hotel",
+        "name": "Hoang Phuong Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4249901095",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4249901095",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 196,
+        "slug": "hodi-hotel",
+        "name": "Hodi Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12147633201",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12147633201",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 197,
+        "slug": "homestay-halley",
+        "name": "Homestay Halley",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5426555721",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5426555721",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 198,
+        "slug": "homestay-heo-dat",
+        "name": "Homestay Heo Dat",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4677455200",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4677455200",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 199,
+        "slug": "homie-coffee",
+        "name": "Homie Coffee",
+        "status": "inactive",
+        "category_slug": "ca-phe-tra-sua",
+        "external_id": "osm-node-729406487",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/729406487",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 200,
+        "slug": "hong-chau",
+        "name": "Hong Chau",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12101736706",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12101736706",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 201,
+        "slug": "hue-chi",
+        "name": "Hue Chi",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5249863421",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5249863421",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 202,
+        "slug": "huong-cau",
+        "name": "Huong Cau",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-2988980334",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/2988980334",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 203,
+        "slug": "iris-hotel",
+        "name": "Iris Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5412275622",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5412275622",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 204,
+        "slug": "kfc",
+        "name": "KFC",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5699726168",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5699726168",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 205,
+        "slug": "khach-san-bon-mua",
+        "name": "Khach san Bon Mua",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5450558021",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5450558021",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 206,
+        "slug": "khach-san-hai-an",
+        "name": "Khach san Hai An",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4652657809",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4652657809",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 207,
+        "slug": "khu-van-hoa-tam-linh-da-son",
+        "name": "Khu Van hoa Tam linh Da Son",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-12404434601",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12404434601",
+        "entity_type": "location"
+    },
+    {
+        "id": 208,
+        "slug": "king-garden-hotel",
+        "name": "King Garden Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5413973628",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5413973628",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 209,
+        "slug": "koko-green-kafe-63",
+        "name": "koko Green kafe 63",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5947905986",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5947905986",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 210,
+        "slug": "kon-tiki-hostel",
+        "name": "Kon-Tiki Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12107623401",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12107623401",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 211,
+        "slug": "la-belle-vie-hottel",
+        "name": "La Belle Vie Hottel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11391148269",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11391148269",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 212,
+        "slug": "la-cool-house-hostel",
+        "name": "La COOL House Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5607040127",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5607040127",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 213,
+        "slug": "la-luna",
+        "name": "La Luna",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4150425790",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4150425790",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 214,
+        "slug": "lam-vien-restaurant",
+        "name": "Lam Vien Restaurant",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5485445021",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5485445021",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 215,
+        "slug": "lenid",
+        "name": "Lenid",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544417147",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544417147",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 216,
+        "slug": "linh-phong-bao-thap",
+        "name": "Linh Phong Bao Thap",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-node-13687068650",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/13687068650",
+        "entity_type": "location"
+    },
+    {
+        "id": 217,
+        "slug": "lu-peaceful-homestay",
+        "name": "Lu peaceful homestay",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11889083769",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11889083769",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 218,
+        "slug": "luxtery",
+        "name": "Luxtery",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544417154",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544417154",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 219,
+        "slug": "mama-hotpot",
+        "name": "Mama Hotpot",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5696687927",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5696687927",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 220,
+        "slug": "mari-gold",
+        "name": "Mari Gold",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544492198",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544492198",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 221,
+        "slug": "memory-lounge",
+        "name": "Memory Lounge",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5429221882",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5429221882",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 222,
+        "slug": "mercure-hotels",
+        "name": "Mercure Hotels",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4401223296",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4401223296",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 223,
+        "slug": "mi-quang-1a",
+        "name": "Mi Quang 1A",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4430077491",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4430077491",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 224,
+        "slug": "mi-quang-ech",
+        "name": "Mi Quang Ech",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5116302323",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5116302323",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 225,
+        "slug": "monsieur-crepes",
+        "name": "Monsieur Crepes",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6109158033",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6109158033",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 226,
+        "slug": "mumtaz",
+        "name": "Mumtaz",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6133794785",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6133794785",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 227,
+        "slug": "my-khe-beach-park",
+        "name": "My Khe Beach Park",
+        "status": "inactive",
+        "category_slug": "cong-vien-vuon-hoa",
+        "external_id": "osm-way-780440810",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/780440810",
+        "entity_type": "location"
+    },
+    {
+        "id": 228,
+        "slug": "my-little-pig-homestay",
+        "name": "My Little Pig Homestay",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-8446244502",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/8446244502",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 229,
+        "slug": "new-life-hotel",
+        "name": "New Life Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6530479393",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6530479393",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 230,
+        "slug": "ngu-hanh-son",
+        "name": "Ngu Hanh Son",
+        "status": "inactive",
+        "category_slug": "check-in-noi-tieng",
+        "external_id": "osm-relation-8552348",
+        "source_url": "https:\/\/www.openstreetmap.org\/relation\/8552348",
+        "entity_type": "location"
+    },
+    {
+        "id": 231,
+        "slug": "nha-bia",
+        "name": "Nha Bia",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-node-13846529850",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/13846529850",
+        "entity_type": "location"
+    },
+    {
+        "id": 232,
+        "slug": "nha-chung-homestay",
+        "name": "Nha Chung Homestay",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6654699997",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6654699997",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 233,
+        "slug": "nha-hang-chay",
+        "name": "Nha hang Chay",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5796473953",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5796473953",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 234,
+        "slug": "nha-hang-chay-hoa-sen-vegetarian-restaurant",
+        "name": "Nha Hang Chay Hoa Sen - Vegetarian Restaurant",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5978084714",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5978084714",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 235,
+        "slug": "nha-hang-hai-san-be-anh",
+        "name": "Nha hang hai san Be Anh",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5485483822",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5485483822",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 236,
+        "slug": "nha-hang-hancook",
+        "name": "Nha hang HanCook",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4464451390",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4464451390",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 236,
+        "slug": "nha-hang-hancook",
+        "name": "Nha hang HanCook",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4339674598",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4339674598",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 236,
+        "slug": "nha-hang-hancook",
+        "name": "Nha hang HanCook",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4464451389",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4464451389",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 239,
+        "slug": "nha-tro-dinh-quoc-vuong",
+        "name": "Nha tro Dinh Quoc Vuong",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3489018330",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3489018330",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 240,
+        "slug": "nha-tro-duong-thi-tanh",
+        "name": "Nha tro DUong Thi Tanh",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3478891526",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3478891526",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 241,
+        "slug": "nha-tro-hoang-van-sinh",
+        "name": "Nha tro Hoang Van Sinh",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3489018328",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3489018328",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 242,
+        "slug": "nha-tro-hua-dien",
+        "name": "Nha tro Hua Dien",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3512677311",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3512677311",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 243,
+        "slug": "nha-tro-huynh-dinh",
+        "name": "Nha tro Huynh Dinh",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3455687232",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3455687232",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 244,
+        "slug": "nha-tro-huynh-dinh-dung",
+        "name": "Nha tro Huynh Dinh Dung",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105163",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105163",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 245,
+        "slug": "nha-tro-le-duc-tin",
+        "name": "Nha tro Le Duc Tin",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3489018331",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3489018331",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 246,
+        "slug": "nha-tro-mai-truc-lam",
+        "name": "Nha tro Mai Truc Lam",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3495233441",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3495233441",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 247,
+        "slug": "nha-tro-ngo-dinh-tu",
+        "name": "Nha tro Ngo Dinh Tu",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3514922511",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3514922511",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 248,
+        "slug": "nha-tro-nguyen-doan-chinh",
+        "name": "Nha tro Nguyen Doan Chinh",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105167",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105167",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 249,
+        "slug": "nha-tro-nguyen-huy-vu",
+        "name": "Nha tro Nguyen Huy Vu",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105161",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105161",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 250,
+        "slug": "nha-tro-nguyen-le-viet",
+        "name": "Nha tro Nguyen Le Viet",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105165",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105165",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 251,
+        "slug": "nha-tro-nguyen-long",
+        "name": "Nha tro Nguyen Long",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3516506506",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3516506506",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 252,
+        "slug": "nha-tro-nguyen-ngoc-linh",
+        "name": "Nha tro Nguyen Ngoc Linh",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105160",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105160",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 253,
+        "slug": "nha-tro-nguyen-quoc-dung",
+        "name": "Nha tro Nguyen Quoc Dung",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3496244410",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3496244410",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 254,
+        "slug": "nha-tro-nguyen-thi-nga",
+        "name": "Nha tro Nguyen Thi Nga",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3455679141",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3455679141",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 255,
+        "slug": "nha-tro-nguyen-thi-thu-ha",
+        "name": "Nha tro Nguyen Thi Thu Ha",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105166",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105166",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 256,
+        "slug": "nha-tro-nguyen-van-hung",
+        "name": "Nha tro Nguyen Van Hung",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3497145815",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3497145815",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 257,
+        "slug": "nha-tro-nguyen-van-sy",
+        "name": "Nha tro Nguyen Van Sy",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3495233434",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3495233434",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 258,
+        "slug": "nha-tro-pham-ngoc-hai",
+        "name": "Nha tro Pham Ngoc Hai",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3497145814",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3497145814",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 259,
+        "slug": "nha-tro-pham-nhat-tan",
+        "name": "Nha tro Pham Nhat Tan",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105162",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105162",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 260,
+        "slug": "nha-tro-phan-thanh-huan",
+        "name": "Nha tro Phan Thanh Huan",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3560105164",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3560105164",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 261,
+        "slug": "nha-tro-tan-canh",
+        "name": "Nha tro Tan Canh",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3495233433",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3495233433",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 262,
+        "slug": "nha-tro-tan-thanh-huyen",
+        "name": "Nha tro Tan Thanh Huyen",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3478891527",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3478891527",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 263,
+        "slug": "nha-tro-tran-hung-sang",
+        "name": "Nha tro Tran Hung Sang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3512677310",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3512677310",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 264,
+        "slug": "nha-tro-tran-quan",
+        "name": "Nha tro Tran Quan",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3495233439",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3495233439",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 265,
+        "slug": "nha-tro-tran-thai-phuong",
+        "name": "Nha tro Tran Thai Phuong",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3514922509",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3514922509",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 266,
+        "slug": "nha-tro-tran-trong-khiem",
+        "name": "Nha tro Tran Trong Khiem",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3516506507",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3516506507",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 267,
+        "slug": "nha-tro-tran-van-hieu",
+        "name": "Nha tro Tran Van Hieu",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3489018329",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3489018329",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 268,
+        "slug": "nha-tro-vtv",
+        "name": "Nha tro VTV",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4704794989",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4704794989",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 269,
+        "slug": "nhatha-coffee-ice-cream",
+        "name": "NhatHa Coffee Ice Cream",
+        "status": "inactive",
+        "category_slug": "ca-phe-tra-sua",
+        "external_id": "osm-node-729406447",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/729406447",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 270,
+        "slug": "noi-o",
+        "name": "Noi o",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4855468621",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4855468621",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 271,
+        "slug": "nui-son-tra",
+        "name": "Nui Son Tra",
+        "status": "inactive",
+        "category_slug": "hang-dong-nui-non",
+        "external_id": "osm-node-1623183649",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/1623183649",
+        "entity_type": "location"
+    },
+    {
+        "id": 272,
+        "slug": "oasis-tapas-bar",
+        "name": "Oasis Tapas Bar",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5696882723",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5696882723",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 273,
+        "slug": "oc-tien-sa-hotel",
+        "name": "Oc Tien Sa Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-3842864143",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/3842864143",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 274,
+        "slug": "ong-minh",
+        "name": "Ong Minh",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4352303490",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4352303490",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 275,
+        "slug": "pavilion",
+        "name": "Pavilion",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5558491521",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5558491521",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 276,
+        "slug": "pha-le-hotel",
+        "name": "Pha Le Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12109686301",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12109686301",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 277,
+        "slug": "pho-phu-gia",
+        "name": "pho phu gia",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4118223690",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4118223690",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 278,
+        "slug": "phu-my-thanh-nha-hang",
+        "name": "phu my thanh nha hang",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4860107522",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4860107522",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 279,
+        "slug": "ponte-boutique-da-nang",
+        "name": "Ponte Boutique Da Nang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11433787697",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11433787697",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 280,
+        "slug": "qquan-chay-dieu-hoa",
+        "name": "Qquan Chay Dieu Hoa",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5791814653",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5791814653",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 281,
+        "slug": "quan-an-bun-cha-ca",
+        "name": "Quan An Bun Cha Ca",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4948013624",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4948013624",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 282,
+        "slug": "quan-an-ngon-thia-go-danang-style",
+        "name": "Quan an ngon Thia Go Danang-style",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6120622785",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6120622785",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 283,
+        "slug": "quan-an-tuk-tuk",
+        "name": "Quan An Tuk Tuk",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5047614532",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5047614532",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 284,
+        "slug": "quan-bun-lieu",
+        "name": "Quan bun Lieu",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4076171123",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4076171123",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 285,
+        "slug": "quan-chay-hang-ngay",
+        "name": "Quan Chay Hang Ngay",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5864570785",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5864570785",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 286,
+        "slug": "quan-chay-xuan",
+        "name": "Quan Chay XUAN",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4900701521",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4900701521",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 287,
+        "slug": "quan-com-08",
+        "name": "Quan com 08",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4076169309",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4076169309",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 288,
+        "slug": "quan-mau-banh-trang-thit-heo",
+        "name": "Quan Mau - Banh trang thit heo",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152679485",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152679485",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 289,
+        "slug": "quan-nhau-loc-vien",
+        "name": "quan nhau loc vien",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4875985021",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4875985021",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 290,
+        "slug": "quan-quan-hotel",
+        "name": "quan quan hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5535905123",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5535905123",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 291,
+        "slug": "ram-cuon-cai-di-hoa",
+        "name": "Ram cuon cai Di Hoa",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152681085",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152681085",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 292,
+        "slug": "red-palace-hotel",
+        "name": "Red Palace Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5413973113",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5413973113",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 293,
+        "slug": "roll-hostel-pub",
+        "name": "ROLL hostel & pub",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5432955721",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5432955721",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 294,
+        "slug": "rom-casa-hostel",
+        "name": "Rom Casa Hostel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-10747827206",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10747827206",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 295,
+        "slug": "rosabella-boutique-hotel",
+        "name": "Rosabella Boutique Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-10727065505",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/10727065505",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 296,
+        "slug": "rosetta",
+        "name": "Rosetta",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544495730",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544495730",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 297,
+        "slug": "royal-apartment",
+        "name": "Royal apartment",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11896574769",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11896574769",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 298,
+        "slug": "samwon",
+        "name": "Samwon",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5437839417",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5437839417",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 299,
+        "slug": "san-san-hotel",
+        "name": "San San Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4900673921",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4900673921",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 300,
+        "slug": "sanouva-danang-hotel",
+        "name": "Sanouva Danang Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-2985700733",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/2985700733",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 301,
+        "slug": "sea-phoenix-hotel",
+        "name": "Sea Phoenix Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4612193833",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4612193833",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 302,
+        "slug": "senorita-boutique-hotel",
+        "name": "Senorita boutique hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11680377169",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11680377169",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 303,
+        "slug": "sepon-blue-hotel",
+        "name": "Sepon Blue Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5950397485",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5950397485",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 304,
+        "slug": "simpur",
+        "name": "Simpur",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5360440323",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5360440323",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 305,
+        "slug": "siro-house-homestay",
+        "name": "Siro House Homestay",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12103878902",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12103878902",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 306,
+        "slug": "so-zach",
+        "name": "So Zach",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5964310288",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5964310288",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 307,
+        "slug": "solar-hotel",
+        "name": "Solar Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6514131805",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6514131805",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 308,
+        "slug": "son-tra-green-hotel",
+        "name": "Son Tra Green Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6355823385",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6355823385",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 309,
+        "slug": "son-tra-ocean-view-pool-spa",
+        "name": "Son Tra Ocean View Pool & Spa",
+        "status": "inactive",
+        "category_slug": "cong-vien-vuon-hoa",
+        "external_id": "osm-way-780440511",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/780440511",
+        "entity_type": "location"
+    },
+    {
+        "id": 310,
+        "slug": "star-near-me-hotel",
+        "name": "Star near me Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12129062601",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12129062601",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 311,
+        "slug": "sua-chua-nep-cam-co-phuc",
+        "name": "Sua chua nep cam Co Phuc",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152585585",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152585585",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 312,
+        "slug": "suon-nuong-cao-boi",
+        "name": "Suon Nuong Cao Boi",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4805182821",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4805182821",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 313,
+        "slug": "tabii",
+        "name": "Tabii",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544417152",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544417152",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 314,
+        "slug": "tam-house-villa-hotel",
+        "name": "Tam House Villa Hotel",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-5602509021",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5602509021",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 315,
+        "slug": "tashi-park-view-hotel-apartment",
+        "name": "Tashi Park View Hotel & Apartment",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-12098065601",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/12098065601",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 316,
+        "slug": "teddy-garden-burgers",
+        "name": "Teddy Garden burgers",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6079848286",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6079848286",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 317,
+        "slug": "thang-bom",
+        "name": "Thang Bom",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-2623768438",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/2623768438",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 318,
+        "slug": "thanh-nhung",
+        "name": "Thanh Nhung",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-6544417146",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6544417146",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 319,
+        "slug": "the-amazing-taco-in-da-nang",
+        "name": "The Amazing Taco | In Da Nang",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4260382168",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4260382168",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 320,
+        "slug": "the-choi-s-kitchen",
+        "name": "The Choi's Kitchen",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4814994722",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4814994722",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 321,
+        "slug": "the-pizza-company",
+        "name": "The Pizza Company",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5699718559",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5699718559",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 322,
+        "slug": "thung-phi-bbq",
+        "name": "Thung Phi BBQ",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-4430077492",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4430077492",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 323,
+        "slug": "tiem-an-vu-gia",
+        "name": "Tiem An Vu Gia",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5110691331",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5110691331",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 324,
+        "slug": "tokbokki-ly",
+        "name": "Tokbokki Ly",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6108930790",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6108930790",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 325,
+        "slug": "tru-vu-tra-quan",
+        "name": "Tru Vu Tra Quan",
+        "status": "inactive",
+        "category_slug": "ca-phe-tra-sua",
+        "external_id": "osm-way-1109970012",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/1109970012",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 326,
+        "slug": "trung-tam-giai-tri-phuc-hop-helio-center",
+        "name": "Trung tam Giai tri Phuc hop Helio Center",
+        "status": "inactive",
+        "category_slug": "cong-vien-nuoc",
+        "external_id": "osm-node-4807957148",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4807957148",
+        "entity_type": "location"
+    },
+    {
+        "id": 327,
+        "slug": "trung-tam-van-hoa-the-thao-quan-thanh-khe",
+        "name": "Trung tam Van hoa - The thao quan Thanh Khe",
+        "status": "inactive",
+        "category_slug": "cong-vien-vuon-hoa",
+        "external_id": "osm-way-846695791",
+        "source_url": "https:\/\/www.openstreetmap.org\/way\/846695791",
+        "entity_type": "location"
+    },
+    {
+        "id": 328,
+        "slug": "truongvuhouse-s",
+        "name": "TruongVuHouse's",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-4931062422",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/4931062422",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 329,
+        "slug": "tuong-phat-phuoc-ly",
+        "name": "Tuong Phat Phuoc Ly",
+        "status": "inactive",
+        "category_slug": "bao-tang-di-tich",
+        "external_id": "osm-node-13734880501",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/13734880501",
+        "entity_type": "location"
+    },
+    {
+        "id": 330,
+        "slug": "ty-house-homestay-da-nang",
+        "name": "Ty house homestay da nang",
+        "status": "inactive",
+        "category_slug": "khach-san-homestay",
+        "external_id": "osm-node-11896312469",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/11896312469",
+        "entity_type": "hotel"
+    },
+    {
+        "id": 331,
+        "slug": "vinh-da-nang",
+        "name": "Vinh Da Nang",
+        "status": "inactive",
+        "category_slug": "hang-dong-nui-non",
+        "external_id": "osm-relation-16028838",
+        "source_url": "https:\/\/www.openstreetmap.org\/relation\/16028838",
+        "entity_type": "location"
+    },
+    {
+        "id": 332,
+        "slug": "xoi-ga-ba-be",
+        "name": "Xoi ga Ba Be",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6152595285",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6152595285",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 333,
+        "slug": "xuan-toi",
+        "name": "Xuan Toi",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-5271605921",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/5271605921",
+        "entity_type": "restaurant"
+    },
+    {
+        "id": 334,
+        "slug": "yaourt-muoi-cay-bang",
+        "name": "Yaourt muoi Cay Bang",
+        "status": "inactive",
+        "category_slug": "am-thuc-dia-phuong",
+        "external_id": "osm-node-6151202686",
+        "source_url": "https:\/\/www.openstreetmap.org\/node\/6151202686",
+        "entity_type": "restaurant"
+    }
+]

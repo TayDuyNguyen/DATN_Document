@@ -1,0 +1,102 @@
+{
+  "locations": [
+    {
+      "name": "Bach Ma National Park",
+      "slug": "bach-ma-national-park",
+      "queries": [
+        "Bach Ma National Park, Thua Thien Hue, Vietnam",
+        "Vườn quốc gia Bạch Mã, Thừa Thiên Huế, Việt Nam"
+      ],
+      "fallback": {
+        "latitude": 16.1969,
+        "longitude": 107.8531,
+        "address": "Thua Thien Hue, Vietnam",
+        "district": "Phu Loc",
+        "ward": null
+      }
+    },
+    {
+      "name": "Chan May Port",
+      "slug": "chan-may-port",
+      "queries": [
+        "Chan May Port, Thua Thien Hue, Vietnam",
+        "Cảng Chân Mây, Phú Lộc, Thừa Thiên Huế, Việt Nam"
+      ],
+      "fallback": {
+        "latitude": 16.3333,
+        "longitude": 108.0167,
+        "address": "Chan May, Phu Loc, Thua Thien Hue, Vietnam",
+        "district": "Phu Loc",
+        "ward": "Chan May"
+      }
+    },
+    {
+      "name": "Hoa Phu Thanh",
+      "slug": "hoa-phu-thanh",
+      "queries": [
+        "Hoa Phu Thanh tourist area, Da Nang, Vietnam",
+        "Khu du lịch Hòa Phú Thành, Hòa Vang, Đà Nẵng"
+      ],
+      "reference_urls": [
+        "https://hoiandaytrip.com/hoa-phu-thanh-tourist-area/",
+        "https://indanang.vn/en/listing/hoa-phu-thanh-tourist-area/"
+      ],
+      "fallback": {
+        "latitude": 15.9998,
+        "longitude": 107.9834,
+        "address": "Hoa Phu, Hoa Vang, Da Nang, Vietnam",
+        "district": "Hoa Vang",
+        "ward": "Hoa Phu"
+      }
+    },
+    {
+      "name": "Hue Imperial City",
+      "slug": "hue-imperial-city",
+      "queries": [
+        "Hue Imperial City, Hue, Vietnam",
+        "Đại Nội Huế, Thành phố Huế, Việt Nam"
+      ],
+      "fallback": {
+        "latitude": 16.4692,
+        "longitude": 107.5779,
+        "address": "Hue, Thua Thien Hue, Vietnam",
+        "district": "Hue",
+        "ward": null
+      }
+    },
+    {
+      "name": "Nui Than Tai Hot Spring Park",
+      "slug": "nui-than-tai-hot-spring-park",
+      "queries": [
+        "Nui Than Tai Hot Spring Park, Da Nang, Vietnam",
+        "Công viên suối khoáng nóng Núi Thần Tài, Đà Nẵng"
+      ],
+      "reference_urls": [
+        "https://vietnamtourism.gov.vn/en/post/10543",
+        "https://www.originvietnam.com/destinations/nui-than-tai-hot-spring-park/"
+      ],
+      "fallback": {
+        "latitude": 15.9946,
+        "longitude": 107.9872,
+        "address": "Hoa Phu, Hoa Vang, Da Nang, Vietnam",
+        "district": "Hoa Vang",
+        "ward": "Hoa Phu"
+      }
+    },
+    {
+      "name": "Tien Sa Port",
+      "slug": "tien-sa-port",
+      "queries": [
+        "Tien Sa Port, Da Nang, Vietnam",
+        "Cảng Tiên Sa, Sơn Trà, Đà Nẵng"
+      ],
+      "fallback": {
+        "latitude": 16.1196,
+        "longitude": 108.2337,
+        "address": "Son Tra, Da Nang, Vietnam",
+        "district": "Son Tra",
+        "ward": null
+      }
+    }
+  ]
+}

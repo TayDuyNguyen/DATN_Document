@@ -1,0 +1,29 @@
+{
+  "input": "data/tour-staging-enriched.json",
+  "outputs": {
+    "json": "data/tour-schedule-review.json",
+    "csv": "data/tour-schedule-review.csv"
+  },
+  "tourCount": 36,
+  "scheduleRows": 144,
+  "dateWindow": {
+    "start": "2026-06-04",
+    "days": 30
+  },
+  "pendingReview": 144,
+  "approvedForSeed": 0,
+  "startTimeSources": {
+    "default": 100,
+    "rule": 44
+  },
+  "schedulePatterns": {
+    "daily": 132,
+    "weekend": 12
+  },
+  "rowsWithReviewFlags": 144,
+  "policy": {
+    "approveForSeedDefault": false,
+    "manualReviewRequired": true,
+    "doesNotPublishDb": true
+  }
+}

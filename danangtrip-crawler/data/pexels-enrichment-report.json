@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-01T15:18:38.902Z",
+  "generatedAt": "2026-06-03T01:16:11.198Z",
   "input": {
     "file": "data/overpass-danang-pois-clean.json",
     "total": 580
@@ -8,8 +8,8 @@
     "limit": 580,
     "photosPerItem": 3,
     "requestDelayMs": 750,
-    "selectedMissingItems": 108,
-    "newlyEnrichedItems": 108,
+    "selectedMissingItems": 0,
+    "newlyEnrichedItems": 0,
     "totalItemsWithImages": 580,
     "failures": 0,
     "throttled": false

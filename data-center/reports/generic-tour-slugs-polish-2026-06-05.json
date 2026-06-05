@@ -1,0 +1,562 @@
+[
+  {
+    "id": 21,
+    "old_name": "Tour Tiết Kiệm Tour Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "new_name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "old_slug": "tour-real-variant-21",
+    "new_slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau"
+  },
+  {
+    "id": 22,
+    "old_name": "Tour Khám Phá Tour Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "new_name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "old_slug": "tour-real-variant-22",
+    "new_slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra"
+  },
+  {
+    "id": 23,
+    "old_name": "Tour Khám Phá Tour Cù Lao Chàm Lặn Ngắm San Hô",
+    "new_name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+    "old_slug": "tour-real-variant-23",
+    "new_slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho"
+  },
+  {
+    "id": 24,
+    "old_name": "Tour Khám Phá Tour Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "new_name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "old_slug": "tour-real-variant-24",
+    "new_slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang"
+  },
+  {
+    "id": 25,
+    "old_name": "Tour Cao Cấp Tour Thánh Địa Mỹ Sơn nửa ngày",
+    "new_name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+    "old_slug": "tour-real-variant-25",
+    "new_slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay"
+  },
+  {
+    "id": 26,
+    "old_name": "Tour Tiết Kiệm Tour Đà Nẵng City - Những Cây Cầu",
+    "new_name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+    "old_slug": "tour-real-variant-26",
+    "new_slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau"
+  },
+  {
+    "id": 27,
+    "old_name": "Tour Khám Phá Tour Đèo Hải Vân & Lăng Cô - Ô tô",
+    "new_name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+    "old_slug": "tour-real-variant-27",
+    "new_slug": "tour-kham-pha-deo-hai-van-lang-co-o-to"
+  },
+  {
+    "id": 28,
+    "old_name": "Tour Khám Phá Tour Đêm Phố Cổ Hội An & Ăn Tối",
+    "new_name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+    "old_slug": "tour-real-variant-28",
+    "new_slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi"
+  },
+  {
+    "id": 29,
+    "old_name": "Tour Khám Phá Tour Bà Nà Hills Đêm (Sun World Night)",
+    "new_name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+    "old_slug": "tour-real-variant-29",
+    "new_slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night"
+  },
+  {
+    "id": 30,
+    "old_name": "Tour Cao Cấp Tour VinWonders Nam Hội An Full Day",
+    "new_name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+    "old_slug": "tour-real-variant-30",
+    "new_slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day"
+  },
+  {
+    "id": 31,
+    "old_name": "Tour Tiết Kiệm Tour Suối Khoáng Nóng Thần Tài Relax",
+    "new_name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+    "old_slug": "tour-real-variant-31",
+    "new_slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax"
+  },
+  {
+    "id": 32,
+    "old_name": "Tour Khám Phá Tour Trekking Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-32",
+    "new_slug": "tour-kham-pha-trekking-ban-dao-son-tra"
+  },
+  {
+    "id": 33,
+    "old_name": "Tour Khám Phá Tour Khám Phá Bạch Mã National Park",
+    "new_name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+    "old_slug": "tour-real-variant-33",
+    "new_slug": "tour-kham-pha-kham-pha-bach-ma-national-park"
+  },
+  {
+    "id": 34,
+    "old_name": "Tour Khám Phá Street Food Tour Đà Nẵng bằng Xe Máy",
+    "new_name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+    "old_slug": "tour-real-variant-34",
+    "new_slug": "tour-kham-pha-street-food-da-nang-bang-xe-may"
+  },
+  {
+    "id": 35,
+    "old_name": "Tour Cao Cấp Tour Làm Nông Dân Làng Rau Trà Quế",
+    "new_name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+    "old_slug": "tour-real-variant-35",
+    "new_slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que"
+  },
+  {
+    "id": 36,
+    "old_name": "Tour Tiết Kiệm Tour Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "new_name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "old_slug": "tour-real-variant-36",
+    "new_slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua"
+  },
+  {
+    "id": 37,
+    "old_name": "Tour Khám Phá Tour Đầm Phá Tam Giang & Sunset",
+    "new_name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+    "old_slug": "tour-real-variant-37",
+    "new_slug": "tour-kham-pha-dam-pha-tam-giang-sunset"
+  },
+  {
+    "id": 38,
+    "old_name": "Tour Khám Phá Tour Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "new_name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "old_slug": "tour-real-variant-38",
+    "new_slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho"
+  },
+  {
+    "id": 39,
+    "old_name": "Tour Khám Phá Tour Snorkeling Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-39",
+    "new_slug": "tour-kham-pha-snorkeling-ban-dao-son-tra"
+  },
+  {
+    "id": 40,
+    "old_name": "Tour Cao Cấp Tour Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "new_name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "old_slug": "tour-real-variant-40",
+    "new_slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua"
+  },
+  {
+    "id": 41,
+    "old_name": "Tour Tiết Kiệm Tour Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "new_name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "old_slug": "tour-real-variant-41",
+    "new_slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau-goi-41"
+  },
+  {
+    "id": 42,
+    "old_name": "Tour Khám Phá Tour Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "new_name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "old_slug": "tour-real-variant-42",
+    "new_slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra-goi-42"
+  },
+  {
+    "id": 43,
+    "old_name": "Tour Khám Phá Tour Cù Lao Chàm Lặn Ngắm San Hô",
+    "new_name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+    "old_slug": "tour-real-variant-43",
+    "new_slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho-goi-43"
+  },
+  {
+    "id": 44,
+    "old_name": "Tour Khám Phá Tour Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "new_name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "old_slug": "tour-real-variant-44",
+    "new_slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang-goi-44"
+  },
+  {
+    "id": 45,
+    "old_name": "Tour Cao Cấp Tour Thánh Địa Mỹ Sơn nửa ngày",
+    "new_name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+    "old_slug": "tour-real-variant-45",
+    "new_slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay-goi-45"
+  },
+  {
+    "id": 46,
+    "old_name": "Tour Tiết Kiệm Tour Đà Nẵng City - Những Cây Cầu",
+    "new_name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+    "old_slug": "tour-real-variant-46",
+    "new_slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau-goi-46"
+  },
+  {
+    "id": 47,
+    "old_name": "Tour Khám Phá Tour Đèo Hải Vân & Lăng Cô - Ô tô",
+    "new_name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+    "old_slug": "tour-real-variant-47",
+    "new_slug": "tour-kham-pha-deo-hai-van-lang-co-o-to-goi-47"
+  },
+  {
+    "id": 48,
+    "old_name": "Tour Khám Phá Tour Đêm Phố Cổ Hội An & Ăn Tối",
+    "new_name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+    "old_slug": "tour-real-variant-48",
+    "new_slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi-goi-48"
+  },
+  {
+    "id": 49,
+    "old_name": "Tour Khám Phá Tour Bà Nà Hills Đêm (Sun World Night)",
+    "new_name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+    "old_slug": "tour-real-variant-49",
+    "new_slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night-goi-49"
+  },
+  {
+    "id": 50,
+    "old_name": "Tour Cao Cấp Tour VinWonders Nam Hội An Full Day",
+    "new_name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+    "old_slug": "tour-real-variant-50",
+    "new_slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day-goi-50"
+  },
+  {
+    "id": 51,
+    "old_name": "Tour Tiết Kiệm Tour Suối Khoáng Nóng Thần Tài Relax",
+    "new_name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+    "old_slug": "tour-real-variant-51",
+    "new_slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax-goi-51"
+  },
+  {
+    "id": 52,
+    "old_name": "Tour Khám Phá Tour Trekking Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-52",
+    "new_slug": "tour-kham-pha-trekking-ban-dao-son-tra-goi-52"
+  },
+  {
+    "id": 53,
+    "old_name": "Tour Khám Phá Tour Khám Phá Bạch Mã National Park",
+    "new_name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+    "old_slug": "tour-real-variant-53",
+    "new_slug": "tour-kham-pha-kham-pha-bach-ma-national-park-goi-53"
+  },
+  {
+    "id": 54,
+    "old_name": "Tour Khám Phá Street Food Tour Đà Nẵng bằng Xe Máy",
+    "new_name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+    "old_slug": "tour-real-variant-54",
+    "new_slug": "tour-kham-pha-street-food-da-nang-bang-xe-may-goi-54"
+  },
+  {
+    "id": 55,
+    "old_name": "Tour Cao Cấp Tour Làm Nông Dân Làng Rau Trà Quế",
+    "new_name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+    "old_slug": "tour-real-variant-55",
+    "new_slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que-goi-55"
+  },
+  {
+    "id": 56,
+    "old_name": "Tour Tiết Kiệm Tour Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "new_name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "old_slug": "tour-real-variant-56",
+    "new_slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua-goi-56"
+  },
+  {
+    "id": 57,
+    "old_name": "Tour Khám Phá Tour Đầm Phá Tam Giang & Sunset",
+    "new_name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+    "old_slug": "tour-real-variant-57",
+    "new_slug": "tour-kham-pha-dam-pha-tam-giang-sunset-goi-57"
+  },
+  {
+    "id": 58,
+    "old_name": "Tour Khám Phá Tour Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "new_name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "old_slug": "tour-real-variant-58",
+    "new_slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho-goi-58"
+  },
+  {
+    "id": 59,
+    "old_name": "Tour Khám Phá Tour Snorkeling Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-59",
+    "new_slug": "tour-kham-pha-snorkeling-ban-dao-son-tra-goi-59"
+  },
+  {
+    "id": 60,
+    "old_name": "Tour Cao Cấp Tour Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "new_name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "old_slug": "tour-real-variant-60",
+    "new_slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua-goi-60"
+  },
+  {
+    "id": 61,
+    "old_name": "Tour Tiết Kiệm Tour Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "new_name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "old_slug": "tour-real-variant-61",
+    "new_slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau-goi-61"
+  },
+  {
+    "id": 62,
+    "old_name": "Tour Khám Phá Tour Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "new_name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "old_slug": "tour-real-variant-62",
+    "new_slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra-goi-62"
+  },
+  {
+    "id": 63,
+    "old_name": "Tour Khám Phá Tour Cù Lao Chàm Lặn Ngắm San Hô",
+    "new_name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+    "old_slug": "tour-real-variant-63",
+    "new_slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho-goi-63"
+  },
+  {
+    "id": 64,
+    "old_name": "Tour Khám Phá Tour Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "new_name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "old_slug": "tour-real-variant-64",
+    "new_slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang-goi-64"
+  },
+  {
+    "id": 65,
+    "old_name": "Tour Cao Cấp Tour Thánh Địa Mỹ Sơn nửa ngày",
+    "new_name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+    "old_slug": "tour-real-variant-65",
+    "new_slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay-goi-65"
+  },
+  {
+    "id": 66,
+    "old_name": "Tour Tiết Kiệm Tour Đà Nẵng City - Những Cây Cầu",
+    "new_name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+    "old_slug": "tour-real-variant-66",
+    "new_slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau-goi-66"
+  },
+  {
+    "id": 67,
+    "old_name": "Tour Khám Phá Tour Đèo Hải Vân & Lăng Cô - Ô tô",
+    "new_name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+    "old_slug": "tour-real-variant-67",
+    "new_slug": "tour-kham-pha-deo-hai-van-lang-co-o-to-goi-67"
+  },
+  {
+    "id": 68,
+    "old_name": "Tour Khám Phá Tour Đêm Phố Cổ Hội An & Ăn Tối",
+    "new_name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+    "old_slug": "tour-real-variant-68",
+    "new_slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi-goi-68"
+  },
+  {
+    "id": 69,
+    "old_name": "Tour Khám Phá Tour Bà Nà Hills Đêm (Sun World Night)",
+    "new_name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+    "old_slug": "tour-real-variant-69",
+    "new_slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night-goi-69"
+  },
+  {
+    "id": 70,
+    "old_name": "Tour Cao Cấp Tour VinWonders Nam Hội An Full Day",
+    "new_name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+    "old_slug": "tour-real-variant-70",
+    "new_slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day-goi-70"
+  },
+  {
+    "id": 71,
+    "old_name": "Tour Tiết Kiệm Tour Suối Khoáng Nóng Thần Tài Relax",
+    "new_name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+    "old_slug": "tour-real-variant-71",
+    "new_slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax-goi-71"
+  },
+  {
+    "id": 72,
+    "old_name": "Tour Khám Phá Tour Trekking Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-72",
+    "new_slug": "tour-kham-pha-trekking-ban-dao-son-tra-goi-72"
+  },
+  {
+    "id": 73,
+    "old_name": "Tour Khám Phá Tour Khám Phá Bạch Mã National Park",
+    "new_name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+    "old_slug": "tour-real-variant-73",
+    "new_slug": "tour-kham-pha-kham-pha-bach-ma-national-park-goi-73"
+  },
+  {
+    "id": 74,
+    "old_name": "Tour Khám Phá Street Food Tour Đà Nẵng bằng Xe Máy",
+    "new_name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+    "old_slug": "tour-real-variant-74",
+    "new_slug": "tour-kham-pha-street-food-da-nang-bang-xe-may-goi-74"
+  },
+  {
+    "id": 75,
+    "old_name": "Tour Cao Cấp Tour Làm Nông Dân Làng Rau Trà Quế",
+    "new_name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+    "old_slug": "tour-real-variant-75",
+    "new_slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que-goi-75"
+  },
+  {
+    "id": 76,
+    "old_name": "Tour Tiết Kiệm Tour Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "new_name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "old_slug": "tour-real-variant-76",
+    "new_slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua-goi-76"
+  },
+  {
+    "id": 77,
+    "old_name": "Tour Khám Phá Tour Đầm Phá Tam Giang & Sunset",
+    "new_name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+    "old_slug": "tour-real-variant-77",
+    "new_slug": "tour-kham-pha-dam-pha-tam-giang-sunset-goi-77"
+  },
+  {
+    "id": 78,
+    "old_name": "Tour Khám Phá Tour Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "new_name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "old_slug": "tour-real-variant-78",
+    "new_slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho-goi-78"
+  },
+  {
+    "id": 79,
+    "old_name": "Tour Khám Phá Tour Snorkeling Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-79",
+    "new_slug": "tour-kham-pha-snorkeling-ban-dao-son-tra-goi-79"
+  },
+  {
+    "id": 80,
+    "old_name": "Tour Cao Cấp Tour Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "new_name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "old_slug": "tour-real-variant-80",
+    "new_slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua-goi-80"
+  },
+  {
+    "id": 81,
+    "old_name": "Tour Tiết Kiệm Tour Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "new_name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+    "old_slug": "tour-real-variant-81",
+    "new_slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau-goi-81"
+  },
+  {
+    "id": 82,
+    "old_name": "Tour Khám Phá Tour Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "new_name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+    "old_slug": "tour-real-variant-82",
+    "new_slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra-goi-82"
+  },
+  {
+    "id": 83,
+    "old_name": "Tour Khám Phá Tour Cù Lao Chàm Lặn Ngắm San Hô",
+    "new_name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+    "old_slug": "tour-real-variant-83",
+    "new_slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho-goi-83"
+  },
+  {
+    "id": 84,
+    "old_name": "Tour Khám Phá Tour Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "new_name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+    "old_slug": "tour-real-variant-84",
+    "new_slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang-goi-84"
+  },
+  {
+    "id": 85,
+    "old_name": "Tour Cao Cấp Tour Thánh Địa Mỹ Sơn nửa ngày",
+    "new_name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+    "old_slug": "tour-real-variant-85",
+    "new_slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay-goi-85"
+  },
+  {
+    "id": 86,
+    "old_name": "Tour Tiết Kiệm Tour Đà Nẵng City - Những Cây Cầu",
+    "new_name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+    "old_slug": "tour-real-variant-86",
+    "new_slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau-goi-86"
+  },
+  {
+    "id": 87,
+    "old_name": "Tour Khám Phá Tour Đèo Hải Vân & Lăng Cô - Ô tô",
+    "new_name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+    "old_slug": "tour-real-variant-87",
+    "new_slug": "tour-kham-pha-deo-hai-van-lang-co-o-to-goi-87"
+  },
+  {
+    "id": 88,
+    "old_name": "Tour Khám Phá Tour Đêm Phố Cổ Hội An & Ăn Tối",
+    "new_name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+    "old_slug": "tour-real-variant-88",
+    "new_slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi-goi-88"
+  },
+  {
+    "id": 89,
+    "old_name": "Tour Khám Phá Tour Bà Nà Hills Đêm (Sun World Night)",
+    "new_name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+    "old_slug": "tour-real-variant-89",
+    "new_slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night-goi-89"
+  },
+  {
+    "id": 90,
+    "old_name": "Tour Cao Cấp Tour VinWonders Nam Hội An Full Day",
+    "new_name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+    "old_slug": "tour-real-variant-90",
+    "new_slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day-goi-90"
+  },
+  {
+    "id": 91,
+    "old_name": "Tour Tiết Kiệm Tour Suối Khoáng Nóng Thần Tài Relax",
+    "new_name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+    "old_slug": "tour-real-variant-91",
+    "new_slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax-goi-91"
+  },
+  {
+    "id": 92,
+    "old_name": "Tour Khám Phá Tour Trekking Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-92",
+    "new_slug": "tour-kham-pha-trekking-ban-dao-son-tra-goi-92"
+  },
+  {
+    "id": 93,
+    "old_name": "Tour Khám Phá Tour Khám Phá Bạch Mã National Park",
+    "new_name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+    "old_slug": "tour-real-variant-93",
+    "new_slug": "tour-kham-pha-kham-pha-bach-ma-national-park-goi-93"
+  },
+  {
+    "id": 94,
+    "old_name": "Tour Khám Phá Street Food Tour Đà Nẵng bằng Xe Máy",
+    "new_name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+    "old_slug": "tour-real-variant-94",
+    "new_slug": "tour-kham-pha-street-food-da-nang-bang-xe-may-goi-94"
+  },
+  {
+    "id": 95,
+    "old_name": "Tour Cao Cấp Tour Làm Nông Dân Làng Rau Trà Quế",
+    "new_name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+    "old_slug": "tour-real-variant-95",
+    "new_slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que-goi-95"
+  },
+  {
+    "id": 96,
+    "old_name": "Tour Tiết Kiệm Tour Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "new_name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+    "old_slug": "tour-real-variant-96",
+    "new_slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua-goi-96"
+  },
+  {
+    "id": 97,
+    "old_name": "Tour Khám Phá Tour Đầm Phá Tam Giang & Sunset",
+    "new_name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+    "old_slug": "tour-real-variant-97",
+    "new_slug": "tour-kham-pha-dam-pha-tam-giang-sunset-goi-97"
+  },
+  {
+    "id": 98,
+    "old_name": "Tour Khám Phá Tour Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "new_name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+    "old_slug": "tour-real-variant-98",
+    "new_slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho-goi-98"
+  },
+  {
+    "id": 99,
+    "old_name": "Tour Khám Phá Tour Snorkeling Bán Đảo Sơn Trà",
+    "new_name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+    "old_slug": "tour-real-variant-99",
+    "new_slug": "tour-kham-pha-snorkeling-ban-dao-son-tra-goi-99"
+  },
+  {
+    "id": 100,
+    "old_name": "Tour Cao Cấp Tour Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "new_name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+    "old_slug": "tour-real-variant-100",
+    "new_slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua-goi-100"
+  }
+]

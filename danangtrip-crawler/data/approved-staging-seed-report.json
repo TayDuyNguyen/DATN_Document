@@ -1,0 +1,7 @@
+{
+  "output": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\20_approved_tour_staging_seed.sql",
+  "locations": 4,
+  "tours": 34,
+  "tourLocations": 57,
+  "tourSchedules": 136
+}

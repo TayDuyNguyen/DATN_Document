@@ -1,0 +1,182 @@
+[
+  {
+    "approve_for_seed": true,
+    "title": "Da Nang",
+    "slug": "da-nang",
+    "category_hint": "cam-nang-da-nang",
+    "category_id": 24,
+    "source_name": "vietnam-travel-da-nang",
+    "source_url": "https://vietnam.travel/places-to-go/central-vietnam/da-nang",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Hoi An",
+    "slug": "hoi-an",
+    "category_hint": "cam-nang-hoi-an",
+    "category_id": 22,
+    "source_name": "vietnam-travel-hoi-an",
+    "source_url": "https://vietnam.travel/places-to-go/central-vietnam/hoi-an",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Hue",
+    "slug": "hue",
+    "category_hint": "cam-nang-hue",
+    "category_id": 23,
+    "source_name": "vietnam-travel-hue",
+    "source_url": "https://vietnam.travel/places-to-go/central-vietnam/hue",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "3 perfect days in Danang",
+    "slug": "3-perfect-days-in-danang",
+    "category_hint": "lich-trinh",
+    "category_id": 5,
+    "source_name": "vietnam-travel-da-nang-itinerary",
+    "source_url": "https://vietnam.travel/things-to-do/da-nang-itinerary",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Must-visit places in Da Nang",
+    "slug": "must-visit-places-in-da-nang",
+    "category_hint": "cam-nang-da-nang",
+    "category_id": 24,
+    "source_name": "vietnam-travel-da-nang-must-visit",
+    "source_url": "https://vietnam.travel/things-to-do/must-visit-places-in-da-nang",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "How to explore and enjoy Ba Na Hills",
+    "slug": "how-to-explore-and-enjoy-ba-na-hills",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "vietnam-travel-ba-na-hills",
+    "source_url": "https://vietnam.travel/things-to-do/explore-ba-na-hills",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "A walk around Marble Mountains",
+    "slug": "a-walk-around-marble-mountains",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "vietnam-travel-marble-mountains",
+    "source_url": "https://vietnam.travel/things-to-do/around-marble-mountains",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "The mystic My Son",
+    "slug": "the-mystic-my-son",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "vietnam-travel-my-son",
+    "source_url": "https://vietnam.travel/things-to-do/mystic-my-son",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Da Nang's special pork rolls",
+    "slug": "da-nang-s-special-pork-rolls",
+    "category_hint": "am-thuc",
+    "category_id": 2,
+    "source_name": "vietnam-travel-da-nang-food",
+    "source_url": "https://vietnam.travel/things-to-do/da-nangs-special-pork-rolls",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Hai Van Pass",
+    "slug": "hai-van-pass",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "danangfantasticity-hai-van-pass",
+    "source_url": "https://danangfantasticity.com/hai-van-pass",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "The Son Tra Peninsula",
+    "slug": "the-son-tra-peninsula",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "danangfantasticity-son-tra-peninsula",
+    "source_url": "https://danangfantasticity.com/the-son-tra-peninsula",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Da Nang Beaches",
+    "slug": "da-nang-beaches",
+    "category_hint": "bien",
+    "category_id": 64,
+    "source_name": "danangfantasticity-da-nang-beaches",
+    "source_url": "https://danangfantasticity.com/en/see-and-do/da-nang-beaches-2",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "A traveller's guide to Vietnam's airports",
+    "slug": "a-traveller-s-guide-to-vietnam-s-airports",
+    "category_hint": "di-chuyen",
+    "category_id": 30,
+    "source_name": "vietnam-travel-airports",
+    "source_url": "https://vietnam.travel/node/887",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Transport within Vietnam",
+    "slug": "transport-within-vietnam",
+    "category_hint": "di-chuyen",
+    "category_id": 30,
+    "source_name": "vietnam-travel-transport-within-vietnam",
+    "source_url": "https://vietnam.travel/plan-your-trip/transport-within-vietnam",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Plan your trip",
+    "slug": "plan-your-trip",
+    "category_hint": "kinh-nghiem",
+    "category_id": 1,
+    "source_name": "vietnam-travel-plan-your-trip",
+    "source_url": "https://vietnam.travel/plan-your-trip",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Motorbiking Hoi An to Hue over Hai Van Pass",
+    "slug": "motorbiking-hoi-an-to-hue-over-hai-van-pass",
+    "category_hint": "di-chuyen",
+    "category_id": 30,
+    "source_name": "vietnam-travel-motorbike-hoi-an-hue",
+    "source_url": "https://vietnam.travel/node/705",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "Must-do Da Nang: An insider list",
+    "slug": "must-do-da-nang-an-insider-list",
+    "category_hint": "kinh-nghiem",
+    "category_id": 1,
+    "source_name": "vietnam-travel-da-nang-insider-list",
+    "source_url": "https://vietnam.travel/things-to-do/must-do-da-nang-an-insider-list",
+    "review_flags": []
+  },
+  {
+    "approve_for_seed": true,
+    "title": "4 Reasons Why Da Nang is Vietnam’s Most Livable City",
+    "slug": "4-reasons-why-da-nang-is-vietnam-s-most-livable-city",
+    "category_hint": "kinh-nghiem",
+    "category_id": 1,
+    "source_name": "vietnam-travel-da-nang-livable-city",
+    "source_url": "https://vietnam.travel/things-to-do/4-reasons-da-nang-is-vietnam-most-livable-city",
+    "review_flags": []
+  }
+]

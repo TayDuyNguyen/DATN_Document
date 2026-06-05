@@ -58,6 +58,27 @@ raw -> normalized -> pending_review -> approved -> published
 
 This keeps bad, duplicate, copyrighted, or incomplete data away from the public website.
 
+## Current Mode: Database/Text Only
+
+Current collection target is DB-ready text and structured records only.
+
+Allowed outputs:
+
+- `crawl_items.raw_payload`
+- `crawl_items.normalized_payload`
+- SQL seed files for staging tables
+- SQL seed files for text/config tables after review, such as `landing_pages`, `blog_posts`, FAQ/content blocks, tags or categories
+
+Do not generate images and do not run image enrichment in this mode.
+
+Disabled / skip:
+
+- `npm.cmd run enrich:pexels`
+- `scripts/enrich-pexels-images.mjs`
+- Any workflow that writes new image candidates, generated images, thumbnails or OG images
+
+Image fields such as `hero_image`, `og_image`, `thumbnail` and `images` may remain empty or use existing approved URLs only. The crawler must not create image assets.
+
 ## Recommended Source Strategy
 
 ### 1. Google Places API
@@ -85,6 +106,8 @@ Best first use cases:
 Use for legal image candidates.
 
 Do not copy images from Tripadvisor, Booking, Klook, Traveloka, random blogs, or Google Images unless license/permission is clear.
+
+Current instruction: skip this step. The active crawl scope is database/text collection only.
 
 ### 3. Crawl4AI / Firecrawl / Crawlee
 
@@ -208,7 +231,7 @@ restaurant: 483
 hotel: 241
 ```
 
-### Step 5: Implement image enrichment
+### Step 5: Image enrichment - currently disabled
 
 Pexels enrichment is available after `PEXELS_API_KEY` is configured in local `.env`:
 

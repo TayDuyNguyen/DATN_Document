@@ -1,0 +1,232 @@
+[
+  {
+    "name": "Bach Ma National Park",
+    "slug": "bach-ma-national-park",
+    "source_type": "nominatim",
+    "source_references": [
+      "OpenStreetMap contributors",
+      "Nominatim"
+    ],
+    "reference_urls": [],
+    "source_payload": {
+      "osm_type": "node",
+      "osm_id": 4171968896,
+      "class": null,
+      "type": "attraction",
+      "importance": 2.905088883797997e-05,
+      "display_name": "Bach Ma National Park, Bạch Mã, Khu 5, Phú Lộc Commune, Huế, 53000, Vietnam"
+    },
+    "address": "Bach Ma National Park, Bạch Mã, Khu 5, Phú Lộc Commune, Huế, 53000, Vietnam",
+    "district": "Huế",
+    "ward": "Khu 5",
+    "latitude": 16.2157265,
+    "longitude": 107.8533926,
+    "short_description": "Bach Ma National Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed.",
+    "description": "Bach Ma National Park duoc thu thap tu OpenStreetMap/Nominatim voi dia chi tham chieu: Bach Ma National Park, Bạch Mã, Khu 5, Phú Lộc Commune, Huế, 53000, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database.",
+    "status": "pending_review",
+    "is_featured": false,
+    "category_slug": "dia-diem-tham-quan",
+    "review_flags": [
+      "low_nominatim_importance"
+    ],
+    "crawl_attempts": [
+      {
+        "query": "Bach Ma National Park, Thua Thien Hue, Vietnam",
+        "resultCount": 1
+      }
+    ],
+    "crawled_at": "2026-06-03T04:38:11.191164+00:00"
+  },
+  {
+    "name": "Chan May Port",
+    "slug": "chan-may-port",
+    "source_type": "nominatim",
+    "source_references": [
+      "OpenStreetMap contributors",
+      "Nominatim"
+    ],
+    "reference_urls": [],
+    "source_payload": {
+      "osm_type": "way",
+      "osm_id": 630392444,
+      "class": null,
+      "type": "industrial",
+      "importance": 0.08004000076295106,
+      "display_name": "Chan May Port, Chân Mây - Lăng Cô Commune, Huế, Vietnam"
+    },
+    "address": "Chan May Port, Chân Mây - Lăng Cô Commune, Huế, Vietnam",
+    "district": "Huế",
+    "ward": "",
+    "latitude": 16.3240874,
+    "longitude": 108.0249266,
+    "short_description": "Chan May Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed.",
+    "description": "Chan May Port duoc thu thap tu OpenStreetMap/Nominatim voi dia chi tham chieu: Chan May Port, Chân Mây - Lăng Cô Commune, Huế, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database.",
+    "status": "pending_review",
+    "is_featured": false,
+    "category_slug": "dia-diem-tham-quan",
+    "review_flags": [
+      "low_nominatim_importance"
+    ],
+    "crawl_attempts": [
+      {
+        "query": "Chan May Port, Thua Thien Hue, Vietnam",
+        "resultCount": 2
+      }
+    ],
+    "crawled_at": "2026-06-03T04:38:13.296751+00:00"
+  },
+  {
+    "name": "Hoa Phu Thanh",
+    "slug": "hoa-phu-thanh",
+    "source_type": "curated_fallback",
+    "source_references": [
+      "Configured fallback context"
+    ],
+    "reference_urls": [
+      "https://hoiandaytrip.com/hoa-phu-thanh-tourist-area/",
+      "https://indanang.vn/en/listing/hoa-phu-thanh-tourist-area/"
+    ],
+    "source_payload": null,
+    "address": "Hoa Phu, Hoa Vang, Da Nang, Vietnam",
+    "district": "Hoa Vang",
+    "ward": "Hoa Phu",
+    "latitude": 15.9998,
+    "longitude": 107.9834,
+    "short_description": "Hoa Phu Thanh la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed.",
+    "description": "Hoa Phu Thanh duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database.",
+    "status": "pending_review",
+    "is_featured": false,
+    "category_slug": "dia-diem-tham-quan",
+    "review_flags": [
+      "used_curated_fallback",
+      "manual_coordinate_review_required"
+    ],
+    "crawl_attempts": [
+      {
+        "query": "Hoa Phu Thanh tourist area, Da Nang, Vietnam",
+        "resultCount": 0
+      },
+      {
+        "query": "Khu du lịch Hòa Phú Thành, Hòa Vang, Đà Nẵng",
+        "resultCount": 0
+      }
+    ],
+    "crawled_at": "2026-06-03T04:38:16.300647+00:00"
+  },
+  {
+    "name": "Hue Imperial City",
+    "slug": "hue-imperial-city",
+    "source_type": "nominatim",
+    "source_references": [
+      "OpenStreetMap contributors",
+      "Nominatim"
+    ],
+    "reference_urls": [],
+    "source_payload": {
+      "osm_type": "node",
+      "osm_id": 5182931945,
+      "class": null,
+      "type": "museum",
+      "importance": 0.42742363444822296,
+      "display_name": "Imperial Citadel, Road 2, Đông Ba, Phú Xuân Ward, Huế, 54000, Vietnam"
+    },
+    "address": "Imperial Citadel, Road 2, Đông Ba, Phú Xuân Ward, Huế, 54000, Vietnam",
+    "district": "Phú Xuân Ward",
+    "ward": "Đông Ba",
+    "latitude": 16.4689726,
+    "longitude": 107.5781266,
+    "short_description": "Hue Imperial City la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed.",
+    "description": "Hue Imperial City duoc thu thap tu OpenStreetMap/Nominatim voi dia chi tham chieu: Imperial Citadel, Road 2, Đông Ba, Phú Xuân Ward, Huế, 54000, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database.",
+    "status": "pending_review",
+    "is_featured": false,
+    "category_slug": "dia-diem-tham-quan",
+    "review_flags": [],
+    "crawl_attempts": [
+      {
+        "query": "Hue Imperial City, Hue, Vietnam",
+        "resultCount": 0
+      },
+      {
+        "query": "Đại Nội Huế, Thành phố Huế, Việt Nam",
+        "resultCount": 1
+      }
+    ],
+    "crawled_at": "2026-06-03T04:38:19.330127+00:00"
+  },
+  {
+    "name": "Nui Than Tai Hot Spring Park",
+    "slug": "nui-than-tai-hot-spring-park",
+    "source_type": "curated_fallback",
+    "source_references": [
+      "Configured fallback context"
+    ],
+    "reference_urls": [
+      "https://vietnamtourism.gov.vn/en/post/10543",
+      "https://www.originvietnam.com/destinations/nui-than-tai-hot-spring-park/"
+    ],
+    "source_payload": null,
+    "address": "Hoa Phu, Hoa Vang, Da Nang, Vietnam",
+    "district": "Hoa Vang",
+    "ward": "Hoa Phu",
+    "latitude": 15.9946,
+    "longitude": 107.9872,
+    "short_description": "Nui Than Tai Hot Spring Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed.",
+    "description": "Nui Than Tai Hot Spring Park duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database.",
+    "status": "pending_review",
+    "is_featured": false,
+    "category_slug": "dia-diem-tham-quan",
+    "review_flags": [
+      "used_curated_fallback",
+      "manual_coordinate_review_required"
+    ],
+    "crawl_attempts": [
+      {
+        "query": "Nui Than Tai Hot Spring Park, Da Nang, Vietnam",
+        "resultCount": 0
+      },
+      {
+        "query": "Công viên suối khoáng nóng Núi Thần Tài, Đà Nẵng",
+        "resultCount": 0
+      }
+    ],
+    "crawled_at": "2026-06-03T04:38:21.799866+00:00"
+  },
+  {
+    "name": "Tien Sa Port",
+    "slug": "tien-sa-port",
+    "source_type": "nominatim",
+    "source_references": [
+      "OpenStreetMap contributors",
+      "Nominatim"
+    ],
+    "reference_urls": [],
+    "source_payload": {
+      "osm_type": "way",
+      "osm_id": 630377254,
+      "class": null,
+      "type": "industrial",
+      "importance": 0.08006461966887919,
+      "display_name": "Tien Sa Port, Sơn Trà Ward, Đà Nẵng, Vietnam"
+    },
+    "address": "Tien Sa Port, Sơn Trà Ward, Đà Nẵng, Vietnam",
+    "district": "Đà Nẵng",
+    "ward": "Sơn Trà Ward",
+    "latitude": 16.119709,
+    "longitude": 108.2171737,
+    "short_description": "Tien Sa Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed.",
+    "description": "Tien Sa Port duoc thu thap tu OpenStreetMap/Nominatim voi dia chi tham chieu: Tien Sa Port, Sơn Trà Ward, Đà Nẵng, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database.",
+    "status": "pending_review",
+    "is_featured": false,
+    "category_slug": "dia-diem-tham-quan",
+    "review_flags": [
+      "low_nominatim_importance"
+    ],
+    "crawl_attempts": [
+      {
+        "query": "Tien Sa Port, Da Nang, Vietnam",
+        "resultCount": 1
+      }
+    ],
+    "crawled_at": "2026-06-03T04:38:23.803750+00:00"
+  }
+]

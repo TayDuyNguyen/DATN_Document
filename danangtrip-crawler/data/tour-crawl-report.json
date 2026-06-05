@@ -1,0 +1,87 @@
+{
+  "generatedAt": "2026-06-03T01:49:45.459518+00:00",
+  "sources": [
+    {
+      "name": "dacotours",
+      "url": "https://dacotours.com/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 35,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:41:28.592254+00:00",
+      "finishedAt": "2026-06-03T01:43:08.451861+00:00"
+    },
+    {
+      "name": "hoiandaytrip",
+      "url": "https://hoiandaytrip.com/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 35,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:43:08.451861+00:00",
+      "finishedAt": "2026-06-03T01:44:45.291642+00:00"
+    },
+    {
+      "name": "dananglocaltours",
+      "url": "https://dananglocaltours.com/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 32,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:44:45.291642+00:00",
+      "finishedAt": "2026-06-03T01:45:19.046257+00:00"
+    },
+    {
+      "name": "danangtourscity",
+      "url": "https://danangtourscity.com/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 35,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:45:19.046257+00:00",
+      "finishedAt": "2026-06-03T01:46:06.039754+00:00"
+    },
+    {
+      "name": "venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 35,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:46:06.039754+00:00",
+      "finishedAt": "2026-06-03T01:48:01.563926+00:00"
+    },
+    {
+      "name": "vmtravel",
+      "url": "https://vmtravel.com/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 35,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:48:01.563926+00:00",
+      "finishedAt": "2026-06-03T01:48:44.815537+00:00"
+    },
+    {
+      "name": "vietnamadventuretour",
+      "url": "https://vietnamadventuretour.com.vn/tour-category/da-nang-tours/",
+      "status": "completed",
+      "candidateUrls": 35,
+      "collected": 35,
+      "failures": 0,
+      "startedAt": "2026-06-03T01:48:44.815537+00:00",
+      "finishedAt": "2026-06-03T01:49:45.432987+00:00"
+    }
+  ],
+  "rawCount": 242,
+  "normalizedCount": 242,
+  "outputs": {
+    "raw": "data/tour-crawl-raw.json",
+    "normalized": "data/tour-crawl-normalized.json"
+  },
+  "policy": {
+    "mode": "public_facts_only",
+    "longDescriptions": "not_copied",
+    "sourceUrlRequired": true,
+    "images": "candidate_urls_only"
+  }
+}

@@ -1,0 +1,13 @@
+
+   WARN  Unable to respect the `PHP_CLI_SERVER_WORKERS` environment variable without the `--no-reload` flag. Only creating a single server.  
+
+  PHP Warning:  PHP Startup: Unable to load dynamic library 'imagick' (tried: ext\imagick (The specified module could not be found), ext\php_imagick.dll (The specified module could not be found)) in Unknown on line 0
+
+   INFO  Server running on [http://127.0.0.1:8010].  
+
+  Press Ctrl+C to stop the server
+
+  2026-06-05 11:25:24 /api/v1/home ......................................................................... ~ 7 giây
+  2026-06-05 11:25:32 /api/v1/locations .................................................................... ~ 3 giây
+  2026-06-05 11:25:35 /api/v1/tours ........................................................................ ~ 1 giây
+  2026-06-05 11:25:36 /api/v1/blog ......................................................................... ~ 2 giây

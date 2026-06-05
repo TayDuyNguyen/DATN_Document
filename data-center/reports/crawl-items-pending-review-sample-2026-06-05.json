@@ -1,0 +1,264 @@
+[
+  {
+    "id": 4,
+    "entity_type": "location",
+    "np_keys": [
+      "name",
+      "address",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "slugCandidate",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "rp_keys": [
+      "name",
+      "osmId",
+      "address",
+      "osmTags",
+      "osmType",
+      "district",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "normalized": {
+      "name": "Thac Toc Tien",
+      "address": "Da Nang",
+      "latitude": 16.0244662,
+      "imageUrls": [],
+      "longitude": 108.0262303,
+      "categories": [
+        "viewpoint"
+      ],
+      "description": "Thac Toc Tien la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip.",
+      "categorySlug": "check-in-noi-tieng",
+      "slugCandidate": "thac-toc-tien",
+      "shortDescription": "Thac Toc Tien duoc thu thap tu OpenStreetMap voi nhom du lieu viewpoint. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish.",
+      "sourceReferences": [
+        "OpenStreetMap contributors",
+        "Overpass API"
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "entity_type": "location",
+    "np_keys": [
+      "name",
+      "address",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "slugCandidate",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "rp_keys": [
+      "name",
+      "osmId",
+      "address",
+      "osmTags",
+      "osmType",
+      "district",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "normalized": {
+      "name": "Non Nuoc Beach",
+      "address": "Da Nang",
+      "latitude": 16.0205336,
+      "imageUrls": [],
+      "longitude": 108.261744,
+      "categories": [
+        "attraction",
+        "beach"
+      ],
+      "description": "Non Nuoc Beach la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip.",
+      "categorySlug": "check-in-noi-tieng",
+      "slugCandidate": "non-nuoc-beach",
+      "shortDescription": "Non Nuoc Beach duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish.",
+      "sourceReferences": [
+        "OpenStreetMap contributors",
+        "Overpass API"
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "entity_type": "location",
+    "np_keys": [
+      "name",
+      "address",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "slugCandidate",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "rp_keys": [
+      "name",
+      "osmId",
+      "address",
+      "osmTags",
+      "osmType",
+      "district",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "normalized": {
+      "name": "Danang and sea viewpoint",
+      "address": "Da Nang",
+      "latitude": 16.184926,
+      "imageUrls": [],
+      "longitude": 108.1368673,
+      "categories": [
+        "viewpoint"
+      ],
+      "description": "Danang and sea viewpoint la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip.",
+      "categorySlug": "check-in-noi-tieng",
+      "slugCandidate": "danang-and-sea-viewpoint",
+      "shortDescription": "Danang and sea viewpoint duoc thu thap tu OpenStreetMap voi nhom du lieu viewpoint. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish.",
+      "sourceReferences": [
+        "OpenStreetMap contributors",
+        "Overpass API"
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "entity_type": "location",
+    "np_keys": [
+      "name",
+      "address",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "slugCandidate",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "rp_keys": [
+      "name",
+      "osmId",
+      "address",
+      "osmTags",
+      "osmType",
+      "district",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "normalized": {
+      "name": "Fishing Village and Fleet",
+      "address": "Da Nang",
+      "latitude": 16.1017543,
+      "imageUrls": [],
+      "longitude": 108.2589632,
+      "categories": [
+        "attraction"
+      ],
+      "description": "Fishing Village and Fleet la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip.",
+      "categorySlug": "check-in-noi-tieng",
+      "slugCandidate": "fishing-village-and-fleet",
+      "shortDescription": "Fishing Village and Fleet duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish.",
+      "sourceReferences": [
+        "OpenStreetMap contributors",
+        "Overpass API"
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "entity_type": "location",
+    "np_keys": [
+      "name",
+      "address",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "slugCandidate",
+      "duplicateReason",
+      "shortDescription",
+      "sourceReferences",
+      "duplicateProductionId",
+      "duplicateProductionTable"
+    ],
+    "rp_keys": [
+      "name",
+      "osmId",
+      "address",
+      "osmTags",
+      "osmType",
+      "district",
+      "latitude",
+      "imageUrls",
+      "longitude",
+      "categories",
+      "description",
+      "categorySlug",
+      "shortDescription",
+      "sourceReferences"
+    ],
+    "normalized": {
+      "name": "Love Bridge",
+      "address": "Da Nang",
+      "latitude": 16.0513135,
+      "imageUrls": [],
+      "longitude": 108.2309046,
+      "categories": [
+        "attraction"
+      ],
+      "description": "Love Bridge la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip.",
+      "categorySlug": "check-in-noi-tieng",
+      "slugCandidate": "love-bridge",
+      "duplicateReason": "near_coordinates_150m: Tran Thi Ly Bridge",
+      "shortDescription": "Love Bridge duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish.",
+      "sourceReferences": [
+        "OpenStreetMap contributors",
+        "Overpass API"
+      ],
+      "duplicateProductionId": 16,
+      "duplicateProductionTable": "locations"
+    }
+  }
+]

@@ -1,6 +1,6 @@
 Project danangtrip_api {
   database_type: "PostgreSQL"
-  Note: "DB duy nhat cua he thong. Source of truth: D:/DATN/danangtrip-api/database/migrations | Last reviewed: 2026-05-31"
+  Note: "DB duy nhat cua he thong. Source of truth: D:/DATN/danangtrip-api/database/migrations | Last reviewed: 2026-06-03"
 }
 
 Table users {
@@ -434,9 +434,11 @@ Table bookings {
     booked_at
     created_at
     user_id
+    (user_id, created_at) [name: 'bookings_user_created_at_idx']
+    (user_id, booked_at) [name: 'bookings_user_booked_at_idx']
   }
 
-  Note: 'Checks: amounts non-negative, payment_status in (pending,success,failed,refunded,unpaid,partially_paid). Composite index: bookings_status_booked_idx'
+  Note: 'Checks: amounts non-negative, payment_status in (pending,success,failed,refunded,unpaid,partially_paid). Composite indexes: bookings_status_booked_idx, bookings_user_created_at_idx, bookings_user_booked_at_idx'
 }
 
 Table booking_items {
@@ -520,9 +522,12 @@ Table favorites {
     location_id
     tour_id
     created_at
+    (user_id, created_at) [name: 'favorites_user_created_at_idx']
+    (user_id, location_id, created_at) [name: 'favorites_user_location_recent_idx']
+    (user_id, tour_id, created_at) [name: 'favorites_user_tour_recent_idx']
   }
 
-  Note: 'Unique partial indexes: favorites_user_location_unique, favorites_user_tour_unique. Check: num_nonnulls(location_id,tour_id)=1'
+  Note: 'Unique partial indexes: favorites_user_location_unique, favorites_user_tour_unique. Recent lookup partial indexes: favorites_user_location_recent_idx, favorites_user_tour_recent_idx. Check: num_nonnulls(location_id,tour_id)=1'
 }
 
 Table views {
@@ -540,9 +545,12 @@ Table views {
     tour_id
     session_id
     created_at
+    (user_id, created_at) [name: 'views_user_created_at_idx']
+    (user_id, location_id, created_at) [name: 'views_user_location_recent_idx']
+    (user_id, tour_id, created_at) [name: 'views_user_tour_recent_idx']
   }
 
-  Note: 'Check: num_nonnulls(location_id,tour_id)=1'
+  Note: 'Recent lookup partial indexes: views_user_location_recent_idx, views_user_tour_recent_idx. Check: num_nonnulls(location_id,tour_id)=1'
 }
 
 Table ratings {
@@ -566,6 +574,9 @@ Table ratings {
     created_at
     status
     (user_id, location_id) [unique, name: 'uq_user_location_rating']
+    (tour_id, status, created_at) [name: 'ratings_tour_status_created_at_idx']
+    (location_id, status, created_at) [name: 'ratings_location_status_created_idx']
+    (status, created_at) [name: 'ratings_status_created_at_index']
   }
 
   Note: 'Unique partial indexes: ratings_user_tour_unique, ratings_user_booking_unique. Checks: exactly_one_target, score 1..5, image_count>=0'
@@ -654,6 +665,31 @@ Table promotions {
   }
 
   Note: 'discount_type: percent|fixed. status: active|inactive|expired. Source: 2026_05_30_000002_create_promotions_table.php'
+}
+
+Table landing_pages {
+  id bigint [pk, increment]
+  slug varchar(100) [not null, unique]
+  title varchar(150) [not null]
+  page_type varchar(20) [not null]
+  intro text
+  hero_image varchar(255)
+  seo_title varchar(150)
+  seo_description text
+  og_image varchar(255)
+  filters json
+  content_blocks json
+  status varchar(20) [not null, default: 'draft']
+  created_at timestamp
+  updated_at timestamp
+
+  indexes {
+    slug
+    page_type
+    status
+  }
+
+  Note: 'page_type: destination|tour_line|promotion. status: draft|published. filters/content_blocks store text/config data for SEO landing pages. Image fields are URL references only; do not generate images in crawler. Source: 2026_06_02_000001_create_landing_pages_table.php'
 }
 
 Table cart_items {

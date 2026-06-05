@@ -1,0 +1,166 @@
+approve_for_seed,entity_type,external_id,name,category_slug,address,latitude,longitude,quality_score,quality_reasons,image_count,source_url
+True,location,osm-relation-8552348,Ngu Hanh Son,check-in-noi-tieng,Da Nang,16.0017096,108.2596132,101,weak_address,3,https://www.openstreetmap.org/relation/8552348
+True,location,osm-way-694831926,Cau Rong,check-in-noi-tieng,Da Nang,16.0611683,108.2278981,100,weak_address,3,https://www.openstreetmap.org/way/694831926
+True,location,osm-relation-19000664,Bai bien My Khe,check-in-noi-tieng,Da Nang,16.0756098,108.2547352,96,weak_address,3,https://www.openstreetmap.org/relation/19000664
+True,location,osm-way-683416736,Cau Vang,check-in-noi-tieng,Da Nang,15.9949242,107.9962304,96,weak_address,3,https://www.openstreetmap.org/way/683416736
+True,location,osm-node-1036552571,Deo Hai Van,check-in-noi-tieng,Da Nang,16.1874495,108.1307217,96,weak_address,3,https://www.openstreetmap.org/node/1036552571
+True,location,osm-node-11161070775,Dragon's Head (Fire Show),check-in-noi-tieng,Da Nang,16.0612476,108.2296554,96,weak_address,3,https://www.openstreetmap.org/node/11161070775
+True,location,osm-node-1623183649,Nui Son Tra,hang-dong-nui-non,Da Nang,16.1195909,108.2866498,96,weak_address,3,https://www.openstreetmap.org/node/1623183649
+True,location,osm-relation-16028838,Vinh Da Nang,hang-dong-nui-non,Da Nang,16.1371683,108.1828809,96,weak_address,3,https://www.openstreetmap.org/relation/16028838
+True,location,osm-node-12647208262,Bai Bien Son Tra,check-in-noi-tieng,Da Nang,16.099021,108.2549854,93,weak_address,3,https://www.openstreetmap.org/node/12647208262
+True,location,osm-node-13687068650,Linh Phong Bao Thap,check-in-noi-tieng,Da Nang,15.9980969,107.985969,93,weak_address,3,https://www.openstreetmap.org/node/13687068650
+True,location,osm-node-13846529850,Nha Bia,bao-tang-di-tich,Da Nang,15.9979511,107.9857628,93,weak_address,3,https://www.openstreetmap.org/node/13846529850
+True,location,osm-way-359114064,Sun World Ba Na Hills,cong-vien-nuoc,Da Nang,15.9956307,107.9897217,93,weak_address,3,https://www.openstreetmap.org/way/359114064
+True,location,osm-node-5273998823,Cau Tran Thi Ly,check-in-noi-tieng,Da Nang,16.050179,108.2293814,92,weak_address,3,https://www.openstreetmap.org/node/5273998823
+True,location,osm-node-10154412164,Fantasy Park,cong-vien-nuoc,Da Nang,15.9968339,107.9888036,92,weak_address,3,https://www.openstreetmap.org/node/10154412164
+True,location,osm-way-630377259,Bai bien Tien Sa,check-in-noi-tieng,Da Nang,16.1243611,108.2202733,88,weak_address,3,https://www.openstreetmap.org/way/630377259
+True,location,osm-way-1204900824,Bai tam Non Nuoc,check-in-noi-tieng,Da Nang,16.0054851,108.2690189,88,weak_address,3,https://www.openstreetmap.org/way/1204900824
+True,location,osm-node-1538334281,Ban Co Peak,check-in-noi-tieng,Da Nang,16.1189286,108.2720036,88,weak_address,3,https://www.openstreetmap.org/node/1538334281
+True,location,osm-way-303341669,Bao tang Ho Chi Minh,bao-tang-di-tich,Da Nang,16.0464824,108.2182471,88,weak_address,3,https://www.openstreetmap.org/way/303341669
+True,location,osm-way-118691767,Bao tang Quan khu 5,bao-tang-di-tich,Da Nang,16.0478741,108.2173603,88,weak_address,3,https://www.openstreetmap.org/way/118691767
+True,location,osm-node-5276547123,Cau Nguyen Van Troi Bridge,check-in-noi-tieng,Da Nang,16.0510888,108.2292466,88,weak_address,3,https://www.openstreetmap.org/node/5276547123
+True,location,osm-node-7276380289,Cau Song Han,check-in-noi-tieng,Da Nang,16.0721398,108.2268106,88,weak_address,3,https://www.openstreetmap.org/node/7276380289
+True,location,osm-node-5273999121,Cau Thuan Phuoc,check-in-noi-tieng,Da Nang,16.0948084,108.2200134,88,weak_address,3,https://www.openstreetmap.org/node/5273999121
+True,location,osm-way-675604354,Cong Vien APEC,cong-vien-vuon-hoa,Da Nang,16.0585958,108.2232732,88,weak_address,3,https://www.openstreetmap.org/way/675604354
+True,location,osm-way-149699484,Cong vien Bien Dong,cong-vien-vuon-hoa,Da Nang,16.0681469,108.2459283,88,weak_address,3,https://www.openstreetmap.org/way/149699484
+False,location,osm-node-11934169470,Queen Cobra,check-in-noi-tieng,Da Nang,16.0432987,108.22599,92,weak_address,3,https://www.openstreetmap.org/node/11934169470
+False,location,osm-node-12815941401,7 wonders,check-in-noi-tieng,Da Nang,16.0988101,108.2244144,88,weak_address,3,https://www.openstreetmap.org/node/12815941401
+False,location,osm-node-8520834017,A Couple of Fjords to Cross Here,check-in-noi-tieng,Da Nang,16.1492858,108.060537,88,weak_address,3,https://www.openstreetmap.org/node/8520834017
+False,location,osm-node-8771291917,Amazing Valley and River View,check-in-noi-tieng,Da Nang,16.1469226,108.0688889,88,weak_address,3,https://www.openstreetmap.org/node/8771291917
+False,location,osm-node-8344961818,Amazing Valley Viewpoint,check-in-noi-tieng,Da Nang,16.0586525,108.0148707,88,weak_address,3,https://www.openstreetmap.org/node/8344961818
+False,location,osm-node-8345051017,Amazing Valley Viewpoint,check-in-noi-tieng,Da Nang,16.0608673,108.013933,88,weak_address,3,https://www.openstreetmap.org/node/8345051017
+False,location,osm-node-8715429217,Amazing Valley Viewpoint,check-in-noi-tieng,Da Nang,16.1367984,108.0894967,88,weak_address,3,https://www.openstreetmap.org/node/8715429217
+False,location,osm-way-1415072216,Bai Ba Da,check-in-noi-tieng,Da Nang,16.1939524,108.16435,88,weak_address,3,https://www.openstreetmap.org/way/1415072216
+False,location,osm-way-1330726238,Bai bien Bac,check-in-noi-tieng,Da Nang,16.123965,108.3079479,88,weak_address,3,https://www.openstreetmap.org/way/1330726238
+False,location,osm-way-1205391949,Bai bien Tan Tra,check-in-noi-tieng,Da Nang,15.9840305,108.2799055,88,weak_address,3,https://www.openstreetmap.org/way/1205391949
+False,location,osm-node-13040467529,Bai Da,check-in-noi-tieng,Da Nang,16.0988527,108.3012745,88,weak_address,3,https://www.openstreetmap.org/node/13040467529
+False,location,osm-way-508243736,Bai Ham,check-in-noi-tieng,Da Nang,16.1505237,108.1373248,88,weak_address,3,https://www.openstreetmap.org/way/508243736
+False,location,osm-way-1415072215,Bai Sung Co,check-in-noi-tieng,Da Nang,16.1903109,108.1559182,88,weak_address,3,https://www.openstreetmap.org/way/1415072215
+False,location,osm-way-508244759,Bai Xoan,check-in-noi-tieng,Da Nang,16.1665742,108.1509793,88,weak_address,3,https://www.openstreetmap.org/way/508244759
+False,location,osm-way-1481663044,Ban sao nha san,bao-tang-di-tich,Da Nang,16.0472363,108.217429,88,weak_address,3,https://www.openstreetmap.org/way/1481663044
+False,location,osm-node-5281444722,Basket Boats,check-in-noi-tieng,Da Nang,16.1020467,108.2602185,88,weak_address,3,https://www.openstreetmap.org/node/5281444722
+False,location,osm-node-6346457485,Bay View,check-in-noi-tieng,Da Nang,16.1042359,108.3077299,88,weak_address,3,https://www.openstreetmap.org/node/6346457485
+False,location,osm-node-8680939218,Beautiful View of Hoa Trung Reservoir and Son Tra,check-in-noi-tieng,Da Nang,16.0775838,108.0327157,88,weak_address,3,https://www.openstreetmap.org/node/8680939218
+False,location,osm-node-8678722617,Beginning of Uphill Trail,check-in-noi-tieng,Da Nang,16.04012,108.0460365,88,weak_address,3,https://www.openstreetmap.org/node/8678722617
+False,location,osm-node-8649471017,Cape and View of the Bay,check-in-noi-tieng,Da Nang,16.1183642,108.337563,88,weak_address,3,https://www.openstreetmap.org/node/8649471017
+False,location,osm-way-1265740821,Cat Vang Beach,check-in-noi-tieng,Da Nang,16.1426647,108.2315842,88,weak_address,3,https://www.openstreetmap.org/way/1265740821
+False,location,osm-node-5273998822,Cau Tien Son,check-in-noi-tieng,Da Nang,16.0352694,108.2352722,88,weak_address,3,https://www.openstreetmap.org/node/5273998822
+False,location,osm-node-6346486685,Cay da dai thu,check-in-noi-tieng,Da Nang,16.1226157,108.3316779,88,weak_address,3,https://www.openstreetmap.org/node/6346486685
+False,location,osm-node-6528451001,Cay da Do Xu,check-in-noi-tieng,Da Nang,16.0276784,108.2218873,88,weak_address,3,https://www.openstreetmap.org/node/6528451001
+False,location,osm-node-6512888885,Cementerio militar franco-espanol de Y Pha Nho,bao-tang-di-tich,Da Nang,16.1223304,108.2200384,88,weak_address,3,https://www.openstreetmap.org/node/6512888885
+False,location,osm-node-8680939217,Closed War Bunker,check-in-noi-tieng,Da Nang,16.0391426,108.0439723,88,weak_address,3,https://www.openstreetmap.org/node/8680939217
+False,location,osm-way-962129076,Cong vien An Hai,cong-vien-vuon-hoa,Da Nang,16.0815021,108.2303846,88,weak_address,3,https://www.openstreetmap.org/way/962129076
+False,location,osm-way-962129077,Cong vien An Nhon,cong-vien-vuon-hoa,Da Nang,16.0688547,108.2330704,88,weak_address,3,https://www.openstreetmap.org/way/962129077
+False,location,osm-way-962129078,Cong vien An Nhon,cong-vien-vuon-hoa,Da Nang,16.0680608,108.2342877,88,weak_address,3,https://www.openstreetmap.org/way/962129078
+False,location,osm-way-1252486503,Cong vien Bo Quan,cong-vien-vuon-hoa,Da Nang,16.0146753,108.2386636,88,weak_address,3,https://www.openstreetmap.org/way/1252486503
+False,location,osm-way-1252368755,Cong vien cau Bo Quan,cong-vien-vuon-hoa,Da Nang,16.0117056,108.2463408,88,weak_address,3,https://www.openstreetmap.org/way/1252368755
+False,location,osm-way-1115791518,Cong vien Co Co,cong-vien-vuon-hoa,Da Nang,16.002063,108.2500102,88,weak_address,3,https://www.openstreetmap.org/way/1115791518
+False,location,osm-way-961973763,Cong vien Dam Rong,cong-vien-vuon-hoa,Da Nang,16.0835868,108.2178648,88,weak_address,3,https://www.openstreetmap.org/way/961973763
+False,location,osm-way-1115795402,Cong vien Dam Sen,cong-vien-vuon-hoa,Da Nang,15.9997561,108.2516007,88,weak_address,3,https://www.openstreetmap.org/way/1115795402
+False,location,osm-way-962129075,Cong vien Ha Than,cong-vien-vuon-hoa,Da Nang,16.0649082,108.2318255,88,weak_address,3,https://www.openstreetmap.org/way/962129075
+False,location,osm-way-962130353,Cong vien Ho Nghinh,cong-vien-vuon-hoa,Da Nang,16.0762001,108.2424022,88,weak_address,3,https://www.openstreetmap.org/way/962130353
+False,location,osm-way-1169531150,Cong vien Hoi Kieng,cong-vien-vuon-hoa,Da Nang,16.0053772,108.244771,88,weak_address,3,https://www.openstreetmap.org/way/1169531150
+False,location,osm-way-962129079,Cong vien K20,cong-vien-vuon-hoa,Da Nang,16.0225341,108.2430172,88,weak_address,3,https://www.openstreetmap.org/way/962129079
+False,location,osm-way-962134784,Cong vien Le Co,cong-vien-vuon-hoa,Da Nang,16.043477,108.2195746,88,weak_address,3,https://www.openstreetmap.org/way/962134784
+False,location,osm-way-1384907056,Cong vien Nam Duong,cong-vien-vuon-hoa,Da Nang,16.0604251,108.2174928,88,weak_address,3,https://www.openstreetmap.org/way/1384907056
+False,location,osm-way-1115788711,Cong vien Ngu Hanh,cong-vien-vuon-hoa,Da Nang,15.9973138,108.251079,88,weak_address,3,https://www.openstreetmap.org/way/1115788711
+False,location,osm-way-1384911812,Cong vien Nhu Nguyet,cong-vien-vuon-hoa,Da Nang,16.0906977,108.219673,88,weak_address,3,https://www.openstreetmap.org/way/1384911812
+False,location,osm-way-961973996,Cong vien Thanh Binh,cong-vien-vuon-hoa,Da Nang,16.0794713,108.2118706,88,weak_address,3,https://www.openstreetmap.org/way/961973996
+False,location,osm-way-966750005,Cong vien Thanh Nien,cong-vien-vuon-hoa,Da Nang,16.0271335,108.2165342,88,weak_address,3,https://www.openstreetmap.org/way/966750005
+False,location,osm-node-11628670169,Covered rocks,check-in-noi-tieng,Da Nang,16.1186467,108.1307991,88,weak_address,3,https://www.openstreetmap.org/node/11628670169
+False,location,osm-node-8841056618,Crossroads Going West and South West,check-in-noi-tieng,Da Nang,16.1268929,108.0839936,88,weak_address,3,https://www.openstreetmap.org/node/8841056618
+False,location,osm-node-6290544486,Da Nang view,check-in-noi-tieng,Da Nang,16.126902,108.2458831,88,weak_address,3,https://www.openstreetmap.org/node/6290544486
+False,location,osm-way-1331565206,Dai Tuong niem Liet sy thanh pho Da Nang,bao-tang-di-tich,Da Nang,16.0409714,108.2243231,88,weak_address,3,https://www.openstreetmap.org/way/1331565206
+False,location,osm-node-8880291417,Dam Across the Lake,check-in-noi-tieng,Da Nang,15.9873685,108.0904809,88,weak_address,3,https://www.openstreetmap.org/node/8880291417
+False,location,osm-node-8459986817,Dam and Lake Viewpoint,check-in-noi-tieng,Da Nang,15.9783501,108.0785409,88,weak_address,3,https://www.openstreetmap.org/node/8459986817
+False,location,osm-node-4436290892,Danang and sea viewpoint,check-in-noi-tieng,Da Nang,16.184926,108.1368673,88,weak_address,3,https://www.openstreetmap.org/node/4436290892
+False,location,osm-node-5273998830,Day & Night Viewpoint,check-in-noi-tieng,Da Nang,16.0577748,108.2296131,88,weak_address,3,https://www.openstreetmap.org/node/5273998830
+False,location,osm-node-9653941217,Dinh Dong Museum and Cafe,bao-tang-di-tich,Da Nang,16.1012126,108.2755096,88,weak_address,3,https://www.openstreetmap.org/node/9653941217
+False,location,osm-node-5272119321,Dragon Bridge East Viewpoint,check-in-noi-tieng,Da Nang,16.0618067,108.2298562,88,weak_address,3,https://www.openstreetmap.org/node/5272119321
+False,location,osm-node-5272117924,Dragon Bridge West Viewpoint,check-in-noi-tieng,Da Nang,16.0616142,108.2245243,88,weak_address,3,https://www.openstreetmap.org/node/5272117924
+False,location,osm-node-11161070774,Dragon's Tail,check-in-noi-tieng,Da Nang,16.06108,108.2248167,88,weak_address,3,https://www.openstreetmap.org/node/11161070774
+False,location,osm-way-834422404,EKOCENTER playground,cong-vien-vuon-hoa,Da Nang,16.0741088,108.1700083,88,weak_address,3,https://www.openstreetmap.org/way/834422404
+False,location,osm-node-8345051317,End of the Proper Road,check-in-noi-tieng,Da Nang,16.0571299,108.0305535,88,weak_address,3,https://www.openstreetmap.org/node/8345051317
+False,location,osm-node-8385783217,End of the Road?,check-in-noi-tieng,Da Nang,16.1943855,108.0870258,88,weak_address,3,https://www.openstreetmap.org/node/8385783217
+False,location,osm-node-11628679569,fishing boats,check-in-noi-tieng,Da Nang,16.1172763,108.1319496,88,weak_address,3,https://www.openstreetmap.org/node/11628679569
+False,location,osm-node-5272117925,Fishing Boats,check-in-noi-tieng,Da Nang,16.0661735,108.2294201,88,weak_address,3,https://www.openstreetmap.org/node/5272117925
+False,location,osm-node-11876463269,Fishing harbor,check-in-noi-tieng,Da Nang,16.1034054,108.2392611,88,weak_address,3,https://www.openstreetmap.org/node/11876463269
+False,location,osm-node-4924323121,Fishing Village and Fleet,check-in-noi-tieng,Da Nang,16.1017543,108.2589632,88,weak_address,3,https://www.openstreetmap.org/node/4924323121
+False,location,osm-node-5273999621,Giant Egg Plants,check-in-noi-tieng,Da Nang,16.0748758,108.2245799,88,weak_address,3,https://www.openstreetmap.org/node/5273999621
+False,location,osm-node-8841060217,Gravel Road and Ford Across the Road,check-in-noi-tieng,Da Nang,16.1243642,108.0857102,88,weak_address,3,https://www.openstreetmap.org/node/8841060217
+False,location,osm-node-8459986717,Great Mountain and Lake Viewpoint,check-in-noi-tieng,Da Nang,15.9836156,108.0901336,88,weak_address,3,https://www.openstreetmap.org/node/8459986717
+False,location,osm-node-8634096418,Great Mountain Views on Uphill Path,check-in-noi-tieng,Da Nang,15.9813252,107.9652689,88,weak_address,3,https://www.openstreetmap.org/node/8634096418
+False,location,osm-node-8041992688,Great of Hai Van Mountains,check-in-noi-tieng,Da Nang,16.1430935,108.2361529,88,weak_address,3,https://www.openstreetmap.org/node/8041992688
+False,location,osm-node-8785078518,Great Place for Snorkelling Next to the Rocks,check-in-noi-tieng,Da Nang,16.1597371,108.1372257,88,weak_address,3,https://www.openstreetmap.org/node/8785078518
+False,location,osm-node-8757278219,Great Valley View,check-in-noi-tieng,Da Nang,16.1485162,108.0589073,88,weak_address,3,https://www.openstreetmap.org/node/8757278219
+False,location,osm-node-8715425518,Great Valley Viewpoint,check-in-noi-tieng,Da Nang,16.1356185,108.0857273,88,weak_address,3,https://www.openstreetmap.org/node/8715425518
+False,location,osm-node-8715429117,Great Valley Viewpoint,check-in-noi-tieng,Da Nang,16.1295543,108.0888502,88,weak_address,3,https://www.openstreetmap.org/node/8715429117
+False,location,osm-node-8841060218,Great View Looking Towards Hai Van,check-in-noi-tieng,Da Nang,16.1269921,108.080954,88,weak_address,3,https://www.openstreetmap.org/node/8841060218
+False,location,osm-node-8727034718,Great View Looking Towards Hai Van Mountains,check-in-noi-tieng,Da Nang,16.1216141,108.0971787,88,weak_address,3,https://www.openstreetmap.org/node/8727034718
+False,location,osm-node-8841058418,Great View Looking Towards Hoa Trung,check-in-noi-tieng,Da Nang,16.1265512,108.0787053,88,weak_address,3,https://www.openstreetmap.org/node/8841058418
+False,location,osm-node-8382814417,Great View of Da Nang Bay,check-in-noi-tieng,Da Nang,16.1389474,108.1077126,88,weak_address,3,https://www.openstreetmap.org/node/8382814417
+False,location,osm-node-8639646817,Great View of Hoa Trung Reservoir and Son Tra,check-in-noi-tieng,Da Nang,16.072922,108.0302849,88,weak_address,3,https://www.openstreetmap.org/node/8639646817
+False,location,osm-node-8385783219,Great View of Son Tra and Da Nang Bay,check-in-noi-tieng,Da Nang,16.1533288,108.095213,88,weak_address,3,https://www.openstreetmap.org/node/8385783219
+False,location,osm-node-8639646917,"Great View of Son Tra, Hoa Trung Reservoir and Da Nang Graveyard",check-in-noi-tieng,Da Nang,16.0746393,108.026623,88,weak_address,3,https://www.openstreetmap.org/node/8639646917
+False,location,osm-node-8841737718,Great View of the Back of Bana Hills,check-in-noi-tieng,Da Nang,16.0077062,107.9637018,88,weak_address,3,https://www.openstreetmap.org/node/8841737718
+False,location,osm-node-8713712417,Great View of the Bay,check-in-noi-tieng,Da Nang,16.1732051,108.0927382,88,weak_address,3,https://www.openstreetmap.org/node/8713712417
+False,location,osm-node-8715429118,Great View of the Bay,check-in-noi-tieng,Da Nang,16.1315656,108.0893829,88,weak_address,3,https://www.openstreetmap.org/node/8715429118
+False,location,osm-node-8730209417,Great View of the Bay,check-in-noi-tieng,Da Nang,16.1267549,108.0942769,88,weak_address,3,https://www.openstreetmap.org/node/8730209417
+False,location,osm-node-8740267017,Great View of the Valley,check-in-noi-tieng,Da Nang,16.1445466,108.068875,88,weak_address,3,https://www.openstreetmap.org/node/8740267017
+False,location,osm-node-8785078517,Great View of the Valley and Cu De River,check-in-noi-tieng,Da Nang,16.1355606,108.0791996,88,weak_address,3,https://www.openstreetmap.org/node/8785078517
+False,location,osm-node-8785078417,Great View of the Valley and the Bay,check-in-noi-tieng,Da Nang,16.1346787,108.0806251,88,weak_address,3,https://www.openstreetmap.org/node/8785078417
+False,location,osm-node-7505801985,Great Viewpoint,check-in-noi-tieng,Da Nang,16.0922667,108.224322,88,weak_address,3,https://www.openstreetmap.org/node/7505801985
+False,location,osm-node-8841060117,Great Views of Son Tra and Da Nang Graveyard,check-in-noi-tieng,Da Nang,16.0354157,108.1452889,88,weak_address,3,https://www.openstreetmap.org/node/8841060117
+False,location,osm-node-13525483833,Hard to climb,check-in-noi-tieng,Da Nang,16.0039418,108.2633507,88,weak_address,3,https://www.openstreetmap.org/node/13525483833
+False,location,osm-node-8032205986,Headland and View of Hai Van Mountains,check-in-noi-tieng,Da Nang,16.1537132,108.2489294,88,weak_address,3,https://www.openstreetmap.org/node/8032205986
+False,location,osm-node-8397068517,Highest Point of the Hai Van Road,check-in-noi-tieng,Da Nang,16.1825575,108.0856529,88,weak_address,3,https://www.openstreetmap.org/node/8397068517
+False,location,osm-node-2093848427,Hoa Son,hang-dong-nui-non,Da Nang,15.9984266,108.2560076,88,weak_address,3,https://www.openstreetmap.org/node/2093848427
+False,location,osm-node-5383428522,Khu Du Lich Sinh Thai Suoi Luong,check-in-noi-tieng,Da Nang,16.1559167,108.1098007,88,weak_address,3,https://www.openstreetmap.org/node/5383428522
+False,location,osm-way-834419904,Khu giai tri truoc Uy ban Quan,cong-vien-vuon-hoa,Da Nang,16.072269,108.1590818,88,weak_address,3,https://www.openstreetmap.org/way/834419904
+False,location,osm-node-2093848429,Kim Son,hang-dong-nui-non,Da Nang,15.9997446,108.2562213,88,weak_address,3,https://www.openstreetmap.org/node/2093848429
+False,location,osm-node-11176025737,Lang Bich hoa Da Nang,check-in-noi-tieng,Da Nang,16.0607097,108.2200254,88,weak_address,3,https://www.openstreetmap.org/node/11176025737
+False,location,osm-node-10709738005,Lang chieu Cam Ne,check-in-noi-tieng,Da Nang,15.9867322,108.1772823,88,weak_address,3,https://www.openstreetmap.org/node/10709738005
+False,location,osm-node-10709724107,Lang da my nghe Non Nuoc,check-in-noi-tieng,Da Nang,16.0009523,108.2666434,88,weak_address,3,https://www.openstreetmap.org/node/10709724107
+False,location,osm-node-10709738105,Lang nuoc mam Nam O,check-in-noi-tieng,Da Nang,16.1128315,108.1300902,88,weak_address,3,https://www.openstreetmap.org/node/10709738105
+False,location,osm-way-1511011826,Louvre,check-in-noi-tieng,Da Nang,15.9951834,107.9897584,88,weak_address,3,https://www.openstreetmap.org/way/1511011826
+False,location,osm-node-5072875821,Love Bridge,check-in-noi-tieng,Da Nang,16.0513135,108.2309046,88,weak_address,3,https://www.openstreetmap.org/node/5072875821
+False,location,osm-node-8702003818,Lovely View of the Valley,check-in-noi-tieng,Da Nang,16.0710944,108.0292003,88,weak_address,3,https://www.openstreetmap.org/node/8702003818
+False,location,osm-way-542867598,Luna Castle,bao-tang-di-tich,Da Nang,15.9930651,107.9921265,88,weak_address,3,https://www.openstreetmap.org/way/542867598
+False,location,osm-node-12622064034,Marble Mountains Museum,bao-tang-di-tich,Da Nang,16.003907,108.2660314,88,weak_address,3,https://www.openstreetmap.org/node/12622064034
+False,location,osm-node-13677406601,"Memorial to the victims of the Flight 229 plane crash on March 15, 1979.",bao-tang-di-tich,Da Nang,16.121001,108.2572286,88,weak_address,3,https://www.openstreetmap.org/node/13677406601
+False,location,osm-node-8625661017,Misty Mountains,check-in-noi-tieng,Da Nang,16.059721,108.0111323,88,weak_address,3,https://www.openstreetmap.org/node/8625661017
+False,location,osm-node-2093848431,Moc Son,hang-dong-nui-non,Da Nang,16.0000029,108.2621751,88,weak_address,3,https://www.openstreetmap.org/node/2093848431
+False,location,osm-node-8740267117,Mountain Stream and Waterfall,check-in-noi-tieng,Da Nang,16.1577726,108.073156,88,weak_address,3,https://www.openstreetmap.org/node/8740267117
+False,location,osm-node-4347089780,My An Beach,check-in-noi-tieng,Da Nang,16.025095,108.2595335,88,weak_address,3,https://www.openstreetmap.org/node/4347089780
+False,location,osm-node-11359603957,Nam Son Pagoda,check-in-noi-tieng,Da Nang,15.9987986,108.2051036,88,weak_address,3,https://www.openstreetmap.org/node/11359603957
+False,location,osm-way-1109970009,Nha tho Saint Denis,check-in-noi-tieng,Da Nang,15.997358,107.9877992,88,weak_address,3,https://www.openstreetmap.org/way/1109970009
+False,location,osm-node-13261644768,Nha Trung bay Hoang Sa,bao-tang-di-tich,Da Nang,16.0935205,108.2512559,88,weak_address,3,https://www.openstreetmap.org/node/13261644768
+False,location,osm-node-4172034499,Non Nuoc Beach,check-in-noi-tieng,Da Nang,16.0205336,108.261744,88,weak_address,3,https://www.openstreetmap.org/node/4172034499
+False,location,osm-node-4122433690,Nui Ba Na,hang-dong-nui-non,Da Nang,15.9982174,107.9856335,88,weak_address,3,https://www.openstreetmap.org/node/4122433690
+False,location,osm-node-10303626688,Nui Cam Khe,hang-dong-nui-non,Da Nang,16.0349223,108.1622001,88,weak_address,3,https://www.openstreetmap.org/node/10303626688
+False,location,osm-node-10892129283,Nui Dong Den,hang-dong-nui-non,Da Nang,16.1073907,108.0386388,88,weak_address,3,https://www.openstreetmap.org/node/10892129283
+False,location,osm-node-11629996926,Nui Hai Van,hang-dong-nui-non,Da Nang,16.1922104,108.136611,88,weak_address,3,https://www.openstreetmap.org/node/11629996926
+False,location,osm-node-11630013743,Nui Hoi,hang-dong-nui-non,Da Nang,16.1836944,108.1097027,88,weak_address,3,https://www.openstreetmap.org/node/11630013743
+False,location,osm-node-11762365155,Nui Hong Chan,hang-dong-nui-non,Da Nang,16.1936801,107.9687946,88,weak_address,3,https://www.openstreetmap.org/node/11762365155
+False,location,osm-node-11629841009,Nui Khe Xuong,hang-dong-nui-non,Da Nang,16.0647808,107.9641938,88,weak_address,3,https://www.openstreetmap.org/node/11629841009
+False,location,osm-node-10303626687,Nui Phuoc Tuong,hang-dong-nui-non,Da Nang,16.0277351,108.1647027,88,weak_address,3,https://www.openstreetmap.org/node/10303626687
+False,location,osm-node-5286977425,Nui Than Tai,check-in-noi-tieng,Da Nang,15.9681262,108.0196301,88,weak_address,3,https://www.openstreetmap.org/node/5286977425
+False,location,osm-node-8686623717,Numerous War Bunkers and Gun Placements,check-in-noi-tieng,Da Nang,16.1646167,108.1277212,88,weak_address,3,https://www.openstreetmap.org/node/8686623717
+False,location,osm-node-13531850361,Old Jets,bao-tang-di-tich,Da Nang,16.0351948,108.2037811,88,weak_address,3,https://www.openstreetmap.org/node/13531850361
+False,location,osm-way-1474610279,Old Water Tower,check-in-noi-tieng,Da Nang,16.1021807,108.2472638,88,weak_address,3,https://www.openstreetmap.org/way/1474610279
+False,location,osm-node-10603622205,Pont main,check-in-noi-tieng,Da Nang,16.0520775,108.2156357,88,weak_address,3,https://www.openstreetmap.org/node/10603622205
+False,location,osm-way-420947244,Quan Am,bao-tang-di-tich,Da Nang,16.0996857,108.2770161,88,weak_address,3,https://www.openstreetmap.org/way/420947244
+False,location,osm-way-962134785,Quang truong Tuong Dai,cong-vien-vuon-hoa,Da Nang,16.0654551,108.1536394,88,weak_address,3,https://www.openstreetmap.org/way/962134785
+False,location,osm-node-11832500969,Rao chan,check-in-noi-tieng,Da Nang,16.1167482,108.3084376,88,weak_address,3,https://www.openstreetmap.org/node/11832500969
+False,location,osm-node-5273999125,River Viewpoint,check-in-noi-tieng,Da Nang,16.0749403,108.2247139,88,weak_address,3,https://www.openstreetmap.org/node/5273999125
+False,location,osm-node-8700412519,Road Ends and Footpath Begins Here,check-in-noi-tieng,Da Nang,16.067843,108.0343304,88,weak_address,3,https://www.openstreetmap.org/node/8700412519
+False,location,osm-relation-13129586,Rung dac dung Ba Na - Nui Chua,cong-vien-vuon-hoa,Da Nang,16.0868357,107.9285462,88,weak_address,3,https://www.openstreetmap.org/relation/13129586
+False,location,osm-relation-7055216,Rung dac dung Son Tra,cong-vien-vuon-hoa,Da Nang,16.1257063,108.279626,88,weak_address,3,https://www.openstreetmap.org/relation/7055216
+False,location,osm-node-8532747217,Secret Beach,check-in-noi-tieng,Da Nang,16.194213,108.1690132,88,weak_address,3,https://www.openstreetmap.org/node/8532747217
+False,location,osm-way-1265740825,Small Secluded Beach,check-in-noi-tieng,Da Nang,16.1473544,108.2310868,88,weak_address,3,https://www.openstreetmap.org/way/1265740825
+False,location,osm-node-12701675501,Small waterfall,check-in-noi-tieng,Da Nang,16.1145234,108.2556163,88,weak_address,3,https://www.openstreetmap.org/node/12701675501
+False,location,osm-node-12701646101,Son Tra view,check-in-noi-tieng,Da Nang,16.109214,108.2517721,88,weak_address,3,https://www.openstreetmap.org/node/12701646101
+False,location,osm-node-8874361417,Steeper Central Path to Climb Up,check-in-noi-tieng,Da Nang,16.1318491,108.0791326,88,weak_address,3,https://www.openstreetmap.org/node/8874361417
+False,location,osm-node-8041992686,Sunken Ship,check-in-noi-tieng,Da Nang,16.1440025,108.2304513,88,weak_address,3,https://www.openstreetmap.org/node/8041992686
+False,location,osm-node-10873187605,Sunworld Amusement Park Ba Na Hills,check-in-noi-tieng,Da Nang,16.0257483,108.0311553,88,weak_address,3,https://www.openstreetmap.org/node/10873187605
+False,location,osm-node-2177056870,Thac Toc Tien,check-in-noi-tieng,Da Nang,16.0244662,108.0262303,88,weak_address,3,https://www.openstreetmap.org/node/2177056870

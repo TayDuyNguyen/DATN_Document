@@ -1,0 +1,18 @@
+{
+  "input": "data/tour-staging-enriched.json",
+  "outputs": {
+    "json": "data/tour-location-review.json",
+    "csv": "data/tour-location-review.csv"
+  },
+  "tourCount": 36,
+  "mappingRows": 61,
+  "existingSeedLocationRows": 44,
+  "missingLocationSeedRows": 15,
+  "unmatchedRows": 2,
+  "approvedForSeed": 0,
+  "policy": {
+    "approveForSeedDefault": false,
+    "manualReviewRequired": true,
+    "doesNotPublishDb": true
+  }
+}

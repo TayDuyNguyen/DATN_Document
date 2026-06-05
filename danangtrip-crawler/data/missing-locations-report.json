@@ -1,0 +1,19 @@
+{
+  "source": "data/missing_location_sources.json",
+  "outputs": {
+    "crawl": "data/missing-locations-crawl.json",
+    "reviewJson": "data/missing-locations-review.json",
+    "reviewCsv": "data/missing-locations-review.csv"
+  },
+  "total": 6,
+  "fromNominatim": 4,
+  "fromFallback": 2,
+  "pendingReview": 6,
+  "approvedForLocationSeed": 0,
+  "withCoordinates": 6,
+  "policy": {
+    "imagesCollected": false,
+    "manualReviewRequired": true,
+    "doesNotPublishDb": true
+  }
+}

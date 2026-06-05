@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-06-03T03:43:00.742664+00:00",
+  "input": {
+    "file": "data/tour-crawl-merged-normalized.json",
+    "total": 365
+  },
+  "output": {
+    "file": "data/tour-staging-merged.json",
+    "staging": 36,
+    "rejected": 329
+  },
+  "coverage": {
+    "withPrice": 32,
+    "withDuration": 35,
+    "withImages": 36,
+    "withItinerary": 19,
+    "withDestinations": 36
+  },
+  "byCategory": {
+    "tour-ba-na-hills": 13,
+    "tour-hoi-an": 23
+  },
+  "bySource": {
+    "dacotours": 1,
+    "dananglocaltours": 5,
+    "dananglocaltours_basket_boat": 5,
+    "danangtourscity": 1,
+    "hoiandaytrip": 2,
+    "hoiandaytrip_bana": 2,
+    "venus_cham_island": 4,
+    "venusvietnamtravel": 6,
+    "vietnamadventure_danang": 2,
+    "vmtravel": 2,
+    "vmtravel_danang_shore": 4,
+    "vmtravel_hue_shore": 2
+  },
+  "rejectedReasons": {
+    "not_tour_detail_page": 276,
+    "weak_tour_detail_signals": 101,
+    "missing_or_unparsed_price": 88,
+    "missing_duration": 75,
+    "placeholder_or_zero_price": 71,
+    "out_of_scope_destination": 45,
+    "missing_destination": 9,
+    "missing_images": 6,
+    "short_or_missing_name": 5
+  },
+  "policy": {
+    "status": "inactive",
+    "images": "candidate_urls_only",
+    "longDescriptions": "rewritten_summary_not_copied",
+    "publish": "manual_review_required"
+  }
+}

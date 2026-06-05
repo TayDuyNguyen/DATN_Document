@@ -1,0 +1,47 @@
+[
+  {
+    "name": "vietnam-travel-da-nang",
+    "url": "https://vietnam.travel/places-to-go/central-vietnam/da-nang",
+    "category_hint": "cam-nang-da-nang"
+  },
+  {
+    "name": "vietnam-travel-hoi-an",
+    "url": "https://vietnam.travel/places-to-go/central-vietnam/hoi-an",
+    "category_hint": "cam-nang-hoi-an"
+  },
+  {
+    "name": "vietnam-travel-hue",
+    "url": "https://vietnam.travel/places-to-go/central-vietnam/hue",
+    "category_hint": "cam-nang-hue"
+  },
+  {
+    "name": "vietnam-travel-da-nang-itinerary",
+    "url": "https://vietnam.travel/things-to-do/da-nang-itinerary",
+    "category_hint": "lich-trinh"
+  },
+  {
+    "name": "vietnam-travel-da-nang-must-visit",
+    "url": "https://vietnam.travel/things-to-do/must-visit-places-in-da-nang",
+    "category_hint": "cam-nang-da-nang"
+  },
+  {
+    "name": "vietnam-travel-ba-na-hills",
+    "url": "https://vietnam.travel/things-to-do/explore-ba-na-hills",
+    "category_hint": "diem-den"
+  },
+  {
+    "name": "vietnam-travel-marble-mountains",
+    "url": "https://vietnam.travel/things-to-do/around-marble-mountains",
+    "category_hint": "diem-den"
+  },
+  {
+    "name": "vietnam-travel-my-son",
+    "url": "https://vietnam.travel/things-to-do/mystic-my-son",
+    "category_hint": "diem-den"
+  },
+  {
+    "name": "vietnam-travel-da-nang-food",
+    "url": "https://vietnam.travel/things-to-do/da-nangs-special-pork-rolls",
+    "category_hint": "am-thuc"
+  }
+]

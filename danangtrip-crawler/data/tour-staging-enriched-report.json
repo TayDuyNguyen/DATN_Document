@@ -1,0 +1,14 @@
+{
+  "input": "data/tour-staging.json",
+  "output": "data/tour-staging-enriched.json",
+  "total": 36,
+  "itemsWithInferredFields": 4,
+  "inferredFieldCount": 5,
+  "missingPriceAfter": 0,
+  "missingDurationAfter": 0,
+  "policy": {
+    "crawledValuesOverwritten": false,
+    "manualReviewRequired": true,
+    "safeForDirectProductionSeed": false
+  }
+}

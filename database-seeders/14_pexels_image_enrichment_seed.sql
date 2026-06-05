@@ -1,6 +1,6 @@
 -- DanangTrip Crawler Pexels Image Enrichment Seed
 -- FILE: 14_pexels_image_enrichment_seed.sql
--- Generated: 2026-06-01T15:18:38.902Z
+-- Generated: 2026-06-03T01:16:11.198Z
 -- Items with images: 580
 -- Notes: URLs and attribution metadata come from Pexels API.
 
@@ -5225,7 +5225,7 @@ WHERE ci.source_id = s.id
   AND ci.external_id = 'osm-node-12167716642';
 
 INSERT INTO crawl_logs (job_id, level, message, context_json, created_at)
-SELECT j.id, 'INFO', 'Applied Pexels image enrichment', '{"generatedAt":"2026-06-01T15:18:38.902Z","input":{"file":"data/overpass-danang-pois-clean.json","total":580},"pexels":{"limit":580,"photosPerItem":3,"requestDelayMs":750,"selectedMissingItems":108,"newlyEnrichedItems":108,"totalItemsWithImages":580,"failures":0,"throttled":false},"output":{"file":"data/overpass-danang-pois-enriched.json","sqlSeed":"../database-seeders/14_pexels_image_enrichment_seed.sql"},"failures":[]}'::jsonb, NOW()
+SELECT j.id, 'INFO', 'Applied Pexels image enrichment', '{"generatedAt":"2026-06-03T01:16:11.198Z","input":{"file":"data/overpass-danang-pois-clean.json","total":580},"pexels":{"limit":580,"photosPerItem":3,"requestDelayMs":750,"selectedMissingItems":0,"newlyEnrichedItems":0,"totalItemsWithImages":580,"failures":0,"throttled":false},"output":{"file":"data/overpass-danang-pois-enriched.json","sqlSeed":"../database-seeders/14_pexels_image_enrichment_seed.sql"},"failures":[]}'::jsonb, NOW()
 FROM crawl_jobs j
 JOIN crawl_sources s ON s.id = j.source_id
 WHERE s.name = 'overpass-danang-pois'

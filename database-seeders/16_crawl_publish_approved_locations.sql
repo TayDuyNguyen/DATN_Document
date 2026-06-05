@@ -8,9 +8,11 @@
 --   1. 11_crawl_staging_tables.sql
 --   2. 12_overpass_danang_pois_seed.sql
 --   3. 13_overpass_quality_review_seed.sql
---   4. 14_pexels_image_enrichment_seed.sql
---   5. 15_crawl_duplicate_matching_seed.sql
---   6. Admin/user has manually changed selected crawl_items.status to 'approved'.
+--   4. 15_crawl_duplicate_matching_seed.sql
+--   5. Admin/user has manually changed selected crawl_items.status to 'approved'.
+-- Optional:
+--   - 14_pexels_image_enrichment_seed.sql can add external image candidates, but
+--     it is not required and should not be trusted without manual review.
 
 WITH source_row AS (
     SELECT id FROM crawl_sources WHERE name = 'overpass-danang-pois'

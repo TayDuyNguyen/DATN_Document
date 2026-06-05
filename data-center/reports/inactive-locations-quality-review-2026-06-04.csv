@@ -1,0 +1,223 @@
+id,name,slug,status,address,district,latitude,longitude,avg_rating,review_count,price_level,is_featured,category_name,category_slug,quality_score,review_bucket,review_reasons
+113,139nguyen ducedm,139nguyen-ducedm,inactive,"139, Nguyen duc chung, Da Nang",Da Nang,16.06281500,108.21016330,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+114,4 Seasons Danang Hostel,4-seasons-danang-hostel,inactive,"69, Chau Thi Vinh Te, Ngu Hanh Son District, Danang",Ngu Hanh Son District,16.05093900,108.24040080,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+115,a Nang Com Chay 2,a-nang-com-chay-2,inactive,"329, Duong Dinh Nghe, Da Nang",Da Nang,16.07075820,108.23295410,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+116,A tri,a-tri,inactive,"145, Nguyen Dang Giai, Da Nang",Da Nang,16.10338160,108.25782110,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+117,Adela,adela,inactive,"10, Duong An Thuong 36, Da Nang",Da Nang,16.05291700,108.24405740,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+118,Altara Suites,altara-suites,inactive,"120, Da Nang",Da Nang,16.07774380,108.24513650,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+119,Alyssa hotel,alyssa-hotel,inactive,"109D, Duong Duong Dinh Nghe, Da Nang",Da Nang,16.06866590,108.23882730,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+120,Aria Da Nang,aria-da-nang,inactive,"02, Duong Truong Sa, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.98965940,108.27233350,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+121,Art in Paradise Da Nang 3D Museum,art-in-paradise-da-nang-3d-museum,inactive,"Tran Nhan Tong, Da Nang",Da Nang,16.09538070,108.24307690,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,10,excellent,
+122,Babylon Steakgarden,babylon-steakgarden,inactive,Da Nang,Da Nang,16.04177370,108.24835850,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+123,Bai bien My Khe,bai-bien-my-khe,inactive,Da Nang,Da Nang,16.07560980,108.25473520,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+124,Bai Bien Son Tra,bai-bien-son-tra,inactive,Da Nang,Da Nang,16.09902100,108.25498540,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+125,Bai bien Tien Sa,bai-bien-tien-sa,inactive,Da Nang,Da Nang,16.12436110,108.22027330,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+126,Bai tam Non Nuoc,bai-tam-non-nuoc,inactive,Da Nang,Da Nang,16.00548510,108.26901890,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+127,Ban Co Peak,ban-co-peak,inactive,Da Nang,Da Nang,16.11892860,108.27200360,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+128,Banh beo 291 Nguyen Chi Thanh,banh-beo-291-nguyen-chi-thanh,inactive,"291, Nguyen Chi Thanh, Da Nang",Da Nang,16.06693800,108.22090900,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+129,Banh mi,banh-mi,inactive,"Le Minh Trung, Da Nang",Da Nang,16.07171110,108.23980050,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+130,Banh mi cham Pate,banh-mi-cham-pate,inactive,"26, Chu Van An, Da Nang",Da Nang,16.05689930,108.21808850,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+131,Banh Xeo Ba Duong,banh-xeo-ba-duong,inactive,"23, Kiet 280 Hoang Dieu, Da Nang",Da Nang,16.05880340,108.21603490,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+132,Bao An Macrobiotic,bao-an-macrobiotic,inactive,"56, Duong Hoang Bich Son, Da Nang",Da Nang,16.07538280,108.24096020,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+133,Bao tang Da Nang,bao-tang-da-nang,inactive,"24, Duong Tran Phu, Da Nang",Da Nang,16.07632690,108.22156800,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,10,excellent,
+134,Bao tang Ho Chi Minh,bao-tang-ho-chi-minh,inactive,Da Nang,Da Nang,16.04648240,108.21824710,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,8,excellent,
+135,Bao tang Phat giao,bao-tang-phat-giao,inactive,"Duong Suvan Hanh, Da Nang",Da Nang,15.99943080,108.25458310,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,10,excellent,
+136,Bao tang Quan khu 5,bao-tang-quan-khu-5,inactive,Da Nang,Da Nang,16.04787410,108.21736030,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,8,excellent,
+137,Barney's Danang Backpacker's Hostel,barney-s-danang-backpacker-s-hostel,inactive,"169, Tran Hung Dao, Da Nang",Da Nang,16.07892410,108.22896490,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+138,Be thui,be-thui,inactive,"Tue Tinh, Da Nang",Da Nang,16.05498440,108.22004080,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+139,be thui 100,be-thui-100,inactive,"Duong Dien Bien Phu, Da Nang",Da Nang,16.06588840,108.20027330,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+140,bella boutique Villa,bella-boutique-villa,inactive,"29, Do The Chap, Son Tra, Da Nang",Son Tra,16.07775880,108.24441520,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+141,Bien Vang Hotel,bien-vang-hotel,inactive,"Pham Van Dong, Da Nang",Da Nang,16.07092630,108.23526010,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+142,Bo Ne Quoc Minh,bo-ne-quoc-minh,inactive,"28, Duong Phan Dinh Phung, Da Nang",Da Nang,16.07051600,108.22201970,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+143,Bun Bo Ba Dieu,bun-bo-ba-dieu,inactive,"17, Tran Tong, Da Nang",Da Nang,16.05856120,108.21086400,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+144,Bun cha ca 109,bun-cha-ca-109,inactive,Da Nang,Da Nang,16.07438870,108.22079580,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+145,Bun cha ca Thuy,bun-cha-ca-thuy,inactive,"236, Hai Phong, Thanh Khe, Da Nang",Thanh Khe,16.07057970,108.20726620,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+146,Bun Cha Hue Chi,bun-cha-hue-chi,inactive,"So 6, Duong Hoang Quoc Viet, Da Nang",Da Nang,16.08484950,108.22966190,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+147,Bun Mam Van,bun-mam-van,inactive,"K23/14, Tran Ke Xuong, Da Nang",Da Nang,16.06670150,108.21687080,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+148,Ca phe That,ca-phe-that,inactive,"Cach Mang Thang Tam, Da Nang",Da Nang,16.02059670,108.21121210,0.00,0,3,False,Cà phê & Trà sữa,ca-phe-tra-sua,10,excellent,
+149,CaPhe Huy,caphe-huy,inactive,"80, Duong Ong Ich Khiem, Da Nang",Da Nang,16.07683250,108.21203160,0.00,0,3,False,Cà phê & Trà sữa,ca-phe-tra-sua,10,excellent,
+150,Cau Nguyen Van Troi Bridge,cau-nguyen-van-troi-bridge,inactive,Da Nang,Da Nang,16.05108880,108.22924660,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+151,Cau Song Han,cau-song-han,inactive,Da Nang,Da Nang,16.07213980,108.22681060,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+152,Cau Thuan Phuoc,cau-thuan-phuoc,inactive,Da Nang,Da Nang,16.09480840,108.22001340,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+153,Cau Tran Thi Ly,cau-tran-thi-ly,inactive,Da Nang,Da Nang,16.05017900,108.22938140,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+154,Cau Vang,cau-vang,inactive,Da Nang,Da Nang,15.99492420,107.99623040,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+155,CayTao Coffee,caytao-coffee,inactive,"Trung Nu Vuong, Da Nang",Da Nang,16.05609310,108.22022000,0.00,0,3,False,Cà phê & Trà sữa,ca-phe-tra-sua,10,excellent,
+156,Cents Hotel,cents-hotel,inactive,"108, Cao Ba Quat, Da Nang",Da Nang,16.06284840,108.23065580,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+157,ChaChi homestay,chachi-homestay,inactive,"06, Kiet 15 Luong The Vinh, Son Tra, Da Nang",Son Tra,16.06388240,108.23431620,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+158,CHAO DINH DUONG HUYEN TRAM,chao-dinh-duong-huyen-tram,inactive,"DT 602, Duong so 5, Da Nang",Da Nang,16.07641220,108.11328310,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+159,Che Thai Lien,che-thai-lien,inactive,"189, Duong Hoang Dieu, Da Nang",Da Nang,16.06060960,108.21714980,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+160,Cherry Hotel & Apartments,cherry-hotel-apartments,inactive,"20, Duong Do Bi, Da Nang",Da Nang,16.05438340,108.24581710,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+161,Chi Hoa,chi-hoa,inactive,"52, Bac Dau, Da Nang",Da Nang,16.07590940,108.21080490,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+162,Chi House Hotel & Apartment,chi-house-hotel-apartment,inactive,"42, Duong Lam Hoanh, Da Nang",Da Nang,16.06173240,108.24520050,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+163,ChiPa Homestay,chipa-homestay,inactive,"1A, Duong Pham Van Nghi, Da Nang",Da Nang,16.05893810,108.20946020,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+164,Cho dem Helio,cho-dem-helio,inactive,"Duong 2 Thang 9, Da Nang",Da Nang,16.03709440,108.22481860,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,8,excellent,
+165,Com Tam Co Nga,com-tam-co-nga,inactive,"Duong Nguyen Duy Hieu, Da Nang",Da Nang,16.05659830,108.24217000,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+166,Cong Vien APEC,cong-vien-apec,inactive,Da Nang,Da Nang,16.05859580,108.22327320,0.00,0,1,False,Công viên & Vườn hoa,cong-vien-vuon-hoa,8,excellent,
+167,Cong vien Bien Dong,cong-vien-bien-dong,inactive,Da Nang,Da Nang,16.06814690,108.24592830,0.00,0,1,False,Công viên & Vườn hoa,cong-vien-vuon-hoa,8,excellent,
+168,Cong vien Nguyen Van Linh,cong-vien-nguyen-van-linh,inactive,"Duong Nguyen Van Linh, Hai Chau, Da Nang",Hai Chau,16.06130210,108.22043160,0.00,0,1,False,Công viên & Vườn hoa,cong-vien-vuon-hoa,10,excellent,
+169,Cut lon me Ba Lanh,cut-lon-me-ba-lanh,inactive,"35, Ngo Gia Tu, Da Nang",Da Nang,16.06848120,108.21743270,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+170,Dai Long hotel,dai-long-hotel,inactive,"194, Duong Ha Huy Tap, Da Nang",Da Nang,16.06237710,108.19188610,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+171,Dan Oasis Hotel,dan-oasis-hotel,inactive,"A2.3, Hoang Sa, Son Tra, Da Nang",Son Tra,16.09549440,108.25202720,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+172,Danang Backpackers Hostel,danang-backpackers-hostel,inactive,"106, Nguyen Chi Thanh, Da Nang",Da Nang,16.06976360,108.22106380,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+173,De nghia,de-nghia,inactive,"Kiet 43 Ngu Hanh Son, Da Nang",Da Nang,16.04959120,108.23912000,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+174,Deo Hai Van,deo-hai-van,inactive,Da Nang,Da Nang,16.18744950,108.13072170,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+175,Diamond Beach,diamond-beach,inactive,"22, Chinh Huu, Da Nang",Da Nang,16.07416850,108.23957030,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+176,Doi gio,doi-gio,inactive,"258, Nguyen Van Linh, Thanh Khe, Da Nang",Thanh Khe,16.05980080,108.20935360,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+177,DTC Hotel,dtc-hotel,inactive,"252B, Duong Vo Nguyen Giap, Da Nang",Da Nang,16.06264680,108.24606730,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+178,Ecodanang,ecodanang,inactive,"31, Duong Dinh Nghe, Da Nang",Da Nang,16.06841000,108.23891000,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+179,Faifo Hotel,faifo-hotel,inactive,"200, Hai Phong, Da Nang",Da Nang,16.07126510,108.20987820,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+180,Fantasy Park,fantasy-park,inactive,Da Nang,Da Nang,15.99683390,107.98880360,0.00,0,1,False,Công viên nước & Vui chơi,cong-vien-nuoc,8,excellent,
+181,Fedora Hostel,fedora-hostel,inactive,"284/9, Duong Dien Bien Phu, Da Nang",Da Nang,16.06630130,108.19393860,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+182,Flora Hotel,flora-hotel,inactive,"103, Duong Nguyen Van Linh, Da Nang",Da Nang,16.06071190,108.21847920,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+183,Fusion Suites,fusion-suites,inactive,"88, Duong Vo Nguyen Giap, Da Nang",Da Nang,16.08107790,108.24697000,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+184,Goom Vegan,goom-vegan,inactive,"144, Nguyen Chi Thanh, Da Nang",Da Nang,16.06725100,108.22090290,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+185,Green Balcony Hostel & Coffee,green-balcony-hostel-coffee,inactive,"01, Suong Nguyet Anh, Da Nang",Da Nang,16.06831580,108.24044770,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+186,Hai san Nam Danh,hai-san-nam-danh,inactive,"K139/H59/38, Tran Quang Khai, Da Nang",Da Nang,16.10442340,108.25359850,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+187,Hai Van Quan,hai-van-quan,inactive,"Deo Hai Van, Da Nang",Da Nang,16.18774710,108.13128990,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,8,excellent,
+188,Hai Yen Hotel,hai-yen-hotel,inactive,"428, Duong Lam Hoanh, Da Nang",Da Nang,16.06150010,108.24530320,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+189,Hana Homestay Danang,hana-homestay-danang,inactive,"84, Duong Thach Lam, Ngu Hanh Son, DA NANG",Ngu Hanh Son,16.05652870,108.24452980,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+190,Hang's Kitchen,hang-s-kitchen,inactive,"90, Chau Thi Vinh Te, Da Nang",Da Nang,16.05123420,108.24022600,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+191,Hau Sua & Tom Hum,hau-sua-tom-hum,inactive,"Lo 13, Duong Vo Nguyen Giap, Da Nang",Da Nang,16.08351210,108.24768460,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+192,Herriott,herriott,inactive,"7, Duong Le Van Quy, Danang",Da Nang,16.07180930,108.23865100,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+193,Hilary Hotel,hilary-hotel,inactive,"128, Ho Nghinh, Son Tra, Da Nang",Son Tra,16.07335880,108.24293920,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+194,Hilton Garden Inn Da Nang,hilton-garden-inn-da-nang,inactive,"96, Duong Vo Nguyen Giap, Son Tra",Da Nang,16.08010310,108.24641780,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+195,Hoang Phuong Hotel,hoang-phuong-hotel,inactive,"Nguyen Huu Tho, Da Nang",Da Nang,16.04090900,108.21076620,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+196,Hodi Hotel,hodi-hotel,inactive,"12-14, Duong An Thuong 26, Da Nang",Da Nang,16.05511000,108.24454990,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+197,Homestay Halley,homestay-halley,inactive,"37, Duong Dao Cam Moc, Da Nang",Da Nang,16.04335700,108.21201250,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+198,Homestay Heo Dat,homestay-heo-dat,inactive,"32, Duong Dao Cam Moc, Da Nang",Da Nang,16.04343460,108.21210300,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+199,Homie Coffee,homie-coffee,inactive,"279, Hai Phong, Thanh Khe, Da Nang",Thanh Khe,16.07075420,108.20925430,0.00,0,3,False,Cà phê & Trà sữa,ca-phe-tra-sua,10,excellent,
+200,Hong Chau,hong-chau,inactive,"122, Duong Ho Nghinh, Da Nang",Da Nang,16.07352580,108.24288100,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+201,Hue Chi,hue-chi,inactive,"6, Hoang Viet, Da Nang",Da Nang,16.08102760,108.22967780,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+202,Huong Cau,huong-cau,inactive,"So thua 3-A5.6, 2 Thang 9, Da Nang",Da Nang,16.04823520,108.22313940,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+203,Iris Hotel,iris-hotel,inactive,"181-183, Le Duan, Da Nang",Da Nang,16.07015540,108.21377120,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+204,KFC,kfc,inactive,"Thanh Khe Dong, Thanh Khe, Da Nang, Vietnam, Da Nang",Da Nang,16.06651200,108.18703590,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+205,Khach san Bon Mua,khach-san-bon-mua,inactive,"194, Nguyen Huu Tho, Da Nang",Da Nang,16.04289440,108.21008760,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+206,Khach san Hai An,khach-san-hai-an,inactive,"1449, Nguyen Tat Thanh, Da Nang",Da Nang,16.07553870,108.17874400,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+207,Khu Van hoa Tam linh Da Son,khu-van-hoa-tam-linh-da-son,inactive,"quan Lien Chieu, Da Nang",quan Lien Chieu,16.04185750,108.14777780,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,8,excellent,
+208,King Garden Hotel,king-garden-hotel,inactive,"456A, Duong Nguyen Tri Phuong, Da Nang",Da Nang,16.05144170,108.21144220,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+209,koko Green kafe 63,koko-green-kafe-63,inactive,"234, Duong Phan Chau Trinh, Da Nang",Da Nang,16.06002950,108.21927030,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+210,Kon-Tiki Hostel,kon-tiki-hostel,inactive,"12, Duong Trieu Viet Vuong, Da Nang",Da Nang,16.06424770,108.23082240,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+211,La Belle Vie Hottel,la-belle-vie-hottel,inactive,"02, Duong Cao Xuan Duc, Da Nang",Da Nang,16.08734620,108.21971870,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+212,La COOL House Hostel,la-cool-house-hostel,inactive,"42, An Nhon 6, Son Tra, Da Nang",Son Tra,16.06877740,108.23582070,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+213,La Luna,la-luna,inactive,"187, Duong Huyen Tran Cong Chua, Da Nang",Da Nang,16.00317750,108.26528430,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+214,Lam Vien Restaurant,lam-vien-restaurant,inactive,Da Nang,Da Nang,16.04223130,108.24666360,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+215,Lenid,lenid,inactive,"23, Duong Dinh Thi Hoa, Quan Son Tra, Danang",Quan Son Tra,16.07134380,108.23636310,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+216,Linh Phong Bao Thap,linh-phong-bao-thap,inactive,Da Nang,Da Nang,15.99809690,107.98596900,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+217,Lu peaceful homestay,lu-peaceful-homestay,inactive,"Duong Phan Lang 14, Da Nang",Da Nang,16.05511350,108.18918500,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+218,Luxtery,luxtery,inactive,"136, Duong Pham Van Dong, Danang",Da Nang,16.07069200,108.23579230,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+219,Mama Hotpot,mama-hotpot,inactive,"19A, Duong Vo Van Kiet, Da Nang",Da Nang,16.06314700,108.24194880,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+220,Mari Gold,mari-gold,inactive,"14, Duong Nguyen Cao Luyen, Son Tra, Da Nang",Son Tra,16.06929570,108.24158420,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+221,Memory Lounge,memory-lounge,inactive,"7, Bach Dang, Da Nang",Da Nang,16.07266610,108.22516450,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+222,Mercure Hotels,mercure-hotels,inactive,Da Nang,Da Nang,15.99739760,107.98823160,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,excellent,
+223,Mi Quang 1A,mi-quang-1a,inactive,"Hai Phong, Da Nang",Da Nang,16.07252320,108.21893410,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+224,Mi Quang Ech,mi-quang-ech,inactive,"441, Duong Ong Ich Khiem, Da Nang",Da Nang,16.06198290,108.21634790,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+225,Monsieur Crepes,monsieur-crepes,inactive,Da Nang,Da Nang,16.04821290,108.24564980,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+226,Mumtaz,mumtaz,inactive,"69, Hoai Thanh, Da Nang",Da Nang,16.04848990,108.23718230,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+227,My Khe Beach Park,my-khe-beach-park,inactive,"53, Duong Vo Nguyen Giap, Ngu Hanh Son, Da Nang",Ngu Hanh Son,16.05059450,108.24890080,0.00,0,1,False,Công viên & Vườn hoa,cong-vien-vuon-hoa,10,excellent,
+228,My Little Pig Homestay,my-little-pig-homestay,inactive,"04, Duong An Nhon 1, Son Tra, Da Nang",Son Tra,16.07049860,108.23302200,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+229,New Life Hotel,new-life-hotel,inactive,"Duong Trinh Cong Son, Da Nang",Da Nang,16.03356380,108.22068570,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+230,Ngu Hanh Son,ngu-hanh-son,inactive,Da Nang,Da Nang,16.00170960,108.25961320,0.00,0,1,False,Điểm check-in nổi tiếng,check-in-noi-tieng,6,good,
+231,Nha Bia,nha-bia,inactive,Da Nang,Da Nang,15.99795110,107.98576280,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,8,excellent,
+232,Nha Chung Homestay,nha-chung-homestay,inactive,"Kiet 81 Luong The Vinh, Da Nang",Da Nang,16.06380360,108.23853050,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+233,Nha hang Chay,nha-hang-chay,inactive,"87, Duong Hoang Van Thu, Da Nang",Da Nang,16.06295550,108.21950110,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+234,Nha Hang Chay Hoa Sen - Vegetarian Restaurant,nha-hang-chay-hoa-sen-vegetarian-restaurant,inactive,"30/1, Dang Thai Mai, Da Nang",Da Nang,16.06093880,108.20993530,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+235,Nha hang hai san Be Anh,nha-hang-hai-san-be-anh,inactive,"Lo 14-15 Ho Nghinh, Phuoc My, Son Tra, Da Nang, , Da Nang",Da Nang,16.06923190,108.24299130,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+236,Nha hang HanCook,nha-hang-hancook,inactive,"316 - 318, Hai Phong, Da Nang",Da Nang,16.06891100,108.20498310,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,5,review,duplicate_normalized_name
+237,Nha Hang HanCook,nha-hang-hancook-crawl-215,inactive,"1, Nui Thanh, Da Nang",Da Nang,16.05399570,108.22030240,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,4,review,duplicate_normalized_name;crawl_suffix_slug
+238,Nha hang HanCook,nha-hang-hancook-crawl-216,inactive,"Ngo Quyen, Da Nang",Da Nang,16.07165570,108.23007220,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,4,review,duplicate_normalized_name;crawl_suffix_slug
+239,Nha tro Dinh Quoc Vuong,nha-tro-dinh-quoc-vuong,inactive,"Le Thien Tri, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97886480,108.25258340,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+240,Nha tro DUong Thi Tanh,nha-tro-duong-thi-tanh,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.96719670,108.23825520,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+241,Nha tro Hoang Van Sinh,nha-tro-hoang-van-sinh,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97068800,108.24403860,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+242,Nha tro Hua Dien,nha-tro-hua-dien,inactive,"Nguyen Thuc Tu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.98034960,108.25116390,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+243,Nha tro Huynh Dinh,nha-tro-huynh-dinh,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97132550,108.24390010,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+244,Nha tro Huynh Dinh Dung,nha-tro-huynh-dinh-dung,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97600150,108.24804710,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+245,Nha tro Le Duc Tin,nha-tro-le-duc-tin,inactive,"Le Thien Tri, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97863380,108.25104900,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+246,Nha tro Mai Truc Lam,nha-tro-mai-truc-lam,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97561840,108.24790940,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+247,Nha tro Ngo Dinh Tu,nha-tro-ngo-dinh-tu,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97598660,108.24850500,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+248,Nha tro Nguyen Doan Chinh,nha-tro-nguyen-doan-chinh,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97617140,108.24895050,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+249,Nha tro Nguyen Huy Vu,nha-tro-nguyen-huy-vu,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97566700,108.24762810,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+250,Nha tro Nguyen Le Viet,nha-tro-nguyen-le-viet,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97644290,108.24923950,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+251,Nha tro Nguyen Long,nha-tro-nguyen-long,inactive,"Nguyen Minh Chau, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97877510,108.25428580,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+252,Nha tro Nguyen Ngoc Linh,nha-tro-nguyen-ngoc-linh,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97528770,108.24749640,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+253,Nha tro Nguyen Quoc Dung,nha-tro-nguyen-quoc-dung,inactive,"Nguyen Minh Chau, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97903960,108.25416390,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+254,Nha tro Nguyen Thi Nga,nha-tro-nguyen-thi-nga,inactive,"Duong Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97269300,108.24178650,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+255,Nha tro Nguyen Thi Thu Ha,nha-tro-nguyen-thi-thu-ha,inactive,"Le Thien Tri, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97851150,108.25254790,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+256,Nha tro Nguyen Van Hung,nha-tro-nguyen-van-hung,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.96796960,108.23801220,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+257,Nha tro Nguyen Van Sy,nha-tro-nguyen-van-sy,inactive,"Le Thien Tri, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97863380,108.25167750,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+258,Nha tro Pham Ngoc Hai,nha-tro-pham-ngoc-hai,inactive,"Nguyen Minh Chau, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97924100,108.25086110,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+259,Nha tro Pham Nhat Tan,nha-tro-pham-nhat-tan,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97588810,108.24746170,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+260,Nha tro Phan Thanh Huan,nha-tro-phan-thanh-huan,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97635620,108.24793040,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+261,Nha tro Tan Canh,nha-tro-tan-canh,inactive,"Le Thien Tri, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97864560,108.25127080,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+262,Nha tro Tan Thanh Huyen,nha-tro-tan-thanh-huyen,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97004130,108.24425290,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+263,Nha tro Tran Hung Sang,nha-tro-tran-hung-sang,inactive,"Nguyen Thuc Tu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.98034680,108.25214290,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+264,Nha tro Tran Quan,nha-tro-tran-quan,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97640930,108.24939140,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+265,Nha tro Tran Thai Phuong,nha-tro-tran-thai-phuong,inactive,"Nam Ky Khoi Nghia, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97826660,108.25210380,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+266,Nha tro Tran Trong Khiem,nha-tro-tran-trong-khiem,inactive,"Nam Ky Khoi Nghia, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97766860,108.25388190,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+267,Nha tro Tran Van Hieu,nha-tro-tran-van-hieu,inactive,"Luu Quang Vu, Ngu Hanh Son, Da Nang",Ngu Hanh Son,15.97660180,108.24960090,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+268,Nha tro VTV,nha-tro-vtv,inactive,"183/15/13, Phan Thanh, Da Nang",Da Nang,16.06144030,108.21018910,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+269,NhatHa Coffee Ice Cream,nhatha-coffee-ice-cream,inactive,"130, Duong Trung Nu Vuong, Da Nang",Da Nang,16.05821700,108.22074470,0.00,0,3,False,Cà phê & Trà sữa,ca-phe-tra-sua,10,excellent,
+270,Noi o,noi-o,inactive,"Nguyen Hoang, Da Nang",Da Nang,16.06083790,108.21363840,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+271,Nui Son Tra,nui-son-tra,inactive,Da Nang,Da Nang,16.11959090,108.28664980,0.00,0,1,False,Hang động & Núi non,hang-dong-nui-non,6,good,
+272,Oasis Tapas Bar,oasis-tapas-bar,inactive,"An Thuong 4, Da Nang",Da Nang,16.04814900,108.24656360,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+273,Oc Tien Sa Hotel,oc-tien-sa-hotel,inactive,"163, Nguyen Hoang, Hai Chau, Da Nang",Hai Chau,16.06069990,108.21373770,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+274,Ong Minh,ong-minh,inactive,"92, Duong Vo Nguyen Giap, Da Nang",Da Nang,16.08035480,108.24662610,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+275,Pavilion,pavilion,inactive,"122, Quang Trung, Da Nang",Da Nang,16.07426200,108.21708320,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+276,Pha Le Hotel,pha-le-hotel,inactive,"204-206, Duong Ho Nghinh, Da Nang",Da Nang,16.06685740,108.24302950,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+277,pho phu gia,pho-phu-gia,inactive,"Ly Tu Trong, Da Nang",Da Nang,16.07753660,108.22193060,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+278,phu my thanh nha hang,phu-my-thanh-nha-hang,inactive,"Nguyen Tat Thanh, Da Nang",Da Nang,16.07618350,108.20719430,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+279,Ponte Boutique Da Nang,ponte-boutique-da-nang,inactive,"104, Ho Nginh, Da Nang",Da Nang,16.07460790,108.24277870,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+280,Qquan Chay Dieu Hoa,qquan-chay-dieu-hoa,inactive,"87/4, Nguyen Du, Da Nang",Da Nang,16.07845880,108.21909360,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+281,Quan An Bun Cha Ca,quan-an-bun-cha-ca,inactive,"109, Nguyen Chi Thanh, Da Nang",Da Nang,16.07459620,108.22062380,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+282,Quan an ngon Thia Go Danang-style,quan-an-ngon-thia-go-danang-style,inactive,"37, Duong Ba Dinh, Hai Chau",Da Nang,16.07605220,108.21838790,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+283,Quan An Tuk Tuk,quan-an-tuk-tuk,inactive,"18, 18 Duong Thi Xuan Quys, Da Nang",Da Nang,16.04264490,108.24339380,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+284,Quan bun Lieu,quan-bun-lieu,inactive,"15, Duong Hoang Hoa Tham, Da Nang",Da Nang,16.07042640,108.20963850,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+285,Quan Chay Hang Ngay,quan-chay-hang-ngay,inactive,Da Nang,Da Nang,16.05662240,108.17746210,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+286,Quan Chay XUAN,quan-chay-xuan,inactive,"631, Duong Tran Cao Van, Da Nang",Da Nang,16.07164620,108.18616890,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+287,Quan com 08,quan-com-08,inactive,"08, Duong Hoang Hoa Tham, Thanh Khe, Da Nang",Thanh Khe,16.07064650,108.20937840,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+288,Quan Mau - Banh trang thit heo,quan-mau-banh-trang-thit-heo,inactive,"35, Do Thuc Tinh, Da Nang",Da Nang,16.02485210,108.21005720,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+289,quan nhau loc vien,quan-nhau-loc-vien,inactive,"Nguyen Sinh Sac, Da Nang",Da Nang,16.06595020,108.15522320,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+290,quan quan hotel,quan-quan-hotel,inactive,"Nguyen Huu Tho, Da Nang",Da Nang,16.05360810,108.20892820,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+291,Ram cuon cai Di Hoa,ram-cuon-cai-di-hoa,inactive,"K232/10, Le Duan, Da Nang",Da Nang,16.06868440,108.20918950,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+292,Red Palace Hotel,red-palace-hotel,inactive,"275, Duong Nguyen Tri Phuong, Da Nang",Da Nang,16.05167040,108.21193400,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+293,ROLL hostel & pub,roll-hostel-pub,inactive,"84, Cao Ba Quat, Da Nang",Da Nang,16.06342650,108.23056550,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+294,Rom Casa Hostel,rom-casa-hostel,inactive,"47, Duong An Thuong 4, Da Nang",Da Nang,16.04844070,108.24659630,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+295,Rosabella Boutique Hotel,rosabella-boutique-hotel,inactive,"39, Duong Loseby, Da Nang",Da Nang,16.07364980,108.24111340,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+296,Rosetta,rosetta,inactive,"63, Duong Duong Dinh Nghe, Son Tra, Da Nang",Son Tra,16.06871680,108.24231290,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+297,Royal apartment,royal-apartment,inactive,"22, Duong My Da Dong 12, Da Nang",Da Nang,16.04542580,108.24695270,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+298,Samwon,samwon,inactive,"74, Duong Dinh Nghe, Da Nang",Da Nang,16.06903400,108.23749860,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+299,San San Hotel,san-san-hotel,inactive,"54, Duong An Thuong 26, Da Nang",Da Nang,16.05531580,108.24538620,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+300,Sanouva Danang Hotel,sanouva-danang-hotel,inactive,"68, Duong Phan Chau Trinh, Hai Chau, Da Nang",Hai Chau,16.06698480,108.22013700,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+301,Sea Phoenix Hotel,sea-phoenix-hotel,inactive,"115, Ho Xuan Huong, Da Nang",Da Nang,16.04097150,108.24836330,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+302,Senorita boutique hotel,senorita-boutique-hotel,inactive,"89 Tran Bach Dang, Da Nang",Da Nang,16.04979840,108.24778590,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+303,Sepon Blue Hotel,sepon-blue-hotel,inactive,"157-159, Duong Vo Van Kiet, Da Nang",Da Nang,16.06185700,108.23786360,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+304,Simpur,simpur,inactive,"165, Tran Hung Dao, Da Nang",Da Nang,16.07921030,108.22907550,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+305,Siro House Homestay,siro-house-homestay,inactive,"8, Kiet 72 Nguyen Van Thoai, Da Nang",Da Nang,16.05392540,108.24022180,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+306,So Zach,so-zach,inactive,"47, Duong Trung Nu Vuong, Da Nang",Da Nang,16.05910700,108.22149520,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+307,Solar Hotel,solar-hotel,inactive,"Duong Truong Chi Cuong, Da Nang",Da Nang,16.03098980,108.22501880,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+308,Son Tra Green Hotel,son-tra-green-hotel,inactive,"116, Duong Nguyen Huy Chuong, Da Nang",Da Nang,16.08818910,108.24442280,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+309,Son Tra Ocean View Pool & Spa,son-tra-ocean-view-pool-spa,inactive,"95, Ngo Quyen, Son Tra, Da Nang",Son Tra,16.09694330,108.24634830,0.00,0,1,False,Công viên & Vườn hoa,cong-vien-vuon-hoa,10,excellent,
+310,Star near me Hotel,star-near-me-hotel,inactive,"42, Duong Loseby, Da Nang",Da Nang,16.07351670,108.24146180,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+311,Sua chua nep cam Co Phuc,sua-chua-nep-cam-co-phuc,inactive,"65, Ly Thuong Kiet, Da Nang",Da Nang,16.08015100,108.21879600,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+312,Suon Nuong Cao Boi,suon-nuong-cao-boi,inactive,Da Nang,Da Nang,16.06236800,108.20372200,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+313,Tabii,tabii,inactive,"27, Duong An Don 4, Quan Son Tra, Danang",Quan Son Tra,16.07299450,108.23727230,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+314,Tam House Villa Hotel,tam-house-villa-hotel,inactive,"27, K209 Nguyen Van Thoai, Da Nang",Da Nang,16.05737600,108.24306310,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+315,Tashi Park View Hotel & Apartment,tashi-park-view-hotel-apartment,inactive,"24-26, Duong Phuoc Truong 15, Da Nang",Da Nang,16.07639670,108.24181130,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+316,Teddy Garden burgers,teddy-garden-burgers,inactive,"22, Duong Dinh Nghe, Da Nang",Da Nang,16.06883740,108.24162940,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+317,Thang Bom,thang-bom,inactive,"171, Duong Le Do, Da Nang",Da Nang,16.06635250,108.20197520,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+318,Thanh Nhung,thanh-nhung,inactive,"17, Duong Pham Van Dong, Quan Son Tra, Danang",Quan Son Tra,16.07121420,108.23600480,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+319,The Amazing Taco | In Da Nang,the-amazing-taco-in-da-nang,inactive,"29, My An 5, Ngu Hanh Son, Da Nang",Ngu Hanh Son,16.04851680,108.23691750,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+320,The Choi's Kitchen,the-choi-s-kitchen,inactive,"02, Duong Hoang Hoa Tham, Thanh Khe, Da Nang",Thanh Khe,16.07077380,108.20933490,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+321,The Pizza Company,the-pizza-company,inactive,"Tang tret, Coopmart, 478 Dien Bien Phu, Q. Thanh Khe, TP, Thanh Khe Dong, Thanh Khe, Da Nang, Vietnam, Da Nang",Da Nang,16.06673310,108.18703040,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+322,Thung Phi BBQ,thung-phi-bbq,inactive,"Nguyen Van Thoai, Da Nang",Da Nang,16.05612130,108.24298820,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+323,Tiem An Vu Gia,tiem-an-vu-gia,inactive,"426, Tran Cao Van, Da Nang",Da Nang,16.07106500,108.19846440,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+324,Tokbokki Ly,tokbokki-ly,inactive,"64, An Thuong 20, Da Nang",Da Nang,16.05141270,108.24057140,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+325,Tru Vu Tra Quan,tru-vu-tra-quan,inactive,Da Nang,Da Nang,15.99782760,107.98624260,0.00,0,3,False,Cà phê & Trà sữa,ca-phe-tra-sua,8,excellent,
+326,Trung tam Giai tri Phuc hop Helio Center,trung-tam-giai-tri-phuc-hop-helio-center,inactive,"Duong 2 Thang 9, Hai Chau, Da Nang",Hai Chau,16.03645590,108.22467150,0.00,0,1,False,Công viên nước & Vui chơi,cong-vien-nuoc,10,excellent,
+327,Trung tam Van hoa - The thao quan Thanh Khe,trung-tam-van-hoa-the-thao-quan-thanh-khe,inactive,"Duong Ho Tuong, Quan Thanh Khe, Da Nang",Quan Thanh Khe,16.06155450,108.18321400,0.00,0,1,False,Công viên & Vườn hoa,cong-vien-vuon-hoa,10,excellent,
+328,TruongVuHouse's,truongvuhouse-s,inactive,"Van Thanh 2, Da Nang",Da Nang,16.09694760,108.13556710,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,10,excellent,
+329,Tuong Phat Phuoc Ly,tuong-phat-phuoc-ly,inactive,"quan Lien Chieu, Da Nang",quan Lien Chieu,16.04056250,108.14893750,0.00,0,1,False,Bảo tàng & Di tích,bao-tang-di-tich,10,excellent,
+330,Ty house homestay da nang,ty-house-homestay-da-nang,inactive,"25-27, Kiet 21 Che Lan Vien, Da Nang",Da Nang,16.04318480,108.24644960,0.00,0,4,False,Khách sạn & Homestay,khach-san-homestay,8,good,low_priority_lodging
+331,Vinh Da Nang,vinh-da-nang,inactive,Da Nang,Da Nang,16.13716830,108.18288090,0.00,0,1,False,Hang động & Núi non,hang-dong-nui-non,6,good,
+332,Xoi ga Ba Be,xoi-ga-ba-be,inactive,"27, Ngo Gia Tu, Da Nang",Da Nang,16.06957790,108.21723940,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,
+333,Xuan Toi,xuan-toi,inactive,Da Nang,Da Nang,16.07871760,108.22972310,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,6,good,
+334,Yaourt muoi Cay Bang,yaourt-muoi-cay-bang,inactive,"64, Phan Huy Chu, Da Nang",Da Nang,16.05181870,108.23404300,0.00,0,3,False,Ẩm thực địa phương,am-thuc-dia-phuong,8,excellent,

@@ -1,0 +1,33 @@
+[
+  {
+    "address": "23 Tran Quoc Toan, Da Nang",
+    "category_name": "Nhà hàng quốc tế",
+    "category_slug": "nha-hang-quoc-te",
+    "cloudinary_public_id": "danangtrip/locations/bun-bo-hue-ba-thuong/loc-34__bun-bo-hue-ba-thuong__p01",
+    "district": "Hải Châu",
+    "download_message": "existing:414437",
+    "id": "34",
+    "image_url": "https://images.pexels.com/photos/2591594/pexels-photo-2591594.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    "latitude": "16.06500000",
+    "local_file": "loc-34__bun-bo-hue-ba-thuong__active-missing-thumbnail__p01__pexels-2591594.jpg",
+    "local_path": "D:\\DATN\\DATN_Tài liệu\\data-center\\media-assets\\cloudinary-staging\\locations\\2026-06-04-active-missing-thumbnail\\originals\\loc-34__bun-bo-hue-ba-thuong__active-missing-thumbnail__p01__pexels-2591594.jpg",
+    "location_id": "34",
+    "location_slug": "bun-bo-hue-ba-thuong",
+    "longitude": "108.22000000",
+    "name": "Bun Bo Hue Ba Thuong",
+    "photo_id": "2591594",
+    "photo_index": "1",
+    "photographer": "JANG 'S 🍂",
+    "photographer_url": "https://www.pexels.com/@jang",
+    "provider": "pexels",
+    "provider_page_url": "https://www.pexels.com/photo/top-view-photo-of-ramen-soup-2591594/",
+    "search_query": "Bun Bo Hue Ba Thuong Da Nang",
+    "search_status": "found",
+    "slug": "bun-bo-hue-ba-thuong",
+    "status": "already_downloaded",
+    "thumbnail": "",
+    "thumbnail_url": "https://images.pexels.com/photos/2591594/pexels-photo-2591594.jpeg?auto=compress&cs=tinysrgb&h=350",
+    "upload_status": "upload_failed",
+    "upload_error": "HTTP Error 400: Bad Request"
+  }
+]

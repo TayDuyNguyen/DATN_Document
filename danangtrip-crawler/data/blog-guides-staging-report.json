@@ -1,0 +1,23 @@
+{
+  "output": "data\\blog-guides-staging.json",
+  "inputs": [
+    "data/blog-guides-batch3-clean-normalized.json",
+    "data/blog-guides-batch4-clean-normalized.json",
+    "data/blog-guides-batch5-clean-normalized.json"
+  ],
+  "total": 23,
+  "byCategoryHint": {
+    "am-thuc": 1,
+    "bien": 1,
+    "cam-nang-da-nang": 3,
+    "cam-nang-hoi-an": 1,
+    "cam-nang-hue": 1,
+    "di-chuyen": 3,
+    "diem-den": 7,
+    "kinh-nghiem": 3,
+    "lich-trinh": 2,
+    "thoi-tiet": 1
+  },
+  "recordsWithReviewFlags": 5,
+  "status": "pending_review"
+}
