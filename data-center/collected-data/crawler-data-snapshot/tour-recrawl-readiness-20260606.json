@@ -1,0 +1,667 @@
+[
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [
+      "missing_meeting_point"
+    ],
+    "name": "Daily Golden Bridge, Ba Na Hills from Da Nang Tours by Local",
+    "slug": "recrawl-001-dacotours-daily-golden-bridge-ba-na-hills-from-da-nang-tours-by-local",
+    "source_name": "recrawl_001_dacotours",
+    "source_url": "https://dacotours.com/ba-na-hills-from-da-nang/",
+    "price_adult": 1650000.0,
+    "price_raw": "$ 66",
+    "duration": "8 Hours",
+    "itinerary_count": 0,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://dacotours.com/wp-content/uploads/2025/08/Discovery.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "Ba Na Hills Tour From Da Nang Good Price #1 - Da Nang Local Tours",
+    "slug": "recrawl-002-dananglocaltours-ba-na-hills-tour-from-da-nang-good-price-1-da-nang-local-tours",
+    "source_name": "recrawl_002_dananglocaltours",
+    "source_url": "https://dananglocaltours.com/tour/ba-na-hills-tour-from-da-nang/",
+    "price_adult": 1190000.0,
+    "price_raw": "1.190.000 VND",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/basket-boat-hoi-tour-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "inferred_core_field",
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "Bach Ma National Park Tour From Da Nang - Da Nang Local Tours",
+    "slug": "recrawl-003-dananglocaltours-bach-ma-national-park-tour-from-da-nang-da-nang-local-tours",
+    "source_name": "recrawl_003_dananglocaltours",
+    "source_url": "https://dananglocaltours.com/tour/bach-ma-national-park-tour/",
+    "price_adult": 775000.0,
+    "price_raw": "estimated_from_context:775000 VND",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2020/02/son-tra-peninsula-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "Basket Boat Hoi An Tour From Da Nang - Da Nang Local Tours",
+    "slug": "recrawl-004-dananglocaltours-basket-boat-hoi-an-tour-from-da-nang-da-nang-local-tours",
+    "source_name": "recrawl_004_dananglocaltours",
+    "source_url": "https://dananglocaltours.com/tour/basket-boat-hoi-an-tour/",
+    "price_adult": 1075000.0,
+    "price_raw": "43USD",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/marble-mountain-hoi-an-tour-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "Cham Island Snorkeling Tour From Da Nang Good Price #1",
+    "slug": "recrawl-005-dananglocaltours-cham-island-snorkeling-tour-from-da-nang-good-price-1",
+    "source_name": "recrawl_005_dananglocaltours",
+    "source_url": "https://dananglocaltours.com/tour/cham-island-snorkeling-tour/",
+    "price_adult": 1125000.0,
+    "price_raw": "45 USD",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/hue-tour-from-da-nang-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "inferred_core_field"
+    ],
+    "warnings": [],
+    "name": "Hoa Phu Thanh waterfall sliding daily tour - Da Nang Local Tours",
+    "slug": "recrawl-006-dananglocaltours-hoa-phu-thanh-waterfall-sliding-daily-tour-da-nang-local-tours",
+    "source_name": "recrawl_006_dananglocaltours",
+    "source_url": "https://dananglocaltours.com/tour/hoa-phu-thanh-waterfall-sliding-daily-tour/",
+    "price_adult": 1100000.0,
+    "price_raw": "estimated_from_context:1100000 VND",
+    "duration": "1 day",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/Bach-Ma-National-Park-Tour-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [
+      "missing_meeting_point"
+    ],
+    "name": "Marble Mountain Hoi An Tour Good Price #1 - Da Nang Local Tours",
+    "slug": "recrawl-007-dananglocaltours-basket-boat-marble-mountain-hoi-an-tour-good-price-1-da-nang-local-tours",
+    "source_name": "recrawl_007_dananglocaltours_basket_boat",
+    "source_url": "https://dananglocaltours.com/tour/marble-mountain-hoi-an-tour/",
+    "price_adult": 975000.0,
+    "price_raw": "39 USD",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/nui-than-tai-spring-park-tour-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "My Son Sanctuary Tour From Da Nang - Da Nang Local Tours",
+    "slug": "recrawl-008-dananglocaltours-basket-boat-my-son-sanctuary-tour-from-da-nang-da-nang-local-tours",
+    "source_name": "recrawl_008_dananglocaltours_basket_boat",
+    "source_url": "https://dananglocaltours.com/tour/my-son-sanctuary-tour/",
+    "price_adult": 1025000.0,
+    "price_raw": "41 USD",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/ba-na-hills-tour-from-da-nang-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [],
+    "name": "Nui Than Tai Hot Spring Park Tour From Da Nang Good Price #1",
+    "slug": "recrawl-009-dananglocaltours-basket-boat-nui-than-tai-hot-spring-park-tour-from-da-nang-good-price-1",
+    "source_name": "recrawl_009_dananglocaltours_basket_boat",
+    "source_url": "https://dananglocaltours.com/tour/nui-than-tai-hot-spring-park-tour/",
+    "price_adult": 1225000.0,
+    "price_raw": "49USD",
+    "duration": "1 day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/hoa-phu-thanh-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "inferred_core_field",
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "Son Tra Peninsula - Marble Mountains - Hoian Daily Tour",
+    "slug": "recrawl-010-dananglocaltours-basket-boat-son-tra-peninsula-marble-mountains-hoian-daily-tour",
+    "source_name": "recrawl_010_dananglocaltours_basket_boat",
+    "source_url": "https://dananglocaltours.com/tour/son-tra-peninsula-marble-mountains-hoian-daily-tour/",
+    "price_adult": 1075000.0,
+    "price_raw": "estimated_from_context:1075000 VND",
+    "duration": "2 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/Bach-Ma-National-Park-Tour-100x100.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [
+      "missing_meeting_point"
+    ],
+    "name": "French Village Ba Na Hills - Da Nang Tours",
+    "slug": "recrawl-011-danangtourscity-french-village-ba-na-hills-da-nang-tours",
+    "source_name": "recrawl_011_danangtourscity",
+    "source_url": "https://danangtourscity.com/french-village-ba-na-hills/",
+    "price_adult": 1090000.0,
+    "price_raw": "1,090,000 VND",
+    "duration": "2 hours",
+    "itinerary_count": 0,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 7,
+    "thumbnail": "https://danangtourscity.com/wp-content/uploads/2023/06/da-nang-tours.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_exclusions"
+    ],
+    "warnings": [],
+    "name": "Ba Na Hills Night Tour with Golden Bridge, Dinner & Cabaret Show - HoiAn Day Trip Company",
+    "slug": "recrawl-012-hoiandaytrip-bana-ba-na-hills-night-tour-with-golden-bridge-dinner-cabaret-show-hoian-day-trip-company",
+    "source_name": "recrawl_012_hoiandaytrip_bana",
+    "source_url": "https://hoiandaytrip.com/ba-na-hills-night-tour/",
+    "price_adult": 2200000.0,
+    "price_raw": "from $88",
+    "duration": "6 hours",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://hoiandaytrip.com/wp-content/uploads/2024/10/Asset-1@4x.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "From Danang: My Son Holyland & Rice Paper Making Morning Tour",
+    "slug": "recrawl-013-venus-cham-island-from-danang-my-son-holyland-rice-paper-making-morning-tour-venustravel",
+    "source_name": "recrawl_013_venus_cham_island",
+    "source_url": "https://venusvietnamtravel.com/my-son-holyland-rice-paper-making-morning-tour/",
+    "price_adult": 775250.0,
+    "price_raw": "From $31.01",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Hoi An City Tour – Boat Ride – Release Flower Lantern",
+    "slug": "recrawl-014-venus-cham-island-hoi-an-city-tour-boat-ride-release-flower-lantern-venustravel",
+    "source_name": "recrawl_014_venus_cham_island",
+    "source_url": "https://venusvietnamtravel.com/hoi-an-boat-ride/",
+    "price_adult": 641250.0,
+    "price_raw": "From $25.65",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Marble Mountains – Monkey Mountain – Am Phu Cave Morning Tour",
+    "slug": "recrawl-015-venus-cham-island-marble-mountains-monkey-mountain-am-phu-cave-morning-tour-venustravel",
+    "source_name": "recrawl_015_venus_cham_island",
+    "source_url": "https://venusvietnamtravel.com/marble-mountains-monkey-mountain-am-phu-cave-morning-tour/",
+    "price_adult": 603000.0,
+    "price_raw": "From $24.12",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Marble Mountains – Monkey Mountain – Am Phu Cave Sunset Tour",
+    "slug": "recrawl-016-venus-cham-island-marble-mountains-monkey-mountain-am-phu-cave-sunset-tour-venustravel",
+    "source_name": "recrawl_016_venus_cham_island",
+    "source_url": "https://venusvietnamtravel.com/marble-mountains-am-phu-cave-monkey-mountains-sunset-tour/",
+    "price_adult": 545500.0,
+    "price_raw": "From $21.82",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "3 Traditional Handicraft Villages In 1 Tour",
+    "slug": "recrawl-017-venusvietnamtravel-3-traditional-handicraft-villages-in-1-tour-venustravel",
+    "source_name": "recrawl_017_venusvietnamtravel",
+    "source_url": "https://venusvietnamtravel.com/3-traditional-handicraft-villages-in-1-tour/",
+    "price_adult": 976000.0,
+    "price_raw": "From $39.04",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "AFTERNOON BA NA HILLS – GOLDEN BRIDGE & DRAGON BRIDGE BY NIGHT TOUR",
+    "slug": "recrawl-018-venusvietnamtravel-afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour-venustravel",
+    "source_name": "recrawl_018_venusvietnamtravel",
+    "source_url": "https://venusvietnamtravel.com/afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour/",
+    "price_adult": 1540750.0,
+    "price_raw": "From $61.63",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "inferred_core_field",
+      "incomplete_itinerary"
+    ],
+    "warnings": [],
+    "name": "Cam Thanh Coconut Jungle Muslim Tour",
+    "slug": "recrawl-019-venusvietnamtravel-cam-thanh-coconut-jungle-muslim-tour-venustravel",
+    "source_name": "recrawl_019_venusvietnamtravel",
+    "source_url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-muslim-tour/",
+    "price_adult": 1075000.0,
+    "price_raw": "estimated_from_context:1075000 VND",
+    "duration": "2 Days",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Cam Thanh Cooking Class & My Son Holy Land Full-Day Tour",
+    "slug": "recrawl-020-venusvietnamtravel-cam-thanh-cooking-class-my-son-holy-land-full-day-tour-venustravel",
+    "source_name": "recrawl_020_venusvietnamtravel",
+    "source_url": "https://venusvietnamtravel.com/cam-thanh-cooking-class-my-son-holy-land-full-day-tour/",
+    "price_adult": 1215250.0,
+    "price_raw": "From $48.61",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Cam Thanh Eco Tour - My Son Holy Land Full-day Tour",
+    "slug": "recrawl-021-venusvietnamtravel-cam-thanh-eco-tour-my-son-holy-land-full-day-tour-venustravel",
+    "source_name": "recrawl_021_venusvietnamtravel",
+    "source_url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-my-son-sanctuary-full-day-tour/",
+    "price_adult": 1215250.0,
+    "price_raw": "From $48.61",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Cham Island Sightseeing & Snorkeling Tour",
+    "slug": "recrawl-022-venusvietnamtravel-cham-island-sightseeing-snorkeling-tour-venustravel",
+    "source_name": "recrawl_022_venusvietnamtravel",
+    "source_url": "https://venusvietnamtravel.com/cham-island-sightseeing-and-snorkeling-tour/",
+    "price_adult": 765500.0,
+    "price_raw": "From $30.62",
+    "duration": "Half Day",
+    "itinerary_count": 0,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2025_L.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [],
+    "name": "The best quality Daily Group Tour package in Vietnam",
+    "slug": "recrawl-023-vietnamadventure-danang-the-best-quality-daily-group-tour-package-in-vietnam",
+    "source_name": "recrawl_023_vietnamadventure_danang",
+    "source_url": "https://vietnamadventuretour.com.vn/daily-group-tour/",
+    "price_adult": 475000.0,
+    "price_raw": "From $ 19",
+    "duration": "3 Days",
+    "itinerary_count": 0,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://vietnamadventuretour.com.vn/wp-content/uploads/2025/03/bg-01.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [
+      "missing_meeting_point"
+    ],
+    "name": "Vietnam Luxury Tour - Experience your trip with 5-star class",
+    "slug": "recrawl-024-vietnamadventure-danang-vietnam-luxury-tour-experience-your-trip-with-5-star-class",
+    "source_name": "recrawl_024_vietnamadventure_danang",
+    "source_url": "https://vietnamadventuretour.com.vn/luxury-tour/",
+    "price_adult": 600000.0,
+    "price_raw": "From $ 24",
+    "duration": "3 Days",
+    "itinerary_count": 0,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://vietnamadventuretour.com.vn/wp-content/uploads/2025/03/bg-01.png"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration",
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [],
+    "name": "Da Nang Shore Excursions From Tien Sa Port - Deluxe Tours",
+    "slug": "recrawl-025-vmtravel-da-nang-shore-excursions-from-tien-sa-port-deluxe-tours",
+    "source_name": "recrawl_025_vmtravel",
+    "source_url": "https://vmtravel.com/da-nang-shore-excursions-from-tien-sa-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 0,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [
+      "missing_meeting_point",
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Hue Shore Excursions From Chan May Port - Book 1 Day Tour",
+    "slug": "recrawl-026-vmtravel-hue-shore-excursions-from-chan-may-port-book-1-day-tour",
+    "source_name": "recrawl_026_vmtravel",
+    "source_url": "https://vmtravel.com/hue-shore-excursions-from-chan-may-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "1 Day",
+    "itinerary_count": 0,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Ba Na Hills And Golden Bridge Tour From Tien Sa Port",
+    "slug": "recrawl-027-vmtravel-danang-shore-ba-na-hills-and-golden-bridge-tour-from-tien-sa-port",
+    "source_name": "recrawl_027_vmtravel_danang_shore",
+    "source_url": "https://vmtravel.com/tours/ba-na-hills-and-golden-bridge-tour-from-tien-sa/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [],
+    "name": "Da Nang City Tour From Tien Sa Port - Explore and Shopping",
+    "slug": "recrawl-028-vmtravel-danang-shore-da-nang-city-tour-from-tien-sa-port-explore-and-shopping",
+    "source_name": "recrawl_028_vmtravel_danang_shore",
+    "source_url": "https://vmtravel.com/tours/da-nang-city-tour-from-tien-sa-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Hoi An Day Tour from Tien Sa Port - Hoi An Shore Excursions",
+    "slug": "recrawl-029-vmtravel-danang-shore-hoi-an-day-tour-from-tien-sa-port-hoi-an-shore-excursions",
+    "source_name": "recrawl_029_vmtravel_danang_shore",
+    "source_url": "https://vmtravel.com/tours/hoi-an-day-tour-from-tien-sa-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "My Son Sanctuary Tour From Tien Sa Port - Explore Now",
+    "slug": "recrawl-030-vmtravel-danang-shore-my-son-sanctuary-tour-from-tien-sa-port-explore-now",
+    "source_name": "recrawl_030_vmtravel_danang_shore",
+    "source_url": "https://vmtravel.com/tours/my-son-sanctuary-tour-from-tien-sa-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Bana Hills Day Trip from Chan May Port: Best Shore Excursion",
+    "slug": "recrawl-031-vmtravel-hue-shore-bana-hills-day-trip-from-chan-may-port-best-shore-excursion",
+    "source_name": "recrawl_031_vmtravel_hue_shore",
+    "source_url": "https://vmtravel.com/tours/bana-hills-day-trip-from-chan-may-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 8,
+    "inclusions_count": 0,
+    "exclusions_count": 0,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ],
+    "warnings": [
+      "image_relevance_requires_manual_review"
+    ],
+    "name": "Hue Imperial Tour from Chan May Port: Best Shore Excursions",
+    "slug": "recrawl-032-vmtravel-hue-shore-hue-imperial-tour-from-chan-may-port-best-shore-excursions",
+    "source_name": "recrawl_032_vmtravel_hue_shore",
+    "source_url": "https://vmtravel.com/tours/hue-imperial-tour-from-chan-may-port/",
+    "price_adult": 750000.0,
+    "price_raw": "From $30",
+    "duration": "3 Days",
+    "itinerary_count": 8,
+    "inclusions_count": 8,
+    "exclusions_count": 8,
+    "image_count": 8,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/700x900.jpg"
+  }
+]

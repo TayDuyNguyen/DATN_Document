@@ -1,0 +1,1706 @@
+{
+    "generated_at": "2026-06-08T11:03:07+07:00",
+    "rows_scanned": 112,
+    "columns_scanned": [
+        "name",
+        "description",
+        "short_description",
+        "address",
+        "district",
+        "ward",
+        "opening_hours"
+    ],
+    "findings_total": 151,
+    "by_column": {
+        "short_description": 79,
+        "name": 48,
+        "description": 13,
+        "address": 11
+    },
+    "by_status": {
+        "active": 145,
+        "pending_review": 6
+    },
+    "findings": [
+        {
+            "id": 1,
+            "status": "active",
+            "slug": "hoi-an-ancient-town",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Hội An Phố cổ, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 2,
+            "status": "active",
+            "slug": "hoi-an-memories-land",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Hội An Memories Land, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 3,
+            "status": "active",
+            "slug": "bay-mau-coconut-forest",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Bay Mau Coconut Forest, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 4,
+            "status": "active",
+            "slug": "tam-thanh-beach",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "beach"
+            ],
+            "value": "Tam Thanh Beach"
+        },
+        {
+            "id": 4,
+            "status": "active",
+            "slug": "tam-thanh-beach",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Tam Thanh Bãi biển, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 5,
+            "status": "active",
+            "slug": "binh-minh-beach",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "beach"
+            ],
+            "value": "Binh Minh Beach"
+        },
+        {
+            "id": 5,
+            "status": "active",
+            "slug": "binh-minh-beach",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Binh Minh Bãi biển, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 6,
+            "status": "active",
+            "slug": "dong-giang-heavens-gate",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Dong Giang Heaven Gate, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 8,
+            "status": "active",
+            "slug": "my-son-sanctuary",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Mỹ Sơn Thánh địa, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 9,
+            "status": "active",
+            "slug": "ban-than-scenic-area",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Ban Than - Hon Mang, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 10,
+            "status": "active",
+            "slug": "phu-ninh-lake",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Phu Ninh Lake, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 11,
+            "status": "active",
+            "slug": "thu-bon-river",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Thu Bồn River, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 12,
+            "status": "active",
+            "slug": "an-bang-beach",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "beach"
+            ],
+            "value": "An Bang Beach"
+        },
+        {
+            "id": 12,
+            "status": "active",
+            "slug": "an-bang-beach",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại An Bang Bãi biển, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 13,
+            "status": "active",
+            "slug": "cu-lao-cham",
+            "column": "name",
+            "matched_unaccented_phrases": [
+                "cu lao cham"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Cham Island (Cu Lao Cham)"
+        },
+        {
+            "id": 13,
+            "status": "active",
+            "slug": "cu-lao-cham",
+            "column": "description",
+            "matched_unaccented_phrases": [
+                "cu lao cham"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Cù Lao Chàm (Cu Lao Cham) là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 14,
+            "status": "active",
+            "slug": "dragon-bridge",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Rồng Cầu, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 15,
+            "status": "active",
+            "slug": "han-river-bridge",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Sông Hàn Cầu, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 17,
+            "status": "active",
+            "slug": "thuan-phuoc-bridge",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Thuan Phuoc Cầu, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 18,
+            "status": "active",
+            "slug": "nguyen-van-troi-bridge",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Nguyễn Văn Trỗi Cầu, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 19,
+            "status": "active",
+            "slug": "da-nang-cathedral",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Đà Nẵng Nhà thờ, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 20,
+            "status": "active",
+            "slug": "linh-ung-pagoda",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Linh Ung Chùa, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 21,
+            "status": "active",
+            "slug": "marble-mountains",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Marble Dãy núi, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 22,
+            "status": "active",
+            "slug": "nui-than-tai-park",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "park"
+            ],
+            "value": "Nui Than Tai Park"
+        },
+        {
+            "id": 22,
+            "status": "active",
+            "slug": "nui-than-tai-park",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Núi Thần Tài Công viên, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 23,
+            "status": "active",
+            "slug": "ba-na-hills",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Bà Nà Hills, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 24,
+            "status": "active",
+            "slug": "cham-sculpture-museum",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "museum"
+            ],
+            "value": "Cham Sculpture Museum"
+        },
+        {
+            "id": 24,
+            "status": "active",
+            "slug": "cham-sculpture-museum",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "museum"
+            ],
+            "value": "World largest Cham artifacts museum."
+        },
+        {
+            "id": 25,
+            "status": "active",
+            "slug": "da-nang-museum",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Đà Nẵng Bảo tàng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 26,
+            "status": "active",
+            "slug": "da-nang-fine-arts-museum",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Đà Nẵng Mỹ thuật Bảo tàng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 27,
+            "status": "active",
+            "slug": "ho-chi-minh-museum",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "museum"
+            ],
+            "value": "Ho Chi Minh Museum"
+        },
+        {
+            "id": 27,
+            "status": "active",
+            "slug": "ho-chi-minh-museum",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Ho Chi Minh Bảo tàng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 28,
+            "status": "active",
+            "slug": "dong-dinh-museum",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "museum"
+            ],
+            "value": "Dong Dinh Museum"
+        },
+        {
+            "id": 28,
+            "status": "active",
+            "slug": "dong-dinh-museum",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Dong Dinh Bảo tàng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 29,
+            "status": "active",
+            "slug": "asia-park",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "park"
+            ],
+            "value": "Asia Park"
+        },
+        {
+            "id": 29,
+            "status": "active",
+            "slug": "asia-park",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Asia Công viên, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 30,
+            "status": "active",
+            "slug": "east-sea-park",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "park"
+            ],
+            "value": "East Sea Park"
+        },
+        {
+            "id": 30,
+            "status": "active",
+            "slug": "east-sea-park",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại East Sea Công viên, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 31,
+            "status": "active",
+            "slug": "apec-park",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "park"
+            ],
+            "value": "APEC Park"
+        },
+        {
+            "id": 31,
+            "status": "active",
+            "slug": "apec-park",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại APEC Công viên, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 32,
+            "status": "active",
+            "slug": "29-3-park",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "park"
+            ],
+            "value": "29/3 Park"
+        },
+        {
+            "id": 32,
+            "status": "active",
+            "slug": "29-3-park",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại 29/3 Công viên, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 33,
+            "status": "active",
+            "slug": "banh-xeo-76",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Banh Xeo 76, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 34,
+            "status": "active",
+            "slug": "bun-bo-hue-ba-thuong",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Bun Bo Huế Ba Thuong, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 35,
+            "status": "active",
+            "slug": "que-xua-restaurant",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "restaurant"
+            ],
+            "value": "Que Xua Restaurant"
+        },
+        {
+            "id": 35,
+            "status": "active",
+            "slug": "que-xua-restaurant",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Que Xua Nhà hàng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 38,
+            "status": "active",
+            "slug": "bun-rieu-cua-39",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Bun Rieu Cua 39, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 39,
+            "status": "active",
+            "slug": "moc-restaurant",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "restaurant"
+            ],
+            "value": "Moc Restaurant"
+        },
+        {
+            "id": 41,
+            "status": "active",
+            "slug": "nen-danang",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang"
+            ],
+            "value": "Nen Danang"
+        },
+        {
+            "id": 43,
+            "status": "active",
+            "slug": "madam-lan",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Madam Lan, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 44,
+            "status": "active",
+            "slug": "waterfront-danang",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang"
+            ],
+            "value": "Waterfront Danang"
+        },
+        {
+            "id": 44,
+            "status": "active",
+            "slug": "waterfront-danang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Waterfront Đà Nẵng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 49,
+            "status": "active",
+            "slug": "sofia-restaurant",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "restaurant"
+            ],
+            "value": "Sofia Restaurant"
+        },
+        {
+            "id": 49,
+            "status": "active",
+            "slug": "sofia-restaurant",
+            "column": "address",
+            "matched_unaccented_phrases": [
+                "da nang"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Lô 1-2 Phạm Văn Đồng, Da Nang"
+        },
+        {
+            "id": 50,
+            "status": "active",
+            "slug": "blue-whale-restaurant",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Blue Whale, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 53,
+            "status": "active",
+            "slug": "der-morgen-coffee",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Der Morgen Coffee"
+        },
+        {
+            "id": 53,
+            "status": "active",
+            "slug": "der-morgen-coffee",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Der Morgen Coffee là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 53,
+            "status": "active",
+            "slug": "der-morgen-coffee",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Minimalist specialty coffee."
+        },
+        {
+            "id": 54,
+            "status": "active",
+            "slug": "das-chill-coffee",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Das-Chill Coffee"
+        },
+        {
+            "id": 54,
+            "status": "active",
+            "slug": "das-chill-coffee",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Das-Chill Coffee là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 55,
+            "status": "active",
+            "slug": "trinh-cafe",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "cafe"
+            ],
+            "value": "Trinh Cafe"
+        },
+        {
+            "id": 55,
+            "status": "active",
+            "slug": "trinh-cafe",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "garden",
+                "coffee"
+            ],
+            "value": "Garden coffee escape."
+        },
+        {
+            "id": 56,
+            "status": "active",
+            "slug": "starbucks-bach-dang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Starbucks Bạch Đằng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 57,
+            "status": "active",
+            "slug": "horizon-bar",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "city"
+            ],
+            "value": "Rooftop city views."
+        },
+        {
+            "id": 58,
+            "status": "active",
+            "slug": "ador-coffee",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "ADOR Coffee"
+        },
+        {
+            "id": 58,
+            "status": "active",
+            "slug": "ador-coffee",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "ADOR Coffee là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 58,
+            "status": "active",
+            "slug": "ador-coffee",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Stylish specialty coffee."
+        },
+        {
+            "id": 59,
+            "status": "active",
+            "slug": "trangcasa-cafe",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "cafe"
+            ],
+            "value": "Trangcasa Cafe"
+        },
+        {
+            "id": 59,
+            "status": "active",
+            "slug": "trangcasa-cafe",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Sophisticated lounge."
+        },
+        {
+            "id": 60,
+            "status": "active",
+            "slug": "dau-ngot-cafe",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "cafe"
+            ],
+            "value": "Dau Ngot Cafe"
+        },
+        {
+            "id": 60,
+            "status": "active",
+            "slug": "dau-ngot-cafe",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "cafe",
+                "and"
+            ],
+            "value": "Cafe and souvenirs."
+        },
+        {
+            "id": 61,
+            "status": "active",
+            "slug": "danang-marriott-resort",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang",
+                "resort"
+            ],
+            "value": "Danang Marriott Resort"
+        },
+        {
+            "id": 61,
+            "status": "active",
+            "slug": "danang-marriott-resort",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "resort"
+            ],
+            "value": "International luxury resort."
+        },
+        {
+            "id": 62,
+            "status": "active",
+            "slug": "melia-danang-resort",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang",
+                "resort"
+            ],
+            "value": "Melia Danang Resort"
+        },
+        {
+            "id": 63,
+            "status": "active",
+            "slug": "new-world-hoiana",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "resort"
+            ],
+            "value": "Integrated luxury resort."
+        },
+        {
+            "id": 64,
+            "status": "active",
+            "slug": "muong-thanh-luxury",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Muong Thanh Luxury, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 65,
+            "status": "active",
+            "slug": "monarque-hotel",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "hotel"
+            ],
+            "value": "Monarque Hotel"
+        },
+        {
+            "id": 67,
+            "status": "active",
+            "slug": "haian-beach-hotel",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "beach",
+                "hotel"
+            ],
+            "value": "Haian Beach Hotel"
+        },
+        {
+            "id": 67,
+            "status": "active",
+            "slug": "haian-beach-hotel",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Haian Bãi biển Khách sạn, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 68,
+            "status": "active",
+            "slug": "the-blossom-resort",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "the",
+                "resort"
+            ],
+            "value": "The Blossom Resort"
+        },
+        {
+            "id": 68,
+            "status": "active",
+            "slug": "the-blossom-resort",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "the"
+            ],
+            "value": "The Blossom Khu nghỉ dưỡng là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 68,
+            "status": "active",
+            "slug": "the-blossom-resort",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "resort"
+            ],
+            "value": "Japanese zen resort."
+        },
+        {
+            "id": 68,
+            "status": "active",
+            "slug": "the-blossom-resort",
+            "column": "address",
+            "matched_unaccented_phrases": [
+                "hoa cuong"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Hoa Cuong Bac, Đà Nẵng"
+        },
+        {
+            "id": 69,
+            "status": "active",
+            "slug": "balcona-hotel",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "hotel"
+            ],
+            "value": "Balcona Hotel"
+        },
+        {
+            "id": 69,
+            "status": "active",
+            "slug": "balcona-hotel",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "hotel"
+            ],
+            "value": "Spacious balcony hotel."
+        },
+        {
+            "id": 70,
+            "status": "active",
+            "slug": "holiday-beach-hotel",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "beach",
+                "hotel"
+            ],
+            "value": "Holiday Beach Hotel"
+        },
+        {
+            "id": 70,
+            "status": "active",
+            "slug": "holiday-beach-hotel",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Holiday Bãi biển Khách sạn, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 71,
+            "status": "active",
+            "slug": "intercontinental-resort",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "resort"
+            ],
+            "value": "InterContinental Resort"
+        },
+        {
+            "id": 72,
+            "status": "active",
+            "slug": "sheraton-grand-resort",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "resort"
+            ],
+            "value": "Sheraton Grand Resort"
+        },
+        {
+            "id": 72,
+            "status": "active",
+            "slug": "sheraton-grand-resort",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "resort"
+            ],
+            "value": "Elegant seaside resort."
+        },
+        {
+            "id": 73,
+            "status": "active",
+            "slug": "pullman-danang-resort",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang",
+                "resort"
+            ],
+            "value": "Pullman Danang Resort"
+        },
+        {
+            "id": 73,
+            "status": "active",
+            "slug": "pullman-danang-resort",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Pullman Đà Nẵng Khu nghỉ dưỡng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 74,
+            "status": "active",
+            "slug": "novotel-han-river",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Novotel Sông Hàn, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 75,
+            "status": "active",
+            "slug": "brilliant-hotel",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "hotel"
+            ],
+            "value": "Brilliant Hotel"
+        },
+        {
+            "id": 75,
+            "status": "active",
+            "slug": "brilliant-hotel",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Brilliant Khách sạn, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 79,
+            "status": "active",
+            "slug": "da-nang-color-festival",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Đà Nẵng Color Festival, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 79,
+            "status": "active",
+            "slug": "da-nang-color-festival",
+            "column": "address",
+            "matched_unaccented_phrases": [
+                "my khe"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "My Khe Bãi biển, Đà Nẵng"
+        },
+        {
+            "id": 84,
+            "status": "active",
+            "slug": "han-market",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "market"
+            ],
+            "value": "Han Market"
+        },
+        {
+            "id": 84,
+            "status": "active",
+            "slug": "han-market",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Han Chợ, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 85,
+            "status": "active",
+            "slug": "con-market",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "market"
+            ],
+            "value": "Con Market"
+        },
+        {
+            "id": 85,
+            "status": "active",
+            "slug": "con-market",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Con Chợ, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 86,
+            "status": "active",
+            "slug": "helio-night-market",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "market"
+            ],
+            "value": "Helio Night Market"
+        },
+        {
+            "id": 86,
+            "status": "active",
+            "slug": "helio-night-market",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Helio Night Chợ, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 87,
+            "status": "active",
+            "slug": "son-tra-night-market",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Sơn Trà Night Chợ, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 88,
+            "status": "active",
+            "slug": "an-thuong-night-market",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "market"
+            ],
+            "value": "An Thuong Night Market"
+        },
+        {
+            "id": 89,
+            "status": "active",
+            "slug": "lotte-mart-da-nang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Lotte Mart Đà Nẵng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 90,
+            "status": "active",
+            "slug": "vincom-plaza-da-nang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Vincom Plaza, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 92,
+            "status": "active",
+            "slug": "highlands-coffee-bach-dang",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Highlands Coffee Bach Dang"
+        },
+        {
+            "id": 92,
+            "status": "active",
+            "slug": "highlands-coffee-bach-dang",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Highlands Coffee Bạch Đằng là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 92,
+            "status": "active",
+            "slug": "highlands-coffee-bach-dang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Riverview local coffee."
+        },
+        {
+            "id": 93,
+            "status": "active",
+            "slug": "phuc-long-coffee-tea",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Phuc Long Coffee & Tea"
+        },
+        {
+            "id": 93,
+            "status": "active",
+            "slug": "phuc-long-coffee-tea",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Phuc Long Coffee & Tea là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 93,
+            "status": "active",
+            "slug": "phuc-long-coffee-tea",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Gợi ý tham quan tại Phuc Long Coffee & Tea, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 94,
+            "status": "active",
+            "slug": "the-coffee-house-danang",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "the",
+                "coffee",
+                "house"
+            ],
+            "value": "The Coffee House"
+        },
+        {
+            "id": 94,
+            "status": "active",
+            "slug": "the-coffee-house-danang",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "the",
+                "coffee",
+                "house"
+            ],
+            "value": "The Coffee House là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 94,
+            "status": "active",
+            "slug": "the-coffee-house-danang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Modern workspace coffee."
+        },
+        {
+            "id": 95,
+            "status": "active",
+            "slug": "cong-coffee-bach-dang",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Cong Coffee"
+        },
+        {
+            "id": 95,
+            "status": "active",
+            "slug": "cong-coffee-bach-dang",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Cong Coffee là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 95,
+            "status": "active",
+            "slug": "cong-coffee-bach-dang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "coffee"
+            ],
+            "value": "Vintage aesthetic coffee."
+        },
+        {
+            "id": 96,
+            "status": "active",
+            "slug": "memory-lounge-danang",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Memory Lounge"
+        },
+        {
+            "id": 96,
+            "status": "active",
+            "slug": "memory-lounge-danang",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Memory Lounge là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 96,
+            "status": "active",
+            "slug": "memory-lounge-danang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Floating river lounge."
+        },
+        {
+            "id": 97,
+            "status": "active",
+            "slug": "brodard-tea-house",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "restaurant"
+            ],
+            "value": "Brodard Restaurant"
+        },
+        {
+            "id": 97,
+            "status": "active",
+            "slug": "brodard-tea-house",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "house"
+            ],
+            "value": "French style tea house."
+        },
+        {
+            "id": 98,
+            "status": "active",
+            "slug": "pullman-executive-lounge",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Pullman Executive Lounge"
+        },
+        {
+            "id": 98,
+            "status": "active",
+            "slug": "pullman-executive-lounge",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Pullman Executive Lounge là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 98,
+            "status": "active",
+            "slug": "pullman-executive-lounge",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "lounge"
+            ],
+            "value": "Premium guest lounge."
+        },
+        {
+            "id": 99,
+            "status": "active",
+            "slug": "hilton-da-nang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Hilton Đà Nẵng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 100,
+            "status": "active",
+            "slug": "four-points-sheraton-danang",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "hotel"
+            ],
+            "value": "Upscale oceanfront hotel."
+        },
+        {
+            "id": 103,
+            "status": "pending_review",
+            "slug": "hue-imperial-city",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "city"
+            ],
+            "value": "Huế Imperial City"
+        },
+        {
+            "id": 103,
+            "status": "pending_review",
+            "slug": "hue-imperial-city",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "city"
+            ],
+            "value": "Huế Imperial City là địa điểm được chuẩn hóa nội dung tiếng Việt có dấu trong hệ thống DanangTrip. Thông tin này dùng cho hiển thị, tìm kiếm và gợi ý lịch trình; các chi tiết vận hành có thể được biên tập thêm trước khi quảng bá nổi bật."
+        },
+        {
+            "id": 103,
+            "status": "pending_review",
+            "slug": "hue-imperial-city",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [
+                "city"
+            ],
+            "value": "Gợi ý tham quan tại Huế Imperial City, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 103,
+            "status": "pending_review",
+            "slug": "hue-imperial-city",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Imperial Citadel, Huế, Vietnam"
+        },
+        {
+            "id": 104,
+            "status": "pending_review",
+            "slug": "bai-bien-lang-co",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Bãi biển Lăng Cô, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 104,
+            "status": "pending_review",
+            "slug": "bai-bien-lang-co",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Lăng Cô, Huế, Vietnam"
+        },
+        {
+            "id": 106,
+            "status": "active",
+            "slug": "lang-co-beach",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại VinWonders Nam Hội An, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 106,
+            "status": "active",
+            "slug": "lang-co-beach",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Binh Minh, Thăng Bình, Quảng Nam, Vietnam"
+        },
+        {
+            "id": 107,
+            "status": "active",
+            "slug": "hai-van-pass",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Sơn Trà Peninsula, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 107,
+            "status": "active",
+            "slug": "hai-van-pass",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Sơn Trà Peninsula, Đà Nẵng, Vietnam"
+        },
+        {
+            "id": 108,
+            "status": "active",
+            "slug": "vinwonders-nam-hoi-an",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "park"
+            ],
+            "value": "Bach Ma National Park"
+        },
+        {
+            "id": 108,
+            "status": "active",
+            "slug": "vinwonders-nam-hoi-an",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Bach Ma National Công viên, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 108,
+            "status": "active",
+            "slug": "vinwonders-nam-hoi-an",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Bach Ma National Công viên, Huế, Vietnam"
+        },
+        {
+            "id": 109,
+            "status": "active",
+            "slug": "son-tra-peninsula",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Tra Que Vegetable Làng, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 109,
+            "status": "active",
+            "slug": "son-tra-peninsula",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Tra Que, Hội An, Quảng Nam, Vietnam"
+        },
+        {
+            "id": 111,
+            "status": "active",
+            "slug": "tra-que-vegetable-village",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Sông Hương, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 111,
+            "status": "active",
+            "slug": "tra-que-vegetable-village",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Sông Hương, Huế, Vietnam"
+        },
+        {
+            "id": 112,
+            "status": "active",
+            "slug": "tam-giang-lagoon",
+            "column": "short_description",
+            "matched_unaccented_phrases": [
+                "tham quan"
+            ],
+            "english_or_ascii_place_words": [],
+            "value": "Gợi ý tham quan tại Sông Hàn, phù hợp để đưa vào lịch trình khám phá Đà Nẵng và miền Trung."
+        },
+        {
+            "id": 112,
+            "status": "active",
+            "slug": "tam-giang-lagoon",
+            "column": "address",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "vietnam"
+            ],
+            "value": "Sông Hàn, Đà Nẵng, Vietnam"
+        },
+        {
+            "id": 114,
+            "status": "active",
+            "slug": "4-seasons-danang-hostel",
+            "column": "name",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang",
+                "hostel"
+            ],
+            "value": "4 Seasons Danang Hostel"
+        },
+        {
+            "id": 114,
+            "status": "active",
+            "slug": "4-seasons-danang-hostel",
+            "column": "description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang",
+                "hostel"
+            ],
+            "value": "4 Seasons Danang Hostel là địa điểm du lịch hoặc dịch vụ tại Đà Nẵng, được thu thập từ OpenStreetMap qua Overpass API. Bản ghi đang chờ duyệt và cần được kiểm tra nội dung, hình ảnh, giờ mở cửa, giá và danh mục trước khi xuất bản trên DanangTrip."
+        },
+        {
+            "id": 114,
+            "status": "active",
+            "slug": "4-seasons-danang-hostel",
+            "column": "short_description",
+            "matched_unaccented_phrases": [],
+            "english_or_ascii_place_words": [
+                "danang",
+                "hostel"
+            ],
+            "value": "4 Seasons Danang Hostel được thu thập từ OpenStreetMap và đang chờ biên tập. Cần quản trị viên kiểm tra mô tả, hình ảnh và thông tin vận hành trước khi xuất bản."
+        }
+    ]
+}

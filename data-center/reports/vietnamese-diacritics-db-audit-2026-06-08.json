@@ -1,0 +1,193 @@
+{
+    "generated_at": "2026-06-08T11:56:47+07:00",
+    "tables": {
+        "categories": {
+            "rows_scanned": 100,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 96,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 96
+                }
+            }
+        },
+        "subcategories": {
+            "rows_scanned": 100,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 94,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 94
+                }
+            }
+        },
+        "tags": {
+            "rows_scanned": 100,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 90,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 90
+                }
+            }
+        },
+        "amenities": {
+            "rows_scanned": 100,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 95,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 95
+                }
+            }
+        },
+        "tour_categories": {
+            "rows_scanned": 100,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 200,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 100
+                },
+                "description": {
+                    "unaccented": 0,
+                    "accented": 100
+                }
+            }
+        },
+        "blog_categories": {
+            "rows_scanned": 100,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 195,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 96
+                },
+                "description": {
+                    "unaccented": 0,
+                    "accented": 99
+                }
+            }
+        },
+        "locations": {
+            "rows_scanned": 112,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 537,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 89
+                },
+                "address": {
+                    "unaccented": 0,
+                    "accented": 112
+                },
+                "district": {
+                    "unaccented": 0,
+                    "accented": 112
+                },
+                "short_description": {
+                    "unaccented": 0,
+                    "accented": 112
+                },
+                "description": {
+                    "unaccented": 0,
+                    "accented": 112
+                }
+            }
+        },
+        "tours": {
+            "rows_scanned": 164,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 1210,
+            "by_column": {
+                "name": {
+                    "unaccented": 0,
+                    "accented": 164
+                },
+                "short_desc": {
+                    "unaccented": 0,
+                    "accented": 164
+                },
+                "description": {
+                    "unaccented": 0,
+                    "accented": 164
+                },
+                "duration": {
+                    "unaccented": 0,
+                    "accented": 100
+                },
+                "meeting_point": {
+                    "unaccented": 0,
+                    "accented": 138
+                },
+                "itinerary": {
+                    "unaccented": 0,
+                    "accented": 164
+                },
+                "inclusions": {
+                    "unaccented": 0,
+                    "accented": 159
+                },
+                "exclusions": {
+                    "unaccented": 0,
+                    "accented": 157
+                }
+            }
+        },
+        "blog_posts": {
+            "rows_scanned": 118,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 354,
+            "by_column": {
+                "title": {
+                    "unaccented": 0,
+                    "accented": 118
+                },
+                "excerpt": {
+                    "unaccented": 0,
+                    "accented": 118
+                },
+                "content": {
+                    "unaccented": 0,
+                    "accented": 118
+                }
+            }
+        },
+        "ratings": {
+            "rows_scanned": 600,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 600,
+            "by_column": {
+                "comment": {
+                    "unaccented": 0,
+                    "accented": 600
+                }
+            }
+        }
+    },
+    "totals": {
+        "rows_scanned": 1594,
+        "rows_with_unaccented_vietnamese": 0,
+        "field_values_unaccented": 0,
+        "field_values_accented": 3471
+    },
+    "examples": [],
+    "examples_by_column": []
+}

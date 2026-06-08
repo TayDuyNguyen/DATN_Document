@@ -1,0 +1,41 @@
+{
+  "output": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\21_approve_overpass_clean_batch1.sql",
+  "reviewCsv": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+  "sourceFile": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-enriched.json",
+  "policy": "Approve only high-priority enriched Overpass items with images and no qualityReasons. Skip duplicates at SQL runtime.",
+  "approved": {
+    "total": 242,
+    "byEntity": {
+      "hotel": 131,
+      "location": 15,
+      "restaurant": 96
+    },
+    "byCategory": {
+      "am-thuc-dia-phuong": 91,
+      "bao-tang-di-tich": 6,
+      "ca-phe-tra-sua": 5,
+      "check-in-noi-tieng": 4,
+      "cong-vien-nuoc": 1,
+      "cong-vien-vuon-hoa": 4,
+      "khach-san-homestay": 131
+    }
+  },
+  "pending": {
+    "total": 338,
+    "byEntity": {
+      "hotel": 49,
+      "location": 165,
+      "restaurant": 124
+    },
+    "byCategory": {
+      "am-thuc-dia-phuong": 57,
+      "bao-tang-di-tich": 13,
+      "ca-phe-tra-sua": 68,
+      "check-in-noi-tieng": 112,
+      "cong-vien-nuoc": 2,
+      "cong-vien-vuon-hoa": 25,
+      "hang-dong-nui-non": 13,
+      "khach-san-homestay": 48
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "name": "vmtravel_recheck_001",
+      "url": "https://vmtravel.com/tours/ba-na-hills-and-golden-bridge-tour-from-tien-sa/"
+    },
+    {
+      "name": "vmtravel_recheck_002",
+      "url": "https://vmtravel.com/tours/da-nang-city-tour-from-tien-sa-port/"
+    },
+    {
+      "name": "vmtravel_recheck_003",
+      "url": "https://vmtravel.com/tours/hoi-an-day-tour-from-tien-sa-port/"
+    },
+    {
+      "name": "vmtravel_recheck_004",
+      "url": "https://vmtravel.com/tours/my-son-sanctuary-tour-from-tien-sa-port/"
+    },
+    {
+      "name": "vmtravel_recheck_005",
+      "url": "https://vmtravel.com/tours/hue-imperial-tour-from-chan-may-port/"
+    }
+  ]
+}

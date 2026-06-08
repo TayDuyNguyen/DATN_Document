@@ -1,0 +1,8 @@
+{
+  "input": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+  "csvOutput": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-review.csv",
+  "jsonOutput": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-review.json",
+  "total": 23,
+  "pendingReview": 23,
+  "recordsWithFlags": 5
+}

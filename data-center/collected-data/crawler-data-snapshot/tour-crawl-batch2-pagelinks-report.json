@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-06-03T02:55:07.213924+00:00",
+  "sources": [
+    {
+      "name": "dacotours_bana",
+      "url": "https://dacotours.com/ba-na-hills-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:47:05.811139+00:00",
+      "finishedAt": "2026-06-03T02:48:09.618171+00:00"
+    },
+    {
+      "name": "dananglocaltours_tours",
+      "url": "https://dananglocaltours.com/tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 0,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:48:09.618171+00:00",
+      "finishedAt": "2026-06-03T02:48:12.136716+00:00"
+    },
+    {
+      "name": "dananglocaltours_bana",
+      "url": "https://dananglocaltours.com/tour/ba-na-hills-tour-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 20,
+      "collected": 20,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:48:12.136716+00:00",
+      "finishedAt": "2026-06-03T02:48:28.588669+00:00"
+    },
+    {
+      "name": "dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/basket-boat-hoi-an-tour/",
+      "status": "completed",
+      "candidateUrls": 20,
+      "collected": 20,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:48:28.588669+00:00",
+      "finishedAt": "2026-06-03T02:48:44.740381+00:00"
+    },
+    {
+      "name": "hoiandaytrip_bana",
+      "url": "https://hoiandaytrip.com/ba-na-hills-afternoon-tour/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:48:44.740381+00:00",
+      "finishedAt": "2026-06-03T02:49:53.040804+00:00"
+    },
+    {
+      "name": "hoiandaytrip_am_phu",
+      "url": "https://hoiandaytrip.com/am-phu-cave-tour/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:49:53.040804+00:00",
+      "finishedAt": "2026-06-03T02:51:06.225641+00:00"
+    },
+    {
+      "name": "venus_tours",
+      "url": "https://venusvietnamtravel.com/tours/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 0,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:51:06.225641+00:00",
+      "finishedAt": "2026-06-03T02:51:10.978640+00:00"
+    },
+    {
+      "name": "venus_bana",
+      "url": "https://venusvietnamtravel.com/afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:51:10.978640+00:00",
+      "finishedAt": "2026-06-03T02:52:28.471828+00:00"
+    },
+    {
+      "name": "venus_cham_island",
+      "url": "https://venusvietnamtravel.com/cham-island-sightseeing-and-snorkeling-tour/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:52:28.471828+00:00",
+      "finishedAt": "2026-06-03T02:53:39.243668+00:00"
+    },
+    {
+      "name": "vmtravel_danang_shore",
+      "url": "https://vmtravel.com/da-nang-shore-excursions-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:53:39.243668+00:00",
+      "finishedAt": "2026-06-03T02:54:03.707862+00:00"
+    },
+    {
+      "name": "vmtravel_hue_shore",
+      "url": "https://vmtravel.com/hue-shore-excursions-from-chan-may-port/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:54:03.707862+00:00",
+      "finishedAt": "2026-06-03T02:54:28.958199+00:00"
+    },
+    {
+      "name": "vietnamadventure_danang",
+      "url": "https://vietnamadventuretour.com.vn/tour-category/da-nang-tours/",
+      "status": "completed",
+      "candidateUrls": 25,
+      "collected": 25,
+      "failures": 0,
+      "startedAt": "2026-06-03T02:54:28.958199+00:00",
+      "finishedAt": "2026-06-03T02:55:07.189328+00:00"
+    }
+  ],
+  "rawCount": 240,
+  "normalizedCount": 164,
+  "outputs": {
+    "raw": "data/tour-crawl-batch2-pagelinks-raw.json",
+    "normalized": "data/tour-crawl-batch2-pagelinks-normalized.json"
+  },
+  "policy": {
+    "mode": "public_facts_only",
+    "longDescriptions": "not_copied",
+    "sourceUrlRequired": true,
+    "images": "candidate_urls_only"
+  }
+}

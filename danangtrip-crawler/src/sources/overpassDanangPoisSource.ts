@@ -1,6 +1,6 @@
 import { env } from "../config/env.js";
 import type { CrawlEntityType, CrawlerSource, RawCrawlItem } from "../contracts/crawler.js";
-import { toAsciiText } from "../utils/text.js";
+import { normalizeDisplayText } from "../utils/text.js";
 
 interface OverpassResponse {
   elements?: OverpassElement[];
@@ -65,7 +65,7 @@ export class OverpassDanangPoisSource implements CrawlerSource {
 
   private toRawItem(element: OverpassElement): RawCrawlItem | null {
     const tags = element.tags ?? {};
-    const name = toAsciiText(tags.name ?? tags["name:vi"] ?? tags["name:en"] ?? "");
+    const name = normalizeDisplayText(tags["name:vi"] ?? tags.name ?? tags["name:en"] ?? "");
     const latitude = element.lat ?? element.center?.lat;
     const longitude = element.lon ?? element.center?.lon;
 
@@ -86,7 +86,7 @@ export class OverpassDanangPoisSource implements CrawlerSource {
       rawPayload: {
         name,
         categorySlug,
-        district: toAsciiText(tags["addr:district"] ?? tags["is_in:district"] ?? ""),
+        district: normalizeDisplayText(tags["addr:district"] ?? tags["is_in:district"] ?? ""),
         address: formatAddress(tags),
         latitude,
         longitude,
@@ -258,18 +258,18 @@ function formatAddress(tags: Record<string, string>): string | undefined {
     tags["addr:street"],
     tags["addr:ward"],
     tags["addr:district"],
-    tags["addr:city"] ?? "Da Nang",
+    tags["addr:city"] ?? "Đà Nẵng",
   ].filter(Boolean);
 
-  return parts.length > 0 ? toAsciiText(parts.join(", ")) : undefined;
+  return parts.length > 0 ? normalizeDisplayText(parts.join(", ")) : undefined;
 }
 
 function buildShortDescription(name: string, tags: Record<string, string>): string {
   const type = tags.tourism ?? tags.amenity ?? tags.historic ?? tags.leisure ?? tags.natural ?? "poi";
-  return `${name} duoc thu thap tu OpenStreetMap voi nhom du lieu ${type}. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish.`;
+  return `${name} được thu thập từ OpenStreetMap với nhóm dữ liệu ${type}. Cần quản trị viên kiểm tra mô tả, hình ảnh và thông tin vận hành trước khi xuất bản.`;
 }
 
 function buildDescription(name: string, tags: Record<string, string>): string {
   const category = inferCategorySlug(tags);
-  return `${name} la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (${category}) truoc khi dua len website DanangTrip.`;
+  return `${name} là địa điểm du lịch hoặc dịch vụ tại Đà Nẵng, được thu thập từ OpenStreetMap qua Overpass API. Bản ghi đang chờ duyệt và cần được biên tập nội dung, hình ảnh, giờ mở cửa, giá và danh mục (${category}) trước khi xuất bản trên DanangTrip.`;
 }

@@ -1,0 +1,11 @@
+{
+  "catalogOutput": "data/verified-real-tour-catalog-cloudinary-20260607.json",
+  "mediaMap": "data-center/media-assets/cloudinary-staging/tours/2026-06-07-verified-real-tours/cloudinary-tour-media-map.json",
+  "uniqueAssetsUploaded": 78,
+  "mappedImageSlots": 89,
+  "unmappedImageSlots": 1,
+  "toursWithCloudinaryMedia": 30,
+  "toursWithAtLeastTwoCloudinaryImages": 30,
+  "toursWithThreeCloudinaryImages": 29,
+  "databaseWritten": false
+}

@@ -1,0 +1,13 @@
+{
+  "input": "data/tour-recrawl-parser-v3-enriched-20260606.json",
+  "output": "data/venus-tour-pexels-enriched-20260607.json",
+  "manifest": "data/venus-tour-pexels-enriched-20260607-manifest.json",
+  "targetTours": 4,
+  "enrichedTours": 4,
+  "imageCandidatesAdded": 12,
+  "policy": {
+    "provider": "pexels",
+    "sourceFactsChanged": false,
+    "manualVisualReviewRequired": true
+  }
+}

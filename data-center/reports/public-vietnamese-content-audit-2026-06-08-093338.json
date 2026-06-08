@@ -1,0 +1,22 @@
+{
+    "generated_at": "2026-06-08T09:33:38+07:00",
+    "rows_scanned": 1009,
+    "fields_scanned": 3042,
+    "findings_total": 1,
+    "by_table": {
+        "tour_categories": 1
+    },
+    "by_reason": {
+        "unaccented_vietnamese": 1
+    },
+    "findings": [
+        {
+            "table": "tour_categories",
+            "id": 67,
+            "status": "active",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Tour Helio Center"
+        }
+    ]
+}

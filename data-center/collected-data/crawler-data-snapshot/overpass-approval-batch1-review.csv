@@ -1,0 +1,243 @@
+entity_type,external_id,name,category_slug,district,address,latitude,longitude,image_count,source_url
+location,osm-node-4807957148,Trung tam Giai tri Phuc hop Helio Center,cong-vien-nuoc,Hai Chau,"Duong 2 Thang 9, Hai Chau, Da Nang",16.0364559,108.2246715,3,https://www.openstreetmap.org/node/4807957148
+location,osm-way-1368599361,Bao tang Da Nang,bao-tang-di-tich,,"42, Duong Tran Phu, Da Nang",16.0748319,108.2239805,3,https://www.openstreetmap.org/way/1368599361
+location,osm-way-302872188,Bao tang Nghe thuat Dieu khac Cham Da Nang,bao-tang-di-tich,,"Duong Bach Dang, Da Nang",16.0601964,108.223168,3,https://www.openstreetmap.org/way/302872188
+location,osm-way-302618031,Bao tang Da Nang,bao-tang-di-tich,,"24, Duong Tran Phu, Da Nang",16.0763269,108.221568,3,https://www.openstreetmap.org/way/302618031
+location,osm-node-8474743417,Bao tang Phat giao,bao-tang-di-tich,,"Duong Suvan Hanh, Da Nang",15.9994308,108.2545831,3,https://www.openstreetmap.org/node/8474743417
+location,osm-node-12404434601,Khu Van hoa Tam linh Da Son,check-in-noi-tieng,quan Lien Chieu,"quan Lien Chieu, Da Nang",16.0418575,108.1477778,3,https://www.openstreetmap.org/node/12404434601
+location,osm-way-780440810,My Khe Beach Park,cong-vien-vuon-hoa,Ngu Hanh Son,"53, Duong Vo Nguyen Giap, Ngu Hanh Son, Da Nang",16.0505945,108.2489008,3,https://www.openstreetmap.org/way/780440810
+location,osm-way-780440511,Son Tra Ocean View Pool & Spa,cong-vien-vuon-hoa,Son Tra,"95, Ngo Quyen, Son Tra, Da Nang",16.0969433,108.2463483,3,https://www.openstreetmap.org/way/780440511
+location,osm-way-846695791,Trung tam Van hoa - The thao quan Thanh Khe,cong-vien-vuon-hoa,Quan Thanh Khe,"Duong Ho Tuong, Quan Thanh Khe, Da Nang",16.0615545,108.183214,3,https://www.openstreetmap.org/way/846695791
+location,osm-node-5817580453,Art in Paradise Da Nang 3D Museum,bao-tang-di-tich,,"Tran Nhan Tong, Da Nang",16.0953807,108.2430769,3,https://www.openstreetmap.org/node/5817580453
+location,osm-way-204790989,Cho Con,check-in-noi-tieng,Quan Hai Chau,"Quan Hai Chau, Da Nang",16.0681703,108.2145338,3,https://www.openstreetmap.org/way/204790989
+location,osm-node-7301996085,Cho dem Helio,check-in-noi-tieng,,"Duong 2 Thang 9, Da Nang",16.0370944,108.2248186,3,https://www.openstreetmap.org/node/7301996085
+location,osm-way-1254909519,Cong vien Nguyen Van Linh,cong-vien-vuon-hoa,Hai Chau,"Duong Nguyen Van Linh, Hai Chau, Da Nang",16.0613021,108.2204316,3,https://www.openstreetmap.org/way/1254909519
+location,osm-way-466418347,Hai Van Quan,check-in-noi-tieng,,"Deo Hai Van, Da Nang",16.1877471,108.1312899,3,https://www.openstreetmap.org/way/466418347
+location,osm-node-13734880501,Tuong Phat Phuoc Ly,bao-tang-di-tich,quan Lien Chieu,"quan Lien Chieu, Da Nang",16.0405625,108.1489375,3,https://www.openstreetmap.org/node/13734880501
+restaurant,osm-node-5947469393,Bao An Macrobiotic,am-thuc-dia-phuong,,"56, Duong Hoang Bich Son, Da Nang",16.0753828,108.2409602,3,https://www.openstreetmap.org/node/5947469393
+restaurant,osm-node-4778581323,My Casa,am-thuc-dia-phuong,,"53, Duong Morrison, Da Nang",16.0717885,108.2427211,3,https://www.openstreetmap.org/node/4778581323
+restaurant,osm-node-5379622975,Nan n Kabab,am-thuc-dia-phuong,,"233, Ho Nghinh, Da Nang",16.0669196,108.2433992,3,https://www.openstreetmap.org/node/5379622975
+restaurant,osm-node-5796473953,Nha hang Chay,am-thuc-dia-phuong,,"87, Duong Hoang Van Thu, Da Nang",16.0629555,108.2195011,3,https://www.openstreetmap.org/node/5796473953
+restaurant,osm-node-6120622785,Quan an ngon Thia Go Danang-style,am-thuc-dia-phuong,,"37, Duong Ba Dinh, Hai Chau",16.0760522,108.2183879,3,https://www.openstreetmap.org/node/6120622785
+restaurant,osm-node-4260382168,The Amazing Taco | In Da Nang,am-thuc-dia-phuong,Ngu Hanh Son,"29, My An 5, Ngu Hanh Son, Da Nang",16.0485168,108.2369175,3,https://www.openstreetmap.org/node/4260382168
+restaurant,osm-node-5699718559,The Pizza Company,am-thuc-dia-phuong,,"Tang tret, Coopmart, 478 Dien Bien Phu, Q. Thanh Khe, TP, Thanh Khe Dong, Thanh Khe, Da Nang, Vietnam, Da Nang",16.0667331,108.1870304,3,https://www.openstreetmap.org/node/5699718559
+restaurant,osm-node-5699726168,KFC,am-thuc-dia-phuong,,"Thanh Khe Dong, Thanh Khe, Da Nang, Vietnam, Da Nang",16.066512,108.1870359,3,https://www.openstreetmap.org/node/5699726168
+restaurant,osm-node-5804107053,a Nang Com Chay 2,am-thuc-dia-phuong,,"329, Duong Dinh Nghe, Da Nang",16.0707582,108.2329541,3,https://www.openstreetmap.org/node/5804107053
+restaurant,osm-node-4541527689,Banh Xeo Ba Duong,am-thuc-dia-phuong,,"23, Kiet 280 Hoang Dieu, Da Nang",16.0588034,108.2160349,3,https://www.openstreetmap.org/node/4541527689
+restaurant,osm-node-6147088185,Bun Bo Ba Dieu,am-thuc-dia-phuong,,"17, Tran Tong, Da Nang",16.0585612,108.210864,3,https://www.openstreetmap.org/node/6147088185
+restaurant,osm-node-5123239421,Bun Cha Hue Chi,am-thuc-dia-phuong,,"So 6, Duong Hoang Quoc Viet, Da Nang",16.0848495,108.2296619,3,https://www.openstreetmap.org/node/5123239421
+restaurant,osm-node-6071963085,CHAO DINH DUONG HUYEN TRAM,am-thuc-dia-phuong,,"DT 602, Duong so 5, Da Nang",16.0764122,108.1132831,3,https://www.openstreetmap.org/node/6071963085
+restaurant,osm-node-5793917955,Goom Vegan,am-thuc-dia-phuong,,"144, Nguyen Chi Thanh, Da Nang",16.067251,108.2209029,3,https://www.openstreetmap.org/node/5793917955
+restaurant,osm-node-4694652890,Hang's Kitchen,am-thuc-dia-phuong,,"90, Chau Thi Vinh Te, Da Nang",16.0512342,108.240226,3,https://www.openstreetmap.org/node/4694652890
+restaurant,osm-node-2988980334,Huong Cau,am-thuc-dia-phuong,,"So thua 3-A5.6, 2 Thang 9, Da Nang",16.0482352,108.2231394,3,https://www.openstreetmap.org/node/2988980334
+restaurant,osm-node-4430077491,Mi Quang 1A,am-thuc-dia-phuong,,"Hai Phong, Da Nang",16.0725232,108.2189341,3,https://www.openstreetmap.org/node/4430077491
+restaurant,osm-node-5485483822,Nha hang hai san Be Anh,am-thuc-dia-phuong,,"Lo 14-15 Ho Nghinh, Phuoc My, Son Tra, Da Nang, , Da Nang",16.0692319,108.2429913,3,https://www.openstreetmap.org/node/5485483822
+restaurant,osm-node-4339674598,Nha hang HanCook,am-thuc-dia-phuong,,"316 - 318, Hai Phong, Da Nang",16.068911,108.2049831,3,https://www.openstreetmap.org/node/4339674598
+restaurant,osm-node-4464451390,Nha hang HanCook,am-thuc-dia-phuong,,"Ngo Quyen, Da Nang",16.0716557,108.2300722,3,https://www.openstreetmap.org/node/4464451390
+restaurant,osm-node-5047614532,Quan An Tuk Tuk,am-thuc-dia-phuong,,"18, 18 Duong Thi Xuan Quys, Da Nang",16.0426449,108.2433938,3,https://www.openstreetmap.org/node/5047614532
+restaurant,osm-node-4522677590,Quan Chay Vegetarian Restaurant Ngoc Chi,am-thuc-dia-phuong,,"32, Thai Phien, Da Nang",16.0650511,108.2227097,3,https://www.openstreetmap.org/node/4522677590
+restaurant,osm-node-4430078489,Red Sky Bar & Restaurant,am-thuc-dia-phuong,,"Tran Phu, Da Nang",16.0628344,108.2232276,3,https://www.openstreetmap.org/node/4430078489
+restaurant,osm-node-4430043290,Sofia Restaurant,am-thuc-dia-phuong,,"Pham Van Dong, Da Nang",16.0705038,108.2423861,3,https://www.openstreetmap.org/node/4430043290
+restaurant,osm-node-5911447385,A tri,am-thuc-dia-phuong,,"145, Nguyen Dang Giai, Da Nang",16.1033816,108.2578211,3,https://www.openstreetmap.org/node/5911447385
+restaurant,osm-node-5293335937,Doi gio,am-thuc-dia-phuong,Thanh Khe,"258, Nguyen Van Linh, Thanh Khe, Da Nang",16.0598008,108.2093536,3,https://www.openstreetmap.org/node/5293335937
+restaurant,osm-node-5696687927,Mama Hotpot,am-thuc-dia-phuong,,"19A, Duong Vo Van Kiet, Da Nang",16.063147,108.2419488,3,https://www.openstreetmap.org/node/5696687927
+restaurant,osm-node-5116302323,Mi Quang Ech,am-thuc-dia-phuong,,"441, Duong Ong Ich Khiem, Da Nang",16.0619829,108.2163479,3,https://www.openstreetmap.org/node/5116302323
+restaurant,osm-node-6133794785,Mumtaz,am-thuc-dia-phuong,,"69, Hoai Thanh, Da Nang",16.0484899,108.2371823,3,https://www.openstreetmap.org/node/6133794785
+restaurant,osm-node-5978084714,Nha Hang Chay Hoa Sen - Vegetarian Restaurant,am-thuc-dia-phuong,,"30/1, Dang Thai Mai, Da Nang",16.0609388,108.2099353,3,https://www.openstreetmap.org/node/5978084714
+restaurant,osm-node-5429167110,Thai Market,am-thuc-dia-phuong,,"4, Tran Quoc Toan, Da Nang",16.0661423,108.2242408,3,https://www.openstreetmap.org/node/5429167110
+restaurant,osm-node-5429181331,Thai Market,am-thuc-dia-phuong,,"46, Thai Phien, Da Nang",16.0651331,108.2225171,3,https://www.openstreetmap.org/node/5429181331
+restaurant,osm-node-6152597685,Banh mi cham Pate,am-thuc-dia-phuong,,"26, Chu Van An, Da Nang",16.0568993,108.2180885,3,https://www.openstreetmap.org/node/6152597685
+restaurant,osm-node-5552095626,Hai San Thanh Hien 2,am-thuc-dia-phuong,,"Vo Nguyen Giap, Da Nang",16.0598778,108.2462089,3,https://www.openstreetmap.org/node/5552095626
+restaurant,osm-node-5901161285,Hiri,am-thuc-dia-phuong,,"41, Le Hong Phong, Da Nang",16.0639503,108.221258,3,https://www.openstreetmap.org/node/5901161285
+restaurant,osm-node-3628855206,HQ Thai Food,am-thuc-dia-phuong,,"9, Yen Bai, Da Nang",16.0697702,108.2229678,3,https://www.openstreetmap.org/node/3628855206
+restaurant,osm-node-5414316021,Litaliano,am-thuc-dia-phuong,,"40, Duong An Thuong 30, Da Nang",16.0511561,108.2456807,3,https://www.openstreetmap.org/node/5414316021
+restaurant,osm-node-5678663421,Mi Quang Giao Thuy,am-thuc-dia-phuong,,"16, Duong Ba Dinh, Da Nang",16.0762132,108.2193113,3,https://www.openstreetmap.org/node/5678663421
+restaurant,osm-node-5541654970,NEM Restaurant,am-thuc-dia-phuong,Son Tra,"216, Vo Nguyen Giap, Son Tra, Da Nang",16.0675122,108.2449556,3,https://www.openstreetmap.org/node/5541654970
+restaurant,osm-node-4464451389,Nha Hang HanCook,am-thuc-dia-phuong,,"1, Nui Thanh, Da Nang",16.0539957,108.2203024,3,https://www.openstreetmap.org/node/4464451389
+restaurant,osm-node-4931152321,Phu Hong,am-thuc-dia-phuong,,"19, Yen Bai, Da Nang",16.0695853,108.2229138,3,https://www.openstreetmap.org/node/4931152321
+restaurant,osm-node-6146812885,Phu Hong,am-thuc-dia-phuong,,"19, Duong Yen Bai, Da Nang",16.0691035,108.2229133,3,https://www.openstreetmap.org/node/6146812885
+restaurant,osm-node-5791814653,Qquan Chay Dieu Hoa,am-thuc-dia-phuong,,"87/4, Nguyen Du, Da Nang",16.0784588,108.2190936,3,https://www.openstreetmap.org/node/5791814653
+restaurant,osm-node-4948013624,Quan An Bun Cha Ca,am-thuc-dia-phuong,,"109, Nguyen Chi Thanh, Da Nang",16.0745962,108.2206238,3,https://www.openstreetmap.org/node/4948013624
+restaurant,osm-node-4378701501,quan pho hong,am-thuc-dia-phuong,,"19, Ly Tu Trong, Da Nang",16.0775502,108.2217728,3,https://www.openstreetmap.org/node/4378701501
+restaurant,osm-node-4430077492,Thung Phi BBQ,am-thuc-dia-phuong,,"Nguyen Van Thoai, Da Nang",16.0561213,108.2429882,3,https://www.openstreetmap.org/node/4430077492
+restaurant,osm-node-6108930790,Tokbokki Ly,am-thuc-dia-phuong,,"64, An Thuong 20, Da Nang",16.0514127,108.2405714,3,https://www.openstreetmap.org/node/6108930790
+restaurant,osm-node-6152595285,Xoi ga Ba Be,am-thuc-dia-phuong,,"27, Ngo Gia Tu, Da Nang",16.0695779,108.2172394,3,https://www.openstreetmap.org/node/6152595285
+restaurant,osm-node-5429221882,Memory Lounge,am-thuc-dia-phuong,,"7, Bach Dang, Da Nang",16.0726661,108.2251645,3,https://www.openstreetmap.org/node/5429221882
+restaurant,osm-node-4080898314,Bun cha ca Thuy,am-thuc-dia-phuong,Thanh Khe,"236, Hai Phong, Thanh Khe, Da Nang",16.0705797,108.2072662,3,https://www.openstreetmap.org/node/4080898314
+restaurant,osm-node-6152685685,Bun Mam Van,am-thuc-dia-phuong,,"K23/14, Tran Ke Xuong, Da Nang",16.0667015,108.2168708,3,https://www.openstreetmap.org/node/6152685685
+restaurant,osm-node-6152603585,Oc buou tron Co Ha,am-thuc-dia-phuong,,"348-352, Ong Ich Khiem, Da Nang",16.0673375,108.2139836,3,https://www.openstreetmap.org/node/6152603585
+restaurant,osm-node-4352303490,Ong Minh,am-thuc-dia-phuong,,"92, Duong Vo Nguyen Giap, Da Nang",16.0803548,108.2466261,3,https://www.openstreetmap.org/node/4352303490
+restaurant,osm-node-6152681085,Ram cuon cai Di Hoa,am-thuc-dia-phuong,,"K232/10, Le Duan, Da Nang",16.0686844,108.2091895,3,https://www.openstreetmap.org/node/6152681085
+restaurant,osm-node-2623768438,Thang Bom,am-thuc-dia-phuong,,"171, Duong Le Do, Da Nang",16.0663525,108.2019752,3,https://www.openstreetmap.org/node/2623768438
+restaurant,osm-node-2988814633,Banh beo 291 Nguyen Chi Thanh,am-thuc-dia-phuong,,"291, Nguyen Chi Thanh, Da Nang",16.066938,108.220909,3,https://www.openstreetmap.org/node/2988814633
+restaurant,osm-node-5485496021,Be Bien,am-thuc-dia-phuong,,"202, Duong Vo Nguyen Giap, Da Nang",16.0686243,108.244962,3,https://www.openstreetmap.org/node/5485496021
+restaurant,osm-node-4118223691,Be thui,am-thuc-dia-phuong,,"Tue Tinh, Da Nang",16.0549844,108.2200408,3,https://www.openstreetmap.org/node/4118223691
+restaurant,osm-node-4755650721,Bo Ne Quoc Minh,am-thuc-dia-phuong,,"28, Duong Phan Dinh Phung, Da Nang",16.070516,108.2220197,3,https://www.openstreetmap.org/node/4755650721
+restaurant,osm-node-4605114489,Com Tam Co Nga,am-thuc-dia-phuong,,"Duong Nguyen Duy Hieu, Da Nang",16.0565983,108.24217,3,https://www.openstreetmap.org/node/4605114489
+restaurant,osm-node-6152615685,Cut lon me Ba Lanh,am-thuc-dia-phuong,,"35, Ngo Gia Tu, Da Nang",16.0684812,108.2174327,3,https://www.openstreetmap.org/node/6152615685
+restaurant,osm-node-5582157521,Da Nang com chay,am-thuc-dia-phuong,,"87/16, Nguyen Du, Da Nang",16.0784606,108.219203,3,https://www.openstreetmap.org/node/5582157521
+restaurant,osm-node-5696882723,Oasis Tapas Bar,am-thuc-dia-phuong,,"An Thuong 4, Da Nang",16.048149,108.2465636,3,https://www.openstreetmap.org/node/5696882723
+restaurant,osm-node-5558491521,Pavilion,am-thuc-dia-phuong,,"122, Quang Trung, Da Nang",16.074262,108.2170832,3,https://www.openstreetmap.org/node/5558491521
+restaurant,osm-node-4759752150,Pho nuong Tokyo,am-thuc-dia-phuong,Son Tra,"4, Pham Van Dong, Son Tra, Da Nang",16.07061,108.2428955,3,https://www.openstreetmap.org/node/4759752150
+restaurant,osm-node-4118223690,pho phu gia,am-thuc-dia-phuong,,"Ly Tu Trong, Da Nang",16.0775366,108.2219306,3,https://www.openstreetmap.org/node/4118223690
+restaurant,osm-node-4875985021,quan nhau loc vien,am-thuc-dia-phuong,,"Nguyen Sinh Sac, Da Nang",16.0659502,108.1552232,3,https://www.openstreetmap.org/node/4875985021
+restaurant,osm-node-5437839417,Samwon,am-thuc-dia-phuong,,"74, Duong Dinh Nghe, Da Nang",16.069034,108.2374986,3,https://www.openstreetmap.org/node/5437839417
+restaurant,osm-node-5360440323,Simpur,am-thuc-dia-phuong,,"165, Tran Hung Dao, Da Nang",16.0792103,108.2290755,3,https://www.openstreetmap.org/node/5360440323
+restaurant,osm-node-5964310288,So Zach,am-thuc-dia-phuong,,"47, Duong Trung Nu Vuong, Da Nang",16.059107,108.2214952,3,https://www.openstreetmap.org/node/5964310288
+restaurant,osm-node-6079848286,Teddy Garden burgers,am-thuc-dia-phuong,,"22, Duong Dinh Nghe, Da Nang",16.0688374,108.2416294,3,https://www.openstreetmap.org/node/6079848286
+restaurant,osm-node-4814994722,The Choi's Kitchen,am-thuc-dia-phuong,Thanh Khe,"02, Duong Hoang Hoa Tham, Thanh Khe, Da Nang",16.0707738,108.2093349,3,https://www.openstreetmap.org/node/4814994722
+restaurant,osm-node-4656790491,Banh mi,am-thuc-dia-phuong,,"Le Minh Trung, Da Nang",16.0717111,108.2398005,3,https://www.openstreetmap.org/node/4656790491
+restaurant,osm-node-4109054391,be thui 100,am-thuc-dia-phuong,,"Duong Dien Bien Phu, Da Nang",16.0658884,108.2002733,3,https://www.openstreetmap.org/node/4109054391
+restaurant,osm-node-729406601,Ca phe That,ca-phe-tra-sua,,"Cach Mang Thang Tam, Da Nang",16.0205967,108.2112121,3,https://www.openstreetmap.org/node/729406601
+restaurant,osm-node-729406580,CaPhe Huy,ca-phe-tra-sua,,"80, Duong Ong Ich Khiem, Da Nang",16.0768325,108.2120316,3,https://www.openstreetmap.org/node/729406580
+restaurant,osm-node-729406478,CayTao Coffee,ca-phe-tra-sua,,"Trung Nu Vuong, Da Nang",16.0560931,108.22022,3,https://www.openstreetmap.org/node/729406478
+restaurant,osm-node-6151185387,Che Thai Lien,am-thuc-dia-phuong,,"189, Duong Hoang Dieu, Da Nang",16.0606096,108.2171498,3,https://www.openstreetmap.org/node/6151185387
+restaurant,osm-node-6151202685,Che Xuan Trang,am-thuc-dia-phuong,,"31, Le Duan, Da Nang",16.071271,108.2205088,3,https://www.openstreetmap.org/node/6151202685
+restaurant,osm-node-4118236589,De nghia,am-thuc-dia-phuong,,"Kiet 43 Ngu Hanh Son, Da Nang",16.0495912,108.23912,3,https://www.openstreetmap.org/node/4118236589
+restaurant,osm-node-6151186386,Hai san Nam Danh,am-thuc-dia-phuong,,"K139/H59/38, Tran Quang Khai, Da Nang",16.1044234,108.2535985,3,https://www.openstreetmap.org/node/6151186386
+restaurant,osm-node-4351989390,Hau Sua & Tom Hum,am-thuc-dia-phuong,,"Lo 13, Duong Vo Nguyen Giap, Da Nang",16.0835121,108.2476846,3,https://www.openstreetmap.org/node/4351989390
+restaurant,osm-node-729406487,Homie Coffee,ca-phe-tra-sua,Thanh Khe,"279, Hai Phong, Thanh Khe, Da Nang",16.0707542,108.2092543,3,https://www.openstreetmap.org/node/729406487
+restaurant,osm-node-5791962853,Huong Khach Vegetarian,am-thuc-dia-phuong,,"106, Hoang Dieu, Da Nang",16.0642464,108.2185815,3,https://www.openstreetmap.org/node/5791962853
+restaurant,osm-node-5947905986,koko Green kafe 63,am-thuc-dia-phuong,,"234, Duong Phan Chau Trinh, Da Nang",16.0600295,108.2192703,3,https://www.openstreetmap.org/node/5947905986
+restaurant,osm-node-4150425790,La Luna,am-thuc-dia-phuong,,"187, Duong Huyen Tran Cong Chua, Da Nang",16.0031775,108.2652843,3,https://www.openstreetmap.org/node/4150425790
+restaurant,osm-node-729406447,NhatHa Coffee Ice Cream,ca-phe-tra-sua,,"130, Duong Trung Nu Vuong, Da Nang",16.058217,108.2207447,3,https://www.openstreetmap.org/node/729406447
+restaurant,osm-node-4860107522,phu my thanh nha hang,am-thuc-dia-phuong,,"Nguyen Tat Thanh, Da Nang",16.0761835,108.2071943,3,https://www.openstreetmap.org/node/4860107522
+restaurant,osm-node-4076171123,Quan bun Lieu,am-thuc-dia-phuong,,"15, Duong Hoang Hoa Tham, Da Nang",16.0704264,108.2096385,3,https://www.openstreetmap.org/node/4076171123
+restaurant,osm-node-4900701521,Quan Chay XUAN,am-thuc-dia-phuong,,"631, Duong Tran Cao Van, Da Nang",16.0716462,108.1861689,3,https://www.openstreetmap.org/node/4900701521
+restaurant,osm-node-4076169309,Quan com 08,am-thuc-dia-phuong,Thanh Khe,"08, Duong Hoang Hoa Tham, Thanh Khe, Da Nang",16.0706465,108.2093784,3,https://www.openstreetmap.org/node/4076169309
+restaurant,osm-node-6152679485,Quan Mau - Banh trang thit heo,am-thuc-dia-phuong,,"35, Do Thuc Tinh, Da Nang",16.0248521,108.2100572,3,https://www.openstreetmap.org/node/6152679485
+restaurant,osm-node-6152585585,Sua chua nep cam Co Phuc,am-thuc-dia-phuong,,"65, Ly Thuong Kiet, Da Nang",16.080151,108.218796,3,https://www.openstreetmap.org/node/6152585585
+restaurant,osm-node-5110691331,Tiem An Vu Gia,am-thuc-dia-phuong,,"426, Tran Cao Van, Da Nang",16.071065,108.1984644,3,https://www.openstreetmap.org/node/5110691331
+restaurant,osm-node-4267912389,Tran,am-thuc-dia-phuong,,"4, Le Duan, Da Nang",16.0717989,108.2226291,3,https://www.openstreetmap.org/node/4267912389
+restaurant,osm-node-6151202686,Yaourt muoi Cay Bang,am-thuc-dia-phuong,,"64, Phan Huy Chu, Da Nang",16.0518187,108.234043,3,https://www.openstreetmap.org/node/6151202686
+hotel,osm-node-4483622590,Barney's Danang Backpacker's Hostel,khach-san-homestay,,"169, Tran Hung Dao, Da Nang",16.0789241,108.2289649,3,https://www.openstreetmap.org/node/4483622590
+hotel,osm-node-12093910501,Bay Capital Da Nang Hotel,khach-san-homestay,,"17, Duong Quang Trung, Da Nang",16.0750141,108.221755,3,https://www.openstreetmap.org/node/12093910501
+hotel,osm-node-4166666089,Danang Backpackers Hostel,khach-san-homestay,,"106, Nguyen Chi Thanh, Da Nang",16.0697636,108.2210638,3,https://www.openstreetmap.org/node/4166666089
+hotel,osm-node-4287074189,Ecodanang,khach-san-homestay,,"31, Duong Dinh Nghe, Da Nang",16.06841,108.23891,3,https://www.openstreetmap.org/node/4287074189
+hotel,osm-node-11391148269,La Belle Vie Hottel,khach-san-homestay,,"02, Duong Cao Xuan Duc, Da Nang",16.0873462,108.2197187,3,https://www.openstreetmap.org/node/11391148269
+hotel,osm-node-5602509021,Tam House Villa Hotel,khach-san-homestay,,"27, K209 Nguyen Van Thoai, Da Nang",16.057376,108.2430631,3,https://www.openstreetmap.org/node/5602509021
+hotel,osm-node-12121684001,Alibaba,khach-san-homestay,,"168, Duong Ho Nghinh, Da Nang",16.0720626,108.2428897,3,https://www.openstreetmap.org/node/12121684001
+hotel,osm-node-12030866669,Altara Suites,khach-san-homestay,,"120, Da Nang",16.0777438,108.2451365,3,https://www.openstreetmap.org/node/12030866669
+hotel,osm-node-9243903065,Aria Da Nang,khach-san-homestay,Ngu Hanh Son,"02, Duong Truong Sa, Ngu Hanh Son, Da Nang",15.9896594,108.2723335,3,https://www.openstreetmap.org/node/9243903065
+hotel,osm-node-4759000238,Dan Oasis Hotel,khach-san-homestay,Son Tra,"A2.3, Hoang Sa, Son Tra, Da Nang",16.0954944,108.2520272,3,https://www.openstreetmap.org/node/4759000238
+hotel,osm-node-3628308493,Fulmar Hotel,khach-san-homestay,,"11, Yen Bai, Da Nang",16.0696685,108.2229641,3,https://www.openstreetmap.org/node/3628308493
+hotel,osm-node-6125276061,Hilton Garden Inn Da Nang,khach-san-homestay,,"96, Duong Vo Nguyen Giap, Son Tra",16.0801031,108.2464178,3,https://www.openstreetmap.org/node/6125276061
+hotel,osm-node-12147633201,Hodi Hotel,khach-san-homestay,,"12-14, Duong An Thuong 26, Da Nang",16.05511,108.2445499,3,https://www.openstreetmap.org/node/12147633201
+hotel,osm-node-5412275622,Iris Hotel,khach-san-homestay,,"181-183, Le Duan, Da Nang",16.0701554,108.2137712,3,https://www.openstreetmap.org/node/5412275622
+hotel,osm-node-4652657809,Khach san Hai An,khach-san-homestay,,"1449, Nguyen Tat Thanh, Da Nang",16.0755387,108.178744,3,https://www.openstreetmap.org/node/4652657809
+hotel,osm-node-4580711594,Newsky Hotel,khach-san-homestay,,"207, Ho Nghinh, Da Nang",16.06739,108.2433859,3,https://www.openstreetmap.org/node/4580711594
+hotel,osm-node-12109686301,Pha Le Hotel,khach-san-homestay,,"204-206, Duong Ho Nghinh, Da Nang",16.0668574,108.2430295,3,https://www.openstreetmap.org/node/12109686301
+hotel,osm-node-5432955721,ROLL hostel & pub,khach-san-homestay,,"84, Cao Ba Quat, Da Nang",16.0634265,108.2305655,3,https://www.openstreetmap.org/node/5432955721
+hotel,osm-node-10747827206,Rom Casa Hostel,khach-san-homestay,,"47, Duong An Thuong 4, Da Nang",16.0484407,108.2465963,3,https://www.openstreetmap.org/node/10747827206
+hotel,osm-node-10727065505,Rosabella Boutique Hotel,khach-san-homestay,,"39, Duong Loseby, Da Nang",16.0736498,108.2411134,3,https://www.openstreetmap.org/node/10727065505
+hotel,osm-node-2985700733,Sanouva Danang Hotel,khach-san-homestay,Hai Chau,"68, Duong Phan Chau Trinh, Hai Chau, Da Nang",16.0669848,108.220137,3,https://www.openstreetmap.org/node/2985700733
+hotel,osm-node-12129062601,Star near me Hotel,khach-san-homestay,,"42, Duong Loseby, Da Nang",16.0735167,108.2414618,3,https://www.openstreetmap.org/node/12129062601
+hotel,osm-node-5450558021,Khach san Bon Mua,khach-san-homestay,,"194, Nguyen Huu Tho, Da Nang",16.0428944,108.2100876,3,https://www.openstreetmap.org/node/5450558021
+hotel,osm-node-2987525036,Avora Hotel,khach-san-homestay,,"170, Bach Dang, Da Nang",16.0664261,108.2246379,3,https://www.openstreetmap.org/node/2987525036
+hotel,osm-node-2987527833,Brilliant Hotel,khach-san-homestay,,"162, Duong Bach Dang, Da Nang",16.0666727,108.2247119,3,https://www.openstreetmap.org/node/2987527833
+hotel,osm-node-10294581427,Chi House Hotel & Apartment,khach-san-homestay,,"42, Duong Lam Hoanh, Da Nang",16.0617324,108.2452005,3,https://www.openstreetmap.org/node/10294581427
+hotel,osm-node-10294581428,Hai Yen Hotel,khach-san-homestay,,"428, Duong Lam Hoanh, Da Nang",16.0615001,108.2453032,3,https://www.openstreetmap.org/node/10294581428
+hotel,osm-node-2987527733,Happy Day,khach-san-homestay,,"160, Duong Bach Dang, Da Nang",16.0668209,108.2247629,3,https://www.openstreetmap.org/node/2987527733
+hotel,osm-node-5950397485,Sepon Blue Hotel,khach-san-homestay,,"157-159, Duong Vo Van Kiet, Da Nang",16.061857,108.2378636,3,https://www.openstreetmap.org/node/5950397485
+hotel,osm-node-2987524737,Sun River,khach-san-homestay,,"132-134-136, Duong Bach Dang, Da Nang",16.067392,108.2248021,3,https://www.openstreetmap.org/node/2987524737
+hotel,osm-node-5583697622,Cents Hotel,khach-san-homestay,,"108, Cao Ba Quat, Da Nang",16.0628484,108.2306558,3,https://www.openstreetmap.org/node/5583697622
+hotel,osm-node-5727675826,ChaChi homestay,khach-san-homestay,Son Tra,"06, Kiet 15 Luong The Vinh, Son Tra, Da Nang",16.0638824,108.2343162,3,https://www.openstreetmap.org/node/5727675826
+hotel,osm-node-12145093701,Cherry Hotel & Apartments,khach-san-homestay,,"20, Duong Do Bi, Da Nang",16.0543834,108.2458171,3,https://www.openstreetmap.org/node/12145093701
+hotel,osm-node-5249863422,Chi Hoa,khach-san-homestay,,"52, Bac Dau, Da Nang",16.0759094,108.2108049,3,https://www.openstreetmap.org/node/5249863422
+hotel,osm-node-11715209969,ChiPa Homestay,khach-san-homestay,,"1A, Duong Pham Van Nghi, Da Nang",16.0589381,108.2094602,3,https://www.openstreetmap.org/node/11715209969
+hotel,osm-node-5818616054,City Hostel Danang,khach-san-homestay,,"114, Yen Bai, Da Nang",16.0653434,108.2223565,3,https://www.openstreetmap.org/node/5818616054
+hotel,osm-node-12119724802,Diamond Beach,khach-san-homestay,,"22, Chinh Huu, Da Nang",16.0741685,108.2395703,3,https://www.openstreetmap.org/node/12119724802
+hotel,osm-node-11584401669,Fedora Hostel,khach-san-homestay,,"284/9, Duong Dien Bien Phu, Da Nang",16.0663013,108.1939386,3,https://www.openstreetmap.org/node/11584401669
+hotel,osm-node-12133395101,Grand Sea View Hotel,khach-san-homestay,,"121, Duong Hoang Ke Viem, Da Nang",16.0499198,108.2471017,3,https://www.openstreetmap.org/node/12133395101
+hotel,osm-node-6054437786,Green Balcony Hostel & Coffee,khach-san-homestay,,"01, Suong Nguyet Anh, Da Nang",16.0683158,108.2404477,3,https://www.openstreetmap.org/node/6054437786
+hotel,osm-node-6712140863,Hilary Hotel,khach-san-homestay,Son Tra,"128, Ho Nghinh, Son Tra, Da Nang",16.0733588,108.2429392,3,https://www.openstreetmap.org/node/6712140863
+hotel,osm-node-12101736706,Hong Chau,khach-san-homestay,,"122, Duong Ho Nghinh, Da Nang",16.0735258,108.242881,3,https://www.openstreetmap.org/node/12101736706
+hotel,osm-node-11684508969,Jolias House,khach-san-homestay,,"1, Kiet 498 Vo Nguyen Giap, Da Nang",16.0383857,108.2497851,3,https://www.openstreetmap.org/node/11684508969
+hotel,osm-node-11530773064,Khach San Sea Castle Hotel Sea Castle Hotel,khach-san-homestay,,"171, Ho Nghinh, Da Nang",16.0683117,108.243309,3,https://www.openstreetmap.org/node/11530773064
+hotel,osm-node-12107623401,Kon-Tiki Hostel,khach-san-homestay,,"12, Duong Trieu Viet Vuong, Da Nang",16.0642477,108.2308224,3,https://www.openstreetmap.org/node/12107623401
+hotel,osm-node-5607040127,La COOL House Hostel,khach-san-homestay,Son Tra,"42, An Nhon 6, Son Tra, Da Nang",16.0687774,108.2358207,3,https://www.openstreetmap.org/node/5607040127
+hotel,osm-node-11889083769,Lu peaceful homestay,khach-san-homestay,,"Duong Phan Lang 14, Da Nang",16.0551135,108.189185,3,https://www.openstreetmap.org/node/11889083769
+hotel,osm-node-3489018330,Nha tro Dinh Quoc Vuong,khach-san-homestay,Ngu Hanh Son,"Le Thien Tri, Ngu Hanh Son, Da Nang",15.9788648,108.2525834,3,https://www.openstreetmap.org/node/3489018330
+hotel,osm-node-3478891526,Nha tro DUong Thi Tanh,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9671967,108.2382552,3,https://www.openstreetmap.org/node/3478891526
+hotel,osm-node-3489018328,Nha tro Hoang Van Sinh,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.970688,108.2440386,3,https://www.openstreetmap.org/node/3489018328
+hotel,osm-node-3512677311,Nha tro Hua Dien,khach-san-homestay,Ngu Hanh Son,"Nguyen Thuc Tu, Ngu Hanh Son, Da Nang",15.9803496,108.2511639,3,https://www.openstreetmap.org/node/3512677311
+hotel,osm-node-3455687232,Nha tro Huynh Dinh,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9713255,108.2439001,3,https://www.openstreetmap.org/node/3455687232
+hotel,osm-node-3560105163,Nha tro Huynh Dinh Dung,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9760015,108.2480471,3,https://www.openstreetmap.org/node/3560105163
+hotel,osm-node-3489018331,Nha tro Le Duc Tin,khach-san-homestay,Ngu Hanh Son,"Le Thien Tri, Ngu Hanh Son, Da Nang",15.9786338,108.251049,3,https://www.openstreetmap.org/node/3489018331
+hotel,osm-node-3495233441,Nha tro Mai Truc Lam,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9756184,108.2479094,3,https://www.openstreetmap.org/node/3495233441
+hotel,osm-node-3514922511,Nha tro Ngo Dinh Tu,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9759866,108.248505,3,https://www.openstreetmap.org/node/3514922511
+hotel,osm-node-3560105167,Nha tro Nguyen Doan Chinh,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9761714,108.2489505,3,https://www.openstreetmap.org/node/3560105167
+hotel,osm-node-3560105161,Nha tro Nguyen Huy Vu,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.975667,108.2476281,3,https://www.openstreetmap.org/node/3560105161
+hotel,osm-node-3560105165,Nha tro Nguyen Le Viet,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9764429,108.2492395,3,https://www.openstreetmap.org/node/3560105165
+hotel,osm-node-3516506506,Nha tro Nguyen Long,khach-san-homestay,Ngu Hanh Son,"Nguyen Minh Chau, Ngu Hanh Son, Da Nang",15.9787751,108.2542858,3,https://www.openstreetmap.org/node/3516506506
+hotel,osm-node-3560105160,Nha tro Nguyen Ngoc Linh,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9752877,108.2474964,3,https://www.openstreetmap.org/node/3560105160
+hotel,osm-node-3496244410,Nha tro Nguyen Quoc Dung,khach-san-homestay,Ngu Hanh Son,"Nguyen Minh Chau, Ngu Hanh Son, Da Nang",15.9790396,108.2541639,3,https://www.openstreetmap.org/node/3496244410
+hotel,osm-node-3455679141,Nha tro Nguyen Thi Nga,khach-san-homestay,Ngu Hanh Son,"Duong Luu Quang Vu, Ngu Hanh Son, Da Nang",15.972693,108.2417865,3,https://www.openstreetmap.org/node/3455679141
+hotel,osm-node-3560105166,Nha tro Nguyen Thi Thu Ha,khach-san-homestay,Ngu Hanh Son,"Le Thien Tri, Ngu Hanh Son, Da Nang",15.9785115,108.2525479,3,https://www.openstreetmap.org/node/3560105166
+hotel,osm-node-3497145815,Nha tro Nguyen Van Hung,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9679696,108.2380122,3,https://www.openstreetmap.org/node/3497145815
+hotel,osm-node-3495233434,Nha tro Nguyen Van Sy,khach-san-homestay,Ngu Hanh Son,"Le Thien Tri, Ngu Hanh Son, Da Nang",15.9786338,108.2516775,3,https://www.openstreetmap.org/node/3495233434
+hotel,osm-node-3497145814,Nha tro Pham Ngoc Hai,khach-san-homestay,Ngu Hanh Son,"Nguyen Minh Chau, Ngu Hanh Son, Da Nang",15.979241,108.2508611,3,https://www.openstreetmap.org/node/3497145814
+hotel,osm-node-3560105162,Nha tro Pham Nhat Tan,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9758881,108.2474617,3,https://www.openstreetmap.org/node/3560105162
+hotel,osm-node-3560105164,Nha tro Phan Thanh Huan,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9763562,108.2479304,3,https://www.openstreetmap.org/node/3560105164
+hotel,osm-node-3495233433,Nha tro Tan Canh,khach-san-homestay,Ngu Hanh Son,"Le Thien Tri, Ngu Hanh Son, Da Nang",15.9786456,108.2512708,3,https://www.openstreetmap.org/node/3495233433
+hotel,osm-node-3478891527,Nha tro Tan Thanh Huyen,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9700413,108.2442529,3,https://www.openstreetmap.org/node/3478891527
+hotel,osm-node-3512677310,Nha tro Tran Hung Sang,khach-san-homestay,Ngu Hanh Son,"Nguyen Thuc Tu, Ngu Hanh Son, Da Nang",15.9803468,108.2521429,3,https://www.openstreetmap.org/node/3512677310
+hotel,osm-node-3495233439,Nha tro Tran Quan,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9764093,108.2493914,3,https://www.openstreetmap.org/node/3495233439
+hotel,osm-node-3514922509,Nha tro Tran Thai Phuong,khach-san-homestay,Ngu Hanh Son,"Nam Ky Khoi Nghia, Ngu Hanh Son, Da Nang",15.9782666,108.2521038,3,https://www.openstreetmap.org/node/3514922509
+hotel,osm-node-3516506507,Nha tro Tran Trong Khiem,khach-san-homestay,Ngu Hanh Son,"Nam Ky Khoi Nghia, Ngu Hanh Son, Da Nang",15.9776686,108.2538819,3,https://www.openstreetmap.org/node/3516506507
+hotel,osm-node-3489018329,Nha tro Tran Van Hieu,khach-san-homestay,Ngu Hanh Son,"Luu Quang Vu, Ngu Hanh Son, Da Nang",15.9766018,108.2496009,3,https://www.openstreetmap.org/node/3489018329
+hotel,osm-node-4704794989,Nha tro VTV,khach-san-homestay,,"183/15/13, Phan Thanh, Da Nang",16.0614403,108.2101891,3,https://www.openstreetmap.org/node/4704794989
+hotel,osm-node-3842864143,Oc Tien Sa Hotel,khach-san-homestay,Hai Chau,"163, Nguyen Hoang, Hai Chau, Da Nang",16.0606999,108.2137377,3,https://www.openstreetmap.org/node/3842864143
+hotel,osm-node-5535905123,quan quan hotel,khach-san-homestay,,"Nguyen Huu Tho, Da Nang",16.0536081,108.2089282,3,https://www.openstreetmap.org/node/5535905123
+hotel,osm-node-6355823385,Son Tra Green Hotel,khach-san-homestay,,"116, Duong Nguyen Huy Chuong, Da Nang",16.0881891,108.2444228,3,https://www.openstreetmap.org/node/6355823385
+hotel,osm-node-12098065601,Tashi Park View Hotel & Apartment,khach-san-homestay,,"24-26, Duong Phuoc Truong 15, Da Nang",16.0763967,108.2418113,3,https://www.openstreetmap.org/node/12098065601
+hotel,osm-node-11896312469,Ty house homestay da nang,khach-san-homestay,,"25-27, Kiet 21 Che Lan Vien, Da Nang",16.0431848,108.2464496,3,https://www.openstreetmap.org/node/11896312469
+hotel,osm-node-12114300901,Zuka Hotel & Apartments,khach-san-homestay,,"09, Kiet 35 Duong Dinh Nghe, Da Nang",16.0677368,108.2436651,3,https://www.openstreetmap.org/node/12114300901
+hotel,osm-node-7143487885,139nguyen ducedm,khach-san-homestay,,"139, Nguyen duc chung, Da Nang",16.062815,108.2101633,3,https://www.openstreetmap.org/node/7143487885
+hotel,osm-node-5893704690,4 Seasons Danang Hostel,khach-san-homestay,Ngu Hanh Son District,"69, Chau Thi Vinh Te, Ngu Hanh Son District, Danang",16.050939,108.2404008,3,https://www.openstreetmap.org/node/5893704690
+hotel,osm-node-12163654196,Adela,khach-san-homestay,,"10, Duong An Thuong 36, Da Nang",16.052917,108.2440574,3,https://www.openstreetmap.org/node/12163654196
+hotel,osm-node-11888983269,Alyssa hotel,khach-san-homestay,,"109D, Duong Duong Dinh Nghe, Da Nang",16.0686659,108.2388273,3,https://www.openstreetmap.org/node/11888983269
+hotel,osm-node-6313525388,bella boutique Villa,khach-san-homestay,Son Tra,"29, Do The Chap, Son Tra, Da Nang",16.0777588,108.2444152,3,https://www.openstreetmap.org/node/6313525388
+hotel,osm-node-4401174794,Bien Vang Hotel,khach-san-homestay,,"Pham Van Dong, Da Nang",16.0709263,108.2352601,3,https://www.openstreetmap.org/node/4401174794
+hotel,osm-node-5311766223,City Hostel,khach-san-homestay,,"114, Yen Bai, Da Nang",16.0655088,108.2223258,3,https://www.openstreetmap.org/node/5311766223
+hotel,osm-node-4326820491,Dai Long hotel,khach-san-homestay,,"194, Duong Ha Huy Tap, Da Nang",16.0623771,108.1918861,3,https://www.openstreetmap.org/node/4326820491
+hotel,osm-node-5780795147,Dreamy House,khach-san-homestay,Son Tra,"k30/3, Ha Bong, Son Tra, Da Nang",16.067078,108.2438459,3,https://www.openstreetmap.org/node/5780795147
+hotel,osm-node-10314394611,DTC Hotel,khach-san-homestay,,"252B, Duong Vo Nguyen Giap, Da Nang",16.0626468,108.2460673,3,https://www.openstreetmap.org/node/10314394611
+hotel,osm-node-4199987426,Faifo Hotel,khach-san-homestay,,"200, Hai Phong, Da Nang",16.0712651,108.2098782,3,https://www.openstreetmap.org/node/4199987426
+hotel,osm-node-7116041302,Fivitel Boutique da nang,khach-san-homestay,,"202, Da Nang",16.0643682,108.2206297,3,https://www.openstreetmap.org/node/7116041302
+hotel,osm-node-4611974790,Flora Hotel,khach-san-homestay,,"103, Duong Nguyen Van Linh, Da Nang",16.0607119,108.2184792,3,https://www.openstreetmap.org/node/4611974790
+hotel,osm-node-4550531390,Fusion Suites,khach-san-homestay,,"88, Duong Vo Nguyen Giap, Da Nang",16.0810779,108.24697,3,https://www.openstreetmap.org/node/4550531390
+hotel,osm-node-5436574423,HaLo Homestay,khach-san-homestay,,"k30/h1/08, Duong Ha Bong, Da Nang",16.0668988,108.2438296,3,https://www.openstreetmap.org/node/5436574423
+hotel,osm-node-10768167105,Hana Homestay Danang,khach-san-homestay,Ngu Hanh Son,"84, Duong Thach Lam, Ngu Hanh Son, DA NANG",16.0565287,108.2445298,3,https://www.openstreetmap.org/node/10768167105
+hotel,osm-node-6544450819,Herriott,khach-san-homestay,,"7, Duong Le Van Quy, Danang",16.0718093,108.238651,3,https://www.openstreetmap.org/node/6544450819
+hotel,osm-node-3630417210,Hoa Viet Hotel,khach-san-homestay,,"8, Phan Dinh Phung, Da Nang",16.070395,108.223643,3,https://www.openstreetmap.org/node/3630417210
+hotel,osm-node-4249901095,Hoang Phuong Hotel,khach-san-homestay,,"Nguyen Huu Tho, Da Nang",16.040909,108.2107662,3,https://www.openstreetmap.org/node/4249901095
+hotel,osm-node-5426555721,Homestay Halley,khach-san-homestay,,"37, Duong Dao Cam Moc, Da Nang",16.043357,108.2120125,3,https://www.openstreetmap.org/node/5426555721
+hotel,osm-node-4677455200,Homestay Heo Dat,khach-san-homestay,,"32, Duong Dao Cam Moc, Da Nang",16.0434346,108.212103,3,https://www.openstreetmap.org/node/4677455200
+hotel,osm-node-5249863421,Hue Chi,khach-san-homestay,,"6, Hoang Viet, Da Nang",16.0810276,108.2296778,3,https://www.openstreetmap.org/node/5249863421
+hotel,osm-node-5413973628,King Garden Hotel,khach-san-homestay,,"456A, Duong Nguyen Tri Phuong, Da Nang",16.0514417,108.2114422,3,https://www.openstreetmap.org/node/5413973628
+hotel,osm-node-6544417147,Lenid,khach-san-homestay,Quan Son Tra,"23, Duong Dinh Thi Hoa, Quan Son Tra, Danang",16.0713438,108.2363631,3,https://www.openstreetmap.org/node/6544417147
+hotel,osm-node-6544417154,Luxtery,khach-san-homestay,,"136, Duong Pham Van Dong, Danang",16.070692,108.2357923,3,https://www.openstreetmap.org/node/6544417154
+hotel,osm-node-6544492198,Mari Gold,khach-san-homestay,Son Tra,"14, Duong Nguyen Cao Luyen, Son Tra, Da Nang",16.0692957,108.2415842,3,https://www.openstreetmap.org/node/6544492198
+hotel,osm-node-8446244502,My Little Pig Homestay,khach-san-homestay,Son Tra,"04, Duong An Nhon 1, Son Tra, Da Nang",16.0704986,108.233022,3,https://www.openstreetmap.org/node/8446244502
+hotel,osm-node-6530479393,New Life Hotel,khach-san-homestay,,"Duong Trinh Cong Son, Da Nang",16.0335638,108.2206857,3,https://www.openstreetmap.org/node/6530479393
+hotel,osm-node-6518732280,New Orient Hotel,khach-san-homestay,,"20, Duong Dong Da, Da Nang",16.0825866,108.2214313,3,https://www.openstreetmap.org/node/6518732280
+hotel,osm-node-6654699997,Nha Chung Homestay,khach-san-homestay,,"Kiet 81 Luong The Vinh, Da Nang",16.0638036,108.2385305,3,https://www.openstreetmap.org/node/6654699997
+hotel,osm-node-4855468621,Noi o,khach-san-homestay,,"Nguyen Hoang, Da Nang",16.0608379,108.2136384,3,https://www.openstreetmap.org/node/4855468621
+hotel,osm-node-5762588562,Orchidees,khach-san-homestay,,"09, Duong Dinh Nghe, Da Nang",16.068851,108.2441758,3,https://www.openstreetmap.org/node/5762588562
+hotel,osm-node-5464674523,Otium hostel danang,khach-san-homestay,,"73, Duong Nguyen Chi Thanh, Da Nang",16.0762739,108.2205138,3,https://www.openstreetmap.org/node/5464674523
+hotel,osm-node-11433787697,Ponte Boutique Da Nang,khach-san-homestay,,"104, Ho Nginh, Da Nang",16.0746079,108.2427787,3,https://www.openstreetmap.org/node/11433787697
+hotel,osm-node-5413973113,Red Palace Hotel,khach-san-homestay,,"275, Duong Nguyen Tri Phuong, Da Nang",16.0516704,108.211934,3,https://www.openstreetmap.org/node/5413973113
+hotel,osm-node-6544495730,Rosetta,khach-san-homestay,Son Tra,"63, Duong Duong Dinh Nghe, Son Tra, Da Nang",16.0687168,108.2423129,3,https://www.openstreetmap.org/node/6544495730
+hotel,osm-node-11896574769,Royal apartment,khach-san-homestay,,"22, Duong My Da Dong 12, Da Nang",16.0454258,108.2469527,3,https://www.openstreetmap.org/node/11896574769
+hotel,osm-node-4900673921,San San Hotel,khach-san-homestay,,"54, Duong An Thuong 26, Da Nang",16.0553158,108.2453862,3,https://www.openstreetmap.org/node/4900673921
+hotel,osm-node-4612193833,Sea Phoenix Hotel,khach-san-homestay,,"115, Ho Xuan Huong, Da Nang",16.0409715,108.2483633,3,https://www.openstreetmap.org/node/4612193833
+hotel,osm-node-11680377169,Senorita boutique hotel,khach-san-homestay,,"89 Tran Bach Dang, Da Nang",16.0497984,108.2477859,3,https://www.openstreetmap.org/node/11680377169
+hotel,osm-node-12103878902,Siro House Homestay,khach-san-homestay,,"8, Kiet 72 Nguyen Van Thoai, Da Nang",16.0539254,108.2402218,3,https://www.openstreetmap.org/node/12103878902
+hotel,osm-node-6514131805,Solar Hotel,khach-san-homestay,,"Duong Truong Chi Cuong, Da Nang",16.0309898,108.2250188,3,https://www.openstreetmap.org/node/6514131805
+hotel,osm-node-5815719653,Stingray hostel,khach-san-homestay,,"15-17, Nguyen Van Linh, Da Nang",16.0608725,108.2216027,3,https://www.openstreetmap.org/node/5815719653
+hotel,osm-node-6544417152,Tabii,khach-san-homestay,Quan Son Tra,"27, Duong An Don 4, Quan Son Tra, Danang",16.0729945,108.2372723,3,https://www.openstreetmap.org/node/6544417152
+hotel,osm-node-6544417146,Thanh Nhung,khach-san-homestay,Quan Son Tra,"17, Duong Pham Van Dong, Quan Son Tra, Danang",16.0712142,108.2360048,3,https://www.openstreetmap.org/node/6544417146
+hotel,osm-node-5780635953,travidat,khach-san-homestay,,"20, Ha Bong, Da Nang",16.067533,108.2443277,3,https://www.openstreetmap.org/node/5780635953
+hotel,osm-node-4931062422,TruongVuHouse's,khach-san-homestay,,"Van Thanh 2, Da Nang",16.0969476,108.1355671,3,https://www.openstreetmap.org/node/4931062422
+hotel,osm-node-7103226711,Tulip Hotel,khach-san-homestay,,"58, Tran Phu, Da Nang",16.0706895,108.2238849,3,https://www.openstreetmap.org/node/7103226711

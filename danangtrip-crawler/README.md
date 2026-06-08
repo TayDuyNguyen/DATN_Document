@@ -391,7 +391,7 @@ Implemented as of 2026-05-31:
 - Overpass API crawler for Da Nang POIs.
 - JSON file storage.
 - Normalization pipeline.
-- ASCII / Vietnamese-without-diacritics text policy.
+- UTF-8 display text with Vietnamese diacritics; ASCII only for slugs and technical identifiers.
 - Quality filtering and dedupe.
 - Pexels image enrichment for reviewed candidate data.
 - SQL seed generation for crawler staging tables.

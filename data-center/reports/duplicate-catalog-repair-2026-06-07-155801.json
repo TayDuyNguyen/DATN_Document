@@ -1,0 +1,1454 @@
+{
+    "generated_at": "2026-06-07T15:58:01+07:00",
+    "mode": "apply",
+    "tour_duplicate_groups": 20,
+    "canonical_tours_kept_active": 20,
+    "tour_ids_deactivated": [
+        81,
+        21,
+        41,
+        42,
+        62,
+        22,
+        23,
+        63,
+        83,
+        44,
+        24,
+        84,
+        25,
+        85,
+        45,
+        26,
+        66,
+        86,
+        67,
+        47,
+        27,
+        68,
+        28,
+        88,
+        69,
+        89,
+        29,
+        30,
+        70,
+        90,
+        71,
+        91,
+        31,
+        72,
+        52,
+        92,
+        53,
+        33,
+        73,
+        74,
+        94,
+        54,
+        35,
+        75,
+        95,
+        56,
+        96,
+        36,
+        77,
+        37,
+        57,
+        98,
+        38,
+        58,
+        39,
+        59,
+        79,
+        40,
+        80,
+        100
+    ],
+    "tour_count_deactivated": 60,
+    "blog_105_archived": true,
+    "backup_path": "D:\\DATN\\DATN_Tài liệu\\data-center\\backups\\catalog-before-duplicate-repair-2026-06-07-155801.json",
+    "seed_path": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\48_deactivate_duplicate_catalog_seed.sql",
+    "groups": [
+        {
+            "name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+            "canonical": {
+                "id": 61,
+                "name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+                "slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau-goi-61",
+                "price_adult": "869455.62",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 100000,
+                "relation_counts": {
+                    "booking_items": 0,
+                    "cart_items": 1,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 81,
+                    "name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+                    "slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau-goi-81",
+                    "price_adult": "787276.91",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 22220,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 2,
+                        "favorites": 2,
+                        "views": 2
+                    }
+                },
+                {
+                    "id": 21,
+                    "name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+                    "slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau",
+                    "price_adult": "892643.55",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 41,
+                    "name": "Tour Tiết Kiệm Phố Cổ Hội An & Rừng Dừa Bảy Mẫu",
+                    "slug": "tour-tiet-kiem-pho-co-hoi-an-rung-dua-bay-mau-goi-41",
+                    "price_adult": "780797.07",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+            "canonical": {
+                "id": 82,
+                "name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+                "slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra-goi-82",
+                "price_adult": "467019.69",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 40000,
+                "relation_counts": {
+                    "booking_items": 4,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 42,
+                    "name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+                    "slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra-goi-42",
+                    "price_adult": "504356.02",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 12220,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 2,
+                        "favorites": 2,
+                        "views": 2
+                    }
+                },
+                {
+                    "id": 62,
+                    "name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+                    "slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra-goi-62",
+                    "price_adult": "483497.49",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 22,
+                    "name": "Tour Khám Phá Ngũ Hành Sơn & Chùa Linh Ứng Sơn Trà",
+                    "slug": "tour-kham-pha-ngu-hanh-son-chua-linh-ung-son-tra",
+                    "price_adult": "466962.46",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+            "canonical": {
+                "id": 43,
+                "name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+                "slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho-goi-43",
+                "price_adult": "724151.28",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 31110,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 23,
+                    "name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+                    "slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho",
+                    "price_adult": "773905.95",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 63,
+                    "name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+                    "slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho-goi-63",
+                    "price_adult": "745310.83",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 12220,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 2,
+                        "favorites": 2,
+                        "views": 2
+                    }
+                },
+                {
+                    "id": 83,
+                    "name": "Tour Khám Phá Cù Lao Chàm Lặn Ngắm San Hô",
+                    "slug": "tour-kham-pha-cu-lao-cham-lan-ngam-san-ho-goi-83",
+                    "price_adult": "695368.40",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 1110,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+            "canonical": {
+                "id": 64,
+                "name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+                "slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang-goi-64",
+                "price_adult": "1223351.50",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 31110,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 44,
+                    "name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+                    "slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang-goi-44",
+                    "price_adult": "1157417.72",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 30000,
+                    "relation_counts": {
+                        "booking_items": 3,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 24,
+                    "name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+                    "slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang",
+                    "price_adult": "1214918.14",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 21110,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 84,
+                    "name": "Tour Khám Phá Cố Đô Huế 1 Ngày từ Đà Nẵng",
+                    "slug": "tour-kham-pha-co-do-hue-1-ngay-tu-da-nang-goi-84",
+                    "price_adult": "1051479.07",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 1110,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+            "canonical": {
+                "id": 65,
+                "name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+                "slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay-goi-65",
+                "price_adult": "643118.44",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 40000,
+                "relation_counts": {
+                    "booking_items": 4,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 25,
+                    "name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+                    "slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay",
+                    "price_adult": "606909.42",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 11110,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 85,
+                    "name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+                    "slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay-goi-85",
+                    "price_adult": "572879.41",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 45,
+                    "name": "Tour Cao Cấp Thánh Địa Mỹ Sơn nửa ngày",
+                    "slug": "tour-cao-cap-thanh-dia-my-son-nua-ngay-goi-45",
+                    "price_adult": "570506.83",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+            "canonical": {
+                "id": 46,
+                "name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+                "slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau-goi-46",
+                "price_adult": "358141.06",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 11110,
+                "relation_counts": {
+                    "booking_items": 1,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 26,
+                    "name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+                    "slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau",
+                    "price_adult": "405626.30",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 66,
+                    "name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+                    "slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau-goi-66",
+                    "price_adult": "377740.71",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 86,
+                    "name": "Tour Tiết Kiệm Đà Nẵng City - Những Cây Cầu",
+                    "slug": "tour-tiet-kiem-da-nang-city-nhung-cay-cau-goi-86",
+                    "price_adult": "355945.37",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+            "canonical": {
+                "id": 87,
+                "name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+                "slug": "tour-kham-pha-deo-hai-van-lang-co-o-to-goi-87",
+                "price_adult": "917425.14",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 41110,
+                "relation_counts": {
+                    "booking_items": 4,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 67,
+                    "name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+                    "slug": "tour-kham-pha-deo-hai-van-lang-co-o-to-goi-67",
+                    "price_adult": "881507.99",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 30000,
+                    "relation_counts": {
+                        "booking_items": 3,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 47,
+                    "name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+                    "slug": "tour-kham-pha-deo-hai-van-lang-co-o-to-goi-47",
+                    "price_adult": "963610.15",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 13330,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 3,
+                        "favorites": 3,
+                        "views": 3
+                    }
+                },
+                {
+                    "id": 27,
+                    "name": "Tour Khám Phá Đèo Hải Vân & Lăng Cô - Ô tô",
+                    "slug": "tour-kham-pha-deo-hai-van-lang-co-o-to",
+                    "price_adult": "975393.24",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+            "canonical": {
+                "id": 48,
+                "name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+                "slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi-goi-48",
+                "price_adult": "713046.91",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 20000,
+                "relation_counts": {
+                    "booking_items": 2,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 68,
+                    "name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+                    "slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi-goi-68",
+                    "price_adult": "626843.71",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 28,
+                    "name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+                    "slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi",
+                    "price_adult": "717625.25",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 12220,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 2,
+                        "favorites": 2,
+                        "views": 2
+                    }
+                },
+                {
+                    "id": 88,
+                    "name": "Tour Khám Phá Đêm Phố Cổ Hội An & Ăn Tối",
+                    "slug": "tour-kham-pha-dem-pho-co-hoi-an-an-toi-goi-88",
+                    "price_adult": "692557.05",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+            "canonical": {
+                "id": 49,
+                "name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+                "slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night-goi-49",
+                "price_adult": "1034502.13",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 20000,
+                "relation_counts": {
+                    "booking_items": 2,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 69,
+                    "name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+                    "slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night-goi-69",
+                    "price_adult": "1118626.31",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 89,
+                    "name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+                    "slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night-goi-89",
+                    "price_adult": "1114565.19",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 29,
+                    "name": "Tour Khám Phá Bà Nà Hills Đêm (Sun World Night)",
+                    "slug": "tour-kham-pha-ba-na-hills-dem-sun-world-night",
+                    "price_adult": "1008866.36",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+            "canonical": {
+                "id": 50,
+                "name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+                "slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day-goi-50",
+                "price_adult": "1043697.08",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 20000,
+                "relation_counts": {
+                    "booking_items": 2,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 30,
+                    "name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+                    "slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day",
+                    "price_adult": "1000228.29",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 70,
+                    "name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+                    "slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day-goi-70",
+                    "price_adult": "1069768.17",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 90,
+                    "name": "Tour Cao Cấp VinWonders Nam Hội An Full Day",
+                    "slug": "tour-cao-cap-vinwonders-nam-hoi-an-full-day-goi-90",
+                    "price_adult": "938059.36",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+            "canonical": {
+                "id": 51,
+                "name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+                "slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax-goi-51",
+                "price_adult": "980757.13",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 20000,
+                "relation_counts": {
+                    "booking_items": 2,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 71,
+                    "name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+                    "slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax-goi-71",
+                    "price_adult": "992705.39",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 91,
+                    "name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+                    "slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax-goi-91",
+                    "price_adult": "1012872.95",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 31,
+                    "name": "Tour Tiết Kiệm Suối Khoáng Nóng Thần Tài Relax",
+                    "slug": "tour-tiet-kiem-suoi-khoang-nong-than-tai-relax",
+                    "price_adult": "977069.37",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+            "canonical": {
+                "id": 32,
+                "name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+                "slug": "tour-kham-pha-trekking-ban-dao-son-tra",
+                "price_adult": "807397.21",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 31110,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 72,
+                    "name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+                    "slug": "tour-kham-pha-trekking-ban-dao-son-tra-goi-72",
+                    "price_adult": "751429.78",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 21110,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 52,
+                    "name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+                    "slug": "tour-kham-pha-trekking-ban-dao-son-tra-goi-52",
+                    "price_adult": "748900.99",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 92,
+                    "name": "Tour Khám Phá Trekking Bán Đảo Sơn Trà",
+                    "slug": "tour-kham-pha-trekking-ban-dao-son-tra-goi-92",
+                    "price_adult": "727342.23",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+            "canonical": {
+                "id": 93,
+                "name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+                "slug": "tour-kham-pha-kham-pha-bach-ma-national-park-goi-93",
+                "price_adult": "1105082.62",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 30000,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 53,
+                    "name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+                    "slug": "tour-kham-pha-kham-pha-bach-ma-national-park-goi-53",
+                    "price_adult": "1226604.56",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 33,
+                    "name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+                    "slug": "tour-kham-pha-kham-pha-bach-ma-national-park",
+                    "price_adult": "1140524.44",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 1110,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 73,
+                    "name": "Tour Khám Phá Khám Phá Bạch Mã National Park",
+                    "slug": "tour-kham-pha-kham-pha-bach-ma-national-park-goi-73",
+                    "price_adult": "1251340.98",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+            "canonical": {
+                "id": 34,
+                "name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+                "slug": "tour-kham-pha-street-food-da-nang-bang-xe-may",
+                "price_adult": "699636.62",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 30000,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 74,
+                    "name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+                    "slug": "tour-kham-pha-street-food-da-nang-bang-xe-may-goi-74",
+                    "price_adult": "762437.16",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 21110,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 94,
+                    "name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+                    "slug": "tour-kham-pha-street-food-da-nang-bang-xe-may-goi-94",
+                    "price_adult": "737414.62",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 54,
+                    "name": "Tour Khám Phá Street Food Đà Nẵng bằng Xe Máy",
+                    "slug": "tour-kham-pha-street-food-da-nang-bang-xe-may-goi-54",
+                    "price_adult": "667141.73",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+            "canonical": {
+                "id": 55,
+                "name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+                "slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que-goi-55",
+                "price_adult": "531016.94",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 30000,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 35,
+                    "name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+                    "slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que",
+                    "price_adult": "516113.60",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 21110,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 75,
+                    "name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+                    "slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que-goi-75",
+                    "price_adult": "508416.92",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 95,
+                    "name": "Tour Cao Cấp Làm Nông Dân Làng Rau Trà Quế",
+                    "slug": "tour-cao-cap-lam-nong-dan-lang-rau-tra-que-goi-95",
+                    "price_adult": "556516.92",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 1110,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+            "canonical": {
+                "id": 76,
+                "name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+                "slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua-goi-76",
+                "price_adult": "203429.88",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 21110,
+                "relation_counts": {
+                    "booking_items": 2,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 56,
+                    "name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+                    "slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua-goi-56",
+                    "price_adult": "214301.78",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 96,
+                    "name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+                    "slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua-goi-96",
+                    "price_adult": "231843.82",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 11110,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 36,
+                    "name": "Tour Tiết Kiệm Du Thuyền Sông Hàn & Xem Rồng Phun Lửa",
+                    "slug": "tour-tiet-kiem-du-thuyen-song-han-xem-rong-phun-lua",
+                    "price_adult": "236679.69",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+            "canonical": {
+                "id": 97,
+                "name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+                "slug": "tour-kham-pha-dam-pha-tam-giang-sunset-goi-97",
+                "price_adult": "857958.50",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 31110,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 77,
+                    "name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+                    "slug": "tour-kham-pha-dam-pha-tam-giang-sunset-goi-77",
+                    "price_adult": "864803.78",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 22220,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 2,
+                        "favorites": 2,
+                        "views": 2
+                    }
+                },
+                {
+                    "id": 37,
+                    "name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+                    "slug": "tour-kham-pha-dam-pha-tam-giang-sunset",
+                    "price_adult": "866315.16",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 57,
+                    "name": "Tour Khám Phá Đầm Phá Tam Giang & Sunset",
+                    "slug": "tour-kham-pha-dam-pha-tam-giang-sunset-goi-57",
+                    "price_adult": "762884.28",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+            "canonical": {
+                "id": 78,
+                "name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+                "slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho-goi-78",
+                "price_adult": "162940.36",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 31110,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 1,
+                    "favorites": 1,
+                    "views": 1
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 98,
+                    "name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+                    "slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho-goi-98",
+                    "price_adult": "166686.87",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 31110,
+                    "relation_counts": {
+                        "booking_items": 3,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 38,
+                    "name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+                    "slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho",
+                    "price_adult": "171479.93",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 30000,
+                    "relation_counts": {
+                        "booking_items": 3,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 58,
+                    "name": "Tour Khám Phá Ca Huế Trên Sông Hương & Ngắm Thành Phố",
+                    "slug": "tour-kham-pha-ca-hue-tren-song-huong-ngam-thanh-pho-goi-58",
+                    "price_adult": "175641.54",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 21110,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+            "canonical": {
+                "id": 99,
+                "name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+                "slug": "tour-kham-pha-snorkeling-ban-dao-son-tra-goi-99",
+                "price_adult": "604808.47",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 30000,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 39,
+                    "name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+                    "slug": "tour-kham-pha-snorkeling-ban-dao-son-tra",
+                    "price_adult": "685766.74",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 20000,
+                    "relation_counts": {
+                        "booking_items": 2,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 59,
+                    "name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+                    "slug": "tour-kham-pha-snorkeling-ban-dao-son-tra-goi-59",
+                    "price_adult": "690738.79",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 1110,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 79,
+                    "name": "Tour Khám Phá Snorkeling Bán Đảo Sơn Trà",
+                    "slug": "tour-kham-pha-snorkeling-ban-dao-son-tra-goi-79",
+                    "price_adult": "691557.27",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 1110,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+            "canonical": {
+                "id": 60,
+                "name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+                "slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua-goi-60",
+                "price_adult": "1463561.08",
+                "status_before": "active",
+                "booking_availability_before": "open",
+                "selection_score": 30000,
+                "relation_counts": {
+                    "booking_items": 3,
+                    "cart_items": 0,
+                    "ratings": 0,
+                    "favorites": 0,
+                    "views": 0
+                }
+            },
+            "deactivate": [
+                {
+                    "id": 40,
+                    "name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+                    "slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua",
+                    "price_adult": "1260523.83",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 11110,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 1,
+                        "favorites": 1,
+                        "views": 1
+                    }
+                },
+                {
+                    "id": 80,
+                    "name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+                    "slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua-goi-80",
+                    "price_adult": "1297028.24",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 10000,
+                    "relation_counts": {
+                        "booking_items": 1,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                },
+                {
+                    "id": 100,
+                    "name": "Tour Cao Cấp Bà Nà Hills 1 Ngày (Buffet Trưa)",
+                    "slug": "tour-cao-cap-ba-na-hills-1-ngay-buffet-trua-goi-100",
+                    "price_adult": "1290822.91",
+                    "status_before": "active",
+                    "booking_availability_before": "open",
+                    "selection_score": 0,
+                    "relation_counts": {
+                        "booking_items": 0,
+                        "cart_items": 0,
+                        "ratings": 0,
+                        "favorites": 0,
+                        "views": 0
+                    }
+                }
+            ]
+        }
+    ]
+}

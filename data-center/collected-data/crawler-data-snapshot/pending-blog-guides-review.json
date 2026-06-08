@@ -1,0 +1,64 @@
+[
+  {
+    "approve_for_seed": false,
+    "title": "My Son Sanctuary",
+    "slug": "my-son-sanctuary",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "danangfantasticity-my-son-sanctuary",
+    "source_url": "https://danangfantasticity.com/en/my-son-sanctuary",
+    "review_flags": [
+      "redirected_source_url"
+    ]
+  },
+  {
+    "approve_for_seed": false,
+    "title": "3 perfect days in Danang",
+    "slug": "3-perfect-days-in-danang-danangfantasticity-da-nang-3-days",
+    "category_hint": "lich-trinh",
+    "category_id": 5,
+    "source_name": "danangfantasticity-da-nang-3-days",
+    "source_url": "https://danangfantasticity.com/en/discovery/3-perfect-days-in-danang",
+    "review_flags": [
+      "deduped_slug",
+      "redirected_source_url"
+    ]
+  },
+  {
+    "approve_for_seed": false,
+    "title": "Da Nang’s Mountain Tourism – A Return to Origin in the Truong Son Range",
+    "slug": "da-nang-s-mountain-tourism-a-return-to-origin-in-the-truong-son-range",
+    "category_hint": "cam-nang-da-nang",
+    "category_id": 24,
+    "source_name": "danangfantasticity-mountain-tourism",
+    "source_url": "https://danangfantasticity.com/en/da-nangs-mountain-tourism",
+    "review_flags": [
+      "redirected_source_url"
+    ]
+  },
+  {
+    "approve_for_seed": false,
+    "title": "Hai Van Pass",
+    "slug": "hai-van-pass-danangfantasticity-hai-van-pass-legacy",
+    "category_hint": "diem-den",
+    "category_id": 3,
+    "source_name": "danangfantasticity-hai-van-pass-legacy",
+    "source_url": "https://danangfantasticity.com/en/natural/hai-van-pass-old-2",
+    "review_flags": [
+      "deduped_slug"
+    ]
+  },
+  {
+    "approve_for_seed": false,
+    "title": "Post",
+    "slug": "post",
+    "category_hint": "thoi-tiet",
+    "category_id": 11,
+    "source_name": "danangfantasticity-weather-da-nang",
+    "source_url": "https://danangfantasticity.com/en/about-danang/weather-da-nang.html",
+    "review_flags": [
+      "missing_facts",
+      "low_text_volume"
+    ]
+  }
+]

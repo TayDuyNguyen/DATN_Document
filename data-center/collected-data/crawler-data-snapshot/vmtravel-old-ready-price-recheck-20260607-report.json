@@ -1,0 +1,67 @@
+{
+  "generatedAt": "2026-06-07T03:03:10.716881+00:00",
+  "sources": [
+    {
+      "name": "vmtravel_recheck_001",
+      "url": "https://vmtravel.com/tours/ba-na-hills-and-golden-bridge-tour-from-tien-sa/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T03:03:05.986053+00:00",
+      "finishedAt": "2026-06-07T03:03:06.983577+00:00"
+    },
+    {
+      "name": "vmtravel_recheck_002",
+      "url": "https://vmtravel.com/tours/da-nang-city-tour-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T03:03:06.983577+00:00",
+      "finishedAt": "2026-06-07T03:03:07.920978+00:00"
+    },
+    {
+      "name": "vmtravel_recheck_003",
+      "url": "https://vmtravel.com/tours/hoi-an-day-tour-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T03:03:07.920978+00:00",
+      "finishedAt": "2026-06-07T03:03:08.862697+00:00"
+    },
+    {
+      "name": "vmtravel_recheck_004",
+      "url": "https://vmtravel.com/tours/my-son-sanctuary-tour-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T03:03:08.862793+00:00",
+      "finishedAt": "2026-06-07T03:03:09.812091+00:00"
+    },
+    {
+      "name": "vmtravel_recheck_005",
+      "url": "https://vmtravel.com/tours/hue-imperial-tour-from-chan-may-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T03:03:09.812091+00:00",
+      "finishedAt": "2026-06-07T03:03:10.714813+00:00"
+    }
+  ],
+  "rawCount": 5,
+  "normalizedCount": 5,
+  "outputs": {
+    "raw": "data/vmtravel-old-ready-price-recheck-20260607-raw.json",
+    "normalized": "data/vmtravel-old-ready-price-recheck-20260607-normalized.json"
+  },
+  "policy": {
+    "mode": "public_facts_only",
+    "longDescriptions": "not_copied",
+    "sourceUrlRequired": true,
+    "images": "candidate_urls_only"
+  }
+}

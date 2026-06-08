@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-06-07T08:40:54.934944+00:00",
+  "scope": [
+    "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data",
+    "D:\\DATN\\DATN_Tài liệu\\database-seeders",
+    "D:\\DATN\\DATN_Tài liệu\\data-center"
+  ],
+  "files_scanned": 352,
+  "files_with_findings": 0,
+  "counts": {},
+  "invalid_utf8_files": [],
+  "examples": [],
+  "policy": {
+    "strong_signals_only": true,
+    "single_valid_characters_not_flagged": [
+      "Â",
+      "Ã"
+    ],
+    "automatic_repair": false
+  }
+}

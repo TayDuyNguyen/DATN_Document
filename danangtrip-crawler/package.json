@@ -10,7 +10,6 @@
     "crawl:overpass": "tsx src/cli/crawl.ts --source=overpass-danang-pois --output=data/overpass-danang-pois.json",
     "filter:overpass": "node scripts/filter-overpass-quality.mjs",
     "enrich:pexels": "node scripts/enrich-pexels-images.mjs",
-    "normalize:seeders": "node scripts/normalize-database-seeders.mjs",
     "seed:overpass": "node scripts/generate-overpass-seed.mjs",
     "typecheck": "tsc --noEmit"
   },

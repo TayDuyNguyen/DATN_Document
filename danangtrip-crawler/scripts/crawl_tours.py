@@ -233,6 +233,12 @@ def crawl_tour_page(client: httpx.Client, source: Source, url: str) -> dict[str,
     if not title or not is_tour_content(url, title, text):
         return None
 
+    itinerary = extract_itinerary(soup, url)
+    included_services = extract_services(soup, url, included=True)
+    excluded_services = extract_services(soup, url, included=False)
+    duration = extract_duration(soup, url, title)
+    price = extract_price(soup, url)
+
     return {
         "sourceName": source.name,
         "sourceUrl": url,
@@ -240,17 +246,17 @@ def crawl_tour_page(client: httpx.Client, source: Source, url: str) -> dict[str,
         "tourName": title,
         "slug": slugify(title),
         "destination": infer_destination(f"{title} {text[:800]}"),
-        "duration": find_first(DURATION_PATTERNS, text),
+        "duration": duration,
         "departureLocation": find_departure(text),
-        "price": find_price(text),
+        "price": price,
         "originalPrice": None,
-        "itinerary": extract_section_lines(soup, ("itinerary", "schedule", "program", "lich trinh", "hanh trinh")),
+        "itinerary": itinerary,
         "highlights": extract_section_lines(soup, ("highlight", "overview", "why", "diem noi bat")),
-        "includedServices": extract_section_lines(soup, ("include", "included", "bao gom", "inclusion")),
-        "excludedServices": extract_section_lines(soup, ("exclude", "excluded", "khong bao gom", "exclusion")),
+        "includedServices": included_services,
+        "excludedServices": excluded_services,
         "cancellationPolicy": extract_section_lines(soup, ("cancel", "cancellation", "policy", "chinh sach")),
-        "images": extract_images(soup, url),
-        "summary": rewrite_summary(title, text),
+        "images": extract_images(soup, url, title),
+        "summary": rewrite_summary(title, text, duration),
     }
 
 
@@ -290,7 +296,15 @@ def extract_section_lines(soup: BeautifulSoup, keywords: tuple[str, ...], max_it
         label = clean_text(heading.get_text(" ")).lower()
         if not any(keyword in label for keyword in keywords):
             continue
-        for sibling in heading.find_all_next(["p", "li"], limit=20):
+        heading_level = int(heading.name[1])
+        for sibling in heading.next_elements:
+            if sibling is heading:
+                continue
+            if getattr(sibling, "name", None) and re.fullmatch(r"h[1-6]", sibling.name):
+                if int(sibling.name[1]) <= heading_level:
+                    break
+            if getattr(sibling, "name", None) not in {"p", "li"}:
+                continue
             value = clean_text(sibling.get_text(" "))
             if value and len(value) > 4 and value not in lines:
                 lines.append(value[:280])
@@ -299,25 +313,275 @@ def extract_section_lines(soup: BeautifulSoup, keywords: tuple[str, ...], max_it
     return lines
 
 
-def extract_images(soup: BeautifulSoup, page_url: str, max_images: int = 8) -> list[dict[str, str]]:
+def extract_itinerary(soup: BeautifulSoup, page_url: str, max_items: int = 10) -> list[str]:
+    domain = urlparse(page_url).netloc.lower()
+    if "venusvietnamtravel.com" in domain:
+        return extract_selector_lines(soup, ".it-row", max_items)
+    if "vmtravel.com" in domain:
+        lines = extract_section_lines(soup, ("detail itinerary", "itinerary"), max_items)
+        if lines:
+            return lines
+        return extract_selector_lines(soup, ".accordion-item", max_items)
+    return extract_section_lines(
+        soup,
+        ("itinerary", "schedule", "program", "lich trinh", "hanh trinh"),
+        max_items,
+    )
+
+
+def extract_services(
+    soup: BeautifulSoup,
+    page_url: str,
+    *,
+    included: bool,
+    max_items: int = 10,
+) -> list[str]:
+    domain = urlparse(page_url).netloc.lower()
+    if "venusvietnamtravel.com" in domain:
+        bodies = soup.select(".spec-body")
+        index = 0 if included else 1
+        if len(bodies) > index:
+            return extract_list_or_text_lines(bodies[index], max_items)
+
+    keywords = (
+        ("include", "included", "bao gom", "inclusion")
+        if included
+        else ("exclude", "excluded", "khong bao gom", "exclusion")
+    )
+    return extract_section_lines(soup, keywords, max_items)
+
+
+def extract_selector_lines(soup: BeautifulSoup, selector: str, max_items: int) -> list[str]:
+    lines: list[str] = []
+    for node in soup.select(selector):
+        value = clean_text(node.get_text(" "))
+        if value and len(value) > 4 and value not in lines:
+            lines.append(value[:280])
+        if len(lines) >= max_items:
+            break
+    return lines
+
+
+def extract_list_or_text_lines(node: Any, max_items: int) -> list[str]:
+    list_items = node.find_all("li")
+    if list_items:
+        return unique_lines((item.get_text(" ") for item in list_items), max_items)
+
+    text = clean_text(node.get_text(" "))
+    chunks = re.split(r"\s*[.;]\s+|\s{2,}", text)
+    return unique_lines(chunks, max_items)
+
+
+def unique_lines(values: Any, max_items: int) -> list[str]:
+    lines: list[str] = []
+    for raw_value in values:
+        value = clean_text(str(raw_value))
+        if len(value) > 4 and value not in lines:
+            lines.append(value[:280])
+        if len(lines) >= max_items:
+            break
+    return lines
+
+
+def extract_duration(soup: BeautifulSoup, page_url: str, title: str) -> str | None:
+    domain = urlparse(page_url).netloc.lower()
+
+    if "vmtravel.com" in domain:
+        for feature in soup.select(".st-service-feature .item"):
+            value = clean_text(feature.get_text(" "))
+            match = re.search(r"\bduration\s+(.+)", value, flags=re.IGNORECASE)
+            if match:
+                duration = find_first(DURATION_PATTERNS, match.group(1))
+                if duration:
+                    return duration
+
+    if "venusvietnamtravel.com" in domain:
+        for row in soup.select(".it-row"):
+            value = clean_text(row.get_text(" "))
+            duration = duration_from_time_range(value)
+            if duration:
+                return duration
+
+    title_duration = find_first(DURATION_PATTERNS, title)
+    if title_duration:
+        return title_duration
+
+    content = clone_without_page_chrome(soup)
+    content_text = clean_text(content.get_text(" "))
+    candidates = find_all(DURATION_PATTERNS, content_text)
+    if not candidates:
+        return None
+
+    day_named = any(
+        token in title.lower()
+        for token in ("day tour", "daily tour", "full day", "full-day", "day trip")
+    )
+    if day_named:
+        day_candidate = next(
+            (value for value in candidates if re.search(r"\b(?:1|one)\s*day\b|\bfull\s*-?\s*day\b", value, re.I)),
+            None,
+        )
+        if day_candidate:
+            return day_candidate
+    return candidates[0]
+
+
+def extract_price(soup: BeautifulSoup, page_url: str) -> str | None:
+    domain = urlparse(page_url).netloc.lower()
+
+    if "vmtravel.com" in domain:
+        price_nodes = soup.select(".table-price-tour, .price-package-tour.table-price")
+        for node in price_nodes:
+            value = clean_text(node.get_text(" "))
+            price = find_price(value)
+            if price:
+                return price
+        if price_nodes:
+            return None
+
+    for meta in soup.find_all("meta"):
+        property_name = str(meta.get("property") or meta.get("itemprop") or "").lower()
+        if property_name not in {
+            "product:price:amount",
+            "og:price:amount",
+            "price",
+        }:
+            continue
+        content = clean_text(str(meta.get("content") or ""))
+        if not content:
+            continue
+        currency = find_meta_currency(soup)
+        return f"{content} {currency}".strip()
+
+    content = clone_without_page_chrome(soup)
+    return find_price(clean_text(content.get_text(" ")))
+
+
+def find_meta_currency(soup: BeautifulSoup) -> str:
+    for meta in soup.find_all("meta"):
+        property_name = str(meta.get("property") or meta.get("itemprop") or "").lower()
+        if property_name in {"product:price:currency", "og:price:currency", "pricecurrency"}:
+            return clean_text(str(meta.get("content") or ""))
+    return ""
+
+
+def duration_from_time_range(value: str) -> str | None:
+    match = re.search(
+        r"\b(\d{1,2}):(\d{2})\s*[–—-]\s*(\d{1,2}):(\d{2})\b",
+        value,
+    )
+    if not match:
+        return None
+    start = int(match.group(1)) * 60 + int(match.group(2))
+    end = int(match.group(3)) * 60 + int(match.group(4))
+    if end <= start:
+        end += 24 * 60
+    hours = (end - start) / 60
+    if not 0.5 <= hours <= 24:
+        return None
+    return f"{hours:g} hours"
+
+
+def clone_without_page_chrome(soup: BeautifulSoup) -> BeautifulSoup:
+    content = BeautifulSoup(str(soup), "lxml")
+    for node in content.select("nav, header, footer, script, style, form, .menu, .mega-menu, .dropdown-menu"):
+        node.decompose()
+    return content
+
+
+def extract_images(
+    soup: BeautifulSoup,
+    page_url: str,
+    title: str,
+    max_images: int = 8,
+) -> list[dict[str, str]]:
     images: list[dict[str, str]] = []
     seen: set[str] = set()
+    title_tokens = relevant_image_tokens(title)
+
+    for meta in soup.find_all("meta"):
+        if meta.get("property") not in {"og:image", "og:image:secure_url"}:
+            continue
+        add_image_candidate(images, seen, meta.get("content"), title, page_url)
+
     for img in soup.find_all("img"):
-        src = img.get("src") or img.get("data-src") or img.get("data-lazy-src")
+        src = (
+            img.get("data-large_image")
+            or img.get("data-src")
+            or img.get("data-lazy-src")
+            or img.get("src")
+        )
         if not src:
             continue
         full_url = urljoin(page_url, src)
         if full_url in seen or full_url.startswith("data:"):
             continue
         alt = clean_text(img.get("alt", ""))
-        lower = full_url.lower()
-        if any(token in lower for token in ("logo", "icon", "avatar", "placeholder")):
+        haystack = f"{full_url} {alt}".lower()
+        if any(
+            token in haystack
+            for token in (
+                "logo",
+                "icon",
+                "avatar",
+                "placeholder",
+                "tripadvisor",
+                "travelers_choice",
+                "branding",
+            )
+        ):
             continue
-        images.append({"url": full_url, "alt": alt})
-        seen.add(full_url)
+        if image_token_overlap(haystack, title_tokens) < 2:
+            continue
+        add_image_candidate(images, seen, full_url, alt or title, page_url)
         if len(images) >= max_images:
             break
     return images
+
+
+def add_image_candidate(
+    images: list[dict[str, str]],
+    seen: set[str],
+    raw_url: str | None,
+    alt: str,
+    page_url: str,
+) -> None:
+    if not raw_url:
+        return
+    full_url = urljoin(page_url, raw_url)
+    if full_url in seen or full_url.startswith("data:"):
+        return
+    lower = full_url.lower()
+    if any(token in lower for token in ("logo", "icon", "avatar", "placeholder", "tripadvisor", "branding")):
+        return
+    images.append({"url": full_url, "alt": clean_text(alt)})
+    seen.add(full_url)
+
+
+def relevant_image_tokens(value: str) -> set[str]:
+    ignored = {
+        "tour",
+        "from",
+        "with",
+        "good",
+        "price",
+        "daily",
+        "trip",
+        "best",
+        "explore",
+        "city",
+        "travel",
+    }
+    return {
+        token
+        for token in re.findall(r"[a-z0-9]+", value.lower())
+        if len(token) >= 3 and token not in ignored
+    }
+
+
+def image_token_overlap(value: str, title_tokens: set[str]) -> int:
+    image_tokens = set(re.findall(r"[a-z0-9]+", value.lower()))
+    return len(title_tokens & image_tokens)
 
 
 def normalize_items(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -334,6 +598,16 @@ def find_first(patterns: tuple[str, ...], text: str) -> str | None:
         if match:
             return clean_text(match.group(0))
     return None
+
+
+def find_all(patterns: tuple[str, ...], text: str) -> list[str]:
+    values: list[str] = []
+    for pattern in patterns:
+        for match in re.finditer(pattern, text, flags=re.IGNORECASE):
+            value = clean_text(match.group(0))
+            if value not in values:
+                values.append(value)
+    return values
 
 
 def find_price(text: str) -> str | None:
@@ -366,9 +640,8 @@ def infer_destination(text: str) -> list[str]:
     return found
 
 
-def rewrite_summary(title: str, text: str) -> str:
+def rewrite_summary(title: str, text: str, duration: str | None = None) -> str:
     destinations = ", ".join(infer_destination(f"{title} {text[:800]}")) or "Central Vietnam"
-    duration = find_first(DURATION_PATTERNS, text)
     parts = [f"Tour {title} khai thac hanh trinh tai {destinations}."]
     if duration:
         parts.append(f"Thoi luong tham khao: {duration}.")

@@ -1,0 +1,14 @@
+{
+  "input": "data/vmtravel-central-price-v3-staging-20260607.json",
+  "output": "data/vmtravel-central-price-v3-enriched-20260607.json",
+  "total": 25,
+  "itemsWithInferredFields": 1,
+  "inferredFieldCount": 1,
+  "missingPriceAfter": 0,
+  "missingDurationAfter": 0,
+  "policy": {
+    "crawledValuesOverwritten": false,
+    "manualReviewRequired": true,
+    "safeForDirectProductionSeed": false
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "sources": [
+    {
+      "name": "recrawl_001_recrawl_002_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/ba-na-hills-tour-from-da-nang/"
+    },
+    {
+      "name": "recrawl_002_recrawl_003_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/bach-ma-national-park-tour/"
+    },
+    {
+      "name": "recrawl_003_recrawl_004_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/basket-boat-hoi-an-tour/"
+    },
+    {
+      "name": "recrawl_004_recrawl_005_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/cham-island-snorkeling-tour/"
+    },
+    {
+      "name": "recrawl_005_recrawl_006_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/hoa-phu-thanh-waterfall-sliding-daily-tour/"
+    },
+    {
+      "name": "recrawl_006_recrawl_007_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/marble-mountain-hoi-an-tour/"
+    },
+    {
+      "name": "recrawl_007_recrawl_009_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/nui-than-tai-hot-spring-park-tour/"
+    },
+    {
+      "name": "recrawl_008_recrawl_010_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/son-tra-peninsula-marble-mountains-hoian-daily-tour/"
+    },
+    {
+      "name": "recrawl_009_recrawl_011_danangtourscity",
+      "url": "https://danangtourscity.com/french-village-ba-na-hills/"
+    },
+    {
+      "name": "recrawl_010_recrawl_015_venus_cham_island",
+      "url": "https://venusvietnamtravel.com/marble-mountains-monkey-mountain-am-phu-cave-morning-tour/"
+    },
+    {
+      "name": "recrawl_011_recrawl_016_venus_cham_island",
+      "url": "https://venusvietnamtravel.com/marble-mountains-am-phu-cave-monkey-mountains-sunset-tour/"
+    },
+    {
+      "name": "recrawl_012_recrawl_019_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-muslim-tour/"
+    },
+    {
+      "name": "recrawl_013_recrawl_020_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cam-thanh-cooking-class-my-son-holy-land-full-day-tour/"
+    },
+    {
+      "name": "recrawl_014_recrawl_021_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-my-son-sanctuary-full-day-tour/"
+    },
+    {
+      "name": "recrawl_015_recrawl_023_vietnamadventure_danang",
+      "url": "https://vietnamadventuretour.com.vn/daily-group-tour/"
+    },
+    {
+      "name": "recrawl_016_recrawl_024_vietnamadventure_danang",
+      "url": "https://vietnamadventuretour.com.vn/luxury-tour/"
+    },
+    {
+      "name": "recrawl_017_recrawl_025_vmtravel",
+      "url": "https://vmtravel.com/da-nang-shore-excursions-from-tien-sa-port/"
+    },
+    {
+      "name": "recrawl_018_recrawl_026_vmtravel",
+      "url": "https://vmtravel.com/hue-shore-excursions-from-chan-may-port/"
+    },
+    {
+      "name": "recrawl_019_recrawl_031_vmtravel_hue_shore",
+      "url": "https://vmtravel.com/tours/bana-hills-day-trip-from-chan-may-port/"
+    }
+  ]
+}

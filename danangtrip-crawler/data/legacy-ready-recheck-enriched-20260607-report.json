@@ -1,0 +1,14 @@
+{
+  "input": "data/legacy-ready-recheck-staging-20260607.json",
+  "output": "data/legacy-ready-recheck-enriched-20260607.json",
+  "total": 4,
+  "itemsWithInferredFields": 0,
+  "inferredFieldCount": 0,
+  "missingPriceAfter": 0,
+  "missingDurationAfter": 0,
+  "policy": {
+    "crawledValuesOverwritten": false,
+    "manualReviewRequired": true,
+    "safeForDirectProductionSeed": false
+  }
+}

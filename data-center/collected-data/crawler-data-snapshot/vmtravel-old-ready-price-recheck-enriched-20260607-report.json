@@ -1,0 +1,14 @@
+{
+  "input": "data/vmtravel-old-ready-price-recheck-staging-20260607.json",
+  "output": "data/vmtravel-old-ready-price-recheck-enriched-20260607.json",
+  "total": 5,
+  "itemsWithInferredFields": 0,
+  "inferredFieldCount": 0,
+  "missingPriceAfter": 0,
+  "missingDurationAfter": 0,
+  "policy": {
+    "crawledValuesOverwritten": false,
+    "manualReviewRequired": true,
+    "safeForDirectProductionSeed": false
+  }
+}

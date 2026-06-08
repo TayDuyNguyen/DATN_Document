@@ -1,0 +1,17 @@
+{
+  "tourCount": 30,
+  "photosPerTour": 3,
+  "manifestRows": 90,
+  "downloaded": 0,
+  "alreadyDownloaded": 89,
+  "failed": 1,
+  "downloadedBytes": 68012203,
+  "uniqueChecksums": 78,
+  "duplicateContentCount": 11,
+  "uploadReadyAssets": 78,
+  "toursWithAtLeastTwoImages": 30,
+  "toursWithAllRequestedImages": 29,
+  "cloudinaryUploaded": false,
+  "databaseWritten": false,
+  "output": "D:\\DATN\\DATN_Tài liệu\\data-center\\media-assets\\cloudinary-staging\\tours\\2026-06-07-verified-real-tours"
+}

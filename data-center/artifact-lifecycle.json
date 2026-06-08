@@ -1,0 +1,30 @@
+{
+  "updated_at": "2026-06-07T15:20:00+07:00",
+  "policy": {
+    "raw_crawl_snapshots": "immutable_evidence",
+    "normalized_outputs": "regenerate_with_utf8_pipeline",
+    "production_display_text": "canonical_database_and_seed_47",
+    "ascii_only": [
+      "slug",
+      "url",
+      "file_name",
+      "cloudinary_public_id",
+      "external_id",
+      "technical_identifier"
+    ]
+  },
+  "canonical": {
+    "database_audit": "reports/vietnamese-diacritics-db-audit-2026-06-07.json",
+    "display_text_seed": "../database-seeders/47_canonical_display_text_utf8_seed.sql",
+    "display_text_seed_audit": "reports/canonical-display-text-audit-2026-06-07.json"
+  },
+  "legacy": {
+    "classification": "historical_do_not_publish_directly",
+    "examples": [
+      "../danangtrip-crawler/data/overpass-danang-pois.json",
+      "../danangtrip-crawler/data/tour-crawl-raw.json",
+      "../database-seeders/12_overpass_danang_pois_seed.sql",
+      "../database-seeders/14_pexels_image_enrichment_seed.sql"
+    ]
+  }
+}

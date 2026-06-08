@@ -1,0 +1,36 @@
+{
+  "generatedAt": "2026-06-07T02:51:33.569985+00:00",
+  "input": {
+    "file": "data/legacy-ready-recheck-20260607-normalized.json",
+    "total": 4
+  },
+  "output": {
+    "file": "data/legacy-ready-recheck-staging-20260607.json",
+    "staging": 4,
+    "rejected": 0
+  },
+  "coverage": {
+    "withPrice": 4,
+    "withDuration": 4,
+    "withImages": 4,
+    "withItinerary": 1,
+    "withDestinations": 4
+  },
+  "byCategory": {
+    "tour-ba-na-hills": 3,
+    "tour-hoi-an": 1
+  },
+  "bySource": {
+    "recheck_dananglocal_hue": 1,
+    "recheck_hoiandaytrip_am_phu": 1,
+    "recheck_hoiandaytrip_bana_afternoon": 1,
+    "recheck_hoiandaytrip_bana_early": 1
+  },
+  "rejectedReasons": {},
+  "policy": {
+    "status": "inactive",
+    "images": "candidate_urls_only",
+    "longDescriptions": "rewritten_summary_not_copied",
+    "publish": "manual_review_required"
+  }
+}

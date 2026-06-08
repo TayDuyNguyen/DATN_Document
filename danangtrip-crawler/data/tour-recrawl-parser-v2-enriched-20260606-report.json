@@ -1,0 +1,14 @@
+{
+  "input": "data/tour-recrawl-parser-v2-staging-20260606.json",
+  "output": "data/tour-recrawl-parser-v2-enriched-20260606.json",
+  "total": 30,
+  "itemsWithInferredFields": 4,
+  "inferredFieldCount": 5,
+  "missingPriceAfter": 0,
+  "missingDurationAfter": 0,
+  "policy": {
+    "crawledValuesOverwritten": false,
+    "manualReviewRequired": true,
+    "safeForDirectProductionSeed": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "output": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\22_approved_blog_guides_seed.sql",
+  "approved": 18,
+  "pending": 5,
+  "policy": "Approve blog guide staging records without review_flags. Keep redirected/deduped records pending.",
+  "firstId": 201,
+  "categoryMap": {
+    "cam-nang-da-nang": 24,
+    "cam-nang-hoi-an": 22,
+    "cam-nang-hue": 23,
+    "lich-trinh": 5,
+    "diem-den": 3,
+    "bien": 64,
+    "am-thuc": 2,
+    "di-chuyen": 30,
+    "kinh-nghiem": 1,
+    "thoi-tiet": 11
+  }
+}

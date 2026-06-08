@@ -1,0 +1,25 @@
+{
+  "input": "data/vmtravel-central-price-v3-enriched-20260607.json",
+  "outputs": {
+    "json": "data/vmtravel-central-final-readiness-20260607.json",
+    "csv": "data/vmtravel-central-final-readiness-20260607.csv",
+    "recrawlSources": "data/vmtravel-central-final-readiness-20260607-recrawl-sources.json",
+    "crawlerSourceConfig": "data/vmtravel-central-final-readiness-20260607-recrawl-source-config.json"
+  },
+  "total": 25,
+  "byStatus": {
+    "needs_recrawl": 2,
+    "ready_for_manual_publish": 23
+  },
+  "blockingReasons": {
+    "inferred_core_field": 1,
+    "suspicious_price": 1
+  },
+  "policy": {
+    "writesDatabase": false,
+    "requiresManualImageReview": true,
+    "inferredCoreFieldsBlocked": true,
+    "sourceUrlRequired": true,
+    "completeTourContentRequired": true
+  }
+}

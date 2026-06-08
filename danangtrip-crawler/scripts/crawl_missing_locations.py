@@ -258,13 +258,13 @@ def build_report(
 
 
 def build_short_description(name: str, address: str) -> str:
-    return f"{name} la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    return f"{name} là địa điểm liên quan đến hành trình tour DanangTrip, cần được quản trị viên duyệt trước khi seed."
 
 
 def build_description(name: str, address: str, source: str) -> str:
     return (
-        f"{name} duoc thu thap tu {source} voi dia chi tham chieu: {address}. "
-        "Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+        f"{name} được thu thập từ {source} với địa chỉ tham chiếu: {address}. "
+        "Bản ghi đang chờ duyệt và cần kiểm tra lại tọa độ, địa chỉ, danh mục trước khi đưa vào database."
     )
 
 

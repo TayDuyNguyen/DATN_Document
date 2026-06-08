@@ -1,0 +1,9 @@
+{
+    "generated_at": "2026-06-08T11:24:49+07:00",
+    "rows_scanned": 1009,
+    "fields_scanned": 3042,
+    "findings_total": 0,
+    "by_table": [],
+    "by_reason": [],
+    "findings": []
+}

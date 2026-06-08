@@ -1,0 +1,78 @@
+{
+    "generated_at": "2026-06-08T11:17:49+07:00",
+    "rows_scanned": 1009,
+    "fields_scanned": 3042,
+    "findings_total": 8,
+    "by_table": {
+        "locations": 8
+    },
+    "by_reason": {
+        "english_or_non_vietnamese": 8
+    },
+    "findings": [
+        {
+            "table": "locations",
+            "id": 61,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Danang Marriott Resort & Spa"
+        },
+        {
+            "table": "locations",
+            "id": 63,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "New World Hoiana Beach Resort"
+        },
+        {
+            "table": "locations",
+            "id": 67,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "HAIAN Beach Hotel & Spa"
+        },
+        {
+            "table": "locations",
+            "id": 68,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "The Blossom Resort Island"
+        },
+        {
+            "table": "locations",
+            "id": 70,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Holiday Beach Danang Hotel & Resort"
+        },
+        {
+            "table": "locations",
+            "id": 71,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "InterContinental Danang Sun Peninsula Resort"
+        },
+        {
+            "table": "locations",
+            "id": 72,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Sheraton Grand Danang Resort"
+        },
+        {
+            "table": "locations",
+            "id": 73,
+            "status": "active",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Pullman Danang Beach Resort"
+        }
+    ]
+}

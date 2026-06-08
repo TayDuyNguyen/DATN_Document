@@ -1,0 +1,52 @@
+{
+  "sources": [
+    {
+      "name": "dacotours_bana",
+      "url": "https://dacotours.com/ba-na-hills-from-da-nang/"
+    },
+    {
+      "name": "dananglocaltours_tours",
+      "url": "https://dananglocaltours.com/tour/"
+    },
+    {
+      "name": "dananglocaltours_bana",
+      "url": "https://dananglocaltours.com/tour/ba-na-hills-tour-from-da-nang/"
+    },
+    {
+      "name": "dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/basket-boat-hoi-an-tour/"
+    },
+    {
+      "name": "hoiandaytrip_bana",
+      "url": "https://hoiandaytrip.com/ba-na-hills-afternoon-tour/"
+    },
+    {
+      "name": "hoiandaytrip_am_phu",
+      "url": "https://hoiandaytrip.com/am-phu-cave-tour/"
+    },
+    {
+      "name": "venus_tours",
+      "url": "https://venusvietnamtravel.com/tours/"
+    },
+    {
+      "name": "venus_bana",
+      "url": "https://venusvietnamtravel.com/afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour/"
+    },
+    {
+      "name": "venus_cham_island",
+      "url": "https://venusvietnamtravel.com/cham-island-sightseeing-and-snorkeling-tour/"
+    },
+    {
+      "name": "vmtravel_danang_shore",
+      "url": "https://vmtravel.com/da-nang-shore-excursions-from-tien-sa-port/"
+    },
+    {
+      "name": "vmtravel_hue_shore",
+      "url": "https://vmtravel.com/hue-shore-excursions-from-chan-may-port/"
+    },
+    {
+      "name": "vietnamadventure_danang",
+      "url": "https://vietnamadventuretour.com.vn/tour-category/da-nang-tours/"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-06-07T03:03:10.886357+00:00",
+  "input": {
+    "file": "data/vmtravel-old-ready-price-recheck-20260607-normalized.json",
+    "total": 5
+  },
+  "output": {
+    "file": "data/vmtravel-old-ready-price-recheck-staging-20260607.json",
+    "staging": 5,
+    "rejected": 0
+  },
+  "coverage": {
+    "withPrice": 5,
+    "withDuration": 5,
+    "withImages": 5,
+    "withItinerary": 5,
+    "withDestinations": 5
+  },
+  "byCategory": {
+    "tour-ba-na-hills": 1,
+    "tour-hoi-an": 4
+  },
+  "bySource": {
+    "vmtravel_recheck_001": 1,
+    "vmtravel_recheck_002": 1,
+    "vmtravel_recheck_003": 1,
+    "vmtravel_recheck_004": 1,
+    "vmtravel_recheck_005": 1
+  },
+  "rejectedReasons": {},
+  "policy": {
+    "status": "inactive",
+    "images": "candidate_urls_only",
+    "longDescriptions": "rewritten_summary_not_copied",
+    "publish": "manual_review_required"
+  }
+}

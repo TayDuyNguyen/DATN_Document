@@ -2659,3 +2659,863 @@ Sau buoc 9, locations duoc publish voi `status = inactive`, van can admin active
   - Pint: passed.
 - Next priority:
   - quyet dinh integrate subcategories hay archive master categories khong dung.
+
+### Collected data quality audit - 2026-06-06
+
+- Ket luan:
+  - du cho DATN/demo.
+  - chua dat production-grade content.
+- Locations:
+  - 333 total, 221 active.
+  - 222/222 published crawl items co production entity link.
+  - missing core fields/images/relations: 0.
+  - 107 active descriptions duoi 100 ky tu.
+  - 94 active short descriptions duoi 40 ky tu.
+  - 2 duplicate normalized name groups.
+  - 7 shared coordinate groups, phan lon la co-located event/attraction.
+  - 13 locations ngoai Da Nang bbox nhung chu yeu la Hoi An/Quang Nam/Hue, co the hop le theo pham vi mien Trung.
+- Tours:
+  - 100 live rows, IDs 1-100.
+  - crawled operator tours IDs 101+ chua nam trong live DB.
+  - chi 40 distinct names.
+  - 20 duplicate name groups va 20 duplicate description groups.
+  - 100/100 descriptions duoi 150 ky tu.
+  - 80 prices co phan thap phan VND giong synthetic variants.
+  - ket luan: live tours chu yeu la demo/variant seed.
+- Blogs:
+  - 104 published.
+  - 101 posts duoi 500 content characters.
+  - post 102 chi co `chay quá`.
+  - posts 103, 104, 105 trung noi dung hoan toan.
+  - ket luan: blog chu yeu la teaser/placeholder.
+- Crawl staging:
+  - 258 pending deu thieu image candidates, giu manual review.
+- Reports:
+  - `D:\DATN\DATN_Tài liệu\data-center\reports\collected-data-quality-audit-2026-06-06.md`
+- Audit scripts:
+  - `D:\DATN\DATN_Tài liệu\database-seeders\audit_collected_data_quality.php`
+  - `D:\DATN\DATN_Tài liệu\database-seeders\audit_collected_data_details.php`
+- Next priority:
+  - thay/archive 80 synthetic tour variants bang reviewed real operator tours.
+  - rewrite/unpublish 101 short blog posts va archive 2/3 duplicate long posts.
+  - enrich 107 short active location descriptions.
+
+### Tour replacement readiness gate - 2026-06-06
+
+- Da audit lai 36 crawler tours bang production quality gate moi.
+- Tieu chi:
+  - source URL bat buoc.
+  - price/duration khong duoc inferred.
+  - itinerary >= 3.
+  - inclusions/exclusions >= 2.
+  - images >= 2.
+  - duration phai hop ly voi route va itinerary.
+  - image relevance can manual review.
+- Ket qua:
+  - ready for manual publish: 4.
+  - needs recrawl: 32.
+- Blocking reasons:
+  - incomplete itinerary: 17.
+  - suspicious duration: 14.
+  - incomplete exclusions: 8.
+  - incomplete inclusions: 7.
+  - inferred core field: 4.
+- Chua replace 80 synthetic live tours:
+  - 4 tour that chua du duy tri catalog.
+  - replace luc nay se lam giam coverage nghiem trong.
+- Script:
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\scripts\audit_tour_publish_readiness.py`
+- Outputs:
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\tour-publish-readiness.json`
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\tour-publish-readiness.csv`
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\tour-publish-readiness-report.json`
+- Report:
+  - `D:\DATN\DATN_Tài liệu\data-center\reports\tour-replacement-readiness-2026-06-06.md`
+- Next priority:
+  - recrawl 32 failed source URLs.
+  - rerun strict gate.
+  - chi tao replacement seed khi du unique real tours.
+
+### Targeted tour recrawl - 2026-06-06
+
+- Da crawl lai dung 32 failed source URLs bang `.venv`.
+- Command:
+  - `scripts/crawl_tours.py --discover-mode exact`.
+- Network result:
+  - requested: 32.
+  - collected: 32.
+  - failures: 0.
+  - robots skipped: 0.
+- Sau normalize/enrich:
+  - staging: 32.
+  - direct price: 28.
+  - direct duration: 31.
+  - with itinerary: 15.
+  - inferred core fields: 4.
+- Strict gate sau recrawl:
+  - ready: 0.
+  - needs recrawl/parser fix: 32.
+- Ket luan:
+  - crawl lai khong sua duoc quality.
+  - root cause la parser duration va section extraction theo layout website.
+  - khong apply vao live DB.
+- Outputs:
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\tour-recrawl-20260606-raw.json`
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\tour-recrawl-20260606-normalized.json`
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\tour-recrawl-readiness-20260606.json`
+- Next priority:
+  - sua parser theo operator: Danang Local Tours, Venus Vietnam Travel, VM Travel, Dacotours.
+  - rerun normalize va strict gate, khong can crawl lai neu raw HTML facts da du.
+
+### Automatic tour schedule closure - 2026-06-06
+
+- Da them command:
+  - `php artisan tour-schedules:sync-availability`
+- Da them scheduler:
+  - chay moi 15 phut.
+  - `withoutOverlapping(10)`.
+- Quy tac dong booking:
+  - start_date da qua.
+  - booking_deadline da qua.
+  - booked_people >= max_people.
+  - schedule status cancelled.
+- Lan chay dau:
+  - closed 41 schedules.
+- Lan chay thu hai:
+  - closed 0 schedules, idempotent.
+- Final audit:
+  - past open booking: 0.
+  - open past deadline: 0.
+  - open full: 0.
+  - open cancelled: 0.
+  - future open: 115.
+- Verification:
+  - tests: 36 passed, 136 assertions.
+  - PHPStan: no errors.
+  - Pint: passed.
+- Production requirement:
+  - server phai chay `php artisan schedule:run` moi phut hoac quan ly `php artisan schedule:work`.
+- Report:
+  - `D:\DATN\DATN_Tài liệu\data-center\reports\tour-schedule-automatic-closure-2026-06-06.md`
+- Next priority:
+  - quyet dinh integrate subcategories hay archive master categories khong dung.
+
+### Tour parser v3 and strict image audit - 2026-06-07
+
+- Da sua `scripts/crawl_tours.py`:
+  - parser itinerary/service theo layout Venus Vietnam Travel.
+  - parser duration/detail itinerary theo layout VM Travel.
+  - gioi han section theo heading, khong doc xuyen sang section/footer.
+  - uu tien `og:image` va gallery co token lien quan truc tiep den ten tour.
+  - loai logo, icon, placeholder, TripAdvisor, branding va anh tour lien quan khac.
+- Da sua `scripts/audit_tour_publish_readiness.py`:
+  - anh sai ngu canh la blocking error.
+  - tour co duration <= 2 hours va itinerary >= 3 la suspicious.
+- Parser v2:
+  - 30 detail rows.
+  - 11 rows qua text gate.
+  - deep review phat hien anh menu/logo/tour khac, nen khong publish.
+- Parser v3 strict image gate:
+  - requested: 32 URLs.
+  - collected: 28 URLs.
+  - 4 temporary DNS failures.
+  - normalized detail rows: 27.
+  - ready for manual publish: 4.
+  - blocked: 23.
+- 4 ready candidates:
+  - Ba Na Hills And Golden Bridge Tour From Tien Sa Port.
+  - Da Nang City Tour From Tien Sa Port - Explore and Shopping.
+  - My Son Sanctuary Tour From Tien Sa Port - Explore Now.
+  - Hue Imperial Tour from Chan May Port: Best Shore Excursions.
+- Moi ready candidate co:
+  - direct source URL.
+  - direct price va duration.
+  - itinerary, inclusions, exclusions day du.
+  - 8 anh source-relevant.
+- Blocking reasons:
+  - insufficient images: 14.
+  - suspicious duration: 9.
+  - irrelevant images: 9.
+  - incomplete inclusions: 7.
+  - incomplete exclusions: 7.
+  - incomplete itinerary: 6.
+  - inferred core field: 4.
+- Khong ghi DB va khong tao replacement seed.
+- Report:
+  - `D:\DATN\DATN_Tài liệu\data-center\reports\tour-replacement-readiness-2026-06-06.md`
+- Next priority:
+  - dung Pexels/Cloudinary de bo sung anh cho Venus chi sau khi manual match destination.
+  - bo qua category/listing pages cua Dacotours va Vietnam Adventure Tour.
+  - crawl them detail pages VM Travel de dat it nhat 30-50 real tours truoc khi replace synthetic catalog.
+
+### Verified real tour catalog reached 30 rows - 2026-06-07
+
+- Da scan sitemap VM Travel:
+  - discovered: 1623 URLs.
+  - loc detail tour mien Trung moi: 26 URLs.
+  - crawl thanh cong: 26/26.
+- Da phat hien va sua loi gia:
+  - parser cu lay `From $30` tu menu/header.
+  - parser moi doc `.table-price-tour`.
+  - vi du gia that: Ba Na $65, golf 4 ngay $425, Hue bicycle $60.
+  - neu VM Travel co price table nhung khong co numeric price thi khong fallback.
+  - them `suspicious_price` gate.
+- Da sua image relevance:
+  - cho phep token ngan co y nghia nhu Hue, Hoi An, DMZ.
+  - audit ca image alt, khong chi URL.
+- Da dieu chinh completeness gate theo noi dung:
+  - mot exclusion ro rang duoc chap nhan.
+  - itinerary 2 section dai duoc chap nhan neu tong noi dung >= 350 ky tu.
+- Da recrawl 5 VM Travel old-ready URLs bang price parser moi:
+  - 5/5 pass.
+  - 0 inferred core fields.
+- Da enrichment Pexels cho 4 Venus candidates:
+  - 12 image candidates.
+  - luu provider page, photographer, photo id va query.
+  - manual visual review approved 2 tour:
+    - Ba Na Hills Golden Bridge.
+    - Cham Island snorkeling/coral.
+- Final verified catalog:
+  - total: 30.
+  - unique source URLs: 30.
+  - direct prices: 30.
+  - direct durations: 30.
+  - itinerary/inclusions/exclusions: 30/30.
+  - at least 2 images: 30/30.
+  - source images: 28.
+  - source primary + visually reviewed Pexels: 2.
+  - database written: no.
+- Outputs:
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\verified-real-tour-catalog-20260607.json`
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\verified-real-tour-catalog-20260607-report.json`
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\data\venus-tour-pexels-enriched-20260607-manifest.json`
+- Script:
+  - `scripts/discover_vmtravel_tours.py`
+  - `scripts/enrich_tour_images_pexels.py`
+  - `scripts/build_verified_real_tour_catalog.py`
+- Next priority:
+  - download full-resolution media theo naming convention.
+  - tao Cloudinary manifest.
+  - editorial review title/summary.
+  - chi sau do moi generate database replacement seed.
+
+### Verified tour media downloaded and staged - 2026-06-07
+
+- Input:
+  - `data/verified-real-tour-catalog-20260607.json`
+- Naming:
+  - `tour-{catalog_index}__{slug}__p{index}__{provider}-{external_id}.{ext}`
+- Cloudinary public ID:
+  - `danangtrip/tours/{slug}/{file_stem}`
+- Download result:
+  - tours: 30.
+  - requested slots: 90.
+  - downloaded: 89.
+  - failed: 1.
+  - bytes: 68,012,203.
+  - tours with >= 2 local images: 30.
+  - tours with all 3 images: 29.
+- Integrity:
+  - unique SHA-256: 78.
+  - duplicate content mappings: 11.
+  - duplicates are not included in upload manifest.
+  - tour media map points duplicate slots to canonical public ID.
+- Failed source:
+  - Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass.
+  - one 2026 source image failed DNS/download.
+  - tour still has 2 downloaded images and remains complete.
+- Output:
+  - `D:\DATN\DATN_Tài liệu\data-center\media-assets\cloudinary-staging\tours\2026-06-07-verified-real-tours`
+- Files:
+  - `manifest.json`
+  - `manifest.csv`
+  - `upload-manifest.json`
+  - `upload-manifest.csv`
+  - `tour-media-map.json`
+  - `summary.json`
+- Upload-ready unique assets:
+  - 78.
+- Cloudinary uploaded:
+  - no.
+- Database written:
+  - no.
+- Next priority:
+  - run Cloudinary upload with `upload-manifest.csv` when approved.
+  - use upload results plus `tour-media-map.json` to build final media URLs.
+  - editorial title/summary review before database replacement seed.
+
+### Verified tour media uploaded to Cloudinary - 2026-06-07
+
+- Upload manifest:
+  - 78 unique assets.
+- First upload:
+  - uploaded: 75.
+  - failed: 3.
+  - all 3 failures belonged to the long Venus Ba Na Hills public ID.
+- Fix:
+  - shortened path to `danangtrip/tours/bana-hills-afternoon-night/...`.
+- Retry:
+  - uploaded: 3/3.
+- Final Cloudinary status:
+  - unique assets uploaded: 78/78.
+  - mapped image slots: 89.
+  - unmapped source slots: 1.
+  - tours with Cloudinary media: 30/30.
+  - tours with >= 2 Cloudinary images: 30/30.
+  - tours with all 3 images: 29/30.
+- HTTP verification:
+  - checked 78 unique secure URLs.
+  - valid image responses: 78/78.
+  - failures: 0.
+- Final catalog:
+  - `data/verified-real-tour-catalog-cloudinary-20260607.json`
+- Final media map:
+  - `data-center/media-assets/cloudinary-staging/tours/2026-06-07-verified-real-tours/cloudinary-tour-media-map.json`
+- Cloudinary summary:
+  - `data-center/media-assets/cloudinary-staging/tours/2026-06-07-verified-real-tours/cloudinary-summary.json`
+- Database written:
+  - no.
+- Next priority:
+  - editorial cleanup title and Vietnamese summaries.
+  - map categories/destinations.
+  - generate reviewable replacement seed.
+  - apply only after explicit approval.
+
+### Vietnamese diacritics audit - 2026-06-07
+
+- Scope:
+  - crawler JSON/CSV artifacts.
+  - database seeder SQL files.
+  - production-facing display columns in the current API database.
+- File audit:
+  - files scanned: 276.
+  - files with likely unaccented Vietnamese: 86.
+  - likely unaccented Vietnamese values: 17,658.
+  - accented Vietnamese values: 997.
+- Database audit:
+  - rows scanned: 1,139.
+  - rows with likely unaccented Vietnamese: 223.
+  - likely unaccented field values: 475.
+  - confirmed accented field values: 1,507.
+- Main database issue:
+  - `locations`: 222/333 rows affected.
+  - `short_description`: 222 unaccented values.
+  - `description`: 222 unaccented values.
+  - `name`: 4 unaccented values.
+  - `address`: 26 unaccented values.
+- Healthy database areas:
+  - `tours`: 0 unaccented values detected.
+  - taxonomy tables: no confirmed issue.
+  - `categories.name` id 73 is a detector false positive: `Vé tham quan & Show`.
+- Policy:
+  - keep slugs, URLs, file names, Cloudinary public IDs, and technical identifiers ASCII.
+  - do not classify valid English source text as Vietnamese missing diacritics.
+  - repair display text through reviewed source regeneration, not blind accent insertion.
+- Reports:
+  - `data-center/reports/vietnamese-diacritics-audit-2026-06-07.json`
+  - `data-center/reports/vietnamese-diacritics-audit-2026-06-07.csv`
+  - `data-center/reports/vietnamese-diacritics-db-audit-2026-06-07.json`
+- Database written:
+  - no.
+- Next priority:
+  - replace the 222 generated `locations` description templates with reviewed Vietnamese text.
+  - normalize the 4 location names and 26 addresses.
+  - change seeder/crawler generation policy so new Vietnamese display text preserves diacritics.
+
+### Vietnamese diacritics repair applied - 2026-06-07
+
+- Root cause fixed:
+  - location pipeline no longer converts display fields to ASCII.
+  - Overpass and curated sources preserve UTF-8/NFC text.
+  - only slugs and technical identifiers are converted to ASCII.
+  - crawler and seeder documentation no longer requires unaccented Vietnamese.
+- Live database repair:
+  - 222 generated `locations` rows updated in one transaction.
+  - 222 `short_description` values rewritten with Vietnamese diacritics.
+  - 222 `description` values rewritten with Vietnamese diacritics.
+  - 222 addresses normalized, including `Da Nang` to `Đà Nẵng`.
+  - 4 confirmed location names corrected.
+- Safety:
+  - pre-change backup:
+    - `data-center/backups/locations-before-vietnamese-diacritics-2026-06-07-150018.json`
+  - applied-change report:
+    - `data-center/reports/location-vietnamese-diacritics-repair-2026-06-07-150018.json`
+- Post-repair database audit:
+  - rows scanned: 1,139.
+  - rows with likely unaccented Vietnamese: 0.
+  - unaccented field values: 0.
+  - accented field values: 2,357.
+  - final report:
+    - `data-center/reports/vietnamese-diacritics-db-audit-2026-06-07.json`
+- Historical artifact audit:
+  - files scanned: 276.
+  - old files with likely unaccented Vietnamese: 86.
+  - old values flagged: 17,658.
+  - these are mainly immutable crawl snapshots and generated SQL from the former ASCII policy.
+  - do not use the old artifacts as production display content; regenerate canonical artifacts with the fixed pipeline.
+- Verification:
+  - TypeScript typecheck passed.
+  - Python compile check passed.
+  - PHP syntax checks passed.
+- Known environment warning:
+  - PHP reports missing optional `imagick`; it did not affect the database repair or audit.
+
+### Canonical UTF-8 rebuild guard - 2026-06-07
+
+- Added:
+  - `database-seeders/47_canonical_display_text_utf8_seed.sql`.
+  - generator: `database-seeders/generate_canonical_display_text_seed.php`.
+- Coverage:
+  - 9 production-facing tables.
+  - 1,139 rows.
+  - 2,355 accented Vietnamese values detected.
+  - 0 unaccented Vietnamese values detected.
+- Seed order:
+  - seed `47` is last in both `full` and `incremental_current_live`.
+  - this prevents old ASCII-era seeds from leaving unaccented display text after rebuild.
+- Artifact lifecycle:
+  - `data-center/artifact-lifecycle.json`.
+  - raw crawl snapshots remain immutable evidence.
+  - normalized/generated artifacts must be regenerated with the UTF-8 pipeline.
+  - production display text is canonical from the audited database and seed `47`.
+- Overpass recrawl:
+  - attempted with `overpass-api.de` and `overpass.kumi.systems`.
+  - both failed at network fetch on 2026-06-07.
+  - existing snapshot was unchanged and separately backed up.
+
+### Mojibake and UTF-8 audit - 2026-06-07
+
+- File scope:
+  - crawler data.
+  - database seeders.
+  - data-center text artifacts.
+- File result:
+  - files scanned: 352.
+  - invalid UTF-8 files: 0.
+  - files with mojibake: 0.
+  - strong mojibake signals: 0.
+- Database result:
+  - rows scanned: 1,139.
+  - display field values scanned: 3,580.
+  - rows with mojibake: 0.
+- Reports:
+  - `data-center/reports/mojibake-audit-2026-06-07.json`.
+  - `data-center/reports/mojibake-audit-2026-06-07.csv`.
+  - `data-center/reports/mojibake-db-audit-2026-06-07.json`.
+- Tools:
+  - `danangtrip-crawler/scripts/audit_mojibake.py`.
+  - `database-seeders/audit_mojibake_db.php`.
+- Detector policy:
+  - only strong encoding corruption signals are reported.
+  - valid standalone Vietnamese characters such as `Â` and `Ã` are not treated as errors.
+  - audit tools and their generated reports are excluded from self-scanning.
+- Data changed:
+  - no repair was required.
+
+### Duplicate catalog audit and repair - 2026-06-07
+
+- Scope:
+  - 333 locations.
+  - 100 tours.
+  - 105 blog posts.
+- Initial findings:
+  - locations: 4 high-confidence pairs and 22 review pairs.
+  - tours: 20 exact-content groups, 4 rows per group, 80 affected tours.
+  - blogs: post 105 was an exact content copy of post 103.
+- Location decision:
+  - Memory Lounge duplicate was already handled correctly: id 96 active, id 221 inactive.
+  - HanCook rows 236, 237, and 238 are separate branches at different addresses; they were not merged.
+  - lodging rows with similar names or shared street-level addresses remain review-only.
+- Tour decision:
+  - all 120 duplicate pairs had identical product content.
+  - duplicate tours had 123 booking item references plus schedules, ratings, favorites, views, cart, and location mappings.
+  - no tour row or relation was deleted.
+  - one canonical tour per group remains active, selected by cart/booking/engagement usage.
+  - 60 duplicate tours were changed to `inactive` and `booking_availability = sold_out`.
+- Blog decision:
+  - blog 105 `(Copy)` changed from `published` to `archived`.
+  - blog 103 remains published.
+- Final public catalog:
+  - tours active: 40.
+  - tours inactive: 60.
+  - active duplicate tour pairs: 0.
+  - published duplicate blog pairs: 0.
+  - active high-confidence duplicate location pairs: 0.
+- Safety:
+  - backup: `data-center/backups/catalog-before-duplicate-repair-2026-06-07-155801.json`.
+  - apply report: `data-center/reports/duplicate-catalog-repair-2026-06-07-155801.json`.
+  - audit report: `data-center/reports/duplicate-entities-audit-2026-06-07.json`.
+  - persistent rebuild seed: `database-seeders/48_deactivate_duplicate_catalog_seed.sql`.
+- Tools:
+  - `database-seeders/audit_duplicate_entities.php`.
+  - `database-seeders/repair_duplicate_catalog.php`.
+- Verification:
+  - seed manifest Check passed.
+  - no active/published duplicate pairs remain.
+
+### Data tooling moved out of API - 2026-06-07
+
+- Removed:
+  - `danangtrip-api/tools`.
+  - six PHP wrapper files used only for data audit, repair, and seed generation.
+- Canonical location for data tooling:
+  - `D:\DATN\DATN_Tài liệu\database-seeders`.
+  - `D:\DATN\DATN_Tài liệu\danangtrip-crawler\scripts`.
+- API boundary:
+  - `danangtrip-api` contains application/runtime code only.
+  - data scripts may bootstrap the API to reuse Laravel configuration and database connectivity, but their files, reports, backups, and generated seeds remain under `DATN_Tài liệu`.
+- Unrelated API changes preserved:
+  - `routes/console.php`.
+  - `app/Console`.
+  - `app/Services/TourScheduleAvailabilityService.php`.
+  - `tests/Unit/SyncTourScheduleAvailabilityTest.php`.
+
+### Verified real tour catalog imported - 2026-06-07
+
+- Canonical catalog:
+  - `data/verified-real-tour-catalog-cloudinary-20260607.json`.
+- Database seed:
+  - `database-seeders/49_verified_real_tours_seed.sql`.
+- Generator:
+  - `danangtrip-crawler/scripts/generate_verified_real_tour_seed.py`.
+- Pre-import backup:
+  - `data-center/backups/verified-real-tour-import-before-20260607-162522.json`.
+- API schema adjustment:
+  - `danangtrip-api/database/migrations/2026_06_07_000001_expand_tour_thumbnail_url.php`.
+  - changes `tours.thumbnail` from `varchar(255)` to `text` for verified Cloudinary URLs.
+- Imported:
+  - tours: 30.
+  - tour-location mappings: 46.
+  - future schedules: 240.
+  - Cloudinary thumbnails: 30/30.
+- Safety:
+  - all imported tours remain `inactive`.
+  - existing tours, bookings, ratings, schedules, and relations were not deleted.
+  - seed upserts by slug and is idempotent.
+  - second seed run remained 30 tours, 46 mappings, and 240 schedules.
+- Quality verification:
+  - missing required content: 0.
+  - tours without location mapping: 0.
+  - duplicate imported slugs: 0.
+  - Vietnamese missing-diacritic findings: 0.
+  - mojibake findings: 0.
+  - duplicate catalog audit did not add new duplicate groups.
+- Editorial status:
+  - source titles and detailed itinerary/service facts remain in English where supplied by operators.
+  - Vietnamese summary/description is normalized and accented.
+  - admin/editor review is still required before changing status to `active`.
+
+### Verified real tour editorial activation - 2026-06-07
+
+- User approved activating the verified real tours.
+- Added:
+  - `database-seeders/50_verified_real_tours_editorial_vi_seed.sql`.
+  - `danangtrip-crawler/scripts/generate_verified_real_tour_editorial_seed.py`.
+- Applied to database:
+  - updated only the 30 verified real tour slugs from the Cloudinary catalog.
+  - converted public-facing title, description, short description, itinerary, inclusions, and exclusions to Vietnamese.
+  - set `status = active`.
+  - preserved prices, Cloudinary media, tour-location mappings, schedules, and booking availability.
+- Final counts:
+  - verified real tours in DB: 30.
+  - active verified real tours: 30.
+  - Cloudinary thumbnails: 30/30.
+  - missing required content: 0.
+  - future open schedules for verified tours: 240.
+  - tours without location mapping: 0.
+  - total active tours in DB: 70.
+- Quality checks after activation:
+  - Vietnamese missing-diacritic findings: 0.
+  - mojibake findings: 0.
+  - duplicate audit: no new duplicate tour groups introduced.
+- Note:
+  - duplicate audit still reports 120 old high-confidence tour pairs from the legacy seed catalog; these were already handled by deactivating duplicate legacy tours.
+
+### Full database rebuild with latest seeds - 2026-06-07
+
+- User requested deleting current database data and reseeding with the newest dataset.
+- Backup before destructive rebuild:
+  - `D:\DATN\DATN_Tài liệu\data-center\backups\full-database-before-reseed-20260607-192341.json`.
+  - backed up 42 tables.
+- Fixed seed issues before final rebuild:
+  - `database-seeders/05_locations.sql`: escaped apostrophes in SQL text values.
+  - `database-seeders/07_blog_posts.sql`: escaped apostrophes in English blog content.
+  - `database-seeders/46_completed_booking_payment_backfill.sql`: synced `payments.id` sequence before backfill inserts.
+- Final rebuild flow:
+  - ran `php artisan migrate:fresh --force` in `D:\DATN\danangtrip-api`.
+  - ran `database-seeders/apply_database_seeders.ps1 -Mode Full`.
+  - applied seed files `01` through `50` successfully.
+- Final core counts:
+  - users: 100.
+  - locations: 112.
+  - active locations: 108.
+  - tours: 164.
+  - active tours: 70.
+  - tour schedules: 676.
+  - blog posts: 118.
+  - bookings: 100.
+  - payments: 78.
+  - crawl items: 942.
+- Quality verification after rebuild:
+  - mojibake audit: 0 rows with findings.
+  - active tour duplicate names: 0.
+  - booking-payment audit: no success/refund/payment amount mismatches.
+  - schedule audit: no missing departure code/place/deadline, no past open booking schedules, no deadline-after-departure issues.
+  - `php artisan test tests\Unit\SyncTourScheduleAvailabilityTest.php`: passed.
+- Remaining polish items:
+  - 2 locations without tags.
+  - 2 locations without amenities.
+  - 2 tours without location mapping.
+  - 7 active locations missing thumbnail.
+  - 18 draft blog posts missing featured image.
+  - Vietnamese diacritic audit still flags 53 rows, mostly 34 pending/staging tours and 18 draft blog posts.
+  - schedule audit reports 16 duplicate departure code groups.
+  - PHP startup still warns that `imagick` extension is missing; it did not block migration, seeding, or tests.
+
+### Database quality polish seed applied - 2026-06-07
+
+- Added and applied:
+  - `database-seeders/51_database_quality_polish_seed.sql`.
+- Manifest updated:
+  - `51_database_quality_polish_seed.sql` is included in both `full` and `incremental_current_live`.
+- Documentation updated:
+  - `database-seeders/README.md` now lists seed `51` as the final quality polish layer.
+- Fixes included:
+  - normalized unaccented legacy blog category id `1`.
+  - normalized weak crawl location names/slugs for ids `101`, `102`, `104`, `113`, `114`.
+  - filled missing thumbnails/images for location ids `5`, `101`, `102`, `103`, `104`, `113`, `114`.
+  - added missing location tags and amenities for pending locations `102` and `104`.
+  - added missing tour-location mappings for pending tours `106` and `110`.
+  - replaced unaccented generic pending tour copy with accented Vietnamese holding copy.
+  - added Vietnamese titles/excerpts/content and featured images for draft blog posts `201-218`.
+  - made duplicated `tour_schedules.departure_code` values unique.
+- Final verification:
+  - relation gaps: all 0.
+  - missing location thumbnails: 0.
+  - missing tour thumbnails: 0.
+  - missing blog featured images: 0.
+  - Vietnamese missing-diacritic findings: 0.
+  - mojibake findings: 0.
+  - duplicate active tour names: 0.
+  - duplicate active location names: 0.
+  - duplicate schedule departure code groups: 0.
+  - `php artisan test tests\Unit\SyncTourScheduleAvailabilityTest.php`: passed.
+- Final core counts:
+  - users: 100.
+  - locations: 112.
+  - tours: 164.
+  - tour_schedules: 706 after rerunning incremental seed; seed `49` uses rolling future schedules and does not duplicate the same `tour_id + start_date`.
+  - blog_posts: 118.
+  - bookings: 100.
+  - payments: 78.
+  - crawl_items: 942.
+- Remaining non-blocking warning:
+  - PHP startup still warns that `imagick` extension is missing.
+
+### Public Vietnamese content and one-command database refresh - 2026-06-08
+
+- User requested a full data audit: public content must be Vietnamese with full diacritics, collected data should be centralized, and the database should be rerunnable with one command.
+- Added and applied:
+  - `database-seeders/52_public_vietnamese_content_seed.sql`.
+  - `database-seeders/53_tour_schedule_current_date_guard_seed.sql`.
+- Manifest updated:
+  - seeds `52` and `53` are included in both `full` and `incremental_current_live`.
+- New operating folder:
+  - `D:\DATN\DATN_Tài liệu\data-center\database-refresh`.
+  - one-command rebuild: `RUN_REBUILD_DATABASE.ps1`.
+  - one-command incremental update: `RUN_INCREMENTAL_UPDATE.ps1`.
+  - one-command audit: `RUN_AUDIT_DATABASE.ps1`.
+- Collected data snapshot folder:
+  - `D:\DATN\DATN_Tài liệu\data-center\collected-data`.
+  - contains crawler data snapshot and database seeders snapshot for handoff/reference.
+- Final audit after applying seed `53` and syncing schedule availability:
+  - public Vietnamese content findings: 0.
+  - unaccented Vietnamese DB findings: 0.
+  - mojibake findings: 0.
+  - relation gaps: all 0.
+  - active locations missing thumbnail: 0.
+  - tours missing thumbnail: 0.
+  - blog posts missing featured image: 0.
+  - past open booking schedules: 0.
+  - duplicate departure code groups: 0.
+- Current core counts:
+  - locations: 112 total, 107 active, 5 pending_review.
+  - tours: 164 total, 70 active, 60 inactive, 34 pending_review.
+  - tour_schedules: 676.
+  - blog_posts: 118 total, 100 published, 18 draft.
+  - bookings: 100.
+  - payments: 78.
+  - crawl_items: 942 total, 222 approved, 258 pending_review, 462 rejected.
+- Remaining non-blocking warning:
+  - PHP startup still warns that `imagick` extension is missing; it does not block seed, audit, or schedule sync.
+
+### Expired runtime cleanup and publication backlog audit - 2026-06-08
+
+- Added and applied:
+  - `database-seeders/54_cleanup_expired_auth_runtime_seed.sql`.
+  - `database-seeders/audit_publication_backlog.php`.
+- Manifest updated:
+  - seed `54` is included at the end of both `full` and `incremental_current_live`.
+- Final runtime audit:
+  - expired password reset tokens: 0.
+  - expired refresh tokens: 0.
+  - failed jobs: 0.
+  - cache locks: 0.
+- Publication backlog report:
+  - `D:\DATN\DATN_Tài liệu\data-center\reports\publication-backlog-2026-06-08-103953.json`.
+  - locations pending_review: 5.
+  - tours pending_review: 34.
+  - blog posts draft: 18.
+- Important decision:
+  - Pending/draft records were not auto-published because they require editorial/admin approval.
+  - Public/active data remains clean and audit-ready.
+
+### Detailed location Vietnamese and taxonomy repair - 2026-06-08
+
+- User reported remaining unaccented Vietnamese in location content.
+- Root cause:
+  - previous audits skipped mixed accented/unaccented fields;
+  - seed `52` used legacy id-based normalization, producing mechanical names and shifted content for slugs after id `104`;
+  - many locations had incorrect categories, such as attractions under food and hotels under coffee.
+- Added and applied:
+  - `database-seeders/55_location_catalog_editorial_vi_seed.sql`.
+  - `database-seeders/audit_locations_vietnamese_detailed.php`.
+- Seed `55` behavior:
+  - matches locations by stable `slug`, not numeric id;
+  - normalizes Vietnamese place names and addresses;
+  - preserves official international brand names;
+  - remaps location categories;
+  - restores correct values for `lang-co-beach`, `hai-van-pass`, `vinwonders-nam-hoi-an`, `son-tra-peninsula`, `tra-que-vegetable-village`, and `tam-giang-lagoon`;
+  - replaces English/mechanical short descriptions and descriptions with Vietnamese editorial copy;
+  - moves unverified `4-seasons-danang-hostel` to `pending_review`.
+- Manifest:
+  - seed `55` is last in both `full` and `incremental_current_live`.
+- Final verification:
+  - detailed location findings: 0 across 112 rows.
+  - public Vietnamese content findings: 0.
+  - unaccented Vietnamese field values across DB: 0.
+  - mojibake findings: 0.
+  - relation gaps: 0.
+  - 26 official brand/foreign names are tracked separately and are not treated as Vietnamese spelling errors.
+
+### Latest incremental database refresh verified - 2026-06-08
+
+- Seeder integrity check:
+  - 55 SQL files total.
+  - 53 full seeds, 1 optional demo seed, 1 read-only coverage check.
+  - no empty files.
+  - no missing manifest files.
+  - no duplicate manifest entries.
+  - final full/incremental seed: `55_location_catalog_editorial_vi_seed.sql`.
+- Ran:
+  - `data-center/database-refresh/RUN_INCREMENTAL_UPDATE.ps1`.
+  - `database-seeders/apply_database_seeders.ps1 -Mode Check`.
+- Incremental result:
+  - all 22 incremental seeds applied successfully.
+  - schedule availability sync completed.
+  - public Vietnamese findings: 0.
+  - detailed location Vietnamese findings: 0.
+  - unaccented Vietnamese DB fields: 0.
+  - mojibake findings: 0.
+  - relation gaps: 0.
+  - missing public media: 0.
+  - past open schedules: 0.
+  - duplicate departure codes: 0.
+  - schedule unit test: passed.
+- Current catalog state:
+  - locations: 112 total, 106 active, 6 pending_review.
+  - tours: 164 total, 70 active, 60 inactive, 34 pending_review.
+  - tour schedules: 706.
+  - blog posts: 118 total, 100 published, 18 draft.
+- Remaining non-blocking environment warning:
+  - PHP `imagick` extension is not installed.
+
+### Ratings Vietnamese normalization and realistic volume - 2026-06-08
+
+- User reported that rating comments were still unaccented and requested more reviews for realism.
+- Root cause:
+  - the original `09_ratings_interactions.sql` contained 100 generic unaccented comments;
+  - ratings were limited to 3-5 stars and only 50 location plus 50 tour reviews.
+- Added and applied:
+  - `database-seeders/56_ratings_editorial_vi_and_volume_seed.sql`.
+  - `database-seeders/audit_ratings_quality.php`.
+- Seed `56` behavior:
+  - rewrites all legacy comments to natural Vietnamese with diacritics;
+  - maintains a stable idempotent target of 360 location ratings and 260 tour ratings;
+  - guarantees every active location and active tour has at least one approved rating;
+  - uses a realistic 2-5 star distribution;
+  - recalculates `locations.avg_rating`, `locations.review_count`, `tours.rating_avg`, and `tours.rating_count`;
+  - does not add fabricated rating images.
+- Final ratings state:
+  - total: 620 approved ratings.
+  - overall average: 4.33.
+  - 2 stars: 23.
+  - 3 stars: 99.
+  - 4 stars: 148.
+  - 5 stars: 350.
+  - active locations without ratings: 0.
+  - active tours without ratings: 0.
+  - unaccented comments: 0.
+  - duplicate user-location groups: 0.
+  - duplicate user-tour groups: 0.
+  - aggregate mismatches: 0.
+- Idempotency verified:
+  - rerunning seed `56` keeps the total at 620.
+
+### Recent operational activity and counter integrity - 2026-06-08
+
+- Operational audit found that all activity except ratings stopped on 2026-04-30:
+  - 0 bookings, payments, favorites, views, searches, notifications, and contacts in the previous 30 days;
+  - 100/100 users had no `last_login_at`;
+  - 27 stale pending bookings;
+  - 185 location/tour counter mismatches;
+  - active catalog coverage gaps for views and favorites.
+- Added and applied:
+  - `database-seeders/57_recent_operational_activity_seed.sql`;
+  - `database-seeders/audit_operational_activity.php`.
+- Seed `57` behavior:
+  - labels generated activity with `DEMO-ACT-` and `demo-activity-`;
+  - creates a stable set of 24 recent bookings using active tours and future schedules;
+  - creates success and pending payment histories;
+  - refreshes login, favorite, view, search, notification, and contact timelines;
+  - guarantees every active location and active tour has views and favorites;
+  - closes or confirms legacy stale pending bookings;
+  - recalculates location/tour view, favorite, and booking counters;
+  - repairs PostgreSQL sequences before inserting.
+- Final operational state:
+  - activity in the last 7 days: 12 bookings, 8 payment attempts, 32 favorites, 109 views, 14 searches, 15 notifications, 38 ratings, 11 contacts;
+  - activity in the last 30 days: 24 bookings, 18 payment attempts, 146 favorites, 525 views, 66 searches, 67 notifications, 126 ratings, 49 contacts;
+  - users never logged in: 0;
+  - stale pending bookings: 0;
+  - active locations/tours without views or favorites: 0;
+  - location/tour counter mismatches: 0;
+  - booking/payment hard mismatches: 0.
+- Idempotency verified:
+  - rerunning seed `57` keeps totals at 124 bookings, 103 payments, 219 favorites, and 628 views.
+- Seed `57` is included in both `full` and `incremental_current_live`.
+
+### Public taxonomy visibility cleanup - 2026-06-08
+
+- Public APIs returned every active taxonomy record, including:
+  - 77 location categories without locations;
+  - 88 tour categories without tours;
+  - 100 subcategories without assigned locations;
+  - 81 orphan blog categories.
+- Added and applied `database-seeders/58_public_taxonomy_visibility_seed.sql`.
+- Behavior:
+  - location categories without active locations become inactive;
+  - tour categories without active tours become inactive;
+  - subcategories without active locations become inactive;
+  - blog categories are deleted only when they have no `blog_post_categories` relation.
+- This prevents empty categories from appearing on the home page and filter panels while preserving taxonomy used by content.
+
+### Rating admin read tracking - 2026-06-08
+
+- Added Laravel `ratings.is_new` support for admin-only read tracking.
+- Added `database-seeders/59_ratings_admin_read_state_seed.sql`.
+- Historical initialization:
+  - ratings from the latest 7 days are marked new;
+  - older ratings are marked viewed;
+  - a private settings marker ensures later incremental runs never reset an admin's viewed state.
+- New customer ratings continue to use the database default `is_new = true`.
+- Public rating visibility still depends only on `status`; `is_new` never affects the public site.

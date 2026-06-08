@@ -1,0 +1,32 @@
+{
+  "sources": [
+    {
+      "name": "dacotours",
+      "url": "https://dacotours.com/"
+    },
+    {
+      "name": "hoiandaytrip",
+      "url": "https://hoiandaytrip.com/"
+    },
+    {
+      "name": "dananglocaltours",
+      "url": "https://dananglocaltours.com/"
+    },
+    {
+      "name": "danangtourscity",
+      "url": "https://danangtourscity.com/"
+    },
+    {
+      "name": "venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/"
+    },
+    {
+      "name": "vmtravel",
+      "url": "https://vmtravel.com/"
+    },
+    {
+      "name": "vietnamadventuretour",
+      "url": "https://vietnamadventuretour.com.vn/tour-category/da-nang-tours/"
+    }
+  ]
+}

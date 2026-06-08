@@ -1,0 +1,276 @@
+[
+  {
+    "name": "Daily Golden Bridge, Ba Na Hills from Da Nang Tours by Local",
+    "source_name": "recrawl_001_dacotours",
+    "url": "https://dacotours.com/ba-na-hills-from-da-nang/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Ba Na Hills Tour From Da Nang Good Price #1 - Da Nang Local Tours",
+    "source_name": "recrawl_002_dananglocaltours",
+    "url": "https://dananglocaltours.com/tour/ba-na-hills-tour-from-da-nang/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Bach Ma National Park Tour From Da Nang - Da Nang Local Tours",
+    "source_name": "recrawl_003_dananglocaltours",
+    "url": "https://dananglocaltours.com/tour/bach-ma-national-park-tour/",
+    "blocking_reasons": [
+      "inferred_core_field",
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Basket Boat Hoi An Tour From Da Nang - Da Nang Local Tours",
+    "source_name": "recrawl_004_dananglocaltours",
+    "url": "https://dananglocaltours.com/tour/basket-boat-hoi-an-tour/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Cham Island Snorkeling Tour From Da Nang Good Price #1",
+    "source_name": "recrawl_005_dananglocaltours",
+    "url": "https://dananglocaltours.com/tour/cham-island-snorkeling-tour/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Hoa Phu Thanh waterfall sliding daily tour - Da Nang Local Tours",
+    "source_name": "recrawl_006_dananglocaltours",
+    "url": "https://dananglocaltours.com/tour/hoa-phu-thanh-waterfall-sliding-daily-tour/",
+    "blocking_reasons": [
+      "inferred_core_field"
+    ]
+  },
+  {
+    "name": "Marble Mountain Hoi An Tour Good Price #1 - Da Nang Local Tours",
+    "source_name": "recrawl_007_dananglocaltours_basket_boat",
+    "url": "https://dananglocaltours.com/tour/marble-mountain-hoi-an-tour/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "My Son Sanctuary Tour From Da Nang - Da Nang Local Tours",
+    "source_name": "recrawl_008_dananglocaltours_basket_boat",
+    "url": "https://dananglocaltours.com/tour/my-son-sanctuary-tour/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Nui Than Tai Hot Spring Park Tour From Da Nang Good Price #1",
+    "source_name": "recrawl_009_dananglocaltours_basket_boat",
+    "url": "https://dananglocaltours.com/tour/nui-than-tai-hot-spring-park-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Son Tra Peninsula - Marble Mountains - Hoian Daily Tour",
+    "source_name": "recrawl_010_dananglocaltours_basket_boat",
+    "url": "https://dananglocaltours.com/tour/son-tra-peninsula-marble-mountains-hoian-daily-tour/",
+    "blocking_reasons": [
+      "inferred_core_field",
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "French Village Ba Na Hills - Da Nang Tours",
+    "source_name": "recrawl_011_danangtourscity",
+    "url": "https://danangtourscity.com/french-village-ba-na-hills/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Ba Na Hills Night Tour with Golden Bridge, Dinner & Cabaret Show - HoiAn Day Trip Company",
+    "source_name": "recrawl_012_hoiandaytrip_bana",
+    "url": "https://hoiandaytrip.com/ba-na-hills-night-tour/",
+    "blocking_reasons": [
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "From Danang: My Son Holyland & Rice Paper Making Morning Tour",
+    "source_name": "recrawl_013_venus_cham_island",
+    "url": "https://venusvietnamtravel.com/my-son-holyland-rice-paper-making-morning-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Hoi An City Tour – Boat Ride – Release Flower Lantern",
+    "source_name": "recrawl_014_venus_cham_island",
+    "url": "https://venusvietnamtravel.com/hoi-an-boat-ride/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Marble Mountains – Monkey Mountain – Am Phu Cave Morning Tour",
+    "source_name": "recrawl_015_venus_cham_island",
+    "url": "https://venusvietnamtravel.com/marble-mountains-monkey-mountain-am-phu-cave-morning-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Marble Mountains – Monkey Mountain – Am Phu Cave Sunset Tour",
+    "source_name": "recrawl_016_venus_cham_island",
+    "url": "https://venusvietnamtravel.com/marble-mountains-am-phu-cave-monkey-mountains-sunset-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "3 Traditional Handicraft Villages In 1 Tour",
+    "source_name": "recrawl_017_venusvietnamtravel",
+    "url": "https://venusvietnamtravel.com/3-traditional-handicraft-villages-in-1-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "AFTERNOON BA NA HILLS – GOLDEN BRIDGE & DRAGON BRIDGE BY NIGHT TOUR",
+    "source_name": "recrawl_018_venusvietnamtravel",
+    "url": "https://venusvietnamtravel.com/afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Cam Thanh Coconut Jungle Muslim Tour",
+    "source_name": "recrawl_019_venusvietnamtravel",
+    "url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-muslim-tour/",
+    "blocking_reasons": [
+      "inferred_core_field",
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Cam Thanh Cooking Class & My Son Holy Land Full-Day Tour",
+    "source_name": "recrawl_020_venusvietnamtravel",
+    "url": "https://venusvietnamtravel.com/cam-thanh-cooking-class-my-son-holy-land-full-day-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Cam Thanh Eco Tour - My Son Holy Land Full-day Tour",
+    "source_name": "recrawl_021_venusvietnamtravel",
+    "url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-my-son-sanctuary-full-day-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "Cham Island Sightseeing & Snorkeling Tour",
+    "source_name": "recrawl_022_venusvietnamtravel",
+    "url": "https://venusvietnamtravel.com/cham-island-sightseeing-and-snorkeling-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary"
+    ]
+  },
+  {
+    "name": "The best quality Daily Group Tour package in Vietnam",
+    "source_name": "recrawl_023_vietnamadventure_danang",
+    "url": "https://vietnamadventuretour.com.vn/daily-group-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Vietnam Luxury Tour - Experience your trip with 5-star class",
+    "source_name": "recrawl_024_vietnamadventure_danang",
+    "url": "https://vietnamadventuretour.com.vn/luxury-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Da Nang Shore Excursions From Tien Sa Port - Deluxe Tours",
+    "source_name": "recrawl_025_vmtravel",
+    "url": "https://vmtravel.com/da-nang-shore-excursions-from-tien-sa-port/",
+    "blocking_reasons": [
+      "suspicious_duration",
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Hue Shore Excursions From Chan May Port - Book 1 Day Tour",
+    "source_name": "recrawl_026_vmtravel",
+    "url": "https://vmtravel.com/hue-shore-excursions-from-chan-may-port/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Ba Na Hills And Golden Bridge Tour From Tien Sa Port",
+    "source_name": "recrawl_027_vmtravel_danang_shore",
+    "url": "https://vmtravel.com/tours/ba-na-hills-and-golden-bridge-tour-from-tien-sa/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Da Nang City Tour From Tien Sa Port - Explore and Shopping",
+    "source_name": "recrawl_028_vmtravel_danang_shore",
+    "url": "https://vmtravel.com/tours/da-nang-city-tour-from-tien-sa-port/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Hoi An Day Tour from Tien Sa Port - Hoi An Shore Excursions",
+    "source_name": "recrawl_029_vmtravel_danang_shore",
+    "url": "https://vmtravel.com/tours/hoi-an-day-tour-from-tien-sa-port/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "My Son Sanctuary Tour From Tien Sa Port - Explore Now",
+    "source_name": "recrawl_030_vmtravel_danang_shore",
+    "url": "https://vmtravel.com/tours/my-son-sanctuary-tour-from-tien-sa-port/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  },
+  {
+    "name": "Bana Hills Day Trip from Chan May Port: Best Shore Excursion",
+    "source_name": "recrawl_031_vmtravel_hue_shore",
+    "url": "https://vmtravel.com/tours/bana-hills-day-trip-from-chan-may-port/",
+    "blocking_reasons": [
+      "suspicious_duration",
+      "incomplete_inclusions",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Hue Imperial Tour from Chan May Port: Best Shore Excursions",
+    "source_name": "recrawl_032_vmtravel_hue_shore",
+    "url": "https://vmtravel.com/tours/hue-imperial-tour-from-chan-may-port/",
+    "blocking_reasons": [
+      "suspicious_duration"
+    ]
+  }
+]

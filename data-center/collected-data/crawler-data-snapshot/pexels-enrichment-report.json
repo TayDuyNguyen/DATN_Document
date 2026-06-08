@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-06-03T01:16:11.198Z",
+  "input": {
+    "file": "data/overpass-danang-pois-clean.json",
+    "total": 580
+  },
+  "pexels": {
+    "limit": 580,
+    "photosPerItem": 3,
+    "requestDelayMs": 750,
+    "selectedMissingItems": 0,
+    "newlyEnrichedItems": 0,
+    "totalItemsWithImages": 580,
+    "failures": 0,
+    "throttled": false
+  },
+  "output": {
+    "file": "data/overpass-danang-pois-enriched.json",
+    "sqlSeed": "../database-seeders/14_pexels_image_enrichment_seed.sql"
+  },
+  "failures": []
+}

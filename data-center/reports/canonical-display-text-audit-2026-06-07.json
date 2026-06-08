@@ -1,0 +1,19 @@
+{
+  "scope": [
+    "D:\\DATN\\DATN_Tài liệu\\database-seeders\\47_canonical_display_text_utf8_seed.sql"
+  ],
+  "filesScanned": 1,
+  "totals": {
+    "vietnamese_accented": 2355,
+    "other_or_english": 1194
+  },
+  "filesWithUnaccentedVietnamese": 0,
+  "topFiles": [],
+  "examples": [],
+  "policy": {
+    "slugUrlTechnicalAsciiAllowed": true,
+    "englishSourceContentAllowed": true,
+    "displayVietnameseShouldUseDiacritics": true,
+    "automaticMutationPerformed": false
+  }
+}

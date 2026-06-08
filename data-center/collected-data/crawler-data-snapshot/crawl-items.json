@@ -1,0 +1,82 @@
+[
+  {
+    "sourceName": "mock-places",
+    "sourceType": "mock",
+    "entityType": "location",
+    "externalId": "mock-dragon-bridge",
+    "sourceUrl": "https://danangtrip.local/mock/dragon-bridge",
+    "status": "pending_review",
+    "normalizedPayload": {
+      "name": "Cau Rong Da Nang",
+      "slugCandidate": "cau-rong-da-nang",
+      "address": "An Hai, Son Tra, Da Nang",
+      "latitude": 16.06125,
+      "longitude": 108.22779,
+      "rating": 4.7,
+      "reviewCount": 12500,
+      "categories": [
+        "bridge",
+        "landmark",
+        "nightlife"
+      ],
+      "description": "Iconic bridge in Da Nang known for fire and water shows.",
+      "imageUrls": []
+    },
+    "rawPayload": {
+      "name": "Cau Rong Da Nang",
+      "address": "An Hai, Son Tra, Da Nang",
+      "latitude": 16.06125,
+      "longitude": 108.22779,
+      "rating": 4.7,
+      "reviewCount": 12500,
+      "categories": [
+        "bridge",
+        "landmark",
+        "nightlife"
+      ],
+      "description": "Iconic bridge in Da Nang known for fire and water shows.",
+      "imageUrls": []
+    },
+    "crawledAt": "2026-05-31T04:16:54.832Z"
+  },
+  {
+    "sourceName": "mock-places",
+    "sourceType": "mock",
+    "entityType": "location",
+    "externalId": "mock-my-khe-beach",
+    "sourceUrl": "https://danangtrip.local/mock/my-khe-beach",
+    "status": "pending_review",
+    "normalizedPayload": {
+      "name": "My Khe Beach",
+      "slugCandidate": "my-khe-beach",
+      "address": "Vo Nguyen Giap, Da Nang",
+      "latitude": 16.05441,
+      "longitude": 108.24731,
+      "rating": 4.6,
+      "reviewCount": 9800,
+      "categories": [
+        "beach",
+        "nature",
+        "family"
+      ],
+      "description": "Popular beach area with long coastline and sunrise views.",
+      "imageUrls": []
+    },
+    "rawPayload": {
+      "name": "My Khe Beach",
+      "address": "Vo Nguyen Giap, Da Nang",
+      "latitude": 16.05441,
+      "longitude": 108.24731,
+      "rating": 4.6,
+      "reviewCount": 9800,
+      "categories": [
+        "beach",
+        "nature",
+        "family"
+      ],
+      "description": "Popular beach area with long coastline and sunrise views.",
+      "imageUrls": []
+    },
+    "crawledAt": "2026-05-31T04:16:54.832Z"
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "input": "data/tour-location-review.json",
+  "outputs": {
+    "json": "data/missing-location-candidates.json",
+    "csv": "data/missing-location-candidates.csv"
+  },
+  "missingLocationCandidateCount": 6,
+  "policy": {
+    "manualReviewRequired": true,
+    "doesNotPublishDb": true
+  }
+}

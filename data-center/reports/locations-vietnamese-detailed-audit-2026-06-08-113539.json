@@ -1,0 +1,273 @@
+{
+    "generated_at": "2026-06-08T11:35:39+07:00",
+    "rows_scanned": 112,
+    "columns_scanned": [
+        "name",
+        "description",
+        "short_description",
+        "address",
+        "district",
+        "ward",
+        "opening_hours"
+    ],
+    "findings_total": 0,
+    "by_column": [],
+    "by_status": [],
+    "brand_or_foreign_names_total": 26,
+    "brand_or_foreign_names": [
+        {
+            "id": 29,
+            "status": "active",
+            "slug": "asia-park",
+            "value": "Công viên Châu Á - Asia Park",
+            "signals": [
+                "park"
+            ]
+        },
+        {
+            "id": 50,
+            "status": "active",
+            "slug": "blue-whale-restaurant",
+            "value": "Blue Whale Restaurant",
+            "signals": [
+                "restaurant"
+            ]
+        },
+        {
+            "id": 53,
+            "status": "active",
+            "slug": "der-morgen-coffee",
+            "value": "Der Morgen Coffee",
+            "signals": [
+                "coffee"
+            ]
+        },
+        {
+            "id": 54,
+            "status": "active",
+            "slug": "das-chill-coffee",
+            "value": "Das-Chill Coffee",
+            "signals": [
+                "coffee"
+            ]
+        },
+        {
+            "id": 58,
+            "status": "active",
+            "slug": "ador-coffee",
+            "value": "ADOR Coffee",
+            "signals": [
+                "coffee"
+            ]
+        },
+        {
+            "id": 61,
+            "status": "active",
+            "slug": "danang-marriott-resort",
+            "value": "Danang Marriott Resort & Spa",
+            "signals": [
+                "danang",
+                "resort",
+                "spa"
+            ]
+        },
+        {
+            "id": 62,
+            "status": "active",
+            "slug": "melia-danang-resort",
+            "value": "Meliá Danang Beach Resort",
+            "signals": [
+                "danang",
+                "beach",
+                "resort"
+            ]
+        },
+        {
+            "id": 63,
+            "status": "active",
+            "slug": "new-world-hoiana",
+            "value": "New World Hoiana Beach Resort",
+            "signals": [
+                "beach",
+                "resort"
+            ]
+        },
+        {
+            "id": 65,
+            "status": "active",
+            "slug": "monarque-hotel",
+            "value": "Monarque Hotel Đà Nẵng",
+            "signals": [
+                "hotel"
+            ]
+        },
+        {
+            "id": 66,
+            "status": "active",
+            "slug": "tms-hotel-da-nang",
+            "value": "TMS Hotel Đà Nẵng Beach",
+            "signals": [
+                "hotel",
+                "beach"
+            ]
+        },
+        {
+            "id": 67,
+            "status": "active",
+            "slug": "haian-beach-hotel",
+            "value": "HAIAN Beach Hotel & Spa",
+            "signals": [
+                "beach",
+                "hotel",
+                "spa"
+            ]
+        },
+        {
+            "id": 68,
+            "status": "active",
+            "slug": "the-blossom-resort",
+            "value": "The Blossom Resort Island",
+            "signals": [
+                "the",
+                "resort"
+            ]
+        },
+        {
+            "id": 69,
+            "status": "active",
+            "slug": "balcona-hotel",
+            "value": "Balcona Hotel Đà Nẵng",
+            "signals": [
+                "hotel"
+            ]
+        },
+        {
+            "id": 70,
+            "status": "active",
+            "slug": "holiday-beach-hotel",
+            "value": "Holiday Beach Danang Hotel & Resort",
+            "signals": [
+                "beach",
+                "danang",
+                "hotel",
+                "resort"
+            ]
+        },
+        {
+            "id": 71,
+            "status": "active",
+            "slug": "intercontinental-resort",
+            "value": "InterContinental Danang Sun Peninsula Resort",
+            "signals": [
+                "danang",
+                "resort"
+            ]
+        },
+        {
+            "id": 72,
+            "status": "active",
+            "slug": "sheraton-grand-resort",
+            "value": "Sheraton Grand Danang Resort",
+            "signals": [
+                "danang",
+                "resort"
+            ]
+        },
+        {
+            "id": 73,
+            "status": "active",
+            "slug": "pullman-danang-resort",
+            "value": "Pullman Danang Beach Resort",
+            "signals": [
+                "danang",
+                "beach",
+                "resort"
+            ]
+        },
+        {
+            "id": 74,
+            "status": "active",
+            "slug": "novotel-han-river",
+            "value": "Novotel Danang Premier Han River",
+            "signals": [
+                "danang"
+            ]
+        },
+        {
+            "id": 75,
+            "status": "active",
+            "slug": "brilliant-hotel",
+            "value": "Brilliant Hotel Đà Nẵng",
+            "signals": [
+                "hotel"
+            ]
+        },
+        {
+            "id": 92,
+            "status": "active",
+            "slug": "highlands-coffee-bach-dang",
+            "value": "Highlands Coffee Bạch Đằng",
+            "signals": [
+                "coffee"
+            ]
+        },
+        {
+            "id": 93,
+            "status": "active",
+            "slug": "phuc-long-coffee-tea",
+            "value": "Phúc Long Coffee & Tea",
+            "signals": [
+                "coffee"
+            ]
+        },
+        {
+            "id": 94,
+            "status": "active",
+            "slug": "the-coffee-house-danang",
+            "value": "The Coffee House Đà Nẵng",
+            "signals": [
+                "the",
+                "coffee",
+                "house"
+            ]
+        },
+        {
+            "id": 96,
+            "status": "active",
+            "slug": "memory-lounge-danang",
+            "value": "Memory Lounge Đà Nẵng",
+            "signals": [
+                "lounge"
+            ]
+        },
+        {
+            "id": 97,
+            "status": "active",
+            "slug": "brodard-tea-house",
+            "value": "Brodard Tea House",
+            "signals": [
+                "house"
+            ]
+        },
+        {
+            "id": 98,
+            "status": "active",
+            "slug": "pullman-executive-lounge",
+            "value": "Pullman Executive Lounge",
+            "signals": [
+                "lounge"
+            ]
+        },
+        {
+            "id": 114,
+            "status": "pending_review",
+            "slug": "4-seasons-danang-hostel",
+            "value": "4 Seasons Danang Hostel",
+            "signals": [
+                "danang",
+                "hostel"
+            ]
+        }
+    ],
+    "findings": []
+}

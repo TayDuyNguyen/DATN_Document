@@ -1,0 +1,337 @@
+{
+  "generatedAt": "2026-06-07T02:40:35.271072+00:00",
+  "sources": [
+    {
+      "name": "recrawl_001_dacotours",
+      "url": "https://dacotours.com/ba-na-hills-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:42.054856+00:00",
+      "finishedAt": "2026-06-07T02:39:45.755308+00:00"
+    },
+    {
+      "name": "recrawl_002_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/ba-na-hills-tour-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 0,
+      "failures": 1,
+      "startedAt": "2026-06-07T02:39:45.755383+00:00",
+      "finishedAt": "2026-06-07T02:39:46.571776+00:00"
+    },
+    {
+      "name": "recrawl_003_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/bach-ma-national-park-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:46.571776+00:00",
+      "finishedAt": "2026-06-07T02:39:48.602714+00:00"
+    },
+    {
+      "name": "recrawl_004_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/basket-boat-hoi-an-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:48.602714+00:00",
+      "finishedAt": "2026-06-07T02:39:49.424870+00:00"
+    },
+    {
+      "name": "recrawl_005_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/cham-island-snorkeling-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:49.424870+00:00",
+      "finishedAt": "2026-06-07T02:39:50.282547+00:00"
+    },
+    {
+      "name": "recrawl_006_dananglocaltours",
+      "url": "https://dananglocaltours.com/tour/hoa-phu-thanh-waterfall-sliding-daily-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:50.282547+00:00",
+      "finishedAt": "2026-06-07T02:39:51.109413+00:00"
+    },
+    {
+      "name": "recrawl_007_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/marble-mountain-hoi-an-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:51.109413+00:00",
+      "finishedAt": "2026-06-07T02:39:51.934754+00:00"
+    },
+    {
+      "name": "recrawl_008_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/my-son-sanctuary-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:51.934754+00:00",
+      "finishedAt": "2026-06-07T02:39:52.770930+00:00"
+    },
+    {
+      "name": "recrawl_009_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/nui-than-tai-hot-spring-park-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:52.770930+00:00",
+      "finishedAt": "2026-06-07T02:39:53.607346+00:00"
+    },
+    {
+      "name": "recrawl_010_dananglocaltours_basket_boat",
+      "url": "https://dananglocaltours.com/tour/son-tra-peninsula-marble-mountains-hoian-daily-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:53.607346+00:00",
+      "finishedAt": "2026-06-07T02:39:54.439016+00:00"
+    },
+    {
+      "name": "recrawl_011_danangtourscity",
+      "url": "https://danangtourscity.com/french-village-ba-na-hills/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 0,
+      "failures": 1,
+      "startedAt": "2026-06-07T02:39:54.439016+00:00",
+      "finishedAt": "2026-06-07T02:39:55.265076+00:00"
+    },
+    {
+      "name": "recrawl_012_hoiandaytrip_bana",
+      "url": "https://hoiandaytrip.com/ba-na-hills-night-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 0,
+      "failures": 1,
+      "startedAt": "2026-06-07T02:39:55.265076+00:00",
+      "finishedAt": "2026-06-07T02:39:56.079456+00:00"
+    },
+    {
+      "name": "recrawl_013_venus_cham_island",
+      "url": "https://venusvietnamtravel.com/my-son-holyland-rice-paper-making-morning-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 0,
+      "failures": 1,
+      "startedAt": "2026-06-07T02:39:56.079507+00:00",
+      "finishedAt": "2026-06-07T02:39:56.904163+00:00"
+    },
+    {
+      "name": "recrawl_014_venus_cham_island",
+      "url": "https://venusvietnamtravel.com/hoi-an-boat-ride/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:56.904163+00:00",
+      "finishedAt": "2026-06-07T02:39:59.932502+00:00"
+    },
+    {
+      "name": "recrawl_015_venus_cham_island",
+      "url": "https://venusvietnamtravel.com/marble-mountains-monkey-mountain-am-phu-cave-morning-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:39:59.932502+00:00",
+      "finishedAt": "2026-06-07T02:40:03.165109+00:00"
+    },
+    {
+      "name": "recrawl_016_venus_cham_island",
+      "url": "https://venusvietnamtravel.com/marble-mountains-am-phu-cave-monkey-mountains-sunset-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:03.165109+00:00",
+      "finishedAt": "2026-06-07T02:40:06.153866+00:00"
+    },
+    {
+      "name": "recrawl_017_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/3-traditional-handicraft-villages-in-1-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:06.153866+00:00",
+      "finishedAt": "2026-06-07T02:40:09.058796+00:00"
+    },
+    {
+      "name": "recrawl_018_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:09.058796+00:00",
+      "finishedAt": "2026-06-07T02:40:12.089320+00:00"
+    },
+    {
+      "name": "recrawl_019_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-muslim-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:12.089320+00:00",
+      "finishedAt": "2026-06-07T02:40:14.758707+00:00"
+    },
+    {
+      "name": "recrawl_020_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cam-thanh-cooking-class-my-son-holy-land-full-day-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:14.758707+00:00",
+      "finishedAt": "2026-06-07T02:40:17.748450+00:00"
+    },
+    {
+      "name": "recrawl_021_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cam-thanh-coconut-jungle-my-son-sanctuary-full-day-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:17.748450+00:00",
+      "finishedAt": "2026-06-07T02:40:20.841056+00:00"
+    },
+    {
+      "name": "recrawl_022_venusvietnamtravel",
+      "url": "https://venusvietnamtravel.com/cham-island-sightseeing-and-snorkeling-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:20.841056+00:00",
+      "finishedAt": "2026-06-07T02:40:24.011990+00:00"
+    },
+    {
+      "name": "recrawl_023_vietnamadventure_danang",
+      "url": "https://vietnamadventuretour.com.vn/daily-group-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:24.011990+00:00",
+      "finishedAt": "2026-06-07T02:40:26.341338+00:00"
+    },
+    {
+      "name": "recrawl_024_vietnamadventure_danang",
+      "url": "https://vietnamadventuretour.com.vn/luxury-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:26.341338+00:00",
+      "finishedAt": "2026-06-07T02:40:27.963263+00:00"
+    },
+    {
+      "name": "recrawl_025_vmtravel",
+      "url": "https://vmtravel.com/da-nang-shore-excursions-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:27.963263+00:00",
+      "finishedAt": "2026-06-07T02:40:28.994020+00:00"
+    },
+    {
+      "name": "recrawl_026_vmtravel",
+      "url": "https://vmtravel.com/hue-shore-excursions-from-chan-may-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:28.994020+00:00",
+      "finishedAt": "2026-06-07T02:40:29.881628+00:00"
+    },
+    {
+      "name": "recrawl_027_vmtravel_danang_shore",
+      "url": "https://vmtravel.com/tours/ba-na-hills-and-golden-bridge-tour-from-tien-sa/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:29.881628+00:00",
+      "finishedAt": "2026-06-07T02:40:30.770299+00:00"
+    },
+    {
+      "name": "recrawl_028_vmtravel_danang_shore",
+      "url": "https://vmtravel.com/tours/da-nang-city-tour-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:30.770299+00:00",
+      "finishedAt": "2026-06-07T02:40:31.648844+00:00"
+    },
+    {
+      "name": "recrawl_029_vmtravel_danang_shore",
+      "url": "https://vmtravel.com/tours/hoi-an-day-tour-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:31.648844+00:00",
+      "finishedAt": "2026-06-07T02:40:32.554982+00:00"
+    },
+    {
+      "name": "recrawl_030_vmtravel_danang_shore",
+      "url": "https://vmtravel.com/tours/my-son-sanctuary-tour-from-tien-sa-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:32.554982+00:00",
+      "finishedAt": "2026-06-07T02:40:33.430468+00:00"
+    },
+    {
+      "name": "recrawl_031_vmtravel_hue_shore",
+      "url": "https://vmtravel.com/tours/bana-hills-day-trip-from-chan-may-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:33.430468+00:00",
+      "finishedAt": "2026-06-07T02:40:34.383828+00:00"
+    },
+    {
+      "name": "recrawl_032_vmtravel_hue_shore",
+      "url": "https://vmtravel.com/tours/hue-imperial-tour-from-chan-may-port/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:40:34.383828+00:00",
+      "finishedAt": "2026-06-07T02:40:35.267022+00:00"
+    }
+  ],
+  "rawCount": 28,
+  "normalizedCount": 28,
+  "outputs": {
+    "raw": "data/tour-recrawl-parser-v3-20260606-raw.json",
+    "normalized": "data/tour-recrawl-parser-v3-20260606-normalized.json"
+  },
+  "policy": {
+    "mode": "public_facts_only",
+    "longDescriptions": "not_copied",
+    "sourceUrlRequired": true,
+    "images": "candidate_urls_only"
+  }
+}

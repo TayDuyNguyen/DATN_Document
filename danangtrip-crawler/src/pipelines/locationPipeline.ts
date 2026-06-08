@@ -1,10 +1,10 @@
 import type { NormalizedCrawlItem, RawCrawlItem } from "../contracts/crawler.js";
-import { toAsciiText } from "../utils/text.js";
+import { normalizeDisplayText, toAsciiText } from "../utils/text.js";
 
 export function normalizeLocationItems(rawItems: RawCrawlItem[]): NormalizedCrawlItem[] {
   return rawItems.map((item) => {
     const raw = item.rawPayload;
-    const name = toAsciiText(getString(raw.name));
+    const name = normalizeDisplayText(getString(raw.name));
 
     return {
       sourceName: item.sourceName,
@@ -40,7 +40,7 @@ function getString(value: unknown): string {
 }
 
 function getOptionalString(value: unknown): string | undefined {
-  return typeof value === "string" && value.trim() ? toAsciiText(value.trim()) : undefined;
+  return typeof value === "string" && value.trim() ? normalizeDisplayText(value) : undefined;
 }
 
 function getOptionalNumber(value: unknown): number | undefined {
@@ -54,13 +54,11 @@ function getStringArray(value: unknown): string[] {
 
   return value
     .filter((item): item is string => typeof item === "string" && item.trim().length > 0)
-    .map((item) => toAsciiText(item));
+    .map((item) => normalizeDisplayText(item));
 }
 
 function toSlug(value: string): string {
-  return value
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
+  return toAsciiText(value)
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
@@ -68,7 +66,7 @@ function toSlug(value: string): string {
 
 function normalizeUnknownStrings(value: unknown): unknown {
   if (typeof value === "string") {
-    return toAsciiText(value);
+    return normalizeDisplayText(value);
   }
 
   if (Array.isArray(value)) {
@@ -77,7 +75,7 @@ function normalizeUnknownStrings(value: unknown): unknown {
 
   if (value && typeof value === "object") {
     return Object.fromEntries(
-      Object.entries(value).map(([key, item]) => [toAsciiText(key), normalizeUnknownStrings(item)]),
+      Object.entries(value).map(([key, item]) => [key, normalizeUnknownStrings(item)]),
     );
   }
 

@@ -1,0 +1,8 @@
+{
+  "output": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\25_landing_faq_blocks_seed.sql",
+  "jsonOutput": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+  "csvOutput": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+  "groups": 4,
+  "faqItems": 14,
+  "policy": "FAQ seed is generated from source-backed guide staging. It updates landing_pages.content_blocks as draft-review content."
+}

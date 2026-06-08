@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-06-07T02:48:54.229560+00:00",
+  "input": {
+    "file": "data/vmtravel-central-price-v3-20260607-normalized.json",
+    "total": 26
+  },
+  "output": {
+    "file": "data/vmtravel-central-price-v3-staging-20260607.json",
+    "staging": 25,
+    "rejected": 1
+  },
+  "coverage": {
+    "withPrice": 24,
+    "withDuration": 25,
+    "withImages": 25,
+    "withItinerary": 25,
+    "withDestinations": 25
+  },
+  "byCategory": {
+    "tour-ba-na-hills": 7,
+    "tour-hoi-an": 18
+  },
+  "bySource": {
+    "vmtravel_central_001": 1,
+    "vmtravel_central_002": 1,
+    "vmtravel_central_003": 1,
+    "vmtravel_central_004": 1,
+    "vmtravel_central_005": 1,
+    "vmtravel_central_006": 1,
+    "vmtravel_central_007": 1,
+    "vmtravel_central_008": 1,
+    "vmtravel_central_010": 1,
+    "vmtravel_central_011": 1,
+    "vmtravel_central_012": 1,
+    "vmtravel_central_013": 1,
+    "vmtravel_central_014": 1,
+    "vmtravel_central_015": 1,
+    "vmtravel_central_016": 1,
+    "vmtravel_central_017": 1,
+    "vmtravel_central_018": 1,
+    "vmtravel_central_019": 1,
+    "vmtravel_central_020": 1,
+    "vmtravel_central_021": 1,
+    "vmtravel_central_022": 1,
+    "vmtravel_central_023": 1,
+    "vmtravel_central_024": 1,
+    "vmtravel_central_025": 1,
+    "vmtravel_central_026": 1
+  },
+  "rejectedReasons": {
+    "not_tour_detail_page": 1
+  },
+  "policy": {
+    "status": "inactive",
+    "images": "candidate_urls_only",
+    "longDescriptions": "rewritten_summary_not_copied",
+    "publish": "manual_review_required"
+  }
+}

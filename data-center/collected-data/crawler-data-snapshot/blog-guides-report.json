@@ -1,0 +1,48 @@
+{
+  "generatedAt": "2026-06-03T08:53:06.766159+00:00",
+  "sourceFile": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog_guide_sources.json",
+  "rawOutput": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-raw.json",
+  "normalizedOutput": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-normalized.json",
+  "totalSources": 6,
+  "success": 2,
+  "failures": 4,
+  "failureDetails": [
+    {
+      "source": {
+        "name": "vietnam-travel-da-nang",
+        "url": "https://vietnam.travel/places-to-go/central-vietnam/da-nang",
+        "category_hint": "cam-nang-da-nang"
+      },
+      "error": "[Errno 11001] getaddrinfo failed",
+      "crawled_at": "2026-06-03T08:53:06.766159+00:00"
+    },
+    {
+      "source": {
+        "name": "vietnam-travel-da-nang-itinerary",
+        "url": "https://vietnam.travel/things-to-do/24-hours-da-nang",
+        "category_hint": "lich-trinh"
+      },
+      "error": "Client error '404 Not Found' for url 'https://vietnam.travel/things-to-do/24-hours-da-nang'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "crawled_at": "2026-06-03T08:53:06.766159+00:00"
+    },
+    {
+      "source": {
+        "name": "vietnam-travel-hoi-an-itinerary",
+        "url": "https://vietnam.travel/things-to-do/48-hours-hoi-an",
+        "category_hint": "lich-trinh"
+      },
+      "error": "Client error '404 Not Found' for url 'https://vietnam.travel/things-to-do/48-hours-hoi-an'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "crawled_at": "2026-06-03T08:53:06.766159+00:00"
+    },
+    {
+      "source": {
+        "name": "vietnam-travel-hue-itinerary",
+        "url": "https://vietnam.travel/things-to-do/48-hours-hue",
+        "category_hint": "lich-trinh"
+      },
+      "error": "Client error '404 Not Found' for url 'https://vietnam.travel/things-to-do/48-hours-hue'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404",
+      "crawled_at": "2026-06-03T08:53:06.766159+00:00"
+    }
+  ],
+  "policy": "Text-only crawl. No images generated. Content is summarized for review, source_url is retained."
+}

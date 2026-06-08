@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-06-06T15:23:06.104000+00:00",
+  "input": {
+    "file": "data/tour-recrawl-parser-v2-20260606-normalized.json",
+    "total": 31
+  },
+  "output": {
+    "file": "data/tour-recrawl-parser-v2-staging-20260606.json",
+    "staging": 30,
+    "rejected": 1
+  },
+  "coverage": {
+    "withPrice": 26,
+    "withDuration": 29,
+    "withImages": 30,
+    "withItinerary": 23,
+    "withDestinations": 30
+  },
+  "byCategory": {
+    "tour-ba-na-hills": 6,
+    "tour-hoi-an": 24
+  },
+  "bySource": {
+    "recrawl_002_dananglocaltours": 1,
+    "recrawl_003_dananglocaltours": 1,
+    "recrawl_004_dananglocaltours": 1,
+    "recrawl_005_dananglocaltours": 1,
+    "recrawl_006_dananglocaltours": 1,
+    "recrawl_007_dananglocaltours_basket_boat": 1,
+    "recrawl_008_dananglocaltours_basket_boat": 1,
+    "recrawl_009_dananglocaltours_basket_boat": 1,
+    "recrawl_010_dananglocaltours_basket_boat": 1,
+    "recrawl_011_danangtourscity": 1,
+    "recrawl_013_venus_cham_island": 1,
+    "recrawl_014_venus_cham_island": 1,
+    "recrawl_015_venus_cham_island": 1,
+    "recrawl_016_venus_cham_island": 1,
+    "recrawl_017_venusvietnamtravel": 1,
+    "recrawl_018_venusvietnamtravel": 1,
+    "recrawl_019_venusvietnamtravel": 1,
+    "recrawl_020_venusvietnamtravel": 1,
+    "recrawl_021_venusvietnamtravel": 1,
+    "recrawl_022_venusvietnamtravel": 1,
+    "recrawl_023_vietnamadventure_danang": 1,
+    "recrawl_024_vietnamadventure_danang": 1,
+    "recrawl_025_vmtravel": 1,
+    "recrawl_026_vmtravel": 1,
+    "recrawl_027_vmtravel_danang_shore": 1,
+    "recrawl_028_vmtravel_danang_shore": 1,
+    "recrawl_029_vmtravel_danang_shore": 1,
+    "recrawl_030_vmtravel_danang_shore": 1,
+    "recrawl_031_vmtravel_hue_shore": 1,
+    "recrawl_032_vmtravel_hue_shore": 1
+  },
+  "rejectedReasons": {
+    "missing_duration": 1,
+    "weak_tour_detail_signals": 1
+  },
+  "policy": {
+    "status": "inactive",
+    "images": "candidate_urls_only",
+    "longDescriptions": "rewritten_summary_not_copied",
+    "publish": "manual_review_required"
+  }
+}

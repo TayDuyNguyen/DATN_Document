@@ -22,6 +22,34 @@ Bo tai lieu nay gom cac tai lieu phan tich, thiet ke man hinh, API, database va 
 4. `docs/database/database.dbml`
 5. `docs/api/api_list.md`
 
+## Lệnh chạy database mới nhất
+
+Nguồn dữ liệu/seed chính nằm trong:
+
+- `D:\DATN\DATN_Tài liệu\database-seeders`
+- `D:\DATN\DATN_Tài liệu\data-center\database-refresh`
+- `D:\DATN\DATN_Tài liệu\data-center\collected-data`
+
+Cập nhật DB hiện tại, không xóa toàn bộ dữ liệu:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\data-center\database-refresh\RUN_INCREMENTAL_UPDATE.ps1"
+```
+
+Rebuild DB từ đầu, có backup trước khi `migrate:fresh`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\data-center\database-refresh\RUN_REBUILD_DATABASE.ps1"
+```
+
+Chỉ kiểm tra chất lượng dữ liệu:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\data-center\database-refresh\RUN_AUDIT_DATABASE.ps1"
+```
+
+Các lệnh trên sẽ dùng kết nối DB trong `D:\DATN\danangtrip-api\.env`. Nội dung public được audit tiếng Việt có dấu, kiểm tra mojibake, relation gaps, media thiếu và lịch tour quá hạn còn mở booking.
+
 ## Quy uoc su dung
 
 - Tai lieu chinh dat trong `docs/`.

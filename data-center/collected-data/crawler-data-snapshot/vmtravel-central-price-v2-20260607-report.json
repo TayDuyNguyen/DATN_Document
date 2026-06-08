@@ -1,0 +1,277 @@
+{
+  "generatedAt": "2026-06-07T02:47:33.041198+00:00",
+  "sources": [
+    {
+      "name": "vmtravel_central_001",
+      "url": "https://vmtravel.com/tours/4-days-deluxe-golf-tour-in-da-nang/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:08.520543+00:00",
+      "finishedAt": "2026-06-07T02:47:09.490288+00:00"
+    },
+    {
+      "name": "vmtravel_central_002",
+      "url": "https://vmtravel.com/tours/ba-na-hills-night-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:09.490288+00:00",
+      "finishedAt": "2026-06-07T02:47:10.389630+00:00"
+    },
+    {
+      "name": "vmtravel_central_003",
+      "url": "https://vmtravel.com/tours/ba-na-hills-tour-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:10.389630+00:00",
+      "finishedAt": "2026-06-07T02:47:11.285928+00:00"
+    },
+    {
+      "name": "vmtravel_central_004",
+      "url": "https://vmtravel.com/tours/ba-na-hills-tour-from-hoi-an/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:11.285928+00:00",
+      "finishedAt": "2026-06-07T02:47:12.206565+00:00"
+    },
+    {
+      "name": "vmtravel_central_005",
+      "url": "https://vmtravel.com/tours/bana-hills-day-tour-private-tours/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:12.206565+00:00",
+      "finishedAt": "2026-06-07T02:47:13.109271+00:00"
+    },
+    {
+      "name": "vmtravel_central_006",
+      "url": "https://vmtravel.com/tours/cham-island-snorkeling-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:13.109271+00:00",
+      "finishedAt": "2026-06-07T02:47:14.008951+00:00"
+    },
+    {
+      "name": "vmtravel_central_007",
+      "url": "https://vmtravel.com/tours/da-nang-city-tour-deluxe-group/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:14.008951+00:00",
+      "finishedAt": "2026-06-07T02:47:14.923794+00:00"
+    },
+    {
+      "name": "vmtravel_central_008",
+      "url": "https://vmtravel.com/tours/da-nang-day-tour-private-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:14.923794+00:00",
+      "finishedAt": "2026-06-07T02:47:15.840922+00:00"
+    },
+    {
+      "name": "vmtravel_central_009",
+      "url": "https://vmtravel.com/tours/da-nang-golf-vacation-5-days/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:15.840922+00:00",
+      "finishedAt": "2026-06-07T02:47:16.752615+00:00"
+    },
+    {
+      "name": "vmtravel_central_010",
+      "url": "https://vmtravel.com/tours/da-nang-hoi-an-full-day-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:16.752615+00:00",
+      "finishedAt": "2026-06-07T02:47:17.674274+00:00"
+    },
+    {
+      "name": "vmtravel_central_011",
+      "url": "https://vmtravel.com/tours/da-nang-to-hue-day-trip-by-heritage-train/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:17.674274+00:00",
+      "finishedAt": "2026-06-07T02:47:18.586978+00:00"
+    },
+    {
+      "name": "vmtravel_central_012",
+      "url": "https://vmtravel.com/tours/day-trip-from-da-nang-to-hoi-an/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:18.586978+00:00",
+      "finishedAt": "2026-06-07T02:47:20.070232+00:00"
+    },
+    {
+      "name": "vmtravel_central_013",
+      "url": "https://vmtravel.com/tours/day-trip-to-hoi-an-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:20.070232+00:00",
+      "finishedAt": "2026-06-07T02:47:21.001576+00:00"
+    },
+    {
+      "name": "vmtravel_central_014",
+      "url": "https://vmtravel.com/tours/hue-bicycle-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:21.001576+00:00",
+      "finishedAt": "2026-06-07T02:47:22.071477+00:00"
+    },
+    {
+      "name": "vmtravel_central_015",
+      "url": "https://vmtravel.com/tours/hue-city-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:22.071477+00:00",
+      "finishedAt": "2026-06-07T02:47:23.053161+00:00"
+    },
+    {
+      "name": "vmtravel_central_016",
+      "url": "https://vmtravel.com/tours/hue-cooking-class-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:23.053161+00:00",
+      "finishedAt": "2026-06-07T02:47:23.948212+00:00"
+    },
+    {
+      "name": "vmtravel_central_017",
+      "url": "https://vmtravel.com/tours/hue-day-trip-from-da-nang-private-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:23.948212+00:00",
+      "finishedAt": "2026-06-07T02:47:24.860218+00:00"
+    },
+    {
+      "name": "vmtravel_central_018",
+      "url": "https://vmtravel.com/tours/hue-day-trip-from-da-nang/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:24.860218+00:00",
+      "finishedAt": "2026-06-07T02:47:25.763158+00:00"
+    },
+    {
+      "name": "vmtravel_central_019",
+      "url": "https://vmtravel.com/tours/hue-day-trip-from-hoi-an/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:25.763158+00:00",
+      "finishedAt": "2026-06-07T02:47:26.658151+00:00"
+    },
+    {
+      "name": "vmtravel_central_020",
+      "url": "https://vmtravel.com/tours/hue-dmz-tour-deluxe-group-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:26.658151+00:00",
+      "finishedAt": "2026-06-07T02:47:27.563410+00:00"
+    },
+    {
+      "name": "vmtravel_central_021",
+      "url": "https://vmtravel.com/tours/hue-street-food-tour/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:27.563410+00:00",
+      "finishedAt": "2026-06-07T02:47:28.464266+00:00"
+    },
+    {
+      "name": "vmtravel_central_022",
+      "url": "https://vmtravel.com/tours/luxury-da-nang-golf-tour-6-days/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:28.464266+00:00",
+      "finishedAt": "2026-06-07T02:47:29.392511+00:00"
+    },
+    {
+      "name": "vmtravel_central_023",
+      "url": "https://vmtravel.com/tours/marble-mountain-tour-from-hoi-an/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:29.392511+00:00",
+      "finishedAt": "2026-06-07T02:47:30.292532+00:00"
+    },
+    {
+      "name": "vmtravel_central_024",
+      "url": "https://vmtravel.com/tours/my-son-sanctuary-from-hoi-an/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:30.292532+00:00",
+      "finishedAt": "2026-06-07T02:47:31.199667+00:00"
+    },
+    {
+      "name": "vmtravel_central_025",
+      "url": "https://vmtravel.com/tours/paradise-cave-tour-from-hue/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:31.199667+00:00",
+      "finishedAt": "2026-06-07T02:47:32.116781+00:00"
+    },
+    {
+      "name": "vmtravel_central_026",
+      "url": "https://vmtravel.com/tours/tour-package-in-da-nang-6-days/",
+      "status": "completed",
+      "candidateUrls": 1,
+      "collected": 1,
+      "failures": 0,
+      "startedAt": "2026-06-07T02:47:32.116781+00:00",
+      "finishedAt": "2026-06-07T02:47:33.034298+00:00"
+    }
+  ],
+  "rawCount": 26,
+  "normalizedCount": 26,
+  "outputs": {
+    "raw": "data/vmtravel-central-price-v2-20260607-raw.json",
+    "normalized": "data/vmtravel-central-price-v2-20260607-normalized.json"
+  },
+  "policy": {
+    "mode": "public_facts_only",
+    "longDescriptions": "not_copied",
+    "sourceUrlRequired": true,
+    "images": "candidate_urls_only"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "input": "data/tour-recrawl-parser-v3-enriched-20260606.json",
+  "outputs": {
+    "json": "data/tour-recrawl-parser-v3-readiness-20260606.json",
+    "csv": "data/tour-recrawl-parser-v3-readiness-20260606.csv",
+    "recrawlSources": "data/tour-recrawl-parser-v3-readiness-20260606-recrawl-sources.json",
+    "crawlerSourceConfig": "data/tour-recrawl-parser-v3-readiness-20260606-recrawl-source-config.json"
+  },
+  "total": 27,
+  "byStatus": {
+    "needs_recrawl": 23,
+    "ready_for_manual_publish": 4
+  },
+  "blockingReasons": {
+    "insufficient_images": 14,
+    "suspicious_duration": 9,
+    "irrelevant_images": 9,
+    "incomplete_inclusions": 7,
+    "incomplete_exclusions": 7,
+    "incomplete_itinerary": 6,
+    "inferred_core_field": 4
+  },
+  "policy": {
+    "writesDatabase": false,
+    "requiresManualImageReview": true,
+    "inferredCoreFieldsBlocked": true,
+    "sourceUrlRequired": true,
+    "completeTourContentRequired": true
+  }
+}

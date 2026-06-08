@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Hue City Tour - Best Group Tour - Book Now Hue 1 Day Trip",
+    "source_name": "vmtravel_central_015",
+    "url": "https://vmtravel.com/tours/hue-city-tour/",
+    "blocking_reasons": [
+      "inferred_core_field"
+    ]
+  },
+  {
+    "name": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam",
+    "source_name": "vmtravel_central_026",
+    "url": "https://vmtravel.com/tours/tour-package-in-da-nang-6-days/",
+    "blocking_reasons": [
+      "suspicious_price"
+    ]
+  }
+]

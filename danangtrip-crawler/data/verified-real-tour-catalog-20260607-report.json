@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-06-07T03:04:11.871221+00:00",
+  "output": "data/verified-real-tour-catalog-20260607.json",
+  "total": 30,
+  "uniqueSourceUrls": 30,
+  "directPrice": 30,
+  "directDuration": 30,
+  "withItinerary": 30,
+  "withInclusions": 30,
+  "withExclusions": 30,
+  "withAtLeastTwoImages": 30,
+  "imagePolicy": {
+    "source_images_verified_by_parser": 28,
+    "source_primary_plus_pexels_visually_reviewed": 2
+  },
+  "databaseWritten": false,
+  "status": "verified_staging"
+}

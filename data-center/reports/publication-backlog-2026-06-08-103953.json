@@ -1,0 +1,299 @@
+{
+    "generated_at": "2026-06-08T10:39:50+07:00",
+    "summary": {
+        "locations_pending_review": 5,
+        "tours_pending_review": 34,
+        "blog_posts_draft": 18
+    },
+    "locations_pending_review": [
+        {
+            "id": 101,
+            "name": "Quán bún cô Hà",
+            "slug": "quan-bun-co-ha"
+        },
+        {
+            "id": 102,
+            "name": "Chùa Liên Chiểu",
+            "slug": "chua-lien-chieu"
+        },
+        {
+            "id": 103,
+            "name": "Huế Imperial City",
+            "slug": "hue-imperial-city"
+        },
+        {
+            "id": 104,
+            "name": "Bãi biển Lăng Cô",
+            "slug": "bai-bien-lang-co"
+        },
+        {
+            "id": 113,
+            "name": "Điểm lưu trú Nguyễn Đức Chung",
+            "slug": "diem-luu-tru-nguyen-duc-chung"
+        }
+    ],
+    "tours_pending_review": [
+        {
+            "id": 101,
+            "name": "Daily Vàng Cầu, Bà Nà Hills from Đà Nẵng Tours by Local",
+            "slug": "dacotours-daily-golden-bridge-ba-na-hills-from-da-nang-tours-by-local"
+        },
+        {
+            "id": 102,
+            "name": "Bà Nà Hills Tour From Đà Nẵng Good Price #1 - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-ba-na-hills-tour-from-da-nang-good-price-1-da-nang-local-tours"
+        },
+        {
+            "id": 103,
+            "name": "Bach Ma National Công viên Tour From Đà Nẵng - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-bach-ma-national-park-tour-from-da-nang-da-nang-local-tours"
+        },
+        {
+            "id": 104,
+            "name": "Basket Boat Hội An Tour From Đà Nẵng - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-basket-boat-hoi-an-tour-from-da-nang-da-nang-local-tours"
+        },
+        {
+            "id": 105,
+            "name": "Cù Lao Chàm Snorkeling Tour From Đà Nẵng Good Price #1",
+            "slug": "dananglocaltours-cham-island-snorkeling-tour-from-da-nang-good-price-1"
+        },
+        {
+            "id": 106,
+            "name": "Hòa Phú Thanh waterfall sliding daily tour - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-hoa-phu-thanh-waterfall-sliding-daily-tour-da-nang-local-tours"
+        },
+        {
+            "id": 107,
+            "name": "Huế Tour From Đà Nẵng Good Price #1 - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-basket-boat-hue-tour-from-da-nang-good-price-1-da-nang-local-tours"
+        },
+        {
+            "id": 108,
+            "name": "Marble Núi Hội An Tour Good Price #1 - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-basket-boat-marble-mountain-hoi-an-tour-good-price-1-da-nang-local-tours"
+        },
+        {
+            "id": 109,
+            "name": "Mỹ Sơn Thánh địa Tour From Đà Nẵng - Đà Nẵng Local Tours",
+            "slug": "dananglocaltours-basket-boat-my-son-sanctuary-tour-from-da-nang-da-nang-local-tours"
+        },
+        {
+            "id": 110,
+            "name": "Núi Thần Tài Hot Spring Công viên Tour From Đà Nẵng Good Price #1",
+            "slug": "dananglocaltours-basket-boat-nui-than-tai-hot-spring-park-tour-from-da-nang-good-price-1"
+        },
+        {
+            "id": 111,
+            "name": "Sơn Trà Peninsula - Marble Dãy núi - Hoian Daily Tour",
+            "slug": "dananglocaltours-basket-boat-son-tra-peninsula-marble-mountains-hoian-daily-tour"
+        },
+        {
+            "id": 112,
+            "name": "French Làng Bà Nà Hills - Đà Nẵng Tours",
+            "slug": "danangtourscity-french-village-ba-na-hills-da-nang-tours"
+        },
+        {
+            "id": 113,
+            "name": "Am Phu Cave Tour with Marble Núi & Lady Buddha - HoiAn Day Trip Company",
+            "slug": "hoiandaytrip-am-phu-cave-tour-with-marble-mountain-lady-buddha-hoian-day-trip-company"
+        },
+        {
+            "id": 114,
+            "name": "Bà Nà Hills Afternoon Tour with Vàng Hands Cầu - HoiAn Day Trip Company",
+            "slug": "hoiandaytrip-ba-na-hills-afternoon-tour-with-golden-hands-bridge-hoian-day-trip-company"
+        },
+        {
+            "id": 115,
+            "name": "Bà Nà Hills Early Morning Tour to Beat the Crowds - HoiAn Day Trip Company",
+            "slug": "hoiandaytrip-bana-ba-na-hills-early-morning-tour-to-beat-the-crowds-hoian-day-trip-company"
+        },
+        {
+            "id": 116,
+            "name": "Bà Nà Hills Night Tour with Vàng Cầu, Dinner & Cabaret Show - HoiAn Day Trip Company",
+            "slug": "hoiandaytrip-bana-ba-na-hills-night-tour-with-golden-bridge-dinner-cabaret-show-hoian-day-trip-company"
+        },
+        {
+            "id": 117,
+            "name": "From Đà Nẵng: Mỹ Sơn Holyland & Rice Paper Making Morning Tour",
+            "slug": "venus-cham-island-from-danang-my-son-holyland-rice-paper-making-morning-tour-venustravel"
+        },
+        {
+            "id": 118,
+            "name": "Hội An City Tour – Boat Ride – Release Flower Lantern",
+            "slug": "venus-cham-island-hoi-an-city-tour-boat-ride-release-flower-lantern-venustravel"
+        },
+        {
+            "id": 119,
+            "name": "Marble Dãy núi – Monkey Núi – Am Phu Cave Morning Tour",
+            "slug": "venus-cham-island-marble-mountains-monkey-mountain-am-phu-cave-morning-tour-venustravel"
+        },
+        {
+            "id": 120,
+            "name": "Marble Dãy núi – Monkey Núi – Am Phu Cave Sunset Tour",
+            "slug": "venus-cham-island-marble-mountains-monkey-mountain-am-phu-cave-sunset-tour-venustravel"
+        },
+        {
+            "id": 121,
+            "name": "Tour miền Trung 121",
+            "slug": "venusvietnamtravel-3-traditional-handicraft-villages-in-1-tour-venustravel"
+        },
+        {
+            "id": 122,
+            "name": "AFTERNOON Bà Nà HILLS – Vàng Cầu & Rồng Cầu BY NIGHT TOUR",
+            "slug": "venusvietnamtravel-afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour-venustravel"
+        },
+        {
+            "id": 123,
+            "name": "Cẩm Thanh Coconut Jungle Muslim Tour",
+            "slug": "venusvietnamtravel-cam-thanh-coconut-jungle-muslim-tour-venustravel"
+        },
+        {
+            "id": 124,
+            "name": "Cẩm Thanh Cooking Class & Mỹ Sơn Holy Land Full-Day Tour",
+            "slug": "venusvietnamtravel-cam-thanh-cooking-class-my-son-holy-land-full-day-tour-venustravel"
+        },
+        {
+            "id": 125,
+            "name": "Cẩm Thanh Eco Tour - Mỹ Sơn Holy Land Full-day Tour",
+            "slug": "venusvietnamtravel-cam-thanh-eco-tour-my-son-holy-land-full-day-tour-venustravel"
+        },
+        {
+            "id": 126,
+            "name": "Cù Lao Chàm Sightseeing & Snorkeling Tour",
+            "slug": "venusvietnamtravel-cham-island-sightseeing-snorkeling-tour-venustravel"
+        },
+        {
+            "id": 127,
+            "name": "Đà Nẵng Shore Excursions From Tien Sa Port - Deluxe Tours",
+            "slug": "vmtravel-da-nang-shore-excursions-from-tien-sa-port-deluxe-tours"
+        },
+        {
+            "id": 128,
+            "name": "Huế Shore Excursions From Chan May Port - Book 1 Day Tour",
+            "slug": "vmtravel-hue-shore-excursions-from-chan-may-port-book-1-day-tour"
+        },
+        {
+            "id": 129,
+            "name": "Bà Nà Hills And Vàng Cầu Tour From Tien Sa Port",
+            "slug": "vmtravel-danang-shore-ba-na-hills-and-golden-bridge-tour-from-tien-sa-port"
+        },
+        {
+            "id": 130,
+            "name": "Đà Nẵng City Tour From Tien Sa Port - Explore and Shopping",
+            "slug": "vmtravel-danang-shore-da-nang-city-tour-from-tien-sa-port-explore-and-shopping"
+        },
+        {
+            "id": 131,
+            "name": "Hội An Day Tour from Tien Sa Port - Hội An Shore Excursions",
+            "slug": "vmtravel-danang-shore-hoi-an-day-tour-from-tien-sa-port-hoi-an-shore-excursions"
+        },
+        {
+            "id": 132,
+            "name": "Mỹ Sơn Thánh địa Tour From Tien Sa Port - Explore Now",
+            "slug": "vmtravel-danang-shore-my-son-sanctuary-tour-from-tien-sa-port-explore-now"
+        },
+        {
+            "id": 133,
+            "name": "Tour miền Trung 133",
+            "slug": "vmtravel-hue-shore-bana-hills-day-trip-from-chan-may-port-best-shore-excursion"
+        },
+        {
+            "id": 134,
+            "name": "Huế Imperial Tour from Chan May Port: Best Shore Excursions",
+            "slug": "vmtravel-hue-shore-hue-imperial-tour-from-chan-may-port-best-shore-excursions"
+        }
+    ],
+    "blog_posts_draft": [
+        {
+            "id": 201,
+            "title": "Cẩm nang du lịch Đà Nẵng",
+            "slug": "da-nang"
+        },
+        {
+            "id": 202,
+            "title": "Cẩm nang du lịch Hội An",
+            "slug": "hoi-an"
+        },
+        {
+            "id": 203,
+            "title": "Cẩm nang du lịch Huế",
+            "slug": "hue"
+        },
+        {
+            "id": 204,
+            "title": "Lịch trình 3 ngày hoàn hảo ở Đà Nẵng",
+            "slug": "3-perfect-days-in-danang"
+        },
+        {
+            "id": 205,
+            "title": "Những địa điểm nên ghé ở Đà Nẵng",
+            "slug": "must-visit-places-in-da-nang"
+        },
+        {
+            "id": 206,
+            "title": "Kinh nghiệm khám phá Bà Nà Hills",
+            "slug": "how-to-explore-and-enjoy-ba-na-hills"
+        },
+        {
+            "id": 207,
+            "title": "Dạo quanh Ngũ Hành Sơn",
+            "slug": "a-walk-around-marble-mountains"
+        },
+        {
+            "id": 208,
+            "title": "Khám phá thánh địa Mỹ Sơn",
+            "slug": "the-mystic-my-son"
+        },
+        {
+            "id": 209,
+            "title": "Đặc sản bánh tráng cuốn thịt heo Đà Nẵng",
+            "slug": "da-nang-s-special-pork-rolls"
+        },
+        {
+            "id": 210,
+            "title": "Kinh nghiệm đi đèo Hải Vân",
+            "slug": "hai-van-pass"
+        },
+        {
+            "id": 211,
+            "title": "Khám phá bán đảo Sơn Trà",
+            "slug": "the-son-tra-peninsula"
+        },
+        {
+            "id": 212,
+            "title": "Các bãi biển đẹp ở Đà Nẵng",
+            "slug": "da-nang-beaches"
+        },
+        {
+            "id": 213,
+            "title": "Hướng dẫn sân bay cho chuyến đi Việt Nam",
+            "slug": "a-traveller-s-guide-to-vietnam-s-airports"
+        },
+        {
+            "id": 214,
+            "title": "Di chuyển trong Việt Nam",
+            "slug": "transport-within-vietnam"
+        },
+        {
+            "id": 215,
+            "title": "Lên kế hoạch cho chuyến đi miền Trung",
+            "slug": "plan-your-trip"
+        },
+        {
+            "id": 216,
+            "title": "Đi xe máy từ Hội An ra Huế qua đèo Hải Vân",
+            "slug": "motorbiking-hoi-an-to-hue-over-hai-van-pass"
+        },
+        {
+            "id": 217,
+            "title": "Danh sách trải nghiệm phải thử ở Đà Nẵng",
+            "slug": "must-do-da-nang-an-insider-list"
+        },
+        {
+            "id": 218,
+            "title": "Vì sao Đà Nẵng đáng sống và đáng ghé thăm",
+            "slug": "4-reasons-why-da-nang-is-vietnam-s-most-livable-city"
+        }
+    ]
+}

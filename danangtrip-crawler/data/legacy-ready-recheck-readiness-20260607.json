@@ -1,0 +1,83 @@
+[
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "insufficient_images"
+    ],
+    "warnings": [],
+    "name": "Hue Tour From Da Nang Good Price #1 - Da Nang Local Tours",
+    "slug": "recheck-dananglocal-hue-hue-tour-from-da-nang-good-price-1-da-nang-local-tours",
+    "source_name": "recheck_dananglocal_hue",
+    "source_url": "https://dananglocaltours.com/tour/hue-tour-from-da-nang/",
+    "price_adult": 1475000.0,
+    "price_raw": "59 USD",
+    "duration": "1 Day",
+    "itinerary_count": 8,
+    "inclusions_count": 7,
+    "exclusions_count": 4,
+    "image_count": 1,
+    "thumbnail": "https://dananglocaltours.com/wp-content/uploads/2019/12/hue-tour-from-da-nang.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_exclusions",
+      "insufficient_images"
+    ],
+    "warnings": [],
+    "name": "Am Phu Cave Tour with Marble Mountain & Lady Buddha - HoiAn Day Trip Company",
+    "slug": "recheck-hoiandaytrip-am-phu-am-phu-cave-tour-with-marble-mountain-lady-buddha-hoian-day-trip-company",
+    "source_name": "recheck_hoiandaytrip_am_phu",
+    "source_url": "https://hoiandaytrip.com/am-phu-cave-tour/",
+    "price_adult": 1125000.0,
+    "price_raw": "from $45",
+    "duration": "4 hours",
+    "itinerary_count": 0,
+    "inclusions_count": 10,
+    "exclusions_count": 0,
+    "image_count": 1,
+    "thumbnail": "https://hoiandaytrip.com/wp-content/uploads/2024/11/am-phu-cave-1.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_exclusions"
+    ],
+    "warnings": [],
+    "name": "Ba Na Hills Afternoon Tour with Golden Hands Bridge - HoiAn Day Trip Company",
+    "slug": "recheck-hoiandaytrip-bana-afternoon-ba-na-hills-afternoon-tour-with-golden-hands-bridge-hoian-day-trip-company",
+    "source_name": "recheck_hoiandaytrip_bana_afternoon",
+    "source_url": "https://hoiandaytrip.com/ba-na-hills-afternoon-tour/",
+    "price_adult": 2125000.0,
+    "price_raw": "from $85",
+    "duration": "FULL DAY",
+    "itinerary_count": 0,
+    "inclusions_count": 10,
+    "exclusions_count": 0,
+    "image_count": 3,
+    "thumbnail": "https://hoiandaytrip.com/wp-content/uploads/2024/11/golden-hands-bridge-vietnam-photos-15.jpg"
+  },
+  {
+    "publish_readiness": "needs_recrawl",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_exclusions",
+      "insufficient_images"
+    ],
+    "warnings": [],
+    "name": "Ba Na Hills Early Morning Tour to Beat the Crowds - HoiAn Day Trip Company",
+    "slug": "recheck-hoiandaytrip-bana-early-ba-na-hills-early-morning-tour-to-beat-the-crowds-hoian-day-trip-company",
+    "source_name": "recheck_hoiandaytrip_bana_early",
+    "source_url": "https://hoiandaytrip.com/ba-na-hills-early-morning-tour/",
+    "price_adult": 2125000.0,
+    "price_raw": "from $85",
+    "duration": "1 day",
+    "itinerary_count": 0,
+    "inclusions_count": 10,
+    "exclusions_count": 0,
+    "image_count": 1,
+    "thumbnail": "https://hoiandaytrip.com/wp-content/uploads/2024/11/french-village-ba-na-hills-7.jpg"
+  }
+]

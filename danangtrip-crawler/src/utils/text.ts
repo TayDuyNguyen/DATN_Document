@@ -13,3 +13,7 @@ export function toAsciiText(value: string): string {
     .trim();
 }
 
+export function normalizeDisplayText(value: string): string {
+  return value.normalize("NFC").replace(/\s+/g, " ").trim();
+}
+

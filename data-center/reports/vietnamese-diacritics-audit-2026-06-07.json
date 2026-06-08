@@ -1,0 +1,1763 @@
+{
+  "scope": [
+    "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data",
+    "D:\\DATN\\DATN_Tài liệu\\database-seeders"
+  ],
+  "filesScanned": 276,
+  "totals": {
+    "other_or_english": 58315,
+    "vietnamese_accented": 997,
+    "vietnamese_unaccented": 17658,
+    "empty": 2276
+  },
+  "filesWithUnaccentedVietnamese": 86,
+  "topFiles": [
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois.json",
+      "other_or_english": 4883,
+      "vietnamese_unaccented": 3885,
+      "empty": 880
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-enriched.json",
+      "other_or_english": 3855,
+      "vietnamese_unaccented": 2863,
+      "empty": 518
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "other_or_english": 3095,
+      "vietnamese_unaccented": 2437,
+      "empty": 518
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\12_overpass_danang_pois_seed.sql",
+      "other_or_english": 2,
+      "vietnamese_unaccented": 1884
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-rejected.json",
+      "other_or_english": 1778,
+      "vietnamese_unaccented": 1440,
+      "empty": 360
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\14_pexels_image_enrichment_seed.sql",
+      "vietnamese_unaccented": 1160,
+      "other_or_english": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-merged-normalized.json",
+      "other_or_english": 3221,
+      "vietnamese_unaccented": 368,
+      "vietnamese_accented": 48
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\09_ratings_interactions.sql",
+      "vietnamese_unaccented": 311,
+      "other_or_english": 1578
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-normalized.json",
+      "other_or_english": 2085,
+      "vietnamese_unaccented": 245,
+      "vietnamese_accented": 36
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-raw.json",
+      "other_or_english": 2085,
+      "vietnamese_unaccented": 245,
+      "vietnamese_accented": 36
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-batch2-pagelinks-raw.json",
+      "other_or_english": 2265,
+      "vietnamese_unaccented": 243,
+      "vietnamese_accented": 15
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-batch2-raw.json",
+      "other_or_english": 1807,
+      "vietnamese_unaccented": 213,
+      "vietnamese_accented": 36
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-batch2-pagelinks-normalized.json",
+      "other_or_english": 1591,
+      "vietnamese_unaccented": 167,
+      "vietnamese_accented": 12
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\08_bookings_payments.sql",
+      "other_or_english": 1174,
+      "vietnamese_unaccented": 163
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-crawl-batch2-normalized.json",
+      "other_or_english": 1041,
+      "vietnamese_unaccented": 121,
+      "vietnamese_accented": 28
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\03_tour_blog_categories.sql",
+      "other_or_english": 290,
+      "vietnamese_unaccented": 110
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-staging-enriched.json",
+      "other_or_english": 781,
+      "vietnamese_unaccented": 71,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-staging-merged.json",
+      "other_or_english": 744,
+      "vietnamese_unaccented": 71,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-staging.json",
+      "other_or_english": 744,
+      "vietnamese_unaccented": 71,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\20_approved_tour_staging_seed.sql",
+      "other_or_english": 337,
+      "vietnamese_accented": 12,
+      "vietnamese_unaccented": 71
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-enriched-20260606.json",
+      "other_or_english": 665,
+      "vietnamese_unaccented": 63,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-staging-20260606.json",
+      "other_or_english": 632,
+      "vietnamese_unaccented": 63,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v2-enriched-20260606.json",
+      "other_or_english": 539,
+      "vietnamese_unaccented": 59,
+      "vietnamese_accented": 6
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v2-staging-20260606.json",
+      "other_or_english": 508,
+      "vietnamese_unaccented": 59,
+      "vietnamese_accented": 6
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\verified-real-tour-catalog-20260607.json",
+      "other_or_english": 598,
+      "vietnamese_unaccented": 59,
+      "vietnamese_accented": 5
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\verified-real-tour-catalog-cloudinary-20260607.json",
+      "other_or_english": 598,
+      "vietnamese_unaccented": 59,
+      "vietnamese_accented": 5
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v3-enriched-20260606.json",
+      "other_or_english": 488,
+      "vietnamese_unaccented": 53,
+      "vietnamese_accented": 6
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v3-staging-20260606.json",
+      "other_or_english": 460,
+      "vietnamese_unaccented": 53,
+      "vietnamese_accented": 6
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\venus-tour-pexels-enriched-20260607.json",
+      "other_or_english": 488,
+      "vietnamese_unaccented": 53,
+      "vietnamese_accented": 6
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-enriched-20260607.json",
+      "other_or_english": 519,
+      "vietnamese_unaccented": 50,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v2-enriched-20260607.json",
+      "other_or_english": 519,
+      "vietnamese_unaccented": 50,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v2-staging-20260607.json",
+      "other_or_english": 494,
+      "vietnamese_unaccented": 50,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v3-enriched-20260607.json",
+      "other_or_english": 519,
+      "vietnamese_unaccented": 50,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v3-staging-20260607.json",
+      "other_or_english": 494,
+      "vietnamese_unaccented": 50,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-staging-20260607.json",
+      "other_or_english": 494,
+      "vietnamese_unaccented": 50,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\06_tours.sql",
+      "other_or_english": 104,
+      "vietnamese_unaccented": 48
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\22_approved_blog_guides_seed.sql",
+      "other_or_english": 17,
+      "vietnamese_unaccented": 36
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-20260606-normalized.json",
+      "other_or_english": 705,
+      "vietnamese_unaccented": 32,
+      "vietnamese_accented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-20260606-raw.json",
+      "other_or_english": 705,
+      "vietnamese_unaccented": 32,
+      "vietnamese_accented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "other_or_english": 515,
+      "vietnamese_unaccented": 31
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v2-20260606-normalized.json",
+      "other_or_english": 526,
+      "vietnamese_unaccented": 31,
+      "vietnamese_accented": 7
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v2-20260606-raw.json",
+      "other_or_english": 526,
+      "vietnamese_unaccented": 31,
+      "vietnamese_accented": 7
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v3-20260606-normalized.json",
+      "other_or_english": 470,
+      "vietnamese_unaccented": 28,
+      "vietnamese_accented": 7
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\tour-recrawl-parser-v3-20260606-raw.json",
+      "other_or_english": 470,
+      "vietnamese_unaccented": 28,
+      "vietnamese_accented": 7
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-detail-20260607-normalized.json",
+      "other_or_english": 706,
+      "vietnamese_unaccented": 26,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-detail-20260607-raw.json",
+      "other_or_english": 706,
+      "vietnamese_unaccented": 26,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v2-20260607-normalized.json",
+      "other_or_english": 706,
+      "vietnamese_unaccented": 26,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v2-20260607-raw.json",
+      "other_or_english": 706,
+      "vietnamese_unaccented": 26,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v3-20260607-normalized.json",
+      "other_or_english": 706,
+      "vietnamese_unaccented": 26,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-central-price-v3-20260607-raw.json",
+      "other_or_english": 706,
+      "vietnamese_unaccented": 26,
+      "vietnamese_accented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\01_categories_subcategories.sql",
+      "other_or_english": 177,
+      "vietnamese_unaccented": 23
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\18_landing_pages_seed.sql",
+      "other_or_english": 8,
+      "vietnamese_unaccented": 20
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\02_tags_amenities.sql",
+      "other_or_english": 173,
+      "vietnamese_unaccented": 18
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "other_or_english": 15,
+      "vietnamese_unaccented": 17
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "other_or_english": 26,
+      "vietnamese_unaccented": 16
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "other_or_english": 44,
+      "vietnamese_unaccented": 13,
+      "vietnamese_accented": 12
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-old-ready-price-recheck-enriched-20260607.json",
+      "other_or_english": 87,
+      "vietnamese_unaccented": 9,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-old-ready-price-recheck-staging-20260607.json",
+      "other_or_english": 82,
+      "vietnamese_unaccented": 9,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "other_or_english": 12,
+      "vietnamese_accented": 12,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "other_or_english": 12,
+      "vietnamese_accented": 12,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "other_or_english": 69,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "other_or_english": 65,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "other_or_english": 16,
+      "vietnamese_accented": 19,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "other_or_english": 6,
+      "vietnamese_accented": 12,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "other_or_english": 6,
+      "vietnamese_accented": 12,
+      "vietnamese_unaccented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "other_or_english": 14,
+      "vietnamese_unaccented": 6,
+      "vietnamese_accented": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-old-ready-price-recheck-20260607-normalized.json",
+      "other_or_english": 117,
+      "vietnamese_unaccented": 5,
+      "vietnamese_accented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\vmtravel-old-ready-price-recheck-20260607-raw.json",
+      "other_or_english": 117,
+      "vietnamese_unaccented": 5,
+      "vietnamese_accented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-normalized.json",
+      "other_or_english": 14,
+      "vietnamese_accented": 3,
+      "vietnamese_unaccented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch5-clean-normalized.json",
+      "other_or_english": 14,
+      "vietnamese_unaccented": 4,
+      "vietnamese_accented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-normalized.json",
+      "other_or_english": 48,
+      "vietnamese_unaccented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-raw.json",
+      "other_or_english": 48,
+      "vietnamese_unaccented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-report.json",
+      "other_or_english": 88,
+      "vietnamese_unaccented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-review.csv",
+      "other_or_english": 326,
+      "vietnamese_unaccented": 4
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-clean-normalized.json",
+      "other_or_english": 16,
+      "vietnamese_unaccented": 3,
+      "vietnamese_accented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-normalized.json",
+      "other_or_english": 16,
+      "vietnamese_unaccented": 3,
+      "vietnamese_accented": 8
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\17_promotions_seed.sql",
+      "other_or_english": 35,
+      "vietnamese_unaccented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\25_landing_faq_blocks_seed.sql",
+      "vietnamese_unaccented": 3,
+      "other_or_english": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\27_published_location_taxonomy_backfill.sql",
+      "other_or_english": 9,
+      "vietnamese_unaccented": 3
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch2-normalized.json",
+      "other_or_english": 13,
+      "vietnamese_unaccented": 2,
+      "vietnamese_accented": 6
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\16_crawl_publish_approved_locations.sql",
+      "other_or_english": 5,
+      "vietnamese_unaccented": 2
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-normalized.json",
+      "other_or_english": 4,
+      "vietnamese_unaccented": 1,
+      "vietnamese_accented": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch3-weak-address-services-report.json",
+      "other_or_english": 59,
+      "vietnamese_unaccented": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch3-weak-address-services-review.csv",
+      "other_or_english": 348,
+      "vietnamese_unaccented": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\04_users.sql",
+      "other_or_english": 99,
+      "vietnamese_unaccented": 1
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\database-seeders\\19_settings_seed.sql",
+      "other_or_english": 4,
+      "vietnamese_unaccented": 1
+    }
+  ],
+  "examples": [
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "short_description",
+      "value": "Bach Ma National Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "short_description",
+      "value": "Chan May Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "short_description",
+      "value": "Hoa Phu Thanh la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "description",
+      "value": "Hoa Phu Thanh duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "short_description",
+      "value": "Hue Imperial City la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "short_description",
+      "value": "Nui Than Tai Hot Spring Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "description",
+      "value": "Nui Than Tai Hot Spring Park duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.csv",
+      "field": "short_description",
+      "value": "Tien Sa Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "short_description",
+      "value": "Bach Ma National Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "short_description",
+      "value": "Chan May Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "short_description",
+      "value": "Hoa Phu Thanh la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "description",
+      "value": "Hoa Phu Thanh duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "short_description",
+      "value": "Hue Imperial City la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "short_description",
+      "value": "Nui Than Tai Hot Spring Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "description",
+      "value": "Nui Than Tai Hot Spring Park duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\approved-locations-review.json",
+      "field": "short_description",
+      "value": "Tien Sa Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch2-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang Tom tat bien tap cho DanangTrip: - With broad beaches, fantastic street food, the fabled Hai Van Pass, and a growing collection of cafes, restaurants, and bars, it’s no wonder the residents of Da Nang sport some of the broadest smiles in the country. The. - Top things to do in Da Nang - Be sure to set the alarm clock early at least once on your stay. Along the shore, fishermen sell the day’s catch, football and volleyball matches spring up all around, and people jog, stroll or simply rel"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch2-normalized.json",
+      "field": "content_summary",
+      "value": "Hoi An Tom tat bien tap cho DanangTrip: - Hoi An is a place where the bold march of progress peters into a leisurely amble. In this one-time trading port, the Thu Bon River meanders past crumbling shop houses and weathered pagodas, while sampans come and go fro. - Top things to do in Hoi An - Merchants from China, Japan and later Europe settled in Hoi An from the 15th to 19th centuries, creating a unique architectural fusion. Bring your camera as you tread the Japanese Bridge, Tan Ky ancestral h"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang Tom tat bien tap cho DanangTrip: - With broad beaches, fantastic street food, the fabled Hai Van Pass, and a growing collection of cafes, restaurants, and bars, it’s no wonder the residents of Da Nang sport some of the broadest smiles in the country. The. - Top things to do in Da Nang - Be sure to set the alarm clock early at least once on your stay. Along the shore, fishermen sell the day’s catch, football and volleyball matches spring up all around, and people jog, stroll or simply rel"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Hoi An Tom tat bien tap cho DanangTrip: - Hoi An is a place where the bold march of progress peters into a leisurely amble. In this one-time trading port, the Thu Bon River meanders past crumbling shop houses and weathered pagodas, while sampans come and go fro. - Top things to do in Hoi An - Merchants from China, Japan and later Europe settled in Hoi An from the 15th to 19th centuries, creating a unique architectural fusion. Bring your camera as you tread the Japanese Bridge, Tan Ky ancestral h"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang's special pork rolls Tom tat bien tap cho DanangTrip: - Nobody knows exactly who invented banh cuon, or when, but most everyone agrees that Vietnamese people have been eating banh cuon for more than 2000 years. Around 300 BC, ancestors of today’s Vietnamese migrated to Thanh. - In the center of Vietnam, Da Nang has refined the classic banh cuon into a local delicacy known as banh trang cuon thit heo, or rice paper pork rolls. This gourmet dish was once known only by Quang Nam and Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang Tom tat bien tap cho DanangTrip: - With broad beaches, fantastic street food, the fabled Hai Van Pass, and a growing collection of cafes, restaurants, and bars, it’s no wonder the residents of Da Nang sport some of the broadest smiles in the country. The. - Top things to do in Da Nang - Be sure to set the alarm clock early at least once on your stay. Along the shore, fishermen sell the day’s catch, football and volleyball matches spring up all around, and people jog, stroll or simply rel"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-normalized.json",
+      "field": "content_summary",
+      "value": "Hoi An Tom tat bien tap cho DanangTrip: - Hoi An is a place where the bold march of progress peters into a leisurely amble. In this one-time trading port, the Thu Bon River meanders past crumbling shop houses and weathered pagodas, while sampans come and go fro. - Top things to do in Hoi An - Merchants from China, Japan and later Europe settled in Hoi An from the 15th to 19th centuries, creating a unique architectural fusion. Bring your camera as you tread the Japanese Bridge, Tan Ky ancestral h"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch3-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang's special pork rolls Tom tat bien tap cho DanangTrip: - Nobody knows exactly who invented banh cuon, or when, but most everyone agrees that Vietnamese people have been eating banh cuon for more than 2000 years. Around 300 BC, ancestors of today’s Vietnamese migrated to Thanh. - In the center of Vietnam, Da Nang has refined the classic banh cuon into a local delicacy known as banh trang cuon thit heo, or rice paper pork rolls. This gourmet dish was once known only by Quang Nam and Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Hai Van Pass Tom tat bien tap cho DanangTrip: - Hai Van Pass is one of the most beautiful and renowned coastal mountain passes in Vietnam, located on the Bach Ma range (a part of the Truong Son range) in Central Vietnam. The pass lies between Da Nang City and Thua Th. - With an altitude of approximately 500 meters above sea level and a length of about 20–21 km, Hai Van Pass forms a natural geographical and climatic boundary between two regions. The name “Hai Van” means “Sea of Clouds,”. - Histor"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "field": "content_summary",
+      "value": "The Son Tra Peninsula Tom tat bien tap cho DanangTrip: - The Son Tra Peninsula is the final point, marking the end of the northern Truong Son Mountain Range, projecting directly into the East Sea along with Hai Van Mountain. Son Tra’s highest peak reaches 696 meters, with a l. - Located 10 kilometers northeast of Da Nang City’s center, with a diverse ecosystem, stunning coastline, fresh climate, and a convenient transportation network connecting to the city center, Son Tra is further enhanced b."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang Beaches Tom tat bien tap cho DanangTrip: - Da Nang Beaches span approximately 60 kilometers and offers a series of stunning, continuous beaches stretching from Hai Van Pass’s base to Marble Mountain. It is renowned as an ideal Asian destination for relaxation, l. - The beaches in Da Nang offer calm waters, small waves, and clear blue water year-round, free from pollution. Safety levels are high, and the Son Tra Peninsula beaches are home to abundant coral and rich flora and fauna. - Da N"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "field": "content_summary",
+      "value": "My Son Sanctuary Tom tat bien tap cho DanangTrip: - My Son Sanctuary (also known as My Son Holy Land) is a complex of ancient Cham temples located in a secluded valley in My Son Village, Thu Bon Commune, Da Nang City. - This site preserves more than 70 temple structures built over many centuries (from the 4th to the 13th century), showcasing outstanding historical, cultural, architectural, and artistic values. My Son Sanctuary is regar. - My Son was established in the 4th century during the reig"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang’s Mountain Tourism – A Return to Origin in the Truong Son Range Tom tat bien tap cho DanangTrip: - Have you ever stepped away from the vibrant rhythm of the city to find stillness in the mountains? To the west of Da Nang, a different world unfolds – a place where nature and local life blend seamlessly in the quiet em. - Da Nang is often known as a modern coastal city, where long sandy beaches, iconic bridges, world heritage sites, and lively festivals shape a dynamic urban lifestyle. Yet"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Hai Van Pass Tom tat bien tap cho DanangTrip: - Hai Van Pass is one of the most scenic hillside roads in Vietnam. When braving the steep winding roads of a paved mountain pass, you will have a chance to discover peace,quiet and history along the way… - Address: Hoa Hiep Bac Ward, Lien Chieu District, Da Nang, Viet Nam - On the north – south nation highway, Hai Van Pass is an impressive landscape. It is like a giant dragon, lying on Highway 1 on the border between Thua Thien-Hue Province and Dana"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang Beaches Tom tat bien tap cho DanangTrip: - Copyright © People’s Committee of Da Nang City Department of Culture, Sports, and Tourism of Da Nang Managed by Danang Tourism Promotion Center - License: 705/GP-STTTT dated July 18, 2024 of the City Department of Information and Communications. Da Nang - Da Nang Beaches span approximately 60 kilometers and offers a series of stunning, continuous beaches stretching from Hai Van Pass’s base to Marble Mountain. It is renowned as an ideal Asian des"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-normalized.json",
+      "field": "content_summary",
+      "value": "My Son Sanctuary Tom tat bien tap cho DanangTrip: - Copyright © People’s Committee of Da Nang City Department of Culture, Sports, and Tourism of Da Nang Managed by Danang Tourism Promotion Center - License: 705/GP-STTTT dated July 18, 2024 of the City Department of Information and Communications. Da Nang - My Son Sanctuary (also known as My Son Holy Land) is a complex of ancient Cham temples located in a secluded valley in My Son Village, Thu Bon Commune, Da Nang City. - This site preserves more"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-normalized.json",
+      "field": "content_summary",
+      "value": "Da Nang’s Mountain Tourism – A Return to Origin in the Truong Son Range Tom tat bien tap cho DanangTrip: - Copyright © People’s Committee of Da Nang City Department of Culture, Sports, and Tourism of Da Nang Managed by Danang Tourism Promotion Center - License: 705/GP-STTTT dated July 18, 2024 of the City Department of Information and Communications. Da Nang - Have you ever stepped away from the vibrant rhythm of the city to find stillness in the mountains? To the west of Da Nang, a different wo"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch4-normalized.json",
+      "field": "content_summary",
+      "value": "Hai Van Pass Tom tat bien tap cho DanangTrip: - Copyright © People’s Committee of Da Nang City Department of Culture, Sports, and Tourism of Da Nang Managed by Danang Tourism Promotion Center - License: 705/GP-STTTT dated July 18, 2024 of the City Department of Information and Communications. Da Nang - Hai Van Pass is one of the most scenic hillside roads in Vietnam. When braving the steep winding roads of a paved mountain pass, you will have a chance to discover peace,quiet and history along th"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch5-clean-normalized.json",
+      "field": "content_summary",
+      "value": "A traveller's guide to Vietnam's airports Tom tat bien tap cho DanangTrip: - Airports are often the first point of entry for travellers to Vietnam. Whether you are aiming for a smooth arrival in the country or want to prepare for a domestic flight, you can breeze through the process by reading u. - A brief overview of Vietnam’s airports - Additional Tip for a Smoother Arrival - Guide to Hanoi's International Airport - Guide to Da Nang's International Airport - Guide to Ho Chi Minh City's Interna"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch5-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Must-do Da Nang: An insider list Tom tat bien tap cho DanangTrip: - Whatever you expect from Da Nang , you’re in for a surprise. Framed by mountains and embraced by the Han River and the East Sea, Da Nang is a rising star in the region. There’s a lot to take in. - The sandy sweep of My Khe beach — lined with new hotels, seafood halls and fishing boats — leads the eye to where the statue of Linh Ung stands serenely overlooking the waves. The old city centre with its overflowing ma. - Pay a visit "
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch5-clean-normalized.json",
+      "field": "content_summary",
+      "value": "4 Reasons Why Da Nang is Vietnam’s Most Livable City Tom tat bien tap cho DanangTrip: - 1. Da Nang’s Well-Planned City Center - 2. Beaches in Da Nang: My Khe and More - 3. Monkeys and Mountains - 4. Quality of Life and Ease of Access - Discover Da Nang on Traveloka - Da Nang is one of the biggest cities in Vietnam with about one million residents, yet it feels smaller and tamer than Ho Chi Minh City and Hanoi. While it is a big city with everything big cities have to offer, it comes. - From its "
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-batch5-clean-normalized.json",
+      "field": "content_summary",
+      "value": "Post Tom tat bien tap cho DanangTrip: - Can bien tap noi dung sau khi thu thap them thong tin. Nguon tham chieu: https://danangfantasticity.com/en/about-danang/weather-da-nang.html Trang thai: pending_review. Noi dung nay can duoc bien tap lai truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-normalized.json",
+      "field": "content_summary",
+      "value": "Hoi An Tom tat bien tap cho DanangTrip: - Hoi An is a place where the bold march of progress peters into a leisurely amble. In this one-time trading port, the Thu Bon River meanders past crumbling shop houses and weathered pagodas, while sampans come and go fro. - Top things to do in Hoi An - Merchants from China, Japan and later Europe settled in Hoi An from the 15th to 19th centuries, creating a unique architectural fusion. Bring your camera as you tread the Japanese Bridge, Tan Ky ancestral h"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Da Nang Tom tat bien tap cho DanangTrip: - With broad beaches, fantastic street food, the fabled Hai Van Pass, and a growing collection of cafes, restaurants, and bars, it’s no wonder the residents of Da Nang sport some of the broadest smiles in the country. The. - Top things to do in Da Nang - Be sure to set the alarm clock early at least once on your stay. Along the shore, fishermen sell the day’s catch, football and volleyball matches spring up all around, and people jog, stroll or simply rel"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Hoi An Tom tat bien tap cho DanangTrip: - Hoi An is a place where the bold march of progress peters into a leisurely amble. In this one-time trading port, the Thu Bon River meanders past crumbling shop houses and weathered pagodas, while sampans come and go fro. - Top things to do in Hoi An - Merchants from China, Japan and later Europe settled in Hoi An from the 15th to 19th centuries, creating a unique architectural fusion. Bring your camera as you tread the Japanese Bridge, Tan Ky ancestral h"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Da Nang's special pork rolls Tom tat bien tap cho DanangTrip: - Nobody knows exactly who invented banh cuon, or when, but most everyone agrees that Vietnamese people have been eating banh cuon for more than 2000 years. Around 300 BC, ancestors of today’s Vietnamese migrated to Thanh. - In the center of Vietnam, Da Nang has refined the classic banh cuon into a local delicacy known as banh trang cuon thit heo, or rice paper pork rolls. This gourmet dish was once known only by Quang Nam and Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Hai Van Pass Tom tat bien tap cho DanangTrip: - Hai Van Pass is one of the most beautiful and renowned coastal mountain passes in Vietnam, located on the Bach Ma range (a part of the Truong Son range) in Central Vietnam. The pass lies between Da Nang City and Thua Th. - With an altitude of approximately 500 meters above sea level and a length of about 20–21 km, Hai Van Pass forms a natural geographical and climatic boundary between two regions. The name “Hai Van” means “Sea of Clouds,”. - Histor"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "The Son Tra Peninsula Tom tat bien tap cho DanangTrip: - The Son Tra Peninsula is the final point, marking the end of the northern Truong Son Mountain Range, projecting directly into the East Sea along with Hai Van Mountain. Son Tra’s highest peak reaches 696 meters, with a l. - Located 10 kilometers northeast of Da Nang City’s center, with a diverse ecosystem, stunning coastline, fresh climate, and a convenient transportation network connecting to the city center, Son Tra is further enhanced b."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Da Nang Beaches Tom tat bien tap cho DanangTrip: - Da Nang Beaches span approximately 60 kilometers and offers a series of stunning, continuous beaches stretching from Hai Van Pass’s base to Marble Mountain. It is renowned as an ideal Asian destination for relaxation, l. - The beaches in Da Nang offer calm waters, small waves, and clear blue water year-round, free from pollution. Safety levels are high, and the Son Tra Peninsula beaches are home to abundant coral and rich flora and fauna. - Da N"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "My Son Sanctuary Tom tat bien tap cho DanangTrip: - My Son Sanctuary (also known as My Son Holy Land) is a complex of ancient Cham temples located in a secluded valley in My Son Village, Thu Bon Commune, Da Nang City. - This site preserves more than 70 temple structures built over many centuries (from the 4th to the 13th century), showcasing outstanding historical, cultural, architectural, and artistic values. My Son Sanctuary is regar. - My Son was established in the 4th century during the reig"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Da Nang’s Mountain Tourism – A Return to Origin in the Truong Son Range Tom tat bien tap cho DanangTrip: - Have you ever stepped away from the vibrant rhythm of the city to find stillness in the mountains? To the west of Da Nang, a different world unfolds – a place where nature and local life blend seamlessly in the quiet em. - Da Nang is often known as a modern coastal city, where long sandy beaches, iconic bridges, world heritage sites, and lively festivals shape a dynamic urban lifestyle. Yet"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Hai Van Pass Tom tat bien tap cho DanangTrip: - Hai Van Pass is one of the most scenic hillside roads in Vietnam. When braving the steep winding roads of a paved mountain pass, you will have a chance to discover peace,quiet and history along the way… - Address: Hoa Hiep Bac Ward, Lien Chieu District, Da Nang, Viet Nam - On the north – south nation highway, Hai Van Pass is an impressive landscape. It is like a giant dragon, lying on Highway 1 on the border between Thua Thien-Hue Province and Dana"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "A traveller's guide to Vietnam's airports Tom tat bien tap cho DanangTrip: - Airports are often the first point of entry for travellers to Vietnam. Whether you are aiming for a smooth arrival in the country or want to prepare for a domestic flight, you can breeze through the process by reading u. - A brief overview of Vietnam’s airports - Additional Tip for a Smoother Arrival - Guide to Hanoi's International Airport - Guide to Da Nang's International Airport - Guide to Ho Chi Minh City's Interna"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Must-do Da Nang: An insider list Tom tat bien tap cho DanangTrip: - Whatever you expect from Da Nang , you’re in for a surprise. Framed by mountains and embraced by the Han River and the East Sea, Da Nang is a rising star in the region. There’s a lot to take in. - The sandy sweep of My Khe beach — lined with new hotels, seafood halls and fishing boats — leads the eye to where the statue of Linh Ung stands serenely overlooking the waves. The old city centre with its overflowing ma. - Pay a visit "
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "4 Reasons Why Da Nang is Vietnam’s Most Livable City Tom tat bien tap cho DanangTrip: - 1. Da Nang’s Well-Planned City Center - 2. Beaches in Da Nang: My Khe and More - 3. Monkeys and Mountains - 4. Quality of Life and Ease of Access - Discover Da Nang on Traveloka - Da Nang is one of the biggest cities in Vietnam with about one million residents, yet it feels smaller and tamer than Ho Chi Minh City and Hanoi. While it is a big city with everything big cities have to offer, it comes. - From its "
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\blog-guides-staging.json",
+      "field": "content_summary",
+      "value": "Post Tom tat bien tap cho DanangTrip: - Can bien tap noi dung sau khi thu thap them thong tin. Nguon tham chieu: https://danangfantasticity.com/en/about-danang/weather-da-nang.html Trang thai: pending_review. Noi dung nay can duoc bien tap lai truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Lich trinh 3 ngay phu hop de ket hop bien My Khe, cau Rong, Ngu Hanh Son, Son Tra va mot diem xa hon nhu Ba Na Hills hoac Hoi An."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "question",
+      "value": "Di tu san bay Da Nang vao trung tam co mat nhieu thoi gian khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "San bay Da Nang gan trung tam, thuan tien di taxi, xe cong nghe hoac xe dua don. Nen du phong thoi gian neu di vao gio cao diem."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Da Nang phu hop voi gia dinh, cap doi, khach di lan dau, nguoi thich bien, am thuc, lich trinh ngan ngay va ket hop Hoi An/Hue."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "question",
+      "value": "Nen uu tien diem nao neu chi co mot ngay?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "question",
+      "value": "Di mien Trung can luu y gi ve thoi tiet?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Nen kiem tra mua mua va lich trinh ngoai troi. Cac diem bien, deo va nui nen di khi thoi tiet on dinh de an toan hon."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "question",
+      "value": "Co nen thue xe may tu Hoi An di Hue qua Hai Van khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Chi nen di neu co kinh nghiem lai xe duong deo va kiem tra thoi tiet. Khach di lan dau nen chon xe rieng, tour hoac tau hoa."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Nen di tron ngay vi khu Ba Na Hills co cap treo, Cau Vang, lang Phap, khu vui choi va nhieu diem check-in."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Co. Khu nay phu hop gia dinh, cap doi va nhom ban, nhung can luu y viec di bo nhieu va thoi tiet tren nui co the thay doi nhanh."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "question",
+      "value": "Son Tra va Ngu Hanh Son co the di trong nua ngay khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Co the di nua ngay neu chi chon cac diem chinh. Neu muon tham quan ky hang dong, chua va diem ngam canh, nen danh nhieu thoi gian hon."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "question",
+      "value": "Ngu Hanh Son co can leo nhieu khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Co nhieu bac da va loi di trong hang dong, nen mang giay de di bo va han che lich trinh qua day neu di voi nguoi kho van dong."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-review.csv",
+      "field": "answer",
+      "value": "Nen di sang som hoac chieu muon de tranh nang, co anh sang dep va de ngam bien/thanh pho tot hon."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Lich trinh 3 ngay phu hop de ket hop bien My Khe, cau Rong, Ngu Hanh Son, Son Tra va mot diem xa hon nhu Ba Na Hills hoac Hoi An."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "question",
+      "value": "Di tu san bay Da Nang vao trung tam co mat nhieu thoi gian khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "San bay Da Nang gan trung tam, thuan tien di taxi, xe cong nghe hoac xe dua don. Nen du phong thoi gian neu di vao gio cao diem."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Da Nang phu hop voi gia dinh, cap doi, khach di lan dau, nguoi thich bien, am thuc, lich trinh ngan ngay va ket hop Hoi An/Hue."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "question",
+      "value": "Nen uu tien diem nao neu chi co mot ngay?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "title",
+      "value": "FAQ du lich mien Trung"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "question",
+      "value": "Di mien Trung can luu y gi ve thoi tiet?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Nen kiem tra mua mua va lich trinh ngoai troi. Cac diem bien, deo va nui nen di khi thoi tiet on dinh de an toan hon."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "question",
+      "value": "Co nen thue xe may tu Hoi An di Hue qua Hai Van khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Chi nen di neu co kinh nghiem lai xe duong deo va kiem tra thoi tiet. Khach di lan dau nen chon xe rieng, tour hoac tau hoa."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Nen di tron ngay vi khu Ba Na Hills co cap treo, Cau Vang, lang Phap, khu vui choi va nhieu diem check-in."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Co. Khu nay phu hop gia dinh, cap doi va nhom ban, nhung can luu y viec di bo nhieu va thoi tiet tren nui co the thay doi nhanh."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "question",
+      "value": "Son Tra va Ngu Hanh Son co the di trong nua ngay khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Co the di nua ngay neu chi chon cac diem chinh. Neu muon tham quan ky hang dong, chua va diem ngam canh, nen danh nhieu thoi gian hon."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "question",
+      "value": "Ngu Hanh Son co can leo nhieu khong?"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Co nhieu bac da va loi di trong hang dong, nen mang giay de di bo va han che lich trinh qua day neu di voi nguoi kho van dong."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\landing-faq-staging.json",
+      "field": "answer",
+      "value": "Nen di sang som hoac chieu muon de tranh nang, co anh sang dep va de ngam bien/thanh pho tot hon."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-normalized.json",
+      "field": "summary",
+      "value": "Tour Hue Tour From Da Nang Good Price #1 - Da Nang Local Tours khai thac hanh trinh tai Da Nang, Hoi An, Hue, Marble Mountains, Son Tra. Thoi luong tham khao: 1 Day. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-normalized.json",
+      "field": "summary",
+      "value": "Tour Am Phu Cave Tour with Marble Mountain & Lady Buddha - HoiAn Day Trip Company khai thac hanh trinh tai Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra. Thoi luong tham khao: 4 hours. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-normalized.json",
+      "field": "summary",
+      "value": "Tour Ba Na Hills Afternoon Tour with Golden Hands Bridge - HoiAn Day Trip Company khai thac hanh trinh tai Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra. Thoi luong tham khao: FULL DAY. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-normalized.json",
+      "field": "summary",
+      "value": "Tour Ba Na Hills Early Morning Tour to Beat the Crowds - HoiAn Day Trip Company khai thac hanh trinh tai Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra. Thoi luong tham khao: 1 day. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-raw.json",
+      "field": "summary",
+      "value": "Tour Hue Tour From Da Nang Good Price #1 - Da Nang Local Tours khai thac hanh trinh tai Da Nang, Hoi An, Hue, Marble Mountains, Son Tra. Thoi luong tham khao: 1 Day. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-raw.json",
+      "field": "summary",
+      "value": "Tour Am Phu Cave Tour with Marble Mountain & Lady Buddha - HoiAn Day Trip Company khai thac hanh trinh tai Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra. Thoi luong tham khao: 4 hours. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-raw.json",
+      "field": "summary",
+      "value": "Tour Ba Na Hills Afternoon Tour with Golden Hands Bridge - HoiAn Day Trip Company khai thac hanh trinh tai Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra. Thoi luong tham khao: FULL DAY. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-20260607-raw.json",
+      "field": "summary",
+      "value": "Tour Ba Na Hills Early Morning Tour to Beat the Crowds - HoiAn Day Trip Company khai thac hanh trinh tai Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra. Thoi luong tham khao: 1 day. Thong tin duoc tong hop tu nguon cong khai va can duoc bien tap truoc khi su dung production."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Marble Mountains, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: There are many ways for customesrs to visit Hue city, however these are some reasons why you should book Hue tour from Da Nang:; + If you go with motorbike: It is deniable that travelling to Hue with motorbike is a very saving way, but the distance between Da "
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Marble Mountains, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 4 hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 4 hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong FULL DAY, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong FULL DAY, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-enriched-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Marble Mountains, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: There are many ways for customesrs to visit Hue city, however these are some reasons why you should book Hue tour from Da Nang:; + If you go with motorbike: It is deniable that travelling to Hue with motorbike is a very saving way, but the distance between Da "
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Marble Mountains, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 4 hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 4 hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong FULL DAY, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong FULL DAY, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "description",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\legacy-ready-recheck-staging-20260607.json",
+      "field": "short_desc",
+      "value": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, My Son, Marble Mountains, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "short_description",
+      "value": "Bach Ma National Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "short_description",
+      "value": "Chan May Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "short_description",
+      "value": "Hoa Phu Thanh la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "description",
+      "value": "Hoa Phu Thanh duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "short_description",
+      "value": "Hue Imperial City la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "short_description",
+      "value": "Nui Than Tai Hot Spring Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "description",
+      "value": "Nui Than Tai Hot Spring Park duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-crawl.json",
+      "field": "short_description",
+      "value": "Tien Sa Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "short_description",
+      "value": "Bach Ma National Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "short_description",
+      "value": "Chan May Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "short_description",
+      "value": "Hoa Phu Thanh la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "description",
+      "value": "Hoa Phu Thanh duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "short_description",
+      "value": "Hue Imperial City la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "short_description",
+      "value": "Nui Than Tai Hot Spring Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "description",
+      "value": "Nui Than Tai Hot Spring Park duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.csv",
+      "field": "short_description",
+      "value": "Tien Sa Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "short_description",
+      "value": "Bach Ma National Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "short_description",
+      "value": "Chan May Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "short_description",
+      "value": "Hoa Phu Thanh la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "description",
+      "value": "Hoa Phu Thanh duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "short_description",
+      "value": "Hue Imperial City la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "short_description",
+      "value": "Nui Than Tai Hot Spring Park la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "description",
+      "value": "Nui Than Tai Hot Spring Park duoc thu thap tu configured fallback context voi dia chi tham chieu: Hoa Phu, Hoa Vang, Da Nang, Vietnam. Ban ghi dang o trang thai pending_review va can kiem tra lai toa do, dia chi, danh muc truoc khi dua vao database."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\missing-locations-review.json",
+      "field": "short_description",
+      "value": "Tien Sa Port la dia diem lien quan den hanh trinh tour DanangTrip, can admin duyet thong tin truoc khi seed."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "name",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Duong Ho Tuong, Quan Thanh Khe, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "87, Duong Hoang Van Thu, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Tang tret, Coopmart, 478 Dien Bien Phu, Q. Thanh Khe, TP, Thanh Khe Dong, Thanh Khe, Da Nang, Vietnam, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "02, Duong Hoang Hoa Tham, Thanh Khe, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "08, Duong Hoang Hoa Tham, Thanh Khe, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "name",
+      "value": "Khach san Hai An"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "name",
+      "value": "Khach san Bon Mua"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "name",
+      "value": "Khach San Sea Castle Hotel Sea Castle Hotel"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Duong Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Luu Quang Vu, Ngu Hanh Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "7, Duong Le Van Quy, Danang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "Duong Trinh Cong Son, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "73, Duong Nguyen Chi Thanh, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "27, Duong An Don 4, Quan Son Tra, Danang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch1-review.csv",
+      "field": "address",
+      "value": "17, Duong Pham Van Dong, Quan Son Tra, Danang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-report.json",
+      "field": "names",
+      "value": "Bao tang Quan khu 5"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-report.json",
+      "field": "names",
+      "value": "Dai Tuong niem Liet sy thanh pho Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-report.json",
+      "field": "names",
+      "value": "Khu Du Lich Sinh Thai Suoi Luong"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-report.json",
+      "field": "names",
+      "value": "Khu giai tri truoc Uy ban Quan"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-review.csv",
+      "field": "name",
+      "value": "Bao tang Quan khu 5"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-review.csv",
+      "field": "name",
+      "value": "Dai Tuong niem Liet sy thanh pho Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-review.csv",
+      "field": "name",
+      "value": "Khu Du Lich Sinh Thai Suoi Luong"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch2-weak-address-review.csv",
+      "field": "name",
+      "value": "Khu giai tri truoc Uy ban Quan"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch3-weak-address-services-report.json",
+      "field": "names",
+      "value": "hoang kim khach san"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-approval-batch3-weak-address-services-review.csv",
+      "field": "name",
+      "value": "hoang kim khach san"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Trung tam Giai tri Phuc hop Helio Center duoc thu thap tu OpenStreetMap voi nhom du lieu theme_park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Trung tam Giai tri Phuc hop Helio Center la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-nuoc) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Trung tam Giai tri Phuc hop Helio Center duoc thu thap tu OpenStreetMap voi nhom du lieu theme_park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Trung tam Giai tri Phuc hop Helio Center la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-nuoc) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Da Nang duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Da Nang la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Da Nang duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Da Nang la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Nghe thuat Dieu khac Cham Da Nang duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Nghe thuat Dieu khac Cham Da Nang la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Nghe thuat Dieu khac Cham Da Nang duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Nghe thuat Dieu khac Cham Da Nang la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Da Nang duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Da Nang la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Da Nang duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Da Nang la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Phat giao duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Phat giao la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bao tang Phat giao duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bao tang Phat giao la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Khu Van hoa Tam linh Da Son duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Khu Van hoa Tam linh Da Son la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Khu Van hoa Tam linh Da Son duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Khu Van hoa Tam linh Da Son la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "My Khe Beach Park duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "My Khe Beach Park la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "My Khe Beach Park duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "My Khe Beach Park la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Son Tra Ocean View Pool & Spa duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Son Tra Ocean View Pool & Spa la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Son Tra Ocean View Pool & Spa duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Son Tra Ocean View Pool & Spa la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "name",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "address",
+      "value": "Duong Ho Tuong, Quan Thanh Khe, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "name",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "address",
+      "value": "Duong Ho Tuong, Quan Thanh Khe, Da Nang"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "name",
+      "value": "Trung tam Van hoa - The thao quan Thanh Khe"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Ngu Hanh Son duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Ngu Hanh Son la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Ngu Hanh Son duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Ngu Hanh Son la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cau Rong duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cau Rong la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cau Rong duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cau Rong la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Art in Paradise Da Nang 3D Museum duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Art in Paradise Da Nang 3D Museum la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Art in Paradise Da Nang 3D Museum duoc thu thap tu OpenStreetMap voi nhom du lieu museum. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Art in Paradise Da Nang 3D Museum la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cho Con duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cho Con la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cho Con duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cho Con la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cho dem Helio duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cho dem Helio la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cho dem Helio duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cho dem Helio la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cong vien Nguyen Van Linh duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cong vien Nguyen Van Linh la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Cong vien Nguyen Van Linh duoc thu thap tu OpenStreetMap voi nhom du lieu park. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Cong vien Nguyen Van Linh la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (cong-vien-vuon-hoa) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Hai Van Quan duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Hai Van Quan la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Hai Van Quan duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Hai Van Quan la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Tuong Phat Phuoc Ly duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Tuong Phat Phuoc Ly la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Tuong Phat Phuoc Ly duoc thu thap tu OpenStreetMap voi nhom du lieu attraction. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Tuong Phat Phuoc Ly la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (bao-tang-di-tich) truoc khi dua len website DanangTrip."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "alt_name:vi",
+      "value": "Tuong Phat Phuoc Ly - Khu van hoa tam linh Da Son;Tuong Phat Khong Lo - Khu van hoa tam linh Da Son"
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "shortDescription",
+      "value": "Bai bien My Khe duoc thu thap tu OpenStreetMap voi nhom du lieu beach. Can admin kiem tra mo ta, anh va thong tin van hanh truoc khi publish."
+    },
+    {
+      "file": "D:\\DATN\\DATN_Tài liệu\\danangtrip-crawler\\data\\overpass-danang-pois-clean.json",
+      "field": "description",
+      "value": "Bai bien My Khe la diem du lieu du lich/dich vu tai khu vuc Da Nang, duoc crawl tu OpenStreetMap qua Overpass API. Ban ghi dang o trang thai pending_review va can duoc bien tap noi dung, anh, gio mo cua, gia va danh muc (check-in-noi-tieng) truoc khi dua len website DanangTrip."
+    }
+  ],
+  "policy": {
+    "slugUrlTechnicalAsciiAllowed": true,
+    "englishSourceContentAllowed": true,
+    "displayVietnameseShouldUseDiacritics": true,
+    "automaticMutationPerformed": false
+  }
+}

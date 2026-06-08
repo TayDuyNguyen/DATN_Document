@@ -1,0 +1,39 @@
+[
+  {
+    "name": "Hue Tour From Da Nang Good Price #1 - Da Nang Local Tours",
+    "source_name": "recheck_dananglocal_hue",
+    "url": "https://dananglocaltours.com/tour/hue-tour-from-da-nang/",
+    "blocking_reasons": [
+      "insufficient_images"
+    ]
+  },
+  {
+    "name": "Am Phu Cave Tour with Marble Mountain & Lady Buddha - HoiAn Day Trip Company",
+    "source_name": "recheck_hoiandaytrip_am_phu",
+    "url": "https://hoiandaytrip.com/am-phu-cave-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_exclusions",
+      "insufficient_images"
+    ]
+  },
+  {
+    "name": "Ba Na Hills Afternoon Tour with Golden Hands Bridge - HoiAn Day Trip Company",
+    "source_name": "recheck_hoiandaytrip_bana_afternoon",
+    "url": "https://hoiandaytrip.com/ba-na-hills-afternoon-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_exclusions"
+    ]
+  },
+  {
+    "name": "Ba Na Hills Early Morning Tour to Beat the Crowds - HoiAn Day Trip Company",
+    "source_name": "recheck_hoiandaytrip_bana_early",
+    "url": "https://hoiandaytrip.com/ba-na-hills-early-morning-tour/",
+    "blocking_reasons": [
+      "incomplete_itinerary",
+      "incomplete_exclusions",
+      "insufficient_images"
+    ]
+  }
+]

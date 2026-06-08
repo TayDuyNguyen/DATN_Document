@@ -1,0 +1,83 @@
+[
+  {
+    "location_slug": "bach-ma-national-park",
+    "location_name": "Bach Ma National Park",
+    "review_status": "pending_review",
+    "approve_for_location_seed": false,
+    "matched_tour_count": 1,
+    "matched_tour_slugs": [
+      "dananglocaltours-bach-ma-national-park-tour-from-da-nang-da-nang-local-tours"
+    ],
+    "suggested_action": "create_location_seed_before_tour_locations",
+    "fix_notes": ""
+  },
+  {
+    "location_slug": "chan-may-port",
+    "location_name": "Chan May Port",
+    "review_status": "pending_review",
+    "approve_for_location_seed": false,
+    "matched_tour_count": 3,
+    "matched_tour_slugs": [
+      "vmtravel-hue-shore-excursions-from-chan-may-port-book-1-day-tour",
+      "vmtravel-hue-shore-bana-hills-day-trip-from-chan-may-port-best-shore-excursion",
+      "vmtravel-hue-shore-hue-imperial-tour-from-chan-may-port-best-shore-excursions"
+    ],
+    "suggested_action": "create_location_seed_before_tour_locations",
+    "fix_notes": ""
+  },
+  {
+    "location_slug": "hoa-phu-thanh",
+    "location_name": "Hoa Phu Thanh",
+    "review_status": "pending_review",
+    "approve_for_location_seed": false,
+    "matched_tour_count": 1,
+    "matched_tour_slugs": [
+      "dananglocaltours-hoa-phu-thanh-waterfall-sliding-daily-tour-da-nang-local-tours"
+    ],
+    "suggested_action": "create_location_seed_before_tour_locations",
+    "fix_notes": ""
+  },
+  {
+    "location_slug": "hue-imperial-city",
+    "location_name": "Hue Imperial City",
+    "review_status": "pending_review",
+    "approve_for_location_seed": false,
+    "matched_tour_count": 4,
+    "matched_tour_slugs": [
+      "dananglocaltours-basket-boat-hue-tour-from-da-nang-good-price-1-da-nang-local-tours",
+      "vmtravel-hue-shore-excursions-from-chan-may-port-book-1-day-tour",
+      "vmtravel-hue-shore-bana-hills-day-trip-from-chan-may-port-best-shore-excursion",
+      "vmtravel-hue-shore-hue-imperial-tour-from-chan-may-port-best-shore-excursions"
+    ],
+    "suggested_action": "create_location_seed_before_tour_locations",
+    "fix_notes": ""
+  },
+  {
+    "location_slug": "nui-than-tai-hot-spring-park",
+    "location_name": "Nui Than Tai Hot Spring Park",
+    "review_status": "pending_review",
+    "approve_for_location_seed": false,
+    "matched_tour_count": 1,
+    "matched_tour_slugs": [
+      "dananglocaltours-basket-boat-nui-than-tai-hot-spring-park-tour-from-da-nang-good-price-1"
+    ],
+    "suggested_action": "create_location_seed_before_tour_locations",
+    "fix_notes": ""
+  },
+  {
+    "location_slug": "tien-sa-port",
+    "location_name": "Tien Sa Port",
+    "review_status": "pending_review",
+    "approve_for_location_seed": false,
+    "matched_tour_count": 5,
+    "matched_tour_slugs": [
+      "vmtravel-da-nang-shore-excursions-from-tien-sa-port-deluxe-tours",
+      "vmtravel-danang-shore-ba-na-hills-and-golden-bridge-tour-from-tien-sa-port",
+      "vmtravel-danang-shore-da-nang-city-tour-from-tien-sa-port-explore-and-shopping",
+      "vmtravel-danang-shore-hoi-an-day-tour-from-tien-sa-port-hoi-an-shore-excursions",
+      "vmtravel-danang-shore-my-son-sanctuary-tour-from-tien-sa-port-explore-now"
+    ],
+    "suggested_action": "create_location_seed_before_tour_locations",
+    "fix_notes": ""
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "input": "data/vmtravel-old-ready-price-recheck-enriched-20260607.json",
+  "outputs": {
+    "json": "data/vmtravel-old-ready-price-recheck-readiness-20260607.json",
+    "csv": "data/vmtravel-old-ready-price-recheck-readiness-20260607.csv",
+    "recrawlSources": "data/vmtravel-old-ready-price-recheck-readiness-20260607-recrawl-sources.json",
+    "crawlerSourceConfig": "data/vmtravel-old-ready-price-recheck-readiness-20260607-recrawl-source-config.json"
+  },
+  "total": 5,
+  "byStatus": {
+    "ready_for_manual_publish": 5
+  },
+  "blockingReasons": {},
+  "policy": {
+    "writesDatabase": false,
+    "requiresManualImageReview": true,
+    "inferredCoreFieldsBlocked": true,
+    "sourceUrlRequired": true,
+    "completeTourContentRequired": true
+  }
+}

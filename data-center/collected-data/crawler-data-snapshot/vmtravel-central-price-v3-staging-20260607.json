@@ -1,0 +1,2593 @@
+[
+  {
+    "name": "Highlight The 4 Days Deluxe Golf Tour In Da Nang",
+    "slug": "vmtravel-central-001-highlight-the-4-days-deluxe-golf-tour-in-da-nang",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills trong 4 Days, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: See us on:; 4D 3N 2R; Golf Tour; 4 Stars.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills trong 4 Days, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Welcome to Danang! Upon arrival at Danang International Airport, you will be greeted by our representative and transferred to your hotel. Check-in hotel and relax.",
+      "Enjoy a welcome dinner featuring local specialties at a renowned restaurant.",
+      "After breakfast, depart for BRG Danang Golf Course , a championship course designed by Greg Norman. The course demands accuracy and precision, with undulating fairways, strategically placed bunkers, and firm, fast greens. Immerse yourself in the stunning coastal landscape, with r",
+      "Have lunch and enjoy world-class facilities, including a clubhouse with fine dining, a pro shop, and practice facilities.",
+      "Return to the hotel and you might explore the vibrant city of Da Nang at night by taking a luxury cruise on the Han river, enjoy your dinner and watch the city’s brilliant lights.",
+      "Enjoy a delicious breakfast before heading to Bana Hills Golf Club , nestled in the enchanting Ba Na Hills mountain resort. This 18-hole championship course offers stunning panoramic views of the surrounding valleys and mountains, creating a truly unforgettable atmosphere.",
+      "Enjoy your lunch and relax at the clubhouse, which offers a luxurious and relaxing environment to unwind after your round. You can stroll around the golf course and shop for golf equipment here.",
+      "Return to your hotel and take a cruise Han River, enjoy dinner and admire the bustling city and brilliant lights.",
+      "Enjoy a leisurely breakfast before checking out the hotel. Transfer to the airport for your departure flight. End of the tour."
+    ],
+    "inclusions": [
+      "Enthusiastic, friendly, experienced caddies at each golf course",
+      "Shared buggy at each golf course",
+      "All airport and golf course transfers by private car",
+      "Hotel 4 stars with breakfast included",
+      "Meals as mention",
+      "2 bottles of water/golfer/day tour on transfer (500ml/bottle)",
+      "01 bottle of water/pax/way of airport transfer (500ml/bottle)",
+      "Local knowledge, suggestions, and support throughout the trip",
+      "24/7 golf hotline staffed by knowledgeable service personnel",
+      "Professional English speaking tour guide for sightseeing tour"
+    ],
+    "exclusions": [
+      "All airfares, visa",
+      "Personal items, drinks, and gratuities",
+      "International bank fund transfer fees",
+      "Other things that are not mentioned in the inclusions list"
+    ],
+    "price_adult": 10625000.0,
+    "price_raw": "$425",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "4 Days",
+    "start_time": null,
+    "meeting_point": "depart for BRG Danang Golf Course , a championship course designed by Greg Norman",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2024/07/Da-Nang-Golf-Courses.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2024/07/Da-Nang-Golf-Courses.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/BRG-Danang-golf-course.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Vietnam-Golf-Tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Restaurant-in-Bana-Golf.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/Golfing-at-Vinpearl-Golf-Hoi-An-South.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/golf-in-Hoi-An.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Bana-Hills-Golf-Course.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/07/Vietnam-Luxury-Golf-Tour.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/07/Da-Nang-Golf-Courses.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/BRG-Danang-golf-course.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Vietnam-Golf-Tour.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Restaurant-in-Bana-Golf.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/Golfing-at-Vinpearl-Golf-Hoi-An-South.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/golf-in-Hoi-An.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Bana-Hills-Golf-Course.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/07/Vietnam-Luxury-Golf-Tour.jpg",
+        "alt": "Highlight The 4 Days Deluxe Golf Tour In Da Nang"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_001",
+      "url": "https://vmtravel.com/tours/4-days-deluxe-golf-tour-in-da-nang/",
+      "crawledAt": "2026-06-07T02:48:22.641523+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour",
+    "slug": "vmtravel-central-002-ba-na-hills-night-tour-and-sunset-golden-bridge-tour",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Son Tra trong 8 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Perched at an altitude of 1,487 meters on the majestic Truong Son Mountains, Ba Na Hills is often referred to as the “Disneyland of Vietnam” or a “Heaven on Earth” . This world-class resort in Da Nang is famous for its record-breaking cable car system, the mist shrouded French Vi; Escape the daytime crowds and heat with our exclusive Ba Na Hills Night Tour . While most tourists leave by sunset, your journey begins just as the mountain transforms into a serene, misty paradise. Imagine walking across the Golden Bridge with only a few companions, or enjoying; Ba Na Hills Night Tour; Sunset at the Golden Bridge: Witness the breathtaking moment as the sun sets over the giant stone hands, painting the sky in shades of pink and gold..",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Son Tra trong 8 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "14:00 – Hotel Pick-up: Our driver and guide will meet you at your hotel to begin your journey to the cooler heights of Ba Na.",
+      "15:00 – Cable Car Ascent: Enjoy a scenic ride on one of the world's longest cable car systems, rising above the lush primeval forests.",
+      "15:30 – Golden Bridge & Pagoda: Walk the famous Golden Bridge as the crowds thin out. Visit Le Jardin D’Amour Flower Garden and the tranquil Linh Ung Pagoda.",
+      "16:30 – Sunset & French Village: Capture the stunning sunset from the mountain peak before exploring the romantic French Village as the lanterns begin to glow.",
+      "18:30 – After Glow Show: Experience the magic of the After Glow Show, where light and art bring the night to life.",
+      "19:00 – Buffet Dinner: Indulge in an international buffet at Beer Plaza, featuring a wide variety of dishes and a lively atmosphere.",
+      "19:30 – Night Walk and Relaxation: Enjoy a final quiet walk to breathe in the fresh, cool mountain air before heading back.",
+      "21:00 – Return: Take the cable car down and enjoy a comfortable drive back to your hotel. Finish tour Bana Hills by Night and see you again."
+    ],
+    "inclusions": [
+      "Modern vehicle for round-trip transfer",
+      "Round-trip Cable Car ticket",
+      "Professional English-speaking guide",
+      "International Buffet dinner at Beer Plaza"
+    ],
+    "exclusions": [
+      "Personal expenses and souvenirs",
+      "Gratuities (Tips for guide/driver)",
+      "Extra drinks outside the buffet"
+    ],
+    "price_adult": 1475000.0,
+    "price_raw": "$59",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "8 Hours",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2026/01/Ba-Na-Hills-night-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2026/01/Ba-Na-Hills-night-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Event-at-Bana-Hills-by-night.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Sunset-Bana-Hills-Da-Nang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Buffe-dinner-at-Bana-Hills.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Bana-Hills-by-Night-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/After-Glow-show.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/12/Bana-Hill-day-trip-from-Chan-May-Port.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/08/French-Village-at-Bana-Hills.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Ba-Na-Hills-night-tour.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Event-at-Bana-Hills-by-night.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Sunset-Bana-Hills-Da-Nang.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Buffe-dinner-at-Bana-Hills.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Bana-Hills-by-Night-tour.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/After-Glow-show.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/12/Bana-Hill-day-trip-from-Chan-May-Port.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/08/French-Village-at-Bana-Hills.jpg",
+        "alt": "Ba Na Hills Night Tour and Sunset Golden Bridge Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_002",
+      "url": "https://vmtravel.com/tours/ba-na-hills-night-tour/",
+      "crawledAt": "2026-06-07T02:48:23.543701+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Ba Na Hills Tour From Da Nang 1 Day Tour: Deluxe Group Tour",
+    "slug": "vmtravel-central-003-ba-na-hills-tour-from-da-nang-1-day-tour-deluxe-group-tour",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Ba Na Hills Day Tour is an incredible journey to conquer the “Road to Wonderland” in Da Nang City. Ba Na Hills is one of Vietnam’s most high-class and modern resorts and recreational complexes. Just 20 km from Da Nang downtown and at the height of 1,487 m above sea level, Ba Na H; Engage in the Ba Na Hills Tour from Da Nang, you will have a chance to conquer the longest wire cable car in the world and admire the panoramic view of natural landscapes, misty surroundings, and distant coastlines. The entertainment complex is also home to various unique archite; Explore from indoor amusement parks to fairy tale gardens and sacred temples in Ba Na Hills with VM Travel today!; Ba Na Hills Tour From Da Nang.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "08:00 AM Our car and guide will pick you up at your hotel in Da Nang. We will travel 40 kilometers to Ba Na Hills from the Da Nang City Center. Are you ready to conquer the road to Wonderland and explore plenty of fantastic attractions here?",
+      "09:00 AM We arrive at Ba Na Hills. Then we take a cable car to Ba Na Mountain. Sitting in a cable car, you can experience the floating sensation in the air covered with dense fog and admire the greeny natural landscape and majestic beauty of the mountains. You can visit some must",
+      "Golden Bridge The pedestrian bridge is situated at a height of 1487 meters, with a length of 150 meters (492,126 ft). Golden Bridge connected the cable car station and the flower gardens. The bridge is famous for its unique design, with the image of the two giant hands lifting th",
+      "Le Jardin D’Amour flower garden After that, we move to heaven on earth with thousands of blooming flowers that have enamored many people. The Le Jardin D'Amour flower garden is divided into nine different gardens and has hundreds of colorful and artistically shaped flowers. Along",
+      "Having a buffet lunch Recharge your battery with a hearty buffet at a restaurant in French Village. Feel free to savor the exquisite cuisine from worldwide with hundreds of mouthwatering dishes.",
+      "12:30 PM After enjoying lunch at French Village, we continued the trip to conquer the peak of Chua Mountain at 1487m. Then, you will visit Linh Ung Linh Chua Temple to bask in the purity of atmosphere and sacred space at the highest peak in Ba Na. You will find your inner peace a",
+      "Fantasy Park You continue to discover the largest indoor amusement park in Vietnam and the world. What sets Fantasy Park in Ba Na apart is its ability to offer a truly immersive and comfortable experience across various genres. With over 105 games, you can break your limits and e",
+      "French Village Next, we are off to the last spot in the itinerary, French Village. The architecture and design reflect the breath of European architecture with cobblestone streets, charming buildings, and cafes. The place recreates plenty of famous landmarks in Europe with Gothic",
+      "02:00 PM - 03:00 PM Back to the cable car down the mountain. Drop you off at your hotel in Da Nang. Finish the Ba Na Hills Tour From Da Nang. Goodbye, thank you for choosing VM Travel on the journey to explore the “Road to the Wonderland” in Da Nang City, and see you again."
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Cable Car",
+      "Live English Speaking Tour Guide",
+      "A lunch buffet",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Wax Museum (100,000 vnd/pax)"
+    ],
+    "price_adult": 1625000.0,
+    "price_raw": "$65",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/09/Bana-Hills-big-group-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/09/Bana-Hills-big-group-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/Bana-Hills-in-December.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/bana-hill-group-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hoian-to-ba-na.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/explore-bana-hills.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/tour-bana-hills.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/ba-na-hill-group-tour.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/Bana-Hills-big-group-tour.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang 1 Day Tour: Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/Bana-Hills-in-December.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/bana-hill-group-tour.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hoian-to-ba-na.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/explore-bana-hills.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/tour-bana-hills.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/ba-na-hill-group-tour.jpg",
+        "alt": "Ba Na Hills Tour From Da Nang – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_003",
+      "url": "https://vmtravel.com/tours/ba-na-hills-tour-from-da-nang/",
+      "crawledAt": "2026-06-07T02:48:24.467127+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 9
+    }
+  },
+  {
+    "name": "Ba Na Hills Tour From Hoi An - Exquisite Delight 1 Day Tour",
+    "slug": "vmtravel-central-004-ba-na-hills-tour-from-hoi-an-exquisite-delight-1-day-tour",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Ba Na Hills Tour from Hoi An is an incredible journey that takes you into the fairyland outside of Da Nang City. Ba Na Hills is Vietnam’s highest-class resort and entertainment complex, 60km from the charming Hoi An Ancient Town. Ba Na Hills is located at a height of 1,487 meters; Take part in the Ba Na Hills Tour from Hoi An , you will have a chance to conquer the longest wire cable car in the world and admire the panoramic vistas of lush landscapes, misty valleys, and distant coastlines. The entertainment complex is also home to various unique architectu; Join VM Travel and spend one day exploring from indoor amusement parks to fairy tale gardens and sacred temples in Ba Na Hills.; Ba Na Hills Tour From Hoi An.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "08:00 AM Our car and guide will pick you up at your hotel in Hoi An. Leave Hoi An, and we will travel the 60-kilometer to Ba Na Hills. Are you ready to conquer the road to Wonderland and explore plenty of fantastic attractions here?",
+      "09:00 AM We arrive at Ba Na Hills. Then we take a cable car to the hills. Sitting in a cable car, you can enjoy \"suspending\" in the air covered with dense fog and admire the lush natural landscape and majestic beauty of the mountains. After arriving at the Ba Na tourist area, you",
+      "Golden Bridge: The pedestrian bridge is situated at a height of 1487 meters, with a length of 150 meters (492,126 ft). Golden Bridge connected the cable car station and the flower gardens. The bridge is famous for its unique design, with the image of the two giant hands lifting t",
+      "Le Jardin D’Amour flower garden After that, we move to heaven on earth with thousands of blooming flowers that have enamored many people. The Le Jardin D'Amour flower garden is divided into nine different gardens and has hundreds of colorful and artistically shaped flowers. Conti",
+      "Having a buffet lunch Recharge your energy with a varied buffet at a restaurant in French Village. Feel free to savor the exquisite cuisine from all over the world.",
+      "12:30 P.M After having a delicious lunch in French Village, we will visit Linh Chua Linh Tu Temple to unwind, find tranquility in the sacred atmosphere, and enjoy the panoramic view of the whole area in Ba Na Hills.",
+      "Fantasy Park Continue the journey by visiting Vietnam's largest indoor amusement park. With over 105 games, you can push your limits and embrace the excitement. Some highlights include the Free Fall 360 Ferris Wheel, Climbing the Man-Made Mountain, Super Speed Slide, The Cog Rail",
+      "French Village Next, we are off to the final spot, French Village. One of the themes within Ba Na Hills is the recreation of a French medieval village. The architecture and design are reminiscent of a European village, with cobblestone streets, charming buildings, and cafes. The",
+      "02:00 P.M Back to the cable car down the mountain. Drop you off at your hotel in Hoi An. Finish the Ba Na Hills Tour From Hoi An. Goodbye, thank you for choosing VM Travel on the journey to explore the “Road to the Wonderland”, and see you again."
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Cable Car",
+      "Live English Speaking Tour Guide",
+      "A lunch buffet",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Wax Museum (100,000 vnd/pax)"
+    ],
+    "price_adult": 1625000.0,
+    "price_raw": "$65",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-hills-danang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/French-Village.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-hills.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/explore-Golden-Bridge.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Golden-Bridge-in-Bana-Hills-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/linh-ung-pagoda-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Cable-Car.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An - Exquisite Delight 1 Day Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hills-danang.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/French-Village.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hills.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/explore-Golden-Bridge.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Golden-Bridge-in-Bana-Hills-1.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/linh-ung-pagoda-1.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Cable-Car.jpg",
+        "alt": "Ba Na Hills Tour From Hoi An – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_004",
+      "url": "https://vmtravel.com/tours/ba-na-hills-tour-from-hoi-an/",
+      "crawledAt": "2026-06-07T02:48:25.389941+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Bana Hills Day Tour - Book 1 Day Tour in Da Nang - Best Trip",
+    "slug": "vmtravel-central-005-bana-hills-day-tour-book-1-day-tour-in-da-nang-best-trip",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Bana Hills Day Tour – Private Tour provides a golden chance to conquer the “Road to Wonderland” in Da Nang, Central Vietnam, with your own private and comfortable. Ba Na Hills is a hill station and resort 20km from Da Nang downtown and 60km from Hoi An Ancient Town. Ba Na Hills i; Join the Bana Hills Day Tour to conquer one of the longest wire cable cars in the world and admire the panoramic view with greeny landscapes, misty valleys, and distant coastlines. Visit the “heaven on earth” to glimpse Europe in French Village, scroll around the giant Golden Bri; Bana Hills Day Tour; Experience one of the world’s longest and highest cable car routes..",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Son Tra trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Our car and guide will pick you up at your hotel in Da Nang. Then, we will travel about 20 kilometres to Ba Na Hills from the Da Nang City Center. Upon arrival at Bana, get on a cable car and admire the stunning view from the lush mountain and blue sea. After that, stroll on the",
+      "Also, you will continue to find tranquillity at Linh Ung Linh Chua Temple, lost in the ancient beauty at French Village, and have fun when you join thrilling games at Fantasy Park. Next, recharge your battery with a hearty buffet lunch at the French Village restaurant with divers",
+      "Back to the cable car down the mountain. Leave Ba Na Hills, and we will move to Han Market - the most bustling market in Da Nang. Here, you can meet friendly locals and buy souvenirs for your loved ones. After exciting experiences at the market, we will move to Son Tra Peninsula"
+    ],
+    "inclusions": [
+      "High-Quality Car",
+      "Cable Car",
+      "Live English Speaking Tour Guide",
+      "A Lunch Buffet",
+      "Entrance Fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals"
+    ],
+    "price_adult": 3150000.0,
+    "price_raw": "$126",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/explore-Golden-Bridge.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/explore-Golden-Bridge.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/French-Village.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-hills-danang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/10/buffe-in-bana-hills.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-group-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/tour-bana-hills.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bana-tour.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/explore-Golden-Bridge.jpg",
+        "alt": "Bana Hills Day Tour - Book 1 Day Tour in Da Nang - Best Trip"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/French-Village.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hills-danang.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/buffe-in-bana-hills.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-hill-tour-from-hoi-an.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-group-tour.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/tour-bana-hills.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bana-tour.jpg",
+        "alt": "Bana Hills Day Tour – Private Tours"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_005",
+      "url": "https://vmtravel.com/tours/bana-hills-day-tour-private-tours/",
+      "crawledAt": "2026-06-07T02:48:26.294166+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Cham Island Snorkeling Tour from Hoi An or Da Nang",
+    "slug": "vmtravel-central-006-cham-island-snorkeling-tour-from-hoi-an-or-da-nang",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Cu Lao Cham"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Cu Lao Cham trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Just 30 minutes by speedboat from the mainland, Cham Island (Cu Lao Cham) is part of a UNESCO-recognised marine biosphere reserve. It’s famous for its natural beauty, rich sea life, and peaceful island atmosphere. If you’re staying in Hoi An or Da Nang and looking for a fun, refr; You’ll travel by speedboat to reach the island, where you can enjoy snorkelling in clear blue water, spotting tropical fish and vibrant coral reefs. You’ll also have time to swim, relax on the beach, and explore a local fishing village. A delicious seafood lunch is served at a be; This small group tour includes hotel pickup, boat transfers, snorkelling gear, entrance fees, and lunch, so all you need to do is show up and enjoy. Whether you’re travelling solo, as a couple, or with family, this tour is a great way to discover the hidden tropical charm of Viet; Cham Island Snorkeling Tour from Hoi An or Da Nang.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Cu Lao Cham trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "07:30 – 08:00 AM: We’ll begin your day with a comfortable pickup from your hotel in Hoi An or Da Nang. Our friendly tour guide will greet you and escort you to Cua Dai Port in Hoi An, where your boat journey begins.",
+      "08:30 AM: Hop on a high-speed boat and enjoy the fresh breeze as we cruise through the clear waters of the East Sea. The ride to Cham Island takes about 25–30 minutes, giving you beautiful views of the coastline and open sea.",
+      "09:00 AM: we head to Bai Lang Village, the main village on Cham Island. Here, you can explore local life, visit the island market, and see historical spots such as Hai Tang Pagoda, Tan Hiep Market and the Ancient Well. It’s a great chance to learn about the culture and history of",
+      "We’ll anchor at one of the best snorkelling spots around the island. Here, you’ll put on your snorkelling gear and dive into the water to explore the colourful marine life. Swim alongside tropical fish, admire coral reefs, and soak in the peace of the underwater world.",
+      "12:00 PM: Enjoy a Seafood Lunch at a Beachside Restaurant, We’ll move to Bai Chong Beach, where a tasty seafood lunch is served at a local beachside restaurant. Vegetarian meals are available on request. Enjoy your meal while listening to the sound of the waves and the fresh sea",
+      "13:00 PM: Free Time to Swim or Relax, after lunch, you’ll have time to relax on the beach, swim in the crystal-clear water, or simply unwind in the shade. Take in the beautiful scenery and enjoy the peaceful island atmosphere.",
+      "13:30 PM: Hop back on the speedboat for a smooth ride back to Cua Dai Port.",
+      "14:30 – 15:00 PM: Drop-off at Your Hotel, Our driver will take you back to your hotel in Hoi An or Da Nang. You’ll arrive in the afternoon, refreshed and full of great memories from your Cham Island trip."
+    ],
+    "inclusions": [
+      "Hotel pickup and drop-off (Hoi An or Da Nang city centre)",
+      "Round-trip speedboat to Cham Island",
+      "English-speaking guide",
+      "Entrance fees to Cham Island",
+      "Snorkelling equipment (mask, snorkel, life jacket)",
+      "Seafood lunch (vegetarian option available)",
+      "Bottled water"
+    ],
+    "exclusions": [
+      "Personal expenses",
+      "Towels and swimwear",
+      "Drinks during lunch",
+      "Tips for guide and boat crew (optional)"
+    ],
+    "price_adult": 750000.0,
+    "price_raw": "$30",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 Hours",
+    "start_time": null,
+    "meeting_point": "pickup, boat transfers, snorkelling gear, entrance fees, and lunch, so all you need to",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2024/01/snockerling-in-cham-island.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2024/01/snockerling-in-cham-island.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/cham-island-tour-from-da-nang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/01/cu-lao-cham.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/06/snorkerling-in-cham-island.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/01/Ancient-Well-in-Cham-Island.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/01/cham-island-snockerling.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/01/seafood-in-cham-island.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/01/camping-in-cham-island-vietnam.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/snockerling-in-cham-island.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/cham-island-tour-from-da-nang.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/cu-lao-cham.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/06/snorkerling-in-cham-island.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/Ancient-Well-in-Cham-Island.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/cham-island-snockerling.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/seafood-in-cham-island.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/camping-in-cham-island-vietnam.jpg",
+        "alt": "Cham Island Snorkeling Tour from Hoi An or Da Nang"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_006",
+      "url": "https://vmtravel.com/tours/cham-island-snorkeling-tour/",
+      "crawledAt": "2026-06-07T02:48:27.211368+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 9
+    }
+  },
+  {
+    "name": "Da Nang City Tour - Deluxe Group Tour",
+    "slug": "vmtravel-central-007-da-nang-city-tour-deluxe-group-tour-vm-travel",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Son Tra trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Da Nang City Tour is a day trip that takes you to the must-see destinations in the coastal city in Vietnam. If you have very limited time in Danang but want to leave with a great understanding of both the old and new aspects of this vibrant city, its people, history, and culture,; From the Han Market, Linh Ung Pagoda, Marble Mountain, the Da Nang City Tour is an ideal journey to deeply connect with the local culture and natural scenery of the largest city in Central Vietnam.; Join VM Travel with the Da Nang City Tour to explore the beautiful city now!; Explore Da Nang City Tour.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Son Tra trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "At about 08:45 - 09:15 a.m: Our team will pick you up at your Da Nang City Center hotel.",
+      "The first place to visit is the Marble Mountain . It is a group of five limestone mountains located about eight kilometers south of Da Nang. The mountain is well-known for its hidden caves, shrines, and pagodas.",
+      "After that, visit the Non Nuoc Stone Carving Village at the foot of Marble Mountain. Here, you can admire the stone sculptures made under the incredibly skillful hands of the local artists.",
+      "11:00 a.m: Continue visiting Linh Ung Bai But Pagoda , located at Son Tra Peninsula, and admire the biggest Avalokitesvara Bodhisattva Statue of Viet Nam.",
+      "12:15 p.m: Transfer back to city center by visit Han Market . Here, you can observe how Danang’s people sell the local products and buy lovely local souvenirs.",
+      "12:45 p.m: Then, have a delicious lunch with traditional Vietnamese dishes in the restaurant.",
+      "01:30 p.m: Later, our team will say good bye at your hotel. Finish the Danang City Tour"
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Vietnam Cuisine",
+      "Entrance fees as Itinerary",
+      "Mineral water on coach"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel outside the city center"
+    ],
+    "price_adult": 800000.0,
+    "price_raw": "$32",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 Hours",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/09/danang-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/09/danang-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Marble-Mountains.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/My-Khe-Beach.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/dragon-bridge.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Son-Tra-Peninsula.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/linh-ung-pagoda-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Danang-at-Night-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/11/da-nang-kayak.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/danang-tour.jpg",
+        "alt": "Da Nang City Tour - Deluxe Group Tour - VM Travel"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Marble-Mountains.jpg",
+        "alt": "Da Nang City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/My-Khe-Beach.jpg",
+        "alt": "Da Nang City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/dragon-bridge.jpg",
+        "alt": "Da Nang City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Son-Tra-Peninsula.jpg",
+        "alt": "Da Nang City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/linh-ung-pagoda-1.jpg",
+        "alt": "Da Nang City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Danang-at-Night-1.jpg",
+        "alt": "Da Nang City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/da-nang-kayak.jpg",
+        "alt": "da nang city tour - deluxe group tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_007",
+      "url": "https://vmtravel.com/tours/da-nang-city-tour-deluxe-group/",
+      "crawledAt": "2026-06-07T02:48:28.127843+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Da Nang Day Tour - Private Tour | Highlight Full Day Tour",
+    "slug": "vmtravel-central-008-da-nang-day-tour-private-tour-highlight-full-day-tour",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: The Da Nang Day Tour – Private Tour is a day trip that allows you to explore the highlight attractions in Danang City . Situated on the central coast of Vietnam, Danang is naturally favored, with a lengthy coastline with pristine beaches with clear blue waters and white sands. Da; What could be more exciting than immersing yourself in all the fantastic things in just one city? From the bustling Han Market to the serene Linh Ung Pagoda, the majestic Marble Mountain, the beautiful My Khe Beach , and more, the Da Nang Day Tour offers an ideal opportunity to d; From beaches to bridges, the Da Nang City Tour covers it all – join us today!; Da Nang Day Tour.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Our driver and guide will pick you up at your Da Nang City Center hotel. Begin your day with an exploration trip to Marble Mountain - a group of five limestone hills about eight kilometers south of Da Nang. Here, you can admire the hidden caves, temples, and pagodas. Next, you wi",
+      "Continue the tour by visiting the Cham Sculpture Museum to admire the invaluable artifacts of the Cham people - an ethnic group that once thrived in Central southern Vietnam. Later, have lunch in a local restaurant to savor Danang's specialties and Vietnamese cuisine. Take a shor",
+      "The Tour will continue by visiting Han Market - the most bustling market in the city. Here, meet and talk with friendly locals, observe the daily locals’ activities, and buy authentic Danang souvenirs for your loved ones. After exciting experiences at the market, we will move to",
+      "Leaving Son Tra Peninsula, we will go to My Khe Beach - one of the most beautiful beaches in Vietnam. Here, you have free time to snap photos of blue beaches and golden sunshine. Later, you will be dropped off at your hotel."
+    ],
+    "inclusions": [
+      "High-Quality Transport",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Vietnam Cuisine",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottles / 1 day / 1 pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel outside the city center"
+    ],
+    "price_adult": 3450000.0,
+    "price_raw": "$138",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 Day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/11/da-nang-city-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/11/da-nang-city-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Marble-Mountains.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/linh-ung-pagoda-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/cham-mesurm.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/danang-water-sport.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/11/linh-ung.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/my-khe-beach-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/hoian-beach.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/da-nang-city-tour.jpg",
+        "alt": "Da Nang Day Tour - Private Tour | Highlight Full Day Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Marble-Mountains.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/linh-ung-pagoda-1.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/cham-mesurm.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/danang-water-sport.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/linh-ung.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/my-khe-beach-1.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/hoian-beach.jpg",
+        "alt": "Da Nang Day Tour – Private Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_008",
+      "url": "https://vmtravel.com/tours/da-nang-day-tour-private-tour/",
+      "crawledAt": "2026-06-07T02:48:29.051889+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Da Nang Hoi An Full Day Tour - See the Best of Both Cities",
+    "slug": "vmtravel-central-010-da-nang-hoi-an-full-day-tour-see-the-best-of-both-cities",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Da Nang and Hoi An are two famous cities in Central Vietnam with numerous attractive landmarks. Our Da Nang Hoi An full day tour offers an exciting blend of modern and ancient experiences as you explore the vibrant city of Da Nang and the historic town of Hoi An. The tour takes y; Discover the stunning beauty of Da Nang and Hoi An through a short one-day trip that promises to give you a full experience of these two cities, join now!; Da Nang Hoi An Full Day Tour; Visit Linh Ung Pagoda and see the towering Lady Buddha statue..",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Son Tra trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "At 9:00 AM: Our tour guide and driver will pick you up from your hotel in Da Nang City Center to begin the journey to explore two charming cities of Central Vietnam.",
+      "Begin your journey with a visit to Marble Mountain , a cluster of limestone hills. Climb to the top of Thuy Son Mountain for a stunning view, explore ancient caves, and visit the peaceful pagodas scattered throughout the site.",
+      "Next, continue to visit Linh Ung Pagoda on the Son Tra Peninsula. Marvel at the majestic Lady Buddha statue overlooking the South China Sea and enjoy panoramic views of Da Nang’s coastline.",
+      "Continue the trip by exploring Han Market , one of the oldest and most vibrant markets in Da Nang City. Come here, you can learn more about the daily local life and go shopping in the market.",
+      "Afterward, take a break and enjoy a traditional Vietnamese lunch at a local restaurant.",
+      "After lunch, transfer to Cam Thanh Coconut Forest , you will have the chance to take a basket boat to explore the coconut forest and watch local people perform and have fun with a basketboat. Experience and learn about the culture of locals and watch fishermen catch fish with net",
+      "Continue to head to Hoi An Ancient Town . Stroll through its charming streets, explore the well-preserved historic buildings, visit the iconic Japanese Covered Bridge, and discover Hoi An’s rich cultural heritage. You’ll also have time to visit temples, old merchant houses, Phuc",
+      "Enjoy a romantic dinner at a local restaurant in Hoi An Old Town.",
+      "At 7:30PM: After a day of exploring, leave Hoi An and back to your hotel in Da Nang."
+    ],
+    "inclusions": [
+      "Hotel pick-up and drop-off",
+      "Boat on Hoai River and lantern",
+      "English-speaking guide",
+      "Entrance fee as itinerary",
+      "Basket boat at coconut forest",
+      "Lunch at a local restaurant",
+      "Air-conditioned transportation",
+      "Bottled water"
+    ],
+    "exclusions": [
+      "Personal expenses and additional meals",
+      "Tips for the guide and driver",
+      "Travel insurance"
+    ],
+    "price_adult": 1300000.0,
+    "price_raw": "$52",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 Day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/da-nang-and-hoi-an-city-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/da-nang-and-hoi-an-city-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/da-nang-city-tour-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/10/hoian-lantern-festival.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/10/food-tour-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/11/linh-ung.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/06/central-package-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/10/Hoian-coconut-village.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hoi-an-boat-1.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/da-nang-and-hoi-an-city-tour.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour - See the Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/da-nang-city-tour-1.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/10/hoian-lantern-festival.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/10/food-tour-hoian.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/linh-ung.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/central-package-tour.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/10/Hoian-coconut-village.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hoi-an-boat-1.jpg",
+        "alt": "Da Nang Hoi An Full Day Tour – See The Best of Both Cities"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_010",
+      "url": "https://vmtravel.com/tours/da-nang-hoi-an-full-day-tour/",
+      "crawledAt": "2026-06-07T02:48:30.855029+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass",
+    "slug": "vmtravel-central-011-da-nang-to-hue-day-trip-by-heritage-train-via-hai-van-pass",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 9 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: The Da Nang to Hue Day trip by heritage train is a meticulously crafted itinerary for travelers seeking a blend of natural beauty and imperial history. Your adventure begins on the iconic heritage railway, offering a unique vantage point of Lang Co Bay and the rugged cliffs of ce; Experience the most scenic railway journey in Vietnam! Our Da Nang to Hue Day trip by heritage train is more than just a transfer; it is a voyage through history. Leave the bustling city behind as you wind through the legendary Hai Van Pass on a vintage train, witnessing breathta; From royal palaces to soul-soothing herbal foot baths, join us for a day of cultural immersion and nostalgic elegance. Book your seat on the “Journey of Heritage” today!; Da Nang to Hue Day trip by heritage train.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 9 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Our professional guide and driver will pick you up from your hotel in Da Nang. We head to the Da Nang Railway Station to begin your nostalgic adventure.",
+      "Board the Heritage Train for a breathtaking ride. This is the highlight of the trip, where you can admire the majestic Hai Van Pass and the sparkling waters of Lang Co Bay from a unique railway perspective.",
+      "The train arrives at Lang Co Station. Your private vehicle will be waiting to take you directly to Hue. We spend the morning exploring the Hue Imperial Citadel , the historic seat of the Nguyen Dynasty, featuring the Forbidden Purple City and Royal Temples.",
+      "Savor a delicious lunch at a hand-picked local restaurant, featuring authentic Hue specialties. Afterward, treat yourself to a traditional herbal foot soak, a royal wellness method used to rejuvenate your energy.",
+      "Experience Footbath in local restaurant",
+      "In the afternoon, we visit the iconic Thien Mu Pagoda , the oldest religious site in Hue overlooking the Perfume River. We then continue to the Khai Dinh Tomb , a masterpiece of architecture blending Eastern and Western styles with intricate porcelain mosaics.",
+      "Say goodbye to the ancient capital as we board our private vehicle for the return journey to Da Nang via the modern Hai Van Tunnel.",
+      "Arrive back at your hotel in Da Nang. Your Da Nang to Hue Day trip by heritage train concludes with unforgettable memories."
+    ],
+    "inclusions": [
+      "Train ticket Da Nang to Lang Co Station (1 way)",
+      "Minivan with A/C",
+      "English speaking guide",
+      "Entrance fees",
+      "Lunch",
+      "Footbath",
+      "Water and tissues",
+      "Yes, the tour is all-inclusive of the heritage train ticket from Da Nang to Hue, all entrance fees to historical sites, lunch, and transportation."
+    ],
+    "exclusions": [
+      "Personal expenses, beverages during meals.",
+      "Tips for the tour guide and driver (optional).",
+      "Any additional costs not included in the program.",
+      "Extra fee applicable on public holidays in Vietnam."
+    ],
+    "price_adult": 1625000.0,
+    "price_raw": "$65",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "9 Hours",
+    "start_time": null,
+    "meeting_point": "Depart for Da Nang Say goodbye to the ancient capital as we board our private vehicle",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2026/01/Da-Nang-to-Hue-Day-trip-by-heritage-train.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2026/01/Da-Nang-to-Hue-Day-trip-by-heritage-train.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/12/Hue-day-trip-from-Chan-May-Port.webp",
+      "https://vmtravel.com/wp-content/uploads/2024/01/train-in-vietnam.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Hue-tour-by-Train.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Footbath-in-tour-Hue-city.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+      "https://vmtravel.com/wp-content/uploads/2026/01/Heritage-Train.webp",
+      "https://vmtravel.com/wp-content/uploads/2024/03/Hue-Train-Staion.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Da-Nang-to-Hue-Day-trip-by-heritage-train.jpg",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/12/Hue-day-trip-from-Chan-May-Port.webp",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/01/train-in-vietnam.jpg",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Hue-tour-by-Train.jpg",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Footbath-in-tour-Hue-city.jpg",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/01/Heritage-Train.webp",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/03/Hue-Train-Staion.jpg",
+        "alt": "Da Nang to Hue Day Trip by Heritage Train via Hai Van Pass"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_011",
+      "url": "https://vmtravel.com/tours/da-nang-to-hue-day-trip-by-heritage-train/",
+      "crawledAt": "2026-06-07T02:48:31.764855+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 9
+    }
+  },
+  {
+    "name": "Day Trip From Da Nang To Hoi An - Deluxe Group Tour",
+    "slug": "vmtravel-central-012-day-trip-from-da-nang-to-hoi-an-deluxe-group-tour",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Day Trip from Da Nang to Hoi An gives you a wonderful chance to visit the UNESCO World Heritage Site, recognized as one of the most charming towns in the world – Hoi An Ancient Town . Visit Hoi An Old Town to stroll around the little ancient streets, drop lanterns on the Hoai Riv; Book your Hoi An Day Trip from Da Nang now for a journey into Vietnamese heritage and hospitality!; Day Trip From Da Nang To Hoi An; Discover the captivating streets of Hoi An Old Town, adorned with timeless historical architecture.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "At 1:45 - 2:00 pm: Our driver and guide will pick you up and transfer you to Hoi An.",
+      "At 3:00 pm: Upon arrival in Cam Thanh Coconut Forest - a beautiful water coconut palm forest about 5km southeast of the Hoi An Old Town. You will get in a basket boat to explore the coconut forest and learn about the daily activities of local fishermen and the village’s history.",
+      "At 4:00 pm: Continue the day trip by visiting Hoi An Old Town - a bustling international trading port from the 16th to 17th century. Your tour guide will take you to the Assembly Halls, Old Houses, and other cultural constructions to learn about the unique ancient architecture, l",
+      "06:00 p.m: Get in a boat to cruise on the Hoai River and admire the charming town from a different perspective. Enjoy the sparkling night while dropping flower lanterns into the clam water. Lighting a flower lantern is like wishing good luck and peace, bringing health and fortune",
+      "06:30 p.m: Fill your day with Hoi An specialties in a Vietnamese restaurant.",
+      "07:30 p.m: Leave Hoi An, come back to Da Nang City, and say goodbye at your hotel in Danang.",
+      "Finish the Hoi An Day Trip from Da Nang - Small Group Tour. Goodbye, and thank you for choosing VM Travel to explore timeless beauty at Hoi An Ancient Town. See you again!"
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Live English Speaking Tour Guide",
+      "Local Dinner with Hoi An/ Vietnamese Cuisine",
+      "Basket boat in Coconut Forest",
+      "Boat on Hoai River (If requested)",
+      "Mineral Water"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel outside the city center"
+    ],
+    "price_adult": 900000.0,
+    "price_raw": "$36",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 Hours",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/tour-coconut.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/tour-coconut.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hoian-in-vietnam.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/cam-thanh-coconut-village.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/10/visit-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hoian-walking.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/10/Hoi-An-Lantern-Festival-River.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/bridge-in-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/lantern-in-hoian-vietnam.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/tour-coconut.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An - Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hoian-in-vietnam.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/cam-thanh-coconut-village.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/visit-hoian.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hoian-walking.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/Hoi-An-Lantern-Festival-River.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/bridge-in-hoian.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/lantern-in-hoian-vietnam.jpg",
+        "alt": "Day Trip From Da Nang To Hoi An – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_012",
+      "url": "https://vmtravel.com/tours/day-trip-from-da-nang-to-hoi-an/",
+      "crawledAt": "2026-06-07T02:48:33.152574+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Day Trip To Hoi An From Da Nang - Private Tour",
+    "slug": "vmtravel-central-013-day-trip-to-hoi-an-from-da-nang-private-tour-vm-travel",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Day Trip To Hoi An From Da Nang offers a chance to explore the timeless beauty of the UNESCO World Heritage Site – Hoi An Ancient Town . With its ancient beauty and long-standing cultural heritage, Hoi An attracts millions of domestic and international tourists yearly to explore; Join Day Trip To Hoi An From Da Nang to enjoy the freedom to explore the charming town at your own pace!; Day Trip to Hoi An from Da Nang; Discover the enchanting streets of Hoi An Old Town, with its well-preserved historic architecture..",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Our car and guide will pick you up at your hotel in Da Nang and then transfer you to Hoi An. Hoi An Day Trip starts with Cam Thanh Coconut Village - about 5km southeast of the Hoi An Old Town. You will experience a basket boat ride around the coconut forest and learn about the da",
+      "Exploring Hoi An Ancient Town - one of the most charming towns in the world. Our tour guide will take you to the Assembly Halls, Old Houses, and other historical sites to learn about the unique ancient architecture and local lifestyles. Then, you have free time to wander around t"
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Vietnam Cuisine",
+      "Entrance fees as Itinerary",
+      "Boat trip on Hoai River",
+      "Mineral Water 2 Bottles / 1 day / 1 pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel outside the city center"
+    ],
+    "price_adult": 2750000.0,
+    "price_raw": "$110",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/10/visit-hoian.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/10/visit-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/tour-coconut.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/11/coffee-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/11/hoi-an-bike-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/cam-thanh-coconut-village.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/11/hoi-an-buffalo.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/10/hoi-an-night-market.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hoian-walking.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/visit-hoian.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang - Private Tour | VM Travel"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/tour-coconut.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/coffee-hoian.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/hoi-an-bike-tour.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/cam-thanh-coconut-village.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/11/hoi-an-buffalo.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/hoi-an-night-market.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hoian-walking.jpg",
+        "alt": "Day Trip To Hoi An From Da Nang – Private Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_013",
+      "url": "https://vmtravel.com/tours/day-trip-to-hoi-an-from-da-nang/",
+      "crawledAt": "2026-06-07T02:48:34.085474+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Hue Bicycle Tour: Organic Farm Visit & Local Cooking Class",
+    "slug": "vmtravel-central-014-hue-bicycle-tour-organic-farm-visit-local-cooking-class",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "My Son"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, My Son trong 8 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Exploring Hue by bicycle is a practical way to move beyond the busy city center and experience a quieter side of the region. Heading toward the northwest of Hue, the route leads to La Chu Village , a traditional area known for its calm atmosphere and local character.; This Hue Bicycle Tour allows you to cycle along small village roads, pass through rice fields, and observe daily life at a slower pace. The setting is simple but representative of the countryside around Hue, with a focus on real, everyday environments rather than staged attractio; Overall, the tour combines light activity with cultural exposure, offering a balanced way to explore the countryside while keeping the schedule relaxed and easy to follow.; Hue bicycle tour and cooking class.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, My Son trong 8 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "08:30 AM – Doorstep Welcome: Begin your journey with a private pick-up from your Hue hotel. We’ll leave the city bustle behind for the emerald landscapes of La Chu Village.",
+      "The Scent of Lotus: Arrive at a traditional garden house where a chilled glass of local lotus tea awaits—a refreshing prelude to your rural immersion.",
+      "Heritage on Two Wheels: Glide through quiet, tree-lined lanes on a bicycle. Our path leads to a centuries-old pagoda, bustling local markets, and ornate family temples that hold the village’s history.",
+      "Organic Roots at Madam Thu Farm: Step into the first organic sanctuary of the village. Roll up your sleeves for a hands-on farming session—harvesting seasonal greens and learning the art of traditional cultivation.",
+      "The Garden Kitchen: Under the shade of pomelo trees, join our local hosts to craft authentic Hue delicacies using your freshly harvested ingredients.",
+      "Countryside Banquet: Enjoy a private, home-cooked lunch served in the heart of the garden, where every bite tells a story of the land.",
+      "Botanical Bliss: Before departing, indulge in a therapeutic herbal foot bath. Let the warmth of lemongrass and ginger, picked straight from the garden, soothe your senses.",
+      "02:00 PM – Homeward Bound: We bid farewell to La Chu and escort you back to your hotel, carrying the peaceful rhythm of the village with you."
+    ],
+    "inclusions": [
+      "Transportation (car and bicycle)",
+      "Local guide (English / French speaking)",
+      "Entrance fees",
+      "Lunch",
+      "Cooking class with a local chef",
+      "Herbal foot bath"
+    ],
+    "exclusions": [
+      "Personal expenses",
+      "Services not mentioned above"
+    ],
+    "price_adult": 1500000.0,
+    "price_raw": "$60",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "8 Hours",
+    "start_time": null,
+    "meeting_point": "departing, indulge in a therapeutic herbal foot bath",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2026/03/Hue-cycling-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2026/03/Hue-cycling-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/03/Hue-eco-tour-farm.webp",
+      "https://vmtravel.com/wp-content/uploads/2026/03/Hue-bicycle-tour.webp",
+      "https://vmtravel.com/wp-content/uploads/2026/03/Cooking-class-in-La-Chu-Village.webp",
+      "https://vmtravel.com/wp-content/uploads/2026/03/Hue-countryside-tours.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/03/Be-A-Farmer-Tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2026/03/Hue-Eco-Tour.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Hue-cycling-tour.jpg",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit & Local Cooking Class"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Hue-eco-tour-farm.webp",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit and Local Cooking Class"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Hue-bicycle-tour.webp",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit and Local Cooking Class"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Cooking-class-in-La-Chu-Village.webp",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit and Local Cooking Class"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Hue-countryside-tours.jpg",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit and Local Cooking Class"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Be-A-Farmer-Tour.jpg",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit and Local Cooking Class"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2026/03/Hue-Eco-Tour.jpg",
+        "alt": "Hue Bicycle Tour: Organic Farm Visit and Local Cooking Class"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_014",
+      "url": "https://vmtravel.com/tours/hue-bicycle-tour/",
+      "crawledAt": "2026-06-07T02:48:34.987085+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Hue City Tour - Best Group Tour - Book Now Hue 1 Day Trip",
+    "slug": "vmtravel-central-015-hue-city-tour-best-group-tour-book-now-hue-1-day-trip",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Hue City Tour – Small Group offers a wonderful chance to back in time and witness the splendor of the last royal dynasty in Vietnam. Hue Day Trip brings you closer to the Complex of Hue Monuments – a UNESCO World Heritage Site in the heart of poetic Hue City . The appealing journ; Join our Hue City Day Tour and begin your dream trip in Hue with VM Travel – Vietnam Package Tours today!; Explore Hue Imperial Citadel; Visit the top 6 well-known places in Hue one day.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "08:00 AM: Our guide and car will pick you up at your hotel/stay in Hue City. Are you ready to start on the journey to discover Hue City? Just take up your bag and go! VM Travel will offer you the utmost service and experience to explore beautiful Hue in one day.",
+      "Take a dragon boat to the Thien Mu Pagoda (Heaven Fairy Lady Pagoda) - the oldest pagoda in Hue City. The boat trip of 30 minutes on the poetic Perfume River brings a chance to observe the peaceful scenery on both sides of the river and enjoy the fresh air in the morning.",
+      "09:30 AM: Visit the Imperial Citadel, the site where the capital of the Nguyen Dynasty headquarters for 143 years. Admiring the ornate architecture and getting information from the local guide about the history of formation and the interesting stories involving the Kings of the N",
+      "After sightseeing at the Imperial Citadel, our car will take you to Dong Ba Market - the oldest and busiest market in Central Vietnam. You can witness the hustle and bustle atmosphere of locals and enjoy the pace of daily life here. Also, do not miss out on buying local gifts and",
+      "12:00 AM: Having lunch at a local restaurant with Hue cuisine. Before your meals, relax your feet after a long walk with the herbal footbath service from local natural herbal. Take a short break before continuing the trip to the Royal Tombs",
+      "01:30 PM: Visit Khai Dinh Tombs, 12th King of the Nguyen Dynasty. Admiring the elements combination of Western and Eastern architecture. This is one of the most elaborately and splendid built in the complex of royal tombs.",
+      "3:00 PM: Visit Minh Mang Tomb, 2nd King of the Nguyen Dynasty. The tomb is impressive with traditional architecture and harmony with charming natural surroundings, including lush trees, a calm lotus lake, and stunning mountains.",
+      "4:00 PM: Visit Hue conical hat village and incense stick village. Observe how local artisans make elegant conical hats and fragrant incense sticks. Also, do not miss out on taking photos with vibrant incense backgrounds in Hue Incense village.",
+      "04:30 PM: Drop you off at your hotel or stay in Hue. Goodbye, thank you for choosing VM Travel, and see you again!"
+    ],
+    "inclusions": [
+      "High Quality Minivan",
+      "Dragon Boat Trip on Perfume River",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Hue / Vietnam Cuisine",
+      "Herbal Foot Bath",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax",
+      "Yes, most of our tour packages offer hotel pickup and drop-off services. During the booking process, you'll be asked to provide your hotel details for arrangements."
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel/stay outside the center of Hue"
+    ],
+    "price_adult": 0,
+    "price_raw": null,
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": "pickup and drop-off included? Yes, most of our tour packages offer hotel pickup and dr",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-3.png",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-3.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-7.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-2.png",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hue.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-4.png",
+      "https://vmtravel.com/wp-content/uploads/2023/07/thien-mu.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-3.png",
+        "alt": "Hue City Tour - Best Group Tour - Book Now Hue 1 Day Trip"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-7.png",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-2.png",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hue.jpg",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-4.png",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/thien-mu.jpg",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+        "alt": "Hue City Tour – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_015",
+      "url": "https://vmtravel.com/tours/hue-city-tour/",
+      "crawledAt": "2026-06-07T02:48:35.920675+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [
+        "missing_or_unparsed_price"
+      ],
+      "tourSignalScore": 7
+    }
+  },
+  {
+    "name": "Hue Cooking Class Tour - From Market to Table",
+    "slug": "vmtravel-central-016-hue-cooking-class-tour-from-market-to-table",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 6 hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: When mentioning Hue, it is impossible not to mention the cuisine of this land. Hue cuisine has become famous worldwide, making visitors who have enjoyed it will never forget. The richness from ingredients to the way of making dishes, reflects the culture and habits in the daily l; Hue Cooking Class Tour is an opportunity for you to prepare and cook several traditional Hue dishes, such as Banh Khoai (Vietnamese sizzling crepes), Nem Lui (lemongrass skewers), Goi Cuon (fresh spring rolls)…. Learn about the importance of ingredients in Hue’s cuisine and savor; Hue Cooking Class Tour is one of the best things to do in Hue that you should not miss. Don’t hesitate to join the Hue Cooking Class Tour with us to explore the beauty from culture to cuisine of Hue City in Vietnam.; Hue Cooking Class Tour.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 6 hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "About 8:30 AM: We will pick you up at your hotel by a cyclo and transfer you to a local market - Dong Ba Market.",
+      "Arrive at the bustling market. We will take you on a tour, and introduce you to the various ingredients that are essential to Hue cuisine. You'll learn about local vegetables, herbs, spices, and other ingredients, and you may have the opportunity to purchase fresh items for the c",
+      "After the market tour, you’ll be driven to a local restaurant and join a “cooking class”. Under the guidance of the chef, you’ll chop, marinate, and cook the ingredients, following traditional methods. The chef will provide tips and tricks, and you'll get to ask questions as you",
+      "Once the cooking is done, it’s time to sit down and enjoy the meal you’ve prepared and our chief will be able to give her feedback on your chef skills. This is a great opportunity to taste the rich flavors of Hue cuisine. Then you will have a great time relaxing by steeping your"
+    ],
+    "inclusions": [
+      "Transfer by Cyclo",
+      "Cooking class with the chef",
+      "Lunch at the restaurant",
+      "Footbath with medicinal herbs"
+    ],
+    "exclusions": [
+      "Beverage in Meal"
+    ],
+    "price_adult": 1125000.0,
+    "price_raw": "$45",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 hours",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-class.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-class.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class-at-madam-thu.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/cyclo-in-hue.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-class-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class-in-hue.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-by-cyclo.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/madam-thu-cooking-classa.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-class.jpg",
+        "alt": "Hue Cooking Class Tour - From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class-at-madam-thu.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/cyclo-in-hue.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-class-tour.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class-in-hue.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-by-cyclo.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/madam-thu-cooking-classa.jpg",
+        "alt": "Hue Cooking Class Tour – From Market to Table"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_016",
+      "url": "https://vmtravel.com/tours/hue-cooking-class-tour/",
+      "crawledAt": "2026-06-07T02:48:36.837897+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Hue Day Trip From Da Nang - Private Tour",
+    "slug": "vmtravel-central-017-hue-day-trip-from-da-nang-private-tour",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Join the Hue Day Trip from Da Nang to explore something different and exciting between two highlight destinations in Central Vietnam, including the Da Nang Beach City and the ancient capital of Hue. Danang attracts tourists with dynamic lifestyles, modern buildings, and impressiv; Discover Hue’s royal heritage and scenic beauty with our Da Nang to Hue City Tour!; Hue Day Trip From Da Nang; Visit Khai Dinh King’s Tomb to explore the unique architecture blending between Eastern and Western design..",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Our driver and guide will pick you up at your hotel in Danang and transfer to Hue City. The journey is about 102km to the North of Danang. On the way, we will conquer the breathtaking Hai Van Pass - one of the world's most scenic coastal routes. Stop to capture moments and admire",
+      "Enjoy a Cyclo Tour from the restaurant to Hue Imperial Citadel. You will feel the city's fresh air by passing through green trees. Arrive at Hue Imperial Citadel - the cultural and political lasting 143 years of the last royal dynasty in Vietnam. Here, have a chance to learn abou",
+      "Finish the Hue Day Trip from Danang - Private Tour. Goodbye, and thank you for choosing VM Travel to explore the ancient beauty of Hue. See you again!",
+      "Note: We can provide vegetarian, halal, or accommodate any special dietary requests, please inform our sales team of your preferred food option"
+    ],
+    "inclusions": [
+      "High-Quality Transportation",
+      "Live English Speaking Tour Guide",
+      "Lunch with Vietnamese cuisine",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottles / 1 day / 1 pax"
+    ],
+    "exclusions": [
+      "Optional tip for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from the Hotel outside the city center"
+    ],
+    "price_adult": 4125000.0,
+    "price_raw": "$165",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 Day",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/hue-day-trip.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/hue-day-trip.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/hue-imperial-city-1.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+      "https://vmtravel.com/wp-content/uploads/2023/10/thien-mu-pagoda-in-hue.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-danang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hue-citadel-design.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Stele-Pavilion-of-khai-dinh.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hue-day-trip.jpg",
+        "alt": "Hue Day Trip From Da Nang - Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/hue-imperial-city-1.jpg",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/thien-mu-pagoda-in-hue.jpg",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-danang.jpg",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hue-citadel-design.jpg",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Stele-Pavilion-of-khai-dinh.jpg",
+        "alt": "Hue Day Trip From Da Nang – Private Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_017",
+      "url": "https://vmtravel.com/tours/hue-day-trip-from-da-nang-private-tour/",
+      "crawledAt": "2026-06-07T02:48:37.760571+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Hue Day Trip From Da Nang - Deluxe Small Group Tour",
+    "slug": "vmtravel-central-018-hue-day-trip-from-da-nang-deluxe-small-group-tour",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Hue Day Trip From Da Nang is a trip departing one of the most dynamic cities in beautiful Vietnam, Da Nang, to the capital of the last royal dynasty in Vietnam that stood for 143 years, from 1082 to 1945, the ancient capital Hue. From exploring the scenic landmarks suburb of the; Suppose you are a history lover and enthusiastic to learn about the beauty of nature landscape, ancient architecture, local cuisine, and rich cultures in the Hue Imperial City. In that case, the Hue Day Trip from Da Nang is an extraordinary journey designed especially for you. Ju; Join our Hue Day Trip From Da Nang and let VM Travel make your trip most impressive!; Hue Day Trip from Da Nang – Deluxe Group Tour.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "07:00 - 07:30 A.M: Our team will pick you up at your hotel in Da Nang.",
+      "08:30 A.M: We will arrive at the first stop in the itinerary, the Majestic Hai Van Pass. Are you ready to conquer one of the most remarkable coastal roads in the world? With approximately 30 minutes to savor this natural wonder, you'll have the chance to capture some shots of the",
+      "After that, our car will continue to move to Lang Co Beach - one of the world's most beautiful Bays in Hue. Here, we will pass over the serene Lap An Lagoon . The lagoon is famous for its poetic and peaceful beauty. You will have 10 minutes to capture the charming natural surroun",
+      "11:00 A.M: Welcome you to Hue City Center. Begin your journey to discover the beauty of Hue Imperial City by visiting Khai Dinh Tomb, the 12th King of the Nguyen Dynasty. Khai Dinh Tomb is distinctive in design from the traditional architecture of other royal tombs in Hue. The to",
+      "12:30 A.M: Having lunch at a local restaurant offering Hue specialties, including Hue Beef Noodles, Stuffed Rice Pancakes, Fried Spring Rolls, and many delicious traditional Hue cakes.",
+      "01:30 P.M: We continue the Hue Day Trip From Da Nang to the Imperial Citadel. This grandeur architecture is the seat of the capital of the Nguyen Dynasty, the last dynasty of Vietnam from 1802 to 1945. Wandering the peaceful royal garden, admire the ornate royal architecture, and",
+      "03:00 P.M: Visit Thien Mu Pagoda , the spiritual symbol of Hue City, with a seven-story height of 21m. The pagoda is 400 years old and next to the poetic Perfume River. Wandering under the green pines, enjoying the elegant smells of a lotus lake, observing the Buddhists praying,",
+      "04:00 P.M: Finish the sightseeing tour at some must-see destinations in Hue. Begin your return to Da Nang city.",
+      "06:00 P.M: Our team will drop you off at your hotel in Da Nang. Goodbye, thank you for choosing VM Travel to explore the ancient capital Hue from Da Nang, and see you again."
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Hue / Vietnam Cuisine",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel/stay outside the center of Da Nang City"
+    ],
+    "price_adult": 1225000.0,
+    "price_raw": "$49",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": "departing one of the most dynamic cities in beautiful Vietnam, Da Nang, to the capital",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-hoian.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/khai-dinh-tomb-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-7.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-8.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-2.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-3.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-hoian.jpg",
+        "alt": "Hue Day Trip From Da Nang - Deluxe Small Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/khai-dinh-tomb-tour.jpg",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-7.png",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-8.png",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-2.png",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-3.png",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+        "alt": "Hue Day Trip From Da Nang – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_018",
+      "url": "https://vmtravel.com/tours/hue-day-trip-from-da-nang/",
+      "crawledAt": "2026-06-07T02:48:38.666598+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 9
+    }
+  },
+  {
+    "name": "Hue Day Trip From Hoi An Da Nang-Book Best 1 Day Group Tour",
+    "slug": "vmtravel-central-019-hue-day-trip-from-hoi-an-da-nang-book-best-1-day-group-tour",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Hue Day Trip From Hoi An is a trip departing one of the most charming towns in the world, Hoi An, to the site of the last dynasty of Vietnam, the ancient capital Hue. It is a full-day trip and returns to the starting point on the same day. Hue City Tour awaits you, from browsing; If you are a history buff and eager to learn about the beauty of nature landscape, oriental architecture, exquisite cuisine, and diverse cultures in the Hue Imperial City , the Hue City Tour is an extraordinary journey born for you. It is just a day trip, but we ensure you gain t; Join our Hue Day Trip From Hoi An and let VM Travel make your trip most exceptional!; Hue city tour from Hoi An full day.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "07:00 - 07:30 A.M: Our car and tour guide will pick you up at your hotel in Hoi An. Let’s start on your journey to the ancient capital of Hue, and do not miss out admire the beauty of nature through the window.",
+      "08:30 AM: We will arrive at the first stop in the journey, the Majestic Hai Van Pass. Are you ready to conquer one of the most remarkable coastal roads in the world? Here, you will have about 30 minutes to stop at the peak and take advantage of impressive shots with the \"million",
+      "After that, our car will move to Lang Co Beach - one of the world's most beautiful Bays in Hue, and we will pass over the serene Lap An Lagoon. The lagoon is famous for its beauty as poetry. Get a camera ready, and you will have 10 minutes to capture the charming natural surround",
+      "11:00 AM: Welcome you to Hue City Center. Begin your journey to discover the beauty of Hue Imperial City by visiting Khai Dinh Tomb, the 12th King of the Nguyen Dynasty. The tomb's design is unlike the traditional grandeur of other imperial tombs in Hue. The tomb is a fusion of t",
+      "12:30 AM: Having lunch at a local restaurant with Hue cuisine. Before your meals, relax your mind and feet after a long walk with the herbal footbath service from local natural herbs. Take a short break before continuing the trip back in time and explore the grandeur of the Hue I",
+      "01:30 PM: We continue the Hue Day Trip From Hoi An to the Imperial Citadel. This grandeur architecture is the capital of the Nguyen Dynasty, the last dynasty of Vietnam from 1802 to 1945. Excursion the serene royal garden, admire the ornate royal architecture, and listen to the k",
+      "03:00 PM: Finally, we will move to the final stop in the journey. Visit Thien Mu Pagoda - the largest pagoda and the iconic of Hue City. The pagoda is 400 years old and next to the poetic Perfume River. Wandering under the green pines, enjoying the elegant smells of Lotus Lake, a",
+      "04:00 PM: Finish the sightseeing tour at some must-see destinations in Hue. Begin your return to charming Hoi An.",
+      "07:00 PM: Our driver will drop you off at your hotel in Hoi An. Goodbye, thank you for choosing VM Travel to explore the ancient capital Hue from Hoi An, and see you again."
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Hue / Vietnam Cuisine",
+      "Herbal Foot Bath",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel/stay outside the center of Hue"
+    ],
+    "price_adult": 1350000.0,
+    "price_raw": "$54",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 day",
+    "start_time": null,
+    "meeting_point": "departing one of the most charming towns in the world, Hoi An, to the site of the last",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+      "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-hoian.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-7.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-8.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-5.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-2.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-4.png"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-1.png",
+        "alt": "Hue Day Trip From Hoi An Da Nang-Book Best 1 Day Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/hue-city-tour-from-hoian.jpg",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-7.png",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-8.png",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-6.png",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-5.png",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-2.png",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-City-Tour-4.png",
+        "alt": "Hue Day Trip from Hoi An – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_019",
+      "url": "https://vmtravel.com/tours/hue-day-trip-from-hoi-an/",
+      "crawledAt": "2026-06-07T02:48:39.563707+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Hue DMZ Tour - Unveiling History on Captivating Tour",
+    "slug": "vmtravel-central-020-hue-dmz-tour-unveiling-history-on-captivating-tour",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Hue DMZ Tour is a full-day trip to step into history and visit the remnants of the war in the demilitarized zone. The DMZ is located in Quang Tri Province, 60 kilometers from Hue City. The DMZ played a vital role in Vietnam War between 1954 to 1975. It is a historically significa; Hue DMZ Tour takes tourists to the historical sites that left after the Resistance War Against America. The journey traverses the historical witnesses in Quang Tri Province, including the combat base, tunnels, national cemetery, trail, river, and bridge. The DMZ tour is a great c; Visit Hien Luong Bridge; Visit the historical sites that place witnessed the fiercest battles.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "07:30 A.M: Our guide and car will pick you up at your hotel or stay at Hue City and transfer you to the DMZ in Quang Tri. Are you ready to step on the journey to explore glorious Vietnam's history? VM Travel will accompany you on this history tour.",
+      "9:00 A.M: Arrived in Quang Tri. On Highway 9, you have a chance to see Rock Pile Hill. It is one of the US military bases and was used as a watchtower to observe the activities of the Vietnam People’s Army in the DMZ from 1966 to 1968.",
+      "Visit Dakrong Bridge, which is one of the main branches of the Ho Chi Minh Trail. A hedging bridge surrounded by the majestic natural scenery with mountains and forests. The bridge was an important transport route for the Southern battlefield during the war.",
+      "Our car continue to take you to Quang Tri Ancient Citadel. This citadel is famous for being the site of fierce battles lasting 81 days. Nowadays, the Quang Tri Ancient Citadel is the place that marks the immortal victories of the Quang Tri army and people and become an emblem of",
+      "Continue visiting Khe Sanh Combat Base, a US military base. The combat base was the site of several famous battles between 1967 and 1968. Especially during the Mau Than Battle, the North Vietnamese Army encircled and attacked a large group of US Marines.",
+      "Return to Highway 1 for lunch at a local restaurant in Dong Ha town. Take a short break before continuing the trip to other historical sites in the afternoon.",
+      "2:00 P.M: You continue the history journey to visit the Hien Luong Bridge and the Ben Hai River, a symbol of Vietnam’s partition. After the Geneva Agreement, they used the 17th parallel to divide Vietnam into northern and southern sections, each with its administration. The bridg",
+      "3:00 P.M: Visit Vinh Moc tunnels, the most highlight part of the history tour. Vinh Moc tunnels are famous as an underground network constructed by locals to avoid bombings during the American War. It is a world of living and fighting underground, completely isolated from the out",
+      "4:30 P.M: Finish Hue DMZ Tour and come back to Hue City. Goodbye, thank you for choosing VM Travel, and see you again!"
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Live English Speaking Tour Guide",
+      "Local Lunch with Vietnam Cuisine",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Personal expenses and additional meals",
+      "Pick up from your hotel/stay outside the center of Hue",
+      "Optional gratuities for driver and guide"
+    ],
+    "price_adult": 1250000.0,
+    "price_raw": "$50",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 Day",
+    "start_time": null,
+    "meeting_point": "depart from Da Nang or Hoi An, you can refer to the Hue Dmz Tour from Hoian and Danang",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-3.png",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-3.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-1-.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-4.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-5.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-6.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-7.png",
+      "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-8.png"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-3.png",
+        "alt": "Hue DMZ Tour - Unveiling History on Captivating Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-1-.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-4.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-5.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-6.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-DMZ-Tour-7.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/08/Hue-city-Tour-8.png",
+        "alt": "Hue DMZ Tour – Deluxe Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_020",
+      "url": "https://vmtravel.com/tours/hue-dmz-tour-deluxe-group-tour/",
+      "crawledAt": "2026-06-07T02:48:40.473116+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Hue Street Food Tour - Explore Local Flavours for Just $45",
+    "slug": "vmtravel-central-021-hue-street-food-tour-explore-local-flavours-for-just-45",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 5 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Hue cuisine has long been famous for thousands of dishes from rustic to royal cuisine, extremely attractive, making many diners linger, not only famous for its deliciousness, cheapness but also behind each dish is the dedication and sophistication in the preparation of the person; Join the Hue Street Food Tour to discover the rich culinary heritage of the ancient capital of Vietnam. As you stroll through the bustling streets of Hue, you will taste many local delicacies. Hue cuisine is very unique and iconic, each dish tells a story about the culture and tr; Joining this tour, besides enjoying the attractive dishes, you will also have the opportunity to learn about the history, culture of Hue and the daily life of the people here. Many interesting things are waiting for you.; Hue street food tour and sightseeing.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 5 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "About 5:00 PM:",
+      "First Stop: Visit the local market (Dong Ba market)",
+      "On the way to the market, you will have a chance to cross the Truong Tien Bridge, a beautiful and historic bridge. Admire the charming beauty of the poetic Huong River, has created a special symbol of Hue City.",
+      "Begin the food tour with a visit to a bustling local market. Here, you'll experience the vibrant atmosphere of Hue's daily life. Your guide will introduce you to various fresh ingredients commonly used in Hue's cuisine, and you might even get to taste some specialists here. You c",
+      "Second Stop: Hue's Cakes",
+      "Head to a local restaurant known for its traditional rice cakes, \"bánh bèo\" (steamed rice cakes topped with dried shrimp), \"Banh Loc\" (filtered tapioca dumplings) and \"Banh Nam\" (flat rice dumplings filled with minced shrimp and pork). Learn about the history of these dishes whil",
+      "Third Stop: Hue beef noodle soup",
+      "No visit to Hue would be complete without trying the iconic Hue beef noodle soup (Bún bò Huế). Enjoy this spicy and rich soup at a local restaurant that specializes in the dish. Your guide will explain the significance of this soup in Hue cuisine. Walk around the Imperial Citadel",
+      "End your food tour with sweet soup (Che Hue) by visiting a local dessert stall.",
+      "End of the tour, your guide will take you back to your hotel or a central location in Hue."
+    ],
+    "inclusions": [
+      "English-speaking Vietnamese Food Enthusiast Guide",
+      "A bottle of water",
+      "All food listed above"
+    ],
+    "exclusions": [
+      "Personal Fees"
+    ],
+    "price_adult": 1125000.0,
+    "price_raw": "$45",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "5 Hours",
+    "start_time": null,
+    "meeting_point": "Departure Time Finish Time Option 1 9",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2024/08/hue-strees-food-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2024/08/hue-strees-food-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Hu-food-tour-from-danang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/cyclo-in-hue.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class-at-madam-thu.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Hue-food-tours.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-by-cyclo.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/hue-street-food.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/food-tour-in-hue.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/hue-strees-food-tour.jpg",
+        "alt": "Hue Street Food Tour - Explore Local Flavours for Just $45"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Hu-food-tour-from-danang.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/cyclo-in-hue.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/cooking-class-at-madam-thu.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Hue-food-tours.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/hue-cooking-by-cyclo.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/hue-street-food.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/food-tour-in-hue.jpg",
+        "alt": "Hue Street Food Tour – Enjoy Hue Cuisines Like The Local"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_021",
+      "url": "https://vmtravel.com/tours/hue-street-food-tour/",
+      "crawledAt": "2026-06-07T02:48:41.380463+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds",
+    "slug": "vmtravel-central-022-luxury-da-nang-golf-tour-6-days-5-nights-4-rounds",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills trong 6 Days, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: This comprehensive Luxury Da Nang Golf Tour 6 Days features 4 rounds of golf across two cities: Da Nang and Quang Nam. In Da Nang, you’ll experience the exceptional BRG Legend Danang Golf Course and the scenic Ba Na Hills Golf Course. In Quang Nam, you’ll play at the renowned Vin; This tour offers an exceptional experience, combining world-class golf courses with the stunning natural beauty and rich cultural heritage of the region. Throughout the tour, you will have the opportunity to tee off at some of the best golf courses in Da Nang , each providing a u; Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds; Teeing off on a cool and exciting morning at BRG Legend Danang Golf Course.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills trong 6 Days, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "Our driver will pick you up at Danang International Airport. Welcome drink check in hotel in Da Nang city. Rest and relax at your leisure before beginning the exciting golf tour.",
+      "Have breakfast at hotel, and start relaxing and enjoyable morning at BRG Legend golf course for tee off. Legend Danang Golf Course’s chief feature is a 7,160 yard, 18 hole course, links-style layout that was designed in the true spirit of the game - blown - out bunkers, firm and",
+      "Rest and have lunch at restaurant after explore a culturally rich and vibrant land - Da Nang. Admire the enchanting beauty and peaceful atmosphere of natural mountains and water. Embark on a journey to Marble Mountain, a group of five hills made of limestone and marble. Learn abo",
+      "Back to hotel. Take a rest and dinner at hotel.",
+      "Breakfast at hotel and then we will drive you to Vinpearl Golf Nam Hoi An for tee off. Just 1 hour from Da Nang city. With its 18-hole par 72 course, golfers can enjoy varied terrain, long winding fairways, challenging large bunkers, and panoramic sea view. Both professional golf",
+      "After golfing, you can explore the VinWonder Nam Hoi An entertainment - is a complex of experiences, cultural art exploration combined with entertainment and visit River Safari Nam Hoi An is a \"common home\" for hundreds of individuals of rare animal species.",
+      "Then return to your hotel and spend your night in Da Nang.",
+      "Enjoy a delicious breakfast at hotel. Transfer to Bana Hills golf course for tee off. Enjoy the fresh morning air and play golf at Ba Na valley surrounded by green mountains. With 18-hole par 72 course, Bana Hills Golf Club offers a sense of conquest, joy, and excitement for all",
+      "Have lunch at local restaurant and spend time walking and having fun on the beautiful My Khe beach in the afternoon.",
+      "Overnight in Da Nang city at your leisure, you might experience a cruise and diner on the Han river, admire the vibrant city with brilliant lights."
+    ],
+    "inclusions": [
+      "Enthusiastic, friendly, experienced caddies at each golf course",
+      "Shared buggy at each golf course",
+      "All airport and golf course transfers by private car",
+      "Hotel 4 stars with breakfast included",
+      "Meals as mention",
+      "2 bottles of water/golfer/day tour on transfer (500ml/bottle)",
+      "01 bottle of water/pax/way of airport transfer (500ml/bottle)",
+      "Local knowledge, suggestions, and support throughout the trip",
+      "24/7 golf hotline staffed by knowledgeable service personnel",
+      "Professional English speaking tour guide for sightseeing tour"
+    ],
+    "exclusions": [
+      "All airfares, visa",
+      "Personal items, drinks, and gratuities",
+      "International bank fund transfer fees",
+      "Other things that are not mentioned in the inclusions list"
+    ],
+    "price_adult": 17250000.0,
+    "price_raw": "$690",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 Days",
+    "start_time": null,
+    "meeting_point": "Departure Have breakfast and check out the hotel",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/golf-in-Hoi-An.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/golf-in-Hoi-An.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/07/Vietnam-Luxury-Golf-Tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Vietnam-Golf-Tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/07/Hoiana-Shores-Golf-Club.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Laguna-golf-resort.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/golf-course-in-viet-nam.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/vietnam-golf.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Vietnam-golf-course.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/golf-in-Hoi-An.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/07/Vietnam-Luxury-Golf-Tour.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Vietnam-Golf-Tour.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/07/Hoiana-Shores-Golf-Club.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Laguna-golf-resort.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/golf-course-in-viet-nam.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/vietnam-golf.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Vietnam-golf-course.jpg",
+        "alt": "Luxury Da Nang Golf Tour 6 Days 5 Nights 4 Rounds"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_022",
+      "url": "https://vmtravel.com/tours/luxury-da-nang-golf-tour-6-days/",
+      "crawledAt": "2026-06-07T02:48:42.283881+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Linh Ung Pagoda & Marble Mountain tour from Hoi An",
+    "slug": "vmtravel-central-023-linh-ung-pagoda-marble-mountain-tour-from-hoi-an",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Marble Mountains",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Marble Mountains, Son Tra trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Explore the spiritual side of Da Nang with a half-day tour from Hoi An to Linh Ung Pagoda and Marble Mountains. This short but meaningful trip brings you closer to nature, history, and Vietnamese culture. Visit beautiful caves, ancient pagodas, and enjoy peaceful views from the t; Whether you’re looking for panoramic views, spiritual discovery, or simply a scenic getaway close to Hoi An, this tour offers a rich experience you won’t want to miss. Join the tour with VM Travel to have the best experiences in Vietnam; Linh Ung Pagoda & Marble Mountain tour from Hoi An; Explore Marble Mountains: Visit mysterious caves, old Buddhist temples, and stunning viewpoints from the top..",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Marble Mountains, Son Tra trong 6 Hours, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "7:30 – 8:00 AM – Our friendly guide and driver will pick you up from your hotel in Hoi An in a comfortable air-conditioned vehicle. Sit back and enjoy the drive along the coastline as we head to Da Nang.",
+      "8:30 AM – Arrive at Linh Ung Pagoda, located on the peaceful Son Tra Peninsula. Here you’ll find the 67-metre-tall Lady Buddha statue, a symbol of protection for fishermen and sailors. Take your time walking through the tranquil gardens, admire the traditional architecture, and e",
+      "9:30 AM – We continue to the nearby Marble Mountains, a group of five limestone hills named after the five elements. You’ll explore sacred caves such as Huyen Khong Cave and Tang Chon Cave, where Buddhist statues and natural light combine to create a magical atmosphere. Climb up",
+      "Before leaving, you’ll have a chance to visit the famous Non Nuoc stone carving village, where skilled local artisans have created marble statues for centuries.",
+      "12:00 PM – We’ll stop at a local restaurant to enjoy a light Vietnamese lunch, featuring traditional dishes that are fresh, simple, and satisfying.",
+      "1:00 PM – After lunch, we’ll drive you back to your hotel in Hoi An, ending the tour with a heart full of peace and some incredible photos to remember the morning by."
+    ],
+    "inclusions": [
+      "Pick-up and drop-off from Hoi An hotels (city centre)",
+      "Comfortable air-conditioned transport",
+      "Friendly English-speaking tour guide",
+      "Entrance tickets to all sites",
+      "Bottled drinking water",
+      "Light Vietnamese lunch"
+    ],
+    "exclusions": [
+      "Personal expenses",
+      "Travel insurance",
+      "Extra drinks during lunch",
+      "Tips for guide and driver (optional)"
+    ],
+    "price_adult": 700000.0,
+    "price_raw": "$28",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 Hours",
+    "start_time": null,
+    "meeting_point": null,
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2025/05/Marble-Mountain-tour-from-Da-Nang.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2025/05/Marble-Mountain-tour-from-Da-Nang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Linh-Ung-Pagoda-Danang-Vietnam.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Best-Time-to-Visit-Linh-Ung-Pagoda-Da-Nang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Linh-Ung-Pagoda-Marble-Mountain.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Da-Nang-to-Linh-Ung-Pagoda.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Da-Nang-to-Marble-Mountain.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Linh-Ung-Pagoda-Da-Nang.jpg",
+      "https://vmtravel.com/wp-content/uploads/2025/05/Marble-Mountain-tours.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Marble-Mountain-tour-from-Da-Nang.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Linh-Ung-Pagoda-Danang-Vietnam.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Best-Time-to-Visit-Linh-Ung-Pagoda-Da-Nang.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Linh-Ung-Pagoda-Marble-Mountain.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Da-Nang-to-Linh-Ung-Pagoda.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Da-Nang-to-Marble-Mountain.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Linh-Ung-Pagoda-Da-Nang.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2025/05/Marble-Mountain-tours.jpg",
+        "alt": "Linh Ung Pagoda & Marble Mountain tour from Hoi An"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_023",
+      "url": "https://vmtravel.com/tours/marble-mountain-tour-from-hoi-an/",
+      "crawledAt": "2026-06-07T02:48:43.227682+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "My Son Sanctuary From Hoi An-Book Best 1 Day Tour in Hoi An",
+    "slug": "vmtravel-central-024-my-son-sanctuary-from-hoi-an-book-best-1-day-tour-in-hoi-an",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "My Son",
+      "Cu Lao Cham"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, My Son, Cu Lao Cham trong Half day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: My Son Sanctuary Tour From Hoi An is a fascinating experience exploring the ancient Cham civilization’s brilliant period. My Son Sanctuary is situated in the middle of a tropical jungle, about an hour from the center of Hoi An Ancient Town. The UNESCO World Heritage Site is a his; Are you an architecture and historical buff? My Son Sanctuary Tour From Hoi An is an ideal journey to allow you to step into the spiritual life of the golden bygone area. The tour offers an incredible adventure to discover the Champa Ancient Kingdom’s architecture, history, and c; Join and explore the ancient ruin of My Son Sanctuary From Hoi An tour with VM Travel today!; My Son Sanctuary From Hoi An.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, My Son, Cu Lao Cham trong Half day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "01:00 PM - 01:30 PM: Our car and tour guide will pick you up at your hotel in Hoi An to begin the journey back in time and explore the World Heritage Site - My Son Sanctuary.",
+      "03:00 PM: Arrive at My Son Sanctuary after one hour to go from Hoi An. Enjoy the stunning natural landscape, including Hoi An River’s system, spectacular mountains, and Cham Island on the way. You will have two hours to discover the spiritual site by walking through the ancient t",
+      "05:15 PM: We leave My Son Sanctuary. Our car takes you to the wharf for a boat trip back to charming Hoi An Ancient Town. On the cruise, you have an extraordinary chance to bask in the fresh air and tranquility vibe on the calm Thu Bon River. Also, get your camera ready to captur",
+      "06:30 PM: The boat arrives in Hoi An. Our car will drop you off at your hotel. Finish the My Son Sanctuary Tour From Hoi An. Goodbye, thank you for choosing VM Travel on the journey to explore the World Heritage Site, and see you again!"
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Boat Trip on Thu Bon River",
+      "Live English Speaking Tour Guide",
+      "Entrance fees as Itinerary",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Optional gratuities for driver and guide",
+      "Personal expenses and additional meals",
+      "Pick up from your hotel/stay outside the center of Hoi An"
+    ],
+    "price_adult": 875000.0,
+    "price_raw": "$35",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "Half day",
+    "start_time": null,
+    "meeting_point": "Departing from Hoi An Ancient Town, exploring one of Southeast Asia’s most outstanding",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/07/sunrise-at-my-son-sanctuary.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/07/sunrise-at-my-son-sanctuary.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/myson-sanctuary.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/tour-my-son-sanctuary-from-hoi-an.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/my-son-holy-land.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/sunset-at-my-son-sanctuary.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/my-son-sanctuary-from-hoi-an.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/sunrise-at-my-son-sanctuary.jpg",
+        "alt": "My Son Sanctuary From Hoi An-Book Best 1 Day Tour in Hoi An"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/myson-sanctuary.jpg",
+        "alt": "My Son Sanctuary From Hoi An – Half Day Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/tour-my-son-sanctuary-from-hoi-an.jpg",
+        "alt": "My Son Sanctuary From Hoi An – Half Day Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/my-son-holy-land.jpg",
+        "alt": "My Son Sanctuary From Hoi An – Half Day Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/sunset-at-my-son-sanctuary.jpg",
+        "alt": "My Son Sanctuary From Hoi An – Half Day Group Tour"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/my-son-sanctuary-from-hoi-an.jpg",
+        "alt": "My Son Sanctuary From Hoi An – Half Day Group Tour"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_024",
+      "url": "https://vmtravel.com/tours/my-son-sanctuary-from-hoi-an/",
+      "crawledAt": "2026-06-07T02:48:44.132058+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  },
+  {
+    "name": "Paradise Cave Tour From Hue - Explore Nature's Masterpiece",
+    "slug": "vmtravel-central-025-paradise-cave-tour-from-hue-explore-nature-s-masterpiece",
+    "tour_category_slug": "tour-hoi-an",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Thien Duong Cave (also known as Paradise Cave) is a beautiful cave in Vietnam located in Phong Nha-Ke Bang National Park, Quang Binh Province. This cave has been recognized by UNESCO as a World Heritage Site, carefully developed so that visitors can explore its charm while still; Paradise Cave Tour from Hue will bring you the chance explore to the stunning beauty of one of the most beautiful caves in Vietnam, explore to underground paradise with the magical beauty of natural caves that few places in the world can offer. Additionally, you can also admire t; Join the Paradise Cave Tour to experience one of nature’s most beautiful creations, which promises to be an unforgettable journey at the majestic Paradise Cave.; Paradise Cave Tour from Hue.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue trong 1 Day, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "6:30 AM: Our driver will pick you up at the hotel in Hue and depart to Paradise Cave, located in Phong Nha Ke Bang National Park in Quang Binh province, Vietnam. The cave is about more than 200 km from Hue City, making it a popular tourist destination since its opening in 2010.",
+      "On the way, you will have a chance to stop at La Vang Holy Land - is an important and largest religious pilgrimage center for Catholics, located in Quang Tri Province. When passing through the historical relic cluster of Hien Luong Bridge and Ben Hai River, you will be introduced",
+      "Arrive in Phong Nha Town, have lunch at a local restaurant, take a short rest before beginning the exploring Paradise cave trip.",
+      "Continue transfer to Paradise Cave, which is considered one of the most beautiful caves in Quang Binh, and is also known as the \"Underground Palace\" because of its majestic beauty and massive, sophisticated cave architecture.",
+      "You can enjoy under the skylight in the cave, where sunlight shines through, creating a fascinating interplay of light and shadow. Explore the large chambers in the cave with sparkling, magical stalactites. Conquer 500 steps leading to the cave entrance.",
+      "After discovering Paradise Cave, back to Hue and our driver will drop you off at your hotel. End of the tour."
+    ],
+    "inclusions": [
+      "High-Quality Minivan",
+      "Golf car in Paradise Cave (Electrical car))",
+      "English-speaking tour guide during the trip",
+      "Entrance fees",
+      "Lunch",
+      "Mineral Water 2 Bottle / 1 Day / 1 Pax"
+    ],
+    "exclusions": [
+      "Personal expenses and additional meals",
+      "Pick up from your hotel/stay outside the center of Hue",
+      "Optional gratuities for driver and guide"
+    ],
+    "price_adult": 1600000.0,
+    "price_raw": "$64",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "1 Day",
+    "start_time": null,
+    "meeting_point": "depart to Paradise Cave, located in Phong Nha Ke Bang National Park in Quang Binh prov",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2024/08/Paradise-cave-tour-from-hue.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2024/08/Paradise-cave-tour-from-hue.jpg",
+      "https://vmtravel.com/wp-content/uploads/2024/08/paradise-cave-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Phong-Nha-Caves.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/son-dong.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/09/Phong-Nha-14.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Phong-Nha-8.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/phong-nha-caves-in-vietnam.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/07/Phong-Nha-4.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/Paradise-cave-tour-from-hue.jpg",
+        "alt": "Paradise Cave Tour From Hue - Explore Nature's Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2024/08/paradise-cave-tour.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Phong-Nha-Caves.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/son-dong.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/09/Phong-Nha-14.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Phong-Nha-8.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/phong-nha-caves-in-vietnam.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/07/Phong-Nha-4.jpg",
+        "alt": "Paradise Cave Tour From Hue – Explore Nature’s Masterpiece"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_025",
+      "url": "https://vmtravel.com/tours/paradise-cave-tour-from-hue/",
+      "crawledAt": "2026-06-07T02:48:45.047123+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 9
+    }
+  },
+  {
+    "name": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam",
+    "slug": "vmtravel-central-026-tour-package-in-da-nang-6-days-discover-the-best-of-vietnam",
+    "tour_category_slug": "tour-ba-na-hills",
+    "destination_names": [
+      "Da Nang",
+      "Hoi An",
+      "Hue",
+      "Ba Na Hills",
+      "Marble Mountains",
+      "Son Tra"
+    ],
+    "description": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Marble Mountains, Son Tra trong 6 Days, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban. Du lieu nay duoc chuan hoa tu website operator va giu lai source_url de doi chieu. Diem noi bat gom: Join in the fantastic 6 days of tour package in Da Nang to get unforgettable experiences during your stay in Central of Vietnam. You will have chance to immerse in the wonderful views of Hai Van Pass, the wild Lang Co Beach and the peaceful Perfume River as well as to get knowled; Visiting the 6 must-see places to visit in Hue one day; Taste all Hue’s specialties Cuisine in local restaurant.; Learn about Hue’s history, culture and ancient architecture from an informative local guide.",
+    "short_desc": "Tour Da Nang, Hoi An, Hue, Ba Na Hills, Marble Mountains, Son Tra trong 6 Days, duoc tong hop tu nguon cong khai va can duyet noi dung truoc khi mo ban.",
+    "itinerary": [
+      "AM: You will be welcomed at Da Nang International Airport for flight arriving around noon and transfer to have lunch at restaurant in the city",
+      "PM: On the way to Hue city, you will stop to have gorgeous sightseeingat Hai Van Pass,Lang Co Beach and Cau Hai Lagoon. Check in at hotel and have dinner at restaurant. You will have free time to visit the iconic Truong Tien Bridge and surrounding souvenir shops and experience Hu",
+      "AM: Have breakfast at hotel. Visit Dong Ba Market – the biggest market of Thua Thien Hue province to enjoy the busy daily pace of the market. Enjoy the romantic beauty of Perfume River on the dragon boat trip to pay a visit at Thien Mu Pagoda – one of the oldest spiritual constru",
+      "PM: Visit Minh Mang Tomb and admire its characteristic Eastern architectural styles, and Khai Dinh Tomb which is a unique combination of both traditional Eastern and Roman- Gothic Western architectures, besides learn more about the famous emperors of Nguyen Dynasty. Have dinner a",
+      "AM: Have breakfast at hotel. While transfering to Hoi An, you will stop off at Son Tra Peninsula to discover the forest in the center of Da Nang City, admire Linh Ung Pagoda and enjoy the calming atmosphere and breathtaking view of the city and the beaches. Have lunch at the rest",
+      "PM: Visit Marble Mountains – a well-known spiritual site with caves, tunnels, peaks and sacred pagodas inside the mountains. On arrival in Hoi An, get to hotel check-in and have dinner at restaurant. Immerse yourselves in the charming beauty of the ancient town at night-time as w",
+      "AM: Have breakfast at hotel. Go for a row around Bay Mau water coconut forest –a unique ecological area in Hoi An, and take part in some activities to experience the waterway life of the local fishermen in Central Vietnam. Transfer to Thanh Ha Pottery Village which is rich in cer",
+      "PM: Visit a traditional lantern workshop, learn to know how a craft lantern is made and experience creating your own lantern under the instruction of the artisans. Have dinner at restaurant and explore the ancient town by night as the ancient town is stunning in the sparkling lig",
+      "AM: Have breakfast at hotel. Travel to Ba Na Hills, take the cable car to reach the summit and enjoy spectacular sceneries of forest and waterfall. Check-in the iconic Golden Bridge, discover the gorgeous beauty of flower gardens Le Jardin D’Amour and experience the European arch",
+      "PM: Enjoy playing games at Fantasy Amusement Park which is an ideal entertainment destination with over 90 free exciting games and 4D movies. Transfer back to Da Nang city for hotel check-in and have dinner at restaurant. Free to enjoy nightlife activities"
+    ],
+    "inclusions": [
+      "Transportation",
+      "Professional and friendly English speaking guide",
+      "Meals: 5 breakfasts; 5 lunches, 5 dinners: Asian set menu & buffet (we can offer vegetarian food, halal food or any special dietaries supplied on request. Simply let our sales team know the food option that you prefer)",
+      "All entrance fees at mentioned sites in the tour itinerary",
+      "Hotels with good location, comfortable and well-equipped rooms",
+      "Additional services: Boat, Cable car"
+    ],
+    "exclusions": [
+      "International flight tickets",
+      "Tips for tour guide and driver",
+      "Insurance",
+      "Personal expenses"
+    ],
+    "price_adult": 138875000.0,
+    "price_raw": "$5555",
+    "price_child": 0,
+    "price_infant": 0,
+    "discount_percent": 0,
+    "duration": "6 Days",
+    "start_time": null,
+    "meeting_point": "departure Detail Itinerary Day 1",
+    "max_people": 30,
+    "min_people": 1,
+    "thumbnail": "https://vmtravel.com/wp-content/uploads/2023/06/central-package-tour.jpg",
+    "images": [
+      "https://vmtravel.com/wp-content/uploads/2023/06/central-package-tour.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/06/vietnam-package.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/06/ankor-thom.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/06/hoian-lantern.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/06/vietnam-local-tours.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/06/north-vietnam-tour.gif",
+      "https://vmtravel.com/wp-content/uploads/2023/06/vietnam-dmc.jpg",
+      "https://vmtravel.com/wp-content/uploads/2023/10/Hanoi-Airport-Terminals.jpg"
+    ],
+    "image_candidates": [
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/central-package-tour.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/vietnam-package.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/ankor-thom.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/hoian-lantern.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/vietnam-local-tours.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/north-vietnam-tour.gif",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/06/vietnam-dmc.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      },
+      {
+        "url": "https://vmtravel.com/wp-content/uploads/2023/10/Hanoi-Airport-Terminals.jpg",
+        "alt": "Tour Package In Da Nang 6 Days: Discover the Best of Vietnam"
+      }
+    ],
+    "status": "inactive",
+    "booking_availability": "open",
+    "is_featured": false,
+    "is_hot": false,
+    "source": {
+      "name": "vmtravel_central_026",
+      "url": "https://vmtravel.com/tours/tour-package-in-da-nang-6-days/",
+      "crawledAt": "2026-06-07T02:48:45.953744+00:00"
+    },
+    "quality": {
+      "usable": true,
+      "reasons": [],
+      "tourSignalScore": 8
+    }
+  }
+]

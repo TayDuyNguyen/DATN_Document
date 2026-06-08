@@ -27,6 +27,32 @@ Thu muc nay khong di chuyen file goc cua crawler/seeders. No gom trang thai bang
 - `indexes/next-collection-plan.md`
 - `reports/data-readiness-report-2026-06-03.md`
 
+## Lệnh chạy nhanh
+
+Cập nhật DB hiện tại, không xóa toàn bộ dữ liệu:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\data-center\database-refresh\RUN_INCREMENTAL_UPDATE.ps1"
+```
+
+Rebuild DB từ đầu, có backup trước khi `migrate:fresh`:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\data-center\database-refresh\RUN_REBUILD_DATABASE.ps1"
+```
+
+Chỉ audit dữ liệu:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\data-center\database-refresh\RUN_AUDIT_DATABASE.ps1"
+```
+
+Folder gom snapshot dữ liệu đã thu thập:
+
+```text
+D:\DATN\DATN_Tài liệu\data-center\collected-data
+```
+
 ## Nguyen tac
 
 - Khong ghi crawl data truc tiep vao production table.

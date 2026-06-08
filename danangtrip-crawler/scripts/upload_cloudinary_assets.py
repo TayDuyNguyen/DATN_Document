@@ -98,9 +98,14 @@ def upload_one(row: dict[str, str], cloud_name: str, api_key: str, api_secret: s
     context_parts = {
         "location_id": row.get("location_id", ""),
         "location_slug": row.get("location_slug", ""),
+        "catalog_index": row.get("catalog_index", ""),
+        "tour_name": row.get("tour_name", ""),
+        "tour_slug": row.get("tour_slug", ""),
+        "source_url": row.get("source_url", ""),
         "external_id": row.get("external_id", ""),
         "provider": row.get("provider", ""),
-        "photo_id": row.get("photo_id", ""),
+        "photo_id": row.get("photo_id", "")
+        or row.get("provider_photo_id", ""),
         "photographer": row.get("photographer", ""),
         "provider_page_url": row.get("provider_page_url", ""),
     }
@@ -181,7 +186,7 @@ def main() -> None:
         results.append(result)
         write_results(results, args.results, args.results_json)
         print(json.dumps({
-            "location_id": result.get("location_id"),
+            "asset_owner": result.get("tour_slug") or result.get("location_id"),
             "local_file": result.get("local_file"),
             "upload_status": result.get("upload_status"),
             "secure_url": result.get("secure_url", ""),
