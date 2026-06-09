@@ -56,7 +56,9 @@
     "56_ratings_editorial_vi_and_volume_seed.sql",
     "57_recent_operational_activity_seed.sql",
     "58_public_taxonomy_visibility_seed.sql",
-    "59_ratings_admin_read_state_seed.sql"
+    "59_ratings_admin_read_state_seed.sql",
+    "60_search_logs_vietnamese_diacritics_seed.sql",
+    "61_dashboard_search_activity_seed.sql"
   ],
   "optional_demo": [
     "26_cart_items_demo_seed.sql"
@@ -90,6 +92,8 @@
     "56_ratings_editorial_vi_and_volume_seed.sql",
     "57_recent_operational_activity_seed.sql",
     "58_public_taxonomy_visibility_seed.sql",
-    "59_ratings_admin_read_state_seed.sql"
+    "59_ratings_admin_read_state_seed.sql",
+    "60_search_logs_vietnamese_diacritics_seed.sql",
+    "61_dashboard_search_activity_seed.sql"
   ]
 }

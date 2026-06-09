@@ -29,11 +29,14 @@ $displayColumns = [
     ],
     'blog_posts' => ['title', 'excerpt', 'content'],
     'ratings' => ['comment'],
+    'search_logs' => ['query'],
 ];
 
 $phrases = [
+    'dac san hoi an',
     'duoc thu thap',
     'duoc tong hop',
+    'dia diem check in da nang',
     'can duyet',
     'du lieu nay',
     'diem du lich',
@@ -43,22 +46,32 @@ $phrases = [
     'kham pha',
     'khach san',
     'lich trinh',
+    'le hoi phao hoa da nang',
     'mien trung',
     'noi dung',
+    'quan an ngon hue',
     'thanh pho',
     'tham quan',
+    'thoi gian rong phun lua',
     'thong tin',
+    'tour ba na hills',
+    'tour cu lao cham gia re',
+    'tour mien trung',
     'trai nghiem',
+    've cap treo ba na',
 ];
 
 $tokens = array_flip([
-    'bao', 'ban', 'bien', 'bieu', 'can', 'cang', 'cap', 'chieu', 'chi', 'chon',
-    'chuyen', 'cong', 'cua', 'danh', 'dat', 'dich', 'diem', 'dieu', 'doi', 'don',
+    'an', 'ba', 'bao', 'ban', 'bien', 'bieu', 'can', 'cang', 'cap', 'cham',
+    'check', 'chieu', 'chi', 'chon', 'chuyen', 'cong', 'cua', 'danh', 'dat',
+    'dich', 'diem', 'dieu', 'doi', 'don',
     'du', 'dua', 'duoc', 'duong', 'gia', 'gio', 'gioi', 'gom', 'hanh', 'hoat',
-    'huong', 'khach', 'kham', 'khong', 'khu', 'lich', 'lieu', 'luu', 'mien', 'mo',
-    'mua', 'ngam', 'ngay', 'nghiem', 'nguoi', 'nguon', 'noi', 'phong', 'quan',
-    'quy', 'san', 'thanh', 'tham', 'thoi', 'thong', 'thu', 'tieng', 'tinh',
-    'tong', 'trai', 'trinh', 'trong', 'tu', 'van', 'viet', 'voi', 'vu',
+    'hoi', 'hue', 'huong', 'khach', 'kham', 'khong', 'khu', 'lich', 'lieu',
+    'luu', 'mien', 'mo', 'mua', 'na', 'ngam', 'ngay', 'nghiem', 'nguoi',
+    'nguon', 'noi', 'phao', 'phong', 'phun', 'quan', 'quy', 're', 'rong',
+    'san', 'thanh', 'tham', 'thoi', 'thong', 'thu', 'tieng', 'tinh', 'tong',
+    'tour', 'trai', 'treo', 'trinh', 'trong', 'tu', 'van', 've', 'viet',
+    'voi', 'vu',
 ]);
 
 $hasVietnameseDiacritics = static fn (string $value): bool =>

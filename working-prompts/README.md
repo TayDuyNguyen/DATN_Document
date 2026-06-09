@@ -8,6 +8,7 @@ Thu muc nay chua prompt va ghi chu dieu phoi agent trong qua trinh lam viec.
 | --- | --- |
 | `current_workflow_notes.md` | Ghi chu thao tac/nghiem thu tam thoi. |
 | `screen_selection_replan_prompt.md` | Prompt chon man tiep theo va lap lai pipeline. |
+| `playwright_auto_test_generator_prompt.md` | Prompt sinh Playwright TypeScript test theo POM, kem checklist loi hay mac de tranh lap lai. |
 
 ## Luu y
 

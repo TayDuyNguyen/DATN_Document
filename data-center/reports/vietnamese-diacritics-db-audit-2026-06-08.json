@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-06-08T11:56:47+07:00",
+    "generated_at": "2026-06-08T23:54:18+07:00",
     "tables": {
         "categories": {
             "rows_scanned": 100,
@@ -66,66 +66,66 @@
             }
         },
         "blog_categories": {
-            "rows_scanned": 100,
+            "rows_scanned": 6,
             "rows_with_unaccented_vietnamese": 0,
             "field_values_unaccented": 0,
-            "field_values_accented": 195,
+            "field_values_accented": 12,
             "by_column": {
                 "name": {
                     "unaccented": 0,
-                    "accented": 96
+                    "accented": 6
                 },
                 "description": {
                     "unaccented": 0,
-                    "accented": 99
+                    "accented": 6
                 }
             }
         },
         "locations": {
-            "rows_scanned": 112,
+            "rows_scanned": 100,
             "rows_with_unaccented_vietnamese": 0,
             "field_values_unaccented": 0,
-            "field_values_accented": 537,
+            "field_values_accented": 478,
             "by_column": {
                 "name": {
                     "unaccented": 0,
-                    "accented": 89
+                    "accented": 78
                 },
                 "address": {
                     "unaccented": 0,
-                    "accented": 112
+                    "accented": 100
                 },
                 "district": {
                     "unaccented": 0,
-                    "accented": 112
+                    "accented": 100
                 },
                 "short_description": {
                     "unaccented": 0,
-                    "accented": 112
+                    "accented": 100
                 },
                 "description": {
                     "unaccented": 0,
-                    "accented": 112
+                    "accented": 100
                 }
             }
         },
         "tours": {
-            "rows_scanned": 164,
+            "rows_scanned": 130,
             "rows_with_unaccented_vietnamese": 0,
             "field_values_unaccented": 0,
-            "field_values_accented": 1210,
+            "field_values_accented": 982,
             "by_column": {
                 "name": {
                     "unaccented": 0,
-                    "accented": 164
+                    "accented": 130
                 },
                 "short_desc": {
                     "unaccented": 0,
-                    "accented": 164
+                    "accented": 130
                 },
                 "description": {
                     "unaccented": 0,
-                    "accented": 164
+                    "accented": 130
                 },
                 "duration": {
                     "unaccented": 0,
@@ -133,60 +133,72 @@
                 },
                 "meeting_point": {
                     "unaccented": 0,
-                    "accented": 138
+                    "accented": 103
                 },
                 "itinerary": {
                     "unaccented": 0,
-                    "accented": 164
+                    "accented": 130
                 },
                 "inclusions": {
                     "unaccented": 0,
-                    "accented": 159
+                    "accented": 130
                 },
                 "exclusions": {
                     "unaccented": 0,
-                    "accented": 157
+                    "accented": 129
                 }
             }
         },
         "blog_posts": {
-            "rows_scanned": 118,
+            "rows_scanned": 100,
             "rows_with_unaccented_vietnamese": 0,
             "field_values_unaccented": 0,
-            "field_values_accented": 354,
+            "field_values_accented": 300,
             "by_column": {
                 "title": {
                     "unaccented": 0,
-                    "accented": 118
+                    "accented": 100
                 },
                 "excerpt": {
                     "unaccented": 0,
-                    "accented": 118
+                    "accented": 100
                 },
                 "content": {
                     "unaccented": 0,
-                    "accented": 118
+                    "accented": 100
                 }
             }
         },
         "ratings": {
-            "rows_scanned": 600,
+            "rows_scanned": 620,
             "rows_with_unaccented_vietnamese": 0,
             "field_values_unaccented": 0,
-            "field_values_accented": 600,
+            "field_values_accented": 620,
             "by_column": {
                 "comment": {
                     "unaccented": 0,
-                    "accented": 600
+                    "accented": 620
+                }
+            }
+        },
+        "search_logs": {
+            "rows_scanned": 154,
+            "rows_with_unaccented_vietnamese": 0,
+            "field_values_unaccented": 0,
+            "field_values_accented": 154,
+            "by_column": {
+                "query": {
+                    "unaccented": 0,
+                    "accented": 154
                 }
             }
         }
     },
     "totals": {
-        "rows_scanned": 1594,
+        "rows_scanned": 1610,
         "rows_with_unaccented_vietnamese": 0,
         "field_values_unaccented": 0,
-        "field_values_accented": 3471
+        "field_values_accented": 3121
     },
     "examples": [],
     "examples_by_column": []

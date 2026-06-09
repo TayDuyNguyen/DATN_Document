@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-06-08T11:35:52+07:00",
-    "rows_scanned": 994,
-    "field_values_scanned": 3010,
+    "generated_at": "2026-06-08T23:40:57+07:00",
+    "rows_scanned": 806,
+    "field_values_scanned": 2212,
     "rows_with_findings": 0,
     "findings": [],
     "counts": []

@@ -60,6 +60,11 @@ Thu muc nay chua cac file SQL seed data theo thu tu khoi tao.
 54. `54_cleanup_expired_auth_runtime_seed.sql` don password reset token, refresh token, session/cache runtime da het han
 55. `55_location_catalog_editorial_vi_seed.sql` sua toan bo location theo slug: ten/dia chi/mo ta tieng Viet, taxonomy va cac ban ghi bi lech noi dung
 56. `56_ratings_editorial_vi_and_volume_seed.sql` sua binh luan danh gia co dau, tang volume danh gia va tinh lai rating aggregate
+57. `57_recent_operational_activity_seed.sql` tao luong hoat dong demo gan day
+58. `58_public_taxonomy_visibility_seed.sql` an taxonomy public rong
+59. `59_ratings_admin_read_state_seed.sql` khoi tao trang thai Moi/Da xem cho ratings
+60. `60_search_logs_vietnamese_diacritics_seed.sql` chuan hoa search trends sang tieng Viet co dau
+61. `61_dashboard_search_activity_seed.sql` bo sung log tim kiem/click/zero-result gan day cho dashboard admin
 
 ## Lenh mot dong
 
@@ -103,7 +108,7 @@ powershell -ExecutionPolicy Bypass -File "D:\DATN\DATN_Tài liệu\database-seed
 Luu y quan trong:
 
 - `Mode Full` chi dung cho DB moi/DB da migrate fresh. Khong chay len DB da co du lieu vi cac seed dau co fixed `id`.
-- `Mode Incremental` chạy các seed backfill hiện hành và kết thúc bằng seed chất lượng/volume đánh giá `56`.
+- `Mode Incremental` chạy các seed backfill hiện hành và kết thúc bằng lớp chốt dữ liệu vận hành/search `61`.
 - Script dung Laravel `php artisan tinker`, nen se dung dung ket noi DB trong `D:\DATN\danangtrip-api\.env`.
 - `47_canonical_display_text_utf8_seed.sql` phải chạy sau các seed legacy để dữ liệu hiển thị giữ đầy đủ dấu tiếng Việt; các seed `48-56` là lớp chốt chất lượng sau canonical text.
 
@@ -211,6 +216,8 @@ Không chạy `normalize:seeders` trên seed UTF-8 hiện hành vì script legac
 | `57_recent_operational_activity_seed.sql` | Tạo luồng hoạt động demo gần đây, sửa pending cũ và đồng bộ bộ đếm engagement/booking. | 24 bookings + activity rolling |
 | `58_public_taxonomy_visibility_seed.sql` | Ẩn taxonomy public rỗng và xóa blog category mồ côi không có quan hệ. | dynamic |
 | `59_ratings_admin_read_state_seed.sql` | Khởi tạo trạng thái Mới/Đã xem cho rating lịch sử đúng một lần, không ghi đè thao tác admin khi chạy incremental. | dynamic |
+| `60_search_logs_vietnamese_diacritics_seed.sql` | Chuẩn hóa từ khóa search logs sang tiếng Việt có dấu cho dashboard search trends. | dynamic |
+| `61_dashboard_search_activity_seed.sql` | Bổ sung search logs gần đây có keyword, click item và zero-result để 4 panel search dashboard có dữ liệu kiểm thử. | dynamic |
 
 Seed `57` chỉ mô phỏng hoạt động vận hành, không phải dữ liệu khách hàng thật. Các bản ghi do seed tạo có prefix `DEMO-ACT-` hoặc `demo-activity-` để nhận diện và chạy lặp không tăng số lượng ngoài kiểm soát.
 

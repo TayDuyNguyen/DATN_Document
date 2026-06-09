@@ -56,4 +56,22 @@ SET
 FROM editorial
 WHERE target.slug = editorial.slug;
 
+UPDATE tours
+SET
+    meeting_point = CASE slug
+        WHEN 'recrawl-018-venusvietnamtravel-afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour-venustravel'
+            THEN 'Đón khách tại khách sạn ở Hội An, Đà Nẵng hoặc Huế theo xác nhận của đơn vị tổ chức.'
+        WHEN 'recrawl-022-venusvietnamtravel-cham-island-sightseeing-snorkeling-tour-venustravel'
+            THEN 'Đón khách tại khách sạn ở Hội An, Đà Nẵng hoặc Huế theo xác nhận của đơn vị tổ chức.'
+        WHEN 'vmtravel-central-020-hue-dmz-tour-unveiling-history-on-captivating-tour'
+            THEN 'Đón khách tại Đà Nẵng hoặc Hội An theo lịch hẹn; vui lòng xác nhận điểm đón trước ngày khởi hành.'
+        ELSE meeting_point
+    END,
+    updated_at = NOW()
+WHERE slug IN (
+    'recrawl-018-venusvietnamtravel-afternoon-ba-na-hills-golden-bridge-dragon-bridge-by-night-tour-venustravel',
+    'recrawl-022-venusvietnamtravel-cham-island-sightseeing-snorkeling-tour-venustravel',
+    'vmtravel-central-020-hue-dmz-tour-unveiling-history-on-captivating-tour'
+);
+
 COMMIT;
