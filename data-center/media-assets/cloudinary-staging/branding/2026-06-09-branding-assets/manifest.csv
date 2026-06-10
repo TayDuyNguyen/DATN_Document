@@ -1,0 +1,4 @@
+asset_type,asset_key,local_file,local_path,cloudinary_public_id,provider,photo_index,status
+branding,brand.logo,favicon.png,D:\DATN\danangtrip-web\public\favicon.png,danangtrip/branding/logo/danangtrip-logo,local,1,downloaded
+branding,brand.favicon,favicon.png,D:\DATN\danangtrip-web\public\favicon.png,danangtrip/branding/favicon/danangtrip-favicon,local,1,downloaded
+branding,seo.og_image,hero-bg.png,D:\DATN\danangtrip-web\public\images\hero-bg.png,danangtrip/branding/og/danangtrip-og-image,local,1,downloaded

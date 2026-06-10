@@ -1,0 +1,32 @@
+[
+  {
+    "asset_type": "branding",
+    "asset_key": "brand.logo",
+    "local_file": "favicon.png",
+    "local_path": "D:\\DATN\\danangtrip-web\\public\\favicon.png",
+    "cloudinary_public_id": "danangtrip/branding/logo/danangtrip-logo",
+    "provider": "local",
+    "photo_index": 1,
+    "status": "downloaded"
+  },
+  {
+    "asset_type": "branding",
+    "asset_key": "brand.favicon",
+    "local_file": "favicon.png",
+    "local_path": "D:\\DATN\\danangtrip-web\\public\\favicon.png",
+    "cloudinary_public_id": "danangtrip/branding/favicon/danangtrip-favicon",
+    "provider": "local",
+    "photo_index": 1,
+    "status": "downloaded"
+  },
+  {
+    "asset_type": "branding",
+    "asset_key": "seo.og_image",
+    "local_file": "hero-bg.png",
+    "local_path": "D:\\DATN\\danangtrip-web\\public\\images\\hero-bg.png",
+    "cloudinary_public_id": "danangtrip/branding/og/danangtrip-og-image",
+    "provider": "local",
+    "photo_index": 1,
+    "status": "downloaded"
+  }
+]

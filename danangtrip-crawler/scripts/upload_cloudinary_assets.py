@@ -26,8 +26,8 @@ def load_cloudinary_credentials() -> tuple[str, str, str]:
     load_dotenv(ROOT / ".env")
 
     cloud_name = os.getenv("CLOUDINARY_CLOUD_NAME", "")
-    api_key = os.getenv("CLOUDINARY_KEY", "")
-    api_secret = os.getenv("CLOUDINARY_SECRET", "")
+    api_key = os.getenv("CLOUDINARY_KEY") or os.getenv("CLOUDINARY_API_KEY", "")
+    api_secret = os.getenv("CLOUDINARY_SECRET") or os.getenv("CLOUDINARY_API_SECRET", "")
     cloudinary_url = os.getenv("CLOUDINARY_URL", "")
 
     if cloudinary_url and (not api_key or not api_secret or not cloud_name):
@@ -41,8 +41,8 @@ def load_cloudinary_credentials() -> tuple[str, str, str]:
         name
         for name, value in {
             "CLOUDINARY_CLOUD_NAME": cloud_name,
-            "CLOUDINARY_KEY": api_key,
-            "CLOUDINARY_SECRET": api_secret,
+            "CLOUDINARY_KEY/CLOUDINARY_API_KEY": api_key,
+            "CLOUDINARY_SECRET/CLOUDINARY_API_SECRET": api_secret,
         }.items()
         if not value
     ]

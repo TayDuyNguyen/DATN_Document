@@ -65,6 +65,7 @@ Thu muc nay chua cac file SQL seed data theo thu tu khoi tao.
 59. `59_ratings_admin_read_state_seed.sql` khoi tao trang thai Moi/Da xem cho ratings
 60. `60_search_logs_vietnamese_diacritics_seed.sql` chuan hoa search trends sang tieng Viet co dau
 61. `61_dashboard_search_activity_seed.sql` bo sung log tim kiem/click/zero-result gan day cho dashboard admin
+62. `62_promotions_current_campaign_seed.sql` upsert mã khuyến mãi hiện hành, sửa tên/mô tả tiếng Việt có dấu và thêm mã mẫu đổi point sang voucher
 
 ## Lenh mot dong
 
@@ -154,6 +155,61 @@ Khong tao moi:
 
 Neu can gia tri cho cot anh (`hero_image`, `og_image`, `thumbnail`, `images`) thi de `NULL`, chuoi rong, hoac chi dung URL da duoc duyet san.
 
+## Cloudinary media workflow
+
+Cloudinary chính thức của dự án dùng namespace:
+
+```text
+dmukxquza/danangtrip/...
+```
+
+Không dùng:
+
+- `https://res.cloudinary.com/danangtrip/...`
+- `samples/...`
+- upload rời rạc không có `id/slug` trong public id
+
+Folder chuẩn:
+
+```text
+danangtrip/branding/{logo|favicon|og}
+danangtrip/locations/{location_slug}/loc-{location_id}__{location_slug}__p01
+danangtrip/tours/{tour_slug}/tour-{tour_id}__{tour_slug}__p01
+danangtrip/blogs/{blog_slug}/blog-{blog_id}__{blog_slug}__p01
+danangtrip/users/{user_id}__{username}/avatar
+danangtrip/payments/sepay
+danangtrip/landing-pages/{landing_slug}
+```
+
+Upload batch từ manifest:
+
+```powershell
+cd D:\DATN\DATN_Tài liệu\danangtrip-crawler
+.venv\Scripts\python.exe scripts\upload_cloudinary_assets.py --manifest "D:\DATN\DATN_Tài liệu\data-center\media-assets\cloudinary-staging\branding\2026-06-09-branding-assets\manifest.csv" --results "D:\DATN\DATN_Tài liệu\data-center\media-assets\cloudinary-staging\branding\2026-06-09-branding-assets\upload-results.csv" --results-json "D:\DATN\DATN_Tài liệu\data-center\media-assets\cloudinary-staging\branding\2026-06-09-branding-assets\upload-results.json"
+```
+
+Audit ảnh cũ trước khi xoá:
+
+```powershell
+cd D:\DATN\DATN_Tài liệu\danangtrip-crawler
+.venv\Scripts\python.exe scripts\manage_cloudinary_assets.py audit --prefix samples --used-url-roots "D:\DATN\danangtrip-api\database" "D:\DATN\DATN_Tài liệu\database-seeders" "D:\DATN\DATN_Tài liệu\data-center"
+```
+
+Chỉ xoá prefix khi audit trả về `referenced_count = 0`:
+
+```powershell
+cd D:\DATN\DATN_Tài liệu\danangtrip-crawler
+.venv\Scripts\python.exe scripts\manage_cloudinary_assets.py delete-prefix --prefix samples --confirm samples
+```
+
+Batch ngày 2026-06-09 đã upload và cập nhật seed:
+
+| Setting | URL mới |
+| --- | --- |
+| `brand.logo` | `https://res.cloudinary.com/dmukxquza/image/upload/v1781012077/danangtrip/branding/logo/danangtrip-logo.png` |
+| `brand.favicon` | `https://res.cloudinary.com/dmukxquza/image/upload/v1781012079/danangtrip/branding/favicon/danangtrip-favicon.png` |
+| `seo.og_image` | `https://res.cloudinary.com/dmukxquza/image/upload/v1781012083/danangtrip/branding/og/danangtrip-og-image.jpg` |
+
 ## Ghi chu
 
 - Khong doi thu tu so dau file neu cac file con phu thuoc khoa ngoai.
@@ -218,6 +274,7 @@ Không chạy `normalize:seeders` trên seed UTF-8 hiện hành vì script legac
 | `59_ratings_admin_read_state_seed.sql` | Khởi tạo trạng thái Mới/Đã xem cho rating lịch sử đúng một lần, không ghi đè thao tác admin khi chạy incremental. | dynamic |
 | `60_search_logs_vietnamese_diacritics_seed.sql` | Chuẩn hóa từ khóa search logs sang tiếng Việt có dấu cho dashboard search trends. | dynamic |
 | `61_dashboard_search_activity_seed.sql` | Bổ sung search logs gần đây có keyword, click item và zero-result để 4 panel search dashboard có dữ liệu kiểm thử. | dynamic |
+| `62_promotions_current_campaign_seed.sql` | Upsert lại mã khuyến mãi hiện hành để chạy incremental vẫn có dữ liệu coupon/voucher; bổ sung mã mẫu `POINT50K`, `POINT100K` cho hướng đổi point sang voucher. | 12 promotions |
 
 Seed `57` chỉ mô phỏng hoạt động vận hành, không phải dữ liệu khách hàng thật. Các bản ghi do seed tạo có prefix `DEMO-ACT-` hoặc `demo-activity-` để nhận diện và chạy lặp không tăng số lượng ngoài kiểm soát.
 
