@@ -1,20 +1,20 @@
 # CHƯƠNG 1. CƠ SỞ LÝ THUYẾT
 
-## 1.1. Tổng quan về kiến trúc máy khách - máy chủ
+## 1.1. Tổng quan về kiến trúc client-server
 
-Kiến trúc máy khách - máy chủ (client-server) là mô hình phổ biến trong phát triển ứng dụng web. Trong mô hình này, phía máy khách chịu trách nhiệm hiển thị giao diện và tương tác với người dùng, trong khi phía máy chủ xử lý nghiệp vụ, truy xuất dữ liệu, xác thực, phân quyền và cung cấp API.
+Kiến trúc client-server là mô hình phổ biến trong phát triển ứng dụng web. Trong mô hình này, phía client chịu trách nhiệm hiển thị giao diện và tương tác với người dùng, trong khi phía server xử lý nghiệp vụ, truy xuất dữ liệu, xác thực, phân quyền và cung cấp API.
 
-Trong hệ thống DanangTrip, kiến trúc máy khách - máy chủ được thể hiện qua ba thành phần:
+Trong hệ thống DanangTrip, kiến trúc client-server được thể hiện qua ba thành phần:
 
 - `danangtrip-web`: website người dùng, gọi API để hiển thị dữ liệu địa điểm, tour, đơn đặt tour, thanh toán và hồ sơ.
 - `danangtrip-admin`: giao diện quản trị, gọi API quản trị để quản lý dữ liệu và báo cáo.
-- `danangtrip-api`: API phía máy chủ được xây dựng bằng Laravel, cung cấp REST API cho website người dùng và trang quản trị.
+- `danangtrip-api`: API phía server được xây dựng bằng Laravel, cung cấp REST API cho website người dùng và trang quản trị.
 
 Mô hình này giúp tách biệt trách nhiệm giữa giao diện và nghiệp vụ, thuận tiện cho bảo trì, mở rộng và triển khai độc lập.
 
 ## 1.2. Tổng quan về Next.js và React
 
-React là thư viện JavaScript dùng để xây dựng giao diện người dùng theo hướng thành phần (component). Next.js là khung phát triển (framework) xây dựng trên React, hỗ trợ định tuyến theo cấu trúc tệp, kết xuất phía máy chủ, sinh trang tĩnh, tối ưu SEO và triển khai linh hoạt.
+React là thư viện JavaScript dùng để xây dựng giao diện người dùng theo hướng thành phần (component). Next.js là khung phát triển (framework) xây dựng trên React, hỗ trợ định tuyến theo cấu trúc tệp, kết xuất phía server, sinh trang tĩnh, tối ưu SEO và triển khai linh hoạt.
 
 Trong DanangTrip, Next.js được dùng cho website người dùng vì phù hợp với các trang cần SEO như trang chủ, danh sách địa điểm, chi tiết địa điểm, danh sách tour, chi tiết tour và blog. Dự án còn sử dụng:
 
@@ -26,7 +26,7 @@ Trong DanangTrip, Next.js được dùng cho website người dùng vì phù h�
 
 ## 1.3. Tổng quan về React/Vite cho trang quản trị
 
-Vite là công cụ đóng gói giao diện có tốc độ phát triển nhanh, phù hợp với ứng dụng quản trị dạng ứng dụng một trang. React Router được dùng để quản lý đường dẫn nội bộ, React Query để đồng bộ trạng thái dữ liệu từ máy chủ, React Hook Form và Yup/Zod để xử lý biểu mẫu và kiểm tra dữ liệu.
+Vite là công cụ đóng gói giao diện có tốc độ phát triển nhanh, phù hợp với ứng dụng quản trị dạng ứng dụng một trang. React Router được dùng để quản lý đường dẫn nội bộ, React Query để đồng bộ trạng thái dữ liệu từ server, React Hook Form và Yup/Zod để xử lý biểu mẫu và kiểm tra dữ liệu.
 
 Trang quản trị DanangTrip sử dụng React/Vite để xây dựng các phân hệ bảng điều khiển, tour, lịch khởi hành, đơn đặt tour, thanh toán, địa điểm, bài viết, người dùng, đánh giá, liên hệ, thông báo, khuyến mãi và cấu hình. Đây là nhóm màn hình có tính thao tác lặp lại cao, cần bảng dữ liệu, bộ lọc, biểu đồ, biểu mẫu thêm/sửa và kiểm soát trạng thái.
 
@@ -34,7 +34,7 @@ Trang quản trị DanangTrip sử dụng React/Vite để xây dựng các phâ
 
 Laravel là khung phát triển PHP hỗ trợ phát triển ứng dụng web và API với hệ sinh thái đầy đủ: định tuyến, lớp trung gian (middleware), ORM, migration, hàng đợi, kiểm tra dữ liệu, bộ nhớ đệm, sự kiện, tác vụ nền và kiểm thử. REST API là phong cách thiết kế API sử dụng các phương thức HTTP như GET, POST, PUT, PATCH và DELETE để thao tác tài nguyên.
 
-API phía máy chủ của DanangTrip sử dụng Laravel 12 và tổ chức mã nguồn theo hướng:
+API phía server của DanangTrip sử dụng Laravel 12 và tổ chức mã nguồn theo hướng:
 
 - Controller tiếp nhận yêu cầu và trả phản hồi.
 - Service xử lý nghiệp vụ.
@@ -47,7 +47,7 @@ Cách tổ chức này giúp nghiệp vụ được tách khỏi controller, d�
 
 ## 1.5. Xác thực JWT và phân quyền
 
-JWT là chuẩn mã thông báo dùng để truyền thông tin xác thực giữa máy khách và máy chủ. Sau khi đăng nhập thành công, máy chủ cấp mã thông báo truy cập (access token) và mã thông báo làm mới (refresh token). Máy khách gửi mã thông báo trong các yêu cầu cần bảo vệ. Máy chủ kiểm tra mã thông báo để xác định người dùng và quyền truy cập.
+JWT là chuẩn mã thông báo dùng để truyền thông tin xác thực giữa client và server. Sau khi đăng nhập thành công, server cấp mã thông báo truy cập (access token) và mã thông báo làm mới (refresh token). Client gửi mã thông báo trong các yêu cầu cần bảo vệ. Server kiểm tra mã thông báo để xác định người dùng và quyền truy cập.
 
 Trong DanangTrip, API được chia thành:
 
@@ -57,7 +57,7 @@ Trong DanangTrip, API được chia thành:
 
 ## 1.6. PostgreSQL/Supabase và migration
 
-PostgreSQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở, hỗ trợ khóa ngoại, giao dịch (transaction), chỉ mục (index), ràng buộc dữ liệu, JSON/JSONB và tìm kiếm toàn văn (full-text search). Supabase cung cấp nền tảng dịch vụ máy chủ dựng sẵn (backend-as-a-service) sử dụng PostgreSQL làm lõi lưu trữ, phù hợp với các hệ thống cần triển khai nhanh cơ sở dữ liệu quan hệ và quản lý dữ liệu trên môi trường đám mây.
+PostgreSQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở, hỗ trợ khóa ngoại, giao dịch (transaction), chỉ mục (index), ràng buộc dữ liệu, JSON/JSONB và tìm kiếm toàn văn (full-text search). Supabase cung cấp nền tảng dịch vụ backend dựng sẵn (backend-as-a-service) sử dụng PostgreSQL làm lõi lưu trữ, phù hợp với các hệ thống cần triển khai nhanh cơ sở dữ liệu quan hệ và quản lý dữ liệu trên môi trường đám mây.
 
 PostgreSQL/Supabase được sử dụng do hệ thống có nhiều quan hệ dữ liệu cần quản lý bằng khóa ngoại và giao dịch, chẳng hạn quan hệ giữa người dùng, tour, lịch khởi hành, đơn đặt tour, chi tiết đơn đặt tour và thanh toán.
 
@@ -77,7 +77,7 @@ Các nhóm bảng chính của DanangTrip gồm:
 
 Thanh toán trực tuyến trong hệ thống đặt tour cần đảm bảo các yếu tố: tạo giao dịch, gắn giao dịch với đơn đặt tour, xác nhận trạng thái, chống xử lý trùng, cập nhật trạng thái đơn đặt tour sau thanh toán và lưu lịch sử giao dịch.
 
-DanangTrip tích hợp SePay/VietQR. Khi người dùng tạo thanh toán, hệ thống sinh thông tin giao dịch và nội dung chuyển khoản. Khi cổng thanh toán gửi IPN/callback, API phía máy chủ kiểm tra dữ liệu, xác thực giao dịch, cập nhật bảng `payments` và trạng thái `bookings`.
+DanangTrip tích hợp SePay/VietQR. Khi người dùng tạo thanh toán, hệ thống sinh thông tin giao dịch và nội dung chuyển khoản. Khi cổng thanh toán gửi IPN/callback, API phía server kiểm tra dữ liệu, xác thực giao dịch, cập nhật bảng `payments` và trạng thái `bookings`.
 
 ## 1.8. Chatbot, SQL RAG và gợi ý du lịch
 
@@ -107,13 +107,13 @@ Trong hệ thống DanangTrip, chatbot áp dụng hướng tiếp cận RAG ở 
 
 Kiểm thử giúp đảm bảo hệ thống hoạt động đúng và giảm lỗi khi thay đổi. Dự án DanangTrip có các nhóm kiểm thử:
 
-- Kiểm thử đơn vị và kiểm thử chức năng phía máy chủ bằng PHPUnit cho API, bảo mật, cấu hình, khuyến mãi, trang chủ, đánh giá và đặt tour.
+- Kiểm thử đơn vị và kiểm thử chức năng phía server bằng PHPUnit cho API, bảo mật, cấu hình, khuyến mãi, trang chủ, đánh giá và đặt tour.
 - Kiểm thử giao diện bằng Vitest và Playwright cho luồng đặt tour, tra cứu đơn đặt tour theo mã, đổi mật khẩu và kiểm thử giao diện.
 - Kiểm tra đóng gói, quy tắc mã nguồn và kiểu dữ liệu bằng các script trong `package.json` và `composer.json`.
 
-## 1.10. Tổng quan về React Query và quản lý trạng thái dữ liệu máy chủ
+## 1.10. Tổng quan về React Query và quản lý trạng thái dữ liệu server
 
-Trong ứng dụng web hiện đại, dữ liệu từ máy chủ thường có các đặc điểm: bất đồng bộ, cần bộ nhớ đệm, có trạng thái đang tải hoặc lỗi, cần tải lại khi dữ liệu thay đổi và cần đồng bộ giữa nhiều thành phần giao diện. React Query là thư viện giúp quản lý trạng thái dữ liệu máy chủ hiệu quả hơn so với việc tự quản lý bằng trạng thái cục bộ.
+Trong ứng dụng web hiện đại, dữ liệu từ server thường có các đặc điểm: bất đồng bộ, cần bộ nhớ đệm, có trạng thái đang tải hoặc lỗi, cần tải lại khi dữ liệu thay đổi và cần đồng bộ giữa nhiều thành phần giao diện. React Query là thư viện giúp quản lý trạng thái dữ liệu server hiệu quả hơn so với việc tự quản lý bằng trạng thái cục bộ.
 
 Trong DanangTrip, React Query phù hợp cho các luồng:
 
@@ -125,15 +125,15 @@ Trong DanangTrip, React Query phù hợp cho các luồng:
 
 Việc dùng React Query giúp giao diện phản hồi tốt hơn và giảm độ phức tạp khi xử lý dữ liệu bất đồng bộ.
 
-## 1.11. Tổng quan về quản lý trạng thái phía máy khách
+## 1.11. Tổng quan về quản lý trạng thái phía client
 
-Bên cạnh dữ liệu lấy từ máy chủ, giao diện còn cần quản lý các trạng thái cục bộ như thông tin đăng nhập, giỏ hàng, ngôn ngữ, cấu hình giao diện, hộp thoại và dữ liệu tạm. DanangTrip sử dụng Zustand cho một số trạng thái cục bộ vì thư viện này gọn nhẹ, dễ dùng và không cần nhiều mã lặp.
+Bên cạnh dữ liệu lấy từ server, giao diện còn cần quản lý các trạng thái cục bộ như thông tin đăng nhập, giỏ hàng, ngôn ngữ, cấu hình giao diện, hộp thoại và dữ liệu tạm. DanangTrip sử dụng Zustand cho một số trạng thái cục bộ vì thư viện này gọn nhẹ, dễ dùng và không cần nhiều mã lặp.
 
-Ví dụ các trạng thái phù hợp lưu ở phía máy khách:
+Ví dụ các trạng thái phù hợp lưu ở phía client:
 
 - Mã thông báo truy cập hoặc trạng thái đăng nhập.
 - Thông tin người dùng hiện tại.
-- Giỏ hàng cục bộ trước khi đồng bộ lên máy chủ.
+- Giỏ hàng cục bộ trước khi đồng bộ lên server.
 - Cấu hình giao diện hoặc trạng thái ứng dụng.
 
 ## 1.12. Đa ngôn ngữ trong website du lịch
@@ -160,7 +160,7 @@ DanangTrip lưu tọa độ `latitude`, `longitude` trong bảng địa điểm 
 
 ## 1.14. Tối ưu tìm kiếm trong hệ thống du lịch
 
-Tìm kiếm là chức năng quan trọng vì dữ liệu du lịch có nhiều loại: tên địa điểm, địa chỉ, mô tả, danh mục, tour, bài viết, từ khóa phổ biến và xu hướng. API phía máy chủ của DanangTrip sử dụng chỉ mục tìm kiếm toàn văn ở các bảng như `locations` và `tours` để hỗ trợ tìm kiếm theo nội dung.
+Tìm kiếm là chức năng quan trọng vì dữ liệu du lịch có nhiều loại: tên địa điểm, địa chỉ, mô tả, danh mục, tour, bài viết, từ khóa phổ biến và xu hướng. API phía server của DanangTrip sử dụng chỉ mục tìm kiếm toàn văn ở các bảng như `locations` và `tours` để hỗ trợ tìm kiếm theo nội dung.
 
 Các yếu tố cần quan tâm khi thiết kế tìm kiếm:
 
