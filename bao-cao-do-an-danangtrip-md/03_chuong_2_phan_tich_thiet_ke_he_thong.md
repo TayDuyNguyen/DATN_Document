@@ -59,195 +59,271 @@ Yêu cầu chức năng của hệ thống DanangTrip được chia thành hai n
 | Dễ bảo trì | TypeScript ở tầng giao diện, tầng dịch vụ Laravel, migration, kiểm thử và cấu trúc phân hệ rõ ràng |
 | Toàn vẹn dữ liệu | Dùng giao dịch cho đặt tour, thanh toán, cập nhật trạng thái và các thao tác quan trọng |
 
-## 2.4. Phân rã use case theo tác nhân
+## 2.4. Biểu đồ use case phân rã
+
+Để làm rõ hơn các chức năng cụ thể của từng nhóm đối tượng sử dụng hệ thống DanangTrip, phần này cung cấp các biểu đồ use case phân rã chi tiết cho từng tác nhân (Khách truy cập, Người dùng đã đăng nhập, Quản trị viên). Mỗi biểu đồ tập trung làm rõ các hành vi tương tác và các mối liên kết (như `<<include>>`) giữa các ca sử dụng.
 
 ### 2.4.1. Khách truy cập
 
-Khách truy cập là người chưa đăng nhập nhưng vẫn có thể sử dụng các chức năng tra cứu công khai:
-
-- Xem trang chủ.
-- Xem danh sách địa điểm và chi tiết địa điểm.
-- Xem danh sách tour và chi tiết tour.
-- Tìm kiếm địa điểm/tour/bài viết.
-- Xem bản đồ và các địa điểm nổi bật.
-- Đọc blog du lịch.
-- Xem khuyến mãi công khai.
-- Gửi biểu mẫu liên hệ.
-- Hỏi chatbot.
-- Đăng ký hoặc đăng nhập.
-
-### 2.4.2. Người dùng đã đăng nhập
-
-Người dùng đã đăng nhập kế thừa các chức năng của khách truy cập và có thêm các chức năng cá nhân:
-
-- Quản lý hồ sơ cá nhân.
-- Đổi mật khẩu và cập nhật ảnh đại diện.
-- Lưu hoặc bỏ lưu địa điểm/tour yêu thích.
-- Quản lý giỏ hàng.
-- Đặt tour và theo dõi đơn đặt tour.
-- Thanh toán và kiểm tra trạng thái thanh toán.
-- Xem hoặc tải hóa đơn.
-- Đánh giá tour/địa điểm.
-- Xem thông báo.
-- Nhận gợi ý cá nhân hóa.
-
-### 2.4.3. Quản trị viên
-
-Quản trị viên có quyền truy cập khu vực quản trị để vận hành hệ thống:
-
-- Quản lý dữ liệu địa điểm, danh mục, thẻ phân loại và tiện ích.
-- Quản lý tour, danh mục tour và lịch khởi hành.
-- Quản lý đơn đặt tour, thanh toán và hóa đơn.
-- Quản lý người dùng, vai trò và trạng thái tài khoản.
-- Quản lý đánh giá, liên hệ, thông báo, blog và trang đích.
-- Quản lý mã khuyến mãi và cấu hình website.
-- Xem bảng điều khiển, báo cáo doanh thu, đơn đặt tour, người dùng, địa điểm và đánh giá.
-
-## 2.5. Biểu đồ use case tổng quan
+Khách truy cập là đối tượng người dùng chưa có tài khoản hoặc chưa đăng nhập vào hệ thống. Họ có thể tương tác với các tính năng công cộng và tra cứu thông tin cơ bản:
 
 ```mermaid
 flowchart LR
-    Guest["Khách truy cập"] --> UC1["Xem địa điểm/tour/blog"]
-    Guest --> UC2["Tìm kiếm và xem bản đồ"]
-    Guest --> UC3["Gửi liên hệ"]
-    Guest --> UC4["Hỏi chatbot"]
+    subgraph HeThong ["Hệ thống DanangTrip (Khách truy cập)"]
+        UC1(["Xem trang chủ"])
+        UC2(["Xem danh sách & chi tiết địa điểm"])
+        UC3(["Xem danh sách & chi tiết tour"])
+        UC4(["Tìm kiếm địa điểm/tour/bài viết"])
+        UC5(["Xem bản đồ & vị trí địa điểm"])
+        UC6(["Đọc cẩm nang du lịch (Blog)"])
+        UC7(["Xem khuyến mãi công khai"])
+        UC8(["Gửi thông tin liên hệ"])
+        UC9(["Hỏi đáp Chatbot AI"])
+        UC10(["Đăng ký tài khoản"])
+        UC11(["Đăng nhập"])
+        UC12(["Quên & đặt lại mật khẩu"])
 
-    User["Người dùng"] --> UC5["Quản lý hồ sơ"]
-    User --> UC6["Yêu thích"]
-    User --> UC7["Giỏ hàng"]
-    User --> UC8["Đặt tour"]
-    User --> UC9["Thanh toán"]
-    User --> UC10["Đánh giá"]
-    User --> UC11["Nhận thông báo"]
+        UC12 -.->|"<<include>>"| UC11
+    end
 
-    Admin["Quản trị viên"] --> UC12["Quản lý địa điểm"]
-    Admin --> UC13["Quản lý tour/lịch khởi hành"]
-    Admin --> UC14["Quản lý đơn đặt tour/thanh toán"]
-    Admin --> UC15["Quản lý người dùng"]
-    Admin --> UC16["Quản lý nội dung"]
-    Admin --> UC17["Xem báo cáo"]
+    Guest["Khách truy cập (Guest)"] --> UC1
+    Guest --> UC2
+    Guest --> UC3
+    Guest --> UC4
+    Guest --> UC5
+    Guest --> UC6
+    Guest --> UC7
+    Guest --> UC8
+    Guest --> UC9
+    Guest --> UC10
+    Guest --> UC11
 ```
 
-## 2.6. Đặc tả use case tiêu biểu
+Chi tiết các chức năng của khách truy cập bao gồm:
+- **Xem trang chủ:** Xem các thông tin tổng quan, hình ảnh, địa điểm nổi bật.
+- **Xem danh sách và chi tiết địa điểm:** Tìm hiểu về thông tin, hình ảnh, đánh giá của các địa điểm.
+- **Xem danh sách và chi tiết tour:** Xem lịch trình tour, giá cả, và các dịch vụ đi kèm.
+- **Tìm kiếm địa điểm/tour/bài viết:** Tra cứu nhanh chóng các dịch vụ theo từ khóa.
+- **Xem bản đồ số:** Tìm vị trí địa lý của các địa điểm du lịch tại Đà Nẵng.
+- **Đọc blog du lịch:** Tham khảo kinh nghiệm, cẩm nang du lịch từ các bài viết chia sẻ.
+- **Xem khuyến mãi công khai:** Theo dõi các chương trình ưu đãi chung của hệ thống.
+- **Gửi biểu mẫu liên hệ:** Để lại phản hồi hoặc yêu cầu hỗ trợ cho quản trị viên.
+- **Hỏi chatbot:** Sử dụng chatbot AI để tư vấn hành trình và giải đáp thắc mắc.
+- **Đăng ký hoặc đăng nhập:** Khởi tạo tài khoản mới hoặc đăng nhập để chuyển đổi thành tác nhân Người dùng đã đăng nhập.
 
-### 2.6.1. Use case đăng nhập
+### 2.4.2. Người dùng đã đăng nhập
+
+Người dùng đã đăng nhập kế thừa toàn bộ quyền truy cập công cộng của Khách truy cập, đồng thời được thực hiện các tính năng giao dịch và cá nhân hóa:
+
+```mermaid
+flowchart LR
+    subgraph HeThongUser ["Hệ thống DanangTrip (Người dùng)"]
+        UC13(["Quản lý hồ sơ cá nhân"])
+        UC14(["Cập nhật ảnh đại diện"])
+        UC15(["Đổi mật khẩu"])
+        UC16(["Quản lý danh sách yêu thích"])
+        UC17(["Quản lý giỏ hàng"])
+        UC18(["Đặt tour du lịch"])
+        UC19(["Thanh toán đơn đặt tour"])
+        UC20(["Đánh giá tour/địa điểm"])
+        UC21(["Nhận thông báo cá nhân"])
+        UC22(["Nhận gợi ý cá nhân hóa"])
+
+        UC13 -.->|"<<include>>"| UC14
+        UC13 -.->|"<<include>>"| UC15
+        UC18 -.->|"<<include>>"| UC19
+    end
+
+    User["Người dùng (User)"] --> UC13
+    User --> UC16
+    User --> UC17
+    User --> UC18
+    User --> UC20
+    User --> UC21
+    User --> UC22
+```
+
+Chi tiết các chức năng của người dùng đã đăng nhập bao gồm:
+- **Quản lý hồ sơ cá nhân:** Cập nhật thông tin cá nhân cơ bản.
+- **Đổi mật khẩu và cập nhật ảnh đại diện:** Đảm bảo bảo mật tài khoản và cập nhật thông tin nhận diện.
+- **Lưu hoặc bỏ lưu địa điểm/tour yêu thích:** Lưu trữ các điểm đến hoặc lịch trình quan tâm để xem lại sau.
+- **Quản lý giỏ hàng:** Quản lý các tour du lịch đã chọn để chuẩn bị đặt chỗ.
+- **Đặt tour và theo dõi đơn đặt tour:** Thực hiện đặt chỗ cho chuyến đi và theo dõi tiến độ đơn hàng.
+- **Thanh toán:** Thực hiện thanh toán trực tuyến qua cổng tích hợp.
+- **Xem hoặc tải hóa đơn:** Tải hóa đơn PDF của các tour đã thanh toán thành công.
+- **Đánh giá tour/địa điểm:** Viết bình luận, đăng tải hình ảnh và chấm điểm sao cho các trải nghiệm thực tế.
+- **Xem thông báo:** Nhận các thông tin cập nhật về đơn hàng hoặc chương trình ưu đãi cá nhân.
+- **Nhận gợi ý cá nhân hóa:** Hệ thống đề xuất địa điểm/tour dựa trên hành vi tìm kiếm và tương tác trước đó.
+
+### 2.4.3. Quản trị viên
+
+Quản trị viên là tác nhân quản trị nội bộ có đặc quyền cao nhất để vận hành, điều phối hệ thống:
+
+```mermaid
+flowchart LR
+    subgraph HeThongAdmin ["Hệ thống DanangTrip (Quản trị viên)"]
+        UC23(["Quản lý địa điểm"])
+        UC24(["Quản lý tour & lịch khởi hành"])
+        UC25(["Quản lý đơn đặt tour & thanh toán"])
+        UC26(["Quản lý người dùng"])
+        UC27(["Quản lý nội dung & khuyến mãi"])
+        UC28(["Xem báo cáo & thống kê"])
+        UC29(["Cấu hình hệ thống"])
+        UC30(["Xác nhận thanh toán"])
+        UC31(["Xuất hóa đơn"])
+
+        UC25 -.->|"<<include>>"| UC30
+        UC25 -.->|"<<include>>"| UC31
+    end
+
+    Admin["Quản trị viên (Admin)"] --> UC23
+    Admin --> UC24
+    Admin --> UC25
+    Admin --> UC26
+    Admin --> UC27
+    Admin --> UC28
+    Admin --> UC29
+```
+
+Chi tiết các chức năng của quản trị viên bao gồm:
+- **Quản lý dữ liệu địa điểm, danh mục, thẻ phân loại và tiện ích:** Thêm mới, chỉnh sửa, xóa và kiểm duyệt hình ảnh của các địa điểm du lịch.
+- **Quản lý tour, danh mục tour và lịch khởi hành:** Cập nhật thông tin chi tiết các tour du lịch, quản lý ngày khởi hành và số chỗ của mỗi đợt.
+- **Quản lý đơn đặt tour, thanh toán và hóa đơn:** Tiếp nhận đơn hàng, xác nhận giao dịch thanh toán thủ công hoặc kiểm tra đối soát, hoàn tiền.
+- **Quản lý người dùng, vai trò và trạng thái tài khoản:** Theo dõi danh sách tài khoản, khóa hoặc mở khóa tài khoản vi phạm.
+- **Quản lý nội dung, cẩm nang blog, thông báo và khuyến mãi:** Đăng tải cẩm nang, phê duyệt bài viết, cấu hình các mã giảm giá và gửi thông báo hệ thống.
+- **Quản lý liên hệ và đánh giá:** Phản hồi các yêu cầu liên hệ, kiểm duyệt các đánh giá xấu hoặc vi phạm tiêu chuẩn cộng đồng.
+- **Xem bảng điều khiển, báo cáo doanh thu:** Phân tích biểu đồ trực quan về doanh thu, số lượt booking, tăng trưởng người dùng.
+- **Cấu hình hệ thống:** Tùy chỉnh các thông số cài đặt chung cho toàn bộ website.
+
+## 2.5. Đặc tả use case tiêu biểu
+
+### 2.5.1. Use case đăng nhập
 
 *Bảng 2.4: Đặc tả ca sử dụng Đăng nhập*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Đăng nhập |
-| Tác nhân | Người dùng, quản trị viên |
-| Tiền điều kiện | Người dùng đã có tài khoản |
-| Luồng chính | Nhập email/mật khẩu; gửi yêu cầu đăng nhập; API phía máy chủ kiểm tra thông tin; trả mã thông báo truy cập, mã thông báo làm mới và thông tin người dùng; giao diện lưu trạng thái đăng nhập |
-| Luồng ngoại lệ | Sai thông tin đăng nhập; tài khoản bị khóa; dữ liệu không hợp lệ |
-| Hậu điều kiện | Người dùng truy cập được chức năng tương ứng với quyền |
+| **Tên use case** | Đăng nhập |
+| **Tác nhân** | Người dùng, Quản trị viên |
+| **Tiền điều kiện** | Người dùng đã có tài khoản trên hệ thống. |
+| **Luồng sự kiện chính** | 1. Người dùng nhập Email và Mật khẩu.<br>2. Người dùng nhấn nút "Đăng nhập".<br>3. Hệ thống gửi yêu cầu xác thực tài khoản đến API server.<br>4. API server kiểm tra tính hợp lệ và đối chiếu dữ liệu trong cơ sở dữ liệu.<br>5. API server khởi tạo mã JWT (Access Token, Refresh Token) và trả về thông tin phiên đăng nhập.<br>6. Giao diện lưu trạng thái đăng nhập và chuyển hướng người dùng đến giao diện phù hợp với vai trò. |
+| **Luồng sự kiện thay thế** | 4a. Hệ thống: Thông báo lỗi nếu thông tin tài khoản không chính xác hoặc tài khoản đang bị khóa. |
+| **Hậu điều kiện** | Người dùng đăng nhập thành công và truy cập được chức năng tương ứng với quyền. |
+| **Trường hợp lỗi** | 1. Người dùng nhập sai Email hoặc Mật khẩu.<br>2. Tài khoản đã bị khóa hoặc chưa được kích hoạt.<br>3. Không thể kết nối với API máy chủ. |
 
-### 2.6.2. Use case đặt tour
+### 2.5.2. Use case đặt tour
 
 *Bảng 2.5: Đặc tả ca sử dụng Đặt tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Đặt tour |
-| Tác nhân | Người dùng đã đăng nhập |
-| Tiền điều kiện | Người dùng đã chọn tour/lịch khởi hành còn chỗ |
-| Luồng chính | Chọn tour; chọn lịch khởi hành; nhập số lượng khách; hệ thống tính giá; người dùng xác nhận; API phía máy chủ tạo đơn đặt tour và chi tiết đơn đặt tour; hệ thống chuyển sang thanh toán |
-| Luồng ngoại lệ | Lịch khởi hành hết chỗ; dữ liệu khách không hợp lệ; mã khuyến mãi không hợp lệ |
-| Hậu điều kiện | Booking được tạo với trạng thái chờ thanh toán hoặc chờ xác nhận |
+| **Tên use case** | Đặt tour |
+| **Tác nhân** | Người dùng đã đăng nhập |
+| **Tiền điều kiện** | Người dùng đang xem chi tiết một tour du lịch và lịch khởi hành còn chỗ trống. |
+| **Luồng sự kiện chính** | 1. Người dùng chọn lịch khởi hành mong muốn.<br>2. Người dùng nhập số lượng khách hàng đi tour.<br>3. Hệ thống tính toán tổng tiền và áp dụng các khuyến mãi hợp lệ.<br>4. Người dùng nhấn nút "Xác nhận đặt tour" và cập nhật thông tin liên hệ.<br>5. Người dùng nhấn nút "Đặt tour".<br>6. Hệ thống tạo đơn đặt tour mới trong cơ sở dữ liệu với trạng thái "Chờ thanh toán".<br>7. Hệ thống chuyển hướng người dùng đến giao diện thanh toán. |
+| **Luồng sự kiện thay thế** | 3a. Người dùng: Nhập mã giảm giá và hệ thống cập nhật lại tổng tiền giảm giá phù hợp. |
+| **Hậu điều kiện** | Đơn đặt tour (booking) được tạo thành công trong hệ thống và ở trạng thái Chờ thanh toán. |
+| **Trường hợp lỗi** | 1. Số lượng chỗ trống còn lại không đủ đáp ứng số lượng khách đặt.<br>2. Nhập số lượng khách không hợp lệ (nhỏ hơn hoặc bằng 0).<br>3. Lỗi tạo bản ghi trong cơ sở dữ liệu. |
 
-### 2.6.3. Use case thanh toán
+### 2.5.3. Use case thanh toán
 
 *Bảng 2.6: Đặc tả ca sử dụng Thanh toán đơn đặt tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Thanh toán đơn đặt tour |
-| Tác nhân | Người dùng, cổng thanh toán |
-| Tiền điều kiện | Booking tồn tại và chưa thanh toán |
-| Luồng chính | Người dùng tạo thanh toán; hệ thống sinh giao dịch SePay/VietQR; người dùng thanh toán; IPN/callback gửi về API phía máy chủ; API phía máy chủ xác thực và cập nhật thanh toán/đơn đặt tour |
-| Luồng ngoại lệ | Thanh toán thất bại; callback sai chữ ký; số tiền không khớp; giao dịch trùng |
-| Hậu điều kiện | Booking được cập nhật trạng thái thanh toán thành công hoặc thất bại |
+| **Tên use case** | Thanh toán đơn đặt tour |
+| **Tác nhân** | Người dùng, Cổng thanh toán (SePay/VietQR) |
+| **Tiền điều kiện** | Đơn đặt tour tồn tại trong hệ thống và chưa được thanh toán (trạng thái Chờ thanh toán). |
+| **Luồng sự kiện chính** | 1. Người dùng chọn phương thức thanh toán chuyển khoản VietQR.<br>2. Hệ thống hiển thị mã VietQR động cùng thông tin số tiền và nội dung chuyển khoản tự động.<br>3. Người dùng sử dụng ứng dụng ngân hàng quét mã QR và thực hiện thanh toán.<br>4. Cổng thanh toán (SePay) nhận giao dịch và gửi Webhook (IPN) xác nhận đến hệ thống API.<br>5. Hệ thống xác thực Webhook và cập nhật trạng thái đơn đặt tour thành "Đã thanh toán".<br>6. Hệ thống hiển thị giao diện thanh toán thành công và gửi hóa đơn xác nhận qua email. |
+| **Luồng sự kiện thay thế** | 4a. Hệ thống: Quá thời gian quy định mà người dùng chưa thanh toán -> Tự động chuyển đơn đặt tour sang trạng thái "Hủy". |
+| **Hậu điều kiện** | Đơn đặt tour được cập nhật thành Đã thanh toán, tạo mã giao dịch và phát hành hóa đơn thành công. |
+| **Trường hợp lỗi** | 1. Người dùng chuyển sai nội dung chuyển khoản hoặc sai số tiền yêu cầu.<br>2. Lỗi kết nối Webhook giữa SePay và API máy chủ. |
 
-### 2.6.4. Use case quản lý tour
+### 2.5.4. Use case quản lý tour
 
 *Bảng 2.7: Đặc tả ca sử dụng Quản lý tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Quản lý tour |
-| Tác nhân | Quản trị viên |
-| Tiền điều kiện | Quản trị viên đã đăng nhập |
-| Luồng chính | Xem danh sách tour; thêm/sửa/xóa tour; cập nhật trạng thái; đánh dấu tour nổi bật/hot; quản lý lịch khởi hành |
-| Luồng ngoại lệ | Dữ liệu không hợp lệ; tour đã phát sinh đơn đặt tour; người dùng không có quyền |
-| Hậu điều kiện | Dữ liệu tour được cập nhật và hiển thị cho người dùng |
+| **Tên use case** | Quản lý tour |
+| **Tác nhân** | Quản trị viên |
+| **Tiền điều kiện** | Quản trị viên đã đăng nhập thành công vào trang quản trị (Admin Dashboard). |
+| **Luồng sự kiện chính** | 1. Quản trị viên truy cập trang quản lý tour du lịch.<br>2. Quản trị viên chọn tính năng "Thêm tour mới".<br>3. Quản trị viên nhập thông tin tour (Tên, Mô tả, Lịch trình, Giá vé, Số khách tối đa, Hình ảnh).<br>4. Quản trị viên nhấn nút "Lưu".<br>5. Hệ thống kiểm tra dữ liệu hợp lệ và lưu vào cơ sở dữ liệu.<br>6. Hệ thống thông báo thành công và hiển thị tour mới trên danh sách. |
+| **Luồng sự kiện thay thế** | 2a. Quản trị viên: Chọn chỉnh sửa một tour hiện có -> Thay đổi thông tin và nhấn "Cập nhật".<br>2b. Quản trị viên: Chọn ẩn/xóa tour -> Hệ thống cập nhật trạng thái hiển thị của tour. |
+| **Hậu điều kiện** | Dữ liệu tour du lịch được cập nhật và đồng bộ hóa thành công lên trang hiển thị cho người dùng. |
+| **Trường hợp lỗi** | 1. Dữ liệu nhập vào bị thiếu hoặc không đúng định dạng.<br>2. Ảnh tải lên vượt quá kích thước hoặc định dạng không hợp lệ.<br>3. Xóa tour đã có đơn đặt tour (booking) liên kết trong hệ thống. |
 
-### 2.6.5. Use case đăng ký
+### 2.5.5. Use case đăng ký
 
 *Bảng 2.8: Đặc tả ca sử dụng Đăng ký tài khoản*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Đăng ký tài khoản |
-| Tác nhân | Khách truy cập |
-| Tiền điều kiện | Người dùng chưa có tài khoản trong hệ thống |
-| Luồng chính | Người dùng nhập tên đăng nhập, email, mật khẩu, họ tên; giao diện kiểm tra dữ liệu; API phía máy chủ kiểm tra email/tên đăng nhập trùng; tạo tài khoản ở trạng thái chờ xử lý hoặc hoạt động theo cấu hình; gửi thông tin xác thực nếu cần |
-| Luồng ngoại lệ | Email đã tồn tại; username đã tồn tại; mật khẩu không hợp lệ; lỗi gửi email |
-| Hậu điều kiện | Tài khoản được tạo và người dùng có thể đăng nhập/xác thực email |
+| **Tên use case** | Đăng ký tài khoản |
+| **Tác nhân** | Khách truy cập |
+| **Tiền điều kiện** | Người dùng chưa có tài khoản đăng ký trong hệ thống. |
+| **Luồng sự kiện chính** | 1. Khách truy cập điền biểu mẫu đăng ký (Họ tên, Email, Tên đăng nhập, Mật khẩu, Xác nhận mật khẩu).<br>2. Người dùng nhấn nút "Đăng ký".<br>3. Hệ thống kiểm tra tính hợp lệ và duy nhất của email và tên đăng nhập.<br>4. Hệ thống tạo bản ghi người dùng mới với trạng thái "Chờ kích hoạt".<br>5. Hệ thống gửi email chứa mã kích hoạt hoặc OTP đến hòm thư người dùng.<br>6. Người dùng nhập mã OTP để kích hoạt tài khoản.<br>7. Hệ thống kích hoạt tài khoản thành công và thông báo cho người dùng. |
+| **Luồng sự kiện thay thế** | 5a. Hệ thống: Cấu hình hệ thống không yêu cầu kích hoạt -> Kích hoạt tài khoản trực tiếp và đăng nhập ngay. |
+| **Hậu điều kiện** | Tài khoản thành viên mới được lưu vào cơ sở dữ liệu dưới trạng thái Hoạt động. |
+| **Trường hợp lỗi** | 1. Email hoặc Tên đăng nhập đã được đăng ký bởi người dùng khác.<br>2. Mật khẩu nhập lại không khớp.<br>3. Người dùng nhập sai mã OTP kích hoạt. |
 
-### 2.6.6. Use case tìm kiếm địa điểm/tour
+### 2.5.6. Use case tìm kiếm địa điểm/tour
 
 *Bảng 2.9: Đặc tả ca sử dụng Tìm kiếm địa điểm/tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Tìm kiếm |
-| Tác nhân | Khách truy cập, người dùng |
-| Tiền điều kiện | Hệ thống có dữ liệu địa điểm, tour hoặc bài viết |
-| Luồng chính | Người dùng nhập từ khóa/bộ lọc; giao diện gọi API tìm kiếm; API phía máy chủ chuẩn hóa từ khóa, truy vấn dữ liệu, ghi nhận nhật ký tương tác; trả danh sách kết quả |
-| Luồng ngoại lệ | Từ khóa rỗng; không có kết quả; lỗi kết nối API |
-| Hậu điều kiện | Người dùng xem được kết quả tìm kiếm hoặc thông báo không có dữ liệu |
+| **Tên use case** | Tìm kiếm |
+| **Tác nhân** | Khách truy cập, Người dùng |
+| **Tiền điều kiện** | Hệ thống có dữ liệu địa điểm du lịch, tour du lịch hoặc bài viết blog. |
+| **Luồng sự kiện chính** | 1. Người dùng nhập từ khóa tìm kiếm vào thanh tìm kiếm.<br>2. Người dùng chọn các bộ lọc mong muốn (khoảng giá, danh mục, đánh giá sao).<br>3. Hệ thống tiếp nhận thông tin và gửi yêu cầu truy vấn đến API.<br>4. API server thực hiện truy vấn và sắp xếp kết quả dựa trên từ khóa.<br>5. Giao diện hiển thị danh sách kết quả phù hợp cho người dùng. |
+| **Luồng sự kiện thay thế** | 4a. Hệ thống: Không có kết quả trùng khớp -> Hiển thị màn hình thông báo không tìm thấy kết quả và đề xuất địa điểm phổ biến. |
+| **Hậu điều kiện** | Kết quả hiển thị đúng theo từ khóa và các điều kiện lọc được áp dụng. |
+| **Trường hợp lỗi** | 1. Từ khóa chứa các ký tự đặc biệt nguy hiểm hoặc lỗi truy vấn SQL.<br>2. Lỗi kết nối mạng đến API. |
 
-### 2.6.7. Use case đánh giá
+### 2.5.7. Use case đánh giá
 
 *Bảng 2.10: Đặc tả ca sử dụng Đánh giá tour/địa điểm*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Đánh giá tour/địa điểm |
-| Tác nhân | Người dùng đã đăng nhập |
-| Tiền điều kiện | Người dùng đã đăng nhập; đối tượng đánh giá tồn tại; nếu là tour có thể yêu cầu người dùng từng đặt tour |
-| Luồng chính | Người dùng nhập điểm sao, nội dung, ảnh; API phía máy chủ lưu đánh giá; cập nhật thống kê đánh giá; quản trị viên duyệt nếu cần |
-| Luồng ngoại lệ | Nội dung không hợp lệ; ảnh không hợp lệ; người dùng đánh giá trùng; đánh giá bị từ chối |
-| Hậu điều kiện | Đánh giá được lưu và hiển thị theo trạng thái duyệt |
+| **Tên use case** | Đánh giá tour/địa điểm |
+| **Tác nhân** | Người dùng đã đăng nhập |
+| **Tiền điều kiện** | Người dùng đã đăng nhập; nếu đánh giá tour thì yêu cầu người dùng từng đặt và đi tour đó thành công. |
+| **Luồng sự kiện chính** | 1. Người dùng chọn viết đánh giá tại trang chi tiết tour hoặc địa điểm.<br>2. Người dùng chọn số sao đánh giá (1-5 sao) và nhập nội dung bình luận, đính kèm ảnh (nếu có).<br>3. Người dùng nhấn nút "Gửi đánh giá".<br>4. Hệ thống kiểm tra dữ liệu đầu vào.<br>5. Hệ thống lưu đánh giá vào cơ sở dữ liệu và tự động tính toán lại điểm đánh giá trung bình.<br>6. Hệ thống hiển thị thông báo gửi thành công. |
+| **Luồng sự kiện thay thế** | 5a. Hệ thống: Cài đặt chế độ kiểm duyệt -> Chuyển đánh giá sang trạng thái "Chờ duyệt" trước khi hiển thị công khai. |
+| **Hậu điều kiện** | Bản ghi đánh giá được ghi nhận và điểm đánh giá trung bình của đối tượng được cập nhật tương ứng. |
+| **Trường hợp lỗi** | 1. Nội dung bình luận trống hoặc vi phạm từ khóa cấm.<br>2. Ảnh đính kèm không đúng định dạng hoặc vượt quá kích dung lượng tối đa.<br>3. Người dùng cố gắng đánh giá nhiều lần cho một đối tượng (tránh spam). |
 
-### 2.6.8. Use case quản lý đơn đặt tour
+### 2.5.8. Use case quản lý đơn đặt tour
 
 *Bảng 2.11: Đặc tả ca sử dụng Quản lý đơn đặt tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Quản lý đơn đặt tour |
-| Tác nhân | Quản trị viên |
-| Tiền điều kiện | Quản trị viên đã đăng nhập |
-| Luồng chính | Quản trị viên xem danh sách đơn đặt tour; lọc theo trạng thái/ngày/người dùng; xem chi tiết; cập nhật trạng thái; xác nhận thanh toán; xuất hóa đơn hoặc báo cáo |
-| Luồng ngoại lệ | Booking không tồn tại; trạng thái chuyển không hợp lệ; không đủ quyền |
-| Hậu điều kiện | Trạng thái đơn đặt tour được cập nhật đúng nghiệp vụ |
+| **Tên use case** | Quản lý đơn đặt tour |
+| **Tác nhân** | Quản trị viên |
+| **Tiền điều kiện** | Quản trị viên đã đăng nhập thành công vào trang quản trị (Admin Dashboard). |
+| **Luồng sự kiện chính** | 1. Quản trị viên truy cập danh sách đơn đặt tour (booking).<br>2. Quản trị viên lọc danh sách theo trạng thái đơn hàng (Chờ thanh toán, Đã thanh toán, Chờ duyệt).<br>3. Quản trị viên chọn xem chi tiết một đơn đặt tour cụ thể.<br>4. Quản trị viên thay đổi trạng thái đơn hàng hoặc xác nhận thanh toán.<br>5. Hệ thống lưu trạng thái mới và gửi email cập nhật thông tin cho khách hàng. |
+| **Luồng sự kiện thay thế** | 4a. Quản trị viên: Hủy đơn đặt tour -> Hệ thống cập nhật trạng thái đơn hàng thành "Đã hủy" và thực hiện giải phóng chỗ khởi hành. |
+| **Hậu điều kiện** | Trạng thái đơn đặt tour được cập nhật chính xác và khách hàng nhận được email thông báo trạng thái. |
+| **Trường hợp lỗi** | 1. Đơn đặt tour không tồn tại trong cơ sở dữ liệu.<br>2. Quản trị viên cố gắng cập nhật trạng thái không hợp lệ (ví dụ: chuyển từ Đã hoàn thành sang Chờ thanh toán). |
 
-### 2.6.9. Use case chatbot tư vấn
+### 2.5.9. Use case chatbot tư vấn
 
 *Bảng 2.12: Đặc tả ca sử dụng Chatbot tư vấn du lịch*
 
 | Thành phần | Nội dung |
 | --- | --- |
-| Tên use case | Chatbot tư vấn du lịch |
-| Tác nhân | Khách truy cập, người dùng |
-| Tiền điều kiện | API chatbot và cơ sở tri thức hoạt động |
-| Luồng chính | Người dùng gửi câu hỏi; API phía máy chủ phân loại ý định; trích xuất ràng buộc; tìm kiếm dữ liệu liên quan; AI tạo phản hồi; giao diện hiển thị câu trả lời |
-| Luồng ngoại lệ | Câu hỏi ngoài phạm vi; không có dữ liệu phù hợp; nhà cung cấp AI lỗi; yêu cầu vượt giới hạn |
-| Hậu điều kiện | Người dùng nhận được câu trả lời hoặc thông báo phù hợp |
+| **Tên use case** | Chatbot tư vấn du lịch |
+| **Tác nhân** | Khách truy cập, Người dùng |
+| **Tiền điều kiện** | API chatbot và cơ sở tri thức (knowledge base) hoạt động ổn định. |
+| **Luồng sự kiện chính** | 1. Người dùng nhập câu hỏi du lịch vào khung chat.<br>2. Hệ thống kiểm tra ý định câu hỏi (Intent Guard).<br>3. Hệ thống trích xuất tham số và tìm kiếm tri thức phù hợp qua cơ chế SQL RAG.<br>4. Hệ thống xây dựng prompt và gọi API nhà cung cấp mô hình AI (Gemini).<br>5. Hệ thống nhận kết quả phản hồi từ mô hình AI, ghi nhận lịch sử cuộc hội thoại.<br>6. Hệ thống hiển thị câu trả lời tự nhiên lên giao diện chat cho người dùng. |
+| **Luồng sự kiện thay thế** | 2a. Hệ thống: Câu hỏi nằm ngoài phạm vi hỗ trợ của hệ thống -> Trả về câu trả lời từ chối theo kịch bản có sẵn.<br>4a. Hệ thống: AI chính bị lỗi hoặc vượt hạn mức -> Tự động chuyển đổi sang mô hình AI dự phòng (AI Failover). |
+| **Hậu điều kiện** | Người dùng nhận được phản hồi tư vấn và lịch sử trò chuyện được lưu trữ thành công. |
+| **Trường hợp lỗi** | 1. Không có kết nối mạng từ hệ thống đến nhà cung cấp AI.<br>2. Cơ sở tri thức không có dữ liệu trả lời phù hợp (Chatbot trả lời theo kịch bản dự phòng). |
 
-## 2.7. Biểu đồ tuần tự đặt tour và thanh toán
+## 2.6. Biểu đồ tuần tự đặt tour và thanh toán
 
 ```mermaid
 sequenceDiagram
@@ -276,7 +352,7 @@ sequenceDiagram
     API-->>W: Trạng thái thanh toán
 ```
 
-## 2.8. Biểu đồ tuần tự đăng nhập
+## 2.7. Biểu đồ tuần tự đăng nhập
 
 ```mermaid
 sequenceDiagram
@@ -295,7 +371,7 @@ sequenceDiagram
     W-->>U: Chuyển đến trang phù hợp
 ```
 
-## 2.9. Biểu đồ tuần tự chatbot
+## 2.8. Biểu đồ tuần tự chatbot
 
 ```mermaid
 sequenceDiagram
@@ -322,7 +398,7 @@ sequenceDiagram
     API-->>W: Nội dung trả lời
 ```
 
-## 2.10. Thiết kế quy trình AI Chatbot
+## 2.9. Thiết kế quy trình AI Chatbot
 
 Pipeline chatbot trong DanangTrip được thiết kế để đảm bảo câu trả lời bám sát dữ liệu nội bộ của hệ thống. Luồng xử lý gồm các bước:
 
@@ -351,7 +427,7 @@ flowchart TD
     K --> L["Trả phản hồi cho giao diện"]
 ```
 
-### 2.10.1. Bảng mô tả đầu vào/đầu ra của quy trình AI
+### 2.9.1. Bảng mô tả đầu vào/đầu ra của quy trình AI
 
 *Bảng 2.13: Quy trình các bước xử lý đầu vào và đầu ra của chatbot AI*
 
@@ -366,7 +442,7 @@ flowchart TD
 | 7 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế, hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
 | 8 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi | Lịch sử chat và bộ nhớ đệm | Lưu lịch sử hội thoại và dữ liệu phục vụ truy vấn sau |
 
-### 2.10.2. Đối chiếu quy trình AI với mã nguồn
+### 2.9.2. Đối chiếu quy trình AI với mã nguồn
 
 *Bảng 2.14: Đối chiếu quy trình AI với các thành phần mã nguồn*
 
@@ -380,7 +456,7 @@ flowchart TD
 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | `ChatAiProviderService::complete()` và `ensureSuccessfulResponse()` | Tự động chuyển sang nhà cung cấp hoặc khóa truy cập khác khi phát hiện lỗi kết nối, vượt thời gian chờ, vượt giới hạn tần suất hoặc khóa truy cập không hợp lệ. |
 | Câu trả lời dự phòng | `ChatService::fallbackAnswer()` và `outOfScopeAnswer()` | Trả về câu trả lời dự phòng trong trường hợp không tìm thấy dữ liệu liên quan, mô hình AI gặp lỗi hoặc câu hỏi nằm ngoài phạm vi hỗ trợ của hệ thống. |
 
-### 2.10.3. Ví dụ xử lý câu hỏi chatbot
+### 2.9.3. Ví dụ xử lý câu hỏi chatbot
 
 Ví dụ người dùng nhập câu hỏi:
 
@@ -405,7 +481,7 @@ Ví dụ phản hồi mong đợi:
 
 Khi đưa vào báo cáo chính thức, cần thay ví dụ trên bằng dữ liệu thật từ cơ sở dữ liệu của dự án.
 
-## 2.11. Biểu đồ hoạt động tìm kiếm/gợi ý
+## 2.10. Biểu đồ hoạt động tìm kiếm/gợi ý
 
 ```mermaid
 flowchart TD
@@ -418,7 +494,7 @@ flowchart TD
     G --> H["Hiển thị danh sách và bộ lọc"]
 ```
 
-## 2.12. Kiến trúc hệ thống
+## 2.11. Kiến trúc hệ thống
 
 ```mermaid
 flowchart TB
@@ -433,7 +509,7 @@ flowchart TB
     API --> PDF["DomPDF/Excel Export"]
 ```
 
-## 2.13. Thiết kế cơ sở dữ liệu mức logic
+## 2.12. Thiết kế cơ sở dữ liệu mức logic
 
 Các thực thể chính:
 
@@ -452,9 +528,9 @@ Các thực thể chính:
 | Vận hành | `contacts`, `notifications`, `settings`, `promotions` | Liên hệ, thông báo, cấu hình và khuyến mãi |
 | Chatbot | `chat_messages`, `chat_cache`, `chat_knowledge_base` | Lịch sử chat, bộ nhớ đệm phản hồi và cơ sở tri thức |
 
-## 2.14. Mô tả một số bảng dữ liệu chính
+## 2.13. Mô tả một số bảng dữ liệu chính
 
-### 2.14.1. Bảng `users`
+### 2.13.1. Bảng `users`
 
 *Bảng 2.17: Cấu trúc dữ liệu chi tiết của bảng users*
 
@@ -471,7 +547,7 @@ Các thực thể chính:
 | `status` | Trạng thái `active`, `blocked`, `pending` |
 | `email_verified_at`, `last_login_at` | Thông tin xác thực và lần đăng nhập cuối |
 
-### 2.14.2. Bảng `locations`
+### 2.13.2. Bảng `locations`
 
 *Bảng 2.18: Cấu trúc dữ liệu chi tiết của bảng locations*
 
@@ -489,7 +565,7 @@ Các thực thể chính:
 | `thumbnail`, `images`, `video_url` | Tệp hình ảnh và video |
 | `status`, `is_featured` | Trạng thái hiển thị và nổi bật |
 
-### 2.14.3. Bảng `tours`
+### 2.13.3. Bảng `tours`
 
 *Bảng 2.19: Cấu trúc dữ liệu chi tiết của bảng tours*
 
@@ -509,7 +585,7 @@ Các thực thể chính:
 | `is_featured`, `is_hot` | Đánh dấu nổi bật/hot |
 | `view_count`, `booking_count`, `rating_count`, `rating_avg` | Thống kê |
 
-### 2.14.4. Bảng `tour_schedules`
+### 2.13.4. Bảng `tour_schedules`
 
 *Bảng 2.20: Cấu trúc dữ liệu chi tiết của bảng tour_schedules*
 
@@ -522,7 +598,7 @@ Các thực thể chính:
 | `price_adult`, `price_child`, `price_infant` | Giá override theo lịch |
 | `status` | Trạng thái lịch khởi hành |
 
-### 2.14.5. Bảng `bookings`
+### 2.13.5. Bảng `bookings`
 
 *Bảng 2.21: Cấu trúc dữ liệu chi tiết của bảng bookings*
 
@@ -536,7 +612,7 @@ Các thực thể chính:
 | `payment_method`, `payment_status`, `booking_status` | Phương thức, trạng thái thanh toán, trạng thái đặt tour |
 | `booked_at`, `confirmed_at`, `cancelled_at`, `completed_at` | Các mốc thời gian nghiệp vụ |
 
-### 2.14.6. Bảng `payments`
+### 2.13.6. Bảng `payments`
 
 *Bảng 2.22: Cấu trúc dữ liệu chi tiết của bảng payments*
 
@@ -552,7 +628,7 @@ Các thực thể chính:
 | `gateway_response` | Dữ liệu phản hồi từ cổng thanh toán |
 | `paid_at`, `refunded_at`, `refund_reason` | Thông tin thanh toán/hoàn tiền |
 
-## 2.15. Thiết kế API
+## 2.14. Thiết kế API
 
 API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 
@@ -560,7 +636,7 @@ API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 - API yêu cầu xác thực: `/auth/me`, `/user/profile`, `/user/bookings`, `/payments`, `/cart`, `/ratings`, `/recommendations`, `/user/notifications`.
 - API quản trị: `/admin/dashboard`, `/admin/locations`, `/admin/tours`, `/admin/tour-schedules`, `/admin/bookings`, `/admin/payments`, `/admin/users`, `/admin/blog-posts`, `/admin/ratings`, `/admin/settings`, `/admin/promotions`.
 
-## 2.16. Ma trận chức năng và API
+## 2.15. Ma trận chức năng và API
 
 *Bảng 2.23: Ma trận phân hệ chức năng giao diện và API tương ứng*
 
@@ -577,7 +653,7 @@ API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 | Chatbot | Website người dùng | `POST /chat` |
 | Báo cáo | Trang quản trị | `/admin/dashboard/*`, `/admin/reports/*` |
 
-## 2.17. Danh sách sơ đồ cần xuất hình trong báo cáo
+## 2.16. Danh sách sơ đồ cần xuất hình trong báo cáo
 
 Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. Khi đưa vào Word, cần dựng lại bằng draw.io/Figma/PlantUML và xuất thành hình có chú thích:
 
@@ -585,10 +661,12 @@ Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. 
 
 | Mã hình | Tên hình đề xuất | Nội dung |
 | --- | --- | --- |
-| Hình 2.1 | Biểu đồ use case tổng quan | Actor khách truy cập, người dùng, quản trị viên và các nhóm chức năng chính |
-| Hình 2.2 | Kiến trúc tổng thể hệ thống DanangTrip | Website người dùng Next.js, trang quản trị React/Vite, Laravel API, PostgreSQL/Supabase, Redis, nhà cung cấp AI, Cloudinary, SePay |
-| Hình 2.3 | Quy trình AI Chatbot | Bộ kiểm soát ý định, phân tích truy vấn, lớp bộ nhớ đệm, SQL RAG, nhà cung cấp AI, chuyển đổi dự phòng AI |
-| Hình 2.4 | Biểu đồ tuần tự đặt tour và thanh toán | Luồng từ chọn tour đến tạo đơn đặt tour, tạo thanh toán và nhận IPN |
-| Hình 2.5 | Biểu đồ tuần tự chatbot | Luồng từ câu hỏi người dùng đến truy xuất dữ liệu và tạo phản hồi |
-| Hình 2.6 | ERD cơ sở dữ liệu | Các bảng chính: users, tours, tour_schedules, bookings, payments, locations, ratings, nhóm bảng chat |
-| Hình 2.7 | Sơ đồ cấu trúc các lớp xử lý chatbot | Mối quan hệ và luồng điều phối giữa các lớp dịch vụ chatbot trong hệ thống |
+| Hình 2.1 | Biểu đồ use case phân rã - Khách truy cập | Biểu đồ use case phân rã chi tiết cho tác nhân Khách truy cập |
+| Hình 2.2 | Biểu đồ use case phân rã - Người dùng | Biểu đồ use case phân rã chi tiết cho tác nhân Người dùng đã đăng nhập |
+| Hình 2.3 | Biểu đồ use case phân rã - Quản trị viên | Biểu đồ use case phân rã chi tiết cho tác nhân Quản trị viên |
+| Hình 2.4 | Kiến trúc tổng thể hệ thống DanangTrip | Website người dùng Next.js, trang quản trị React/Vite, Laravel API, PostgreSQL/Supabase, Redis, nhà cung cấp AI, Cloudinary, SePay |
+| Hình 2.5 | Quy trình AI Chatbot | Bộ kiểm soát ý định, phân tích truy vấn, lớp bộ nhớ đệm, SQL RAG, nhà cung cấp AI, chuyển đổi dự phòng AI |
+| Hình 2.6 | Biểu đồ tuần tự đặt tour và thanh toán | Luồng từ chọn tour đến tạo đơn đặt tour, tạo thanh toán và nhận IPN |
+| Hình 2.7 | Biểu đồ tuần tự chatbot | Luồng từ câu hỏi người dùng đến truy xuất dữ liệu và tạo phản hồi |
+| Hình 2.8 | ERD cơ sở dữ liệu | Các bảng chính: users, tours, tour_schedules, bookings, payments, locations, ratings, nhóm bảng chat |
+| Hình 2.9 | Sơ đồ cấu trúc các lớp xử lý chatbot | Mối quan hệ và luồng điều phối giữa các lớp dịch vụ chatbot trong hệ thống |
