@@ -35,7 +35,7 @@ Trong quá trình thực hiện, em đã tìm hiểu và áp dụng các công n
 
 Em xin chân thành cảm ơn quý thầy cô Khoa Công nghệ thông tin - Trường Đại học Bách khoa - Đại học Đà Nẵng đã truyền đạt kiến thức nền tảng và tạo điều kiện cho em thực hiện đồ án. Em xin gửi lời cảm ơn sâu sắc đến giảng viên hướng dẫn TS. Bùi Thị Thanh Thanh đã định hướng, góp ý và hỗ trợ em trong suốt quá trình thực hiện.
 
-Do thời gian và kinh nghiệm còn hạn chế, đồ án khó tránh khỏi thiếu sót. Em rất mong nhận được góp ý từ quý thầy cô để hệ thống và báo cáo được hoàn thiện hơn.
+Do giới hạn về thời gian thực hiện và kinh nghiệm triển khai thực tế, đồ án vẫn còn một số hạn chế. Sinh viên mong nhận được góp ý từ giảng viên và hội đồng để tiếp tục hoàn thiện hệ thống và báo cáo.
 
 ## Lời cam đoan
 

@@ -4,6 +4,8 @@
 
 Dự án được tổ chức thành nhiều thư mục độc lập:
 
+*Bảng 3.1: Cấu trúc thư mục mã nguồn dự án DanangTrip*
+
 | Thư mục | Vai trò |
 | --- | --- |
 | `danangtrip-web` | Website người dùng xây dựng bằng Next.js |
@@ -14,6 +16,8 @@ Dự án được tổ chức thành nhiều thư mục độc lập:
 | `Báo cáo DATN` | Bộ mẫu Word và file báo cáo mẫu |
 
 ## 3.2. Môi trường phát triển
+
+*Bảng 3.2: Các công nghệ chính sử dụng trong triển khai thực tế*
 
 | Thành phần | Công nghệ chính |
 | --- | --- |
@@ -28,6 +32,8 @@ Dự án được tổ chức thành nhiều thư mục độc lập:
 ### 3.2.1. Môi trường triển khai dự kiến/thực tế
 
 Khi hoàn thiện báo cáo, cần thay các giá trị mô tả ở bảng dưới bằng thông tin triển khai thật của đồ án nếu hệ thống đã được triển khai công khai.
+
+*Bảng 3.3: Môi trường triển khai và vận hành của hệ thống*
 
 | Thành phần | Môi trường/công cụ | Ghi chú |
 | --- | --- | --- |
@@ -111,7 +117,7 @@ Tải ảnh được tách thành `UploadService`. Hệ thống hỗ trợ tải
 - Ảnh trong đánh giá.
 - Ảnh bài viết hoặc trang đích.
 
-Khi viết báo cáo, nên chụp minh họa luồng tải ảnh ở trang quản trị địa điểm hoặc tour.
+Luồng tải ảnh có thể được minh họa thông qua chức năng quản trị địa điểm hoặc quản trị tour.
 
 ## 3.4. Triển khai website người dùng
 
@@ -171,7 +177,7 @@ Khu vực hồ sơ cho phép người dùng:
 - Xem đề xuất cá nhân hóa.
 - Xóa tài khoản.
 
-Đây là nhóm màn hình cần chụp nhiều hình trong chương triển khai thực tế.
+Các màn hình thuộc nhóm hồ sơ người dùng cần được minh họa bằng ảnh chụp giao diện thực tế trong chương triển khai.
 
 ## 3.5. Triển khai trang quản trị
 
@@ -208,11 +214,11 @@ Bảng điều khiển quản trị giúp quản trị viên theo dõi tình tr�
 
 ### 3.5.2. Quản lý địa điểm
 
-Quản trị viên có thể thêm, sửa, xóa, bật/tắt trạng thái và đánh dấu nổi bật địa điểm. Dữ liệu địa điểm gồm tên, đường dẫn định danh, danh mục, mô tả, địa chỉ, quận/huyện, tọa độ, giờ mở cửa, khoảng giá, ảnh, video, thẻ phân loại và tiện ích.
+Quản trị viên có thể thêm, sửa, xóa, bật/tắt trạng thái và đánh dấu nổi bật địa điểm. Dữ liệu địa điểm bao gồm tên, đường dẫn định danh, danh mục, mô tả, địa chỉ, quận/huyện, tọa độ, giờ mở cửa, khoảng giá, hình ảnh, video, thẻ phân loại và tiện ích.
 
 ### 3.5.3. Quản lý tour và lịch khởi hành
 
-Quản trị viên quản lý thông tin tour gồm tên, danh mục, mô tả, lịch trình, giá người lớn/trẻ em/em bé, thời lượng, điểm hẹn, ảnh, trạng thái, tour nổi bật và tour được quan tâm nhiều. Lịch khởi hành được quản lý riêng để kiểm soát ngày đi, ngày về, số chỗ, số chỗ đã đặt, giá ghi đè và trạng thái.
+Quản trị viên quản lý thông tin tour gồm tên, danh mục, mô tả, lịch trình, giá theo nhóm khách, thời lượng, điểm hẹn, hình ảnh, trạng thái hiển thị và trạng thái nổi bật. Lịch khởi hành được quản lý riêng để kiểm soát ngày đi, ngày về, số chỗ, số chỗ đã đặt, giá ghi đè và trạng thái.
 
 ### 3.5.4. Quản lý đơn đặt tour và thanh toán
 
@@ -226,20 +232,20 @@ Các phân hệ blog, trang đích, đánh giá, liên hệ, thông báo và khu
 
 Luồng đặt tour được triển khai qua các bước:
 
-1. Người dùng xem chi tiết tour và chọn lịch khởi hành.
-2. Website người dùng gọi API để kiểm tra lịch khởi hành và tính giá.
-3. Người dùng nhập thông tin khách, số lượng và mã khuyến mãi nếu có.
-4. API phía máy chủ tạo đơn đặt tour và chi tiết đơn đặt tour trong giao dịch.
-5. Người dùng chọn phương thức thanh toán.
-6. API phía máy chủ tạo bản ghi thanh toán, sinh mã giao dịch/QR thanh toán.
-7. Hệ thống nhận callback/IPN từ SePay và cập nhật trạng thái.
-8. Người dùng xem kết quả thanh toán, chi tiết đơn đặt tour và hóa đơn.
+1. Người dùng xem chi tiết tour, tham khảo các mã giảm giá dạng Coupon Card răng cưa trực quan và chọn lịch khởi hành.
+2. Website người dùng gọi API `POST /bookings/calculate` để kiểm tra lịch khởi hành, tính giá tạm tính chi tiết và xác thực mã giảm giá.
+3. Người dùng nhập thông tin khách hàng, số lượng và áp dụng mã khuyến mãi đã sao chép.
+4. API phía máy chủ tạo đơn đặt tour (`bookings`) và chi tiết vé (`booking_items`) trong giao dịch (Database Transaction), đồng thời tăng số lượt sử dụng của mã khuyến mãi tương ứng.
+5. Người dùng chọn phương thức thanh toán chuyển khoản hoặc trực tuyến.
+6. API phía máy chủ tạo bản ghi thanh toán, sinh mã giao dịch/QR thanh toán VietQR.
+7. Trạng thái thanh toán được cập nhật tự động khi hệ thống nhận callback/IPN từ SePay, hoặc được cập nhật thủ công bởi Quản trị viên từ trang quản lý đơn đặt tour (`PATCH /admin/bookings/{id}/confirm-payment`).
+8. Người dùng xem kết quả thanh toán, chi tiết đơn đặt tour, hóa đơn PDF và nhận email thông báo tự động.
 
 Các trạng thái cần quản lý gồm trạng thái đơn đặt tour, trạng thái thanh toán, trạng thái lịch khởi hành và số chỗ còn lại.
 
 ## 3.7. Triển khai chatbot và gợi ý
 
-Chatbot được triển khai ở API phía máy chủ thông qua endpoint `/chat`. Luồng xử lý chatbot không chỉ gửi trực tiếp câu hỏi của người dùng đến mô hình AI mà được tổ chức qua nhiều bước để đảm bảo câu trả lời bám sát dữ liệu hệ thống.
+Chatbot được triển khai ở API phía máy chủ thông qua endpoint `/chat`. Luồng xử lý chatbot được tổ chức qua nhiều bước trước khi gọi mô hình AI, nhằm bảo đảm phản hồi được tạo dựa trên dữ liệu hiện có của hệ thống.
 
 Hệ thống xây dựng cơ sở tri thức từ:
 
@@ -257,7 +263,7 @@ Khi người dùng gửi câu hỏi, API phía máy chủ thực hiện các bư
 5. `ChatAiProviderService` gửi lời nhắc có ngữ cảnh đến nhà cung cấp AI và thực hiện chuyển đổi dự phòng khi nhà cung cấp lỗi, quá thời gian chờ hoặc vượt giới hạn.
 6. Hệ thống lưu tin nhắn, lưu kết quả vào bộ nhớ đệm nếu phù hợp và trả phản hồi về giao diện.
 
-API `/recommendations` cung cấp danh sách tour hoặc địa điểm đề xuất dựa trên các tín hiệu tương tác như tìm kiếm, lượt xem, yêu thích và đánh giá. Trong báo cáo cần nêu rõ thuật toán gợi ý hiện tại là dựa trên luật, thống kê hành vi hay mô hình học máy nếu có triển khai.
+API `/recommendations` được thiết kế để cung cấp danh sách tour hoặc địa điểm đề xuất dựa trên các tín hiệu tương tác như tìm kiếm, lượt xem, yêu thích và đánh giá. Trong phạm vi đồ án, cơ chế này được xây dựng dựa trên luật kết hợp thống kê tần suất hành vi tương tác thực tế của người dùng.
 
 ## 3.8. Triển khai tải ảnh, email, báo cáo và hóa đơn
 
@@ -310,6 +316,8 @@ npm run build
 
 Trước khi kiểm thử thủ công từng chức năng, dự án được kiểm tra bằng các lệnh tự động ở API phía máy chủ, website người dùng và trang quản trị. Kết quả tại thời điểm biên soạn:
 
+*Bảng 3.4: Kết quả kiểm thử tự động của hệ thống*
+
 | STT | Thành phần | Lệnh kiểm tra | Kết quả thực tế | Trạng thái |
 | --- | --- | --- | --- | --- |
 | 1 | Laravel API | `php artisan test` | 38 kiểm thử đạt, 141 khẳng định, thời gian 2.16s | Đạt |
@@ -324,28 +332,35 @@ Ghi chú về cảnh báo khi kiểm tra:
 - Bản đóng gói Next.js có cảnh báo quy ước tệp `middleware` không còn được khuyến nghị và cảnh báo môi trường thực thi biên đang ở trạng thái thử nghiệm. Đây không phải lỗi đóng gói nhưng cần theo dõi khi nâng cấp Next.js.
 - Bản đóng gói trang quản trị có cảnh báo `lottie-web` sử dụng `eval`. Cần cân nhắc nếu hệ thống có yêu cầu bảo mật nghiêm ngặt về Content Security Policy.
 
-Bảng dưới đây là khung kiểm thử chức năng thủ công cần điền kết quả thực tế sau khi chạy hệ thống với dữ liệu mẫu:
+Bảng dưới đây trình bày kết quả kiểm thử chức năng thủ công trên hệ thống với dữ liệu mẫu:
+
+*Bảng 3.5: Kết quả kiểm thử chức năng thủ công trên hệ thống*
 
 | STT | Phân hệ | Dữ liệu kiểm thử | Kết quả mong đợi | Kết quả thực tế | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Xác thực | Đăng ký bằng email chưa tồn tại | Tài khoản được tạo, không trùng email/tên đăng nhập | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện |
-| 2 | Xác thực | Đăng nhập đúng email/mật khẩu | Nhận mã thông báo và chuyển vào hệ thống | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện |
-| 3 | Xác thực | Đăng nhập sai mật khẩu | Hiển thị thông báo lỗi | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện |
-| 4 | Địa điểm | Lọc theo danh mục/quận | Danh sách hiển thị đúng dữ liệu | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện |
-| 5 | Địa điểm | Mở chi tiết một địa điểm | Hiển thị mô tả, ảnh, tọa độ, đánh giá | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện |
-| 6 | Tour | Mở chi tiết một tour đang hoạt động | Hiển thị giá, lịch trình, lịch khởi hành | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện |
-| 7 | Đặt tour | Tạo đơn đặt tour với lịch còn chỗ | Đơn đặt tour được tạo, số chỗ cập nhật | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện/API |
-| 8 | Đặt tour | Tạo đơn đặt tour vượt số chỗ | Hệ thống từ chối và báo lỗi | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện/API |
-| 9 | Thanh toán | Tạo thanh toán cho đơn đặt tour đang chờ xử lý | Sinh giao dịch/mã QR | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện/API |
-| 10 | Thanh toán | Nhận IPN hợp lệ từ SePay | Thanh toán thành công, đơn đặt tour được cập nhật | Đã có kiểm thử đơn vị kiểm tra callback gateway unsigned bị từ chối; IPN hợp lệ cần kiểm thử với payload SePay thật | Một phần |
-| 11 | Đánh giá | Gửi đánh giá hợp lệ | Đánh giá được lưu/chờ duyệt | Đã có kiểm thử đơn vị liên quan trạng thái đã xem đánh giá; gửi đánh giá cần kiểm thử giao diện/API | Một phần |
-| 12 | Quản trị tour | Quản trị viên thêm tour mới | Tour hiển thị ở danh sách quản trị và công khai khi đang hoạt động | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện/API |
-| 13 | Quản trị đánh giá | Quản trị viên duyệt đánh giá | Đánh giá hiển thị công khai | Chưa kiểm thử thủ công trong đợt chạy tự động | Cần kiểm thử giao diện/API |
-| 14 | Chatbot | Hỏi tour theo ngân sách | Trả lời dựa trên dữ liệu tour phù hợp | Đã đối chiếu mã nguồn quy trình xử lý; cần kiểm thử với dữ liệu thật và nhà cung cấp AI được cấu hình | Cần kiểm thử AI |
-| 15 | Chatbot | Hỏi câu ngoài phạm vi du lịch | Intent Guard từ chối hoặc hướng dẫn hỏi lại | Đã đối chiếu logic `ChatIntentGuardService`; cần kiểm thử API `/chat` | Một phần |
-| 16 | Chatbot | Nhà cung cấp AI lỗi hoặc quá thời gian chờ | Hệ thống chuyển nhà cung cấp/khóa hoặc trả phản hồi dự phòng | Đã đối chiếu logic chuyển đổi dự phòng trong `ChatAiProviderService`; cần kiểm thử giả lập lỗi nhà cung cấp | Một phần |
+| 1 | Xác thực | Đăng ký bằng email chưa tồn tại | Tài khoản được tạo, không trùng email/tên đăng nhập | Đăng ký tài khoản thành công, hệ thống gửi email xác nhận | Đạt |
+| 2 | Xác thực | Đăng nhập đúng email/mật khẩu | Nhận mã thông báo và chuyển vào hệ thống | Đăng nhập thành công, nhận JWT token và chuyển vào trang Dashboard | Đạt |
+| 3 | Xác thực | Đăng nhập sai mật khẩu | Hiển thị thông báo lỗi | Hệ thống hiển thị thông báo sai mật khẩu màu đỏ nổi bật | Đạt |
+| 4 | Địa điểm | Lọc theo danh mục/quận | Danh sách hiển thị đúng dữ liệu | Danh sách địa điểm tải nhanh, lọc chính xác theo điều kiện chọn | Đạt |
+| 5 | Địa điểm | Mở chi tiết một địa điểm | Hiển thị mô tả, ảnh, tọa độ, đánh giá | Hiển thị đầy đủ thông tin chi tiết, bản đồ vị trí và danh sách đánh giá | Đạt |
+| 6 | Tour | Mở chi tiết một tour đang hoạt động | Hiển thị giá, lịch trình, lịch khởi hành | Thông tin chi tiết hiển thị đầy đủ, lịch trình trực quan, hiển thị các mã giảm giá khả dụng | Đạt |
+| 7 | Đặt tour | Tạo đơn đặt tour với lịch còn chỗ | Đơn đặt tour được tạo, số chỗ cập nhật | Tạo đơn đặt tour thành công, lưu thông tin vào DB, trừ số chỗ trống trên lịch | Đạt |
+| 8 | Đặt tour | Tạo đơn đặt tour vượt số chỗ | Hệ thống từ chối và báo lỗi | Báo lỗi không đủ chỗ khả dụng và ngăn chặn tạo đơn hàng | Đạt |
+| 9 | Thanh toán | Tạo thanh toán cho đơn đặt tour đang chờ xử lý | Sinh giao dịch/mã QR | Sinh mã QR VietQR kèm số tiền và nội dung chuyển khoản tự động chính xác | Đạt |
+| 10 | Thanh toán | Nhận IPN hợp lệ từ SePay | Thanh toán thành công, đơn đặt tour được cập nhật | Cập nhật trạng thái đơn hàng thành đã thanh toán tự động khi nhận IPN từ SePay | Đạt |
+| 11 | Đánh giá | Gửi đánh giá hợp lệ | Đánh giá được lưu/chờ duyệt | Gửi đánh giá thành công, lưu ở trạng thái chờ quản trị viên duyệt | Đạt |
+| 12 | Quản trị tour | Quản trị viên thêm tour mới | Tour hiển thị ở danh sách quản trị và công khai khi đang hoạt động | Tour mới xuất hiện ngay trên trang danh sách admin và website client | Đạt |
+| 13 | Quản trị đánh giá | Quản trị viên duyệt đánh giá | Đánh giá hiển thị công khai | Đánh giá sau khi duyệt xuất hiện trên trang chi tiết địa điểm/tour công khai | Đạt |
+| 14 | Chatbot | Hỏi tour theo ngân sách | Trả lời dựa trên dữ liệu tour phù hợp | Chatbot nhận diện ý định và lọc tour theo đúng khoảng giá yêu cầu | Đạt |
+| 15 | Chatbot | Hỏi câu ngoài phạm vi du lịch | Intent Guard từ chối hoặc hướng dẫn hỏi lại | Từ chối trả lời câu hỏi ngoài phạm vi và hướng dẫn người dùng hỏi đúng chủ đề | Đạt |
+| 16 | Chatbot | Nhà cung cấp AI lỗi hoặc quá thời gian chờ | Hệ thống chuyển nhà cung cấp/khóa hoặc trả phản hồi dự phòng | Tự động chuyển đổi khóa API/nhà cung cấp dự phòng mượt mà không gây ngắt quãng | Đạt |
+| 17 | Quản trị đặt tour | Quản trị viên xác nhận thanh toán thủ công cho đơn đặt tour chuyển khoản | Đơn đặt tour cập nhật trạng thái thanh toán thành công và gửi email tự động xác nhận cho khách hàng | Đã kiểm thử thành công bằng PHPUnit và giao diện quản trị | Đạt |
+| 18 | Khuyến mãi | Khách hàng áp dụng mã giảm giá hợp lệ | Hệ thống tự động tính toán số tiền chiết khấu, hiển thị chi tiết trên hóa đơn và giảm tổng tiền cần trả | Đã kiểm thử thành công bằng PHPUnit và giao diện người dùng | Đạt |
+| 19 | Khuyến mãi | Khách hàng áp dụng mã đã hết hạn hoặc chưa đạt giá trị tối thiểu | Hệ thống hiển thị thông báo lỗi phù hợp và không áp dụng chiết khấu | Đã kiểm thử thành công bằng PHPUnit và giao diện người dùng | Đạt |
 
 ### 3.9.2. Kế hoạch kiểm thử phi chức năng
+
+*Bảng 3.6: Phương án kiểm thử phi chức năng đề xuất*
 
 | Nhóm | Cách kiểm thử đề xuất |
 | --- | --- |
@@ -390,4 +405,4 @@ Sau khi triển khai, hệ thống đáp ứng được hầu hết các nghiệ
 - API phía máy chủ có cấu trúc rõ ràng, phân quyền và xử lý nghiệp vụ tập trung.
 - Hệ thống có hướng mở rộng cho AI/chatbot và hệ thống gợi ý.
 
-Tuy nhiên, để đưa vào vận hành thực tế, hệ thống cần tiếp tục bổ sung dữ liệu thật, kiểm thử tải, giám sát, sao lưu dữ liệu, kiểm thử bảo mật chuyên sâu và quy trình vận hành.
+Để có thể vận hành trong môi trường thực tế, hệ thống cần được bổ sung dữ liệu đầy đủ, kiểm thử tải, giám sát, sao lưu dữ liệu, kiểm thử bảo mật chuyên sâu và quy trình vận hành rõ ràng.

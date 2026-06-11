@@ -63,15 +63,19 @@ PostgreSQL/Supabase được sử dụng do hệ thống có nhiều quan hệ d
 
 Laravel migration giúp định nghĩa cấu trúc bảng bằng mã nguồn, hỗ trợ quản lý phiên bản lược đồ, tạo bảng, thêm cột, tạo chỉ mục và quay lui khi cần. Trong dự án, migration cũng được sử dụng để khai báo khóa ngoại, chỉ mục tìm kiếm, ràng buộc trạng thái, ràng buộc giá trị tiền và một số ràng buộc phục vụ toàn vẹn dữ liệu.
 
-Các nhóm bảng chính của DanangTrip gồm:
+Các nhóm bảng chính của DanangTrip và chức năng tương ứng được mô tả chi tiết trong Bảng 1.2:
 
-- Nhóm người dùng và xác thực: `users`, `refresh_tokens`, `password_reset_tokens`, `sessions`.
-- Nhóm địa điểm: `locations`, `categories`, `subcategories`, `tags`, `amenities`, `location_tags`, `location_amenities`, `views`.
-- Nhóm tour và đặt tour: `tours`, `tour_categories`, `tour_schedules`, `tour_locations`, `bookings`, `booking_items`, `cart_items`.
-- Nhóm thanh toán: `payments`.
-- Nhóm nội dung: `blog_posts`, `blog_categories`, `blog_post_categories`, `landing_pages`.
-- Nhóm tương tác: `favorites`, `ratings`, `rating_images`, `search_logs`, `notifications`, `contacts`.
-- Nhóm cấu hình/khuyến mãi/chatbot: `settings`, `promotions`, `chat_messages`, `chat_cache`, `chat_knowledge_base`.
+*Bảng 1.2: Các nhóm bảng cơ sở dữ liệu và phân hệ chức năng tương ứng*
+
+| STT | Nhóm chức năng | Các bảng trong cơ sở dữ liệu | Mô tả chức năng chính |
+| :---: | :--- | :--- | :--- |
+| 1 | Nhóm người dùng và xác thực | `users`, `refresh_tokens`, `password_reset_tokens`, `sessions` | Quản lý thông tin tài khoản (khách du lịch, quản trị viên), lưu phiên làm việc, quản lý refresh token duy trì đăng nhập và xử lý yêu cầu đặt lại mật khẩu. |
+| 2 | Nhóm địa điểm | `locations`, `categories`, `subcategories`, `tags`, `amenities`, `location_tags`, `location_amenities`, `views` | Lưu trữ thông tin chi tiết địa điểm (tọa độ GPS, mô tả, hình ảnh), danh mục phân loại, tiện ích dịch vụ đi kèm, thẻ tìm kiếm và thống kê lượt xem. |
+| 3 | Nhóm tour và đặt tour | `tours`, `tour_categories`, `tour_schedules`, `tour_locations`, `bookings`, `booking_items`, `cart_items` | Lưu trữ thông tin tour, danh mục tour, lịch khởi hành, chỗ trống khả dụng, giỏ hàng tạm thời, quản lý chi tiết đơn đặt tour (booking) và danh sách hành khách đi kèm. |
+| 4 | Nhóm thanh toán | `payments` | Lưu trữ lịch sử giao dịch và trạng thái thanh toán của đơn đặt tour (qua cổng tự động Sepay/PayOS hoặc đối soát chuyển khoản ngân hàng thủ công). |
+| 5 | Nhóm nội dung | `blog_posts`, `blog_categories`, `blog_post_categories`, `landing_pages` | Quản lý các bài viết cẩm nang du lịch Đà Nẵng, danh mục bài viết, liên kết danh mục và nội dung các trang đích (landing pages) phục vụ SEO. |
+| 6 | Nhóm tương tác | `favorites`, `ratings`, `rating_images`, `search_logs`, `notifications`, `contacts` | Ghi nhận danh sách địa điểm/tour yêu thích của khách hàng, lưu trữ đánh giá/phản hồi kèm hình ảnh của người dùng, nhật ký tìm kiếm, thông báo hệ thống và liên hệ. |
+| 7 | Nhóm cấu hình & AI Chatbot | `settings`, `promotions`, `chat_messages`, `chat_cache`, `chat_knowledge_base` | Quản lý cấu hình chung hệ thống, thông tin mã giảm giá, lưu lịch sử hội thoại của người dùng với AI, bộ nhớ đệm câu trả lời và dữ liệu cơ sở tri thức SQL RAG. |
 
 ## 1.7. Thanh toán trực tuyến và IPN
 
@@ -100,6 +104,8 @@ DanangTrip có nhóm lớp dịch vụ xử lý chatbot gồm:
 - `ChatKnowledgeSearchService`: tìm kiếm dữ liệu phù hợp từ tour, địa điểm, blog, chính sách và cơ sở tri thức.
 - `ChatEmbeddingService`: tạo embedding thông qua nhà cung cấp như Gemini hoặc OpenAI khi cần tìm kiếm ngữ nghĩa.
 - `ChatAiProviderService`: điều phối nhà cung cấp AI và xử lý chuyển đổi dự phòng khi gọi mô hình.
+
+Mối quan hệ và luồng tương tác giữa các lớp dịch vụ xử lý chatbot này được biểu diễn trực quan thông qua sơ đồ cấu trúc các lớp dịch vụ chatbot (mã nguồn sơ đồ Draw.io được cung cấp tại Phụ lục - mục 7.3).
 
 Trong hệ thống DanangTrip, chatbot áp dụng hướng tiếp cận RAG ở mức truy xuất dữ liệu nội bộ: câu hỏi được phân loại bằng Intent Guard, phân tích bằng Query Understanding, truy xuất dữ liệu từ các bảng nghiệp vụ, sau đó chuyển ngữ cảnh cho mô hình AI để sinh phản hồi.
 
@@ -200,7 +206,7 @@ Dữ liệu thống kê được trực quan hóa bằng biểu đồ trong tran
 
 ## 1.17. Cơ chế bộ nhớ đệm và chuyển đổi dự phòng trong hệ thống AI
 
-Các chức năng AI thường phụ thuộc vào dịch vụ bên ngoài, do đó có thể gặp lỗi mạng, vượt giới hạn tần suất, hết hạn mức hoặc thời gian phản hồi dài. Để tăng tính ổn định, hệ thống cần có bộ nhớ đệm và cơ chế chuyển đổi dự phòng.
+Trong DanangTrip, thành phần AI phụ thuộc vào nhà cung cấp mô hình bên ngoài. Vì vậy, hệ thống cần xử lý các trường hợp lỗi mạng, vượt giới hạn tần suất, hết hạn mức hoặc phản hồi quá thời gian chờ thông qua cơ chế chuyển đổi dự phòng.
 
 Cache Layer trong chatbot được sử dụng để lưu dữ liệu truy xuất hoặc phản hồi đối với các truy vấn lặp lại, nhằm giảm thời gian xử lý và hạn chế số lần gọi đến nhà cung cấp AI. Cache Layer có thể được sử dụng ở hai mức:
 

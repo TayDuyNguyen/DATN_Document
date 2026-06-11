@@ -92,6 +92,8 @@ Quá trình thực hiện đề tài được chia thành các giai đoạn:
 
 ## 7. Công nghệ và kỹ thuật sử dụng
 
+*Bảng 1.1: Tóm tắt công nghệ và kỹ thuật sử dụng trong hệ thống*
+
 | Thành phần | Công nghệ |
 | --- | --- |
 | Website người dùng | Next.js 16, React 19, TypeScript, React Query, Zustand, next-intl |

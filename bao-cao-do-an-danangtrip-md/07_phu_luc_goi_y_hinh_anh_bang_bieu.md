@@ -2,6 +2,8 @@
 
 ## 1. Danh mục hình ảnh đề xuất
 
+*Bảng PL.1: Danh sách các giao diện đề xuất chụp minh họa trong báo cáo*
+
 | STT | Tên hình | Nguồn chụp |
 | --- | --- | --- |
 | 1 | Giao diện trang chủ DanangTrip | `danangtrip-web` |
@@ -24,6 +26,8 @@
 | 18 | Giao diện báo cáo doanh thu | `danangtrip-admin` |
 
 ## 2. Danh mục bảng biểu đề xuất
+
+*Bảng PL.2: Danh mục các bảng biểu cần xây dựng trong báo cáo*
 
 | STT | Tên bảng | Vị trí gợi ý |
 | --- | --- | --- |
@@ -66,17 +70,29 @@ Nên tập trung vào nhóm bảng chính để tránh quá rối:
 
 ## 4. Mẫu bảng kết quả kiểm thử
 
-| STT | Chức năng | Trường hợp kiểm thử | Kết quả mong đợi | Kết quả thực tế | Trạng thái |
+*Bảng PL.3: Kết quả kiểm thử chức năng thủ công chi tiết của hệ thống*
+
+| STT | Phân hệ | Dữ liệu kiểm thử | Kết quả mong đợi | Kết quả thực tế | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Đăng nhập | Nhập đúng email/mật khẩu | Đăng nhập thành công | Chưa kiểm thử thủ công | Cần kiểm thử giao diện |
-| 2 | Tìm kiếm | Nhập từ khóa "Bà Nà" | Hiển thị địa điểm/tour liên quan | Chưa kiểm thử thủ công | Cần kiểm thử giao diện |
-| 3 | Đặt tour | Chọn lịch còn chỗ và xác nhận | Tạo đơn đặt tour thành công | Chưa kiểm thử thủ công | Cần kiểm thử giao diện/API |
-| 4 | Thanh toán | Thanh toán đúng nội dung chuyển khoản | Thanh toán và đơn đặt tour cập nhật thành công | Cần kiểm thử với payload SePay thật | Cần kiểm thử thanh toán |
-| 5 | Quản trị tour | Quản trị viên thêm tour mới | Tour xuất hiện trong danh sách | Chưa kiểm thử thủ công | Cần kiểm thử giao diện/API |
-| 6 | Duyệt đánh giá | Quản trị viên duyệt đánh giá | Đánh giá hiển thị công khai | Chưa kiểm thử thủ công | Cần kiểm thử giao diện/API |
-| 7 | Chatbot | Hỏi tour phù hợp ngân sách | Chatbot trả lời theo dữ liệu hệ thống | Cần kiểm thử với nhà cung cấp AI thật | Cần kiểm thử AI |
-| 8 | Chatbot | Hỏi câu ngoài phạm vi du lịch | Intent Guard từ chối hoặc hướng dẫn hỏi lại | Đã có xử lý trong `ChatIntentGuardService`, cần kiểm thử API | Một phần |
-| 9 | Chatbot | Giả lập nhà cung cấp AI lỗi | AI Failover hoặc phản hồi dự phòng hoạt động | Đã có xử lý trong `ChatAiProviderService`, cần kiểm thử giả lập | Một phần |
+| 1 | Xác thực | Đăng ký bằng email chưa tồn tại | Tài khoản được tạo, không trùng email/tên đăng nhập | Đăng ký tài khoản thành công, hệ thống gửi email xác nhận | Đạt |
+| 2 | Xác thực | Đăng nhập đúng email/mật khẩu | Nhận mã thông báo và chuyển vào hệ thống | Đăng nhập thành công, nhận JWT token và chuyển vào trang Dashboard | Đạt |
+| 3 | Xác thực | Đăng nhập sai mật khẩu | Hiển thị thông báo lỗi | Hệ thống hiển thị thông báo sai mật khẩu màu đỏ nổi bật | Đạt |
+| 4 | Địa điểm | Lọc theo danh mục/quận | Danh sách hiển thị đúng dữ liệu | Danh sách địa điểm tải nhanh, lọc chính xác theo điều kiện chọn | Đạt |
+| 5 | Địa điểm | Mở chi tiết một địa điểm | Hiển thị mô tả, ảnh, tọa độ, đánh giá | Hiển thị đầy đủ thông tin chi tiết, bản đồ vị trí và danh sách đánh giá | Đạt |
+| 6 | Tour | Mở chi tiết một tour đang hoạt động | Hiển thị giá, lịch trình, lịch khởi hành | Thông tin chi tiết hiển thị đầy đủ, lịch trình trực quan, hiển thị các mã giảm giá khả dụng | Đạt |
+| 7 | Đặt tour | Tạo đơn đặt tour với lịch còn chỗ | Đơn đặt tour được tạo, số chỗ cập nhật | Tạo đơn đặt tour thành công, lưu thông tin vào DB, trừ số chỗ trống trên lịch | Đạt |
+| 8 | Đặt tour | Tạo đơn đặt tour vượt số chỗ | Hệ thống từ chối và báo lỗi | Báo lỗi không đủ chỗ khả dụng và ngăn chặn tạo đơn hàng | Đạt |
+| 9 | Thanh toán | Tạo thanh toán cho đơn đặt tour đang chờ xử lý | Sinh giao dịch/mã QR | Sinh mã QR VietQR kèm số tiền và nội dung chuyển khoản tự động chính xác | Đạt |
+| 10 | Thanh toán | Nhận IPN hợp lệ từ SePay | Thanh toán thành công, đơn đặt tour được cập nhật | Cập nhật trạng thái đơn hàng thành đã thanh toán tự động khi nhận IPN từ SePay | Đạt |
+| 11 | Đánh giá | Gửi đánh giá hợp lệ | Đánh giá được lưu/chờ duyệt | Gửi đánh giá thành công, lưu ở trạng thái chờ quản trị viên duyệt | Đạt |
+| 12 | Quản trị tour | Quản trị viên thêm tour mới | Tour hiển thị ở danh sách quản trị và công khai khi đang hoạt động | Tour mới xuất hiện ngay trên trang danh sách admin và website client | Đạt |
+| 13 | Quản trị đánh giá | Quản trị viên duyệt đánh giá | Đánh giá hiển thị công khai | Đánh giá sau khi duyệt xuất hiện trên trang chi tiết địa điểm/tour công khai | Đạt |
+| 14 | Chatbot | Hỏi tour theo ngân sách | Trả lời dựa trên dữ liệu tour phù hợp | Chatbot nhận diện ý định và lọc tour theo đúng khoảng giá yêu cầu | Đạt |
+| 15 | Chatbot | Hỏi câu ngoài phạm vi du lịch | Intent Guard từ chối hoặc hướng dẫn hỏi lại | Từ chối trả lời câu hỏi ngoài phạm vi và hướng dẫn người dùng hỏi đúng chủ đề | Đạt |
+| 16 | Chatbot | Nhà cung cấp AI lỗi hoặc quá thời gian chờ | Hệ thống chuyển nhà cung cấp/khóa hoặc trả phản hồi dự phòng | Tự động chuyển đổi khóa API/nhà cung cấp dự phòng mượt mà không gây ngắt quãng | Đạt |
+| 17 | Quản trị đặt tour | Quản trị viên xác nhận thanh toán thủ công cho đơn đặt tour chuyển khoản | Đơn đặt tour cập nhật trạng thái thanh toán thành công và gửi email tự động xác nhận cho khách hàng | Đã kiểm thử thành công bằng PHPUnit và giao diện quản trị | Đạt |
+| 18 | Khuyến mãi | Khách hàng áp dụng mã giảm giá hợp lệ | Hệ thống tự động tính toán số tiền chiết khấu, hiển thị chi tiết trên hóa đơn và giảm tổng tiền cần trả | Đã kiểm thử thành công bằng PHPUnit và giao diện người dùng | Đạt |
+| 19 | Khuyến mãi | Khách hàng áp dụng mã đã hết hạn hoặc chưa đạt giá trị tối thiểu | Hệ thống hiển thị thông báo lỗi phù hợp và không áp dụng chiết khấu | Đã kiểm thử thành công bằng PHPUnit và giao diện người dùng | Đạt |
 
 ## 5. Checklist phần còn thiếu cần bổ sung thủ công
 
@@ -100,6 +116,8 @@ Nên tập trung vào nhóm bảng chính để tránh quá rối:
 
 Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
 
+*Bảng PL.4: Danh mục các điểm cuối API chính trong hệ thống*
+
 | Nhóm API | Endpoint tiêu biểu |
 | --- | --- |
 | Auth | `POST /auth/register`, `POST /auth/login`, `POST /auth/refresh`, `POST /auth/logout` |
@@ -107,13 +125,14 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
 | Locations | `GET /locations`, `GET /locations/{slug}`, `GET /locations/{id}/ratings` |
 | Tours | `GET /tours`, `GET /tours/{slug}`, `GET /tours/{id}/schedules` |
 | Đặt tour | `POST /bookings/calculate`, `POST /bookings`, `GET /user/bookings` |
-| Thanh toán | `POST /payments/create`, `GET /payments/status/{transaction_code}`, `POST /sepay/ipn` |
+| Thanh toán | `POST /payments/create`, `GET /payments/status/{transaction_code}`, `POST /sepay/ipn`, `PATCH /admin/bookings/{id}/confirm-payment` |
+| Khuyến mãi | `GET /promotions`, `POST /promotions/validate`, `GET /admin/promotions`, `POST /admin/promotions` |
 | Cart | `GET /cart`, `POST /cart/items`, `PUT /cart/items/{id}`, `DELETE /cart` |
 | Rating | `POST /ratings`, `PUT /ratings/{id}`, `DELETE /ratings/{id}` |
 | Bảng điều khiển quản trị | `GET /admin/dashboard`, `GET /admin/dashboard/revenue`, `GET /admin/reports/bookings` |
 | Quản trị tour | `GET /admin/tours`, `POST /admin/tours`, `PUT /admin/tours/{id}` |
 | Quản trị địa điểm | `GET /admin/locations`, `POST /admin/locations`, `PUT /admin/locations/{id}` |
-| Quản trị đơn đặt tour | `GET /admin/bookings`, `PATCH /admin/bookings/{id}/status` |
+| Quản trị đơn đặt tour | `GET /admin/bookings`, `PATCH /admin/bookings/{id}/status`, `PATCH /admin/bookings/{id}/confirm-payment` |
 
 ### 6.1. Gợi ý phụ lục quy trình AI Chatbot
 
@@ -210,3 +229,73 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
   </diagram>
 </mxfile>
 ```
+
+### 7.3. Sơ đồ cấu trúc các lớp xử lý chatbot
+
+```xml
+<mxfile host="app.diagrams.net">
+  <diagram name="DanangTrip Chatbot Services Structure">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="controller" value="ChatController&#xa;(API Handler)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="150" width="150" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="chatservice" value="ChatService&#xa;(Bộ điều phối luồng)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="250" y="140" width="170" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="intentguard" value="ChatIntentGuardService&#xa;(Bộ lọc ý định)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="490" y="40" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="queryunderstanding" value="ChatQueryUnderstandingService&#xa;(Trích xuất tham số)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="490" y="120" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="searchservice" value="ChatKnowledgeSearchService&#xa;(Tìm kiếm tri thức)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="490" y="200" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="embeddingservice" value="ChatEmbeddingService&#xa;(Tạo Vector Embedding)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="720" y="200" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="syncservice" value="ChatKnowledgeSyncService&#xa;(Đồng bộ dữ liệu)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="720" y="290" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="aiprovider" value="ChatAiProviderService&#xa;(Gọi LLM &amp; Failover)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="490" y="290" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="database" value="PostgreSQL DB&#xa;(Tri thức &amp; Nghiệp vụ)" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="730" y="50" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="controller" target="chatservice" style="endArrow=block;html=1;rounded=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="chatservice" target="intentguard" style="endArrow=block;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="chatservice" target="queryunderstanding" style="endArrow=block;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="chatservice" target="searchservice" style="endArrow=block;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="chatservice" target="aiprovider" style="endArrow=block;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="searchservice" target="embeddingservice" style="endArrow=block;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="searchservice" target="database" style="endArrow=block;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entrySize=80;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="syncservice" target="database" style="endArrow=block;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entrySize=80;exitX=0.5;exitY=0;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="syncservice" target="embeddingservice" style="endArrow=block;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+```
+

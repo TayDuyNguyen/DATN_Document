@@ -2,49 +2,53 @@
 
 ## 2.1. Các tác nhân chính
 
-Hệ thống DanangTrip có ba nhóm tác nhân chính:
+Để phân tích chi tiết các yêu cầu và thiết kế các ca sử dụng (use case) của hệ thống DanangTrip, trước tiên cần xác định rõ ràng các tác nhân (Actors) tham gia tương tác trực tiếp hoặc gián tiếp với hệ thống. Qua phân tích nghiệp vụ, hệ thống DanangTrip phân loại đối tượng sử dụng thành ba nhóm tác nhân chính với vai trò và phạm vi truy cập khác nhau, cụ thể như sau:
 
-| Tác nhân | Vai trò |
-| --- | --- |
-| Khách truy cập | Xem trang chủ, tìm kiếm địa điểm/tour, đọc blog, xem bản đồ, gửi liên hệ, hỏi chatbot |
-| Người dùng đã đăng nhập | Quản lý hồ sơ, yêu thích, giỏ hàng, đặt tour, thanh toán, xem đơn đặt tour, đánh giá, nhận thông báo |
-| Quản trị viên | Quản lý dữ liệu địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, nội dung, báo cáo và cấu hình |
+### 2.1.1. Khách truy cập (Guest)
+Khách truy cập đại diện cho các người dùng vãng lai, chưa thực hiện đăng ký tài khoản hoặc chưa đăng nhập vào hệ thống. Đây là nhóm đối tượng có phạm vi quyền hạn cơ bản nhất, chủ yếu tương tác với các giao diện hiển thị thông tin công cộng.
+- **Vai trò và quyền hạn:** Khách truy cập có thể truy cập trang chủ để xem thông tin tổng quan, danh sách các địa điểm du lịch nổi bật, các tour du lịch hấp dẫn cũng như các bài viết chia sẻ cẩm nang du lịch. Họ được sử dụng các tính năng tìm kiếm, lọc địa điểm/tour, tra cứu bản đồ số để định vị các điểm đến tại Đà Nẵng, gửi thông tin liên hệ và tương tác với chatbot AI để được tư vấn thông tin du lịch tự động.
+- **Mục tiêu tương tác:** Khách truy cập sử dụng hệ thống nhằm mục đích tham khảo thông tin, tìm kiếm các dịch vụ du lịch phù hợp trước khi quyết định đăng ký tài khoản để sử dụng các dịch vụ sâu hơn.
+
+### 2.1.2. Người dùng đã đăng nhập (User)
+Người dùng đã đăng nhập là những thành viên đã đăng ký tài khoản thành công và xác thực danh tính qua hệ thống. Nhóm tác nhân này kế thừa toàn bộ các chức năng công cộng của Khách truy cập, đồng thời được cấp quyền truy cập vào các phân hệ chức năng mang tính cá nhân hóa và giao dịch nghiệp vụ.
+- **Vai trò và quyền hạn:** Người dùng được phép quản lý thông tin hồ sơ cá nhân (cập nhật ảnh đại diện, đổi mật khẩu), quản lý danh sách địa điểm/tour yêu thích, và tương tác trực tiếp với luồng đặt dịch vụ bao gồm giỏ hàng, khởi tạo đơn đặt tour (booking), thực hiện thanh toán trực tuyến thông qua cổng thanh toán tích hợp (vietQR/SePay), theo dõi trạng thái đơn hàng và tải hóa đơn điện tử. Ngoài ra, người dùng còn có quyền viết đánh giá, chấm điểm sao cho các địa điểm hoặc tour đã trải nghiệm, và nhận thông báo cá nhân hóa từ hệ thống.
+- **Mục tiêu tương tác:** Người dùng sử dụng hệ thống để thực hiện đặt tour du lịch, thực hiện thanh toán trực tuyến nhanh chóng và tương tác cộng đồng thông qua việc chia sẻ trải nghiệm thực tế.
+
+### 2.1.3. Quản trị viên (Admin)
+Quản trị viên đại diện cho nhóm người dùng nội bộ, có vai trò vận hành, giám sát và quản trị toàn bộ hoạt động của hệ thống thông qua phân hệ trang quản trị (Admin Dashboard). Đây là nhóm tác nhân có đặc quyền cao nhất trong hệ thống.
+- **Vai trò và quyền hạn:** Quản trị viên chịu trách nhiệm quản lý danh mục địa điểm, quản lý thông tin địa điểm (thêm, sửa, xóa, duyệt ảnh), quản lý tour du lịch và lịch khởi hành chi tiết. Quản trị viên theo dõi và xử lý các đơn đặt tour, xác nhận giao dịch thanh toán, quản lý tài khoản người dùng (bao gồm phân quyền, khóa hoặc mở khóa tài khoản), quản lý nội dung cẩm nang du lịch (bài viết blog), kiểm duyệt và xử lý các phản hồi/đánh giá từ người dùng. Đồng thời, quản trị viên sử dụng hệ thống báo cáo thống kê doanh thu, xu hướng đặt tour, tăng trưởng người dùng để đưa ra các quyết định vận hành tối ưu.
+- **Mục tiêu tương tác:** Vận hành hệ thống ổn định, đảm bảo thông tin dịch vụ du lịch luôn chính xác, xử lý kịp thời các giao dịch tài chính của người dùng và giám sát hiệu quả hoạt động kinh doanh thông qua các số liệu báo cáo thực tế.
 
 ## 2.2. Yêu cầu chức năng
 
-### 2.2.1. Nhóm chức năng người dùng
+Yêu cầu chức năng của hệ thống DanangTrip được chia thành hai nhóm đối tượng sử dụng chính: Nhóm chức năng dành cho người dùng (bao gồm khách truy cập vãng lai và thành viên đã đăng nhập) và nhóm chức năng dành cho quản trị viên (Admin). Nhằm tăng tính tường minh và khoa học cho tài liệu phân tích, các chức năng được phân tách rõ ràng theo từng phân hệ (module) dưới dạng bảng biểu cụ thể.
 
-- Đăng ký, đăng nhập, đăng xuất, làm mới mã thông báo, quên mật khẩu và đặt lại mật khẩu.
-- Xác thực email bằng OTP và gửi lại mã xác thực.
-- Xem trang chủ, danh mục, địa điểm nổi bật, tour nổi bật, bài viết mới.
-- Tìm kiếm địa điểm/tour, xem gợi ý tìm kiếm, xu hướng tìm kiếm và gợi ý cá nhân hóa.
-- Xem chi tiết địa điểm, hình ảnh, đánh giá, thống kê đánh giá và địa điểm lân cận.
-- Xem bản đồ, tìm địa điểm gần vị trí người dùng.
-- Xem danh sách tour, chi tiết tour, lịch khởi hành, đánh giá tour và kiểm tra số chỗ.
-- Quản lý giỏ hàng và đặt tour.
-- Tính giá đơn đặt tour, áp dụng khuyến mãi và tạo thanh toán.
-- Theo dõi trạng thái thanh toán, thử lại thanh toán và xem hóa đơn.
-- Quản lý hồ sơ, ảnh đại diện, mật khẩu, lịch sử đánh giá và xóa tài khoản.
-- Quản lý yêu thích, thông báo và đánh giá.
-- Gửi liên hệ tới quản trị viên.
-- Tương tác chatbot để hỏi thông tin du lịch.
+### 2.2.1. Nhóm chức năng người dùng (Khách du lịch)
 
-### 2.2.2. Nhóm chức năng quản trị
+*Bảng 2.1: Yêu cầu chức năng nhóm người dùng*
 
-- Đăng nhập trang quản trị và kiểm tra quyền admin.
-- Xem bảng điều khiển tổng quan, doanh thu, tour nổi bật, địa điểm nổi bật, tăng trưởng người dùng, xu hướng đặt tour và tìm kiếm.
-- Quản lý danh mục địa điểm, danh mục con, địa điểm, thẻ phân loại và tiện ích.
-- Quản lý tour, danh mục tour và lịch khởi hành.
-- Quản lý đơn đặt tour, xác nhận thanh toán, cập nhật trạng thái và xuất hóa đơn.
-- Quản lý thanh toán, xem chi tiết, xuất báo cáo và xử lý hoàn tiền.
-- Quản lý người dùng, phân quyền, khóa/mở tài khoản và xuất danh sách.
-- Quản lý đánh giá, duyệt/từ chối/xóa và báo cáo đánh giá.
-- Quản lý bài viết blog, danh mục blog và trang đích.
-- Quản lý liên hệ, phản hồi liên hệ và gửi email.
-- Quản lý thông báo, gửi thông báo cho một người dùng hoặc toàn bộ người dùng.
-- Quản lý khuyến mãi, cấu hình website và báo cáo thống kê.
+| STT | Phân hệ (Module) | Chi tiết yêu cầu chức năng |
+| :---: | :--- | :--- |
+| 1 | Xác thực & Tài khoản | - Đăng ký, đăng nhập, đăng xuất, làm mới mã thông báo.<br>- Quên mật khẩu, đặt lại mật khẩu mới.<br>- Xác thực email bằng mã OTP và gửi lại mã xác thực.<br>- Quản lý hồ sơ cá nhân (ảnh đại diện, đổi mật khẩu, xóa tài khoản). |
+| 2 | Khám phá & Tìm kiếm | - Xem trang chủ, danh mục, địa điểm/tour nổi bật, bài viết mới.<br>- Tìm kiếm địa điểm/tour, xem gợi ý/xu hướng tìm kiếm và gợi ý cá nhân hóa.<br>- Xem chi tiết địa điểm, hình ảnh, đánh giá, thống kê đánh giá.<br>- Xem vị trí địa điểm trên bản đồ, tìm địa điểm lân cận hoặc gần vị trí người dùng. |
+| 3 | Đặt Tour & Thanh toán | - Xem danh sách tour, chi tiết tour, lịch khởi hành, kiểm tra số chỗ.<br>- Quản lý giỏ hàng và đặt tour.<br>- Tính giá đơn đặt tour, áp dụng mã khuyến mãi, tạo liên kết thanh toán.<br>- Theo dõi trạng thái thanh toán, thử lại thanh toán và xem hóa đơn. |
+| 4 | Tương tác & Tiện ích | - Quản lý danh sách yêu thích, nhận thông báo hệ thống.<br>- Viết đánh giá, quản lý lịch sử đánh giá.<br>- Gửi thông tin liên hệ tới quản trị viên.<br>- Tương tác với Chatbot thông minh để hỏi đáp thông tin du lịch. |
+
+### 2.2.2. Nhóm chức năng quản trị (Admin)
+
+*Bảng 2.2: Yêu cầu chức năng nhóm quản trị (Admin)*
+
+| STT | Phân hệ (Module) | Chi tiết yêu cầu chức năng |
+| :---: | :--- | :--- |
+| 1 | Tổng quan & Bảo mật | - Đăng nhập trang quản trị và kiểm tra phân quyền.<br>- Xem bảng điều khiển (Dashboard) tổng quan về doanh thu, tour/địa điểm nổi bật, tăng trưởng người dùng, xu hướng đặt tour và tìm kiếm. |
+| 2 | Quản lý nghiệp vụ du lịch | - Quản lý danh mục địa điểm, danh mục con, địa điểm, thẻ phân loại, tiện ích.<br>- Quản lý tour, danh mục tour và lịch khởi hành. |
+| 3 | Quản lý giao dịch | - Quản lý đơn đặt tour, cập nhật trạng thái, xác nhận thanh toán và xuất hóa đơn.<br>- Quản lý luồng thanh toán, xem chi tiết, xuất báo cáo và xử lý hoàn tiền. |
+| 4 | Quản lý người dùng & Khách hàng | - Quản lý tài khoản người dùng, phân quyền, khóa/mở khóa tài khoản, xuất danh sách.<br>- Quản lý và phản hồi liên hệ, gửi email chăm sóc khách hàng.<br>- Quản lý đánh giá (duyệt, từ chối, xóa, xử lý báo cáo vi phạm). |
+| 5 | Quản lý nội dung & Tiếp thị | - Quản lý bài viết blog, danh mục blog và các trang đích (Landing pages).<br>- Tạo và quản lý các chương trình khuyến mãi.<br>- Gửi thông báo (đơn lẻ hoặc hàng loạt cho toàn bộ người dùng).<br>- Cấu hình các thông số hệ thống và xuất báo cáo thống kê. |
 
 ## 2.3. Yêu cầu phi chức năng
+
+*Bảng 2.3: Các yêu cầu phi chức năng và phương án triển khai*
 
 | Nhóm yêu cầu | Mô tả |
 | --- | --- |
@@ -89,7 +93,7 @@ Người dùng đã đăng nhập kế thừa các chức năng của khách tru
 
 ### 2.4.3. Quản trị viên
 
-Quản trị viên có quyền truy cập khu vực admin để vận hành hệ thống:
+Quản trị viên có quyền truy cập khu vực quản trị để vận hành hệ thống:
 
 - Quản lý dữ liệu địa điểm, danh mục, thẻ phân loại và tiện ích.
 - Quản lý tour, danh mục tour và lịch khởi hành.
@@ -128,6 +132,8 @@ flowchart LR
 
 ### 2.6.1. Use case đăng nhập
 
+*Bảng 2.4: Đặc tả ca sử dụng Đăng nhập*
+
 | Thành phần | Nội dung |
 | --- | --- |
 | Tên use case | Đăng nhập |
@@ -138,6 +144,8 @@ flowchart LR
 | Hậu điều kiện | Người dùng truy cập được chức năng tương ứng với quyền |
 
 ### 2.6.2. Use case đặt tour
+
+*Bảng 2.5: Đặc tả ca sử dụng Đặt tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
@@ -150,6 +158,8 @@ flowchart LR
 
 ### 2.6.3. Use case thanh toán
 
+*Bảng 2.6: Đặc tả ca sử dụng Thanh toán đơn đặt tour*
+
 | Thành phần | Nội dung |
 | --- | --- |
 | Tên use case | Thanh toán đơn đặt tour |
@@ -160,6 +170,8 @@ flowchart LR
 | Hậu điều kiện | Booking được cập nhật trạng thái thanh toán thành công hoặc thất bại |
 
 ### 2.6.4. Use case quản lý tour
+
+*Bảng 2.7: Đặc tả ca sử dụng Quản lý tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
@@ -172,6 +184,8 @@ flowchart LR
 
 ### 2.6.5. Use case đăng ký
 
+*Bảng 2.8: Đặc tả ca sử dụng Đăng ký tài khoản*
+
 | Thành phần | Nội dung |
 | --- | --- |
 | Tên use case | Đăng ký tài khoản |
@@ -182,6 +196,8 @@ flowchart LR
 | Hậu điều kiện | Tài khoản được tạo và người dùng có thể đăng nhập/xác thực email |
 
 ### 2.6.6. Use case tìm kiếm địa điểm/tour
+
+*Bảng 2.9: Đặc tả ca sử dụng Tìm kiếm địa điểm/tour*
 
 | Thành phần | Nội dung |
 | --- | --- |
@@ -194,6 +210,8 @@ flowchart LR
 
 ### 2.6.7. Use case đánh giá
 
+*Bảng 2.10: Đặc tả ca sử dụng Đánh giá tour/địa điểm*
+
 | Thành phần | Nội dung |
 | --- | --- |
 | Tên use case | Đánh giá tour/địa điểm |
@@ -205,6 +223,8 @@ flowchart LR
 
 ### 2.6.8. Use case quản lý đơn đặt tour
 
+*Bảng 2.11: Đặc tả ca sử dụng Quản lý đơn đặt tour*
+
 | Thành phần | Nội dung |
 | --- | --- |
 | Tên use case | Quản lý đơn đặt tour |
@@ -215,6 +235,8 @@ flowchart LR
 | Hậu điều kiện | Trạng thái đơn đặt tour được cập nhật đúng nghiệp vụ |
 
 ### 2.6.9. Use case chatbot tư vấn
+
+*Bảng 2.12: Đặc tả ca sử dụng Chatbot tư vấn du lịch*
 
 | Thành phần | Nội dung |
 | --- | --- |
@@ -331,6 +353,8 @@ flowchart TD
 
 ### 2.10.1. Bảng mô tả đầu vào/đầu ra của quy trình AI
 
+*Bảng 2.13: Quy trình các bước xử lý đầu vào và đầu ra của chatbot AI*
+
 | Bước | Lớp dịch vụ/Thành phần | Đầu vào | Đầu ra | Vai trò |
 | --- | --- | --- | --- | --- |
 | 1 | `ChatController` | Nội dung câu hỏi, thông tin phiên chat, ngôn ngữ | Yêu cầu đã được kiểm tra | Tiếp nhận yêu cầu từ giao diện |
@@ -343,6 +367,8 @@ flowchart TD
 | 8 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi | Lịch sử chat và bộ nhớ đệm | Lưu lịch sử hội thoại và dữ liệu phục vụ truy vấn sau |
 
 ### 2.10.2. Đối chiếu quy trình AI với mã nguồn
+
+*Bảng 2.14: Đối chiếu quy trình AI với các thành phần mã nguồn*
 
 | Thành phần thiết kế | Minh chứng trong mã nguồn | Mô tả triển khai |
 | --- | --- | --- |
@@ -361,6 +387,8 @@ Ví dụ người dùng nhập câu hỏi:
 > Tôi muốn tìm tour Bà Nà cho 2 người, ngân sách dưới 2 triệu, đi cuối tuần này.
 
 Quá trình xử lý dự kiến:
+
+*Bảng 2.15: Ví dụ các giai đoạn xử lý câu hỏi chatbot thực tế*
 
 | Giai đoạn | Kết quả xử lý |
 | --- | --- |
@@ -409,6 +437,8 @@ flowchart TB
 
 Các thực thể chính:
 
+*Bảng 2.16: Các nhóm bảng thực thể chính trong cơ sở dữ liệu*
+
 | Nhóm | Bảng/Model | Mô tả |
 | --- | --- | --- |
 | Người dùng | `users`, `refresh_tokens` | Tài khoản, vai trò, xác thực và mã thông báo làm mới |
@@ -426,6 +456,8 @@ Các thực thể chính:
 
 ### 2.14.1. Bảng `users`
 
+*Bảng 2.17: Cấu trúc dữ liệu chi tiết của bảng users*
+
 | Trường | Ý nghĩa |
 | --- | --- |
 | `id` | Khóa chính |
@@ -440,6 +472,8 @@ Các thực thể chính:
 | `email_verified_at`, `last_login_at` | Thông tin xác thực và lần đăng nhập cuối |
 
 ### 2.14.2. Bảng `locations`
+
+*Bảng 2.18: Cấu trúc dữ liệu chi tiết của bảng locations*
 
 | Trường | Ý nghĩa |
 | --- | --- |
@@ -456,6 +490,8 @@ Các thực thể chính:
 | `status`, `is_featured` | Trạng thái hiển thị và nổi bật |
 
 ### 2.14.3. Bảng `tours`
+
+*Bảng 2.19: Cấu trúc dữ liệu chi tiết của bảng tours*
 
 | Trường | Ý nghĩa |
 | --- | --- |
@@ -475,6 +511,8 @@ Các thực thể chính:
 
 ### 2.14.4. Bảng `tour_schedules`
 
+*Bảng 2.20: Cấu trúc dữ liệu chi tiết của bảng tour_schedules*
+
 | Trường | Ý nghĩa |
 | --- | --- |
 | `id` | Khóa chính |
@@ -485,6 +523,8 @@ Các thực thể chính:
 | `status` | Trạng thái lịch khởi hành |
 
 ### 2.14.5. Bảng `bookings`
+
+*Bảng 2.21: Cấu trúc dữ liệu chi tiết của bảng bookings*
 
 | Trường | Ý nghĩa |
 | --- | --- |
@@ -497,6 +537,8 @@ Các thực thể chính:
 | `booked_at`, `confirmed_at`, `cancelled_at`, `completed_at` | Các mốc thời gian nghiệp vụ |
 
 ### 2.14.6. Bảng `payments`
+
+*Bảng 2.22: Cấu trúc dữ liệu chi tiết của bảng payments*
 
 | Trường | Ý nghĩa |
 | --- | --- |
@@ -520,13 +562,16 @@ API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 
 ## 2.16. Ma trận chức năng và API
 
+*Bảng 2.23: Ma trận phân hệ chức năng giao diện và API tương ứng*
+
 | Phân hệ | Giao diện sử dụng | API chính |
 | --- | --- | --- |
 | Trang chủ | Website người dùng | `GET /home`, `/home/locations`, `/home/tours`, `/home/blogs` |
 | Địa điểm | Website người dùng, trang quản trị | `GET /locations`, `GET /locations/{slug}`, `POST /admin/locations` |
 | Tour | Website người dùng, trang quản trị | `GET /tours`, `GET /tours/{slug}`, `POST /admin/tours` |
-| Đặt tour | Website người dùng, trang quản trị | `POST /bookings`, `GET /user/bookings`, `GET /admin/bookings` |
-| Thanh toán | Website người dùng, trang quản trị | `POST /payments/create`, `GET /payments/status/{code}`, `POST /sepay/ipn` |
+| Đặt tour | Website người dùng, trang quản trị | `POST /bookings/calculate`, `POST /bookings`, `GET /user/bookings`, `GET /admin/bookings` |
+| Thanh toán | Website người dùng, trang quản trị | `POST /payments/create`, `GET /payments/status/{code}`, `POST /sepay/ipn`, `PATCH /admin/bookings/{id}/confirm-payment` |
+| Khuyến mãi | Website người dùng, trang quản trị | `GET /promotions`, `POST /promotions/validate`, `GET /admin/promotions`, `POST /admin/promotions` |
 | Đánh giá | Website người dùng, trang quản trị | `POST /ratings`, `GET /admin/ratings`, `PATCH /admin/ratings/{id}/approve` |
 | Blog | Website người dùng, trang quản trị | `GET /blog`, `GET /blog/{slug}`, `POST /admin/blog-posts` |
 | Chatbot | Website người dùng | `POST /chat` |
@@ -536,6 +581,8 @@ API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 
 Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. Khi đưa vào Word, cần dựng lại bằng draw.io/Figma/PlantUML và xuất thành hình có chú thích:
 
+*Bảng 2.24: Danh mục các sơ đồ kỹ thuật cần thiết kế cho báo cáo*
+
 | Mã hình | Tên hình đề xuất | Nội dung |
 | --- | --- | --- |
 | Hình 2.1 | Biểu đồ use case tổng quan | Actor khách truy cập, người dùng, quản trị viên và các nhóm chức năng chính |
@@ -544,3 +591,4 @@ Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. 
 | Hình 2.4 | Biểu đồ tuần tự đặt tour và thanh toán | Luồng từ chọn tour đến tạo đơn đặt tour, tạo thanh toán và nhận IPN |
 | Hình 2.5 | Biểu đồ tuần tự chatbot | Luồng từ câu hỏi người dùng đến truy xuất dữ liệu và tạo phản hồi |
 | Hình 2.6 | ERD cơ sở dữ liệu | Các bảng chính: users, tours, tour_schedules, bookings, payments, locations, ratings, nhóm bảng chat |
+| Hình 2.7 | Sơ đồ cấu trúc các lớp xử lý chatbot | Mối quan hệ và luồng điều phối giữa các lớp dịch vụ chatbot trong hệ thống |
