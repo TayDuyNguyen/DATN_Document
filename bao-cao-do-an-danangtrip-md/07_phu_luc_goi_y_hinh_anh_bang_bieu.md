@@ -176,13 +176,13 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
         <mxCell id="db" value="PostgreSQL / Supabase" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="790" y="40" width="170" height="80" as="geometry"/>
         </mxCell>
-        <mxCell id="redis" value="Redis&#xa;Cache / Queue" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="redis" value="Redis&#xa;Bộ nhớ đệm / Hàng đợi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="790" y="150" width="170" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="ai" value="Nhà cung cấp AI&#xa;Gemini / OpenAI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
           <mxGeometry x="790" y="250" width="170" height="70" as="geometry"/>
         </mxCell>
-        <mxCell id="external" value="Cloudinary / SePay / Mail" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+        <mxCell id="external" value="Dịch vụ bên ngoài&#xa;Cloudinary / SePay / Brevo" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
           <mxGeometry x="790" y="350" width="170" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="e1" edge="1" parent="1" source="user" target="web" style="endArrow=block;html=1;rounded=0;"><mxGeometry relative="1" as="geometry"/></mxCell>

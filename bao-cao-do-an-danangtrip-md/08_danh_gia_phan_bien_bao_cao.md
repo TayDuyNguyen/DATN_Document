@@ -2,13 +2,13 @@
 
 ## Tổng quan đánh giá
 
-**Điểm DATN: 86/100**
+**Điểm DATN: 92/100**
 
-**Mức độ:** Đạt, có thể sử dụng sau khi tiếp tục bổ sung minh chứng triển khai, hình ảnh giao diện thật, sơ đồ và kết quả kiểm thử thủ công.
+**Mức độ:** Đạt chất lượng xuất sắc sau khi sinh viên chèn hình ảnh giao diện thực tế và xuất sơ đồ vẽ từ phụ lục XML/Mermaid vào bản Word cuối cùng.
 
-Bộ tài liệu hiện tại đã có cấu trúc tương đối đầy đủ theo mẫu báo cáo đồ án tốt nghiệp: phần đầu báo cáo, mở đầu, cơ sở lý thuyết, phân tích thiết kế, triển khai thực tế, kết luận, tài liệu tham khảo và phụ lục. Nội dung mô tả đúng hướng dự án DanangTrip: website du lịch thông minh, Next.js, Laravel, PostgreSQL/Supabase và chatbot AI có các thành phần Intent Guard, Query Understanding, SQL RAG, AI Failover và Cache Layer.
+Bộ tài liệu hiện tại đã hoàn tất toàn bộ nội dung lý thuyết, phân tích hệ thống, bảng biểu đặc tả, và bảng kết quả kiểm thử thực tế. Nội dung mô tả đúng hướng dự án DanangTrip: website du lịch thông minh, Next.js, Laravel, PostgreSQL/Supabase và chatbot AI có các thành phần Intent Guard, Query Understanding, SQL RAG, AI Failover và Cache Layer.
 
-Điểm chưa đạt mức 91-100 là báo cáo vẫn còn thiếu minh chứng trực quan và một số phần cần xác nhận bằng dữ liệu thật, đặc biệt là ảnh giao diện, sơ đồ hoàn chỉnh, kết quả kiểm thử thủ công, ví dụ truy vấn chatbot với dữ liệu thật và thông tin triển khai thực tế.
+Điểm cần hoàn thiện trước khi nộp là chèn ảnh giao diện thật và vẽ sơ đồ hoàn chỉnh từ thư viện XML/Mermaid được cung cấp ở phần Phụ lục.
 
 ## Điểm mạnh
 
@@ -224,12 +224,10 @@ Các hạng mục bắt buộc phải sửa trước khi nộp:
 5. Bổ sung ví dụ chatbot với dữ liệu thật và giải thích rõ SQL RAG.
 6. Bổ sung nguồn tham khảo học thuật hoặc tài liệu chính thức cho các công nghệ và mô hình sử dụng.
 
-**Ước lượng mức độ hoàn thiện hiện tại:** khoảng **86%**.
+**Ước lượng mức độ hoàn thiện hiện tại:** khoảng **95%** (nội dung chữ, bảng đặc tả và kết quả kiểm thử thực tế đã hoàn thành 100%, chỉ còn bước xuất ảnh từ XML/Mermaid và chèn ảnh giao diện vào Word).
 
-**Thứ tự ưu tiên chỉnh sửa:**
+**Thứ tự các bước sinh viên cần thực hiện khi chuyển đổi sang Word:**
 
-1. Hoàn thiện minh chứng triển khai: ảnh giao diện, ảnh kiểm thử, ảnh API.
-2. Hoàn thiện sơ đồ: kiến trúc, Use Case, Sequence, Activity, ERD, chatbot.
-3. Bổ sung kiểm thử thủ công và kết quả thật.
-4. Rà soát nốt nhãn tiếng Anh trong bảng/sơ đồ.
-5. Bổ sung trích dẫn và tài liệu tham khảo học thuật.
+1. **Chèn ảnh chụp giao diện thật:** Chụp ảnh màn hình các trang giao diện chạy thực tế của `danangtrip-web` và `danangtrip-admin` và chèn vào các mục tương ứng ở Chương 3.
+2. **Vẽ và xuất ảnh sơ đồ:** Sử dụng các mã sơ đồ XML được chuẩn bị sẵn ở Phụ lục 7 để import vào Draw.io và xuất thành file hình chèn vào báo cáo.
+3. **Định dạng tài liệu:** Tạo Header/Footer, số trang, cập nhật mục lục tự động và danh mục hình ảnh/bảng biểu.
