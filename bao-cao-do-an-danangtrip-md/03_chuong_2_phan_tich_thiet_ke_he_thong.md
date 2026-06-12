@@ -2,7 +2,7 @@
 
 ## 2.1. Các tác nhân chính
 
-Để phân tích chi tiết các yêu cầu và thiết kế các ca sử dụng (use case) của hệ thống DanangTrip, trước tiên cần xác định rõ ràng các tác nhân (Actors) tham gia tương tác trực tiếp hoặc gián tiếp với hệ thống. Qua phân tích nghiệp vụ, hệ thống DanangTrip phân loại đối tượng sử dụng thành ba nhóm tác nhân chính với vai trò và phạm vi truy cập khác nhau, cụ thể như sau:
+Để phân tích chi tiết các yêu cầu và thiết kế các ca sử dụng (use case) của hệ thống DanangTrip, trước tiên cần xác định rõ ràng các tác nhân (Actors) tham gia tương tác trực tiếp hoặc gián tiếp với hệ thống. Qua phân tích nghiệp vụ, hệ thống DanangTrip phân loại đối tượng sử dụng thành ba nhóm tác nhân chính với vai trò và phạm vi quyền hạn cơ bản nhất, cụ thể như sau:
 
 ### 2.1.1. Khách truy cập (Guest)
 Khách truy cập đại diện cho các người dùng vãng lai, chưa thực hiện đăng ký tài khoản hoặc chưa đăng nhập vào hệ thống. Đây là nhóm đối tượng có phạm vi quyền hạn cơ bản nhất, chủ yếu tương tác với các giao diện hiển thị thông tin công cộng.
@@ -11,7 +11,7 @@ Khách truy cập đại diện cho các người dùng vãng lai, chưa thực 
 
 ### 2.1.2. Người dùng đã đăng nhập (User)
 Người dùng đã đăng nhập là những thành viên đã đăng ký tài khoản thành công và xác thực danh tính qua hệ thống. Nhóm tác nhân này kế thừa toàn bộ các chức năng công cộng của Khách truy cập, đồng thời được cấp quyền truy cập vào các phân hệ chức năng mang tính cá nhân hóa và giao dịch nghiệp vụ.
-- **Vai trò và quyền hạn:** Người dùng được phép quản lý thông tin hồ sơ cá nhân (cập nhật ảnh đại diện, đổi mật khẩu), quản lý danh sách địa điểm/tour yêu thích, và tương tác trực tiếp với luồng đặt dịch vụ bao gồm giỏ hàng, khởi tạo đơn đặt tour (booking), thực hiện thanh toán trực tuyến thông qua cổng thanh toán tích hợp (vietQR/SePay), theo dõi trạng thái đơn hàng và tải hóa đơn điện tử. Ngoài ra, người dùng còn có quyền viết đánh giá, chấm điểm sao cho các địa điểm hoặc tour đã trải nghiệm, và nhận thông báo cá nhân hóa từ hệ thống.
+- **Vai trò và quyền hạn:** Người dùng được phép quản lý hồ sơ cá nhân, danh sách yêu thích và giỏ hàng; tạo đơn đặt tour, áp dụng khuyến mãi hoặc phiếu giảm giá cá nhân, thanh toán qua VietQR/SePay, theo dõi trạng thái đơn và tải hóa đơn. Người dùng còn có thể viết đánh giá, tải ảnh đánh giá, ghi nhận đánh giá hữu ích, xem số dư/lịch sử điểm, đổi điểm lấy phiếu giảm giá và nhận thông báo cá nhân hóa.
 - **Mục tiêu tương tác:** Người dùng sử dụng hệ thống để thực hiện đặt tour du lịch, thực hiện thanh toán trực tuyến nhanh chóng và tương tác cộng đồng thông qua việc chia sẻ trải nghiệm thực tế.
 
 ### 2.1.3. Quản trị viên (Admin)
@@ -31,8 +31,8 @@ Yêu cầu chức năng của hệ thống DanangTrip được chia thành hai n
 | :---: | :--- | :--- |
 | 1 | Xác thực & Tài khoản | - Đăng ký, đăng nhập, đăng xuất, làm mới mã thông báo.<br>- Quên mật khẩu, đặt lại mật khẩu mới.<br>- Xác thực email bằng mã OTP và gửi lại mã xác thực.<br>- Quản lý hồ sơ cá nhân (ảnh đại diện, đổi mật khẩu, xóa tài khoản). |
 | 2 | Khám phá & Tìm kiếm | - Xem trang chủ, danh mục, địa điểm/tour nổi bật, bài viết mới.<br>- Tìm kiếm địa điểm/tour, xem gợi ý/xu hướng tìm kiếm và gợi ý cá nhân hóa.<br>- Xem chi tiết địa điểm, hình ảnh, đánh giá, thống kê đánh giá.<br>- Xem vị trí địa điểm trên bản đồ, tìm địa điểm lân cận hoặc gần vị trí người dùng. |
-| 3 | Đặt Tour & Thanh toán | - Xem danh sách tour, chi tiết tour, lịch khởi hành, kiểm tra số chỗ.<br>- Quản lý giỏ hàng và đặt tour.<br>- Tính giá đơn đặt tour, áp dụng mã khuyến mãi, tạo liên kết thanh toán.<br>- Theo dõi trạng thái thanh toán, thử lại thanh toán và xem hóa đơn. |
-| 4 | Tương tác & Tiện ích | - Quản lý danh sách yêu thích, nhận thông báo hệ thống.<br>- Viết đánh giá, quản lý lịch sử đánh giá.<br>- Gửi thông tin liên hệ tới quản trị viên.<br>- Tương tác với Chatbot thông minh để hỏi đáp thông tin du lịch. |
+| 3 | Đặt tour và thanh toán | - Xem danh sách tour, chi tiết tour, lịch khởi hành, kiểm tra số chỗ.<br>- Quản lý giỏ hàng và đặt tour.<br>- Tính giá, áp dụng mã khuyến mãi hoặc phiếu giảm giá cá nhân, tạo thanh toán.<br>- Theo dõi trạng thái thanh toán, thử lại thanh toán và xem hóa đơn. |
+| 4 | Tương tác và tiện ích | - Quản lý danh sách yêu thích, nhận thông báo hệ thống và nhắc lịch khởi hành.<br>- Viết đánh giá, tải ảnh, quản lý lịch sử đánh giá và ghi nhận đánh giá hữu ích.<br>- Xem số dư/lịch sử điểm, phần thưởng, phiếu giảm giá và đổi điểm.<br>- Gửi liên hệ và tương tác với chatbot tư vấn du lịch. |
 
 ### 2.2.2. Nhóm chức năng quản trị (Admin)
 
@@ -42,7 +42,7 @@ Yêu cầu chức năng của hệ thống DanangTrip được chia thành hai n
 | :---: | :--- | :--- |
 | 1 | Tổng quan & Bảo mật | - Đăng nhập trang quản trị và kiểm tra phân quyền.<br>- Xem bảng điều khiển (Dashboard) tổng quan về doanh thu, tour/địa điểm nổi bật, tăng trưởng người dùng, xu hướng đặt tour và tìm kiếm. |
 | 2 | Quản lý nghiệp vụ du lịch | - Quản lý danh mục địa điểm, danh mục con, địa điểm, thẻ phân loại, tiện ích.<br>- Quản lý tour, danh mục tour và lịch khởi hành. |
-| 3 | Quản lý giao dịch | - Quản lý đơn đặt tour, cập nhật trạng thái, xác nhận thanh toán và xuất hóa đơn.<br>- Quản lý luồng thanh toán, xem chi tiết, xuất báo cáo và xử lý hoàn tiền. |
+| 3 | Quản lý giao dịch | - Quản lý đơn đặt tour, cập nhật trạng thái, xác nhận thủ công khoản chuyển tiền và xuất hóa đơn.<br>- Quản lý luồng thanh toán, xem chi tiết, xuất báo cáo và xử lý hoàn tiền. |
 | 4 | Quản lý người dùng & Khách hàng | - Quản lý tài khoản người dùng, phân quyền, khóa/mở khóa tài khoản, xuất danh sách.<br>- Quản lý và phản hồi liên hệ, gửi email chăm sóc khách hàng.<br>- Quản lý đánh giá (duyệt, từ chối, xóa, xử lý báo cáo vi phạm). |
 | 5 | Quản lý nội dung & Tiếp thị | - Quản lý bài viết blog, danh mục blog và các trang đích (Landing pages).<br>- Tạo và quản lý các chương trình khuyến mãi.<br>- Gửi thông báo (đơn lẻ hoặc hàng loạt cho toàn bộ người dùng).<br>- Cấu hình các thông số hệ thống và xuất báo cáo thống kê. |
 
@@ -53,7 +53,7 @@ Yêu cầu chức năng của hệ thống DanangTrip được chia thành hai n
 | Nhóm yêu cầu | Mô tả |
 | --- | --- |
 | Bảo mật | Sử dụng JWT, phân quyền quản trị viên, giới hạn tần suất API, kiểm tra dữ liệu đầu vào, kiểm soát tải ảnh |
-| Hiệu năng | Dùng bộ nhớ đệm của React Query, bộ nhớ đệm Laravel, Redis, phân trang dữ liệu, chỉ mục cơ sở dữ liệu |
+| Hiệu năng | Dùng bộ nhớ đệm của React Query, bảng `chat_cache`, phân trang dữ liệu và chỉ mục cơ sở dữ liệu; Redis có thể được cấu hình cho hàng đợi/bộ nhớ đệm khi triển khai |
 | Khả dụng | Giao diện đáp ứng, có trạng thái đang tải/trạng thái lỗi, hỗ trợ đa ngôn ngữ |
 | Mở rộng | Tách website người dùng, trang quản trị và API; service/repository tách nghiệp vụ; có thể mở rộng AI/hệ thống gợi ý |
 | Dễ bảo trì | TypeScript ở tầng giao diện, tầng dịch vụ Laravel, migration, kiểm thử và cấu trúc phân hệ rõ ràng |
@@ -226,7 +226,7 @@ Chi tiết các chức năng của quản trị viên bao gồm:
 | **Tác nhân** | Khách truy cập, Người dùng |
 | **Sự kiện kích hoạt** | Người dùng gửi câu hỏi trong khung chat của hệ thống. |
 | **Tiền điều kiện** | API chatbot và cơ sở tri thức (knowledge base) hoạt động ổn định. |
-| **Luồng sự kiện chính (Thành công)** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>1.</td><td>Người dùng</td><td>Nhập câu hỏi du lịch vào khung chat</td></tr><tr><td>2.</td><td>Hệ thống</td><td>Kiểm tra ý định câu hỏi (Intent Guard)</td></tr><tr><td>3.</td><td>Hệ thống</td><td>Trích xuất tham số và tìm kiếm tri thức phù hợp qua cơ chế SQL RAG</td></tr><tr><td>4.</td><td>Hệ thống</td><td>Xây dựng prompt và gọi API nhà cung cấp mô hình AI (Gemini)</td></tr><tr><td>5.</td><td>Hệ thống</td><td>Nhận kết quả phản hồi từ mô hình AI, ghi nhận lịch sử cuộc hội thoại</td></tr><tr><td>6.</td><td>Hệ thống</td><td>Hiển thị câu trả lời tự nhiên lên giao diện chat cho người dùng</td></tr></table> |
+| **Luồng sự kiện chính (Thành công)** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>1.</td><td>Người dùng</td><td>Nhập câu hỏi du lịch vào khung chat</td></tr><tr><td>2.</td><td>Hệ thống</td><td>Kiểm tra ý định câu hỏi</td></tr><tr><td>3.</td><td>Hệ thống</td><td>Trích xuất tham số, truy xuất dữ liệu nghiệp vụ và tìm kiếm ngữ nghĩa nếu được bật</td></tr><tr><td>4.</td><td>Hệ thống</td><td>Xây dựng lời nhắc và gọi API mô hình AI</td></tr><tr><td>5.</td><td>Hệ thống</td><td>Nhận phản hồi, ghi lịch sử hội thoại và bộ nhớ đệm</td></tr><tr><td>6.</td><td>Hệ thống</td><td>Hiển thị câu trả lời cho người dùng</td></tr></table> |
 | **Luồng sự kiện thay thế** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>2a.</td><td>Hệ thống</td><td>Câu hỏi ngoài phạm vi hỗ trợ, trả về câu trả lời từ chối theo kịch bản có sẵn</td></tr><tr><td>4a.</td><td>Hệ thống</td><td>AI chính bị lỗi hoặc vượt hạn mức, tự động chuyển sang mô hình AI dự phòng (AI Failover)</td></tr></table> |
 | **Hậu điều kiện** | Người dùng nhận được phản hồi tư vấn và lịch sử trò chuyện được lưu trữ thành công. |
 | **Trường hợp lỗi** | 1. Không có kết nối mạng từ hệ thống đến nhà cung cấp AI.<br>2. Cơ sở tri thức không có dữ liệu trả lời phù hợp (Chatbot trả lời theo kịch bản dự phòng). |
@@ -260,10 +260,10 @@ Chi tiết các chức năng của quản trị viên bao gồm:
 | **Tác nhân** | Người dùng, Quản trị viên |
 | **Sự kiện kích hoạt** | Người dùng nhấn nút "Đăng nhập" hoặc truy cập trực tiếp trang đăng nhập. |
 | **Tiền điều kiện** | Người dùng đã có tài khoản trên hệ thống. |
-| **Luồng sự kiện chính (Thành công)** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>1.</td><td>Người dùng</td><td>Chọn chức năng Đăng nhập</td></tr><tr><td>2.</td><td>Hệ thống</td><td>Hiển thị giao diện đăng nhập</td></tr><tr><td>3.</td><td>Người dùng</td><td>Điền thông tin đăng nhập (mô tả phía dưới)</td></tr><tr><td>4.</td><td>Người dùng</td><td>Yêu cầu đăng nhập</td></tr><tr><td>5.</td><td>Hệ thống</td><td>Kiểm tra xem người dùng đã nhập các trường bắt buộc nhập hay chưa</td></tr><tr><td>6.</td><td>Hệ thống</td><td>Kiểm tra thông tin đăng nhập có hợp lệ hay không</td></tr><tr><td>7.</td><td>Hệ thống</td><td>Hiển thị chức năng tương ứng đối với người dùng</td></tr></table> |
-| **Luồng sự kiện thay thế** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>5a.</td><td>Hệ thống</td><td>Thông báo lỗi: Cần nhập các trường bắt buộc nhập nếu Người dùng nhập thiếu</td></tr><tr><td>6a.</td><td>Hệ thống</td><td>Thông báo: Tài khoản hoặc mật khẩu chưa đúng nếu không tìm thấy tài khoản và mật khẩu trong hệ thống</td></tr></table> |
+| **Luồng sự kiện chính (Thành công)** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>1.</td><td>Người dùng</td><td>Chọn chức năng Đăng nhập</td></tr><tr><td>2.</td><td>Hệ thống</td><td>Hiển thị giao diện đăng nhập</td></tr><tr><td>3.</td><td>Người dùng</td><td>Điền thông tin đăng nhập (Email, Mật khẩu, và tùy chọn Ghi nhớ đăng nhập)</td></tr><tr><td>4.</td><td>Người dùng</td><td>Yêu cầu đăng nhập</td></tr><tr><td>5.</td><td>Hệ thống</td><td>Kiểm tra xem người dùng đã nhập các trường bắt buộc nhập hay chưa</td></tr><tr><td>6.</td><td>Hệ thống</td><td>Xác thực thông tin tài khoản, sinh Access Token (JWT) và Refresh Token ngẫu nhiên (64 ký tự)</td></tr><tr><td>7.</td><td>Hệ thống</td><td>Lưu Hash SHA-256 của Refresh Token vào cơ sở dữ liệu và đính kèm token này vào phản hồi dưới dạng Cookie HttpOnly để đảm bảo an toàn</td></tr><tr><td>8.</td><td>Hệ thống</td><td>Trả về dữ liệu JSON chứa Access Token và thông tin người dùng, hiển thị giao diện tương ứng theo vai trò</td></tr></table> |
+| **Luồng sự kiện thay thế** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>5a.</td><td>Hệ thống</td><td>Thông báo lỗi: Cần nhập các trường bắt buộc nhập nếu Người dùng nhập thiếu</td></tr><tr><td>6a.</td><td>Hệ thống</td><td>Thông báo: Tài khoản hoặc mật khẩu chưa đúng nếu thông tin xác thực không chính xác</td></tr></table> |
 | **Hậu điều kiện** | Người dùng đăng nhập thành công và truy cập được chức năng tương ứng với quyền. |
-| **Trường hợp lỗi** | 1. Người dùng nhập sai Email hoặc Mật khẩu.<br>2. Tài khoản đã bị khóa hoặc chưa được kích hoạt.<br>3. Không thể kết nối với API máy chủ. |
+| **Trường hợp lỗi** | 1. Người dùng nhập sai Email hoặc Mật khẩu.<br>2. Tài khoản đã bị khóa hoặc chưa được kích hoạt.<br>3. Không thể kết nối với Server API. |
 
 ### 2.5.5. Use case đặt tour
 
@@ -297,7 +297,7 @@ Chi tiết các chức năng của quản trị viên bao gồm:
 | **Luồng sự kiện chính (Thành công)** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>1.</td><td>Người dùng</td><td>Chọn phương thức thanh toán chuyển khoản VietQR</td></tr><tr><td>2.</td><td>Hệ thống</td><td>Hiển thị mã VietQR động cùng thông tin số tiền và nội dung chuyển khoản tự động</td></tr><tr><td>3.</td><td>Người dùng</td><td>Sử dụng ứng dụng ngân hàng quét mã QR và thực hiện thanh toán</td></tr><tr><td>4.</td><td>Cổng thanh toán</td><td>Nhận giao dịch thanh toán thành công và gửi Webhook (IPN) đến hệ thống API</td></tr><tr><td>5.</td><td>Hệ thống</td><td>Xác thực thông tin Webhook và cập nhật trạng thái đơn đặt tour thành "Đã thanh toán"</td></tr><tr><td>6.</td><td>Hệ thống</td><td>Hiển thị giao diện thanh toán thành công và gửi hóa đơn xác nhận qua email</td></tr></table> |
 | **Luồng sự kiện thay thế** | <table><tr><th>STT</th><th>Thực hiện bởi</th><th>Hành động</th></tr><tr><td>4a.</td><td>Hệ thống</td><td>Quá thời gian quy định người dùng chưa thanh toán, tự động chuyển đơn hàng sang trạng thái "Hủy"</td></tr></table> |
 | **Hậu điều kiện** | Đơn đặt tour được cập nhật thành Đã thanh toán, tạo mã giao dịch và phát hành hóa đơn thành công. |
-| **Trường hợp lỗi** | 1. Người dùng chuyển sai nội dung chuyển khoản hoặc sai số tiền yêu cầu.<br>2. Lỗi kết nối Webhook giữa SePay và API máy chủ. |
+| **Trường hợp lỗi** | 1. Người dùng chuyển sai nội dung chuyển khoản hoặc sai số tiền yêu cầu.<br>2. Lỗi kết nối Webhook giữa SePay và Server API. |
 
 ### 2.5.7. Use case đánh giá
 
@@ -350,13 +350,27 @@ Chi tiết các chức năng của quản trị viên bao gồm:
 | **Hậu điều kiện** | Trạng thái đơn đặt tour được cập nhật chính xác và khách hàng nhận được email thông báo trạng thái. |
 | **Trường hợp lỗi** | 1. Đơn đặt tour không tồn tại trong cơ sở dữ liệu.<br>2. Quản trị viên cố gắng cập nhật trạng thái không hợp lệ (ví dụ: chuyển từ Đã hoàn thành sang Chờ thanh toán). |
 
+### 2.5.10. Use case đổi điểm lấy phiếu giảm giá
+
+*Bảng 2.12a: Đặc tả ca sử dụng đổi điểm lấy phiếu giảm giá*
+
+| Thành phần | Nội dung |
+| --- | --- |
+| **Mã ca sử dụng** | UC25 |
+| **Tên ca sử dụng** | Đổi điểm lấy phiếu giảm giá cá nhân |
+| **Tác nhân** | Người dùng đã đăng nhập |
+| **Tiền điều kiện** | Phần thưởng đang hoạt động; người dùng có đủ điểm và chưa vượt giới hạn đổi. |
+| **Luồng chính** | Người dùng mở trang điểm thành viên và chọn phần thưởng. Hệ thống khóa số dư cùng phần thưởng trong giao dịch, kiểm tra điều kiện, trừ điểm, ghi giao dịch điểm và cấp phiếu giảm giá cá nhân có thời hạn. |
+| **Luồng thay thế** | Hệ thống từ chối khi phần thưởng không hoạt động, không đủ điểm, đã vượt giới hạn hoặc dữ liệu thay đổi trong lúc xử lý. |
+| **Hậu điều kiện** | Số dư được cập nhật, phiếu giảm giá xuất hiện trong ví của đúng người dùng và thông báo được tạo. |
+
 ## 2.6. Biểu đồ tuần tự đặt tour và thanh toán
 
 ```mermaid
 sequenceDiagram
     actor U as Người dùng
     participant W as "Website người dùng"
-    participant API as "API phía máy chủ"
+    participant API as "Server API"
     participant DB as "Cơ sở dữ liệu"
     participant Pay as "Cổng SePay (IPN)"
 
@@ -384,20 +398,21 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     actor U as Người dùng
-    participant W as "Website người dùng"
-    participant API as "API phía máy chủ"
-    participant DB as "Cơ sở dữ liệu"
+    participant W as "Website / Admin (Client)"
+    participant API as "API (Laravel)"
+    participant DB as "Cơ sở dữ liệu (PostgreSQL)"
 
-    U->>W: Nhập email và mật khẩu
-    W->>API: POST /auth/login
-    API->>DB: Tìm user theo email
-    DB-->>API: Thông tin user
-    API->>API: Kiểm tra mật khẩu và trạng thái
-    API->>DB: Lưu refresh token, last_login_at
-    API-->>W: Mã thông báo truy cập, mã thông báo làm mới, thông tin người dùng
-    W-->>U: Chuyển đến trang phù hợp
+    U->>W: Nhập email, mật khẩu & chọn "Ghi nhớ" (tùy chọn)
+    W->>API: POST /auth/login {email, password, remember}
+    API->>API: Xác thực thông tin qua Auth Guard (api)
+    API->>DB: Truy vấn tìm người dùng theo Email
+    DB-->>API: Thông tin người dùng
+    API->>API: Sinh Access Token (JWT)
+    API->>API: Sinh Refresh Token ngẫu nhiên (64 ký tự)
+    API->>DB: Lưu Hash(Refresh Token) & hạn dùng (14 ngày hoặc 1 ngày)
+    API-->>W: Trả về JSON (Access Token, User) + Cookie HttpOnly (Refresh Token)
+    W-->>U: Đăng nhập thành công, chuyển hướng trang phù hợp
 ```
-
 ## 2.8. Biểu đồ tuần tự chatbot
 
 ```mermaid
@@ -406,52 +421,81 @@ sequenceDiagram
     participant W as "Website người dùng"
     participant API as "Bộ điều phối Chat"
     participant S as "Dịch vụ Chat"
+    participant QU as "Phân tích truy vấn (Rule-based)"
+    participant AI_NLU as "AI NLU (Trích xuất thực thể)"
     participant K as "Tìm kiếm tri thức"
-    participant AI as "Nhà cung cấp AI"
+    participant AI as "Nhà cung cấp AI (Hoàn thiện)"
     participant DB as "Cơ sở dữ liệu"
 
     U->>W: Nhập câu hỏi du lịch
     W->>API: POST /chat
     API->>S: send(message)
-    S->>S: Phân loại ý định và trích xuất ràng buộc
-    S->>K: Tìm tour/địa điểm/blog phù hợp
-    K->>DB: Truy vấn dữ liệu liên quan
-    DB-->>K: Ngữ cảnh
-    K-->>S: Danh sách tri thức
-    S->>AI: Gửi prompt kèm ngữ cảnh
-    AI-->>S: Câu trả lời
-    S->>DB: Lưu lịch sử chat/bộ nhớ đệm
-    S-->>API: Response
-    API-->>W: Nội dung trả lời
+    S->>QU: understand() & classify()
+    QU-->>S: Trích xuất quy tắc & Điểm tin cậy (Confidence)
+    
+    alt Không thuộc phạm vi (Out of Scope)
+        S-->>API: Trả về câu trả lời từ chối theo kịch bản
+        API-->>W: Hiển thị thông báo ngoài phạm vi
+    else Hợp lệ (In Scope)
+        alt Trùng Cache còn hiệu lực
+            S->>DB: Kiểm tra ChatCache
+            DB-->>S: Trả về câu trả lời lưu sẵn
+        else Cache Miss
+            alt Cần trích xuất NLU & Điểm tin cậy < Ngưỡng (0.8)
+                S->>AI_NLU: extractEntitiesWithAi()
+                AI_NLU-->>S: Trả về JSON thực thể và ngày được chuẩn hóa
+            end
+            S->>K: search(tri thức liên quan)
+            K->>DB: Lọc dữ liệu có cấu trúc & độ tương đồng Vector
+            DB-->>K: Kết quả tour, địa điểm, blog, chính sách
+            K-->>S: Ngữ cảnh hội thoại (Context)
+            S->>AI: complete(prompt + ngữ cảnh)
+            AI-->>S: Câu trả lời tự nhiên
+            S->>DB: Lưu ChatCache & ChatMessage (lịch sử chat)
+        end
+        S-->>API: Response
+        API-->>W: Nội dung phản hồi
+    end
 ```
 
 ## 2.9. Thiết kế quy trình AI Chatbot
 
-Pipeline chatbot trong DanangTrip được thiết kế để đảm bảo câu trả lời bám sát dữ liệu nội bộ của hệ thống. Luồng xử lý gồm các bước:
+Pipeline chatbot trong DanangTrip được thiết kế theo kiến trúc **Bộ định tuyến NLU lai (Hybrid NLU Router)** nhằm tối ưu hóa chi phí API, giảm thiểu độ trễ phản hồi (latency), và đảm bảo độ chính xác khi truy xuất dữ liệu nội bộ. Luồng xử lý gồm các bước sau:
 
-1. Người dùng gửi câu hỏi từ website.
-2. Bộ kiểm soát ý định (Intent Guard) kiểm tra câu hỏi có thuộc phạm vi hỗ trợ hay không.
-3. Thành phần phân tích truy vấn (Query Understanding) phân tích câu hỏi và trích xuất các tham số như điểm đến, ngân sách, ngày đi, số người, thời lượng.
-4. Lớp bộ nhớ đệm (Cache Layer) kiểm tra khóa bộ nhớ đệm được tạo từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa nhằm xác định phản hồi tương ứng đã tồn tại hay chưa.
-5. Thành phần SQL RAG truy xuất dữ liệu từ các bảng nghiệp vụ như `tours`, `tour_schedules`, `locations`, `blog_posts`, `settings` và `chat_knowledge_base`; dữ liệu truy xuất được sử dụng làm ngữ cảnh đầu vào cho mô hình AI khi sinh phản hồi.
-6. Thành phần cung cấp mô hình AI nhận prompt bao gồm câu hỏi gốc của người dùng, kết quả phân tích truy vấn và ngữ cảnh dữ liệu được truy xuất từ hệ thống.
-7. Cơ chế chuyển đổi dự phòng AI (AI Failover) xử lý trường hợp nhà cung cấp lỗi hoặc vượt giới hạn.
-8. Hệ thống lưu tin nhắn, lưu kết quả vào bộ nhớ đệm và trả phản hồi về giao diện.
+1. **Tiếp nhận & Chuẩn hóa**: Người dùng gửi câu hỏi từ website. Hệ thống tiến hành chuẩn hóa văn bản, loại bỏ ký tự lạ, và xử lý đồng nghĩa (Aliases/viết tắt).
+2. **Bộ kiểm soát ý định (Intent Guard)**: Phân loại câu hỏi có thuộc phạm vi hỗ trợ (In-scope) hay không. Nếu ngoài phạm vi, chatbot từ chối trả lời theo kịch bản định sẵn để bảo vệ tài nguyên hệ thống.
+3. **Phân tích truy vấn quy tắc & Từ điển động**: Phân tích bằng biểu thức chính quy (Regex) kết hợp đối chiếu **Từ điển điểm đến động (Dynamic Dictionary)** được truy vấn trực tiếp từ danh sách `tours` và `locations` đang hoạt động trong cơ sở dữ liệu (được cache 1 giờ). Hệ thống cũng thực hiện chuẩn hóa bỏ dấu tiếng Việt (tone-insensitive mapping) để tối ưu việc khớp từ khóa.
+4. **Tính điểm tin cậy (Confidence Score)**: Điểm tin cậy ($0.0 \rightarrow 1.0$) được tính dựa trên tổng trọng số của các thực thể chính trích xuất được:
+   - Điểm đến (Destination): Trọng số 35%
+   - Khoảng giá (Price range): Trọng số 25%
+   - Số người (People count): Trọng số 20%
+   - Ngày khởi hành (Departure date): Trọng số 20%
+5. **Bộ định tuyến NLU (NLU Routing)**:
+   - Nếu câu hỏi thuộc nhóm ý định phi nghiệp vụ (như chính sách hoàn tiền, tích điểm, liên hệ, tài khoản) không cần tham số lọc, hoặc câu hỏi có điểm tin cậy quy tắc $\ge$ Ngưỡng cấu hình (`config/chatbot.php`, mặc định `0.8`): Hệ thống **bỏ qua hoàn toàn** bước gọi AI NLU để tiết kiệm token và tăng tốc độ xử lý.
+   - Nếu câu hỏi yêu cầu lọc nghiệp vụ (tour, đặt chỗ, địa điểm) nhưng điểm tin cậy $< 0.8$: Hệ thống chuyển tiếp yêu cầu đến **Gemini AI NLU** (`extractEntitiesWithAi()`) với prompt cấu hình nhiệt độ thấp (temperature = 0.1) và ép định dạng JSON để trích xuất sâu các thực thể phức tạp hoặc giải quyết ngày tương đối (ví dụ: "cuối tuần sau" $\rightarrow$ ngày cụ thể dựa trên ngày hiện tại của server).
+6. **Lớp bộ nhớ đệm (Cache Layer)**: Kiểm tra mã băm câu hỏi trong `ChatCache` để trả về phản hồi tức thời nếu có câu hỏi tương tự trước đó.
+7. **Truy xuất tri thức kết hợp (Hybrid Retrieval)**: Lọc dữ liệu có cấu trúc từ `tours` và `locations` dựa trên các thực thể đã trích xuất, kết hợp tìm kiếm ngữ nghĩa (Cosine Similarity) trong bảng `chat_knowledge_base` trên PostgreSQL để chuẩn bị ngữ cảnh (Context).
+8. **Hoàn thiện câu trả lời (AI Completion)**: Gửi prompt đóng gói ngữ cảnh đến mô hình AI được chỉ định (Gemini/OpenAI) để sinh câu trả lời tự nhiên, chính xác.
+9. **Chuyển đổi dự phòng (AI Failover)**: Tự động chuyển đổi nhà cung cấp dịch vụ AI hoặc API key dự phòng khi gặp lỗi kết nối hoặc vượt hạn mức tần suất.
+10. **Lưu trữ & Phản hồi**: Lưu trữ lịch sử hội thoại trong bảng `chat_messages` (bao gồm các siêu dữ liệu phân tích như điểm tin cậy, trạng thái kích hoạt AI NLU) và cập nhật bộ nhớ đệm.
 
 ```mermaid
 flowchart TD
     A["Câu hỏi người dùng"] --> B["Bộ kiểm soát ý định\n(Intent Guard)"]
     B -->|Ngoài phạm vi| C["Trả thông báo từ chối phù hợp"]
-    B -->|Hợp lệ| D["Phân tích truy vấn\n(Query Understanding)"]
-    D --> E["Lớp bộ nhớ đệm\n(Cache Layer)"]
-    E -->|Cache hit| F["Trả phản hồi đã lưu"]
-    E -->|Cache miss| G["SQL RAG"]
-    G --> H["Truy xuất tours, schedules, locations, blogs, policies"]
-    H --> I["Nhà cung cấp AI"]
-    I -->|Lỗi/hết hạn mức/quá thời gian chờ| J["Chuyển đổi dự phòng AI\n(AI Failover)"]
-    J --> I
-    I --> K["Lưu lịch sử chat/bộ nhớ đệm"]
-    K --> L["Trả phản hồi cho giao diện"]
+    B -->|Hợp lệ| D["Phân tích truy vấn\n(Rule-based & Dynamic Dictionary)"]
+    D --> E["Tính điểm tin cậy\n(Confidence Score)"]
+    E --> F{"Cần NLU & Điểm tin cậy\n< Ngưỡng (0.8)?"}
+    F -->|Đúng| G["Gọi Gemini NLU trích xuất thực thể\n(extractEntitiesWithAi)"]
+    F -->|Sai| H["Kiểm tra Lớp bộ nhớ đệm\n(Cache Layer)"]
+    G --> H
+    H -->|Cache hit| I["Trả phản hồi từ bộ nhớ đệm"]
+    H -->|Cache miss| J["Truy xuất tri thức kết hợp\n(Dữ liệu có cấu trúc + Vector)"]
+    J --> K["Nhà cung cấp AI\n(complete)"]
+    K -->|Lỗi/Vượt hạn mức| L["Chuyển đổi dự phòng AI\n(AI Failover)"]
+    L --> K
+    K --> M["Lưu lịch sử chat & Bộ nhớ đệm"]
+    M --> N["Trả phản hồi cho giao diện"]
 ```
 
 ### 2.9.1. Bảng mô tả đầu vào/đầu ra của quy trình AI
@@ -462,12 +506,13 @@ flowchart TD
 | --- | --- | --- | --- | --- |
 | 1 | `ChatController` | Nội dung câu hỏi, thông tin phiên chat, ngôn ngữ | Yêu cầu đã được kiểm tra | Tiếp nhận yêu cầu từ giao diện |
 | 2 | `ChatIntentGuardService` | Câu hỏi người dùng | Kết quả hợp lệ/không hợp lệ, nhóm ý định sơ bộ | Giới hạn phạm vi câu hỏi thuộc du lịch, tour, địa điểm, đặt tour hoặc chính sách |
-| 3 | `ChatQueryUnderstandingService` | Câu hỏi hợp lệ | Intent chi tiết, điểm đến, khoảng giá, số người, ngày đi, thời lượng | Trích xuất tham số phục vụ truy vấn dữ liệu |
-| 4 | Lớp bộ nhớ đệm (Cache Layer) | Câu hỏi đã chuẩn hóa, ý định, tham số truy vấn | Phản hồi trong bộ nhớ đệm hoặc không có dữ liệu phù hợp trong bộ nhớ đệm | Giảm thời gian phản hồi với câu hỏi lặp lại |
-| 5 | `ChatKnowledgeSearchService` | Intent và tham số đã trích xuất | Danh sách tour, lịch khởi hành, địa điểm, bài viết, chính sách liên quan | Thực hiện SQL RAG từ dữ liệu nội bộ |
-| 6 | `ChatAiProviderService` | Prompt gồm câu hỏi và ngữ cảnh truy xuất | Câu trả lời từ nhà cung cấp AI | Sinh phản hồi tự nhiên dựa trên dữ liệu hệ thống |
-| 7 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế, hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
-| 8 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi | Lịch sử chat và bộ nhớ đệm | Lưu lịch sử hội thoại và dữ liệu phục vụ truy vấn sau |
+| 3 | `ChatQueryUnderstandingService` | Câu hỏi hợp lệ | Thực thể quy tắc trích xuất ban đầu, Điểm tin cậy (Confidence) | Phân tích nhanh bằng biểu thức chính quy và từ điển động tải từ CSDL |
+| 4 | Bộ định tuyến NLU (NLU Routing) | Câu hỏi và thực thể ban đầu | Các thực thể đã được làm giàu (Enriched entities) | Tự động quyết định gọi Gemini NLU để phân tích sâu (JSON format) nếu điểm tin cậy dưới ngưỡng `0.8` |
+| 5 | Lớp bộ nhớ đệm (Cache Layer) | Câu hỏi đã chuẩn hóa, ý định, tham số truy vấn | Phản hồi trong bộ nhớ đệm hoặc đi tiếp | Giảm thời gian phản hồi với câu hỏi trùng lặp |
+| 6 | `ChatKnowledgeSearchService`, `ChatVectorSearchService` | Ý định và tham số đã trích xuất | Dữ liệu nghiệp vụ và bản ghi cơ sở tri thức liên quan | Kết hợp lọc dữ liệu có cấu trúc với xếp hạng embedding bằng độ tương đồng cosin khi chức năng này được bật |
+| 7 | `ChatAiProviderService` (Complete) | Prompt gồm câu hỏi và ngữ cảnh truy xuất | Câu trả lời từ nhà cung cấp AI | Sinh phản hồi tự nhiên dựa trên dữ liệu hệ thống |
+| 8 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế, hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
+| 9 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi và siêu dữ liệu định tuyến | Lịch sử chat và bộ nhớ đệm | Lưu lịch sử hội thoại và dữ liệu phục vụ truy vấn sau |
 
 ### 2.9.2. Đối chiếu quy trình AI với mã nguồn
 
@@ -476,44 +521,39 @@ flowchart TD
 | Thành phần thiết kế | Minh chứng trong mã nguồn | Mô tả triển khai |
 | --- | --- | --- |
 | Bộ kiểm soát ý định (Intent Guard) | `ChatIntentGuardService::classify()` | Chuẩn hóa câu hỏi của người dùng, kiểm tra các từ khóa bị hạn chế và phân loại câu hỏi vào các nhóm chức năng như tour du lịch, địa điểm, đặt tour, thanh toán, hoàn tiền, bài viết hoặc tài khoản. |
-| Thành phần phân tích truy vấn (Query Understanding) | `ChatQueryUnderstandingService::understand()` | Phân tích nội dung câu hỏi để trích xuất các tham số phục vụ tìm kiếm như điểm đến, mức giá, số lượng khách, ngày khởi hành, thời lượng chuyến đi và tiêu chí sắp xếp kết quả. |
+| Thành phần phân tích truy vấn (Query Understanding) | `ChatQueryUnderstandingService::understand()` | Phân tích nội dung câu hỏi để trích xuất các tham số bằng biểu thức chính quy. Sử dụng cache để tải các điểm đến động từ database (`getDynamicDestinations()`). Tính toán điểm tin cậy dựa trên các tham số thu thập được. |
+| Bộ định tuyến NLU lai & Trích xuất AI | `ChatService::send()` và `ChatAiProviderService::extractEntitiesWithAi()` | Kiểm tra điểm tin cậy và loại ý định để quyết định gọi LLM trích xuất bổ sung dưới định dạng JSON, giúp phân tích các đại lượng phức tạp (như ngân sách số) và giải quyết mốc thời gian tương đối ("cuối tuần sau", "ngày mai"). |
 | Lớp bộ nhớ đệm (Cache Layer) | `ChatService::cacheHash()` và model `ChatCache` | Tạo khóa bộ nhớ đệm dựa trên ngôn ngữ, nhóm ý định và nội dung câu hỏi đã được chuẩn hóa; kiểm tra dữ liệu còn hiệu lực trước khi thực hiện truy xuất dữ liệu hoặc gọi mô hình AI. |
-| Thành phần truy xuất tri thức SQL RAG | `ChatKnowledgeSearchService::search()` | Truy xuất dữ liệu liên quan từ tour du lịch, địa điểm, bài viết, chính sách và cơ sở tri thức nhằm xây dựng ngữ cảnh cho quá trình sinh câu trả lời. |
+| Thành phần truy xuất tri thức | `ChatKnowledgeSearchService::search()` và `ChatVectorSearchService::search()` | Kết hợp truy xuất dữ liệu nghiệp vụ với tìm kiếm ngữ nghĩa trên embedding lưu trong PostgreSQL. Hệ thống tính độ tương đồng cosin ở tầng dịch vụ và chưa sử dụng cơ sở dữ liệu véc-tơ chuyên dụng. |
 | Thành phần cung cấp mô hình AI | `ChatAiProviderService::complete()` | Gửi yêu cầu đến mô hình AI được cấu hình, bao gồm Gemini hoặc các nhà cung cấp tương thích giao diện OpenAI. |
 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | `ChatAiProviderService::complete()` và `ensureSuccessfulResponse()` | Tự động chuyển sang nhà cung cấp hoặc khóa truy cập khác khi phát hiện lỗi kết nối, vượt thời gian chờ, vượt giới hạn tần suất hoặc khóa truy cập không hợp lệ. |
-| Câu trả lời dự phòng | `ChatService::fallbackAnswer()` và `outOfScopeAnswer()` | Trả về câu trả lời dự phòng trong trường hợp không tìm thấy dữ liệu liên quan, mô hình AI gặp lỗi hoặc câu hỏi nằm ngoài phạm vi hỗ trợ của hệ thống. |
+| Câu trả lời dự phòng | `ChatService::fallbackAnswer()` and `outOfScopeAnswer()` | Trả về câu trả lời dự phòng trong trường hợp không tìm thấy dữ liệu liên quan, mô hình AI gặp lỗi hoặc câu hỏi nằm ngoài phạm vi hỗ trợ của hệ thống. |
 
-### 2.9.3. Ví dụ xử lý câu hỏi chatbot
+### 2.9.3. Ví dụ xử lý câu hỏi chatbot thực tế
 
 Ví dụ người dùng nhập câu hỏi:
 
-> Tôi muốn tìm tour Bà Nà cho 2 người, ngân sách dưới 2 triệu, đi cuối tuần này.
+> Tôi muốn đi Cầu Rồng tuần sau, 3 người, ngân sách khoảng 1.5 triệu
 
-Quá trình xử lý dự kiến:
+Quá trình xử lý thực tế qua Bộ định tuyến NLU lai:
 
 *Bảng 2.15: Ví dụ các giai đoạn xử lý câu hỏi chatbot thực tế*
 
-| Giai đoạn | Kết quả xử lý |
+| Giai đoạn | Chi tiết xử lý và kết quả |
 | --- | --- |
-| Bộ kiểm soát ý định (Intent Guard) | Câu hỏi hợp lệ, thuộc nhóm tư vấn tour |
-| Thành phần phân tích truy vấn (Query Understanding) | `intent = tour_recommendation`, `destination = Bà Nà`, `people = 2`, `price_max = 2000000`, `date = cuối tuần này` |
-| Lớp bộ nhớ đệm (Cache Layer) | Kiểm tra bộ nhớ đệm theo câu hỏi đã chuẩn hóa và tham số chính; nếu không có thì tiếp tục truy xuất dữ liệu |
-| SQL RAG | Truy vấn các bảng `tours`, `tour_schedules`, `tour_categories`, có thể kết hợp điều kiện điểm đến, giá, số chỗ và ngày khởi hành |
-| Context gửi AI | Danh sách tour phù hợp, giá người lớn/trẻ em, lịch khởi hành, số chỗ còn lại, mô tả ngắn và chính sách liên quan |
-| AI Response | Tạo câu trả lời gợi ý tour phù hợp, nêu lý do phù hợp và hướng dẫn người dùng xem chi tiết/đặt tour |
-
-Ví dụ phản hồi mong đợi:
-
-> Hệ thống tìm thấy một số tour Bà Nà phù hợp với yêu cầu 2 người và ngân sách dưới 2.000.000 VND. Anh/chị có thể tham khảo tour có lịch khởi hành gần nhất, kiểm tra số chỗ còn lại và chuyển sang trang chi tiết tour để đặt chỗ.
-
-Khi đưa vào báo cáo chính thức, cần thay ví dụ trên bằng dữ liệu thật từ cơ sở dữ liệu của dự án.
-
+| **1. Intent Guard** | Câu hỏi hợp lệ. Phân loại ý định chính: `tour`. |
+| **2. Phân tích truy vấn quy tắc (Rule-based)** | - Nhận diện điểm đến từ Từ điển động: `destination = "cầu rồng"`<br>- Trích xuất số người: `people = 3`<br>- Khoảng giá: `null` (chưa hỗ trợ nhận diện chữ "khoảng 1.5 triệu" bằng regex thuần)<br>- Ngày đi: `null` (không giải nghĩa được "tuần sau")<br>- **Điểm tin cậy tính được: 55%** (Destination + People = 35% + 20%). |
+| **3. Định tuyến NLU** | Điểm tin cậy `0.55 < 0.8` (Ngưỡng kích hoạt). Ý định thuộc nhóm lọc nghiệp vụ (`tour`). Hệ thống chuyển tiếp yêu cầu đến `ChatAiProviderService::extractEntitiesWithAi()`. |
+| **4. Trích xuất bằng Gemini NLU** | Gemini nhận ngữ cảnh ngày hiện tại của server (ví dụ: Thứ Sáu, 12/06/2026) và thực hiện phân tích cú pháp:<br>- Giải nghĩa "tuần sau" $ightarrow$ `date = "2026-06-15"` (Thứ Hai tuần kế tiếp)<br>- Giải nghĩa "khoảng 1.5 triệu" $ightarrow$ `max_price = 1500000`<br>- Trả về JSON chứa toàn bộ thực thể được làm giàu: `destination = "cầu rồng"`, `people = 3`, `max_price = 1500000`, `date = "2026-06-15"`. |
+| **5. Truy xuất tri thức RAG** | Lọc dữ liệu `tours` hoạt động quanh khu vực Cầu Rồng, kiểm tra lịch khởi hành ngày `2026-06-15`, đồng thời truy vấn bài viết cẩm nang du lịch Cầu Rồng từ cơ sở tri thức `chat_knowledge_base` trên PostgreSQL. |
+| **6. AI Completion** | Gemini nhận prompt đóng gói câu hỏi của người dùng kèm dữ liệu ngữ cảnh vừa tìm kiếm, sinh câu trả lời thân thiện, gợi ý tour/khách sạn phù hợp và đính kèm các thẻ gợi ý cụ thể. |
+| **7. Lưu trữ** | Phản hồi được đưa vào `ChatCache` để tối ưu các câu hỏi sau, đồng thời bản ghi được tạo trong `ChatMessage` lưu kèm siêu dữ liệu `ai_nlu_triggered = true`. |
 ## 2.10. Biểu đồ hoạt động tìm kiếm/gợi ý
 
 ```mermaid
 flowchart TD
     A["Người dùng nhập từ khóa"] --> B["Giao diện gọi API /search"]
-    B --> C["API phía máy chủ phân tích bộ lọc"]
+    B --> C["Server API phân tích bộ lọc"]
     C --> D["Truy vấn địa điểm, tour, blog"]
     D --> E["Ghi nhận nhật ký tìm kiếm/tương tác"]
     E --> F["Sắp xếp kết quả theo độ phù hợp"]
@@ -528,7 +568,7 @@ flowchart TB
     UserWeb["danangtrip-web\nNext.js"] --> API["danangtrip-api\nLaravel REST API"]
     AdminWeb["danangtrip-admin\nReact/Vite"] --> API
     API --> DB["Cơ sở dữ liệu\nPostgreSQL / Supabase"]
-    API --> Redis["Redis\nBộ nhớ đệm / Hàng đợi"]
+    API --> ChatCache["Bảng chat_cache\nBộ nhớ đệm phản hồi chatbot"]
     API --> Cloudinary["Cloudinary\nLưu trữ hình ảnh"]
     API --> Sepay["Cổng thanh toán\nSePay / VietQR"]
     API --> Mail["Dịch vụ Email\nBrevo"]
@@ -548,9 +588,10 @@ Các thực thể chính:
 | Địa điểm | `locations`, `categories`, `subcategories` | Thông tin địa điểm du lịch và phân loại |
 | Tiện ích/thẻ phân loại | `tags`, `amenities`, `location_tags`, `location_amenities` | Gắn nhãn và tiện ích cho địa điểm |
 | Tour | `tours`, `tour_categories`, `tour_schedules`, `tour_locations` | Tour, danh mục, lịch khởi hành và địa điểm trong tour |
-| Đặt tour | `bookings`, `booking_items`, `cart_items` | Đặt tour, chi tiết đơn đặt tour và giỏ hàng |
+| Đặt tour | `bookings`, `booking_items`, `cart_items` | Đặt tour, chi tiết đơn đặt tour, giỏ hàng, khuyến mãi và phiếu giảm giá đã áp dụng |
 | Thanh toán | `payments` | Giao dịch thanh toán, trạng thái và mã giao dịch |
-| Tương tác | `favorites`, `ratings`, `rating_images`, `views`, `search_logs` | Yêu thích, đánh giá, lượt xem và hành vi tìm kiếm |
+| Tương tác | `favorites`, `ratings`, `rating_images`, `rating_helpful_votes`, `views`, `search_logs` | Yêu thích, đánh giá, ảnh đánh giá, lượt ghi nhận hữu ích, lượt xem và hành vi tìm kiếm |
+| Điểm thành viên | `user_point_balances`, `point_rules`, `point_rewards`, `point_transactions`, `user_vouchers` | Số dư, quy tắc cộng điểm, phần thưởng, lịch sử điểm và phiếu giảm giá cá nhân |
 | Nội dung | `blog_posts`, `blog_categories`, `landing_pages` | Bài viết du lịch và trang đích |
 | Vận hành | `contacts`, `notifications`, `settings`, `promotions` | Liên hệ, thông báo, cấu hình và khuyến mãi |
 | Chatbot | `chat_messages`, `chat_cache`, `chat_knowledge_base` | Lịch sử chat, bộ nhớ đệm phản hồi và cơ sở tri thức |
@@ -637,6 +678,7 @@ Các thực thể chính:
 | `customer_note` | Ghi chú của khách |
 | `total_amount`, `discount_amount`, `final_amount`, `deposit_amount` | Tổng tiền, giảm giá, số tiền cuối, tiền cọc |
 | `payment_method`, `payment_status`, `booking_status` | Phương thức, trạng thái thanh toán, trạng thái đặt tour |
+| `promotion_id`, `user_voucher_id` | Khuyến mãi chung và phiếu giảm giá cá nhân được áp dụng |
 | `booked_at`, `confirmed_at`, `cancelled_at`, `completed_at` | Các mốc thời gian nghiệp vụ |
 
 ### 2.13.6. Bảng `payments`
@@ -655,12 +697,26 @@ Các thực thể chính:
 | `gateway_response` | Dữ liệu phản hồi từ cổng thanh toán |
 | `paid_at`, `refunded_at`, `refund_reason` | Thông tin thanh toán/hoàn tiền |
 
+### 2.13.7. Nhóm bảng điểm thành viên
+
+*Bảng 2.22a: Vai trò của các bảng điểm thành viên*
+
+| Bảng | Vai trò |
+| --- | --- |
+| `user_point_balances` | Lưu điểm khả dụng, tổng điểm đã nhận và tổng điểm đã sử dụng của từng người dùng |
+| `point_rules` | Khai báo hành động được cộng điểm, số điểm, giới hạn theo ngày và yêu cầu duyệt |
+| `point_rewards` | Khai báo phần thưởng đổi điểm, giá trị giảm, giá trị đơn tối thiểu, thời hạn và giới hạn sử dụng |
+| `point_transactions` | Lưu từng biến động điểm, số dư sau giao dịch, nguồn phát sinh và trạng thái |
+| `user_vouchers` | Lưu phiếu giảm giá cá nhân được cấp sau khi đổi điểm và trạng thái sử dụng |
+
+Thao tác cộng hoặc đổi điểm được thực hiện trong giao dịch cơ sở dữ liệu. Mã nguồn kiểm tra nguồn phát sinh để hạn chế cộng điểm trùng và khóa số dư khi đổi thưởng để tránh trừ điểm đồng thời.
+
 ## 2.14. Thiết kế API
 
 API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 
 - Public API: `/home`, `/locations`, `/tours`, `/blog`, `/search`, `/chat`, `/contacts`, `/promotions`, `/config`.
-- API yêu cầu xác thực: `/auth/me`, `/user/profile`, `/user/bookings`, `/payments`, `/cart`, `/ratings`, `/recommendations`, `/user/notifications`.
+- API yêu cầu xác thực: `/auth/me`, `/user/profile`, `/user/bookings`, `/payments`, `/cart`, `/ratings`, `/recommendations`, `/user/notifications`, `/user/points`, `/user/point-rewards`, `/user/vouchers`.
 - API quản trị: `/admin/dashboard`, `/admin/locations`, `/admin/tours`, `/admin/tour-schedules`, `/admin/bookings`, `/admin/payments`, `/admin/users`, `/admin/blog-posts`, `/admin/ratings`, `/admin/settings`, `/admin/promotions`.
 
 ## 2.15. Ma trận chức năng và API
@@ -675,7 +731,8 @@ API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 | Đặt tour | Website người dùng, trang quản trị | `POST /bookings/calculate`, `POST /bookings`, `GET /user/bookings`, `GET /admin/bookings` |
 | Thanh toán | Website người dùng, trang quản trị | `POST /payments/create`, `GET /payments/status/{code}`, `POST /sepay/ipn`, `PATCH /admin/bookings/{id}/confirm-payment` |
 | Khuyến mãi | Website người dùng, trang quản trị | `GET /promotions`, `POST /promotions/validate`, `GET /admin/promotions`, `POST /admin/promotions` |
-| Đánh giá | Website người dùng, trang quản trị | `POST /ratings`, `GET /admin/ratings`, `PATCH /admin/ratings/{id}/approve` |
+| Điểm và phiếu giảm giá | Website người dùng | `GET /user/points`, `GET /user/points/history`, `GET /user/point-rewards`, `POST /user/point-rewards/{id}/redeem`, `GET /user/vouchers` |
+| Đánh giá | Website người dùng, trang quản trị | `POST /ratings`, `POST /ratings/{id}/helpful`, `GET /admin/ratings`, `PATCH /admin/ratings/{id}/approve` |
 | Blog | Website người dùng, trang quản trị | `GET /blog`, `GET /blog/{slug}`, `POST /admin/blog-posts` |
 | Chatbot | Website người dùng | `POST /chat` |
 | Báo cáo | Trang quản trị | `/admin/dashboard/*`, `/admin/reports/*` |
@@ -691,9 +748,10 @@ Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. 
 | Hình 2.1 | Biểu đồ use case phân rã - Khách truy cập | Biểu đồ use case phân rã chi tiết cho tác nhân Khách truy cập |
 | Hình 2.2 | Biểu đồ use case phân rã - Người dùng | Biểu đồ use case phân rã chi tiết cho tác nhân Người dùng đã đăng nhập |
 | Hình 2.3 | Biểu đồ use case phân rã - Quản trị viên | Biểu đồ use case phân rã chi tiết cho tác nhân Quản trị viên |
-| Hình 2.4 | Kiến trúc tổng thể hệ thống DanangTrip | Website người dùng Next.js, trang quản trị React/Vite, Laravel API, PostgreSQL/Supabase, Redis, nhà cung cấp AI, Cloudinary, SePay |
-| Hình 2.5 | Quy trình AI Chatbot | Bộ kiểm soát ý định, phân tích truy vấn, lớp bộ nhớ đệm, SQL RAG, nhà cung cấp AI, chuyển đổi dự phòng AI |
+| Hình 2.4 | Kiến trúc tổng thể hệ thống DanangTrip | Website người dùng Next.js, trang quản trị React/Vite, Laravel API, PostgreSQL/Supabase, nhà cung cấp AI, Cloudinary, SePay và dịch vụ thư điện tử |
+| Hình 2.5 | Quy trình AI Chatbot | Bộ kiểm soát ý định, phân tích truy vấn, bảng bộ nhớ đệm, truy xuất có cấu trúc, tìm kiếm embedding, nhà cung cấp AI và chuyển đổi dự phòng |
 | Hình 2.6 | Biểu đồ tuần tự đặt tour và thanh toán | Luồng từ chọn tour đến tạo đơn đặt tour, tạo thanh toán và nhận IPN |
 | Hình 2.7 | Biểu đồ tuần tự chatbot | Luồng từ câu hỏi người dùng đến truy xuất dữ liệu và tạo phản hồi |
-| Hình 2.8 | ERD cơ sở dữ liệu | Các bảng chính: users, tours, tour_schedules, bookings, payments, locations, ratings, nhóm bảng chat |
+| Hình 2.8 | ERD cơ sở dữ liệu | Các bảng chính: users, tours, tour_schedules, bookings, payments, locations, ratings, rating_helpful_votes, nhóm điểm thành viên và nhóm bảng chat |
 | Hình 2.9 | Sơ đồ cấu trúc các lớp xử lý chatbot | Mối quan hệ và luồng điều phối giữa các lớp dịch vụ chatbot trong hệ thống |
+| Hình 2.10 | Quy trình đổi điểm lấy phiếu giảm giá | Kiểm tra phần thưởng, khóa số dư, trừ điểm, ghi giao dịch và cấp phiếu giảm giá |

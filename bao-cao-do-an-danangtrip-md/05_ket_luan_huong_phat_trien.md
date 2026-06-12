@@ -6,9 +6,11 @@ Sau quá trình phân tích, thiết kế và triển khai, đề tài **"Xây d
 
 - Xây dựng website người dùng bằng Next.js phục vụ tra cứu địa điểm, tour, blog, tìm kiếm, bản đồ, đặt tour, thanh toán và quản lý tài khoản.
 - Xây dựng trang quản trị bằng React/Vite phục vụ quản lý toàn bộ dữ liệu vận hành như địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, đánh giá, blog, khuyến mãi, thông báo và báo cáo.
-- Xây dựng API phía máy chủ bằng Laravel với cấu trúc rõ ràng, có xác thực JWT, phân quyền quản trị viên, kiểm tra dữ liệu và phân tách theo mẫu controller-service-repository.
-- Thiết kế cơ sở dữ liệu đáp ứng các nghiệp vụ chính của hệ thống du lịch: địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, đánh giá, yêu thích, nội dung và chatbot.
+- Xây dựng Server API bằng Laravel với cấu trúc rõ ràng, có xác thực JWT, phân quyền quản trị viên, kiểm tra dữ liệu và phân tách theo mẫu controller-service-repository.
+- Thiết kế cơ sở dữ liệu đáp ứng các nghiệp vụ chính của hệ thống du lịch: địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, đánh giá, lượt đánh giá hữu ích, điểm thành viên, phiếu giảm giá cá nhân, yêu thích, nội dung và chatbot.
 - Tích hợp các nghiệp vụ như thanh toán SePay/VietQR, tải ảnh lên Cloudinary, xuất báo cáo Excel, sinh hóa đơn PDF, gửi email và chatbot tư vấn dựa trên dữ liệu nội bộ.
+- Triển khai áp dụng khuyến mãi và phiếu giảm giá cá nhân trong luồng đặt tour; cộng điểm theo nguồn nghiệp vụ, đổi điểm lấy phần thưởng và quản lý lịch sử điểm.
+- Triển khai thông báo trạng thái đơn/thanh toán, thông báo điểm và tác vụ nhắc lịch khởi hành; hỗ trợ quản trị viên xác nhận thanh toán chuyển khoản thủ công.
 - Có nền tảng kiểm thử bằng PHPUnit, Playwright, Vitest và các script kiểm tra đóng gói, kiểu dữ liệu, quy tắc mã nguồn.
 
 ## 2. Những vấn đề còn tồn tại
@@ -20,6 +22,7 @@ Do giới hạn về thời gian và phạm vi đồ án, hệ thống vẫn cò
 - Chưa triển khai đầy đủ hệ thống gợi ý độc lập trong môi trường vận hành thực tế.
 - Chưa tích hợp nhiều cổng thanh toán hoặc nhiều nhà cung cấp tour bên ngoài.
 - Cần bổ sung thêm kiểm thử tự động cho toàn bộ luồng đầu cuối như đăng ký, đặt tour, thanh toán, quản trị đơn đặt tour và quản trị nội dung.
+- Cần mở rộng kiểm thử tích hợp cho luồng đổi điểm - cấp phiếu - áp dụng phiếu và tác vụ nhắc lịch khởi hành.
 - Cần tối ưu thêm SEO, hiệu năng, khả năng truy cập và trải nghiệm trên thiết bị di động.
 
 ## 3. Hướng phát triển
@@ -32,9 +35,10 @@ Trong tương lai, hệ thống có thể được mở rộng theo các hướn
 - Phát triển ứng dụng di động cho khách du lịch.
 - Tích hợp hệ thống đối tác để đồng bộ tour, khách sạn, phương tiện và vé tham quan.
 - Bổ sung hệ thống đánh giá chống spam, kiểm duyệt tự động và phân tích cảm xúc.
+- Bổ sung giao diện quản trị quy tắc điểm/phần thưởng, cơ chế thu hồi hoặc hoàn điểm khi đơn đặt tour bị hoàn tiền và báo cáo hiệu quả chương trình thành viên.
 - Nâng cấp chatbot theo hướng RAG hoàn chỉnh hơn, có khả năng trích dẫn nguồn dữ liệu, ghi nhận độ tin cậy của câu trả lời và tư vấn theo ngữ cảnh cá nhân.
 - Triển khai giám sát, ghi nhật ký tập trung và cảnh báo lỗi trong môi trường vận hành thực tế.
 
 ## 4. Kết luận chung
 
-Đề tài DanangTrip đã giúp sinh viên vận dụng tổng hợp kiến thức về phát triển phần mềm, thiết kế cơ sở dữ liệu, xây dựng giao diện người dùng, xây dựng API phía máy chủ, tích hợp dịch vụ và kiểm thử. Sản phẩm tạo ra đáp ứng các nghiệp vụ cơ bản của hệ thống du lịch trực tuyến và có thể tiếp tục mở rộng theo hướng cá nhân hóa, tư vấn thông minh và tích hợp nhiều dịch vụ du lịch hơn.
+Đề tài DanangTrip đã giúp sinh viên vận dụng tổng hợp kiến thức về phát triển phần mềm, thiết kế cơ sở dữ liệu, xây dựng giao diện người dùng, xây dựng Server API, tích hợp dịch vụ và kiểm thử. Sản phẩm tạo ra đáp ứng các nghiệp vụ cơ bản của hệ thống du lịch trực tuyến và có thể tiếp tục mở rộng theo hướng cá nhân hóa, tư vấn thông minh và tích hợp nhiều dịch vụ du lịch hơn.

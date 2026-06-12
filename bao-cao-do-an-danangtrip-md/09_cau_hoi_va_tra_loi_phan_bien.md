@@ -14,12 +14,12 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
 
 ### Câu 1.2: Laravel trong hệ thống DanangTrip đảm nhiệm những vai trò nào?
 * **Trả lời**:
-  Laravel đóng vai trò là API phía máy chủ (Backend API) trung tâm, thực hiện các nhiệm vụ:
-  * **Xử lý nghiệp vụ (Business Logic)**: Tính toán giá tour, áp dụng mã giảm giá, kiểm tra số lượng chỗ trống, quản lý giỏ hàng và xử lý thanh toán.
+  Laravel đóng vai trò là Server API trung tâm, thực hiện các nhiệm vụ:
+  * **Xử lý nghiệp vụ**: Tính toán giá tour, áp dụng khuyến mãi/phiếu giảm giá cá nhân, kiểm tra số lượng chỗ trống, quản lý giỏ hàng, điểm thành viên và thanh toán.
   * **Xác thực và phân quyền**: Cung cấp cơ chế đăng ký, đăng nhập, xác thực bằng mã OTP qua email, phân quyền người dùng thông qua Middleware và mã thông báo JWT.
   * **Quản trị cơ sở dữ liệu**: Định nghĩa lược đồ dữ liệu thông qua migrations, truy vấn dữ liệu qua Eloquent ORM và xử lý giao dịch (Database Transactions).
   * **Tích hợp dịch vụ bên thứ ba**: Tiếp nhận webhook/IPN từ cổng thanh toán SePay, lưu trữ ảnh trên Cloudinary, gửi email qua Brevo, xuất báo cáo Excel và sinh hóa đơn PDF.
-  * **Xử lý hội thoại AI**: Đóng vai trò trung gian phân tích ý định (Intent Guard), truy xuất dữ liệu nội bộ (SQL RAG) và gọi mô hình ngôn ngữ lớn (LLM).
+  * **Xử lý hội thoại AI**: Phân loại ý định, phân tích truy vấn, kết hợp dữ liệu nghiệp vụ với tìm kiếm ngữ nghĩa bằng embedding và gọi mô hình ngôn ngữ lớn.
 
 ### Câu 1.3: Các nhóm người dùng chính của hệ thống là ai?
 * **Trả lời**:
@@ -35,7 +35,8 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
   * **Địa điểm du lịch**: Bảng `locations`, `categories`, `subcategories`, `tags`, `amenities`, `location_tags`, `location_amenities`.
   * **Tour và đặt tour**: Bảng `tours`, `tour_categories`, `tour_schedules`, `tour_locations`, `bookings`, `booking_items`, `cart_items`.
   * **Thanh toán & Khuyến mãi**: Bảng `payments` và `promotions`.
-  * **Tương tác & AI**: Bảng `favorites`, `ratings`, `rating_images`, `chat_messages`, `chat_cache`, `chat_knowledge_base`.
+  * **Tương tác và chatbot**: Bảng `favorites`, `ratings`, `rating_images`, `rating_helpful_votes`, `chat_messages`, `chat_cache`, `chat_knowledge_base`.
+  * **Điểm thành viên**: Bảng `user_point_balances`, `point_rules`, `point_rewards`, `point_transactions`, `user_vouchers`.
 
 ### Câu 1.5: Chatbot của DanangTrip hỗ trợ những nhóm câu hỏi nào?
 * **Trả lời**:
@@ -50,11 +51,11 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
 
 ## 2. Nhóm câu hỏi trung bình
 
-### Câu 2.1: Vì sao cần tách website người dùng, trang quản trị và API phía máy chủ thành các dự án độc lập?
+### Câu 2.1: Vì sao cần tách website người dùng, trang quản trị và Server API thành các dự án độc lập?
 * **Trả lời**:
   Đề tài áp dụng kiến trúc hệ thống phân tách (Decoupled Architecture) nhằm đạt được:
-  * **Độc lập công nghệ và mục tiêu**: Next.js (website khách) hướng tới hiệu năng render và tối ưu SEO. React/Vite (trang quản trị) hướng tới ứng dụng đơn trang (SPA) tải nhanh, không cần SEO, phù hợp với các thao tác biểu mẫu hành chính nội bộ. Laravel (API phía máy chủ) tập trung hoàn toàn vào xử lý dữ liệu và bảo mật.
-  * **Khả năng mở rộng (Scalability)**: Cho phép nhân bản và nâng cấp tài nguyên độc lập cho từng thành phần. Khi lượng truy cập của khách hàng tăng cao, ta chỉ cần nhân bản máy chủ Next.js và máy chủ API mà không cần bận tâm đến trang quản trị.
+  * **Độc lập công nghệ và mục tiêu**: Next.js hướng tới hiệu năng kết xuất và tối ưu SEO. React/Vite phục vụ ứng dụng quản trị dạng SPA. Laravel Server API tập trung vào xử lý dữ liệu, nghiệp vụ và bảo mật.
+  * **Khả năng mở rộng**: Cho phép nhân bản và nâng cấp tài nguyên độc lập cho từng thành phần. Khi lượng truy cập tăng cao, hệ thống có thể mở rộng Next.js Server và API Server mà không cần thay đổi trang quản trị.
   * **Quy trình phát triển độc lập**: Các nhóm phát triển giao diện và API có thể làm việc song song dựa trên tài liệu đặc tả API được thống nhất trước.
 
 ### Câu 2.2: JWT được sử dụng như thế nào trong luồng đăng nhập và phân quyền?
@@ -74,47 +75,47 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
   * **Khi đặt tour**: Luồng đặt tour yêu cầu ghi dữ liệu đồng thời vào nhiều bảng: tạo hóa đơn chính (`bookings`), tạo chi tiết hành khách (`booking_items`), trừ số chỗ trống (`tour_schedules`) và cập nhật số lần sử dụng mã giảm giá (`promotions`). Nếu bất kỳ bước nào thất bại, toàn bộ quá trình sẽ được Rollback về trạng thái cũ để tránh dữ liệu mồ côi hoặc sai lệch số chỗ.
   * **Khi thanh toán trực tuyến**: Khi nhận callback IPN từ SePay, hệ thống cập nhật đồng thời trạng thái đơn hàng sang `paid` và tạo bản ghi lịch sử giao dịch trong bảng `payments`. Transaction đảm bảo trạng thái tài chính và trạng thái đơn hàng luôn đồng nhất.
 
-### Câu 2.5: Cache Layer trong chatbot giúp cải thiện hệ thống ở điểm nào?
+### Câu 2.5: Lớp bộ nhớ đệm trong chatbot giúp cải thiện hệ thống ở điểm nào?
 * **Trả lời**:
-  * **Giảm độ trễ phản hồi**: Tốc độ xử lý và phản hồi từ các mô hình ngôn ngữ lớn (LLM) bên ngoài thường mất vài giây. Cache Layer (sử dụng Redis hoặc bộ nhớ đệm máy chủ) lưu trữ các phản hồi đối với những câu hỏi phổ biến, trả kết quả tức thì trong mili-giây.
+  * **Giảm độ trễ phản hồi**: Bảng `chat_cache` lưu phản hồi theo khóa được tạo từ ngôn ngữ, nhóm ý định và câu hỏi đã chuẩn hóa. Khi bản ghi còn hiệu lực, hệ thống không phải thực hiện lại toàn bộ quy trình.
   * **Tiết kiệm chi phí**: Giảm số lượng Token đầu vào và đầu ra cần gửi đến nhà cung cấp mô hình AI (do LLM tính phí theo số lượng Token tiêu thụ).
-  * **Giảm tải máy chủ**: Hạn chế việc hệ thống liên tục thực hiện các truy vấn SQL RAG phức tạp trên cơ sở dữ liệu cho cùng một câu hỏi trong thời gian ngắn.
+  * **Giảm tải Server**: Hạn chế việc hệ thống liên tục truy xuất dữ liệu và gọi mô hình AI cho cùng một câu hỏi trong thời gian ngắn.
 
 ---
 
 ## 3. Nhóm câu hỏi chuyên sâu (Khó)
 
-### Câu 3.1: SQL RAG trong DanangTrip khác gì so với RAG dùng Vector Search và Embedding truyền thống?
+### Câu 3.1: DanangTrip kết hợp truy xuất dữ liệu có cấu trúc và tìm kiếm embedding như thế nào?
 * **Trả lời**:
-  * **Cơ chế Vector Search (RAG truyền thống)**: Phù hợp với dữ liệu phi cấu trúc (văn bản dài, tài liệu hướng dẫn). Hệ thống chuyển đổi tài liệu thành các vector số học lưu trữ ở cơ sở dữ liệu vector. Khi hỏi, hệ thống so khớp độ tương đồng ngữ nghĩa để lấy ra đoạn văn liên quan rồi đưa vào ngữ cảnh của LLM. Cơ chế này không thể tính toán chính xác dữ liệu động.
-  * **Cơ chế SQL RAG trong DanangTrip**: Sử dụng đối với cơ sở dữ liệu quan hệ (dữ liệu có cấu trúc cao). Bước Query Understanding trích xuất các tham số từ câu hỏi (ngày đi, khoảng giá, địa điểm), sau đó hệ thống sinh câu lệnh SQL chính xác để truy vấn trực tiếp từ bảng `tours`, `tour_schedules`, `locations`.
-  * **Độ chính xác**: SQL RAG đảm bảo thông tin trả về về giá cả, số chỗ trống thực tế luôn chính xác 100% theo dữ liệu thực tại thời điểm truy vấn, loại bỏ hoàn toàn hiện tượng ảo giác (hallucination) của AI.
+  * **Dữ liệu có cấu trúc**: Thành phần phân tích truy vấn trích xuất điểm đến, vùng, chủ đề, khoảng giá, số người, ngày đi và tiêu chí sắp xếp. `ChatKnowledgeSearchService` dùng các tham số này để lọc tour, lịch khởi hành, địa điểm, bài viết và chính sách.
+  * **Tìm kiếm ngữ nghĩa**: Khi được bật bằng cấu hình, `ChatVectorSearchService` tạo embedding cho câu hỏi, lấy các bản ghi có embedding từ `chat_knowledge_base`, tính độ tương đồng cosin ở tầng dịch vụ và chọn các kết quả vượt ngưỡng.
+  * **Giới hạn kỹ thuật**: Embedding được lưu trong PostgreSQL nhưng phiên bản hiện tại chưa dùng cơ sở dữ liệu véc-tơ hoặc chỉ mục véc-tơ chuyên dụng. Dữ liệu truy xuất giúp giảm nguy cơ trả lời sai nhưng không thể bảo đảm loại bỏ hoàn toàn hiện tượng mô hình sinh thông tin không chính xác.
 
 ### Câu 3.2: Nếu nhà cung cấp AI trả lời sai hoặc không phản hồi, hệ thống xử lý thế nào để không ảnh hưởng đến người dùng?
 * **Trả lời**:
   Hệ thống thiết kế cơ chế chịu lỗi nhiều lớp (Graceful Degradation & Failover):
-  * **Chuyển đổi dự phòng (AI Failover)**: Lớp dịch vụ `ChatAiProviderService` quản lý danh sách các khóa API và các nhà cung cấp dịch vụ LLM khác nhau (như Google Gemini, OpenAI GPT, Anthropic Claude). Nếu nhà cung cấp chính trả về lỗi (hết hạn mức, quá giới hạn tần suất) hoặc quá thời gian chờ (Timeout), hệ thống tự động bắt ngoại lệ (`catch Exception`) và chuyển sang gọi nhà cung cấp dự phòng.
-  * **Giới hạn thời gian phản hồi (Timeout)**: Thiết lập giới hạn thời gian chờ cuộc gọi LLM ngắn (5-8 giây) để tránh treo luồng xử lý của người dùng.
-  * **Hạ cấp tính năng thông minh**: Nếu toàn bộ nhà cung cấp AI đều không phản hồi, chatbot tự động chuyển sang phản hồi dựa trên luật tĩnh (Static Rule-based Response) được định nghĩa sẵn trong cơ sở dữ liệu (ví dụ: cung cấp thông tin liên hệ trực tiếp, số điện thoại hỗ trợ hoặc giới thiệu danh sách địa điểm nổi bật lấy trực tiếp từ DB).
+  * **Chuyển đổi dự phòng AI**: `ChatAiProviderService` duyệt nhà cung cấp và khóa truy cập theo thứ tự cấu hình. Khi gặp lỗi kết nối, quá thời gian chờ, vượt giới hạn tần suất hoặc khóa không hợp lệ, hệ thống thử lựa chọn tiếp theo.
+  * **Phản hồi dự phòng**: Nếu không thể nhận phản hồi hợp lệ, `ChatService` sử dụng câu trả lời dự phòng hoặc thông báo ngoài phạm vi thay vì để yêu cầu thất bại không kiểm soát.
 
 ### Câu 3.3: Làm thế nào để bảo đảm người dùng không xem được đơn đặt tour của người khác?
 * **Trả lời**:
   Hệ thống thực hiện kiểm soát truy cập và bảo mật đa lớp:
-  * **Xác thực và Phân quyền tại API**: Endpoint truy xuất đơn hàng cá nhân `/api/v1/user/bookings/{id}` yêu cầu mã thông báo JWT. Laravel Policy sẽ đối chiếu ID người dùng đã đăng nhập với trường `user_id` của bản ghi đơn đặt tour. Nếu không trùng khớp, hệ thống lập tức trả về mã lỗi `403 Forbidden`.
+  * **Xác thực và kiểm tra quyền sở hữu tại API**: Điểm cuối `/api/v1/user/bookings/{id}` yêu cầu JWT. `BookingService` so sánh người dùng hiện tại với `user_id` của đơn; nếu không trùng, API trả về `403 Forbidden`.
   * **Tách biệt phân hệ quản trị**: Endpoint lấy thông tin quản trị `/api/v1/admin/bookings/{id}` được bảo vệ riêng biệt bởi Middleware kiểm tra vai trò người dùng, chỉ tài khoản có vai trò `admin` mới được cấp quyền truy cập.
-  * **Sử dụng định danh ngẫu nhiên (UUID)**: Trên giao diện và URL, hệ thống sử dụng định danh ngẫu nhiên thay thế cho mã ID tự tăng trong cơ sở dữ liệu để ngăn chặn tấn công duyệt tìm số thứ tự ID đơn hàng (tấn công IDOR - Insecure Direct Object Reference).
+  * **Mã đơn không thay thế kiểm tra quyền**: Hệ thống có `booking_code` ngẫu nhiên để tra cứu thuận tiện, nhưng khóa chính vẫn là số tự tăng. Bảo vệ chính vẫn là xác thực và kiểm tra `user_id`; không được xem mã đơn là biện pháp ngăn IDOR độc lập.
 
 ### Câu 3.4: Nếu IPN thanh toán từ SePay bị giả mạo hoặc gửi lặp lại, hệ thống kiểm tra và chống xử lý trùng như thế nào?
 * **Trả lời**:
-  * **Xác thực chữ ký số (Signature Verification)**: Dữ liệu IPN từ cổng SePay gửi lên kèm mã băm chữ ký (Signature). Laravel API sử dụng thuật toán HMAC-SHA256 kết hợp dữ liệu payload nhận được và khóa bí mật (`Shared Secret Key` - được thiết lập riêng giữa hai bên) để tính toán lại chữ ký số. Nếu kết quả không khớp với chữ ký gửi kèm, hệ thống lập tức từ chối và trả về lỗi `401 Unauthorized`.
-  * **Chống xử lý trùng lặp (Idempotent API)**: Do cơ chế gọi lại IPN của các cổng thanh toán khi chưa nhận được phản hồi thành công, Backend lưu mã giao dịch độc bản (`transaction_reference_id`) của SePay vào bảng `payments` ngay khi xử lý thành công. Trước khi thực hiện bất kỳ giao dịch IPN nào, hệ thống kiểm tra sự tồn tại của mã giao dịch này trong cơ sở dữ liệu, nếu đã ghi nhận thành công, hệ thống lập tức phản hồi HTTP 200 OK để kết thúc luồng mà không chạy lại logic nghiệp vụ.
+  * **Xác thực IPN theo cấu hình**: Khi `SEPAY_VERIFY_IPN_SIGNATURE` được bật, hệ thống chấp nhận mã bí mật trong tiêu đề Bearer/token hoặc kiểm tra HMAC-SHA256 trên nội dung thô. Nếu cấu hình này tắt, bước xác thực chữ ký được bỏ qua; vì vậy môi trường thật bắt buộc phải bật và cấu hình khóa bí mật.
+  * **Kiểm tra dữ liệu nghiệp vụ**: Hệ thống trích xuất mã đơn từ nội dung chuyển khoản, đối chiếu số tiền nhận được với số tiền của đơn và từ chối dữ liệu không hợp lệ.
+  * **Chống xử lý lặp theo trạng thái**: Nếu đơn đã có trạng thái thanh toán thành công, hệ thống trả kết quả đã xử lý mà không cộng điểm hoặc cập nhật lại. Việc cập nhật thanh toán được thực hiện trong giao dịch và khóa bản ghi thanh toán chờ xử lý.
 
 ### Câu 3.5: Nếu dữ liệu tour và địa điểm tăng lớn, cần tối ưu cơ sở dữ liệu, API và giao diện như thế nào?
 * **Trả lời**:
   Hệ thống thực hiện tối ưu hóa 3 tầng:
   * **Tầng Cơ sở dữ liệu (PostgreSQL)**:
     * Đánh chỉ mục B-Tree cho các trường tìm kiếm và sắp xếp thường xuyên (`price`, `starts_at`, `status`).
-    * Sử dụng chỉ mục `GIN` kết hợp kiểu dữ liệu `tsvector` để triển khai tìm kiếm toàn văn (Full-text Search), tránh việc dùng toán tử quét chuỗi `LIKE` gây chậm hệ thống.
+    * Có thể bổ sung chỉ mục `GIN` kết hợp `tsvector` cho tìm kiếm toàn văn khi khối lượng dữ liệu tăng; đây là hướng tối ưu, không phải chức năng đã được chứng minh trong phiên bản hiện tại.
     * Phân vùng dữ liệu (Partitioning) đối với các bảng ghi nhật ký có dung lượng lớn như `payments` hoặc `bookings`.
   * **Tầng API (Laravel)**:
     * Áp dụng phân trang (`paginate()` hoặc `cursorPaginate()`) cho các danh sách trả về, tránh truy xuất toàn bộ dữ liệu.

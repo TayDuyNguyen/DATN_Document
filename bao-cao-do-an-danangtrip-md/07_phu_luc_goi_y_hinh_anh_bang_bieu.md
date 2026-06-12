@@ -24,6 +24,11 @@
 | 16 | Giao diện quản lý đơn đặt tour | `danangtrip-admin` |
 | 17 | Giao diện quản lý thanh toán | `danangtrip-admin` |
 | 18 | Giao diện báo cáo doanh thu | `danangtrip-admin` |
+| 19 | Giao diện điểm thành viên, lịch sử điểm và phần thưởng | `danangtrip-web` |
+| 20 | Giao diện chọn khuyến mãi/phiếu giảm giá cá nhân khi đặt tour | `danangtrip-web` |
+| 21 | Giao diện ghi nhận đánh giá hữu ích | `danangtrip-web` |
+| 22 | Giao diện thông báo nhắc lịch khởi hành | `danangtrip-web` |
+| 23 | Giao diện quản trị xác nhận thanh toán thủ công | `danangtrip-admin` |
 
 ## 2. Danh mục bảng biểu đề xuất
 
@@ -46,7 +51,7 @@
 
 ### 3.1. Biểu đồ kiến trúc tổng thể
 
-Nên vẽ gồm các khối: Website người dùng, Trang quản trị, Laravel API, Cơ sở dữ liệu, Redis, Cloudinary, SePay, Dịch vụ email, Nhà cung cấp AI.
+Nên vẽ gồm các khối: Website người dùng, Trang quản trị, Laravel API, PostgreSQL/Supabase, bảng bộ nhớ đệm chatbot, Cloudinary, SePay, dịch vụ thư điện tử và nhà cung cấp AI. Chỉ bổ sung Redis nếu cấu hình triển khai thực tế có sử dụng.
 
 ### 3.2. Biểu đồ use case tổng quan
 
@@ -65,6 +70,8 @@ Nên tập trung vào nhóm bảng chính để tránh quá rối:
 - `tours`, `tour_categories`, `tour_schedules`
 - `bookings`, `booking_items`, `payments`
 - `ratings`, `favorites`, `notifications`
+- `rating_helpful_votes`
+- `user_point_balances`, `point_rules`, `point_rewards`, `point_transactions`, `user_vouchers`
 - `blog_posts`, `promotions`, `settings`
 - `chat_messages`, `chat_knowledge_base`
 
@@ -85,14 +92,17 @@ Nên tập trung vào nhóm bảng chính để tránh quá rối:
 | 9 | Thanh toán | Tạo thanh toán cho đơn đặt tour đang chờ xử lý | Sinh giao dịch/mã QR | Sinh mã QR VietQR kèm số tiền và nội dung chuyển khoản tự động chính xác | Đạt |
 | 10 | Thanh toán | Nhận IPN hợp lệ từ SePay | Thanh toán thành công, đơn đặt tour được cập nhật | Cập nhật trạng thái đơn hàng thành đã thanh toán tự động khi nhận IPN từ SePay | Đạt |
 | 11 | Đánh giá | Gửi đánh giá hợp lệ | Đánh giá được lưu/chờ duyệt | Gửi đánh giá thành công, lưu ở trạng thái chờ quản trị viên duyệt | Đạt |
-| 12 | Quản trị tour | Quản trị viên thêm tour mới | Tour hiển thị ở danh sách quản trị và công khai khi đang hoạt động | Tour mới xuất hiện ngay trên trang danh sách admin và website client | Đạt |
+| 12 | Quản trị tour | Quản trị viên thêm tour mới | Tour hiển thị ở danh sách quản trị và công khai khi đang hoạt động | Tour mới xuất hiện trên trang quản trị và website người dùng | Đạt |
 | 13 | Quản trị đánh giá | Quản trị viên duyệt đánh giá | Đánh giá hiển thị công khai | Đánh giá sau khi duyệt xuất hiện trên trang chi tiết địa điểm/tour công khai | Đạt |
 | 14 | Chatbot | Hỏi tour theo ngân sách | Trả lời dựa trên dữ liệu tour phù hợp | Chatbot nhận diện ý định và lọc tour theo đúng khoảng giá yêu cầu | Đạt |
 | 15 | Chatbot | Hỏi câu ngoài phạm vi du lịch | Intent Guard từ chối hoặc hướng dẫn hỏi lại | Từ chối trả lời câu hỏi ngoài phạm vi và hướng dẫn người dùng hỏi đúng chủ đề | Đạt |
 | 16 | Chatbot | Nhà cung cấp AI lỗi hoặc quá thời gian chờ | Hệ thống chuyển nhà cung cấp/khóa hoặc trả phản hồi dự phòng | Tự động chuyển đổi khóa API/nhà cung cấp dự phòng mượt mà không gây ngắt quãng | Đạt |
-| 17 | Quản trị đặt tour | Quản trị viên xác nhận thanh toán thủ công cho đơn đặt tour chuyển khoản | Đơn đặt tour cập nhật trạng thái thanh toán thành công và gửi email tự động xác nhận cho khách hàng | Đã kiểm thử thành công bằng PHPUnit và giao diện quản trị | Đạt |
-| 18 | Khuyến mãi | Khách hàng áp dụng mã giảm giá hợp lệ | Hệ thống tự động tính toán số tiền chiết khấu, hiển thị chi tiết trên hóa đơn và giảm tổng tiền cần trả | Đã kiểm thử thành công bằng PHPUnit và giao diện người dùng | Đạt |
-| 19 | Khuyến mãi | Khách hàng áp dụng mã đã hết hạn hoặc chưa đạt giá trị tối thiểu | Hệ thống hiển thị thông báo lỗi phù hợp và không áp dụng chiết khấu | Đã kiểm thử thành công bằng PHPUnit và giao diện người dùng | Đạt |
+| 17 | Quản trị đặt tour | Quản trị viên xác nhận thanh toán thủ công cho đơn đặt tour chuyển khoản | Đơn đặt tour cập nhật trạng thái thanh toán thành công và gửi thông báo xác nhận | Bổ sung ảnh và kết quả kiểm thử thực tế | Chưa xác nhận |
+| 18 | Khuyến mãi | Khách hàng áp dụng mã giảm giá hợp lệ | Hệ thống tính chiết khấu và giảm tổng tiền cần trả | Bổ sung ảnh và kết quả kiểm thử thực tế | Chưa xác nhận |
+| 19 | Khuyến mãi | Khách hàng áp dụng mã hết hạn hoặc chưa đạt giá trị tối thiểu | Hệ thống báo lỗi và không áp dụng chiết khấu | Bổ sung ảnh và kết quả kiểm thử thực tế | Chưa xác nhận |
+| 20 | Điểm thành viên | Đổi phần thưởng khi đủ điểm | Trừ điểm một lần và cấp phiếu giảm giá cá nhân | Bổ sung kết quả/ảnh kiểm thử thực tế | Chưa xác nhận |
+| 21 | Đánh giá hữu ích | Ghi nhận đánh giá của người khác hai lần | Lần đầu thành công, lần sau bị từ chối | Bổ sung kết quả/ảnh kiểm thử thực tế | Chưa xác nhận |
+| 22 | Nhắc lịch | Chạy tác vụ cho đơn khởi hành ngày kế tiếp | Tạo thông báo đúng điều kiện và không trùng | Bổ sung kết quả chạy lệnh | Chưa xác nhận |
 
 ## 5. Checklist phần còn thiếu cần bổ sung thủ công
 
@@ -129,6 +139,9 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
 | Khuyến mãi | `GET /promotions`, `POST /promotions/validate`, `GET /admin/promotions`, `POST /admin/promotions` |
 | Cart | `GET /cart`, `POST /cart/items`, `PUT /cart/items/{id}`, `DELETE /cart` |
 | Rating | `POST /ratings`, `PUT /ratings/{id}`, `DELETE /ratings/{id}` |
+| Điểm thành viên | `GET /user/points`, `GET /user/points/history`, `GET /user/point-rewards`, `POST /user/point-rewards/{id}/redeem` |
+| Phiếu giảm giá cá nhân | `GET /user/vouchers`; mã phiếu được gửi trong API tính giá/tạo đơn đặt tour |
+| Đánh giá hữu ích | `POST /ratings/{id}/helpful` |
 | Bảng điều khiển quản trị | `GET /admin/dashboard`, `GET /admin/dashboard/revenue`, `GET /admin/reports/bookings` |
 | Quản trị tour | `GET /admin/tours`, `POST /admin/tours`, `PUT /admin/tours/{id}` |
 | Quản trị địa điểm | `GET /admin/locations`, `POST /admin/locations`, `PUT /admin/locations/{id}` |
@@ -140,8 +153,8 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
 | --- | --- |
 | Intent Guard | Ví dụ câu hỏi hợp lệ và câu hỏi ngoài phạm vi; kết quả phân loại |
 | Query Understanding | Ví dụ trích xuất `destination`, `price`, `people`, `date`, `duration` |
-| SQL RAG | Bảng dữ liệu hoặc truy vấn SQL/nhật ký truy xuất tour, địa điểm, chính sách |
-| Cache Layer | Cách xác định khóa bộ nhớ đệm; ví dụ có dữ liệu/không có dữ liệu trong bộ nhớ đệm |
+| Truy xuất tri thức | Dữ liệu truy xuất từ tour, địa điểm, bài viết, chính sách; kết quả tìm kiếm embedding nếu được bật |
+| Lớp bộ nhớ đệm | Cách xác định khóa trong `chat_cache`; ví dụ có dữ liệu/không có dữ liệu còn hiệu lực |
 | AI Failover | Điều kiện chuyển đổi dự phòng: quá thời gian chờ, vượt giới hạn tần suất, lỗi nhà cung cấp, phản hồi không hợp lệ |
 | Phản hồi | Câu trả lời cuối cùng có dựa trên dữ liệu truy xuất được |
 
@@ -176,7 +189,7 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
         <mxCell id="db" value="PostgreSQL / Supabase" style="shape=cylinder3d;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="790" y="40" width="170" height="80" as="geometry"/>
         </mxCell>
-        <mxCell id="redis" value="Redis&#xa;Bộ nhớ đệm / Hàng đợi" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="redis" value="Bảng chat_cache&#xa;Bộ nhớ đệm chatbot" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="790" y="150" width="170" height="70" as="geometry"/>
         </mxCell>
         <mxCell id="ai" value="Nhà cung cấp AI&#xa;Gemini / OpenAI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
@@ -209,10 +222,10 @@ Khi báo cáo chính quá dài, có thể đưa danh sách API vào phụ lục:
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
         <mxCell id="a" value="Câu hỏi người dùng" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="40" y="160" width="130" height="60" as="geometry"/></mxCell>
-        <mxCell id="b" value="Intent Guard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="220" y="160" width="140" height="60" as="geometry"/></mxCell>
-        <mxCell id="c" value="Query Understanding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="410" y="160" width="160" height="60" as="geometry"/></mxCell>
+        <mxCell id="b" value="Bộ kiểm soát ý định&#xa;(Intent Guard)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="220" y="160" width="140" height="60" as="geometry"/></mxCell>
+        <mxCell id="c" value="Phân tích truy vấn&#xa;(Query Understanding)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1"><mxGeometry x="410" y="160" width="160" height="60" as="geometry"/></mxCell>
         <mxCell id="d" value="Bộ nhớ đệm&#xa;(Cache Layer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="620" y="160" width="140" height="60" as="geometry"/></mxCell>
-        <mxCell id="e" value="SQL RAG&#xa;tours, schedules, locations, blogs, policies" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="810" y="140" width="210" height="100" as="geometry"/></mxCell>
+        <mxCell id="e" value="Truy xuất tri thức kết hợp&#xa;dữ liệu nghiệp vụ và embedding" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1"><mxGeometry x="810" y="140" width="210" height="100" as="geometry"/></mxCell>
         <mxCell id="f" value="Nhà cung cấp AI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="430" y="330" width="150" height="60" as="geometry"/></mxCell>
         <mxCell id="g" value="Chuyển đổi dự phòng&#xa;(AI Failover)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1"><mxGeometry x="640" y="330" width="150" height="60" as="geometry"/></mxCell>
         <mxCell id="h" value="Trả phản hồi&#xa;và lưu lịch sử/bộ nhớ đệm" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="220" y="330" width="160" height="60" as="geometry"/></mxCell>

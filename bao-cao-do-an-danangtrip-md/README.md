@@ -13,11 +13,16 @@ Thư mục này là bản nháp báo cáo đồ án tốt nghiệp cho đề tà
 7. `06_tai_lieu_tham_khao.md`
 8. `07_phu_luc_goi_y_hinh_anh_bang_bieu.md`
 
+Các tệp hỗ trợ rà soát và bảo vệ:
+
+- `08_danh_gia_phan_bien_bao_cao.md`: kết quả đối chiếu báo cáo với mã nguồn ngày 12/06/2026, các sai lệch và nội dung còn phải bổ sung.
+- `09_cau_hoi_va_tra_loi_phan_bien.md`: bộ câu hỏi, câu trả lời gợi ý khi phản biện.
+
 ## Ghi chú khi hoàn thiện
 
 - Các đoạn có ký hiệu `[CẦN BỔ SUNG]` cần được thay bằng thông tin thật: họ tên, lớp, mã sinh viên, giáo viên hướng dẫn, ngày tháng, ảnh giao diện, số liệu kiểm thử hoặc đường dẫn triển khai.
 - Các bảng đặc tả, biểu đồ Mermaid và danh sách hình ảnh trong phụ lục có thể dùng để vẽ lại bằng Word, draw.io, Figma hoặc PlantUML.
-- Nội dung được viết dựa trên dự án hiện tại gồm `danangtrip-web`, `danangtrip-admin`, `danangtrip-api` và `DATN_AI`.
+- Nội dung được viết dựa trên mã nguồn hiện tại của `danangtrip-web`, `danangtrip-admin` và `danangtrip-api`. Thư mục `DATN_AI` chỉ nên trình bày nếu có thành phần thực tế được tích hợp vào luồng chạy của hệ thống.
 
 ## Đối chiếu với mẫu Word cần có
 

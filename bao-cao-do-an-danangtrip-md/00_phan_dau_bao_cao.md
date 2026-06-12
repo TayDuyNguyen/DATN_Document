@@ -16,22 +16,22 @@
 
 Trong bối cảnh các dịch vụ du lịch ngày càng được số hóa, nhu cầu tra cứu thông tin địa điểm, xem lịch trình tour, đặt dịch vụ và nhận hỗ trợ trực tuyến của người dùng có xu hướng tăng. Đà Nẵng là một địa phương có nhiều điểm tham quan, tour trải nghiệm và nội dung du lịch cần được tổ chức dưới dạng hệ thống thông tin có khả năng cập nhật, tìm kiếm và quản lý tập trung.
 
-Đề tài **"Xây dựng website du lịch Đà Nẵng (DanangTrip)"** được thực hiện nhằm xây dựng một hệ thống web phục vụ tra cứu thông tin du lịch, quản lý tour, đặt tour, thanh toán, đánh giá và hỗ trợ tư vấn bằng chatbot. Bên cạnh website dành cho người dùng, hệ thống cung cấp trang quản trị để quản lý địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, bài viết, đánh giá, khuyến mãi, thông báo và báo cáo thống kê.
+Đề tài **"Xây dựng website du lịch Đà Nẵng (DanangTrip)"** được thực hiện nhằm xây dựng một hệ thống web phục vụ tra cứu thông tin du lịch, quản lý tour, đặt tour, thanh toán, đánh giá, tích lũy điểm thành viên và hỗ trợ tư vấn bằng chatbot. Bên cạnh website dành cho người dùng, hệ thống cung cấp trang quản trị để quản lý địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, bài viết, đánh giá, khuyến mãi, thông báo và báo cáo thống kê.
 
 Hệ thống được xây dựng theo kiến trúc Client-Server, gồm các thành phần chính:
 
 - Website người dùng sử dụng Next.js, React, TypeScript, React Query, Zustand, next-intl và các thư viện bản đồ/giao diện.
 - Hệ thống quản trị sử dụng React, Vite, TypeScript, React Router, React Query, React Hook Form, Recharts và i18next.
-- API phía server sử dụng Laravel 12, PHP 8.2, JWT/Sanctum, mẫu Repository-Service, PostgreSQL/Supabase, bộ nhớ đệm Redis, tải ảnh Cloudinary, DomPDF và tích hợp thanh toán SePay.
-- Thành phần AI/chatbot được tổ chức theo các bước Intent Guard, Query Understanding, SQL RAG, Cache Layer và AI Failover. Chatbot truy xuất dữ liệu từ các bảng nghiệp vụ như tour, địa điểm, bài viết và chính sách để tạo ngữ cảnh trước khi gọi nhà cung cấp AI.
+- Server API sử dụng Laravel 12, PHP 8.2, JWT/Sanctum, mẫu Repository-Service, PostgreSQL/Supabase, tải ảnh Cloudinary, DomPDF và tích hợp thanh toán SePay/VietQR.
+- Thành phần chatbot được tổ chức theo các bước: bộ kiểm soát ý định (Intent Guard), thành phần phân tích truy vấn (Query Understanding), truy xuất dữ liệu có cấu trúc kết hợp tìm kiếm ngữ nghĩa bằng embedding, lớp bộ nhớ đệm (Cache Layer) và cơ chế chuyển đổi dự phòng AI (AI Failover). Chatbot truy xuất dữ liệu từ các bảng nghiệp vụ như tour, địa điểm, bài viết, chính sách và chương trình điểm thành viên để tạo ngữ cảnh trước khi gọi nhà cung cấp AI.
 
-Kết quả của đề tài là hệ thống DanangTrip gồm website người dùng, trang quản trị và API phía server, đáp ứng các nghiệp vụ chính như tra cứu địa điểm, quản lý tour, đặt tour, thanh toán, đánh giá, chatbot tư vấn và quản trị dữ liệu vận hành.
+Kết quả của đề tài là hệ thống DanangTrip gồm website người dùng, trang quản trị và Server API, đáp ứng các nghiệp vụ chính như tra cứu địa điểm, quản lý tour, đặt tour, thanh toán, áp dụng khuyến mãi và phiếu giảm giá cá nhân, đánh giá và ghi nhận lượt hữu ích, tích lũy điểm, nhận thông báo, chatbot tư vấn và quản trị dữ liệu vận hành.
 
 ## Lời nói đầu
 
 Đồ án tốt nghiệp là kết quả của quá trình học tập, nghiên cứu và vận dụng kiến thức chuyên ngành công nghệ thông tin vào việc giải quyết một bài toán thực tế. Với đề tài **"Xây dựng website du lịch Đà Nẵng"**, em tập trung xây dựng một hệ thống web hỗ trợ quản lý thông tin địa điểm, tour, đơn đặt tour và thanh toán trực tuyến.
 
-Trong quá trình thực hiện, em đã tìm hiểu và áp dụng các công nghệ phát triển web như Next.js, React, TypeScript, Laravel, RESTful API, xác thực JWT, PostgreSQL/Supabase, thanh toán trực tuyến, quản trị nội dung và chatbot có truy xuất dữ liệu nội bộ. Đề tài giúp em rèn luyện tư duy phân tích yêu cầu, thiết kế hệ thống, tổ chức mã nguồn, xây dựng giao diện, xử lý nghiệp vụ phía server và kiểm thử chức năng.
+Trong quá trình thực hiện, em đã tìm hiểu và áp dụng các công nghệ phát triển web như Next.js, React, TypeScript, Laravel, RESTful API, xác thực JWT, PostgreSQL/Supabase, thanh toán trực tuyến, quản trị nội dung và chatbot có truy xuất dữ liệu nội bộ. Đề tài giúp em rèn luyện tư duy phân tích yêu cầu, thiết kế hệ thống, tổ chức mã nguồn, xây dựng giao diện, xử lý nghiệp vụ phía Server và kiểm thử chức năng.
 
 Em xin chân thành cảm ơn quý thầy cô Khoa Công nghệ thông tin - Trường Đại học Bách khoa - Đại học Đà Nẵng đã truyền đạt kiến thức nền tảng và tạo điều kiện cho em thực hiện đồ án. Em xin gửi lời cảm ơn sâu sắc đến giảng viên hướng dẫn TS. Bùi Thị Thanh Thanh đã định hướng, góp ý và hỗ trợ em trong suốt quá trình thực hiện.
 
