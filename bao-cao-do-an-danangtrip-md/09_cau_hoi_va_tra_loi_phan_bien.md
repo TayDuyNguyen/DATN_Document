@@ -97,6 +97,14 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
   * **Chuyển đổi dự phòng AI**: `ChatAiProviderService` duyệt nhà cung cấp và khóa truy cập theo thứ tự cấu hình. Khi gặp lỗi kết nối, quá thời gian chờ, vượt giới hạn tần suất hoặc khóa không hợp lệ, hệ thống thử lựa chọn tiếp theo.
   * **Phản hồi dự phòng**: Nếu không thể nhận phản hồi hợp lệ, `ChatService` sử dụng câu trả lời dự phòng hoặc thông báo ngoài phạm vi thay vì để yêu cầu thất bại không kiểm soát.
 
+### Câu 3.2a: Chatbot hiện tại có nhớ ngữ cảnh nhiều lượt hay không?
+* **Trả lời**:
+  Chưa hoàn chỉnh. Server API có lưu `session_id`, câu hỏi và câu trả lời trong `chat_messages`, nhưng chưa truy vấn các tin nhắn trước để đưa vào prompt của lượt tiếp theo. Website hiện giữ tin nhắn bằng Zustand trong bộ nhớ của trang và chưa gửi `session_id` đến API. Vì vậy chatbot xử lý tốt từng câu hỏi độc lập nhưng có thể không hiểu câu nối tiếp như "còn tour nào rẻ hơn?" nếu câu đó không chứa đủ thực thể.
+
+### Câu 3.2b: Vì sao gọi kiến trúc hiện tại là Hybrid RAG quy mô đồ án?
+* **Trả lời**:
+  Hệ thống kết hợp lọc dữ liệu nghiệp vụ trực tiếp bằng SQL với tìm kiếm embedding tùy chọn, sau đó chỉ gửi một số kết quả liên quan vào mô hình AI. Cách này mạnh hơn chatbot chỉ gọi LLM vì giá, lịch và trạng thái được lấy từ dữ liệu hệ thống. Tuy nhiên độ tương đồng véc-tơ vẫn được tính trong PHP trên tối đa một tập ứng viên cấu hình, chưa có chỉ mục `pgvector`, chưa có trích dẫn nguồn bắt buộc và chưa có bộ nhớ hội thoại nhiều lượt; do đó chưa nên mô tả là nền tảng RAG quy mô lớn.
+
 ### Câu 3.3: Làm thế nào để bảo đảm người dùng không xem được đơn đặt tour của người khác?
 * **Trả lời**:
   Hệ thống thực hiện kiểm soát truy cập và bảo mật đa lớp:

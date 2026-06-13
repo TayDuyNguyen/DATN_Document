@@ -446,7 +446,7 @@ sequenceDiagram
                 AI_NLU-->>S: Trả về JSON thực thể và ngày được chuẩn hóa
             end
             S->>K: search(tri thức liên quan)
-            K->>DB: Lọc dữ liệu có cấu trúc & độ tương đồng Vector
+            K->>DB: Lọc dữ liệu có cấu trúc & tìm kiếm Vector nếu được bật
             DB-->>K: Kết quả tour, địa điểm, blog, chính sách
             K-->>S: Ngữ cảnh hội thoại (Context)
             S->>AI: complete(prompt + ngữ cảnh)
@@ -470,14 +470,14 @@ Pipeline chatbot trong DanangTrip được thiết kế theo kiến trúc **Bộ
    - Khoảng giá (Price range): Trọng số 25%
    - Số người (People count): Trọng số 20%
    - Ngày khởi hành (Departure date): Trọng số 20%
-5. **Bộ định tuyến NLU (NLU Routing)**:
+5. **Lớp bộ nhớ đệm (Cache Layer)**: Sau khi xác định câu hỏi thuộc phạm vi hỗ trợ, hệ thống kiểm tra mã băm được tạo từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa trong bảng `chat_cache`. Nếu có bản ghi còn hiệu lực, hệ thống trả phản hồi ngay và không gọi AI NLU, không truy xuất lại dữ liệu, cũng không gọi mô hình hoàn thiện câu trả lời.
+6. **Bộ định tuyến NLU (NLU Routing)**:
    - Nếu câu hỏi thuộc nhóm ý định phi nghiệp vụ (như chính sách hoàn tiền, tích điểm, liên hệ, tài khoản) không cần tham số lọc, hoặc câu hỏi có điểm tin cậy quy tắc $\ge$ Ngưỡng cấu hình (`config/chatbot.php`, mặc định `0.8`): Hệ thống **bỏ qua hoàn toàn** bước gọi AI NLU để tiết kiệm token và tăng tốc độ xử lý.
    - Nếu câu hỏi yêu cầu lọc nghiệp vụ (tour, đặt chỗ, địa điểm) nhưng điểm tin cậy $< 0.8$: Hệ thống chuyển tiếp yêu cầu đến **Gemini AI NLU** (`extractEntitiesWithAi()`) với prompt cấu hình nhiệt độ thấp (temperature = 0.1) và ép định dạng JSON để trích xuất sâu các thực thể phức tạp hoặc giải quyết ngày tương đối (ví dụ: "cuối tuần sau" $\rightarrow$ ngày cụ thể dựa trên ngày hiện tại của server).
-6. **Lớp bộ nhớ đệm (Cache Layer)**: Kiểm tra mã băm câu hỏi trong `ChatCache` để trả về phản hồi tức thời nếu có câu hỏi tương tự trước đó.
 7. **Truy xuất tri thức kết hợp (Hybrid Retrieval)**: Lọc dữ liệu có cấu trúc từ `tours` và `locations` dựa trên các thực thể đã trích xuất, kết hợp tìm kiếm ngữ nghĩa (Cosine Similarity) trong bảng `chat_knowledge_base` trên PostgreSQL để chuẩn bị ngữ cảnh (Context).
-8. **Hoàn thiện câu trả lời (AI Completion)**: Gửi prompt đóng gói ngữ cảnh đến mô hình AI được chỉ định (Gemini/OpenAI) để sinh câu trả lời tự nhiên, chính xác.
+8. **Hoàn thiện câu trả lời (AI Completion)**: Gửi prompt đóng gói ngữ cảnh đến mô hình AI được cấu hình. Thứ tự hiện tại là Gemini, Groq và OpenRouter; OpenAI được hỗ trợ trong cấu hình nhưng không nằm trong thứ tự mặc định.
 9. **Chuyển đổi dự phòng (AI Failover)**: Tự động chuyển đổi nhà cung cấp dịch vụ AI hoặc API key dự phòng khi gặp lỗi kết nối hoặc vượt hạn mức tần suất.
-10. **Lưu trữ & Phản hồi**: Lưu trữ lịch sử hội thoại trong bảng `chat_messages` (bao gồm các siêu dữ liệu phân tích như điểm tin cậy, trạng thái kích hoạt AI NLU) và cập nhật bộ nhớ đệm.
+10. **Lưu trữ & Phản hồi**: Ghi câu hỏi, câu trả lời và siêu dữ liệu xử lý vào bảng `chat_messages` để theo dõi, kiểm thử và phân tích; đồng thời cập nhật `chat_cache`. Phiên bản hiện tại chưa đưa các tin nhắn trước của cùng `session_id` vào prompt, vì vậy đây là nhật ký phiên chứ chưa phải bộ nhớ hội thoại nhiều lượt.
 
 ```mermaid
 flowchart TD
@@ -485,16 +485,16 @@ flowchart TD
     B -->|Ngoài phạm vi| C["Trả thông báo từ chối phù hợp"]
     B -->|Hợp lệ| D["Phân tích truy vấn\n(Rule-based & Dynamic Dictionary)"]
     D --> E["Tính điểm tin cậy\n(Confidence Score)"]
-    E --> F{"Cần NLU & Điểm tin cậy\n< Ngưỡng (0.8)?"}
-    F -->|Đúng| G["Gọi Gemini NLU trích xuất thực thể\n(extractEntitiesWithAi)"]
-    F -->|Sai| H["Kiểm tra Lớp bộ nhớ đệm\n(Cache Layer)"]
-    G --> H
+    E --> H["Kiểm tra Lớp bộ nhớ đệm\n(Cache Layer)"]
     H -->|Cache hit| I["Trả phản hồi từ bộ nhớ đệm"]
-    H -->|Cache miss| J["Truy xuất tri thức kết hợp\n(Dữ liệu có cấu trúc + Vector)"]
+    H -->|Cache miss| F{"Cần NLU & Điểm tin cậy\n< Ngưỡng (0.8)?"}
+    F -->|Đúng| G["Gọi Gemini NLU trích xuất thực thể\n(extractEntitiesWithAi)"]
+    F -->|Sai| J["Truy xuất tri thức kết hợp\n(Dữ liệu có cấu trúc + Vector tùy chọn)"]
+    G --> J
     J --> K["Nhà cung cấp AI\n(complete)"]
     K -->|Lỗi/Vượt hạn mức| L["Chuyển đổi dự phòng AI\n(AI Failover)"]
     L --> K
-    K --> M["Lưu lịch sử chat & Bộ nhớ đệm"]
+    K --> M["Lưu nhật ký chat & Bộ nhớ đệm"]
     M --> N["Trả phản hồi cho giao diện"]
 ```
 
@@ -504,15 +504,15 @@ flowchart TD
 
 | Bước | Lớp dịch vụ/Thành phần | Đầu vào | Đầu ra | Vai trò |
 | --- | --- | --- | --- | --- |
-| 1 | `ChatController` | Nội dung câu hỏi, thông tin phiên chat, ngôn ngữ | Yêu cầu đã được kiểm tra | Tiếp nhận yêu cầu từ giao diện |
+| 1 | `ChatController` | Nội dung câu hỏi, `session_id` tùy chọn, ngôn ngữ | Yêu cầu đã được kiểm tra | Tiếp nhận yêu cầu từ giao diện; nếu không có `session_id`, Server API tạo định danh từ IP và User-Agent |
 | 2 | `ChatIntentGuardService` | Câu hỏi người dùng | Kết quả hợp lệ/không hợp lệ, nhóm ý định sơ bộ | Giới hạn phạm vi câu hỏi thuộc du lịch, tour, địa điểm, đặt tour hoặc chính sách |
 | 3 | `ChatQueryUnderstandingService` | Câu hỏi hợp lệ | Thực thể quy tắc trích xuất ban đầu, Điểm tin cậy (Confidence) | Phân tích nhanh bằng biểu thức chính quy và từ điển động tải từ CSDL |
-| 4 | Bộ định tuyến NLU (NLU Routing) | Câu hỏi và thực thể ban đầu | Các thực thể đã được làm giàu (Enriched entities) | Tự động quyết định gọi Gemini NLU để phân tích sâu (JSON format) nếu điểm tin cậy dưới ngưỡng `0.8` |
-| 5 | Lớp bộ nhớ đệm (Cache Layer) | Câu hỏi đã chuẩn hóa, ý định, tham số truy vấn | Phản hồi trong bộ nhớ đệm hoặc đi tiếp | Giảm thời gian phản hồi với câu hỏi trùng lặp |
+| 4 | Lớp bộ nhớ đệm (Cache Layer) | Câu hỏi đã chuẩn hóa và ý định | Phản hồi trong bộ nhớ đệm hoặc đi tiếp | Giảm thời gian phản hồi với câu hỏi trùng lặp và tránh gọi AI không cần thiết |
+| 5 | Bộ định tuyến NLU (NLU Routing) | Câu hỏi và thực thể ban đầu khi cache miss | Các thực thể đã được làm giàu (Enriched entities) | Tự động quyết định gọi Gemini NLU để phân tích sâu (JSON format) nếu điểm tin cậy dưới ngưỡng `0.8` |
 | 6 | `ChatKnowledgeSearchService`, `ChatVectorSearchService` | Ý định và tham số đã trích xuất | Dữ liệu nghiệp vụ và bản ghi cơ sở tri thức liên quan | Kết hợp lọc dữ liệu có cấu trúc với xếp hạng embedding bằng độ tương đồng cosin khi chức năng này được bật |
 | 7 | `ChatAiProviderService` (Complete) | Prompt gồm câu hỏi và ngữ cảnh truy xuất | Câu trả lời từ nhà cung cấp AI | Sinh phản hồi tự nhiên dựa trên dữ liệu hệ thống |
 | 8 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế, hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
-| 9 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi và siêu dữ liệu định tuyến | Lịch sử chat và bộ nhớ đệm | Lưu lịch sử hội thoại và dữ liệu phục vụ truy vấn sau |
+| 9 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi và siêu dữ liệu định tuyến | Nhật ký chat và bộ nhớ đệm | `ChatMessage` phục vụ theo dõi/phân tích; `ChatCache` phục vụ tái sử dụng phản hồi. Lịch sử chưa được đưa trở lại prompt để tạo memory nhiều lượt |
 
 ### 2.9.2. Đối chiếu quy trình AI với mã nguồn
 
@@ -543,11 +543,13 @@ Quá trình xử lý thực tế qua Bộ định tuyến NLU lai:
 | --- | --- |
 | **1. Intent Guard** | Câu hỏi hợp lệ. Phân loại ý định chính: `tour`. |
 | **2. Phân tích truy vấn quy tắc (Rule-based)** | - Nhận diện điểm đến từ Từ điển động: `destination = "cầu rồng"`<br>- Trích xuất số người: `people = 3`<br>- Khoảng giá: `null` (chưa hỗ trợ nhận diện chữ "khoảng 1.5 triệu" bằng regex thuần)<br>- Ngày đi: `null` (không giải nghĩa được "tuần sau")<br>- **Điểm tin cậy tính được: 55%** (Destination + People = 35% + 20%). |
-| **3. Định tuyến NLU** | Điểm tin cậy `0.55 < 0.8` (Ngưỡng kích hoạt). Ý định thuộc nhóm lọc nghiệp vụ (`tour`). Hệ thống chuyển tiếp yêu cầu đến `ChatAiProviderService::extractEntitiesWithAi()`. |
-| **4. Trích xuất bằng Gemini NLU** | Gemini nhận ngữ cảnh ngày hiện tại của server (ví dụ: Thứ Sáu, 12/06/2026) và thực hiện phân tích cú pháp:<br>- Giải nghĩa "tuần sau" $ightarrow$ `date = "2026-06-15"` (Thứ Hai tuần kế tiếp)<br>- Giải nghĩa "khoảng 1.5 triệu" $ightarrow$ `max_price = 1500000`<br>- Trả về JSON chứa toàn bộ thực thể được làm giàu: `destination = "cầu rồng"`, `people = 3`, `max_price = 1500000`, `date = "2026-06-15"`. |
-| **5. Truy xuất tri thức RAG** | Lọc dữ liệu `tours` hoạt động quanh khu vực Cầu Rồng, kiểm tra lịch khởi hành ngày `2026-06-15`, đồng thời truy vấn bài viết cẩm nang du lịch Cầu Rồng từ cơ sở tri thức `chat_knowledge_base` trên PostgreSQL. |
-| **6. AI Completion** | Gemini nhận prompt đóng gói câu hỏi của người dùng kèm dữ liệu ngữ cảnh vừa tìm kiếm, sinh câu trả lời thân thiện, gợi ý tour/khách sạn phù hợp và đính kèm các thẻ gợi ý cụ thể. |
-| **7. Lưu trữ** | Phản hồi được đưa vào `ChatCache` để tối ưu các câu hỏi sau, đồng thời bản ghi được tạo trong `ChatMessage` lưu kèm siêu dữ liệu `ai_nlu_triggered = true`. |
+| **3. Kiểm tra cache** | Hệ thống tạo khóa từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa. Nếu chưa có phản hồi còn hiệu lực thì mới tiếp tục bước NLU. |
+| **4. Định tuyến NLU** | Điểm tin cậy `0.55 < 0.8` (Ngưỡng kích hoạt). Ý định thuộc nhóm lọc nghiệp vụ (`tour`). Hệ thống chuyển tiếp yêu cầu đến `ChatAiProviderService::extractEntitiesWithAi()`. |
+| **5. Trích xuất bằng Gemini NLU** | Gemini nhận ngữ cảnh ngày hiện tại của server, giải nghĩa "tuần sau" thành ngày chuẩn hóa theo múi giờ Server API, chuyển "khoảng 1.5 triệu" thành `max_price = 1500000` và trả về JSON thực thể được làm giàu. |
+| **6. Truy xuất tri thức RAG** | Lọc các tour đang hoạt động theo điểm đến, ngân sách, số người và lịch khởi hành; đồng thời lấy bài viết hoặc bản ghi cơ sở tri thức liên quan. Tìm kiếm embedding chỉ tham gia khi Vector RAG được bật và bản ghi đã có embedding. |
+| **7. AI Completion** | Nhà cung cấp AI khả dụng nhận prompt đóng gói câu hỏi và ngữ cảnh vừa truy xuất, sinh câu trả lời ngắn gọn cùng các thẻ gợi ý cụ thể. |
+| **8. Lưu trữ** | Phản hồi được đưa vào `ChatCache` để tối ưu câu hỏi trùng lặp, đồng thời bản ghi được tạo trong `ChatMessage` kèm siêu dữ liệu như `ai_nlu_triggered`. |
+
 ## 2.10. Biểu đồ hoạt động tìm kiếm/gợi ý
 
 ```mermaid

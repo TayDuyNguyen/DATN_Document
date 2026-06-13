@@ -78,7 +78,7 @@ graph TD
 | Bộ nhớ đệm/Hàng đợi  | Bảng `chat_cache`, Laravel Queue/Jobs; Redis/Predis tùy cấu hình                           |
 | Lưu trữ tệp          | Cloudinary                                                                                 |
 | Thanh toán           | SePay/VietQR                                                                               |
-| AI                   | Gemini/OpenAI hoặc nhà cung cấp được cấu hình                                              |
+| AI                   | Gemini, Groq, OpenRouter hoặc nhà cung cấp được cấu hình                                    |
 | Kiểm thử và đóng gói | PHPUnit, Playwright, Vitest, Vite build                                                    |
 
 Các thông tin nhạy cảm như khóa API, mật khẩu cơ sở dữ liệu, mã thông báo thanh toán hoặc khóa bí mật webhook không được đưa vào báo cáo.
@@ -315,16 +315,19 @@ Các tuyến hồ sơ, thanh toán và đặt tour được bảo vệ ở lớp
 
 ### 3.4.5. Chatbot, gợi ý, điểm thành viên và thông báo
 
-Chatbot được triển khai ở Server API thông qua endpoint `/chat`, còn giao diện phía người dùng cung cấp vùng hội thoại để tiếp nhận câu hỏi, hiển thị lịch sử trao đổi và hiển thị kết quả gợi ý theo ngữ cảnh du lịch. Luồng xử lý chatbot được tổ chức qua nhiều bước trước khi gọi mô hình AI nhằm bảo đảm phản hồi được tạo dựa trên dữ liệu hiện có của hệ thống.
+Chatbot được triển khai ở Server API thông qua endpoint `/chat`, còn giao diện phía người dùng cung cấp vùng hội thoại để tiếp nhận câu hỏi, hiển thị các tin nhắn trong phiên giao diện hiện tại và hiển thị kết quả gợi ý theo ngữ cảnh du lịch. Các tin nhắn trên giao diện đang được lưu trong Zustand và không được khôi phục sau khi tải lại trang. Server API có ghi `session_id` trong `chat_messages`, nhưng chưa nạp các tin nhắn trước vào prompt; do đó hệ thống chưa có bộ nhớ hội thoại nhiều lượt hoàn chỉnh.
 
 Hệ thống xây dựng cơ sở tri thức từ tour và lịch khởi hành, địa điểm du lịch, bài viết blog và các chính sách hỗ trợ liên quan đến đặt tour hoặc thanh toán. Khi người dùng gửi câu hỏi, Server API thực hiện các bước:
 
 1. `ChatIntentGuardService` xác định câu hỏi có nằm trong phạm vi hỗ trợ của DanangTrip hay không.
 2. `ChatQueryUnderstandingService` trích xuất các ràng buộc như điểm đến, vùng, chủ đề địa điểm, ngân sách, số người, ngày đi, thời lượng và tiêu chí sắp xếp.
 3. Cache Layer kiểm tra khóa bộ nhớ đệm được tạo từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa nhằm xác định phản hồi tương ứng còn hiệu lực hay không.
-4. `ChatKnowledgeSearchService` truy xuất dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm, bài viết và chính sách. Khi cấu hình tìm kiếm ngữ nghĩa được bật, `ChatVectorSearchService` tạo embedding câu hỏi, lấy ứng viên từ `chat_knowledge_base` và xếp hạng bằng độ tương đồng cosin.
-5. `ChatAiProviderService` gửi lời nhắc có ngữ cảnh đến nhà cung cấp AI và thực hiện chuyển đổi dự phòng khi nhà cung cấp lỗi, quá thời gian chờ hoặc vượt giới hạn.
-6. Hệ thống lưu tin nhắn, lưu kết quả vào bộ nhớ đệm nếu phù hợp và trả phản hồi về giao diện.
+4. Khi cache miss và câu hỏi nghiệp vụ có điểm tin cậy dưới ngưỡng, `ChatAiProviderService` dùng Gemini NLU để bổ sung thực thể dưới dạng JSON.
+5. `ChatKnowledgeSearchService` truy xuất dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm, bài viết và chính sách. Khi cấu hình tìm kiếm ngữ nghĩa được bật, `ChatVectorSearchService` tạo embedding câu hỏi, lấy ứng viên từ `chat_knowledge_base` và xếp hạng bằng độ tương đồng cosin.
+6. `ChatAiProviderService` gửi lời nhắc có ngữ cảnh theo thứ tự Gemini, Groq và OpenRouter, đồng thời chuyển khóa hoặc nhà cung cấp khi gặp lỗi, quá thời gian chờ hoặc vượt giới hạn.
+7. Hệ thống ghi nhật ký tin nhắn, lưu kết quả vào bộ nhớ đệm và trả phản hồi cùng các thẻ tour, địa điểm hoặc bài viết về giao diện.
+
+Tại thời điểm kiểm tra ngày 13/06/2026, cấu hình cục bộ đã bật Vector RAG. Bảng `chat_knowledge_base` có 276 bản ghi hoạt động, trong đó 256 bản ghi đã có embedding; 20 bản ghi còn lại cần chạy bổ sung lệnh `php artisan chatbot:sync-knowledge --embed`. Phương pháp hiện tại tải tối đa một tập ứng viên cấu hình từ PostgreSQL và tính độ tương đồng cosin trong PHP, phù hợp với quy mô đồ án nhưng chưa phù hợp cho cơ sở tri thức rất lớn.
 
 API `/recommendations` được thiết kế để cung cấp danh sách tour hoặc địa điểm đề xuất dựa trên các tín hiệu tương tác như tìm kiếm, lượt xem, yêu thích và đánh giá. Trong phạm vi đồ án, cơ chế này được xây dựng dựa trên luật kết hợp thống kê tần suất hành vi tương tác thực tế của người dùng.
 

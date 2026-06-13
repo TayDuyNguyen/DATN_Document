@@ -6,12 +6,12 @@
 
 **Mức độ: Có thể sử dụng sau khi bổ sung minh chứng thực nghiệm**
 
-Bộ báo cáo đã mô tả đúng các thành phần chính của DanangTrip: website người dùng Next.js, trang quản trị React/Vite, API Laravel, PostgreSQL/Supabase, thanh toán SePay/VietQR, quản lý nội dung và chatbot. Nội dung đã được cập nhật theo mã nguồn ngày 12/06/2026 để bổ sung điểm thành viên, phiếu giảm giá cá nhân, lượt đánh giá hữu ích, xác nhận thanh toán thủ công, thông báo nghiệp vụ và nhắc lịch khởi hành.
+Bộ báo cáo đã mô tả đúng các thành phần chính của DanangTrip: website người dùng Next.js, trang quản trị React/Vite, API Laravel, PostgreSQL/Supabase, thanh toán SePay/VietQR, quản lý nội dung và chatbot. Nội dung đã được cập nhật và đối chiếu lại với mã nguồn ngày 13/06/2026 để bổ sung điểm thành viên, phiếu giảm giá cá nhân, lượt đánh giá hữu ích, xác nhận thanh toán thủ công, thông báo nghiệp vụ, nhắc lịch khởi hành và giới hạn thực tế của chatbot.
 
 ## Các lỗi đã phát hiện và chỉnh sửa
 
 1. Báo cáo cũ nhắc PayOS trong khi mã nguồn hiện tại đã chuyển sang SePay/VietQR. Nội dung đã được sửa.
-2. Báo cáo cũ mô tả bộ nhớ đệm chatbot bằng Redis. Mã nguồn thực tế dùng bảng `chat_cache`; Redis chỉ là lựa chọn cấu hình triển khai.
+2. Báo cáo cũ mô tả bộ nhớ đệm chatbot bằng Redis. Mã nguồn thực tế truy cập trực tiếp bảng `chat_cache`. Biến `CHATBOT_CACHE_DRIVER` có tồn tại trong cấu hình nhưng chưa được `ChatService` sử dụng để chuyển driver.
 3. Báo cáo cũ mô tả RAG như chỉ có truy vấn SQL hoặc dùng cơ sở dữ liệu véc-tơ chuyên dụng. Mã nguồn thực tế kết hợp truy xuất dữ liệu nghiệp vụ với embedding lưu trong PostgreSQL và tính độ tương đồng cosin ở tầng dịch vụ.
 4. Báo cáo cũ cho rằng Laravel Policy kiểm soát quyền xem đơn. Mã nguồn hiện kiểm tra trực tiếp `user_id` trong `BookingService`.
 5. Báo cáo cũ cho rằng đơn đặt tour dùng UUID. Hệ thống dùng khóa chính số tự tăng và `booking_code` ngẫu nhiên; việc chống truy cập trái phép vẫn dựa trên xác thực và kiểm tra quyền sở hữu.
@@ -37,6 +37,26 @@ Khuyến nghị: nếu nghiệp vụ yêu cầu trải nghiệm thực tế, ch�
 ### 4. Thiếu giao diện quản trị chương trình điểm
 
 API và cơ sở dữ liệu đã có quy tắc điểm, phần thưởng và phiếu giảm giá, nhưng báo cáo chưa có minh chứng về giao diện quản trị riêng cho việc thay đổi các quy tắc này. Không nên khẳng định quản trị viên đã quản lý đầy đủ chương trình điểm nếu chưa có màn hình tương ứng.
+
+### 5. Chatbot chưa có bộ nhớ hội thoại nhiều lượt
+
+Server API lưu `session_id` và nội dung trao đổi trong `chat_messages`, nhưng `ChatService` chưa truy vấn các tin nhắn trước để đưa vào prompt. Website cũng chưa gửi `session_id` và chỉ giữ danh sách tin nhắn trong Zustand của phiên trang hiện tại. Vì vậy báo cáo chỉ được mô tả đây là nhật ký chat, không được khẳng định chatbot đã nhớ ngữ cảnh nhiều lượt.
+
+### 6. Quota theo ngày và kiểm thử chatbot chưa hoàn chỉnh
+
+`config/chatbot.php` có cấu hình hạn mức theo ngày cho guest, user và admin, nhưng chưa có mã thực thi các quota này. Endpoint `/api/v1/chat` hiện dùng `throttle:api.strict` theo phút. Bộ test chatbot mới có 3 trường hợp với 14 assertions, chủ yếu kiểm tra loyalty intent và nhận diện chủ đề bãi biển; chưa đủ để chứng minh cache, failover, vector ranking hoặc chống prompt injection.
+
+### 7. Dữ liệu embedding chưa phủ toàn bộ cơ sở tri thức
+
+Kết quả kiểm tra ngày 13/06/2026 cho thấy `chat_knowledge_base` có 276 bản ghi hoạt động và 256 bản ghi có embedding. Cần sinh embedding cho 20 bản ghi còn thiếu trước khi dùng số liệu minh chứng Vector RAG hoàn chỉnh.
+
+### 8. Đồng bộ cache và embedding chưa khép kín với lịch khởi hành
+
+Observer hiện tự đồng bộ knowledge và xóa cache khi tour, địa điểm, bài viết hoặc cài đặt thay đổi. Khi nội dung knowledge thay đổi, embedding cũ bị vô hiệu hóa nhưng embedding mới vẫn cần lệnh `chatbot:sync-knowledge --embed`. Ngoài ra chưa có observer xóa cache khi `tour_schedules` thay đổi, nên dữ liệu lịch trong câu trả lời đã cache có thể chậm cập nhật.
+
+### 9. AI NLU chỉ dự phòng theo nhiều khóa Gemini
+
+Cơ chế hoàn thiện câu trả lời có thể chuyển giữa Gemini, Groq và OpenRouter. Riêng `extractEntitiesWithAi()` hiện cố định nhà cung cấp Gemini và chỉ luân chuyển các khóa Gemini; nếu toàn bộ khóa Gemini lỗi, hệ thống tiếp tục bằng thực thể rule-based thay vì chuyển NLU sang Groq hoặc OpenRouter.
 
 ## Các nội dung cần bổ sung thủ công
 
