@@ -460,76 +460,125 @@ sequenceDiagram
 
 ## 2.9. Thiết kế quy trình AI Chatbot
 
-Pipeline chatbot trong DanangTrip được thiết kế theo kiến trúc **Bộ định tuyến NLU lai (Hybrid NLU Router)** nhằm tối ưu hóa chi phí API, giảm thiểu độ trễ phản hồi (latency), và đảm bảo độ chính xác khi truy xuất dữ liệu nội bộ. Luồng xử lý gồm các bước sau:
+Chatbot DanangTrip được thiết kế theo hướng **Hybrid RAG kết hợp định tuyến NLU**. Mục tiêu của thiết kế là ưu tiên dữ liệu thật trong hệ thống, giảm số lần gọi mô hình AI và hạn chế việc mô hình tự tạo ra giá, lịch khởi hành hoặc chính sách không tồn tại.
 
-1. **Tiếp nhận & Chuẩn hóa**: Người dùng gửi câu hỏi từ website. Hệ thống tiến hành chuẩn hóa văn bản, loại bỏ ký tự lạ, và xử lý đồng nghĩa (Aliases/viết tắt).
-2. **Bộ kiểm soát ý định (Intent Guard)**: Phân loại câu hỏi có thuộc phạm vi hỗ trợ (In-scope) hay không. Nếu ngoài phạm vi, chatbot từ chối trả lời theo kịch bản định sẵn để bảo vệ tài nguyên hệ thống.
-3. **Phân tích truy vấn quy tắc & Từ điển động**: Phân tích bằng biểu thức chính quy (Regex) kết hợp đối chiếu **Từ điển điểm đến động (Dynamic Dictionary)** được truy vấn trực tiếp từ danh sách `tours` và `locations` đang hoạt động trong cơ sở dữ liệu (được cache 1 giờ). Hệ thống cũng thực hiện chuẩn hóa bỏ dấu tiếng Việt (tone-insensitive mapping) để tối ưu việc khớp từ khóa.
-4. **Tính điểm tin cậy (Confidence Score)**: Điểm tin cậy ($0.0 \rightarrow 1.0$) được tính dựa trên tổng trọng số của các thực thể chính trích xuất được:
-   - Điểm đến (Destination): Trọng số 35%
-   - Khoảng giá (Price range): Trọng số 25%
-   - Số người (People count): Trọng số 20%
-   - Ngày khởi hành (Departure date): Trọng số 20%
-5. **Lớp bộ nhớ đệm (Cache Layer)**: Sau khi xác định câu hỏi thuộc phạm vi hỗ trợ, hệ thống kiểm tra mã băm được tạo từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa trong bảng `chat_cache`. Nếu có bản ghi còn hiệu lực, hệ thống trả phản hồi ngay và không gọi AI NLU, không truy xuất lại dữ liệu, cũng không gọi mô hình hoàn thiện câu trả lời.
-6. **Bộ định tuyến NLU (NLU Routing)**:
-   - Nếu câu hỏi thuộc nhóm ý định phi nghiệp vụ (như chính sách hoàn tiền, tích điểm, liên hệ, tài khoản) không cần tham số lọc, hoặc câu hỏi có điểm tin cậy quy tắc $\ge$ Ngưỡng cấu hình (`config/chatbot.php`, mặc định `0.8`): Hệ thống **bỏ qua hoàn toàn** bước gọi AI NLU để tiết kiệm token và tăng tốc độ xử lý.
-   - Nếu câu hỏi yêu cầu lọc nghiệp vụ (tour, đặt chỗ, địa điểm) nhưng điểm tin cậy $< 0.8$: Hệ thống chuyển tiếp yêu cầu đến **Gemini AI NLU** (`extractEntitiesWithAi()`) với prompt cấu hình nhiệt độ thấp (temperature = 0.1) và ép định dạng JSON để trích xuất sâu các thực thể phức tạp hoặc giải quyết ngày tương đối (ví dụ: "cuối tuần sau" $\rightarrow$ ngày cụ thể dựa trên ngày hiện tại của server).
-7. **Truy xuất tri thức kết hợp (Hybrid Retrieval)**: Lọc dữ liệu có cấu trúc từ `tours` và `locations` dựa trên các thực thể đã trích xuất, kết hợp tìm kiếm ngữ nghĩa (Cosine Similarity) trong bảng `chat_knowledge_base` trên PostgreSQL để chuẩn bị ngữ cảnh (Context).
-8. **Hoàn thiện câu trả lời (AI Completion)**: Gửi prompt đóng gói ngữ cảnh đến mô hình AI được cấu hình. Thứ tự hiện tại là Gemini, Groq và OpenRouter; OpenAI được hỗ trợ trong cấu hình nhưng không nằm trong thứ tự mặc định.
-9. **Chuyển đổi dự phòng (AI Failover)**: Tự động chuyển đổi nhà cung cấp dịch vụ AI hoặc API key dự phòng khi gặp lỗi kết nối hoặc vượt hạn mức tần suất.
-10. **Lưu trữ & Phản hồi**: Ghi câu hỏi, câu trả lời và siêu dữ liệu xử lý vào bảng `chat_messages` để theo dõi, kiểm thử và phân tích; đồng thời cập nhật `chat_cache`. Phiên bản hiện tại chưa đưa các tin nhắn trước của cùng `session_id` vào prompt, vì vậy đây là nhật ký phiên chứ chưa phải bộ nhớ hội thoại nhiều lượt.
+Quy trình xử lý gồm các bước sau:
+
+1. **Tiếp nhận và chuẩn hóa câu hỏi**: Hệ thống chuyển câu hỏi về dạng thống nhất, xử lý khoảng trắng, chữ hoa/chữ thường, từ viết tắt, lỗi gõ phổ biến và một số cách viết tiếng Việt không dấu.
+2. **Kiểm soát phạm vi**: Câu hỏi được phân loại để xác định có thuộc các chủ đề DanangTrip hỗ trợ hay không, gồm tour, địa điểm, ăn uống, bài viết du lịch, lịch trình, đặt tour, thanh toán, hoàn tiền, tài khoản, điểm thưởng và voucher. Câu hỏi ngoài phạm vi được trả lời bằng thông báo định sẵn mà không gọi mô hình AI.
+3. **Phân tích truy vấn**: Hệ thống trích xuất các thực thể như điểm đến, khu vực, loại địa điểm, mức giá, số người, ngày đi, thời lượng và yêu cầu sắp xếp. Việc nhận diện được thực hiện bằng quy tắc, biểu thức chính quy và từ điển địa danh được tạo từ dữ liệu đang hoạt động.
+4. **Tính điểm tin cậy**: Kết quả phân tích quy tắc được chấm điểm dựa trên số thực thể quan trọng đã nhận diện. Điểm này quyết định hệ thống có cần dùng AI để phân tích bổ sung hay không.
+5. **Kiểm tra bộ nhớ đệm**: Nếu câu hỏi đã có phản hồi còn hiệu lực trong `chat_cache`, hệ thống trả kết quả ngay, không truy xuất lại dữ liệu và không gọi mô hình AI.
+6. **Phân tích bổ sung bằng AI**: Khi câu hỏi nghiệp vụ có điểm tin cậy thấp hơn ngưỡng `0.8`, AI được dùng để bổ sung các thực thể khó nhận diện, chẳng hạn “cuối tuần sau”, “khoảng một triệu rưỡi” hoặc câu hỏi có nhiều điều kiện.
+7. **Truy xuất dữ liệu kết hợp**: Hệ thống vừa lọc dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm và bài viết, vừa thực hiện tìm kiếm ngữ nghĩa trên cơ sở tri thức khi chế độ vector được bật.
+8. **Tạo câu trả lời**: Chỉ các dữ liệu liên quan nhất được đóng gói thành ngữ cảnh gửi tới mô hình AI. Prompt yêu cầu mô hình không tự tạo giá, lịch, địa chỉ hoặc chính sách ngoài dữ liệu được cung cấp.
+9. **Chuyển đổi dự phòng**: Nếu một khóa hoặc nhà cung cấp AI lỗi, quá thời gian chờ hay hết hạn mức, hệ thống thử khóa hoặc nhà cung cấp tiếp theo.
+10. **Ghi nhận kết quả**: Câu hỏi, phản hồi và thông tin xử lý được lưu để theo dõi; phản hồi phù hợp được đưa vào bộ nhớ đệm. Lịch sử này hiện phục vụ ghi nhận và phân tích, chưa phải bộ nhớ hội thoại nhiều lượt.
+
+### 2.9.1. Công thức tính điểm tin cậy
+
+Điểm tin cậy của bước phân tích truy vấn được tính theo tổng trọng số của các thực thể đã nhận diện:
+
+```text
+    Σ(wᵢ × Iᵢ)
+C = ───────────
+       Σwᵢ
+```
+
+Trong đó:
+
+- $C$ là điểm tin cậy, có giá trị từ $0$ đến $1$.
+- $w_i$ là trọng số của thực thể thứ $i$.
+- $I_i = 1$ nếu thực thể được nhận diện và $I_i = 0$ nếu không nhận diện được.
+
+Các trọng số đang được sử dụng:
+
+| Thực thể | Trọng số |
+| --- | ---: |
+| Điểm đến hoặc khu vực | 35 |
+| Khoảng giá | 25 |
+| Số người | 20 |
+| Ngày khởi hành | 20 |
+
+Ví dụ, câu hỏi nhận diện được điểm đến và số người nhưng chưa nhận diện được giá và ngày đi:
+
+```text
+        35 + 20
+C = ───────────────── = 0,55
+    35 + 25 + 20 + 20
+```
+
+Do $0{,}55 < 0{,}8$, hệ thống kích hoạt bước phân tích bổ sung bằng AI. Cách tính này giúp những câu hỏi đã đủ rõ được xử lý nhanh bằng quy tắc, trong khi câu hỏi mơ hồ mới cần sử dụng thêm tài nguyên AI.
+
+### 2.9.2. Công thức tìm kiếm ngữ nghĩa
+
+Nội dung tour, địa điểm, bài viết và chính sách được biểu diễn bằng các vector embedding. Câu hỏi của người dùng cũng được chuyển thành một vector cùng không gian biểu diễn. Mức độ liên quan giữa vector câu hỏi $A$ và vector nội dung $B$ được tính bằng độ tương đồng cosin:
+
+```text
+                A · B                 Σᵈᵢ₌₁(Aᵢ × Bᵢ)
+sim(A, B) = ─────────────── = ─────────────────────────────
+             ‖A‖ × ‖B‖        √Σᵈᵢ₌₁(Aᵢ²) × √Σᵈᵢ₌₁(Bᵢ²)
+```
+
+Trong đó:
+
+- $A$ là vector embedding của câu hỏi.
+- $B$ là vector embedding của một bản ghi cơ sở tri thức.
+- $d$ là số chiều của vector; cấu hình embedding hiện tại sử dụng 768 chiều.
+- Kết quả càng gần $1$ thì hai nội dung càng gần nhau về ngữ nghĩa.
+
+Hệ thống hiện sử dụng ngưỡng tương đồng tối thiểu `0.68`. Các bản ghi có điểm thấp hơn ngưỡng bị loại; những bản ghi còn lại được sắp xếp giảm dần và chỉ một số kết quả đầu được đưa vào ngữ cảnh cho mô hình AI. Vector được lưu trong PostgreSQL, còn phép tính độ tương đồng được thực hiện tại tầng dịch vụ. Phiên bản hiện tại chưa sử dụng `pgvector` hoặc chỉ mục vector chuyên dụng.
 
 ```mermaid
 flowchart TD
     A["Câu hỏi người dùng"] --> B["Bộ kiểm soát ý định\n(Intent Guard)"]
     B -->|Ngoài phạm vi| C["Trả thông báo từ chối phù hợp"]
-    B -->|Hợp lệ| D["Phân tích truy vấn\n(Rule-based & Dynamic Dictionary)"]
+    B -->|Hợp lệ| D["Phân tích truy vấn\nQuy tắc và từ điển động"]
     D --> E["Tính điểm tin cậy\n(Confidence Score)"]
     E --> H["Kiểm tra Lớp bộ nhớ đệm\n(Cache Layer)"]
     H -->|Cache hit| I["Trả phản hồi từ bộ nhớ đệm"]
     H -->|Cache miss| F{"Cần NLU & Điểm tin cậy\n< Ngưỡng (0.8)?"}
-    F -->|Đúng| G["Gọi Gemini NLU trích xuất thực thể\n(extractEntitiesWithAi)"]
+    F -->|Đúng| G["AI phân tích bổ sung\ncác thực thể khó"]
     F -->|Sai| J["Truy xuất tri thức kết hợp\n(Dữ liệu có cấu trúc + Vector tùy chọn)"]
     G --> J
-    J --> K["Nhà cung cấp AI\n(complete)"]
+    J --> K["Mô hình AI tạo câu trả lời\ntừ ngữ cảnh đã truy xuất"]
     K -->|Lỗi/Vượt hạn mức| L["Chuyển đổi dự phòng AI\n(AI Failover)"]
     L --> K
     K --> M["Lưu nhật ký chat & Bộ nhớ đệm"]
     M --> N["Trả phản hồi cho giao diện"]
 ```
 
-### 2.9.1. Bảng mô tả đầu vào/đầu ra của quy trình AI
+### 2.9.3. Bảng mô tả đầu vào/đầu ra của quy trình AI
 
 *Bảng 2.13: Quy trình các bước xử lý đầu vào và đầu ra của chatbot AI*
 
-| Bước | Lớp dịch vụ/Thành phần | Đầu vào | Đầu ra | Vai trò |
+| Bước | Thành phần | Đầu vào | Đầu ra | Vai trò |
 | --- | --- | --- | --- | --- |
-| 1 | `ChatController` | Nội dung câu hỏi, `session_id` tùy chọn, ngôn ngữ | Yêu cầu đã được kiểm tra | Tiếp nhận yêu cầu từ giao diện; nếu không có `session_id`, Server API tạo định danh từ IP và User-Agent |
-| 2 | `ChatIntentGuardService` | Câu hỏi người dùng | Kết quả hợp lệ/không hợp lệ, nhóm ý định sơ bộ | Giới hạn phạm vi câu hỏi thuộc du lịch, tour, địa điểm, đặt tour hoặc chính sách |
-| 3 | `ChatQueryUnderstandingService` | Câu hỏi hợp lệ | Thực thể quy tắc trích xuất ban đầu, Điểm tin cậy (Confidence) | Phân tích nhanh bằng biểu thức chính quy và từ điển động tải từ CSDL |
-| 4 | Lớp bộ nhớ đệm (Cache Layer) | Câu hỏi đã chuẩn hóa và ý định | Phản hồi trong bộ nhớ đệm hoặc đi tiếp | Giảm thời gian phản hồi với câu hỏi trùng lặp và tránh gọi AI không cần thiết |
-| 5 | Bộ định tuyến NLU (NLU Routing) | Câu hỏi và thực thể ban đầu khi cache miss | Các thực thể đã được làm giàu (Enriched entities) | Tự động quyết định gọi Gemini NLU để phân tích sâu (JSON format) nếu điểm tin cậy dưới ngưỡng `0.8` |
-| 6 | `ChatKnowledgeSearchService`, `ChatVectorSearchService` | Ý định và tham số đã trích xuất | Dữ liệu nghiệp vụ và bản ghi cơ sở tri thức liên quan | Kết hợp lọc dữ liệu có cấu trúc với xếp hạng embedding bằng độ tương đồng cosin khi chức năng này được bật |
-| 7 | `ChatAiProviderService` (Complete) | Prompt gồm câu hỏi và ngữ cảnh truy xuất | Câu trả lời từ nhà cung cấp AI | Sinh phản hồi tự nhiên dựa trên dữ liệu hệ thống |
+| 1 | Tiếp nhận yêu cầu | Nội dung câu hỏi, mã phiên tùy chọn và ngôn ngữ | Yêu cầu hợp lệ | Kiểm tra dữ liệu đầu vào và xác định phiên gửi câu hỏi |
+| 2 | Kiểm soát ý định | Câu hỏi đã chuẩn hóa | Ý định và trạng thái trong/ngoài phạm vi | Ngăn câu hỏi không liên quan sử dụng tài nguyên AI |
+| 3 | Phân tích truy vấn | Câu hỏi thuộc phạm vi | Các thực thể và điểm tin cậy | Hiểu điều kiện tìm kiếm bằng quy tắc và từ điển động |
+| 4 | Bộ nhớ đệm | Ngôn ngữ, ý định và câu hỏi chuẩn hóa | Phản hồi có sẵn hoặc trạng thái không tìm thấy cache | Giảm thời gian phản hồi và số lần gọi AI |
+| 5 | Định tuyến NLU | Các thực thể và điểm tin cậy | Bộ thực thể được giữ nguyên hoặc bổ sung | Chỉ sử dụng AI phân tích khi câu hỏi chưa đủ rõ |
+| 6 | Truy xuất tri thức | Ý định và các điều kiện đã phân tích | Tour, lịch, địa điểm, bài viết và chính sách liên quan | Kết hợp bộ lọc nghiệp vụ với xếp hạng embedding |
+| 7 | Tạo phản hồi | Câu hỏi và ngữ cảnh đã truy xuất | Câu trả lời tự nhiên và các thẻ gợi ý | Trả lời dựa trên dữ liệu nội bộ thay vì kiến thức suy đoán |
 | 8 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế, hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
-| 9 | `ChatMessage`/`ChatCache` | Câu hỏi, ngữ cảnh, phản hồi và siêu dữ liệu định tuyến | Nhật ký chat và bộ nhớ đệm | `ChatMessage` phục vụ theo dõi/phân tích; `ChatCache` phục vụ tái sử dụng phản hồi. Lịch sử chưa được đưa trở lại prompt để tạo memory nhiều lượt |
+| 9 | Lưu trữ kết quả | Câu hỏi, ngữ cảnh, phản hồi và thông tin xử lý | Nhật ký chat và phản hồi cache | Hỗ trợ theo dõi, phân tích và tái sử dụng phản hồi |
 
-### 2.9.2. Đối chiếu quy trình AI với mã nguồn
+### 2.9.4. Nguyên tắc thiết kế các thành phần
 
-*Bảng 2.14: Đối chiếu quy trình AI với các thành phần mã nguồn*
+*Bảng 2.14: Trách nhiệm của các thành phần trong quy trình chatbot*
 
-| Thành phần thiết kế | Minh chứng trong mã nguồn | Mô tả triển khai |
+| Thành phần | Nguyên tắc thiết kế | Kết quả đạt được |
 | --- | --- | --- |
-| Bộ kiểm soát ý định (Intent Guard) | `ChatIntentGuardService::classify()` | Chuẩn hóa câu hỏi của người dùng, kiểm tra các từ khóa bị hạn chế và phân loại câu hỏi vào các nhóm chức năng như tour du lịch, địa điểm, đặt tour, thanh toán, hoàn tiền, bài viết hoặc tài khoản. |
-| Thành phần phân tích truy vấn (Query Understanding) | `ChatQueryUnderstandingService::understand()` | Phân tích nội dung câu hỏi để trích xuất các tham số bằng biểu thức chính quy. Sử dụng cache để tải các điểm đến động từ database (`getDynamicDestinations()`). Tính toán điểm tin cậy dựa trên các tham số thu thập được. |
-| Bộ định tuyến NLU lai & Trích xuất AI | `ChatService::send()` và `ChatAiProviderService::extractEntitiesWithAi()` | Kiểm tra điểm tin cậy và loại ý định để quyết định gọi LLM trích xuất bổ sung dưới định dạng JSON, giúp phân tích các đại lượng phức tạp (như ngân sách số) và giải quyết mốc thời gian tương đối ("cuối tuần sau", "ngày mai"). |
-| Lớp bộ nhớ đệm (Cache Layer) | `ChatService::cacheHash()` và model `ChatCache` | Tạo khóa bộ nhớ đệm dựa trên ngôn ngữ, nhóm ý định và nội dung câu hỏi đã được chuẩn hóa; kiểm tra dữ liệu còn hiệu lực trước khi thực hiện truy xuất dữ liệu hoặc gọi mô hình AI. |
-| Thành phần truy xuất tri thức | `ChatKnowledgeSearchService::search()` và `ChatVectorSearchService::search()` | Kết hợp truy xuất dữ liệu nghiệp vụ với tìm kiếm ngữ nghĩa trên embedding lưu trong PostgreSQL. Hệ thống tính độ tương đồng cosin ở tầng dịch vụ và chưa sử dụng cơ sở dữ liệu véc-tơ chuyên dụng. |
-| Thành phần cung cấp mô hình AI | `ChatAiProviderService::complete()` | Gửi yêu cầu đến mô hình AI được cấu hình, bao gồm Gemini hoặc các nhà cung cấp tương thích giao diện OpenAI. |
-| Cơ chế chuyển đổi dự phòng AI (AI Failover) | `ChatAiProviderService::complete()` và `ensureSuccessfulResponse()` | Tự động chuyển sang nhà cung cấp hoặc khóa truy cập khác khi phát hiện lỗi kết nối, vượt thời gian chờ, vượt giới hạn tần suất hoặc khóa truy cập không hợp lệ. |
-| Câu trả lời dự phòng | `ChatService::fallbackAnswer()` and `outOfScopeAnswer()` | Trả về câu trả lời dự phòng trong trường hợp không tìm thấy dữ liệu liên quan, mô hình AI gặp lỗi hoặc câu hỏi nằm ngoài phạm vi hỗ trợ của hệ thống. |
+| Kiểm soát phạm vi | Câu hỏi ngoài nghiệp vụ được xử lý bằng kịch bản cố định | Giảm chi phí và hạn chế chatbot trả lời sai chủ đề |
+| Phân tích truy vấn | Ưu tiên quy tắc nhanh, chỉ dùng AI khi độ tin cậy thấp | Cân bằng giữa tốc độ, chi phí và khả năng hiểu ngôn ngữ tự nhiên |
+| Truy xuất dữ liệu | Giá, lịch, địa chỉ và trạng thái được lấy từ cơ sở dữ liệu đang vận hành | Câu trả lời bám sát dữ liệu thật của hệ thống |
+| Tìm kiếm ngữ nghĩa | Dùng embedding để tìm nội dung gần nghĩa dù không trùng hoàn toàn từ khóa | Cải thiện truy vấn mơ hồ về tour, địa điểm, bài viết và chính sách |
+| Kiểm soát ngữ cảnh | Chỉ gửi một số kết quả liên quan nhất đến mô hình AI | Giảm token và giảm nguy cơ mô hình sử dụng dữ liệu không liên quan |
+| Khả năng chịu lỗi | Luân chuyển khóa, nhà cung cấp và có câu trả lời dự phòng | Chatbot vẫn phản hồi khi một dịch vụ AI gặp sự cố |
+| Lưu trữ | Tách nhật ký hội thoại và bộ nhớ đệm phản hồi | Hỗ trợ phân tích hoạt động mà không nhầm với memory nhiều lượt |
 
-### 2.9.3. Ví dụ xử lý câu hỏi chatbot thực tế
+### 2.9.5. Ví dụ xử lý câu hỏi chatbot thực tế
 
 Ví dụ người dùng nhập câu hỏi:
 
@@ -541,14 +590,14 @@ Quá trình xử lý thực tế qua Bộ định tuyến NLU lai:
 
 | Giai đoạn | Chi tiết xử lý và kết quả |
 | --- | --- |
-| **1. Intent Guard** | Câu hỏi hợp lệ. Phân loại ý định chính: `tour`. |
-| **2. Phân tích truy vấn quy tắc (Rule-based)** | - Nhận diện điểm đến từ Từ điển động: `destination = "cầu rồng"`<br>- Trích xuất số người: `people = 3`<br>- Khoảng giá: `null` (chưa hỗ trợ nhận diện chữ "khoảng 1.5 triệu" bằng regex thuần)<br>- Ngày đi: `null` (không giải nghĩa được "tuần sau")<br>- **Điểm tin cậy tính được: 55%** (Destination + People = 35% + 20%). |
-| **3. Kiểm tra cache** | Hệ thống tạo khóa từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa. Nếu chưa có phản hồi còn hiệu lực thì mới tiếp tục bước NLU. |
-| **4. Định tuyến NLU** | Điểm tin cậy `0.55 < 0.8` (Ngưỡng kích hoạt). Ý định thuộc nhóm lọc nghiệp vụ (`tour`). Hệ thống chuyển tiếp yêu cầu đến `ChatAiProviderService::extractEntitiesWithAi()`. |
-| **5. Trích xuất bằng Gemini NLU** | Gemini nhận ngữ cảnh ngày hiện tại của server, giải nghĩa "tuần sau" thành ngày chuẩn hóa theo múi giờ Server API, chuyển "khoảng 1.5 triệu" thành `max_price = 1500000` và trả về JSON thực thể được làm giàu. |
+| **1. Kiểm soát phạm vi** | Câu hỏi hợp lệ và được phân loại vào nhóm tìm kiếm tour. |
+| **2. Phân tích bằng quy tắc** | Hệ thống nhận diện được điểm đến là Cầu Rồng và số khách là 3 người, nhưng chưa xác định chắc chắn mức ngân sách và ngày đi tương đối. Điểm tin cậy được tính là $0{,}55$. |
+| **3. Kiểm tra bộ nhớ đệm** | Hệ thống kiểm tra xem câu hỏi tương ứng đã có phản hồi còn hiệu lực hay chưa. Nếu chưa có thì tiếp tục phân tích. |
+| **4. Quyết định dùng AI phân tích** | Vì $0{,}55 < 0{,}8$ và câu hỏi chứa nhiều điều kiện, hệ thống kích hoạt AI để bổ sung thông tin còn thiếu. |
+| **5. Bổ sung thực thể** | AI giải nghĩa “tuần sau” thành ngày cụ thể theo thời gian hệ thống và chuyển “khoảng 1,5 triệu” thành mức ngân sách tối đa 1.500.000 đồng. |
 | **6. Truy xuất tri thức RAG** | Lọc các tour đang hoạt động theo điểm đến, ngân sách, số người và lịch khởi hành; đồng thời lấy bài viết hoặc bản ghi cơ sở tri thức liên quan. Tìm kiếm embedding chỉ tham gia khi Vector RAG được bật và bản ghi đã có embedding. |
-| **7. AI Completion** | Nhà cung cấp AI khả dụng nhận prompt đóng gói câu hỏi và ngữ cảnh vừa truy xuất, sinh câu trả lời ngắn gọn cùng các thẻ gợi ý cụ thể. |
-| **8. Lưu trữ** | Phản hồi được đưa vào `ChatCache` để tối ưu câu hỏi trùng lặp, đồng thời bản ghi được tạo trong `ChatMessage` kèm siêu dữ liệu như `ai_nlu_triggered`. |
+| **7. Tạo câu trả lời** | Mô hình AI nhận câu hỏi cùng dữ liệu đã truy xuất, sau đó tạo câu trả lời ngắn gọn và các thẻ gợi ý phù hợp. |
+| **8. Lưu trữ** | Hệ thống ghi nhật ký xử lý và lưu phản hồi vào bộ nhớ đệm để tái sử dụng khi gặp câu hỏi tương tự. |
 
 ## 2.10. Biểu đồ hoạt động tìm kiếm/gợi ý
 
