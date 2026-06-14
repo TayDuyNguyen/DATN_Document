@@ -372,7 +372,7 @@ sequenceDiagram
     participant W as "Website người dùng"
     participant API as "Server API"
     participant DB as "Cơ sở dữ liệu"
-    participant Pay as "Cổng SePay (IPN)"
+    participant Pay as "Cổng SePay"
 
     U->>W: Chọn tour và lịch khởi hành
     W->>API: POST /bookings/calculate
@@ -388,7 +388,7 @@ sequenceDiagram
     API-->>W: URL/QR thanh toán
     Pay->>API: POST /sepay/ipn
     API->>DB: Xác thực và cập nhật thanh toán, đơn đặt tour
-    API-->>Pay: Kết quả xử lý IPN
+    API-->>Pay: Kết quả xử lý thông báo
     W->>API: GET /payments/status/{transaction_code}
     API-->>W: Trạng thái thanh toán
 ```
@@ -399,20 +399,21 @@ sequenceDiagram
 sequenceDiagram
     actor U as Người dùng
     participant W as "Website / Admin (Client)"
-    participant API as "API (Laravel)"
+    participant API as "API"
     participant DB as "Cơ sở dữ liệu (PostgreSQL)"
 
     U->>W: Nhập email, mật khẩu & chọn "Ghi nhớ" (tùy chọn)
     W->>API: POST /auth/login {email, password, remember}
-    API->>API: Xác thực thông tin qua Auth Guard (api)
+    API->>API: Xác thực thông tin
     API->>DB: Truy vấn tìm người dùng theo Email
     DB-->>API: Thông tin người dùng
-    API->>API: Sinh Access Token (JWT)
+    API->>API: Sinh Access Token
     API->>API: Sinh Refresh Token ngẫu nhiên (64 ký tự)
-    API->>DB: Lưu Hash(Refresh Token) & hạn dùng (14 ngày hoặc 1 ngày)
+    API->>DB: Lưu Hash của Refresh Token & hạn dùng
     API-->>W: Trả về JSON (Access Token, User) + Cookie HttpOnly (Refresh Token)
     W-->>U: Đăng nhập thành công, chuyển hướng trang phù hợp
 ```
+
 ## 2.8. Biểu đồ tuần tự chatbot
 
 ```mermaid
@@ -421,40 +422,56 @@ sequenceDiagram
     participant W as "Website người dùng"
     participant API as "Bộ điều phối Chat"
     participant S as "Dịch vụ Chat"
-    participant QU as "Phân tích truy vấn (Rule-based)"
-    participant AI_NLU as "AI NLU (Trích xuất thực thể)"
+    participant QU as "Phân tích truy vấn"
+    participant AI_NLU as "AI NLU"
+    participant NR as "Chuẩn hóa truy vấn"
     participant K as "Tìm kiếm tri thức"
-    participant AI as "Nhà cung cấp AI (Hoàn thiện)"
+    participant RB as "Recommendation Builder"
+    participant AI as "Nhà cung cấp AI"
     participant DB as "Cơ sở dữ liệu"
 
     U->>W: Nhập câu hỏi du lịch
     W->>API: POST /chat
-    API->>S: send(message)
-    S->>QU: understand() & classify()
-    QU-->>S: Trích xuất quy tắc & Điểm tin cậy (Confidence)
-    
+    API->>S: Gửi tin nhắn
+    S->>QU: Phân tích truy vấn và kiểm tra ý định
+    QU-->>S: Trích xuất quy tắc & Điểm tin cậy
+
     alt Không thuộc phạm vi (Out of Scope)
         S-->>API: Trả về câu trả lời từ chối theo kịch bản
         API-->>W: Hiển thị thông báo ngoài phạm vi
+    else Lời chào (Greeting Fast Path)
+        Note over S: Bỏ qua toàn bộ pipeline cache/NLU/search
+        S-->>API: Trả lời chào hỏi tức thì (kịch bản cố định)
+        API-->>W: Hiển thị phản hồi lời chào
     else Hợp lệ (In Scope)
-        alt Trùng Cache còn hiệu lực
-            S->>DB: Kiểm tra ChatCache
+        alt Câu hỏi mơ hồ hoặc thiếu thực thể (Cần làm rõ)
+            S-->>API: Trả về yêu cầu làm rõ (clarification options)
+            API-->>W: Hiển thị bảng tùy chọn (Checklist) & ô ghi chú
+            U->>W: Tích chọn các mục và nhập ghi chú thêm
+            W->>API: POST /chat (Gửi phản hồi làm rõ dạng văn bản)
+            Note over API,S: Quay lại xử lý ở lượt tiếp theo
+        else Trùng Cache còn hiệu lực
+            S->>DB: Kiểm tra phản hồi lưu sẵn
             DB-->>S: Trả về câu trả lời lưu sẵn
         else Cache Miss
             alt Cần trích xuất NLU & Điểm tin cậy < Ngưỡng (0.8)
-                S->>AI_NLU: extractEntitiesWithAi()
-                AI_NLU-->>S: Trả về JSON thực thể và ngày được chuẩn hóa
+                S->>AI_NLU: Trích xuất thực thể bằng AI
+                AI_NLU-->>S: Trả về JSON thực thể đã trích xuất
             end
-            S->>K: search(tri thức liên quan)
-            K->>DB: Lọc dữ liệu có cấu trúc & tìm kiếm Vector nếu được bật
-            DB-->>K: Kết quả tour, địa điểm, blog, chính sách
-            K-->>S: Ngữ cảnh hội thoại (Context)
-            S->>AI: complete(prompt + ngữ cảnh)
+            S->>NR: Ánh xạ tên địa danh sang khóa chính
+            NR-->>S: Trả về location_id tương ứng
+            S->>K: Tìm kiếm tri thức tích hợp
+            K->>DB: Lọc dữ liệu có cấu trúc & tìm kiếm Vector
+            DB-->>K: Kết quả SQL + Vector
+            K-->>S: Ngữ cảnh hội thoại
+            S->>RB: Hợp nhất và xếp hạng gợi ý
+            RB-->>S: Danh sách thẻ gợi ý đã xếp hạng
+            S->>AI: Hoàn thiện câu trả lời tự nhiên
             AI-->>S: Câu trả lời tự nhiên
-            S->>DB: Lưu ChatCache & ChatMessage (lịch sử chat)
+            S->>DB: Lưu bộ nhớ đệm & lịch sử chat
         end
-        S-->>API: Response
-        API-->>W: Nội dung phản hồi
+        S-->>API: Trả về phản hồi (câu trả lời văn bản + thẻ gợi ý)
+        API-->>W: Hiển thị câu trả lời và thẻ gợi ý
     end
 ```
 
@@ -465,25 +482,26 @@ Chatbot DanangTrip được thiết kế theo hướng **Hybrid RAG kết hợp 
 Quy trình xử lý gồm các bước sau:
 
 1. **Tiếp nhận và chuẩn hóa câu hỏi**: Hệ thống chuyển câu hỏi về dạng thống nhất, xử lý khoảng trắng, chữ hoa/chữ thường, từ viết tắt, lỗi gõ phổ biến và một số cách viết tiếng Việt không dấu.
-2. **Kiểm soát phạm vi**: Câu hỏi được phân loại để xác định có thuộc các chủ đề DanangTrip hỗ trợ hay không, gồm tour, địa điểm, ăn uống, bài viết du lịch, lịch trình, đặt tour, thanh toán, hoàn tiền, tài khoản, điểm thưởng và voucher. Câu hỏi ngoài phạm vi được trả lời bằng thông báo định sẵn mà không gọi mô hình AI.
-3. **Phân tích truy vấn**: Hệ thống trích xuất các thực thể như điểm đến, khu vực, loại địa điểm, mức giá, số người, ngày đi, thời lượng và yêu cầu sắp xếp. Việc nhận diện được thực hiện bằng quy tắc, biểu thức chính quy và từ điển địa danh được tạo từ dữ liệu đang hoạt động.
-4. **Tính điểm tin cậy**: Kết quả phân tích quy tắc được chấm điểm dựa trên số thực thể quan trọng đã nhận diện. Điểm này quyết định hệ thống có cần dùng AI để phân tích bổ sung hay không.
-5. **Kiểm tra bộ nhớ đệm**: Nếu câu hỏi đã có phản hồi còn hiệu lực trong `chat_cache`, hệ thống trả kết quả ngay, không truy xuất lại dữ liệu và không gọi mô hình AI.
-6. **Phân tích bổ sung bằng AI**: Khi câu hỏi nghiệp vụ có điểm tin cậy thấp hơn ngưỡng `0.8`, AI được dùng để bổ sung các thực thể khó nhận diện, chẳng hạn “cuối tuần sau”, “khoảng một triệu rưỡi” hoặc câu hỏi có nhiều điều kiện.
-7. **Truy xuất dữ liệu kết hợp**: Hệ thống vừa lọc dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm và bài viết, vừa thực hiện tìm kiếm ngữ nghĩa trên cơ sở tri thức khi chế độ vector được bật.
-8. **Tạo câu trả lời**: Chỉ các dữ liệu liên quan nhất được đóng gói thành ngữ cảnh gửi tới mô hình AI. Prompt yêu cầu mô hình không tự tạo giá, lịch, địa chỉ hoặc chính sách ngoài dữ liệu được cung cấp.
-9. **Chuyển đổi dự phòng**: Nếu một khóa hoặc nhà cung cấp AI lỗi, quá thời gian chờ hay hết hạn mức, hệ thống thử khóa hoặc nhà cung cấp tiếp theo.
-10. **Ghi nhận kết quả**: Câu hỏi, phản hồi và thông tin xử lý được lưu để theo dõi; phản hồi phù hợp được đưa vào bộ nhớ đệm. Lịch sử này hiện phục vụ ghi nhận và phân tích, chưa phải bộ nhớ hội thoại nhiều lượt.
+2. **Kiểm soát phạm vi và ý định**: Câu hỏi được phân loại để xác định có thuộc các chủ đề DanangTrip hỗ trợ hay không, gồm tour, địa điểm, ăn uống, bài viết du lịch, lịch trình, đặt tour, thanh toán, hoàn tiền, tài khoản, điểm thưởng và voucher. Câu hỏi ngoài phạm vi được trả lời bằng thông báo định sẵn mà không gọi mô hình AI.
+3. **Xử lý nhanh lời chào (Greeting Fast Path)**: Câu hỏi mang ý định chào hỏi (`greeting`) được trả lời tức thì bằng kịch bản cố định, bỏ qua toàn bộ pipeline cache, NLU, tìm kiếm và mô hình AI nhằm tiết kiệm tài nguyên.
+4. **Phân tích truy vấn**: Hệ thống trích xuất các thực thể như điểm đến, khu vực, loại địa điểm, mức giá, số người, ngày đi, thời lượng và yêu cầu sắp xếp. Việc nhận diện được thực hiện bằng quy tắc, biểu thức chính quy và từ điển địa danh động. Các từ ngắn tiếng Việt nhạy cảm (như "cá", "rẻ", "đẹp", "tua", "né", "mai", "tour", "ks") được kiểm tra bằng ranh giới từ (word boundary) thông qua Regex để tránh nhận diện sai các từ ghép (như "cá" trong "các", "mai" trong "ngày mai").
+5. **Tính điểm tin cậy**: Kết quả phân tích quy tắc được chấm điểm dựa trên số thực thể quan trọng đã nhận diện. Điểm này quyết định hệ thống có cần dùng AI để phân tích bổ sung hay không.
+6. **Kiểm tra bộ nhớ đệm**: Nếu câu hỏi đã có phản hồi còn hiệu lực, hệ thống trả kết quả ngay, không truy xuất lại dữ liệu và không gọi mô hình AI.
+7. **Phân tích bổ sung bằng AI**: Khi câu hỏi nghiệp vụ có điểm tin cậy thấp hơn ngưỡng 0,8, AI được dùng để bổ sung các thực thể khó nhận diện, chẳng hạn "cuối tuần sau", "khoảng một triệu rưỡi" hoặc câu hỏi có nhiều điều kiện.
+8. **Bảng tùy chọn tương tác làm rõ (Clarification Checklist)**: Trong trường hợp câu hỏi quá mơ hồ (thuộc ý định unknown) hoặc thiếu các thông tin thực thể cốt lõi (như số người đi, điểm đến mong muốn), hệ thống sẽ trả về danh sách các tùy chọn tương tác dạng checklist. Dưới mỗi mục chọn, giao diện tự động trượt mở một trường ghi chú để người dùng bổ sung thông tin cụ thể (ví dụ: tour dưới 500k, gần biển Mỹ Khê). Kết quả chọn kèm ghi chú này sẽ được gửi ngược lại chatbot để cập nhật session slot giúp sinh kết quả chính xác nhất.
+9. **Chuẩn hóa truy vấn**: Hệ thống ánh xạ tên địa điểm (chuỗi văn bản) sang định danh trong cơ sở dữ liệu để phục vụ bước lọc dữ liệu có cấu trúc chính xác hơn.
+10. **Truy xuất dữ liệu kết hợp**: Hệ thống vừa lọc dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm và bài viết, vừa thực hiện tìm kiếm ngữ nghĩa trên cơ sở tri thức khi chế độ vector được bật. Để tránh lỗi truy vấn SQL khi lọc theo điều kiện strict `AND`, hệ thống thực hiện lọc bỏ các từ khóa chỉ giá cả (đã trích xuất riêng) và các stopWords chung (như "ăn", "uống", "món", "ở", "tại") trước khi tạo mệnh đề tìm kiếm `LIKE`.
+11. **Xây dựng gợi ý**: Hệ thống hợp nhất kết quả SQL và vector, loại bỏ trùng lặp và chấm điểm xếp hạng. Điểm số được cộng ưu tiên (Boosts) dựa trên mức độ phù hợp. Đặc biệt, đối với các truy vấn tìm kiếm tour giá rẻ nhất (cheapest first), giá bán (`price_adult`) được sử dụng làm trọng số tuyệt đối chính để tính điểm cơ sở (`100.000.000 - price_adult`). Các điểm cộng phụ trợ khác (như khớp địa danh hay rating) chỉ được nhân với hệ số thập phân cực nhỏ (< 1.0) làm tie-breaker để đảm bảo kết quả rẻ nhất luôn được sắp xếp ở đầu danh sách. Ngoài ra, danh sách thẻ gợi ý sẽ được nhóm theo danh mục (Tours, Địa điểm, Bài viết) và tự động ưu tiên đưa nhóm có điểm số cao nhất lên đầu và mở sẵn, các nhóm khác thu gọn lại.
+12. **Đồng bộ ngữ cảnh (Context Alignment)**: Để tránh mô hình AI phản hồi sai lệch hoặc tự bịa thông tin khác với các thẻ gợi ý hiển thị bên dưới, hệ thống thực hiện đồng bộ ngữ cảnh. Dữ liệu chi tiết của các thẻ gợi ý đã được xếp hạng cao nhất được đưa lên đầu ngữ cảnh (prompt) gửi đến LLM, giúp AI trực tiếp trích xuất thông tin khớp hoàn toàn với giao diện hiển thị.
+13. **Tạo câu trả lời**: Chỉ các dữ liệu liên quan nhất được đóng gói thành ngữ cảnh gửi tới mô hình AI. Prompt yêu cầu mô hình không tự tạo giá, lịch, địa chỉ hoặc chính sách ngoài dữ liệu được cung cấp.
+14. **Chuyển đổi dự phòng**: Nếu một khóa hoặc nhà cung cấp AI lỗi, quá thời gian chờ hay hết hạn mức, hệ thống thử khóa hoặc nhà cung cấp tiếp theo theo thứ tự cấu hình (Gemini -> Groq -> OpenRouter).
+15. **Ghi nhận kết quả và Quản lý Semantic Cache**: Câu hỏi, phản hồi và thông tin xử lý được lưu để theo dõi; phản hồi phù hợp được đưa vào bộ nhớ đệm (Semantic Cache). Quản trị viên có thể tùy chỉnh thời gian sống (TTL) của cache và điều chỉnh hai ngưỡng Cosine Similarity động (cho giao dịch và FAQ) tại trang quản trị để tối ưu hóa tỷ lệ cache hit và giảm chi phí API.
 
 ### 2.9.1. Công thức tính điểm tin cậy
 
 Điểm tin cậy của bước phân tích truy vấn được tính theo tổng trọng số của các thực thể đã nhận diện:
 
-```text
-    Σ(wᵢ × Iᵢ)
-C = ───────────
-       Σwᵢ
-```
+$$C = \frac{\sum (w_i \times I_i)}{\sum w_i}$$
 
 Trong đó:
 
@@ -502,11 +520,7 @@ Các trọng số đang được sử dụng:
 
 Ví dụ, câu hỏi nhận diện được điểm đến và số người nhưng chưa nhận diện được giá và ngày đi:
 
-```text
-        35 + 20
-C = ───────────────── = 0,55
-    35 + 25 + 20 + 20
-```
+$$C = \frac{35 + 20}{35 + 25 + 20 + 20} = 0,55$$
 
 Do $0{,}55 < 0{,}8$, hệ thống kích hoạt bước phân tích bổ sung bằng AI. Cách tính này giúp những câu hỏi đã đủ rõ được xử lý nhanh bằng quy tắc, trong khi câu hỏi mơ hồ mới cần sử dụng thêm tài nguyên AI.
 
@@ -514,20 +528,16 @@ Do $0{,}55 < 0{,}8$, hệ thống kích hoạt bước phân tích bổ sung b�
 
 Nội dung tour, địa điểm, bài viết và chính sách được biểu diễn bằng các vector embedding. Câu hỏi của người dùng cũng được chuyển thành một vector cùng không gian biểu diễn. Mức độ liên quan giữa vector câu hỏi $A$ và vector nội dung $B$ được tính bằng độ tương đồng cosin:
 
-```text
-                A · B                 Σᵈᵢ₌₁(Aᵢ × Bᵢ)
-sim(A, B) = ─────────────── = ─────────────────────────────
-             ‖A‖ × ‖B‖        √Σᵈᵢ₌₁(Aᵢ²) × √Σᵈᵢ₌₁(Bᵢ²)
-```
+$$\text{sim}(A, B) = \frac{A \cdot B}{\|A\| \times \|B\|} = \frac{\sum_{i=1}^{d} (A_i \times B_i)}{\sqrt{\sum_{i=1}^{d} A_i^2} \times \sqrt{\sum_{i=1}^{d} B_i^2}}$$
 
 Trong đó:
 
 - $A$ là vector embedding của câu hỏi.
 - $B$ là vector embedding của một bản ghi cơ sở tri thức.
-- $d$ là số chiều của vector; cấu hình embedding hiện tại sử dụng 768 chiều.
+- $d$ là số chiều của vector; cấu hình embedding hiện tại sử dụng **768 chiều** (model `gemini-embedding-001` của Google; dự phòng sang `text-embedding-3-small` của OpenAI khi Gemini không khả dụng).
 - Kết quả càng gần $1$ thì hai nội dung càng gần nhau về ngữ nghĩa.
 
-Hệ thống hiện sử dụng ngưỡng tương đồng tối thiểu `0.68`. Các bản ghi có điểm thấp hơn ngưỡng bị loại; những bản ghi còn lại được sắp xếp giảm dần và chỉ một số kết quả đầu được đưa vào ngữ cảnh cho mô hình AI. Vector được lưu trong PostgreSQL, còn phép tính độ tương đồng được thực hiện tại tầng dịch vụ. Phiên bản hiện tại chưa sử dụng `pgvector` hoặc chỉ mục vector chuyên dụng.
+Hệ thống hiện sử dụng ngưỡng tương đồng tối thiểu `0.68`. Các bản ghi có điểm thấp hơn ngưỡng bị loại; những bản ghi còn lại được sắp xếp giảm dần và chỉ tối đa `vector_context_limit` (mặc định 5) kết quả đầu được đưa vào ngữ cảnh cho mô hình AI. Hệ thống lấy tối đa `vector_candidate_limit` (mặc định 80) bản ghi ứng viên từ PostgreSQL rồi tính độ tương đồng tại tầng dịch vụ PHP. Phiên bản hiện tại chưa sử dụng `pgvector` hoặc chỉ mục vector chuyên dụng, phù hợp với quy mô đồ án (282 bản ghi tri thức).
 
 ```mermaid
 flowchart TD
@@ -541,7 +551,8 @@ flowchart TD
     F -->|Đúng| G["AI phân tích bổ sung\ncác thực thể khó"]
     F -->|Sai| J["Truy xuất tri thức kết hợp\n(Dữ liệu có cấu trúc + Vector tùy chọn)"]
     G --> J
-    J --> K["Mô hình AI tạo câu trả lời\ntừ ngữ cảnh đã truy xuất"]
+    J --> JA["Đồng bộ ngữ cảnh RAG\n(Context Alignment)"]
+    JA --> K["Mô hình AI tạo câu trả lời\ntừ ngữ cảnh đã truy xuất"]
     K -->|Lỗi/Vượt hạn mức| L["Chuyển đổi dự phòng AI\n(AI Failover)"]
     L --> K
     K --> M["Lưu nhật ký chat & Bộ nhớ đệm"]
@@ -556,13 +567,17 @@ flowchart TD
 | --- | --- | --- | --- | --- |
 | 1 | Tiếp nhận yêu cầu | Nội dung câu hỏi, mã phiên tùy chọn và ngôn ngữ | Yêu cầu hợp lệ | Kiểm tra dữ liệu đầu vào và xác định phiên gửi câu hỏi |
 | 2 | Kiểm soát ý định | Câu hỏi đã chuẩn hóa | Ý định và trạng thái trong/ngoài phạm vi | Ngăn câu hỏi không liên quan sử dụng tài nguyên AI |
-| 3 | Phân tích truy vấn | Câu hỏi thuộc phạm vi | Các thực thể và điểm tin cậy | Hiểu điều kiện tìm kiếm bằng quy tắc và từ điển động |
-| 4 | Bộ nhớ đệm | Ngôn ngữ, ý định và câu hỏi chuẩn hóa | Phản hồi có sẵn hoặc trạng thái không tìm thấy cache | Giảm thời gian phản hồi và số lần gọi AI |
-| 5 | Định tuyến NLU | Các thực thể và điểm tin cậy | Bộ thực thể được giữ nguyên hoặc bổ sung | Chỉ sử dụng AI phân tích khi câu hỏi chưa đủ rõ |
-| 6 | Truy xuất tri thức | Ý định và các điều kiện đã phân tích | Tour, lịch, địa điểm, bài viết và chính sách liên quan | Kết hợp bộ lọc nghiệp vụ với xếp hạng embedding |
-| 7 | Tạo phản hồi | Câu hỏi và ngữ cảnh đã truy xuất | Câu trả lời tự nhiên và các thẻ gợi ý | Trả lời dựa trên dữ liệu nội bộ thay vì kiến thức suy đoán |
-| 8 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế, hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
-| 9 | Lưu trữ kết quả | Câu hỏi, ngữ cảnh, phản hồi và thông tin xử lý | Nhật ký chat và phản hồi cache | Hỗ trợ theo dõi, phân tích và tái sử dụng phản hồi |
+| 3 | Greeting Fast Path | Ý định `greeting` | Phản hồi lời chào tức thì | Bỏ qua toàn bộ pipeline để tiết kiệm tài nguyên |
+| 4 | Phân tích truy vấn | Câu hỏi thuộc phạm vi | Các thực thể và điểm tin cậy | Hiểu điều kiện tìm kiếm bằng quy tắc và từ điển động |
+| 5 | Bộ nhớ đệm | Ngôn ngữ, ý định và câu hỏi chuẩn hóa | Phản hồi có sẵn hoặc trạng thái không tìm thấy cache | Giảm thời gian phản hồi và số lần gọi AI |
+| 6 | Định tuyến NLU | Các thực thể và điểm tin cậy | Bộ thực thể được giữ nguyên hoặc bổ sung | Chỉ sử dụng AI phân tích khi câu hỏi chưa đủ rõ |
+| 7 | Chuẩn hóa truy vấn | Thực thể văn bản (tên địa điểm) | Thực thể đã được ánh xạ sang định danh cơ sở dữ liệu (`location_id`) | Tăng độ chính xác khi lọc dữ liệu có cấu trúc |
+| 8 | Truy xuất tri thức | Ý định và các điều kiện đã phân tích | Tour, lịch, địa điểm, bài viết và chính sách liên quan | Kết hợp bộ lọc nghiệp vụ với xếp hạng embedding |
+| 9 | Xây dựng gợi ý | Kết quả SQL và vector | Danh sách thẻ gợi ý tour/địa điểm/blog đã xếp hạng | Hợp nhất, xếp hạng và chọn kết quả tốt nhất để trả về giao diện |
+| 10 | Đồng bộ ngữ cảnh (Context Alignment) | Danh sách thẻ gợi ý và kết quả tìm kiếm | Ngữ cảnh đã sắp xếp ưu tiên các thẻ gợi ý lên đầu | Đảm bảo phản hồi của LLM khớp và trích dẫn đúng các thẻ gợi ý hiển thị |
+| 11 | Tạo phản hồi | Câu hỏi và ngữ cảnh đã truy xuất | Câu trả lời tự nhiên | Trả lời dựa trên dữ liệu nội bộ thay vì kiến thức suy đoán |
+| 12 | Cơ chế chuyển đổi dự phòng AI (AI Failover) | Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ | Nhà cung cấp hoặc khóa truy cập thay thế (Gemini → Groq → OpenRouter), hoặc phản hồi dự phòng | Tăng khả năng sẵn sàng của chatbot |
+| 13 | Lưu trữ kết quả | Câu hỏi, ngữ cảnh, phản hồi và thông tin xử lý | Nhật ký chat và phản hồi lưu trữ | Hỗ trợ theo dõi, phân tích và tái sử dụng phản hồi |
 
 ### 2.9.4. Nguyên tắc thiết kế các thành phần
 
@@ -571,9 +586,13 @@ flowchart TD
 | Thành phần | Nguyên tắc thiết kế | Kết quả đạt được |
 | --- | --- | --- |
 | Kiểm soát phạm vi | Câu hỏi ngoài nghiệp vụ được xử lý bằng kịch bản cố định | Giảm chi phí và hạn chế chatbot trả lời sai chủ đề |
+| Greeting Fast Path | Lời chào được xử lý tức thì, bỏ qua toàn bộ pipeline | Tiết kiệm tài nguyên AI và giảm độ trễ với câu hỏi đơn giản |
 | Phân tích truy vấn | Ưu tiên quy tắc nhanh, chỉ dùng AI khi độ tin cậy thấp | Cân bằng giữa tốc độ, chi phí và khả năng hiểu ngôn ngữ tự nhiên |
+| Chuẩn hóa truy vấn | Ánh xạ tên địa điểm thành định danh cơ sở dữ liệu | Tăng độ chính xác kết quả lọc có cấu trúc |
 | Truy xuất dữ liệu | Giá, lịch, địa chỉ và trạng thái được lấy từ cơ sở dữ liệu đang vận hành | Câu trả lời bám sát dữ liệu thật của hệ thống |
 | Tìm kiếm ngữ nghĩa | Dùng embedding để tìm nội dung gần nghĩa dù không trùng hoàn toàn từ khóa | Cải thiện truy vấn mơ hồ về tour, địa điểm, bài viết và chính sách |
+| Xây dựng gợi ý | Hợp nhất kết quả SQL và vector, xếp hạng và trả thẻ gợi ý kèm theo câu trả lời | Người dùng nhận được cả câu trả lời văn bản và gợi ý tour/địa điểm có thể đặt ngay |
+| Đồng bộ ngữ cảnh | Đưa thông tin của các thẻ gợi ý xếp hạng cao lên đầu prompt | AI trả lời đồng nhất, chính xác theo các thẻ gợi ý hiển thị bên dưới |
 | Kiểm soát ngữ cảnh | Chỉ gửi một số kết quả liên quan nhất đến mô hình AI | Giảm token và giảm nguy cơ mô hình sử dụng dữ liệu không liên quan |
 | Khả năng chịu lỗi | Luân chuyển khóa, nhà cung cấp và có câu trả lời dự phòng | Chatbot vẫn phản hồi khi một dịch vụ AI gặp sự cố |
 | Lưu trữ | Tách nhật ký hội thoại và bộ nhớ đệm phản hồi | Hỗ trợ phân tích hoạt động mà không nhầm với memory nhiều lượt |
@@ -590,14 +609,16 @@ Quá trình xử lý thực tế qua Bộ định tuyến NLU lai:
 
 | Giai đoạn | Chi tiết xử lý và kết quả |
 | --- | --- |
-| **1. Kiểm soát phạm vi** | Câu hỏi hợp lệ và được phân loại vào nhóm tìm kiếm tour. |
-| **2. Phân tích bằng quy tắc** | Hệ thống nhận diện được điểm đến là Cầu Rồng và số khách là 3 người, nhưng chưa xác định chắc chắn mức ngân sách và ngày đi tương đối. Điểm tin cậy được tính là $0{,}55$. |
-| **3. Kiểm tra bộ nhớ đệm** | Hệ thống kiểm tra xem câu hỏi tương ứng đã có phản hồi còn hiệu lực hay chưa. Nếu chưa có thì tiếp tục phân tích. |
-| **4. Quyết định dùng AI phân tích** | Vì $0{,}55 < 0{,}8$ và câu hỏi chứa nhiều điều kiện, hệ thống kích hoạt AI để bổ sung thông tin còn thiếu. |
-| **5. Bổ sung thực thể** | AI giải nghĩa “tuần sau” thành ngày cụ thể theo thời gian hệ thống và chuyển “khoảng 1,5 triệu” thành mức ngân sách tối đa 1.500.000 đồng. |
-| **6. Truy xuất tri thức RAG** | Lọc các tour đang hoạt động theo điểm đến, ngân sách, số người và lịch khởi hành; đồng thời lấy bài viết hoặc bản ghi cơ sở tri thức liên quan. Tìm kiếm embedding chỉ tham gia khi Vector RAG được bật và bản ghi đã có embedding. |
-| **7. Tạo câu trả lời** | Mô hình AI nhận câu hỏi cùng dữ liệu đã truy xuất, sau đó tạo câu trả lời ngắn gọn và các thẻ gợi ý phù hợp. |
-| **8. Lưu trữ** | Hệ thống ghi nhật ký xử lý và lưu phản hồi vào bộ nhớ đệm để tái sử dụng khi gặp câu hỏi tương tự. |
+| **1. Kiểm soát phạm vi** | Câu hỏi hợp lệ và được phân loại vào nhóm tìm kiếm tour (ý định `tour`). Không phải lời chào nên không đi vào Greeting Fast Path. |
+| **2. Phân tích bằng quy tắc** | Hệ thống nhận diện được điểm đến là Cầu Rồng và số khách là 3 người bằng quy tắc định sẵn, nhưng chưa xác định chắc chắn mức ngân sách và ngày đi tương đối. Điểm tin cậy được tính là $0{,}55$. |
+| **3. Kiểm tra bộ nhớ đệm** | Hệ thống kiểm tra xem câu hỏi tương ứng đã có phản hồi còn hiệu lực hay chưa trong bộ nhớ đệm. Nếu chưa có thì tiếp tục phân tích. |
+| **4. Quyết định dùng AI phân tích** | Vì $0{,}55 < 0{,}8$ và câu hỏi chứa nhiều điều kiện, hệ thống kích hoạt mô hình AI để bổ sung thông tin thực thể còn thiếu. |
+| **5. Bổ sung thực thể** | Mô hình AI giải nghĩa "tuần sau" thành ngày cụ thể theo thời gian hệ thống và chuyển "khoảng 1,5 triệu" thành mức ngân sách tối đa 1.500.000 đồng. |
+| **6. Chuẩn hóa truy vấn** | Hệ thống ánh xạ tên "Cầu Rồng" sang khóa chính `location_id` tương ứng trong cơ sở dữ liệu để phục vụ bước lọc dữ liệu chính xác hơn. |
+| **7. Truy xuất tri thức RAG** | Hệ thống lọc các tour đang hoạt động theo điểm đến, ngân sách, số người và lịch khởi hành từ cơ sở dữ liệu, đồng thời tìm kiếm ngữ nghĩa trên cơ sở tri thức để lấy các bài viết hoặc chính sách liên quan. |
+| **8. Xây dựng gợi ý** | Hệ thống hợp nhất kết quả tìm kiếm có cấu trúc và không cấu trúc, xếp hạng theo mức độ phù hợp và tạo danh sách thẻ gợi ý đính kèm phản hồi. |
+| **9. Tạo câu trả lời** | Mô hình AI nhận câu hỏi cùng dữ liệu ngữ cảnh đã truy xuất để tạo câu trả lời tự nhiên ngắn gọn kèm theo các thẻ gợi ý. |
+| **10. Lưu trữ** | Hệ thống ghi nhật ký hội thoại và lưu phản hồi vào bộ nhớ đệm để tái sử dụng cho các câu hỏi tương tự. |
 
 ## 2.10. Biểu đồ hoạt động tìm kiếm/gợi ý
 
@@ -627,142 +648,7 @@ flowchart TB
     API --> PDF["DomPDF / Excel\nXuất báo cáo & Hóa đơn"]
 ```
 
-## 2.12. Thiết kế cơ sở dữ liệu mức logic
-
-Các thực thể chính:
-
-*Bảng 2.16: Các nhóm bảng thực thể chính trong cơ sở dữ liệu*
-
-| Nhóm | Bảng/Model | Mô tả |
-| --- | --- | --- |
-| Người dùng | `users`, `refresh_tokens` | Tài khoản, vai trò, xác thực và mã thông báo làm mới |
-| Địa điểm | `locations`, `categories`, `subcategories` | Thông tin địa điểm du lịch và phân loại |
-| Tiện ích/thẻ phân loại | `tags`, `amenities`, `location_tags`, `location_amenities` | Gắn nhãn và tiện ích cho địa điểm |
-| Tour | `tours`, `tour_categories`, `tour_schedules`, `tour_locations` | Tour, danh mục, lịch khởi hành và địa điểm trong tour |
-| Đặt tour | `bookings`, `booking_items`, `cart_items` | Đặt tour, chi tiết đơn đặt tour, giỏ hàng, khuyến mãi và phiếu giảm giá đã áp dụng |
-| Thanh toán | `payments` | Giao dịch thanh toán, trạng thái và mã giao dịch |
-| Tương tác | `favorites`, `ratings`, `rating_images`, `rating_helpful_votes`, `views`, `search_logs` | Yêu thích, đánh giá, ảnh đánh giá, lượt ghi nhận hữu ích, lượt xem và hành vi tìm kiếm |
-| Điểm thành viên | `user_point_balances`, `point_rules`, `point_rewards`, `point_transactions`, `user_vouchers` | Số dư, quy tắc cộng điểm, phần thưởng, lịch sử điểm và phiếu giảm giá cá nhân |
-| Nội dung | `blog_posts`, `blog_categories`, `landing_pages` | Bài viết du lịch và trang đích |
-| Vận hành | `contacts`, `notifications`, `settings`, `promotions` | Liên hệ, thông báo, cấu hình và khuyến mãi |
-| Chatbot | `chat_messages`, `chat_cache`, `chat_knowledge_base` | Lịch sử chat, bộ nhớ đệm phản hồi và cơ sở tri thức |
-
-## 2.13. Mô tả một số bảng dữ liệu chính
-
-### 2.13.1. Bảng `users`
-
-*Bảng 2.17: Cấu trúc dữ liệu chi tiết của bảng users*
-
-| Trường | Ý nghĩa |
-| --- | --- |
-| `id` | Khóa chính |
-| `username` | Tên đăng nhập, duy nhất |
-| `email` | Email, duy nhất |
-| `password` | Mật khẩu đã mã hóa |
-| `full_name` | Họ tên người dùng |
-| `avatar` | Ảnh đại diện |
-| `phone`, `birthdate`, `gender`, `city` | Thông tin cá nhân bổ sung |
-| `role` | Vai trò `user` hoặc `admin` |
-| `status` | Trạng thái `active`, `blocked`, `pending` |
-| `email_verified_at`, `last_login_at` | Thông tin xác thực và lần đăng nhập cuối |
-
-### 2.13.2. Bảng `locations`
-
-*Bảng 2.18: Cấu trúc dữ liệu chi tiết của bảng locations*
-
-| Trường | Ý nghĩa |
-| --- | --- |
-| `id` | Khóa chính |
-| `name`, `slug` | Tên và định danh URL của địa điểm |
-| `category_id`, `subcategory_id` | Danh mục và danh mục con |
-| `description`, `short_description` | Nội dung giới thiệu |
-| `address`, `district`, `ward` | Địa chỉ |
-| `latitude`, `longitude` | Tọa độ bản đồ |
-| `opening_hours` | Giờ mở cửa dạng JSON |
-| `price_min`, `price_max`, `price_level` | Khoảng giá |
-| `avg_rating`, `review_count`, `view_count`, `favorite_count` | Thống kê tương tác |
-| `thumbnail`, `images`, `video_url` | Tệp hình ảnh và video |
-| `status`, `is_featured` | Trạng thái hiển thị và nổi bật |
-
-### 2.13.3. Bảng `tours`
-
-*Bảng 2.19: Cấu trúc dữ liệu chi tiết của bảng tours*
-
-| Trường | Ý nghĩa |
-| --- | --- |
-| `id` | Khóa chính |
-| `name`, `slug` | Tên và định danh URL |
-| `tour_category_id` | Danh mục tour |
-| `description`, `short_desc` | Mô tả tour |
-| `itinerary`, `inclusions`, `exclusions` | Lịch trình, bao gồm, không bao gồm |
-| `price_adult`, `price_child`, `price_infant` | Giá theo nhóm khách |
-| `discount_percent` | Phần trăm giảm giá |
-| `duration`, `start_time`, `meeting_point` | Thời lượng, giờ đi, điểm hẹn |
-| `max_people`, `min_people` | Số khách tối đa/tối thiểu |
-| `available_from`, `available_to` | Thời gian mở bán |
-| `booking_availability` | Trạng thái còn nhận đặt tour hay đã hết chỗ |
-| `is_featured`, `is_hot` | Đánh dấu nổi bật/hot |
-| `view_count`, `booking_count`, `rating_count`, `rating_avg` | Thống kê |
-
-### 2.13.4. Bảng `tour_schedules`
-
-*Bảng 2.20: Cấu trúc dữ liệu chi tiết của bảng tour_schedules*
-
-| Trường | Ý nghĩa |
-| --- | --- |
-| `id` | Khóa chính |
-| `tour_id` | Tour tương ứng |
-| `start_date`, `end_date` | Ngày bắt đầu và kết thúc |
-| `max_people`, `booked_people` | Số chỗ tối đa và đã đặt |
-| `price_adult`, `price_child`, `price_infant` | Giá override theo lịch |
-| `status` | Trạng thái lịch khởi hành |
-
-### 2.13.5. Bảng `bookings`
-
-*Bảng 2.21: Cấu trúc dữ liệu chi tiết của bảng bookings*
-
-| Trường | Ý nghĩa |
-| --- | --- |
-| `id`, `booking_code` | Khóa chính và mã đặt tour |
-| `user_id` | Người đặt, có thể null nếu hỗ trợ khách |
-| `customer_name`, `customer_email`, `customer_phone`, `customer_address` | Thông tin khách hàng |
-| `customer_note` | Ghi chú của khách |
-| `total_amount`, `discount_amount`, `final_amount`, `deposit_amount` | Tổng tiền, giảm giá, số tiền cuối, tiền cọc |
-| `payment_method`, `payment_status`, `booking_status` | Phương thức, trạng thái thanh toán, trạng thái đặt tour |
-| `promotion_id`, `user_voucher_id` | Khuyến mãi chung và phiếu giảm giá cá nhân được áp dụng |
-| `booked_at`, `confirmed_at`, `cancelled_at`, `completed_at` | Các mốc thời gian nghiệp vụ |
-
-### 2.13.6. Bảng `payments`
-
-*Bảng 2.22: Cấu trúc dữ liệu chi tiết của bảng payments*
-
-| Trường | Ý nghĩa |
-| --- | --- |
-| `id` | Khóa chính |
-| `booking_id` | Đơn đặt tour liên quan |
-| `transaction_code` | Mã giao dịch duy nhất |
-| `amount` | Số tiền thanh toán |
-| `payment_method` | Phương thức thanh toán |
-| `payment_status` | Trạng thái `pending`, `success`, `failed`, `refunded` |
-| `payment_gateway` | Cổng thanh toán |
-| `gateway_response` | Dữ liệu phản hồi từ cổng thanh toán |
-| `paid_at`, `refunded_at`, `refund_reason` | Thông tin thanh toán/hoàn tiền |
-
-### 2.13.7. Nhóm bảng điểm thành viên
-
-*Bảng 2.22a: Vai trò của các bảng điểm thành viên*
-
-| Bảng | Vai trò |
-| --- | --- |
-| `user_point_balances` | Lưu điểm khả dụng, tổng điểm đã nhận và tổng điểm đã sử dụng của từng người dùng |
-| `point_rules` | Khai báo hành động được cộng điểm, số điểm, giới hạn theo ngày và yêu cầu duyệt |
-| `point_rewards` | Khai báo phần thưởng đổi điểm, giá trị giảm, giá trị đơn tối thiểu, thời hạn và giới hạn sử dụng |
-| `point_transactions` | Lưu từng biến động điểm, số dư sau giao dịch, nguồn phát sinh và trạng thái |
-| `user_vouchers` | Lưu phiếu giảm giá cá nhân được cấp sau khi đổi điểm và trạng thái sử dụng |
-
-Thao tác cộng hoặc đổi điểm được thực hiện trong giao dịch cơ sở dữ liệu. Mã nguồn kiểm tra nguồn phát sinh để hạn chế cộng điểm trùng và khóa số dư khi đổi thưởng để tránh trừ điểm đồng thời.
-
-## 2.14. Thiết kế API
+## 2.12. Thiết kế API
 
 API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 
@@ -770,29 +656,11 @@ API được đặt dưới prefix `/api/v1` và chia thành ba nhóm:
 - API yêu cầu xác thực: `/auth/me`, `/user/profile`, `/user/bookings`, `/payments`, `/cart`, `/ratings`, `/recommendations`, `/user/notifications`, `/user/points`, `/user/point-rewards`, `/user/vouchers`.
 - API quản trị: `/admin/dashboard`, `/admin/locations`, `/admin/tours`, `/admin/tour-schedules`, `/admin/bookings`, `/admin/payments`, `/admin/users`, `/admin/blog-posts`, `/admin/ratings`, `/admin/settings`, `/admin/promotions`.
 
-## 2.15. Ma trận chức năng và API
-
-*Bảng 2.23: Ma trận phân hệ chức năng giao diện và API tương ứng*
-
-| Phân hệ | Giao diện sử dụng | API chính |
-| --- | --- | --- |
-| Trang chủ | Website người dùng | `GET /home`, `/home/locations`, `/home/tours`, `/home/blogs` |
-| Địa điểm | Website người dùng, trang quản trị | `GET /locations`, `GET /locations/{slug}`, `POST /admin/locations` |
-| Tour | Website người dùng, trang quản trị | `GET /tours`, `GET /tours/{slug}`, `POST /admin/tours` |
-| Đặt tour | Website người dùng, trang quản trị | `POST /bookings/calculate`, `POST /bookings`, `GET /user/bookings`, `GET /admin/bookings` |
-| Thanh toán | Website người dùng, trang quản trị | `POST /payments/create`, `GET /payments/status/{code}`, `POST /sepay/ipn`, `PATCH /admin/bookings/{id}/confirm-payment` |
-| Khuyến mãi | Website người dùng, trang quản trị | `GET /promotions`, `POST /promotions/validate`, `GET /admin/promotions`, `POST /admin/promotions` |
-| Điểm và phiếu giảm giá | Website người dùng | `GET /user/points`, `GET /user/points/history`, `GET /user/point-rewards`, `POST /user/point-rewards/{id}/redeem`, `GET /user/vouchers` |
-| Đánh giá | Website người dùng, trang quản trị | `POST /ratings`, `POST /ratings/{id}/helpful`, `GET /admin/ratings`, `PATCH /admin/ratings/{id}/approve` |
-| Blog | Website người dùng, trang quản trị | `GET /blog`, `GET /blog/{slug}`, `POST /admin/blog-posts` |
-| Chatbot | Website người dùng | `POST /chat` |
-| Báo cáo | Trang quản trị | `/admin/dashboard/*`, `/admin/reports/*` |
-
-## 2.16. Danh sách sơ đồ cần xuất hình trong báo cáo
+## 2.13. Danh sách sơ đồ cần xuất hình trong báo cáo
 
 Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. Khi đưa vào Word, cần dựng lại bằng draw.io/Figma/PlantUML và xuất thành hình có chú thích:
 
-*Bảng 2.24: Danh mục các sơ đồ kỹ thuật cần thiết kế cho báo cáo*
+*Bảng 2.16: Danh mục các sơ đồ kỹ thuật cần thiết kế cho báo cáo*
 
 | Mã hình | Tên hình đề xuất | Nội dung |
 | --- | --- | --- |
@@ -800,9 +668,8 @@ Các sơ đồ trong file Markdown chỉ là mã nguồn hoặc bản mô tả. 
 | Hình 2.2 | Biểu đồ use case phân rã - Người dùng | Biểu đồ use case phân rã chi tiết cho tác nhân Người dùng đã đăng nhập |
 | Hình 2.3 | Biểu đồ use case phân rã - Quản trị viên | Biểu đồ use case phân rã chi tiết cho tác nhân Quản trị viên |
 | Hình 2.4 | Kiến trúc tổng thể hệ thống DanangTrip | Website người dùng Next.js, trang quản trị React/Vite, Laravel API, PostgreSQL/Supabase, nhà cung cấp AI, Cloudinary, SePay và dịch vụ thư điện tử |
-| Hình 2.5 | Quy trình AI Chatbot | Bộ kiểm soát ý định, phân tích truy vấn, bảng bộ nhớ đệm, truy xuất có cấu trúc, tìm kiếm embedding, nhà cung cấp AI và chuyển đổi dự phòng |
+| Hình 2.5 | Quy trình AI Chatbot | Bộ kiểm soát ý định, phân tích truy vấn, bảng bộ nhớ đệm (Semantic Cache), checklist làm rõ tương tác, truy xuất có cấu trúc, tìm kiếm embedding, nhà cung cấp AI và chuyển đổi dự phòng |
 | Hình 2.6 | Biểu đồ tuần tự đặt tour và thanh toán | Luồng từ chọn tour đến tạo đơn đặt tour, tạo thanh toán và nhận IPN |
-| Hình 2.7 | Biểu đồ tuần tự chatbot | Luồng từ câu hỏi người dùng đến truy xuất dữ liệu và tạo phản hồi |
-| Hình 2.8 | ERD cơ sở dữ liệu | Các bảng chính: users, tours, tour_schedules, bookings, payments, locations, ratings, rating_helpful_votes, nhóm điểm thành viên và nhóm bảng chat |
-| Hình 2.9 | Sơ đồ cấu trúc các lớp xử lý chatbot | Mối quan hệ và luồng điều phối giữa các lớp dịch vụ chatbot trong hệ thống |
-| Hình 2.10 | Quy trình đổi điểm lấy phiếu giảm giá | Kiểm tra phần thưởng, khóa số dư, trừ điểm, ghi giao dịch và cấp phiếu giảm giá |
+| Hình 2.7 | Biểu đồ tuần tự chatbot | Luồng từ câu hỏi người dùng đến truy xuất dữ liệu, tương tác làm rõ qua checklist và tạo phản hồi |
+| Hình 2.8 | Sơ đồ cấu trúc các lớp xử lý chatbot | Mối quan hệ và luồng điều phối giữa các lớp dịch vụ chatbot trong hệ thống |
+| Hình 2.9 | Quy trình đổi điểm lấy phiếu giảm giá | Kiểm tra phần thưởng, khóa số dư, trừ điểm, ghi giao dịch và cấp phiếu giảm giá |

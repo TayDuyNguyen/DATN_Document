@@ -1,6 +1,6 @@
 <?php
 
-$outputPath = 'D:/DATN/DATN_Tài liệu/database-seeders/52_public_vietnamese_content_seed.sql';
+$outputPath = 'D:/DATN/DATN_Document/database-seeders/52_public_vietnamese_content_seed.sql';
 
 $accentPattern = '/[ăâđêôơưáàảãạắằẳẵặấầẩẫậéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵĂÂĐÊÔƠƯÁÀẢÃẠẮẰẲẴẶẤẦẨẪẬÉÈẺẼẸẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌỐỒỔỖỘỚỜỞỠỢÚÙỦŨỤỨỪỬỮỰÝỲỶỸỴ]/u';
 $unaccentedVietnamesePattern = '/\b(da nang|hoi an|hue|du lich|am thuc|dia diem|kinh nghiem|cam nang|lich trinh|van hoa|khach san|nha hang|bai bien|tour|chuyen di|tham quan|di chuyen|nghi duong|gia dinh|huong dan|mien trung|ngu hanh son|son tra|ba na|hai van|my son)\b/iu';
@@ -136,7 +136,7 @@ $lines = [
 
 $updates = 0;
 
-foreach (DB::table('tour_categories')->select('id', 'name')->orderBy('id')->get() as $row) {
+foreach (DB::table('tour_categories')->select('id', 'slug', 'name')->orderBy('id')->get() as $row) {
     if (! $shouldRewrite($row->name)) {
         continue;
     }
@@ -148,11 +148,11 @@ foreach (DB::table('tour_categories')->select('id', 'name')->orderBy('id')->get(
         default => $vietnamize($row->name),
     };
 
-    $lines[] = "UPDATE tour_categories SET name = {$sqlQuote($name)}, updated_at = NOW() WHERE id = {$row->id};";
+    $lines[] = "UPDATE tour_categories SET name = {$sqlQuote($name)}, updated_at = NOW() WHERE slug = {$sqlQuote($row->slug)};";
     $updates++;
 }
 
-foreach (DB::table('locations')->select('id', 'name', 'description', 'short_description', 'address', 'district', 'ward', 'status')->orderBy('id')->get() as $row) {
+foreach (DB::table('locations')->select('id', 'slug', 'name', 'description', 'short_description', 'address', 'district', 'ward', 'status')->orderBy('id')->get() as $row) {
     $name = $vietnamize($row->name);
     if (! $hasAccent($name) && $shouldRewrite($row->name)) {
         $name = 'Địa điểm '.$name;
@@ -201,11 +201,11 @@ foreach (DB::table('locations')->select('id', 'name', 'description', 'short_desc
     }
     $sets[] = 'updated_at = NOW()';
 
-    $lines[] = 'UPDATE locations SET '.implode(', ', $sets)." WHERE id = {$row->id};";
+    $lines[] = 'UPDATE locations SET '.implode(', ', $sets)." WHERE slug = {$sqlQuote($row->slug)};";
     $updates++;
 }
 
-foreach (DB::table('tours')->select('id', 'name', 'description', 'short_desc', 'duration', 'meeting_point', 'itinerary', 'inclusions', 'exclusions', 'status')->orderBy('id')->get() as $row) {
+foreach (DB::table('tours')->select('id', 'slug', 'name', 'description', 'short_desc', 'duration', 'meeting_point', 'itinerary', 'inclusions', 'exclusions', 'status')->orderBy('id')->get() as $row) {
     $name = $vietnamize($row->name);
     if (! $hasAccent($name) && $shouldRewrite($row->name)) {
         $name = "Tour miền Trung {$row->id}";
@@ -268,7 +268,7 @@ foreach (DB::table('tours')->select('id', 'name', 'description', 'short_desc', '
     }
     $sets[] = 'updated_at = NOW()';
 
-    $lines[] = 'UPDATE tours SET '.implode(', ', $sets)." WHERE id = {$row->id};";
+    $lines[] = 'UPDATE tours SET '.implode(', ', $sets)." WHERE slug = {$sqlQuote($row->slug)};";
     $updates++;
 }
 
@@ -302,11 +302,11 @@ foreach (DB::table('blog_posts')->select('id', 'title', 'slug', 'excerpt', 'cont
     }
     $sets[] = 'updated_at = NOW()';
 
-    $lines[] = 'UPDATE blog_posts SET '.implode(', ', $sets)." WHERE id = {$row->id};";
+    $lines[] = 'UPDATE blog_posts SET '.implode(', ', $sets)." WHERE slug = {$sqlQuote($row->slug)};";
     $updates++;
 }
 
-foreach (DB::table('landing_pages')->select('id', 'title', 'intro', 'seo_title', 'seo_description', 'content_blocks')->orderBy('id')->get() as $row) {
+foreach (DB::table('landing_pages')->select('id', 'slug', 'title', 'intro', 'seo_title', 'seo_description', 'content_blocks')->orderBy('id')->get() as $row) {
     $needsTitle = $shouldRewrite($row->title);
     $needsIntro = $shouldRewrite($row->intro);
     $needsSeoTitle = $shouldRewrite($row->seo_title);
@@ -343,11 +343,11 @@ foreach (DB::table('landing_pages')->select('id', 'title', 'intro', 'seo_title',
     }
     $sets[] = 'updated_at = NOW()';
 
-    $lines[] = 'UPDATE landing_pages SET '.implode(', ', $sets)." WHERE id = {$row->id};";
+    $lines[] = 'UPDATE landing_pages SET '.implode(', ', $sets)." WHERE slug = {$sqlQuote($row->slug)};";
     $updates++;
 }
 
-foreach (DB::table('promotions')->select('id', 'name', 'description')->orderBy('id')->get() as $row) {
+foreach (DB::table('promotions')->select('id', 'code', 'name', 'description')->orderBy('id')->get() as $row) {
     $needsName = $shouldRewrite($row->name);
     $needsDescription = $shouldRewrite($row->description);
 
@@ -367,7 +367,7 @@ foreach (DB::table('promotions')->select('id', 'name', 'description')->orderBy('
     }
     $sets[] = 'updated_at = NOW()';
 
-    $lines[] = 'UPDATE promotions SET '.implode(', ', $sets)." WHERE id = {$row->id};";
+    $lines[] = 'UPDATE promotions SET '.implode(', ', $sets)." WHERE code = {$sqlQuote($row->code)};";
     $updates++;
 }
 

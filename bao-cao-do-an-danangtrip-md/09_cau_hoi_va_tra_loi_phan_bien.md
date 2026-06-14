@@ -99,7 +99,7 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
 
 ### Câu 3.2a: Chatbot hiện tại có nhớ ngữ cảnh nhiều lượt hay không?
 * **Trả lời**:
-  Chưa hoàn chỉnh. Server API có lưu `session_id`, câu hỏi và câu trả lời trong `chat_messages`, nhưng chưa truy vấn các tin nhắn trước để đưa vào prompt của lượt tiếp theo. Website hiện giữ tin nhắn bằng Zustand trong bộ nhớ của trang và chưa gửi `session_id` đến API. Vì vậy chatbot xử lý tốt từng câu hỏi độc lập nhưng có thể không hiểu câu nối tiếp như "còn tour nào rẻ hơn?" nếu câu đó không chứa đủ thực thể.
+  Chưa hoàn chỉnh. Server API có lưu `session_id`, câu hỏi và câu trả lời trong `chat_messages`, nhưng chưa truy vấn các tin nhắn trước để đưa vào prompt của lượt tiếp theo. Website hiện đã tạo và gửi `session_id` đến API, đồng thời giữ danh sách tin nhắn bằng Zustand trong bộ nhớ của trang. Tuy vậy backend chưa dùng lịch sử theo `session_id` để dựng prompt hội thoại nhiều lượt, nên chatbot vẫn chủ yếu xử lý tốt từng câu hỏi độc lập và có thể không hiểu câu nối tiếp như "còn tour nào rẻ hơn?" nếu câu đó không chứa đủ thực thể.
 
 ### Câu 3.2b: Vì sao gọi kiến trúc hiện tại là Hybrid RAG quy mô đồ án?
 * **Trả lời**:
@@ -123,6 +123,8 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
   Hệ thống thực hiện tối ưu hóa 3 tầng:
   * **Tầng Cơ sở dữ liệu (PostgreSQL)**:
     * Đánh chỉ mục B-Tree cho các trường tìm kiếm và sắp xếp thường xuyên (`price`, `starts_at`, `status`).
+
+
     * Có thể bổ sung chỉ mục `GIN` kết hợp `tsvector` cho tìm kiếm toàn văn khi khối lượng dữ liệu tăng; đây là hướng tối ưu, không phải chức năng đã được chứng minh trong phiên bản hiện tại.
     * Phân vùng dữ liệu (Partitioning) đối với các bảng ghi nhật ký có dung lượng lớn như `payments` hoặc `bookings`.
   * **Tầng API (Laravel)**:
@@ -132,3 +134,18 @@ Tài liệu này tổng hợp câu hỏi và câu trả lời gợi ý phục v�
   * **Tầng Giao diện (Next.js/React)**:
     * Áp dụng danh sách ảo (Virtual List) đối với danh sách hiển thị dài.
     * Tải ảnh lười (Lazy Loading) thông qua bộ tối ưu hóa ảnh của Next.js giúp giảm dung lượng mạng tải trang.
+
+### Câu 3.6: Trong truy xuất kết hợp (Hybrid Retrieval), khi lọc dữ liệu bằng SQL LIKE với nhiều điều kiện kết hợp nghiêm ngặt (strict AND), làm thế nào để tránh tình trạng hệ thống không tìm thấy kết quả do câu hỏi chứa các từ tự nhiên dư thừa hoặc thông tin giá cả?
+* **Trả lời**:
+  * Để khắc phục vấn đề này, hệ thống thực hiện hai bước tiền xử lý chuỗi truy vấn SQL trước khi tạo mệnh đề `LIKE`:
+    1. **Lọc stopWords**: Hệ thống sử dụng một danh sách stopWords tiếng Việt chọn lọc (các trợ từ, từ xưng hô, động từ/danh từ chung như *"ăn"*, *"uống"*, *"quán"*, *"tour"*, *"tại"*, *"ở"*) để loại bỏ các từ dư thừa không mang giá trị định danh.
+    2. **Tách và lọc bỏ thực thể số/giá cả**: Các thông tin chỉ mức giá (như *"500k"*, *"1.5 triệu"*, *"1tr"*) đã được NLU trích xuất riêng thành các ràng buộc số (`max_price`/`min_price`) để lọc theo cột dữ liệu số. Hệ thống sẽ lọc bỏ hoàn toàn các từ chứa chữ số và đơn vị tiền tệ này ra khỏi chuỗi truy vấn văn bản để tránh làm sai lệch mệnh đề `LIKE` của SQL.
+  * Nhờ đó, câu hỏi tự nhiên như *"Tìm quán ăn hải sản dưới 500k"* sau khi xử lý chỉ còn lại từ khóa chất lượng là *"hải sản"*, giúp truy vấn SQL `LIKE` hoạt động chính xác và không bị rỗng.
+
+### Câu 3.7: Làm thế nào để giải quyết vấn đề câu trả lời văn bản của mô hình AI không đồng nhất với các thẻ gợi ý (Tours, Địa điểm, Bài viết) hiển thị ở giao diện bên dưới?
+* **Trả lời**:
+  * Hệ thống giải quyết bằng kỹ thuật **Đồng bộ ngữ cảnh (Context Alignment)** thông qua hàm `buildAlignedContext` ở tầng Service:
+    1. Sau khi `ChatRecommendationBuilderService` chấm điểm, xếp hạng và chọn ra Top 5 gợi ý tốt nhất để hiển thị thành các thẻ giao diện, danh sách ID của các thẻ này được chuyển lại cho dịch vụ ngữ cảnh.
+    2. Hệ thống nạp lại thông tin chi tiết và đầy đủ nhất của các thẻ gợi ý này và xếp chúng lên **vị trí đầu tiên** của prompt ngữ cảnh gửi cho LLM.
+    3. Prompt hệ thống yêu cầu mô hình AI bắt buộc phải trả lời dựa trên phần ngữ cảnh ưu tiên này và trích dẫn đúng tên, giá của các đối tượng trong đó.
+  * Cơ chế này đảm bảo phản hồi văn bản của AI luôn khớp hoàn toàn với danh sách các thẻ gợi ý hiển thị trực quan phía dưới khung chat.

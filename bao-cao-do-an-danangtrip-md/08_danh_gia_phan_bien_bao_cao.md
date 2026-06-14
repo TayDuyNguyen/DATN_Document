@@ -40,15 +40,15 @@ API và cơ sở dữ liệu đã có quy tắc điểm, phần thưởng và ph
 
 ### 5. Chatbot chưa có bộ nhớ hội thoại nhiều lượt
 
-Server API lưu `session_id` và nội dung trao đổi trong `chat_messages`, nhưng `ChatService` chưa truy vấn các tin nhắn trước để đưa vào prompt. Website cũng chưa gửi `session_id` và chỉ giữ danh sách tin nhắn trong Zustand của phiên trang hiện tại. Vì vậy báo cáo chỉ được mô tả đây là nhật ký chat, không được khẳng định chatbot đã nhớ ngữ cảnh nhiều lượt.
+Server API lưu `session_id` và nội dung trao đổi trong `chat_messages`, nhưng `ChatService` chưa truy vấn các tin nhắn trước để đưa vào prompt. Website hiện đã tạo `session_id` phía client, lưu trong `localStorage` và gửi kèm trong mỗi yêu cầu chat; tuy vậy giao diện vẫn chỉ giữ danh sách tin nhắn trong Zustand của phiên trang hiện tại và chưa khôi phục lại toàn bộ lịch sử sau khi tải lại trang. Vì vậy báo cáo chỉ nên mô tả đây là cơ chế gắn phiên và nhật ký chat, chưa được khẳng định chatbot đã nhớ ngữ cảnh nhiều lượt một cách hoàn chỉnh.
 
-### 6. Quota theo ngày và kiểm thử chatbot chưa hoàn chỉnh
+### 6. Kiểm thử chatbot chưa hoàn chỉnh
 
-`config/chatbot.php` có cấu hình hạn mức theo ngày cho guest, user và admin, nhưng chưa có mã thực thi các quota này. Endpoint `/api/v1/chat` hiện dùng `throttle:api.strict` theo phút. Bộ test chatbot mới có 3 trường hợp với 14 assertions, chủ yếu kiểm tra loyalty intent và nhận diện chủ đề bãi biển; chưa đủ để chứng minh cache, failover, vector ranking hoặc chống prompt injection.
+Endpoint `/api/v1/chat` hiện dùng `throttle:api.strict` theo phút để giới hạn tần suất gửi tin nhắn. Bộ test chatbot mới có 3 trường hợp với 14 assertions, chủ yếu kiểm tra loyalty intent và nhận diện chủ đề bãi biển; chưa đủ để chứng minh cache, failover, vector ranking hoặc chống prompt injection.
 
 ### 7. Dữ liệu embedding chưa phủ toàn bộ cơ sở tri thức
 
-Kết quả kiểm tra ngày 13/06/2026 cho thấy `chat_knowledge_base` có 276 bản ghi hoạt động và 256 bản ghi có embedding. Cần sinh embedding cho 20 bản ghi còn thiếu trước khi dùng số liệu minh chứng Vector RAG hoàn chỉnh.
+Kết quả kiểm tra ngày 13/06/2026 cho thấy `chat_knowledge_base` có 282 bản ghi hoạt động. Cần chạy sinh embedding cho cơ sở tri thức này để hoạt động Vector RAG đạt hiệu suất hoàn chỉnh.
 
 ### 8. Đồng bộ cache và embedding chưa khép kín với lịch khởi hành
 

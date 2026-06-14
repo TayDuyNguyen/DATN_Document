@@ -42,10 +42,9 @@
 | 4 | Bảng đặc tả ca sử dụng đăng nhập | Chương 2 |
 | 5 | Bảng đặc tả ca sử dụng đặt tour | Chương 2 |
 | 6 | Bảng đặc tả ca sử dụng thanh toán | Chương 2 |
-| 7 | Bảng thực thể cơ sở dữ liệu | Chương 2 |
-| 8 | Bảng đường dẫn website người dùng | Chương 3 |
-| 9 | Bảng đường dẫn trang quản trị | Chương 3 |
-| 10 | Bảng kết quả kiểm thử | Chương 3 |
+| 7 | Bảng đường dẫn website người dùng | Chương 3 |
+| 8 | Bảng đường dẫn trang quản trị | Chương 3 |
+| 9 | Bảng kết quả kiểm thử | Chương 3 |
 
 ## 3. Biểu đồ nên vẽ lại cho báo cáo Word
 
@@ -60,20 +59,6 @@ Nên tách ba actor: Khách truy cập, Người dùng, Quản trị viên.
 ### 3.3. Biểu đồ tuần tự đặt tour và thanh toán
 
 Nên thể hiện các đối tượng: Người dùng, Website, Laravel API, Database, SePay.
-
-### 3.4. ERD cơ sở dữ liệu
-
-Nên tập trung vào nhóm bảng chính để tránh quá rối:
-
-- `users`
-- `locations`, `categories`, `tags`, `amenities`
-- `tours`, `tour_categories`, `tour_schedules`
-- `bookings`, `booking_items`, `payments`
-- `ratings`, `favorites`, `notifications`
-- `rating_helpful_votes`
-- `user_point_balances`, `point_rules`, `point_rewards`, `point_transactions`, `user_vouchers`
-- `blog_posts`, `promotions`, `settings`
-- `chat_messages`, `chat_knowledge_base`
 
 ## 4. Mẫu bảng kết quả kiểm thử
 
@@ -109,14 +94,11 @@ Nên tập trung vào nhóm bảng chính để tránh quá rối:
 Để báo cáo đủ tốt khi nộp, cần bổ sung thêm các nội dung sau:
 
 - Ảnh chụp giao diện thật của website người dùng và trang quản trị.
-- Sơ đồ ERD vẽ bằng draw.io/Figma/PlantUML dựa trên bảng dữ liệu.
 - Biểu đồ use case tổng quan và phân rã theo từng tác nhân.
 - Biểu đồ tuần tự cho các chức năng: đăng nhập, đặt tour, thanh toán, chatbot.
 - Biểu đồ hoạt động cho các chức năng: tìm kiếm, đặt tour, quản trị tour, duyệt đánh giá.
-- Bảng mô tả chi tiết các bảng dữ liệu chính.
 - Bảng trường hợp kiểm thử có kết quả thật sau khi chạy kiểm thử.
 - Liên kết hoặc ảnh minh họa kiểm thử API bằng Postman/Swagger nếu có.
-- Ảnh minh họa cơ sở dữ liệu hoặc migration nếu giáo viên yêu cầu.
 - Ảnh minh họa kết quả đóng gói/kiểm thử đạt.
 - Bảng mô tả đầu vào/đầu ra của quy trình AI Chatbot.
 - Ví dụ truy vấn chatbot với dữ liệu thật lấy từ cơ sở dữ liệu.

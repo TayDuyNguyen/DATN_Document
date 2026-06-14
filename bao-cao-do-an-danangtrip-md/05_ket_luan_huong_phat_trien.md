@@ -8,7 +8,7 @@ Sau quá trình phân tích, thiết kế và triển khai, đề tài **"Xây d
 - Xây dựng trang quản trị bằng React/Vite phục vụ quản lý toàn bộ dữ liệu vận hành như địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, đánh giá, blog, khuyến mãi, thông báo và báo cáo.
 - Xây dựng Server API bằng Laravel với cấu trúc rõ ràng, có xác thực JWT, phân quyền quản trị viên, kiểm tra dữ liệu và phân tách theo mẫu controller-service-repository.
 - Thiết kế cơ sở dữ liệu đáp ứng các nghiệp vụ chính của hệ thống du lịch: địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, đánh giá, lượt đánh giá hữu ích, điểm thành viên, phiếu giảm giá cá nhân, yêu thích, nội dung và chatbot.
-- Tích hợp các nghiệp vụ như thanh toán SePay/VietQR, tải ảnh lên Cloudinary, xuất báo cáo Excel, sinh hóa đơn PDF, gửi email và chatbot tư vấn dựa trên dữ liệu nội bộ.
+- Tích hợp các nghiệp vụ như thanh toán SePay/VietQR, tải ảnh lên Cloudinary, xuất báo cáo Excel, sinh hóa đơn PDF, gửi email và chatbot tư vấn thông minh (ứng dụng định tuyến NLU lai, tối ưu hóa tìm kiếm SQL LIKE và đồng bộ ngữ cảnh RAG Context Alignment để đảm bảo câu trả lời luôn chính xác và đồng nhất với thẻ gợi ý).
 - Triển khai áp dụng khuyến mãi và phiếu giảm giá cá nhân trong luồng đặt tour; cộng điểm theo nguồn nghiệp vụ, đổi điểm lấy phần thưởng và quản lý lịch sử điểm.
 - Triển khai thông báo trạng thái đơn/thanh toán, thông báo điểm và tác vụ nhắc lịch khởi hành; hỗ trợ quản trị viên xác nhận thanh toán chuyển khoản thủ công.
 - Có nền tảng kiểm thử bằng PHPUnit, Playwright, Vitest và các script kiểm tra đóng gói, kiểu dữ liệu, quy tắc mã nguồn.
@@ -21,7 +21,7 @@ Do giới hạn về thời gian và phạm vi đồ án, hệ thống vẫn cò
 - Chất lượng phản hồi của chatbot phụ thuộc vào độ đầy đủ của dữ liệu trong cơ sở tri thức, độ chính xác của bước phân tích truy vấn và khả năng sẵn sàng của các nhà cung cấp AI trong cơ chế chuyển đổi dự phòng.
 - Chatbot mới ghi nhận `session_id` và lịch sử để theo dõi; chưa đưa 5-10 tin nhắn gần nhất vào prompt nên chưa hiểu đầy đủ các câu nối tiếp như "còn cái nào rẻ hơn?".
 - Tìm kiếm embedding đang tính độ tương đồng trong PHP trên một tập ứng viên giới hạn, chưa sử dụng `pgvector` hoặc chỉ mục véc-tơ chuyên dụng.
-- Cấu hình có khai báo hạn mức chatbot theo ngày nhưng mã nguồn hiện chỉ áp dụng rate limit theo phút tại endpoint; cần triển khai thêm quota theo vai trò nếu đưa vào vận hành thật.
+- Mã nguồn hiện chỉ áp dụng rate limit theo phút tại endpoint chatbot; chưa có cơ chế giới hạn số lượt hỏi trong ngày hoặc phân chia hạn mức theo vai trò người dùng.
 - Biến `CHATBOT_CACHE_DRIVER` đã được khai báo nhưng luồng hiện tại truy cập trực tiếp bảng `chat_cache`; thay đổi biến này chưa làm hệ thống chuyển sang Redis hoặc driver khác.
 - Cache được xóa khi tour, địa điểm, bài viết hoặc cài đặt thay đổi, nhưng chưa có observer tương ứng cho lịch khởi hành. Thay đổi lịch có thể làm phản hồi cache cũ tồn tại đến khi hết TTL hoặc được xóa bởi sự kiện khác.
 - Bộ kiểm thử chatbot hiện mới bao phủ một số trường hợp Intent Guard và Query Understanding, chưa bao phủ cache, AI failover, Hybrid Retrieval, chống prompt injection và hội thoại nhiều lượt.

@@ -215,48 +215,27 @@ Luồng này giúp Server không phải duy trì thư mục lưu ảnh cục b�
 
 ## 3.4. Triển khai website người dùng
 
-Website người dùng nằm trong `danangtrip-web`, sử dụng Next.js App Router với cấu trúc route theo ngôn ngữ `/{locale}`. Dự án tích hợp `next-intl` để quản lý đa ngôn ngữ; `middleware.ts` sử dụng `createMiddleware(routing)` để chuẩn hóa URL theo locale và kiểm soát chuyển hướng đối với các tuyến được bảo vệ. Trong triển khai hiện tại, ngôn ngữ được thể hiện trực tiếp trên URL và được dùng lại khi sinh metadata hoặc render nội dung trên từng trang.
-
-Về kỹ thuật render, các trang công khai có giá trị SEO như trang chủ, chi tiết tour, chi tiết địa điểm, blog và các trang danh mục được triển khai theo hướng render phía Server bằng Next.js, đồng thời sử dụng `generateMetadata()` để sinh tiêu đề và mô tả theo ngôn ngữ. Các trang có tính tương tác cao như hồ sơ cá nhân, thông báo, yêu thích, lịch sử đặt tour, giỏ hàng hoặc các khối dữ liệu cập nhật sau thao tác người dùng được kết hợp với `@tanstack/react-query` để quản lý bộ nhớ đệm, đồng bộ trạng thái và làm mới dữ liệu sau mutation.
-
-Các trang chính gồm:
-
-- Trang chủ: `/[locale]`
-- Giới thiệu: `/about`
-- Danh sách và chi tiết địa điểm: `/locations`, `/locations/[slug]`
-- Địa điểm theo danh mục: `/categories/[slug]/locations`
-- Bản đồ và gần tôi: `/map`, `/nearby`
-- Tìm kiếm: `/search`
-- Danh sách và chi tiết tour: `/tours`, `/tours/[slug]`
-- Lịch khởi hành và đặt tour: `/tours/[slug]/departures`, `/tours/[slug]/book`
-- Danh sách tour theo danh mục: `/tour-categories/[slug]/tours`
-- Blog: `/blog`, `/blog/[slug]`
-- Giỏ hàng: `/cart`
-- Thanh toán: `/payment`, `/payment/result`
-- Hồ sơ cá nhân: `/profile`, `/profile/bookings`, `/profile/favorites`, `/profile/ratings`, `/profile/notifications`, `/profile/recommendations`, `/profile/points`
-- Điều khoản, quyền riêng tư và liên hệ: `/terms`, `/privacy`, `/contact`
-
-Các lớp dịch vụ phía giao diện như `location.service.ts`, `tour.service.ts`, `booking.service.ts`, `payment.service.ts`, `auth.service.ts`, `search.service.ts` chịu trách nhiệm gọi API. React Query được dùng để lưu bộ nhớ đệm và đồng bộ dữ liệu từ Server; riêng trang đặt tour `/tours/[slug]/book` còn sử dụng `QueryClient`, `dehydrate` và `HydrationBoundary` để nạp sẵn dữ liệu phía Server trước khi hydrate ở Client.
+Website người dùng là cổng thông tin chính để khách du lịch tìm kiếm thông tin và đăng ký dịch vụ của DanangTrip. Giao diện được thiết kế tối ưu hiển thị trên nhiều thiết bị (Responsive Design) với bố cục hiện đại, dễ tương tác. Các luồng nghiệp vụ chính dành cho du khách được phân chia thành các trang chức năng rõ ràng, hỗ trợ đầy đủ tiếng Việt và tiếng Anh, giúp du khách dễ dàng tra cứu điểm đến, đặt tour du lịch, thực hiện thanh toán trực tuyến và sử dụng các tính năng tích hợp như ví điểm thành viên và trợ lý ảo tư vấn thông minh.
 
 ### 3.4.1. Luồng trang chủ
 
-Trang chủ là điểm vào chính của website. Nội dung trang chủ nên gồm:
+Trang chủ là điểm vào chính của website, đóng vai trò tạo ấn tượng đầu tiên và định hướng người dùng. Giao diện trang chủ bao gồm các khối nội dung:
 
-- Hero/khối giới thiệu du lịch Đà Nẵng.
-- Địa điểm nổi bật.
-- Tour nổi bật hoặc tour được quan tâm nhiều.
-- Danh mục khám phá.
-- Bài viết mới.
-- Thống kê hoặc thông tin giới thiệu.
-- Chatbot hoặc thành phần hỗ trợ nhanh.
+- Khối giới thiệu (Hero banner) hình ảnh đẹp mắt giới thiệu du lịch Đà Nẵng.
+- Danh sách các địa điểm tham quan nổi bật nhất.
+- Danh sách các tour du lịch tiêu biểu hoặc được quan tâm nhiều.
+- Phân loại danh mục khám phá nhanh (như Khách sạn, Ẩm thực, Điểm tham quan).
+- Khối hiển thị các bài viết cẩm nang du lịch mới nhất.
+- Số liệu thống kê hoặc thông tin giới thiệu tổng quan về thương hiệu.
+- Bong bóng chat hỗ trợ nhanh từ chatbot tư vấn.
 
-Server API cung cấp các endpoint `/home`, `/home/locations`, `/home/tours`, `/home/blogs` để giao diện tải dữ liệu.
+Giao diện trang chủ thực hiện tải động dữ liệu từ hệ thống để đảm bảo thông tin luôn được cập nhật mới nhất.
 
 *Hình 3.4: Giao diện trang chủ DanangTrip*
 
 ### 3.4.2. Luồng địa điểm
 
-Phân hệ địa điểm gồm danh sách, bộ lọc, chi tiết, ảnh, đánh giá và bản đồ. Các trang danh sách và chi tiết địa điểm được render phía Server để tối ưu SEO; sau khi giao diện đã hiển thị, các dữ liệu động như ảnh bổ sung, đánh giá hoặc địa điểm lân cận được làm mới bằng React Query ở Client. Thành phần bản đồ được xây dựng trên `Leaflet` và `react-leaflet`, cho phép hiển thị tọa độ, xem lân cận và hỗ trợ chế độ gần vị trí người dùng.
+Phân hệ địa điểm cung cấp cho người dùng giao diện hiển thị danh sách các điểm đến hấp dẫn được phân loại theo danh mục cụ thể (ẩm thực, mua sắm, danh lam thắng cảnh). Người dùng có thể tìm kiếm theo từ khóa hoặc lọc theo khu vực địa lý. Trang chi tiết địa điểm hiển thị đầy đủ thông tin giới thiệu, giờ hoạt động, bộ sưu tập hình ảnh trực quan, đánh giá từ cộng đồng du khách và bản đồ tương tác hiển thị vị trí địa điểm kèm theo danh sách các địa điểm lân cận để giúp người dùng dễ dàng lên lịch trình di chuyển.
 
 *Hình 3.5: Giao diện danh sách địa điểm và bộ lọc tìm kiếm*
 
@@ -266,9 +245,10 @@ Phân hệ địa điểm gồm danh sách, bộ lọc, chi tiết, ảnh, đán
 
 ### 3.4.3. Luồng tour và đặt tour
 
-Phân hệ tour chịu trách nhiệm hiển thị danh sách tour, chi tiết lịch trình, lịch khởi hành, giá và form đặt tour. Các trang danh sách, chi tiết và lịch khởi hành được render phía Server để tối ưu SEO; riêng form đặt tour và các thông tin biến động theo lựa chọn người dùng được xử lý ở Client. Thành phần đặt tour sử dụng `react-hook-form` để quản lý form, `zod` để kiểm tra dữ liệu đầu vào và React Query để gọi API tính giá.
-
-Một tour có thể có nhiều lịch khởi hành, mỗi lịch có số chỗ và giá riêng. Khi người dùng chọn lịch và số lượng khách, giao diện gọi `POST /bookings/calculate` để tính giá và gọi API kiểm tra chỗ còn lại theo thời gian thực trước khi cho phép thêm vào giỏ hàng hoặc chuyển sang bước đặt tour. Cơ chế này giúp hạn chế tình trạng đặt vượt số chỗ khả dụng.
+Phân hệ tour cung cấp giao diện hiển thị danh sách các tour du lịch hiện có kèm theo lịch trình chi tiết theo ngày, thời lượng, điểm hẹn và chính sách giá. Khi thực hiện đặt tour, người dùng sẽ tương tác với một biểu mẫu đặt hàng thông minh:
+- **Lựa chọn lịch khởi hành**: Mỗi tour có thể có nhiều ngày đi khác nhau, giao diện hiển thị rõ ràng số chỗ trống khả dụng tương ứng với ngày khởi hành được chọn.
+- **Tính toán chi phí**: Tổng chi phí được tự động tính toán theo thời gian thực dựa trên số lượng khách (người lớn, trẻ em) và tự động áp dụng mức giảm giá khi người dùng nhập mã khuyến mãi hoặc chọn phiếu giảm giá cá nhân.
+- **Kiểm tra giới hạn đặt chỗ**: Hệ thống tự động kiểm tra số lượng chỗ còn trống theo thời gian thực để ngăn việc người dùng đặt vượt quá giới hạn của chuyến đi.
 
 *Hình 3.8: Giao diện chi tiết tour*
 
@@ -276,36 +256,32 @@ Một tour có thể có nhiều lịch khởi hành, mỗi lịch có số ch�
 
 *Hình 3.10: Giao diện form đặt tour và tính giá theo thời gian thực*
 
-Luồng đặt tour được triển khai qua các bước:
+Luồng đặt tour và thanh toán được thực hiện trực quan qua các bước:
 
-1. Người dùng xem chi tiết tour, tham khảo khuyến mãi khả dụng và chọn lịch khởi hành.
-2. Website người dùng gọi API `POST /bookings/calculate` để kiểm tra lịch khởi hành, tính giá và xác thực mã khuyến mãi hoặc phiếu giảm giá cá nhân.
-3. Người dùng nhập thông tin khách hàng, số lượng khách và chọn quyền lợi giảm giá phù hợp.
-4. Server API tạo `bookings` và `booking_items` trong giao dịch cơ sở dữ liệu. Hệ thống lưu `promotion_id` hoặc `user_voucher_id`, cập nhật lượt dùng khuyến mãi và đánh dấu phiếu cá nhân đã sử dụng.
-5. Người dùng chọn phương thức thanh toán chuyển khoản hoặc trực tuyến.
-6. Server API tạo bản ghi thanh toán, sinh mã giao dịch hoặc mã QR thanh toán VietQR.
-7. Trạng thái thanh toán được cập nhật tự động khi hệ thống nhận callback/IPN từ SePay, hoặc được cập nhật thủ công bởi Quản trị viên từ trang quản lý đơn đặt tour (`PATCH /admin/bookings/{id}/confirm-payment`).
-8. Người dùng xem kết quả thanh toán, chi tiết đơn đặt tour, hóa đơn PDF và nhận email hoặc thông báo tự động. Đơn có số tiền bằng không được xác nhận trực tiếp mà không sinh mã QR.
-
-Các trạng thái cần quản lý gồm trạng thái đơn đặt tour, trạng thái thanh toán, trạng thái lịch khởi hành và số chỗ còn lại.
+1. **Chọn dịch vụ**: Người dùng xem thông tin chi tiết tour, tham khảo ưu đãi khả dụng và lựa chọn ngày đi phù hợp.
+2. **Nhập thông tin**: Người dùng điền thông tin liên hệ của người đặt, thông tin hành khách đi cùng, đồng thời lựa chọn áp dụng mã giảm giá hoặc đổi điểm thành viên để nhận ưu đãi.
+3. **Xác nhận hóa đơn**: Hệ thống kiểm tra tính khả dụng của số chỗ và hiển thị chi tiết hóa đơn tạm tính cùng mức giảm giá tương ứng.
+4. **Lựa chọn thanh toán**: Người dùng lựa chọn hình thức thanh toán (quét mã VietQR chuyển khoản nhanh hoặc thanh toán trực tuyến qua cổng thanh toán).
+5. **Thực hiện thanh toán**: Giao diện hiển thị mã QR động hoặc chuyển hướng người dùng đến trang thanh toán. Khi người dùng thực hiện chuyển khoản thành công, hệ thống tự động ghi nhận giao dịch (hoặc được phê duyệt thủ công bởi quản trị viên).
+6. **Nhận kết quả**: Màn hình hiển thị thông báo đặt tour thành công, cho phép người dùng xem và tải hóa đơn đặt tour, đồng thời hệ thống gửi email xác nhận chi tiết lịch trình về hòm thư của khách hàng.
 
 ### 3.4.4. Luồng hồ sơ người dùng
 
-Khu vực hồ sơ cho phép người dùng:
+Khu vực hồ sơ cá nhân cho phép người dùng:
 
 - Xem và cập nhật thông tin cá nhân.
 - Đổi mật khẩu.
 - Quản lý ảnh đại diện.
-- Xem danh sách đơn đặt tour và chi tiết đơn đặt tour.
-- Tra cứu đơn đặt tour theo mã.
-- Xem danh sách yêu thích.
-- Xem lịch sử đánh giá.
-- Xem thông báo.
-- Xem đề xuất cá nhân hóa.
-- Xem số dư và lịch sử điểm, danh sách phần thưởng, phiếu giảm giá cá nhân và thực hiện đổi điểm.
-- Xóa tài khoản.
+- Xem danh sách và chi tiết các đơn đặt tour của mình.
+- Tra cứu đơn đặt tour nhanh thông qua mã đơn hàng.
+- Xem danh sách địa điểm yêu thích.
+- Xem lịch sử các đánh giá đã gửi.
+- Xem danh sách thông báo cá nhân.
+- Xem danh sách đề xuất cá nhân hóa.
+- Xem số dư điểm, lịch sử biến động điểm, đổi điểm lấy mã giảm giá và quản lý ví voucher cá nhân.
+- Thực hiện yêu cầu xóa tài khoản.
 
-Các tuyến hồ sơ, thanh toán và đặt tour được bảo vệ ở lớp middleware. `middleware.ts` kiểm tra cookie `token`, đối chiếu với danh sách tuyến cần bảo vệ như `/profile`, `/payment`, `/dashboard` và chuyển hướng về trang đăng nhập nếu người dùng chưa xác thực. Sau khi đăng nhập thành công, các trang hồ sơ sử dụng React Query để nạp dữ liệu cá nhân, đơn đặt tour, thông báo và điểm thành viên theo phiên hiện tại.
+Để bảo mật thông tin, các trang chức năng như quản lý hồ sơ cá nhân, thực hiện đặt tour và thanh toán đều được bảo vệ nghiêm ngặt. Hệ thống tự động kiểm tra trạng thái đăng nhập của người dùng; nếu chưa xác thực, hệ thống sẽ tự động chuyển hướng người dùng về trang đăng nhập. Sau khi đăng nhập thành công, toàn bộ dữ liệu cá nhân, thông tin đơn đặt tour, danh sách yêu thích và ví điểm tích lũy sẽ được hiển thị đồng bộ lên giao diện tương ứng.
 
 *Hình 3.11: Giao diện hồ sơ người dùng*
 
@@ -313,36 +289,29 @@ Các tuyến hồ sơ, thanh toán và đặt tour được bảo vệ ở lớp
 
 *Hình 3.13: Giao diện điểm thành viên và phần thưởng*
 
-### 3.4.5. Chatbot, gợi ý, điểm thành viên và thông báo
+### 3.4.5. Giao diện Chatbot, gợi ý, điểm thành viên và thông báo
 
-Chatbot được triển khai ở Server API thông qua endpoint `/chat`, còn giao diện phía người dùng cung cấp vùng hội thoại để tiếp nhận câu hỏi, hiển thị các tin nhắn trong phiên giao diện hiện tại và hiển thị kết quả gợi ý theo ngữ cảnh du lịch. Các tin nhắn trên giao diện đang được lưu trong Zustand và không được khôi phục sau khi tải lại trang. Server API có ghi `session_id` trong `chat_messages`, nhưng chưa nạp các tin nhắn trước vào prompt; do đó hệ thống chưa có bộ nhớ hội thoại nhiều lượt hoàn chỉnh.
+#### A. Giao diện Chatbot tư vấn du lịch thông minh
+Giao diện chatbot được thiết kế tối ưu dưới dạng một cửa sổ trò chuyện nổi (widget) ở góc màn hình hoặc hiển thị toàn diện trên trang tư vấn chuyên biệt:
+- **Khung trò chuyện (Chat Interface)**: Hiển thị danh sách tin nhắn trao đổi trực quan. Tin nhắn từ hệ thống chatbot tự động được định dạng bằng Markdown đẹp mắt (chữ in đậm, gạch đầu dòng, danh sách, đường dẫn liên kết). Có tích hợp hiệu ứng hiển thị ba chấm động (typing indicator) khi chatbot đang sinh câu trả lời để mang lại cảm giác phản hồi tự nhiên.
+- **Bảng tùy chọn tương tác làm rõ (Clarification Checklist)**: Trong trường hợp người dùng đưa ra câu hỏi mơ hồ hoặc thiếu dữ liệu, hệ thống tự động hiển thị bảng tùy chọn checklist (như tìm tour, tìm địa điểm ăn uống, tìm khách sạn, v.v.). Dưới mỗi mục chọn khi được tick vào sẽ tự động trượt mở một ô nhập liệu để người dùng điền thêm ghi chú cụ thể. Khi bấm gửi, thông tin được định dạng lại thành chuỗi văn bản gửi vào cuộc trò chuyện giúp chatbot xử lý chính xác và trực quan nhất.
+- **Thẻ gợi ý tương tác (Recommendation Cards)**: Khi câu trả lời của chatbot đề cập đến các địa điểm du lịch, tour du lịch hoặc bài viết cẩm nang, hệ thống sẽ tự động đính kèm các thẻ thông tin trực quan ở ngay phía dưới tin nhắn. Các thẻ gợi ý được tự động nhóm theo phân loại (Tours, Địa điểm, Bài viết) và được sắp xếp động dựa trên điểm số phù hợp tốt nhất; nhóm phù hợp nhất sẽ được tự động mở rộng sẵn (`expanded: true`) và đặt lên đầu tiên để tối ưu không gian tương tác. Người dùng có thể click nhanh để xem chi tiết hoặc đặt tour ngay lập tức.
+- **Hộp nhập liệu**: Hỗ trợ người dùng nhập câu hỏi tự nhiên và gửi đi nhanh chóng thông qua phím Enter hoặc nút gửi trên màn hình.
 
-Hệ thống xây dựng cơ sở tri thức từ tour và lịch khởi hành, địa điểm du lịch, bài viết blog và các chính sách hỗ trợ liên quan đến đặt tour hoặc thanh toán. Khi người dùng gửi câu hỏi, Server API thực hiện các bước:
+#### B. Khối gợi ý tour và địa điểm (Recommendations)
+Hệ thống hiển thị các đề xuất tour du lịch hoặc địa điểm hấp dẫn tại trang chủ và các trang chi tiết nhằm nâng cao trải nghiệm khám phá của du khách:
+- **Danh sách đề xuất (Recommendation Carousel/Grid)**: Hiển thị dưới dạng lưới thẻ hoặc thanh trượt ngang động, chứa hình ảnh bắt mắt, giá bán, điểm đánh giá trung bình và tiêu đề.
+- Các thẻ gợi ý này tự động thay đổi dựa trên hành vi tương tác thực tế của người dùng, giúp tăng tính cá nhân hóa và tính tương tác của trang web.
 
-1. `ChatIntentGuardService` xác định câu hỏi có nằm trong phạm vi hỗ trợ của DanangTrip hay không.
-2. `ChatQueryUnderstandingService` trích xuất các ràng buộc như điểm đến, vùng, chủ đề địa điểm, ngân sách, số người, ngày đi, thời lượng và tiêu chí sắp xếp.
-3. Cache Layer kiểm tra khóa bộ nhớ đệm được tạo từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa nhằm xác định phản hồi tương ứng còn hiệu lực hay không.
-4. Khi cache miss và câu hỏi nghiệp vụ có điểm tin cậy dưới ngưỡng, `ChatAiProviderService` dùng Gemini NLU để bổ sung thực thể dưới dạng JSON.
-5. `ChatKnowledgeSearchService` truy xuất dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm, bài viết và chính sách. Khi cấu hình tìm kiếm ngữ nghĩa được bật, `ChatVectorSearchService` tạo embedding câu hỏi, lấy ứng viên từ `chat_knowledge_base` và xếp hạng bằng độ tương đồng cosin.
-6. `ChatAiProviderService` gửi lời nhắc có ngữ cảnh theo thứ tự Gemini, Groq và OpenRouter, đồng thời chuyển khóa hoặc nhà cung cấp khi gặp lỗi, quá thời gian chờ hoặc vượt giới hạn.
-7. Hệ thống ghi nhật ký tin nhắn, lưu kết quả vào bộ nhớ đệm và trả phản hồi cùng các thẻ tour, địa điểm hoặc bài viết về giao diện.
+#### C. Giao diện điểm thành viên, phần thưởng và mã giảm giá
+Phân hệ chăm sóc khách hàng thân thiết được tích hợp liền mạch vào trang hồ sơ cá nhân của người dùng:
+- **Trang quản lý điểm (/profile/points)**: Trình bày số dư điểm tích lũy hiện có của người dùng trên một thẻ gradient nổi bật. Phía dưới là bảng lịch sử biến động điểm (cộng điểm khi hoàn thành đơn đặt tour hoặc khi đánh giá của mình được người khác bình chọn là hữu ích; trừ điểm khi đổi quà) đi kèm trạng thái và thời gian chi tiết.
+- **Danh mục đổi thưởng (Rewards Store)**: Danh sách các mã giảm giá (voucher) có sẵn tương ứng với từng mốc điểm cần đổi. Người dùng chỉ cần nhấn nút "Đổi quà", hệ thống sẽ hiển thị hộp thoại xác nhận và lập tức cấp mã giảm giá cá nhân vào ví tài khoản.
+- **Áp dụng mã giảm giá khi thanh toán**: Trong luồng đặt tour, người dùng có thể lựa chọn mã giảm giá hiện có từ ví của mình. Giao diện hóa đơn đặt hàng sẽ lập tức cập nhật số tiền được giảm và tổng tiền thanh toán mới trước khi người dùng thực hiện thanh toán trực tuyến.
 
-Tại thời điểm kiểm tra ngày 13/06/2026, cấu hình cục bộ đã bật Vector RAG. Bảng `chat_knowledge_base` có 276 bản ghi hoạt động, trong đó 256 bản ghi đã có embedding; 20 bản ghi còn lại cần chạy bổ sung lệnh `php artisan chatbot:sync-knowledge --embed`. Phương pháp hiện tại tải tối đa một tập ứng viên cấu hình từ PostgreSQL và tính độ tương đồng cosin trong PHP, phù hợp với quy mô đồ án nhưng chưa phù hợp cho cơ sở tri thức rất lớn.
-
-API `/recommendations` được thiết kế để cung cấp danh sách tour hoặc địa điểm đề xuất dựa trên các tín hiệu tương tác như tìm kiếm, lượt xem, yêu thích và đánh giá. Trong phạm vi đồ án, cơ chế này được xây dựng dựa trên luật kết hợp thống kê tần suất hành vi tương tác thực tế của người dùng.
-
-Phân hệ điểm thành viên sử dụng các bảng `user_point_balances`, `point_rules`, `point_rewards`, `point_transactions` và `user_vouchers`. `PointService` là lớp xử lý trung tâm:
-
-1. Khi phát sinh hành động hợp lệ, hệ thống tra cứu quy tắc điểm, kiểm tra nguồn phát sinh đã được ghi nhận hay chưa và giới hạn theo ngày.
-2. Khi đổi điểm, hệ thống khóa số dư và phần thưởng trong giao dịch, kiểm tra số điểm cùng giới hạn sử dụng, sau đó trừ điểm và cấp phiếu giảm giá cá nhân.
-3. Phiếu giảm giá được kiểm tra quyền sở hữu, trạng thái, thời hạn và giá trị đơn tối thiểu trước khi áp dụng vào đơn đặt tour.
-4. Người dùng truy cập `/profile/points` để xem tổng quan, lịch sử giao dịch, phần thưởng và phiếu giảm giá.
-
-Điểm được phát sinh từ các nguồn đã cấu hình, chẳng hạn thanh toán đơn đặt tour hoặc tương tác với đánh giá. Mỗi nguồn nghiệp vụ được gắn định danh để hạn chế cộng điểm trùng.
-
-API `POST /ratings/{id}/helpful` chỉ chấp nhận người dùng đã đăng nhập, đánh giá đã được duyệt, không phải đánh giá của chính người gửi và chưa được người đó ghi nhận trước đây. Bảng `rating_helpful_votes` lưu quan hệ người dùng - đánh giá và trường `helpful_count` được tăng sau khi tạo lượt ghi nhận hợp lệ.
-
-Hệ thống tạo thông báo khi đơn đặt tour được xác nhận, hủy hoặc hoàn thành; khi thanh toán hoặc hoàn tiền thay đổi; khi người dùng nhận điểm hoặc đổi được phiếu giảm giá. Lệnh `bookings:send-tour-reminders` chạy theo lịch hằng ngày để nhắc các đơn đã xác nhận, đã thanh toán và có ngày khởi hành vào ngày kế tiếp. Trước khi tạo, hệ thống kiểm tra thông báo cùng loại của đơn và ngày khởi hành để tránh gửi trùng.
+#### D. Trung tâm thông báo và tương tác đánh giá hữu ích
+- **Menu thông báo (Notification Center)**: Được bố trí dưới dạng danh sách thả xuống từ thanh điều hướng chính, hiển thị thông báo tức thì về tình trạng đơn hàng, xác nhận đặt tour thành công, thông báo được cộng điểm và nhắc nhở lịch khởi hành trước một ngày. Các thông báo chưa đọc sẽ được làm nổi bật bằng ký hiệu dấu chấm đỏ.
+- **Tính năng bình chọn đánh giá hữu ích**: Tại mục đánh giá của các địa điểm và tour, mỗi phản hồi từ khách hàng khác đều có thêm nút "Hữu ích". Người dùng có thể nhấn vào để biểu thị sự đồng tình, giúp tăng số lượt đánh giá hữu ích hiển thị công khai và hỗ trợ những du khách khác đưa ra lựa chọn tốt hơn.
 
 *Hình 3.14: Giao diện chatbot tư vấn du lịch*
 
@@ -352,30 +321,11 @@ Hệ thống tạo thông báo khi đơn đặt tour được xác nhận, hủy
 
 ## 3.5. Triển khai trang quản trị
 
-Trang quản trị nằm trong `danangtrip-admin`, được xây dựng bằng React 19, Vite, `react-router-dom`, `@tanstack/react-query`, `react-hook-form`, `yup`, `@tanstack/react-table`, `recharts`, `i18next` và hệ giao diện dựa trên `TailwindCSS`, `Headless UI`, `lucide-react` cùng các thành phần nội bộ. Thiết kế này ưu tiên tốc độ phát triển, đồng bộ biểu mẫu và khả năng tái sử dụng cho các màn hình quản trị dạng bảng.
-
-Các tuyến quản trị được định nghĩa bằng React Router và được bảo vệ bởi `PrivateRoute.tsx`. Thành phần này chỉ render nội dung khi `isAuthenticated` hợp lệ và người dùng có `role` là `admin`; nếu không thỏa điều kiện, hệ thống chuyển hướng về trang đăng nhập. Ngoài ra, ngôn ngữ giao diện quản trị được xử lý bởi `i18next-browser-languagedetector`, ưu tiên `localStorage`, `cookie`, `querystring` và `navigator`.
-
-Các đường dẫn chính gồm:
-
-- `/dashboard`: bảng điều khiển tổng quan.
-- `/admin/tours/list`, `/admin/tours/create`, `/admin/tours/edit/:id`: quản lý tour.
-- `/admin/tour-categories`: quản lý danh mục tour.
-- `/admin/tours/schedules`: quản lý lịch khởi hành.
-- `/admin/locations`, `/admin/locations/create`, `/admin/locations/edit/:id`, `/admin/locations/detail/:id`: quản lý địa điểm.
-- `/admin/location-categories`: quản lý danh mục địa điểm.
-- `/admin/bookings`, `/admin/bookings/detail/:id`: quản lý đơn đặt tour.
-- `/admin/payments`, `/admin/payments/detail/:id`: quản lý thanh toán.
-- `/admin/reports/ratings`, `/admin/reports/bookings`, `/admin/reports/revenue`, `/admin/reports/locations`, `/admin/reports/users`: báo cáo.
-- `/admin/users`, `/admin/users/create`, `/admin/users/detail/:id`, `/admin/users/edit/:id`: quản lý người dùng.
-- `/admin/blog-posts`, `/admin/blog-categories`: quản lý blog.
-- `/admin/ratings`, `/admin/contacts`, `/admin/notifications`, `/admin/promotions`, `/admin/settings`, `/admin/landing-pages`.
-
-Trang quản trị tập trung vào thao tác dữ liệu dạng bảng, bộ lọc, biểu mẫu thêm/sửa, xác nhận hành động, biểu đồ và báo cáo.
+Trang quản trị (Admin Dashboard) là công cụ chuyên biệt để quản trị viên theo dõi toàn bộ hoạt động của hệ thống, quản lý tài nguyên và xử lý các giao dịch của khách hàng. Giao diện trang quản trị được thiết kế theo dạng quản lý bảng (table views) kết hợp với các bộ lọc thông minh, biểu mẫu trực quan và các biểu đồ thống kê trực quan sinh động. Nhờ cấu trúc phân quyền chặt chẽ, trang quản trị đảm bảo chỉ những tài khoản quản trị hợp lệ mới có quyền truy cập, chỉnh sửa dữ liệu và phê duyệt các giao dịch thanh toán.
 
 ### 3.5.1. Dashboard và báo cáo
 
-Bảng điều khiển quản trị giúp quản trị viên theo dõi tình trạng hệ thống. Các số liệu tổng hợp và biểu đồ được triển khai bằng `Recharts`, kết hợp các truy vấn React Query để tải và làm mới dữ liệu khi thay đổi bộ lọc hoặc khoảng thời gian. Các dữ liệu nên trình bày trong báo cáo:
+Bảng điều khiển (Dashboard) là nơi cung cấp cái nhìn tổng quan về hiệu quả hoạt động của toàn hệ thống du lịch. Giao diện được thiết kế hiện đại với các bảng số liệu thống kê nhanh và các biểu đồ trực quan (biểu đồ đường, biểu đồ cột) giúp quản trị viên dễ dàng theo dõi biến động theo thời gian. Các thông số chính được cập nhật tự động khi thay đổi bộ lọc ngày tháng bao gồm:
 
 - Tổng số người dùng.
 - Tổng số đơn đặt tour.
@@ -391,7 +341,7 @@ Bảng điều khiển quản trị giúp quản trị viên theo dõi tình tr�
 
 ### 3.5.2. Quản lý địa điểm
 
-Quản trị viên có thể thêm, sửa, xóa, bật/tắt trạng thái và đánh dấu nổi bật địa điểm. Màn hình này kết hợp bảng dữ liệu, form nhập liệu và thành phần tải ảnh; biểu mẫu được quản lý bằng `react-hook-form` và `yup`, còn danh sách được đồng bộ bằng React Query sau mỗi thao tác thêm/sửa/xóa.
+Giao diện này cho phép quản trị viên theo dõi và kiểm soát danh sách các địa điểm du lịch trên hệ thống. Các tính năng cốt lõi bao gồm hiển thị danh sách dạng bảng (phân trang, tìm kiếm nhanh, lọc theo danh mục), bật/tắt trạng thái hoạt động của địa điểm, và biểu mẫu thêm mới/chỉnh sửa với trình tải lên nhiều hình ảnh trực quan.
 
 *Hình 3.18: Giao diện quản lý địa điểm*
 
@@ -405,7 +355,7 @@ Quản trị viên quản lý thông tin tour gồm tên, danh mục, mô tả, 
 
 ### 3.5.4. Quản lý đơn đặt tour và thanh toán
 
-Quản trị viên có thể xem danh sách đơn đặt tour, lọc theo trạng thái, xem chi tiết khách hàng, xác nhận thanh toán, cập nhật trạng thái đơn đặt tour, xuất hóa đơn và xuất báo cáo. Với thanh toán, quản trị viên có thể xem mã giao dịch, cổng thanh toán, số tiền, trạng thái, thời gian thanh toán và xử lý hoàn tiền nếu có. Mục xác nhận thanh toán thủ công là phần mở rộng quan trọng cho các khoản chuyển khoản chưa được SePay cập nhật tự động.
+Giao diện này phục vụ việc quản lý và xử lý các đơn đặt dịch vụ từ khách hàng. Quản trị viên có thể lọc danh sách đơn đặt tour theo nhiều trạng thái (như đang chờ duyệt, đã thanh toán, đã hoàn thành, đã hủy), tra cứu thông tin chi tiết khách hàng và lịch sử thanh toán. Đối với các đơn hàng sử dụng hình thức chuyển khoản thủ công hoặc trường hợp hệ thống cổng thanh toán tự động gặp sự cố chậm trễ, giao diện cung cấp tính năng phê duyệt thanh toán thủ công để quản trị viên xác nhận đơn hàng ngay lập tức cho khách hàng.
 
 *Hình 3.21: Giao diện quản lý đơn đặt tour*
 
@@ -415,20 +365,29 @@ Quản trị viên có thể xem danh sách đơn đặt tour, lọc theo trạn
 
 ### 3.5.5. Quản lý nội dung và tương tác
 
-Các phân hệ blog, trang đích, đánh giá, liên hệ, thông báo và khuyến mãi giúp hệ thống vận hành đầy đủ hơn. Quản trị viên có thể duyệt đánh giá, phản hồi liên hệ, gửi thông báo hàng loạt, tạo mã giảm giá và cập nhật cấu hình website. Các màn hình này tiếp tục dùng cùng mẫu kỹ thuật: React Query cho dữ liệu, `react-hook-form` cho biểu mẫu và Route Guard cho phân quyền truy cập.
+Bao gồm các màn hình quản lý các bài viết cẩm nang du lịch, giao diện trang đích giới thiệu, duyệt các đánh giá từ khách hàng, phản hồi thư liên hệ, gửi thông báo hệ thống và thiết lập các mã khuyến mãi. Các giao diện này đều tuân thủ nguyên tắc thiết kế thống nhất của hệ thống quản trị, tích hợp các biểu mẫu xác thực dữ liệu chặt chẽ và hệ thống kiểm soát quyền hạn bảo mật để đảm bảo vận hành an toàn.
 
 *Hình 3.24: Giao diện quản lý blog và trang đích*
 
 *Hình 3.25: Giao diện duyệt đánh giá, liên hệ và thông báo*
 
-### 3.5.6. Tải ảnh, email, báo cáo và hóa đơn
+### 3.5.6. Quản trị và cấu hình AI Chatbot
 
-Hệ thống có các tích hợp hỗ trợ vận hành:
+Phân hệ quản trị AI Chatbot (/admin/chatbot) cung cấp công cụ toàn diện để giám sát, cấu hình hiệu năng và quản lý bộ nhớ đệm (Semantic Cache):
+- **Phân tích hiệu năng (Technical Analytics)**: Biểu đồ giám sát thời gian phản hồi (Latency), tỷ lệ trúng cache (Cache Hit Rate), chi phí API phát sinh theo ngày, lỗi hệ thống và failover.
+- **Thống kê người dùng (Business Analytics)**: Phân tích phân phối ý định (Intents), các điểm đến / tour được quan tâm nhiều nhất, và tỷ lệ hoàn tất cuộc đối thoại làm rõ (Clarification Funnel).
+- **Nhật ký hội thoại (Chat Logs)**: Ghi lại toàn bộ nội dung hội thoại, kết quả phân tích ý định (Intent NLU), slots trích xuất, và cảnh báo vi phạm từ tầng kiểm duyệt (Guardrails).
+- **Bộ nhớ đệm & Cấu hình (Semantic Cache & Config)**: Quản lý danh sách câu hỏi đang cache; cho phép quản trị viên bật/tắt chatbot, chỉnh giới hạn số lần hỏi lại làm rõ, TTL của cache và điều chỉnh hai thanh trượt Cosine Similarity Threshold cho các truy vấn Giao dịch (Transactional) và Hỏi đáp (FAQ).
 
-- Tải ảnh qua Cloudinary cho địa điểm, tour, ảnh đại diện và nội dung.
-- Gửi email qua dịch vụ thư điện tử/Brevo cho các luồng liên hệ, xác thực hoặc thông báo.
-- Xuất báo cáo bằng Maatwebsite Excel cho bảng điều khiển, người dùng, đơn đặt tour, thanh toán, liên hệ, địa điểm.
-- Sinh hóa đơn PDF bằng DomPDF thông qua `InvoicePdfService`.
+*Hình 3.26: Giao diện quản lý, nhật ký và cấu hình AI Chatbot*
+
+### 3.5.7. Dịch vụ hỗ trợ vận hành
+
+Để hỗ trợ tối đa công việc quản trị và tương tác với khách hàng, hệ thống tích hợp các tính năng tự động hóa và kết xuất dữ liệu trực quan:
+- **Lưu trữ hình ảnh**: Toàn bộ ảnh đại diện, album ảnh của địa điểm và tour du lịch đều được tải lên hệ thống lưu trữ đám mây chuyên dụng, đảm bảo tốc độ hiển thị nhanh và tối ưu dung lượng máy chủ.
+- **Dịch vụ thư điện tử**: Hệ thống tự động gửi email xác thực tài khoản, hóa đơn thanh toán điện tử và nhắc nhở lịch trình trước ngày khởi hành đến hòm thư của khách hàng.
+- **Kết xuất báo cáo Excel**: Hỗ trợ xuất dữ liệu báo cáo dạng tệp tin Excel đối với danh sách đơn đặt tour, doanh thu, danh sách người dùng và ý kiến liên hệ để phục vụ công tác đối soát nghiệp vụ.
+- **Xuất hóa đơn điện tử**: Tự động tạo và cho phép người dùng hoặc quản trị viên tải xuống hóa đơn đặt tour dưới định dạng tệp PDF rõ ràng, chuyên nghiệp.
 
 ## 3.6. Kiểm thử
 
@@ -563,6 +522,7 @@ Danh sách hình ảnh đề xuất:
 - Hình 3.23: Giao diện quản lý thanh toán.
 - Hình 3.24: Giao diện quản lý blog và trang đích.
 - Hình 3.25: Giao diện duyệt đánh giá, liên hệ và thông báo.
+- Hình 3.26: Giao diện quản lý, nhật ký và cấu hình AI Chatbot.
 
 ## 3.8. Đánh giá kết quả triển khai
 
