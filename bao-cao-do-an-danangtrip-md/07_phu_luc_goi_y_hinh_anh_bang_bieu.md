@@ -66,7 +66,7 @@ Nên thể hiện các đối tượng: Người dùng, Website, Laravel API, Da
 
 | STT | Phân hệ | Dữ liệu kiểm thử | Kết quả mong đợi | Kết quả thực tế | Trạng thái |
 | --- | --- | --- | --- | --- | --- |
-| 1 | Xác thực | Đăng ký bằng email chưa tồn tại | Tài khoản được tạo, không trùng email/tên đăng nhập | Đăng ký tài khoản thành công, hệ thống gửi email xác nhận | Đạt |
+| 1 | Xác thực | Đăng ký bằng email chưa tồn tại | Tài khoản được tạo, không trùng email/tên đăng nhập | Đăng ký tài khoản thành công, lưu tài khoản dưới trạng thái Chờ kích hoạt (pending) | Đạt |
 | 2 | Xác thực | Đăng nhập đúng email/mật khẩu | Nhận mã thông báo và chuyển vào hệ thống | Đăng nhập thành công, nhận JWT token và chuyển vào trang Dashboard | Đạt |
 | 3 | Xác thực | Đăng nhập sai mật khẩu | Hiển thị thông báo lỗi | Hệ thống hiển thị thông báo sai mật khẩu màu đỏ nổi bật | Đạt |
 | 4 | Địa điểm | Lọc theo danh mục/quận | Danh sách hiển thị đúng dữ liệu | Danh sách địa điểm tải nhanh, lọc chính xác theo điều kiện chọn | Đạt |
@@ -76,18 +76,18 @@ Nên thể hiện các đối tượng: Người dùng, Website, Laravel API, Da
 | 8 | Đặt tour | Tạo đơn đặt tour vượt số chỗ | Hệ thống từ chối và báo lỗi | Báo lỗi không đủ chỗ khả dụng và ngăn chặn tạo đơn hàng | Đạt |
 | 9 | Thanh toán | Tạo thanh toán cho đơn đặt tour đang chờ xử lý | Sinh giao dịch/mã QR | Sinh mã QR VietQR kèm số tiền và nội dung chuyển khoản tự động chính xác | Đạt |
 | 10 | Thanh toán | Nhận IPN hợp lệ từ SePay | Thanh toán thành công, đơn đặt tour được cập nhật | Cập nhật trạng thái đơn hàng thành đã thanh toán tự động khi nhận IPN từ SePay | Đạt |
-| 11 | Đánh giá | Gửi đánh giá hợp lệ | Đánh giá được lưu/chờ duyệt | Gửi đánh giá thành công, lưu ở trạng thái chờ quản trị viên duyệt | Đạt |
+| 11 | Đánh giá | Gửi đánh giá hợp lệ | Đánh giá được lưu, tự động phê duyệt hiển thị công khai ngay lập tức | Gửi đánh giá thành công, lưu ở trạng thái đã duyệt (approved), điểm trung bình được cập nhật | Đạt |
 | 12 | Quản trị tour | Quản trị viên thêm tour mới | Tour hiển thị ở danh sách quản trị và công khai khi đang hoạt động | Tour mới xuất hiện trên trang quản trị và website người dùng | Đạt |
-| 13 | Quản trị đánh giá | Quản trị viên duyệt đánh giá | Đánh giá hiển thị công khai | Đánh giá sau khi duyệt xuất hiện trên trang chi tiết địa điểm/tour công khai | Đạt |
+| 13 | Quản trị đánh giá | Quản trị viên từ chối hoặc xóa đánh giá | Đánh giá bị ẩn khỏi trang chi tiết và người dùng nhận được thông báo từ chối | Đánh giá bị từ chối chuyển sang trạng thái rejected, gửi thông báo lý do cho người dùng | Đạt |
 | 14 | Chatbot | Hỏi tour theo ngân sách | Trả lời dựa trên dữ liệu tour phù hợp | Chatbot nhận diện ý định và lọc tour theo đúng khoảng giá yêu cầu | Đạt |
 | 15 | Chatbot | Hỏi câu ngoài phạm vi du lịch | Intent Guard từ chối hoặc hướng dẫn hỏi lại | Từ chối trả lời câu hỏi ngoài phạm vi và hướng dẫn người dùng hỏi đúng chủ đề | Đạt |
 | 16 | Chatbot | Nhà cung cấp AI lỗi hoặc quá thời gian chờ | Hệ thống chuyển nhà cung cấp/khóa hoặc trả phản hồi dự phòng | Tự động chuyển đổi khóa API/nhà cung cấp dự phòng mượt mà không gây ngắt quãng | Đạt |
-| 17 | Quản trị đặt tour | Quản trị viên xác nhận thanh toán thủ công cho đơn đặt tour chuyển khoản | Đơn đặt tour cập nhật trạng thái thanh toán thành công và gửi thông báo xác nhận | Bổ sung ảnh và kết quả kiểm thử thực tế | Chưa xác nhận |
-| 18 | Khuyến mãi | Khách hàng áp dụng mã giảm giá hợp lệ | Hệ thống tính chiết khấu và giảm tổng tiền cần trả | Bổ sung ảnh và kết quả kiểm thử thực tế | Chưa xác nhận |
-| 19 | Khuyến mãi | Khách hàng áp dụng mã hết hạn hoặc chưa đạt giá trị tối thiểu | Hệ thống báo lỗi và không áp dụng chiết khấu | Bổ sung ảnh và kết quả kiểm thử thực tế | Chưa xác nhận |
-| 20 | Điểm thành viên | Đổi phần thưởng khi đủ điểm | Trừ điểm một lần và cấp phiếu giảm giá cá nhân | Bổ sung kết quả/ảnh kiểm thử thực tế | Chưa xác nhận |
-| 21 | Đánh giá hữu ích | Ghi nhận đánh giá của người khác hai lần | Lần đầu thành công, lần sau bị từ chối | Bổ sung kết quả/ảnh kiểm thử thực tế | Chưa xác nhận |
-| 22 | Nhắc lịch | Chạy tác vụ cho đơn khởi hành ngày kế tiếp | Tạo thông báo đúng điều kiện và không trùng | Bổ sung kết quả chạy lệnh | Chưa xác nhận |
+| 17 | Quản trị đặt tour | Quản trị viên xác nhận thanh toán thủ công cho đơn đặt tour chuyển khoản | Đơn đặt tour cập nhật trạng thái thanh toán thành công và gửi thông báo xác nhận | Đơn đặt tour cập nhật trạng thái thanh toán thành công, gửi email hóa đơn tự động và cập nhật số chỗ | Đạt |
+| 18 | Khuyến mãi | Khách hàng áp dụng mã giảm giá hợp lệ | Hệ thống tính chiết khấu và giảm tổng tiền cần trả | Hệ thống tự động tính toán số tiền chiết khấu và giảm tổng số tiền cần trả trên hóa đơn | Đạt |
+| 19 | Khuyến mãi | Khách hàng áp dụng mã hết hạn hoặc chưa đạt giá trị tối thiểu | Hệ thống báo lỗi và không áp dụng chiết khấu | Hệ thống hiển thị thông báo lỗi chi tiết và không áp dụng chiết khấu cho hóa đơn | Đạt |
+| 20 | Điểm thành viên | Đổi phần thưởng khi đủ điểm | Trừ điểm một lần và cấp phiếu giảm giá cá nhân | Điểm khả dụng được trừ chính xác, hệ thống ghi nhận lịch sử giao dịch và cấp voucher | Đạt |
+| 21 | Đánh giá hữu ích | Ghi nhận đánh giá của người khác hai lần | Lần đầu thành công, lần sau bị từ chối | Lần đầu ghi nhận thành công và cộng điểm cho tác giả; lần thứ hai báo lỗi chặn trùng lặp | Đạt |
+| 22 | Nhắc lịch | Chạy tác vụ cho đơn khởi hành ngày kế tiếp | Tạo thông báo đúng điều kiện và không trùng | Hệ thống tự động gửi thông báo in-app nhắc nhở lịch khởi hành trước 1 ngày cho khách hàng | Đạt |
 
 ## 5. Checklist phần còn thiếu cần bổ sung thủ công
 

@@ -82,8 +82,6 @@ flowchart LR
         UC03(["Đăng ký tài khoản"])
         UC04(["Đăng nhập"])
         UC17(["Quên & đặt lại mật khẩu"])
-
-        UC17 -.->|"<<include>>"| UC04
     end
 
     Guest["Khách truy cập (Guest)"] --> UC10
@@ -97,6 +95,7 @@ flowchart LR
     Guest --> UC02
     Guest --> UC03
     Guest --> UC04
+    Guest --> UC17
 ```
 
 Chi tiết các chức năng của khách truy cập bao gồm:
@@ -128,6 +127,8 @@ flowchart LR
         UC07(["Đánh giá tour/địa điểm"])
         UC23(["Nhận thông báo cá nhân"])
         UC24(["Nhận gợi ý cá nhân hóa"])
+        UC32(["Xem hoặc tải hóa đơn"])
+        UC34(["Đổi điểm lấy phiếu giảm giá"])
 
         UC18 -.->|"<<include>>"| UC19
         UC18 -.->|"<<include>>"| UC20
@@ -141,6 +142,8 @@ flowchart LR
     User --> UC07
     User --> UC23
     User --> UC24
+    User --> UC32
+    User --> UC34
 ```
 
 Chi tiết các chức năng của người dùng đã đăng nhập bao gồm:
@@ -171,6 +174,8 @@ flowchart LR
         UC29(["Cấu hình hệ thống"])
         UC30(["Xác nhận thanh toán"])
         UC31(["Xuất hóa đơn"])
+        UC33(["Quản lý liên hệ & đánh giá"])
+        UC35(["Quản lý Chatbot"])
 
         UC09 -.->|"<<include>>"| UC30
         UC09 -.->|"<<include>>"| UC31
@@ -183,6 +188,8 @@ flowchart LR
     Admin --> UC27
     Admin --> UC28
     Admin --> UC29
+    Admin --> UC33
+    Admin --> UC35
 ```
 
 Chi tiết các chức năng của quản trị viên bao gồm:
@@ -192,6 +199,7 @@ Chi tiết các chức năng của quản trị viên bao gồm:
 - **Quản lý người dùng, vai trò và trạng thái tài khoản:** Theo dõi danh sách tài khoản, khóa hoặc mở khóa tài khoản vi phạm.
 - **Quản lý nội dung, cẩm nang blog, thông báo và khuyến mãi:** Đăng tải cẩm nang, phê duyệt bài viết, cấu hình các mã giảm giá và gửi thông báo hệ thống.
 - **Quản lý liên hệ và đánh giá:** Phản hồi các yêu cầu liên hệ, kiểm duyệt các đánh giá xấu hoặc vi phạm tiêu chuẩn cộng đồng.
+- **Quản lý Chatbot:** Xem thống kê chatbot, theo dõi lịch sử hội thoại (logs), cấu hình và dọn dẹp bộ nhớ đệm (cache) phản hồi của trợ lý ảo.
 - **Xem bảng điều khiển, báo cáo doanh thu:** Phân tích biểu đồ trực quan về doanh thu, số lượt booking, tăng trưởng người dùng.
 - **Cấu hình hệ thống:** Tùy chỉnh các thông số cài đặt chung cho toàn bộ website.
 
@@ -239,7 +247,7 @@ Chi tiết các chức năng của quản trị viên bao gồm:
 | --- | --- |
 | **Mã ca sử dụng** | UC03 |
 | **Tên use case** | Đăng ký tài khoản |
-| **Mô tả** | Người dùng vãng lai tạo tài khoản mới bằng cách điền thông tin cá nhân và xác thực OTP qua email. |
+| **Mô tả** | Người dùng vãng lai tạo tài khoản mới bằng cách điền thông tin cá nhân. Tài khoản được tạo ở trạng thái Chờ kích hoạt (pending). Người dùng thực hiện xác thực email qua mã OTP sau khi đăng nhập để sử dụng tài khoản. |
 | **Tác nhân** | Khách truy cập |
 | **Sự kiện kích hoạt** | Người dùng nhấp vào liên kết "Đăng ký" trên giao diện chính. |
 | **Tiền điều kiện** | Người dùng chưa có tài khoản đăng ký trong hệ thống. |
@@ -416,63 +424,81 @@ sequenceDiagram
 
 ## 2.8. Biểu đồ tuần tự chatbot
 
+### 2.8.1. Quy trình hội thoại tổng quát (General Conversation Flow)
+
 ```mermaid
 sequenceDiagram
     actor U as Người dùng
     participant W as "Website người dùng"
-    participant API as "Bộ điều phối Chat"
-    participant S as "Dịch vụ Chat"
-    participant QU as "Phân tích truy vấn"
-    participant AI_NLU as "AI NLU"
-    participant NR as "Chuẩn hóa truy vấn"
-    participant K as "Tìm kiếm tri thức"
-    participant RB as "Recommendation Builder"
-    participant AI as "Nhà cung cấp AI"
+    participant API as "API Server (Laravel)"
     participant DB as "Cơ sở dữ liệu"
 
     U->>W: Nhập câu hỏi du lịch
     W->>API: POST /chat
-    API->>S: Gửi tin nhắn
-    S->>QU: Phân tích truy vấn và kiểm tra ý định
-    QU-->>S: Trích xuất quy tắc & Điểm tin cậy
+    API->>API: Phân tích ý định & truy vấn (Intent NLU)
 
-    alt Không thuộc phạm vi (Out of Scope)
-        S-->>API: Trả về câu trả lời từ chối theo kịch bản
-        API-->>W: Hiển thị thông báo ngoài phạm vi
-    else Lời chào (Greeting Fast Path)
-        Note over S: Bỏ qua toàn bộ pipeline cache/NLU/search
-        S-->>API: Trả lời chào hỏi tức thì (kịch bản cố định)
-        API-->>W: Hiển thị phản hồi lời chào
-    else Hợp lệ (In Scope)
-        alt Câu hỏi mơ hồ hoặc thiếu thực thể (Cần làm rõ)
-            S-->>API: Trả về yêu cầu làm rõ (clarification options)
-            API-->>W: Hiển thị bảng tùy chọn (Checklist) & ô ghi chú
-            U->>W: Tích chọn các mục và nhập ghi chú thêm
-            W->>API: POST /chat (Gửi phản hồi làm rõ dạng văn bản)
-            Note over API,S: Quay lại xử lý ở lượt tiếp theo
-        else Trùng Cache còn hiệu lực
-            S->>DB: Kiểm tra phản hồi lưu sẵn
-            DB-->>S: Trả về câu trả lời lưu sẵn
-        else Cache Miss
-            alt Cần trích xuất NLU & Điểm tin cậy < Ngưỡng (0.8)
-                S->>AI_NLU: Trích xuất thực thể bằng AI
-                AI_NLU-->>S: Trả về JSON thực thể đã trích xuất
-            end
-            S->>NR: Ánh xạ tên địa danh sang khóa chính
-            NR-->>S: Trả về location_id tương ứng
-            S->>K: Tìm kiếm tri thức tích hợp
-            K->>DB: Lọc dữ liệu có cấu trúc & tìm kiếm Vector
-            DB-->>K: Kết quả SQL + Vector
-            K-->>S: Ngữ cảnh hội thoại
-            S->>RB: Hợp nhất và xếp hạng gợi ý
-            RB-->>S: Danh sách thẻ gợi ý đã xếp hạng
-            S->>AI: Hoàn thiện câu trả lời tự nhiên
-            AI-->>S: Câu trả lời tự nhiên
-            S->>DB: Lưu bộ nhớ đệm & lịch sử chat
+    alt 1. Không thuộc phạm vi (Out of Scope)
+        API-->>W: Trả về câu trả lời từ từ chối theo kịch bản
+        W-->>U: Hiển thị thông báo ngoài phạm vi
+    else 2. Lời chào (Greeting Fast Path)
+        API-->>W: Trả lời chào hỏi tức thì (kịch bản cố định)
+        W-->>U: Hiển thị phản hồi lời chào
+    else 3. Hợp lệ (In Scope)
+        alt 3a. Câu hỏi mơ hồ / Thiếu thực thể (Cần làm rõ)
+            API-->>W: Trả về yêu cầu làm rõ (Checklist options)
+            W-->>U: Hiển thị bảng checklist & ô nhập liệu
+            U->>W: Chọn các mục và nhập ghi chú thêm
+            W->>API: POST /chat (Gửi thông tin làm rõ)
+            Note over W,API: Quay lại xử lý ở lượt tiếp theo
+        else 3b. Trùng bộ nhớ đệm (Cache Hit)
+            API->>DB: Kiểm tra phản hồi lưu sẵn (chat_cache)
+            DB-->>API: Trả về câu trả lời lưu sẵn
+            API-->>W: Trả về phản hồi (Câu trả lời + Gợi ý cũ)
+            W-->>U: Hiển thị phản hồi tức thì
+        else 3c. Không trùng bộ nhớ đệm (Cache Miss)
+            Note over API: Kích hoạt đường ống xử lý RAG & NLU chi tiết (Xem Biểu đồ 2.8.2)
+            API-->>W: Trả về câu trả lời tự nhiên + Thẻ gợi ý tương tác
+            W-->>U: Hiển thị câu trả lời và thẻ gợi ý tương tác
         end
-        S-->>API: Trả về phản hồi (câu trả lời văn bản + thẻ gợi ý)
-        API-->>W: Hiển thị câu trả lời và thẻ gợi ý
     end
+```
+
+### 2.8.2. Quy trình xử lý RAG và NLU chi tiết khi Cache Miss (Detailed RAG & NLU Pipeline)
+
+```mermaid
+sequenceDiagram
+    participant S as "Dịch vụ Chat (ChatService)"
+    participant NLU as "Dịch vụ AI NLU"
+    participant NR as "Chuẩn hóa truy vấn"
+    participant K as "Truy xuất tri thức (RAG)"
+    participant DB as "Cơ sở dữ liệu"
+    participant RB as "Recommendation Builder"
+    participant AI as "Mô hình AI (LLM)"
+
+    Note over S: Nhận câu hỏi từ API Server khi gặp Cache Miss
+    
+    alt Điểm tin cậy ý định thấp (< 0.8)
+        S->>NLU: Gửi câu hỏi trích xuất thực thể
+        NLU-->>S: Trả về JSON thực thể (địa điểm, giá, thời gian...)
+    end
+    
+    S->>NR: Ánh xạ địa danh sang khóa chính (Normalized Name)
+    NR-->>S: Trả về location_id tương ứng
+    
+    S->>K: Truy xuất tri thức ngữ cảnh
+    K->>DB: Thực hiện truy vấn SQL (dữ liệu thật) & Tìm kiếm Vector (Embedding)
+    DB-->>K: Trả về thông tin Tour, Địa điểm, Chính sách liên quan
+    K-->>S: Trả về ngữ cảnh hội thoại
+    
+    S->>RB: Tạo và xếp hạng danh sách gợi ý
+    RB-->>S: Trả về Top thẻ gợi ý tương tác (Tours, Địa điểm, Bài viết)
+    
+    S->>AI: Gửi Prompt (Ngữ cảnh ưu tiên + Câu hỏi)
+    AI-->>S: Phản hồi câu trả lời tự nhiên (khớp với thẻ gợi ý)
+    
+    S->>DB: Ghi lịch sử hội thoại (chat_messages) & Lưu bộ nhớ đệm (chat_cache)
+    
+    Note over S: Trả kết quả (Văn bản câu trả lời + Thẻ gợi ý) về API Server
 ```
 
 ## 2.9. Thiết kế quy trình AI Chatbot
