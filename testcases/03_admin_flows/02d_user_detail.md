@@ -1,83 +1,179 @@
-# Admin chi tiết người dùng - Test Cases
+# Admin — Chi tiết người dùng (User Detail)
 
-## 1. Tổng quan màn hình
+**Route:** `/admin/users/detail/:id`  
+**API:** `GET /api/v1/admin/users/:id`, `GET .../bookings`, `GET .../ratings`, `PATCH .../role`, `PATCH .../status`, `DELETE .../:id`  
+**Source:** `danangtrip-admin/src/pages/Users/UserDetail/`  
+**Automation:** `tests/admin/users-detail.spec.ts` · `tests/api/admin-users-detail.api.spec.ts`  
+**POM:** `UserDetailPage.ts`
 
-* Đường dẫn route: `/admin/users/detail/:id`
-* File source chính: `D:\DATN\danangtrip-admin\src\pages\Users\UserDetail\index.tsx`
-* Component liên quan: `UserDetailHeader`, `PersonalInfoCard`, `UserBookingsTable`, `UserRatingsList`, `UserStatsCards`, `UserAccountSidebar`, `UserActionsCard`, `ChangeRoleDialog`, `ConfirmDeleteUserDialog`
-* API/service sử dụng: `userApi.getDetail`, user bookings/ratings queries, user role/status/delete mutations
-* Quyền truy cập: Admin qua `PrivateRoute`
-* Mục đích màn hình: Cho admin xem hồ sơ người dùng, thống kê, booking/rating gần đây và thực hiện khóa/mở khóa, đổi vai trò, xóa tài khoản.
+---
 
-## 2. Điều kiện tiền đề
+## 1. Phạm vi
 
-* Dữ liệu cần có: user active, user banned, user có booking/rating/favorite/spend; current admin.
-* Tài khoản cần dùng: admin đang đăng nhập; user thường để test guard.
-* Trạng thái hệ thống: API user detail/bookings/ratings và mutations hoạt động.
-* Quyền user/admin/staff: admin được thao tác; self-protection khi xem chính mình.
+| Hạng mục | Chi tiết |
+|----------|----------|
+| Vai trò | **Admin** only |
+| Bookings | GET limit 5 + total count |
+| Ratings | GET limit 3 + total count |
+| Khóa/mở | PATCH status — **không** BlockUserDialog (khác List) |
+| Đổi role | Dialog → PATCH role |
+| Xóa | Confirm dialog → DELETE → redirect list (~1s delay) |
+| Self | `isSelf` → disable khóa / đổi role / xóa |
 
-## 3. Danh sách chức năng chính
+## 2. Tổng quan trạng thái
 
-* Load user detail theo id.
-* Load booking gần đây và rating gần đây.
-* Hiển thị stats bookings/reviews/favorites/totalSpend.
-* Toggle status active/banned.
-* Đổi role admin/user bằng dialog.
-* Xóa user bằng confirm dialog.
-* Error/not found và loading state.
-* Self check để hạn chế thao tác nguy hiểm.
+| Nhóm | Tổng TC | ✅ Auto | ⏳ Backlog |
+|------|---------|---------|------------|
+| Auth | 2 | 2 | 0 |
+| Load & 404 | 3 | 3 | 0 |
+| Profile & stats | 6 | 2 | 4 |
+| Bookings | 5 | 3 | 2 |
+| Ratings | 4 | 1 | 3 |
+| Status & role | 6 | 4 | 2 |
+| Delete | 3 | 2 | 1 |
+| Navigation | 4 | 4 | 0 |
+| Self-protection | 1 | 1 | 0 |
+| UX / i18n / error | 11 | 0 | 11 |
+| **UI subtotal** | **49** | **19** | **30** |
+| API smoke | 8 | 3 | 5 |
+| **Tổng** | **57** | **22** | **35** |
 
-## 4. Test cases chi tiết
+---
 
-| ID | Nhóm chức năng | Test case | Tiền điều kiện | Bước thực hiện | Dữ liệu test | Kết quả mong đợi | Mức độ ưu tiên | Loại test |
-| -- | -------------- | --------- | -------------- | -------------- | ------------ | ---------------- | -------------- | --------- |
-| ADMIN_USER_DETAIL_001 | Permission | Guest truy cập | Chưa login | Mở `/admin/users/detail/1`. | guest | Redirect login. | High | Permission |
-| ADMIN_USER_DETAIL_002 | Permission | User thường truy cập | role user | Mở route detail. | user | Bị chặn bởi PrivateRoute. | High | Permission |
-| ADMIN_USER_DETAIL_003 | Load dữ liệu | Mở user hợp lệ | User tồn tại | Mở `/admin/users/detail/10`. | id=10 | Header, info, bookings, ratings, stats, sidebar, actions hiển thị. | High | Functional |
-| ADMIN_USER_DETAIL_004 | Loading | Spinner khi đang tải | API delay | Mở detail. | delay | Spinner và loading text hiển thị. | Medium | UI |
-| ADMIN_USER_DETAIL_005 | Not found | User không tồn tại | ID sai | Mở `/admin/users/detail/999999`. | invalid | Card không tìm thấy và nút quay lại danh sách. | High | Negative |
-| ADMIN_USER_DETAIL_006 | Personal info | Thông tin cá nhân đầy đủ | User full data | Quan sát PersonalInfoCard. | full | Họ tên, email, phone, role, status, created date đúng. | High | Functional |
-| ADMIN_USER_DETAIL_007 | Missing avatar | User không avatar | avatar null | Mở detail. | null | Fallback avatar/initial không vỡ layout. | Low | Edge Case |
-| ADMIN_USER_DETAIL_008 | Missing phone | User không phone | phone null | Mở detail. | null | Fallback phù hợp, không undefined. | Low | Edge Case |
-| ADMIN_USER_DETAIL_009 | Stats | Thống kê user | User có bookings/reviews/favorites/spend | Quan sát UserStatsCards. | counts | Số liệu đúng format, totalSpend đúng tiền. | High | Functional |
-| ADMIN_USER_DETAIL_010 | Stats zero | User mới chưa hoạt động | counts 0 | Mở detail. | zero | Hiển thị 0, không NaN/blank. | Medium | Edge Case |
-| ADMIN_USER_DETAIL_011 | Bookings list | Booking gần đây | User có >5 bookings | Quan sát UserBookingsTable. | 10 bookings | Hiển thị 5 booking gần đây và totalCount đúng. | Medium | Functional |
-| ADMIN_USER_DETAIL_012 | Bookings empty | User chưa booking | bookings=[] | Mở detail. | empty | Empty/loading state đúng. | Low | Edge Case |
-| ADMIN_USER_DETAIL_013 | Ratings list | Rating gần đây | User có ratings | Quan sát UserRatingsList. | 5 ratings | Hiển thị tối đa 3 rating và total đúng. | Medium | Functional |
-| ADMIN_USER_DETAIL_014 | Ratings empty | User chưa rating | ratings=[] | Mở detail. | empty | Empty state đúng. | Low | Edge Case |
-| ADMIN_USER_DETAIL_015 | Toggle ban | Khóa user active | User khác current admin | Click khóa tài khoản. | active | Gọi mutation status `banned`, toast thành công, refetch. | High | Functional |
-| ADMIN_USER_DETAIL_016 | Toggle unban | Mở khóa user banned | User banned | Click mở khóa. | banned | Gọi mutation status `active`, toast thành công, refetch. | High | Functional |
-| ADMIN_USER_DETAIL_017 | Status API lỗi | Khóa/mở khóa lỗi | API 500 | Click action. | 500 | Toast lỗi mapApiErrorMessage, status không đổi sai. | High | API |
-| ADMIN_USER_DETAIL_018 | Change role open | Mở dialog đổi role | User khác admin hiện tại | Click đổi vai trò. | role user | Dialog mở với role hiện tại. | Medium | Functional |
-| ADMIN_USER_DETAIL_019 | Change role submit | Đổi role user -> admin | Dialog mở | Chọn admin và confirm. | admin | Mutation gọi đúng; toast success; dialog đóng; refetch. | High | Functional |
-| ADMIN_USER_DETAIL_020 | Change role API lỗi | Đổi role thất bại | API 500 | Submit role. | 500 | Toast lỗi, dialog không cập nhật sai. | High | API |
-| ADMIN_USER_DETAIL_021 | Self protection | Xem chính admin đang login | currentAdmin.id === id | Mở detail chính mình. | self | Action nguy hiểm bị disable/ẩn theo `isSelf`; không tự khóa/xóa/đổi role sai. | High | Permission |
-| ADMIN_USER_DETAIL_022 | Delete open | Mở confirm delete | User khác current admin | Click delete. | | Confirm dialog hiển thị tên user. | High | Functional |
-| ADMIN_USER_DETAIL_023 | Delete confirm | Xóa user | Dialog mở | Confirm delete. | id | Mutation delete gọi; toast success; điều hướng `/admin/users`. | High | Functional |
-| ADMIN_USER_DETAIL_024 | Delete API lỗi | Xóa thất bại | API 500 | Confirm delete. | 500 | Toast lỗi; dialog xử lý đúng, không điều hướng sai. | High | API |
-| ADMIN_USER_DETAIL_025 | Long name/email | Dữ liệu dài | User name/email dài | Mở detail. | long strings | Header/card truncate/wrap hợp lý, không tràn layout. | Medium | Edge Case |
-| ADMIN_USER_DETAIL_026 | Refetch after mutation | Cache cập nhật sau status/role | Mutation success | Thực hiện status/role. | | Detail query refetch, thông tin mới xuất hiện. | Medium | Regression |
-| ADMIN_USER_DETAIL_027 | Responsive | Layout mobile | Viewport 375px | Mở detail. | mobile | Grid chuyển 1 cột, actions dùng được. | Medium | Responsive |
-| ADMIN_USER_DETAIL_028 | Sticky sidebar | Sidebar desktop | 1440px | Cuộn trang. | desktop | Sidebar sticky top-24, không che content. | Low | UI |
-| ADMIN_USER_DETAIL_029 | Booking link | Click booking trong table | User có booking | Click xem booking nếu có. | booking id | Điều hướng admin booking detail đúng route nếu component hỗ trợ. | Medium | Functional |
-| ADMIN_USER_DETAIL_030 | Regression | Full thao tác user | User test riêng | Ban -> unban -> đổi role -> delete. | test user | Mỗi mutation thành công, toast đúng, không ảnh hưởng current admin. | High | Regression |
+## 3. Auth (P0)
 
-## 5. Test data đề xuất
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_007 | Guest → `/login` | ✅ |
+| TC_AD_UDET_008 | User `role=user` → `/login` | ✅ |
 
-* User active có booking/rating/favorite/spend.
-* User banned.
-* User mới không booking/rating.
-* Current admin để test self-protection.
+---
 
-## 6. Checklist regression
+## 4. Load & 404 (P1–P2)
 
-* Route chỉ admin truy cập.
-* Self-protection không bị mất.
-* Status/role/delete mutation refetch đúng.
-* Booking/rating list không vỡ khi rỗng.
-* Mobile layout không tràn.
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_001 | Load profile + sections | ✅ |
+| TC_AD_UDET_010 | User không tồn tại → 404 UI | ✅ |
+| TC_AD_UDET_004 | Loading spinner khi fetch | ⏳ |
 
-## 7. Ghi chú kỹ thuật
+---
 
-* Logic từ `UserDetail/index.tsx`.
-* Rủi ro cao: tự khóa/xóa admin hiện tại, cache sau mutation, long text trong header/sidebar.
+## 5. Profile & stats (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_002 | Personal info + stats bookings/spend | ✅ |
+| TC_AD_UDET_006 | User mới — zero stats (admin) | ✅ |
+| TC_AD_UDET_027 | Stat card **Yêu thích** (`favoritesCount`) | ⏳ |
+| TC_AD_UDET_028 | Email `mailto:`; avatar ảnh vs initial | ⏳ |
+| TC_AD_UDET_029 | Field: gender, city, birthdate, created/updated, email verified | ⏳ |
+| TC_AD_UDET_030 | Account sidebar: role, status, last login | ⏳ |
+
+---
+
+## 6. Bookings (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_003 | 5 booking gần đây, total 10 | ✅ |
+| TC_AD_UDET_005 | Link booking row → booking detail | ✅ |
+| TC_AD_UDET_017 | Actions: Xem đơn → `bookings?user_id=` | ✅ |
+| TC_AD_UDET_019 | Bookings link → browser Back → detail | ✅ |
+| TC_AD_UDET_031 | Link **Xem tất cả** khi total > 0 | ⏳ |
+| TC_AD_UDET_032 | Badge status: pending/confirmed/completed/cancelled | ⏳ |
+
+---
+
+## 7. Ratings (P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_004 | Ratings gần đây, total 5 | ✅ |
+| TC_AD_UDET_018 | Actions: Xem đánh giá → `ratings?user_id=` | ✅ |
+| TC_AD_UDET_020 | Ratings link → browser Back → detail | ✅ |
+| TC_AD_UDET_033 | Empty state `no_ratings` | ⏳ |
+| TC_AD_UDET_034 | Stars, score, comment, status badge | ⏳ |
+| TC_AD_UDET_035 | Rating gắn **location** (không chỉ tour) | ⏳ |
+| TC_AD_UDET_036 | Link **Xem tất cả đánh giá** | ⏳ |
+
+---
+
+## 8. Status & role (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_011 | Khóa user active (header/actions) | ✅ |
+| TC_AD_UDET_012 | Mở khóa user banned | ✅ |
+| TC_AD_UDET_013 | Mở dialog đổi role | ✅ |
+| TC_AD_UDET_014 | Nâng role → ADMIN | ✅ |
+| TC_AD_UDET_024 | Header badge **status** click toggle (không dialog) | ⏳ |
+| TC_AD_UDET_023 | Header badge **role** click mở dialog | ⏳ |
+| TC_AD_UDET_037 | Hạ ADMIN → USER qua dialog | ⏳ |
+| TC_AD_UDET_038 | Dialog role: Save disabled khi không đổi; cảnh báo nâng admin | ⏳ |
+| TC_AD_UDET_039 | Dialog role: **Hủy** | ⏳ |
+| TC_AD_UDET_043 | Sau PATCH → `refetchUser()` cập nhật UI | ⏳ |
+| TC_AD_UDET_045 | Badge status `pending` (amber) | ⏳ |
+
+---
+
+## 9. Delete (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_015 | Mở dialog xóa + tên user | ✅ |
+| TC_AD_UDET_016 | Xóa user → redirect list + toast | ✅ |
+| TC_AD_UDET_040 | Dialog cascade warning (bookings, ratings, favorites) | ⏳ |
+| TC_AD_UDET_041 | Dialog xóa: **Hủy** | ⏳ |
+
+---
+
+## 10. Navigation & actions (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_009 | Self — dangerous actions disabled | ✅ |
+| TC_AD_UDET_021 | Header **Chỉnh sửa** → edit | ⏳ |
+| TC_AD_UDET_022 | Back / breadcrumb → list | ⏳ |
+| TC_AD_UDET_025 | Actions card: Chỉnh sửa thông tin | ⏳ |
+| TC_AD_UDET_026 | Actions card: Khóa/mở khóa | ⏳ |
+
+---
+
+## 11. UX / i18n / error (P2–P3)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| TC_AD_UDET_042 | `mapApiErrorMessage` trên status/role/delete fail | ⏳ |
+| TC_AD_UDET_044 | `formatAdminShortDate` theo locale | ⏳ |
+| TC_AD_UDET_007 | Avatar/phone edge — visual | ⏳ |
+| TC_AD_UDET_008 | Long text layout | ⏳ |
+| TC_AD_UDET_012 | Empty bookings riêng user id | ⏳ |
+| TC_AD_UDET_014 | Empty ratings riêng user id | ⏳ |
+| TC_AD_UDET_046 | API 500 bookings path | ⏳ |
+| TC_AD_UDET_047 | API 500 ratings path | ⏳ |
+| TC_AD_UDET_048 | Refetch cache — assert network | ⏳ |
+| TC_AD_UDET_049 | Responsive / sticky CSS | ⏳ |
+| TC_AD_UDET_050 | Full regression flow | ⏳ |
+
+---
+
+## 12. API smoke (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| API_UDET_001 | GET detail không token → 401 | ✅ |
+| API_UDET_002 | GET detail hợp lệ → 200 | ✅ |
+| API_UDET_003 | PATCH status không token → 401 | ✅ |
+| API_UDET_004 | GET bookings → 200 / 401 | ⏳ |
+| API_UDET_005 | GET ratings → 200 / 401 | ⏳ |
+| API_UDET_006 | DELETE → 200 / 401 | ⏳ |
+| API_UDET_007 | PATCH role success | ⏳ |
+| API_UDET_008 | GET detail 404 | ⏳ |
+
+---
+
+## 13. Ghi chú
+
+- Khác List: Detail khóa **PATCH trực tiếp**, không BlockUserDialog.
+- **Chạy:** `npm run test:admin:user-detail`

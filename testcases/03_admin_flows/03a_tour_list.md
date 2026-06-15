@@ -1,47 +1,263 @@
-# Man hinh Danh sach Tour & Modal Chi tiet Tour (Admin Tour List Page)
+# Admin — Danh sách Tour (Tour List Page)
 
-## Pham vi
+**Route:** `/admin/tours/list`  
+**Source:** `danangtrip-admin/src/pages/Tours/TourList/`  
+**Automation:** `tests/admin/tours-list.spec.ts` · `tests/api/admin-tours-list.api.spec.ts`  
+**POM:** `TourListPage.ts` · Mock: `tests/fixtures/api/tours.mock.ts`
 
-- Route: `/admin/tours/list`
-- API lien quan: Danh sach tour co phan trang/loc/tim kiem, thong ke tour, cap nhat status/featured/hot, xoa tour, export, lich khoi hanh trong modal chi tiet.
-- Vai tro: Quan tri vien (Admin) / Nhan vien (Staff).
+**Modal chi tiết tour:** `03d_tour_detail_modal.md` · `tests/admin/tours-detail-modal.spec.ts` (25 TC — **không** nằm trong file này)
 
-## Dieu kien truoc
+---
 
-- Tai khoan: Da dang nhap trang quan tri bang tai khoan Admin/Staff.
-- Du lieu mau: Co nhieu tour voi category, status, booking availability, thumbnail/gallery, itinerary, schedules.
-- Moi truong: Local dev server (`http://localhost:5173`).
+## 1. Phạm vi
 
-## Test cases
+| Hạng mục | Chi tiết |
+|----------|----------|
+| Vai trò | **Admin** (`PrivateRoute` — không có Staff) |
+| URL query | **Không** — filter/page/limit là React state local |
+| API list | `GET /api/v1/admin/tours` — `page`, `per_page`, `search`, `tour_category_id`, `status`, `booking_availability`, `is_featured`, `is_hot`, `sort_by`, `sort_order` |
+| API stats | 4× `GET /admin/tours?per_page=1` (total, active, featured, sold_out) |
+| API categories | `GET /api/v1/tour-categories` |
+| Mutations | `PATCH .../status`, `PATCH .../featured`, `PATCH .../hot`, `DELETE .../:id` |
+| Export | `GET /admin/tours/export` → blob `danh-sach-tour_YYYY-MM-DD.xlsx` |
+| Sort UI | **Không có** — API luôn `sort_by=created_at`, `sort_order=desc` |
+| Status từng dòng | **Không có toggle** — chỉ badge read-only + bulk toolbar |
 
-### Phan 1: Danh sach tour
+## 2. Điều kiện tiên quyết
 
-| TT | Test Case ID | Chuc nang | Mo ta Test Case | Dieu kien tien quyet | Buoc thuc hien | Du lieu test | Ket qua mong doi | Ket qua thuc te | Status | Ghi chu |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | TC_AD_TLIST_001 | Render danh sach | Hien thi bang tour va stats | Co du lieu tour | Truy cap `/admin/tours/list`. | | Hien thi header, stats, filter va bang tour voi anh, ten, gia nguoi lon, category, status, booking availability, ngay tao, action. | | | |
-| 2 | TC_AD_TLIST_002 | Tim kiem nhanh | Tim tour theo keyword | Co tour khop | Nhap keyword trong filter. | Tu khoa: `Ba Na` | Bang cap nhat tour phu hop, page reset ve 1. | | | |
-| 3 | TC_AD_TLIST_003 | Loc tour | Loc theo category/status/booking availability/type/sort | Co nhieu loai tour | Chon tung filter. | Status: active | Danh sach cap nhat dung filter; selection cu duoc clear khi doi filter/limit. | | | |
-| 4 | TC_AD_TLIST_004 | Phan trang | Kiem tra pagination va limit | Tong tour > limit | Doi page va limit. | Limit: 20 | Bang hien dung so dong, page cap nhat, khong mat filter dang chon. | | | |
-| 5 | TC_AD_TLIST_005 | Toggle status | Bat/tat trang thai tour | Tour dang active/inactive | Doi status tren dong tour. | active -> inactive | Goi mutation status dung id/status, toast/refresh phu hop, UI cap nhat. | | | |
-| 6 | TC_AD_TLIST_006 | Toggle featured/hot | Bat/tat featured va hot | Tour ton tai | Click switch featured/hot tren dong tour. | | Goi API dung id/value; switch disabled/loading neu co; khong double submit. | | | |
-| 7 | TC_AD_TLIST_007 | Bulk status | Doi status nhieu tour | Chon nhieu dong | Tick checkbox nhieu tour, chon bulk active/inactive. | 2 tours | Goi mutation cho tung id, toast thanh cong voi count, rowSelection clear. | | | |
-| 8 | TC_AD_TLIST_008 | Xoa tour | Xoa mot tour | Tour co the xoa | Click delete tai dong tour, confirm dialog. | | Goi API xoa, dialog dong, bang refresh/loai tour khoi danh sach; neu co rang buoc booking thi hien loi. | | | |
-| 9 | TC_AD_TLIST_009 | Bulk delete | Xoa nhieu tour | Chon nhieu tour co the xoa | Tick nhieu dong, click bulk delete, confirm. | 2 tours | Goi delete tung id, toast thanh cong voi count, selection clear. | | | |
-| 10 | TC_AD_TLIST_010 | Export | Xuat danh sach tour theo filter | Co quyen export | Click export tren header. | | Goi export voi filters hien tai, nut loading khi export, file tai ve/thong bao thanh cong. | | | |
+- Admin đã đăng nhập · dev server `:5173`
+- Mock: `mockToursApi` (12 tour, 2 trang @ limit 10) · `initialMockTours` trong `tours.data.ts`
+- Chạy test: `npm run test:admin:tour-list`
 
-### Phan 2: Modal chi tiet tour
+## 3. Tổng quan trạng thái automation
 
-| TT | Test Case ID | Chuc nang | Mo ta Test Case | Dieu kien tien quyet | Buoc thuc hien | Du lieu test | Ket qua mong doi | Ket qua thuc te | Status | Ghi chu |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 11 | TC_AD_TDETAIL_001 | Mo modal chi tiet | Xem nhanh thong tin tour tu list | Co tour trong bang | Click action view/xem chi tiet tren dong tour. | | Modal hien overlay, title tour, ma tour, status badge, booking availability badge, nut edit va close. | | | |
-| 12 | TC_AD_TDETAIL_002 | Media preview | Kiem tra thumbnail/gallery trong modal | Tour co thumbnail/images | Quan sat khu vuc anh trong modal. | | Thumbnail hien dung aspect video; toi da 4 anh gallery; neu thieu anh hien fallback no data, khong vo layout. | | | |
-| 13 | TC_AD_TDETAIL_003 | Quick stats | Kiem tra gia/thoi luong/so nguoi/meeting point | Tour co field day du | Doc card thong tin ben phai. | | Gia format theo locale, thoi luong, max people va meeting point hien dung; field thieu hien no data. | | | |
-| 14 | TC_AD_TDETAIL_004 | Mo ta va itinerary | Kiem tra rich description va lich trinh | Tour co description HTML va itinerary | Cuon trong modal den description/itinerary. | | Description HTML render dung; itinerary hien theo ngay/tieu de/noi dung; neu rong hien empty state. | | | |
-| 15 | TC_AD_TDETAIL_005 | Lich khoi hanh trong modal | Kiem tra API schedules cua tour | Tour co schedules | Mo modal va doi schedules load xong. | | Hien loading khi dang tai; sau do hien danh sach startDate-endDate, bookedSlots/totalSlots va status available/full/cancelled. | | | |
-| 16 | TC_AD_TDETAIL_006 | Schedules error retry | Kiem tra loi load schedules | Gia lap API schedules loi | Mo modal, click retry trong alert. | | Alert loi hien ro; click retry goi lai API va co the hien du lieu sau khi thanh cong. | | | |
-| 17 | TC_AD_TDETAIL_007 | Edit tu modal | Dieu huong sang form edit | Modal dang mo | Click nut edit trong modal. | | Modal dong va dieu huong den `/admin/tours/edit/:id`. | | | |
-| 18 | TC_AD_TDETAIL_008 | Dong modal | Dong bang nut X/backdrop/close | Modal dang mo | Click X hoac nut close cuoi modal. | | Modal dong, scroll/background list tro lai binh thuong, khong mat filter/list state. | | | |
+| Nhóm | Tổng TC | ✅ Auto | ⏳ Backlog |
+|------|---------|---------|------------|
+| Auth & routing | 3 | 0 | 3 |
+| Header & navigation | 3 | 2 | 1 |
+| Stats cards | 4 | 1 | 3 |
+| Filter & search | 15 | 2 | 13 |
+| Bảng — hiển thị | 10 | 1 | 9 |
+| Selection & bulk | 10 | 4 | 6 |
+| Toggle featured/hot | 4 | 1 | 3 |
+| Pagination & refresh | 6 | 1 | 5 |
+| Export | 4 | 1 | 3 |
+| Delete dialog UX | 4 | 2 | 2 |
+| View → modal (smoke) | 1 | 0 | 1 |
+| i18n | 1 | 0 | 1 |
+| **UI subtotal** | **65** | **12** | **53** |
+| API smoke | 18 | 2 | 16 |
+| **Tổng** | **83** | **14** | **69** |
 
-## Ghi chu
+> **Kết luận:** File cũ chỉ liệt kê **12 UI + 2 API** — **chưa đủ**. Bảng dưới là inventory đầy đủ đối chiếu code thực tế.
 
-- Code hien tai khong co route admin tour detail rieng; chi tiet tour nam trong `TourDetailModal` cua trang list.
+---
+
+## 4. Test cases — Auth & routing (P0)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_013 | Guest `/admin/tours/list` → redirect `/login` | Không token | ⏳ |
+| TC_AD_TLIST_014 | User `role=user` → redirect `/login` | `seedNonAdminSession` | ⏳ |
+| TC_AD_TLIST_015 | Sidebar submenu Tours → Tour List | Navigation | ⏳ |
+
+---
+
+## 5. Header & navigation (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_001 | Render heading, breadcrumb, stats section, filter, bảng 10 dòng | 12 tour mock | ✅ |
+| TC_AD_TLIST_011 | Nút **Thêm tour** → `/admin/tours/create` | — | ✅ |
+| TC_AD_TLIST_016 | Breadcrumb: Quản lý Tour → Danh sách Tour | — | ⏳ |
+
+---
+
+## 6. Stats cards — 4 thẻ (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_017 | 4 label: Tổng tour / Đang hoạt động / Nổi bật / Hết chỗ | — | ⏳ |
+| TC_AD_TLIST_018 | Values khớp mock (total, active, featured, `booking_availability=sold_out`) | Fixture counts | ⏳ |
+| TC_AD_TLIST_019 | Loading skeleton → hiện số | Slow API mock | ⏳ |
+| TC_AD_TLIST_020 | Sau delete/toggle → stats refetch (`tourKeys.all`) | Delete 1 tour | ⏳ |
+
+---
+
+## 7. Filter & search (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_002 | Tìm kiếm keyword | `Ba Na` | ✅ |
+| TC_AD_TLIST_003 | Lọc status **active** | Tour inactive ẩn | ✅ |
+| TC_AD_TLIST_021 | Lọc status **inactive** | Tour Bán đảo Sơn Trà, Mỹ Sơn | ⏳ |
+| TC_AD_TLIST_022 | Lọc **danh mục** (Mountain / category_id=2) | Tour Sơn Trà, Huế | ⏳ |
+| TC_AD_TLIST_023 | Lọc **Còn chỗ** (`booking_availability=open`) | — | ⏳ |
+| TC_AD_TLIST_024 | Lọc **Hết chỗ** (`booking_availability=sold_out`) | id 4, 9 | ⏳ |
+| TC_AD_TLIST_025 | Lọc **type = featured** | `is_featured=1` | ⏳ |
+| TC_AD_TLIST_026 | Lọc **type = hot** | `is_hot=1` | ⏳ |
+| TC_AD_TLIST_027 | Lọc **type = normal** | không featured & không hot | ⏳ |
+| TC_AD_TLIST_028 | **Kết hợp** nhiều filter (category + status + type) | — | ⏳ |
+| TC_AD_TLIST_029 | Search **không có kết quả** → empty state | keyword `xyz` | ⏳ |
+| TC_AD_TLIST_030 | Nút **Đặt lại** hiện khi có filter + reset về 12 rows | — | ⏳ |
+| TC_AD_TLIST_031 | **Active filter tags** (category/status/type) + click × xóa tag | — | ⏳ |
+| TC_AD_TLIST_032 | Search debounce **300ms** — không spam request | Gõ nhanh | ⏳ |
+| TC_AD_TLIST_033 | Đổi filter → **page reset về 1** | Đang ở page 2 | ⏳ |
+| TC_AD_TLIST_034 | Category select **searchable** trong dropdown | Gõ "City" | ⏳ |
+
+---
+
+## 8. Bảng — hiển thị cột & edge cases (P1–P2)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_035 | Cột giá format VNĐ + "/ người" | Tour Ba Na 850.000 | ⏳ |
+| TC_AD_TLIST_036 | Tour **không thumbnail** — icon placeholder | Tour Tam Kỳ | ⏳ |
+| TC_AD_TLIST_037 | `schedules_count=0` → đỏ **Hết lịch** | Tour Tam Kỳ | ⏳ |
+| TC_AD_TLIST_038 | **StatusBadge** active vs inactive | — | ⏳ |
+| TC_AD_TLIST_039 | **BookingAvailabilityBadge** open vs sold_out | — | ⏳ |
+| TC_AD_TLIST_040 | Row tags Featured / Hot / Thường | — | ⏳ |
+| TC_AD_TLIST_041 | Slug hiển thị; fallback `TOUR-XXX` khi thiếu slug | — | ⏳ |
+| TC_AD_TLIST_042 | **STT trang 2** bắt đầu từ 11 (limit 10) | Page 2 | ⏳ |
+| TC_AD_TLIST_043 | Row **selected** — highlight bg teal + border trái | Checkbox | ⏳ |
+| TC_AD_TLIST_044 | Giá **0** hiển thị đúng | Tour dù lượn | ⏳ |
+
+---
+
+## 9. Selection & bulk actions (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_005 | Bulk **deactivate** 1 tour (thay toggle từng dòng) | Tour Hội An id=2 | ✅ |
+| TC_AD_TLIST_007 | Bulk **activate** nhiều tour + toast | id 4, 8 inactive | ✅ |
+| TC_AD_TLIST_008 | **Xóa 1 tour** — confirm dialog + DELETE | Tour dù lượn id=12 | ✅ |
+| TC_AD_TLIST_009 | **Bulk delete** 2 tour — dialog xác nhận | id 2, 3 | ✅ |
+| TC_AD_TLIST_045 | **Select all** trên trang → toolbar "Đã chọn N" | — | ⏳ |
+| TC_AD_TLIST_046 | Select all → **đổi trang** — selection vẫn giữ | Document behavior | ⏳ |
+| TC_AD_TLIST_047 | Đổi filter/limit → **selection cleared** | — | ⏳ |
+| TC_AD_TLIST_048 | Bulk deactivate **nhiều** tour + toast | — | ⏳ |
+| TC_AD_TLIST_049 | Bulk toolbar **ẩn** khi bỏ chọn hết | — | ⏳ |
+| TC_AD_TLIST_050 | Bulk delete **hủy** dialog → tours còn nguyên | — | ⏳ |
+| TC_AD_TLIST_051 | Single delete **hủy** / đóng × → không DELETE | — | ⏳ |
+
+---
+
+## 10. Toggle featured / hot (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_006 | Toggle featured ON + hot ON trên dòng | Tour Hội An id=2 | ✅ |
+| TC_AD_TLIST_053 | Toggle featured **OFF** (tour đã featured) | Tour Ba Na id=1 | ⏳ |
+| TC_AD_TLIST_054 | Toggle hot **OFF** | — | ⏳ |
+| TC_AD_TLIST_055 | PATCH featured/hot **API lỗi** → rollback UI + toast | Mock 500 | ⏳ |
+
+---
+
+## 11. Pagination & refresh (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_004 | Page 2 + đổi limit **20** | `waitForResponse` page=2, per_page=20 | ✅ |
+| TC_AD_TLIST_057 | **Prev** disabled trang 1; **Next** disabled trang cuối | — | ⏳ |
+| TC_AD_TLIST_058 | Click **Prev/Next** (không chỉ số trang) | — | ⏳ |
+| TC_AD_TLIST_059 | Ellipsis khi nhiều trang | Mock >20 tours | ⏳ |
+| TC_AD_TLIST_060 | Limit **50** | — | ⏳ |
+| TC_AD_TLIST_061 | Nút **Refresh** → refetch list + icon spin | — | ⏳ |
+
+---
+
+## 12. Export (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_010 | Export → GET 200 | — | ✅ |
+| TC_AD_TLIST_063 | Export với **filter active** — URL chứa params | status=active | ⏳ |
+| TC_AD_TLIST_064 | Export **disabled/spinner** khi pending | — | ⏳ |
+| TC_AD_TLIST_065 | Export **API lỗi** → toast error | Mock 500 | ⏳ |
+
+---
+
+## 13. Delete dialog UX (P2)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_067 | Single dialog hiện **đúng tên tour** | — | ⏳ |
+| TC_AD_TLIST_068 | Bulk dialog hiện **count** tours | — | ⏳ |
+| TC_AD_TLIST_069 | Nút confirm **disabled** khi `isDeleting` | Slow DELETE | ⏳ |
+| TC_AD_TLIST_070 | Single delete API lỗi → toast, tour còn trong list | Mock 500 | ⏳ |
+
+---
+
+## 14. Row actions (P1)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_012 | Nút **Sửa** → `/admin/tours/edit/:id` | Tour id=1 | ✅ |
+| TC_AD_TLIST_071 | Nút **View** mở modal (smoke — panel visible) | Chi tiết → `03d` | ⏳ |
+
+---
+
+## 15. i18n (P2)
+
+| ID | Mô tả | Dữ liệu | Auto |
+|----|--------|---------|------|
+| TC_AD_TLIST_072 | Locale **EN** — heading "Tour List", filter labels EN | Switch language | ⏳ |
+
+---
+
+## 16. API smoke (P1–P2)
+
+| ID | Mô tả | Auto |
+|----|--------|------|
+| API_TLIST_001 | GET list không auth → 401 | ✅ |
+| API_TLIST_002 | GET list admin → 200, `data` là array | ✅ |
+| API_TLIST_003 | `?search=` lọc đúng | ⏳ |
+| API_TLIST_004 | `?tour_category_id=` | ⏳ |
+| API_TLIST_005 | `?status=active\|inactive` | ⏳ |
+| API_TLIST_006 | `?booking_availability=open\|sold_out` | ⏳ |
+| API_TLIST_007 | `?is_featured=1` / `?is_hot=1` / normal combo | ⏳ |
+| API_TLIST_008 | `?page=&per_page=` — metadata pagination | ⏳ |
+| API_TLIST_009 | `?sort_by=&sort_order=` | ⏳ |
+| API_TLIST_010 | PATCH `/status` không auth → 401 | ⏳ |
+| API_TLIST_011 | PATCH `/featured`, `/hot` không auth → 401 | ⏳ |
+| API_TLIST_012 | DELETE không auth → 401 | ⏳ |
+| API_TLIST_013 | GET `/export` không auth → 401 | ⏳ |
+| API_TLIST_014 | GET `/tour-categories` — dependency filter | ⏳ |
+| API_TLIST_015 | PATCH status tour không tồn tại → 404 | ⏳ |
+| API_TLIST_016 | DELETE tour không tồn tại → 404 | ⏳ |
+| API_TLIST_017 | Token non-admin → 403 (nếu API enforce) | ⏳ |
+| API_TLIST_018 | Export với filter → 200 + content-type xlsx | ⏳ |
+
+---
+
+## 17. Ghi chú doc vs code
+
+| Mô tả cũ / giả định | Code thực tế |
+|---------------------|--------------|
+| Staff truy cập được | Chỉ **admin** |
+| Sort cột bảng | **Không có** UI sort |
+| Cột Đánh giá | **Không có** |
+| Click badge đổi status | Badge **read-only**; bulk toolbar |
+| Status "Hết chỗ" trong filter status | Tách: `status` vs `booking_availability` |
+| View → route `/admin/tours/:id` | View → **TourDetailModal** |
+| Empty state có nút Thêm tour | **Không có** nút trong empty |
+| Stats "Hết chỗ" | `booking_availability=sold_out`, không phải `status` |
+| Nút **Lọc** | **Decorative** — filter apply ngay khi đổi select |
+| Active tags | **Không** tag search / booking_availability |
+| **TLIST_005** | Bulk deactivate thay per-row toggle |
+
+---
+
+## 18. Liên kết
+
+| Tài liệu | Nội dung |
+|----------|----------|
+| `03d_tour_detail_modal.md` | 25 TC modal View (schedules, gallery, itinerary…) |
+| `03b_tour_create.md` | Tạo tour |
+| `03c_tour_edit.md` | Sửa tour (nếu có) |
+
+**Chạy automation hiện có:**
+```bash
+npm run test:admin:tour-list          # 12 UI
+npm run test:admin:tour-detail-modal  # 25 modal (03d)
+```

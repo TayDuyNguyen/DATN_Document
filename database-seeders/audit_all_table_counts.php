@@ -1,4 +1,10 @@
 <?php
+// Bootstrap Laravel
+require 'd:/DATN/danangtrip-api/vendor/autoload.php';
+$app = require_once 'd:/DATN/danangtrip-api/bootstrap/app.php';
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+
 
 $tables = collect(DB::select(
     "select table_name
