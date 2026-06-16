@@ -1,0 +1,1444 @@
+ĐẠI HỌC ĐÀ NẴNG
+TRƯỜNG ĐẠI HỌC BÁCH KHOA
+38039313931300KHOA CÔNG NGHỆ THÔNG TIN
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+62931318014700Độc lập - Tự do - Hạnh phúc
+NHẬN XÉT ĐỒ ÁN TỐT NGHIỆP
+1. Thông tin chung:
+1. Họ và tên sinh viên: Nguyễn Duy Tây
+2. Lớp: 22T-DT1 Số thẻ SV: 102220083
+3. Tên đề tài: Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến
+4. Người hướng dẫn: TS. Bùi Thị Thanh Thanh Học hàm/ học vị: Tiến sĩ
+II. Nhận xét, đánh giá đồ án tốt nghiệp:
+1. Về tính cấp thiết, tính mới, khả năng ứng dụng của đề tài: (điểm tối đa là 2đ)
+………………………………………………………………………………………..
+………………………………………………………………………………………..
+2. Về kết quả giải quyết các nội dung nhiệm vụ yêu cầu của đồ án: (điểm tối đa là 4đ)
+………………………………………………………………………………………..
+………………………………………………………………………………………..
+3. Về hình thức, cấu trúc, bố cục của đồ án tốt nghiệp: (điểm tối đa là 2đ)
+………………………………………………………………………………………..
+………………………………………………………………………………………..
+4. Đề tài có giá trị khoa học/ có bài báo/ giải quyết vấn đề đặt ra của doanh nghiệp hoặc nhà trường: (điểm tối đa là 1đ)
+………………………………………………………………………………………..
+………………………………………………………………………………………..
+5. Các tồn tại, thiếu sót cần bổ sung, chỉnh sửa:
+………………………………………………………………………………………..
+………………………………………………………………………………………..
+III. Tinh thần, thái độ làm việc của sinh viên: (điểm tối đa 1đ)
+………………………………………………………………………………………..
+IV. Đánh giá:
+1. Điểm đánh giá: ……../10 (lấy đến 1 số lẻ thập phân)
+2. Đề nghị: ☐ Được bảo vệ đồ án ☐ Bổ sung để bảo vệ ☐ Không được bảo vệ
+Đà Nẵng, ngày tháng năm 2026
+Người hướng dẫn
+NHẬN XÉT CỦA NGƯỜI HƯỚNG DẪN
+................................................................................................................................................. .....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Đà Nẵng, ngày … tháng … năm 2026.
+NHẬN XÉT CỦA NGƯỜI PHẢN BIỆN
+................................................................................................................................................. .....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+Đà Nẵng, ngày … tháng … năm 2026.
+TÓM TẮT
+Tên đề tài: Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến
+Sinh viên thực hiện: Nguyễn Duy Tây
+Số thẻ SV: 102220083 Lớp: 22T-DT1
+Tóm tắt đề tài:
+Trong bối cảnh các dịch vụ du lịch ngày càng được số hóa, nhu cầu tra cứu thông tin địa điểm, xem lịch trình tour, đặt dịch vụ và nhận hỗ trợ trực tuyến của người dùng có xu hướng tăng. Đà Nẵng là một địa phương có nhiều điểm tham quan, tour trải nghiệm và nội dung du lịch cần được tổ chức dưới dạng hệ thống thông tin có khả năng cập nhật, tìm kiếm và quản lý tập trung.
+Đề tài “Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến” được thực hiện nhằm xây dựng một hệ thống web phục vụ tra cứu thông tin du lịch, quản lý tour, đặt tour, thanh toán, đánh giá, tích lũy điểm thành viên và hỗ trợ tư vấn bằng chatbot. Bên cạnh website dành cho người dùng, hệ thống cung cấp trang quản trị để quản lý địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, bài viết, đánh giá, khuyến mãi, thông báo và báo cáo thống kê.
+Hệ thống được xây dựng theo kiến trúc Client-Server, gồm các thành phần chính:
+Website người dùng sử dụng Next.js, React, TypeScript, React Query, Zustand, next-intl và các thư viện bản đồ/giao diện.
+Hệ thống quản trị sử dụng React, Vite, TypeScript, React Router, React Query, React Hook Form, Recharts và i18next.
+API phía server sử dụng Laravel, PHP, JWT/Sanctum, mẫu Repository-Service, PostgreSQL/Supabase, bộ nhớ đệm Redis, tải ảnh Cloudinary, DomPDF và tích hợp thanh toán SePay/VietQR.
+Thành phần chatbot được tổ chức theo các bước: bộ kiểm soát ý định (Intent Guard), thành phần phân tích truy vấn (Query Understanding), truy xuất dữ liệu có cấu trúc kết hợp tìm kiếm ngữ nghĩa bằng embedding, lớp bộ nhớ đệm (Cache Layer) và cơ chế chuyển đổi dự phòng AI (AI Failover). Chatbot truy xuất dữ liệu từ các bảng nghiệp vụ như tour, địa điểm, bài viết, chính sách và chương trình điểm thành viên để tạo ngữ cảnh trước khi gọi nhà cung cấp AI.
+Kết quả của đề tài là hệ thống DanangTrip gồm website người dùng, trang quản trị và Server API, đáp ứng các nghiệp vụ chính như tra cứu địa điểm, quản lý tour, đặt tour, thanh toán, áp dụng khuyến mãi và phiếu giảm giá cá nhân, đánh giá và ghi nhận lượt hữu ích, tích lũy điểm, nhận thông báo, chatbot tư vấn và quản trị dữ liệu vận hành.
+ĐẠI HỌC ĐÀ NẴNG
+TRƯỜNG ĐẠI HỌC BÁCH KHOA
+KHOA CÔNG NGHỆ THÔNG TIN
+CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+Độc lập - Tự do - Hạnh phúc
+NHIỆM VỤ ĐỒ ÁN TỐT NGHIỆP
+Họ tên sinh viên: Nguyễn Duy Tây Số thẻ sinh viên: 102220083
+Lớp: 22T-DT1 Khoa: Công nghệ thông tin Ngành: CNTT Đặc Thù
+Tên đề tài đồ án: Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến
+Đề tài thuộc diện: ☐ Có ký kết thỏa thuận sở hữu trí tuệ đối với kết quả thực hiện
+Các số liệu và dữ liệu ban đầu:
+Không có
+Nội dung các phần thuyết minh và tính toán:
+Nội dung các phần thuyết minh bao gồm:
+Tổng quan đề tài: Giới thiệu tổng quan, mục đích và ý nghĩa của đề tài, công nghệ, kỹ thuật, công cụ được sử dụng và những kết quả dự kiến đạt được.
+Cơ sở lý thuyết: Trình bày những cơ sở lý thuyết được áp dụng trong đề tài.
+Phân tích thiết kế hệ thống: Phân tích các yêu cầu về chức năng và phi chức năng của hệ thống và triển khai thiết kế hệ thống thông qua các biểu đồ thiết kế hệ thống.
+Triển khai thực tế: Trình bày môi trường triển khai và kết quả thực tế đạt được.
+Kết luận và hướng phát triển: Đánh giá kết quả đạt được, chưa đạt được và đưa ra những định hướng phát triển thêm trong tương lai.
+Tài liệu tham khảo: Liệt kê các tài liệu tham khảo sử dụng trong đề tài.
+Các bản vẽ, đồ thị ( ghi rõ các loại và kích thước bản vẽ ):
+Không có
+Họ tên người hướng dẫn: TS. Bùi Thị Thanh Thanh
+Ngày giao nhiệm vụ đồ án:
+Ngày hoàn thành đồ án:
+Đà Nẵng, ngày tháng năm 2026.
+Trưởng Bộ môn ……………………..
+Người hướng dẫn
+GVHD: TS. Bùi Thị Thanh Thanh
+LỜI NÓI ĐẦU
+Đồ án tốt nghiệp là kết quả của quá trình học tập, nghiên cứu và vận dụng kiến thức chuyên ngành công nghệ thông tin vào việc giải quyết một bài toán thực tế. Với đề tài “Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến”, em tập trung xây dựng một hệ thống web hỗ trợ quản lý thông tin địa điểm, tour, đơn đặt tour và thanh toán trực tuyến.
+Trong quá trình thực hiện, em đã tìm hiểu và áp dụng các công nghệ phát triển web như Next.js, React, TypeScript, Laravel, RESTful API, xác thực JWT, PostgreSQL/Supabase, thanh toán trực tuyến, quản trị nội dung và chatbot có truy xuất dữ liệu nội bộ. Đề tài giúp em rèn luyện tư duy phân tích yêu cầu, thiết kế hệ thống, tổ chức mã nguồn, xây dựng giao diện, xử lý nghiệp vụ phía server và kiểm thử chức năng.
+Em xin chân thành cảm ơn quý thầy cô Khoa Công nghệ thông tin - Trường Đại học Bách khoa - Đại học Đà Nẵng đã truyền đạt kiến thức nền tảng và tạo điều kiện cho em thực hiện đồ án. Em xin gửi lời cảm ơn sâu sắc đến giảng viên hướng dẫn TS. Bùi Thị Thanh Thanh đã định hướng, góp ý và hỗ trợ em trong suốt quá trình thực hiện.
+Do giới hạn về thời gian thực hiện và kinh nghiệm triển khai thực tế, đồ án vẫn còn một số hạn chế. Sinh viên mong nhận được góp ý từ giảng viên và hội đồng để tiếp tục hoàn thiện hệ thống và báo cáo.
+Sinh viên thực hiện
+Nguyễn Duy Tây
+LỜI CAM ĐOAN
+Em xin cam đoan:
+Đồ án “Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến” là kết quả do em thực hiện dưới sự hướng dẫn của giảng viên hướng dẫn. Các nội dung, số liệu, hình ảnh minh họa và tài liệu tham khảo sử dụng trong báo cáo sẽ được trích dẫn rõ ràng theo quy định.
+Em xin chịu trách nhiệm về tính trung thực của nội dung báo cáo và sản phẩm đồ án.
+Đà Nẵng, ngày……tháng……năm 2026
+Sinh viên thực hiện
+Nguyễn Duy Tây
+MỤC LỤC
+TOC \h \z \t "Heading 1,1,Heading 2,2,Heading 3,3" NHẬN XÉT ĐỒ ÁN TỐT NGHIỆP PAGEREF _Toc232483232 \h i
+TÓM TẮT PAGEREF _Toc232483233 \h iv
+NHIỆM VỤ ĐỒ ÁN TỐT NGHIỆP PAGEREF _Toc232483234 \h v
+LỜI NÓI ĐẦU PAGEREF _Toc232483235 \h vi
+LỜI CAM ĐOAN PAGEREF _Toc232483236 \h vii
+MỤC LỤC PAGEREF _Toc232483237 \h viii
+DANH MỤC HÌNH ẢNH PAGEREF _Toc232483238 \h xii
+DANH MỤC BẢNG BIỂU PAGEREF _Toc232483239 \h xiv
+DANH SÁCH CÁC KÝ HIỆU, CHỮ VIẾT TẮT PAGEREF _Toc232483240 \h xv
+MỞ ĐẦU PAGEREF _Toc232483241 \h 1
+1. Giới thiệu PAGEREF _Toc232483242 \h 1
+2. Mục đích và ý nghĩa đề tài PAGEREF _Toc232483243 \h 1
+2.1. Mục đích PAGEREF _Toc232483244 \h 1
+2.2. Ý nghĩa PAGEREF _Toc232483245 \h 2
+3. Phạm vi đề tài PAGEREF _Toc232483246 \h 2
+4. Đối tượng nghiên cứu PAGEREF _Toc232483247 \h 3
+5. Phương pháp nghiên cứu PAGEREF _Toc232483248 \h 3
+5.1. Phương pháp khảo sát và phân tích yêu cầu PAGEREF _Toc232483249 \h 3
+5.2. Phương pháp phân tích thiết kế hướng chức năng PAGEREF _Toc232483250 \h 4
+5.3. Phương pháp thiết kế cơ sở dữ liệu quan hệ PAGEREF _Toc232483251 \h 4
+5.4. Phương pháp phát triển lặp PAGEREF _Toc232483252 \h 4
+5.5. Phương pháp kiểm thử thực nghiệm PAGEREF _Toc232483253 \h 4
+6. Các bước triển khai PAGEREF _Toc232483254 \h 4
+7. Công nghệ sử dụng PAGEREF _Toc232483255 \h 5
+8. Cấu trúc báo cáo PAGEREF _Toc232483256 \h 5
+9. Kết quả dự kiến đạt được PAGEREF _Toc232483257 \h 6
+9.1. Về mặt lý thuyết PAGEREF _Toc232483258 \h 6
+9.2. Về mặt ứng dụng PAGEREF _Toc232483259 \h 6
+CHƯƠNG 1: CƠ SỞ LÝ THUYẾT PAGEREF _Toc232483260 \h 7
+1.1. Tổng quan về kiến trúc client-server PAGEREF _Toc232483261 \h 7
+1.2. Tổng quan về Next.js và React PAGEREF _Toc232483262 \h 8
+1.3. Tổng quan về React/Vite cho trang quản trị PAGEREF _Toc232483263 \h 9
+1.4. Tổng quan về Laravel REST API PAGEREF _Toc232483264 \h 9
+1.5. Xác thực JWT và phân quyền PAGEREF _Toc232483265 \h 10
+1.6. PostgreSQL/Supabase và migration PAGEREF _Toc232483266 \h 11
+1.7. Thanh toán trực tuyến và IPN PAGEREF _Toc232483267 \h 13
+1.8. Chatbot, truy xuất tri thức và gợi ý du lịch PAGEREF _Toc232483268 \h 13
+1.9. Đa ngôn ngữ trong website du lịch PAGEREF _Toc232483269 \h 15
+1.10. Bản đồ số và dữ liệu vị trí PAGEREF _Toc232483270 \h 15
+1.11. Bảo mật trong hệ thống web PAGEREF _Toc232483271 \h 16
+CHƯƠNG 2: PHÂN TÍCH THIẾT KẾ HỆ THỐNG PAGEREF _Toc232483272 \h 17
+2.1. Các tác nhân chính PAGEREF _Toc232483273 \h 17
+2.1.1. Khách truy cập PAGEREF _Toc232483274 \h 17
+2.1.2. Người dùng đã đăng nhập PAGEREF _Toc232483275 \h 18
+2.1.3. Quản trị viên PAGEREF _Toc232483276 \h 18
+2.2. Yêu cầu chức năng PAGEREF _Toc232483277 \h 18
+2.2.1. Nhóm chức năng người dùng PAGEREF _Toc232483278 \h 18
+2.2.2. Nhóm chức năng quản trị PAGEREF _Toc232483279 \h 19
+2.3. Yêu cầu phi chức năng PAGEREF _Toc232483280 \h 20
+2.4. Biểu đồ use case PAGEREF _Toc232483281 \h 21
+2.4.1. Người dùng đã đăng nhập PAGEREF _Toc232483282 \h 21
+2.4.2. Khách truy cập PAGEREF _Toc232483283 \h 22
+2.4.3. Quản trị viên PAGEREF _Toc232483284 \h 23
+2.5. Đặc tả use case tiêu biểu PAGEREF _Toc232483285 \h 23
+2.5.1. Use case tìm kiếm địa điểm và tour PAGEREF _Toc232483286 \h 23
+2.5.2. Use case chatbot tư vấn du lịch PAGEREF _Toc232483287 \h 24
+2.5.3. Use case đăng ký tài khoản PAGEREF _Toc232483288 \h 25
+2.5.4. Use case đăng nhập PAGEREF _Toc232483289 \h 26
+2.5.5. Use case đặt tour PAGEREF _Toc232483290 \h 28
+2.5.6. Use case thanh toán PAGEREF _Toc232483291 \h 29
+2.5.7. Use case đánh giá PAGEREF _Toc232483292 \h 30
+2.5.8. Use case quản lý tour và lịch khởi hành PAGEREF _Toc232483293 \h 31
+2.5.9. Use case quản lý đơn đặt tour PAGEREF _Toc232483294 \h 32
+2.6. Biểu đồ tuần tự đặt tour và thanh toán PAGEREF _Toc232483295 \h 33
+2.7. Biểu đồ tuần tự đăng nhập PAGEREF _Toc232483296 \h 33
+2.8. Biểu đồ tuần tự chatbot PAGEREF _Toc232483297 \h 34
+2.9. Thiết kế quy trình AI Chatbot PAGEREF _Toc232483298 \h 35
+2.9.1. Công thức tính điểm tin cậy PAGEREF _Toc232483299 \h 37
+2.9.2. Công thức tìm kiếm ngữ nghĩa PAGEREF _Toc232483300 \h 38
+2.9.3. Bảng mô tả đầu vào và đầu ra của quy trình AI PAGEREF _Toc232483301 \h 40
+2.10. Kiến trúc hệ thống PAGEREF _Toc232483302 \h 41
+CHƯƠNG 3: TRIỂN KHAI THỰC TẾ PAGEREF _Toc232483303 \h 42
+3.1. Cấu trúc hệ thống PAGEREF _Toc232483304 \h 42
+3.2. Môi trường phát triển và triển khai hệ thống PAGEREF _Toc232483305 \h 42
+3.3. Triển khai Server API PAGEREF _Toc232483306 \h 43
+3.3.1. Tổ chức tuyến API PAGEREF _Toc232483307 \h 43
+3.3.2. Tổ chức tầng dịch vụ PAGEREF _Toc232483308 \h 44
+3.3.3. Xử lý lỗi và phản hồi API PAGEREF _Toc232483309 \h 45
+3.3.4. Xử lý tải ảnh PAGEREF _Toc232483310 \h 46
+3.4. Triển khai trang người dung PAGEREF _Toc232483311 \h 47
+3.4.1. Luồng trang chủ PAGEREF _Toc232483312 \h 47
+3.4.2. Luồng địa điểm PAGEREF _Toc232483313 \h 49
+3.4.3. Luồng tour và đặt tour PAGEREF _Toc232483314 \h 51
+3.4.4. Luồng hồ sơ người dùng PAGEREF _Toc232483315 \h 53
+3.4.5. Chatbot PAGEREF _Toc232483316 \h 55
+3.5. Triển khai trang quản trị PAGEREF _Toc232483317 \h 56
+3.5.1. Dashboard và báo cáo PAGEREF _Toc232483318 \h 56
+3.5.2. Quản lý địa điểm PAGEREF _Toc232483319 \h 57
+3.5.3. Quản lý tour và lịch khởi hành PAGEREF _Toc232483320 \h 57
+3.5.4. Quản lý đơn đặt tour và thanh toán PAGEREF _Toc232483321 \h 59
+3.5.5. Quản lý nội dung và tương tác PAGEREF _Toc232483322 \h 61
+KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN PAGEREF _Toc232483323 \h 62
+1. Kết quả đạt được PAGEREF _Toc232483324 \h 62
+2. Những vấn đề còn tồn tại PAGEREF _Toc232483325 \h 62
+3. Hướng phát triển PAGEREF _Toc232483326 \h 63
+4. Kết luận chung PAGEREF _Toc232483327 \h 64
+TÀI LIỆU THAM KHẢO PAGEREF _Toc232483328 \h 65
+DANH MỤC HÌNH ẢNH
+TOC \h \z \t "HINH ANH" \c Hình 1.1: Kiến trúc client-server PAGEREF _Toc232483329 \h 7
+Hình 1.2: Logo của React và Next.js PAGEREF _Toc232483330 \h 8
+Hình 1.3: Logo của Vite và React PAGEREF _Toc232483331 \h 9
+Hình 1.4: Mô hình hoạt động của Laravel REST API PAGEREF _Toc232483332 \h 9
+Hình 1.5: Sơ đồ luồng hoạt động của JWT PAGEREF _Toc232483333 \h 10
+Hình 1.6: Nền tảng Supabase PAGEREF _Toc232483334 \h 11
+Hình 1.7: Sơ đồ cấu trúc các lớp dịch vụ chatbot PAGEREF _Toc232483335 \h 14
+Hình 1.8: Bản đồ của hệ thống PAGEREF _Toc232483336 \h 15
+Hình 2.1: Các tác nhân chính của hệ thống PAGEREF _Toc232483337 \h 17
+Hình 2.2: Sơ đồ Use Case phân hệ Người dùng đã đăng nhập PAGEREF _Toc232483338 \h 21
+Hình 2.3: Sơ đồ Use Case phân hệ Khách truy cập PAGEREF _Toc232483339 \h 22
+Hình 2.4: Sơ đồ Use Case phân hệ Quản trị viên PAGEREF _Toc232483340 \h 23
+Hình 2.5: Biểu đồ tuần tự đặt tour và thanh toán PAGEREF _Toc232483341 \h 33
+Hình 2.6: Biểu đồ tuần tự đăng nhập PAGEREF _Toc232483342 \h 33
+Hình 2.7: Quy trình hội thoại tổng quát PAGEREF _Toc232483343 \h 34
+Hình 2.8: Quy trình xử lý RAG và NLU chi tiết khi Cache Miss PAGEREF _Toc232483344 \h 35
+Hình 2.9: Sơ đồ quy trình xử lý của AI Chatbot PAGEREF _Toc232483345 \h 39
+Hình 2.10: Sơ đồ kiến trúc hệ thống PAGEREF _Toc232483346 \h 41
+Hình 3.1: Tổng quan về hệ thống PAGEREF _Toc232483347 \h 42
+Hình 3.2: Luồng xử lý tạo đơn đặt tour từ Client đến Database PAGEREF _Toc232483348 \h 45
+Hình 3.3: Luồng tải ảnh từ Client lên Cloudinary thông qua Server API PAGEREF _Toc232483349 \h 47
+Hình 3.4: Giao diện trang chủ DanangTrip PAGEREF _Toc232483350 \h 48
+Hình 3.5: Giao diện trang chủ DanangTrip – địa điểm PAGEREF _Toc232483351 \h 48
+Hình 3.6: Giao diện trang chủ DanangTrip – tour PAGEREF _Toc232483352 \h 49
+Hình 3.7: Giao diện trang chủ DanangTrip – cẩm nang PAGEREF _Toc232483353 \h 49
+Hình 3.8: Giao diện danh sách địa điểm và bộ lọc tìm kiếm PAGEREF _Toc232483354 \h 50
+Hình 3.9: Giao diện chi tiết địa điểm và bản đồ vị trí PAGEREF _Toc232483355 \h 50
+Hình 3.10: Giao diện bản đồ vị trí và địa điểm lân cận PAGEREF _Toc232483356 \h 51
+Hình 3.11: Giao diện chi tiết tour PAGEREF _Toc232483357 \h 52
+Hình 3.12: Giao diện chọn lịch khởi hành và kiểm tra số chỗ PAGEREF _Toc232483358 \h 52
+Hình 3.13: Giao diện thanh toán đơn PAGEREF _Toc232483359 \h 53
+Hình 3.14: Giao diện hồ sơ người dùng PAGEREF _Toc232483360 \h 54
+Hình 3.15: Giao diện lịch sử đặt tour PAGEREF _Toc232483361 \h 54
+Hình 3.16: Giao diện điểm thành viên và phần thưởng PAGEREF _Toc232483362 \h 55
+Hình 3.17: Giao diện chatbot tư vấn du lịch PAGEREF _Toc232483363 \h 55
+Hình 3.18: Giao diện bảng điều khiển quản trị và biểu đồ thống kê PAGEREF _Toc232483364 \h 56
+Hình 3.19: Giao diện quản lý địa điểm PAGEREF _Toc232483365 \h 57
+Hình 3.20: Giao diện quản lý tour PAGEREF _Toc232483366 \h 58
+Hình 3.21: Giao diện quản lý lịch khởi hành PAGEREF _Toc232483367 \h 58
+Hình 3.22: Giao diện quản lý đơn đặt tour PAGEREF _Toc232483368 \h 59
+Hình 3.23: Giao diện chi tiết đơn đặt tour PAGEREF _Toc232483369 \h 60
+Hình 3.24: Giao diện quản lý thanh toán PAGEREF _Toc232483370 \h 60
+Hình 3.25: Giao diện quản lý bài viết PAGEREF _Toc232483371 \h 61
+Hình 3.26: Giao diện liên hệ PAGEREF _Toc232483372 \h 61
+DANH MỤC BẢNG BIỂU
+TOC \h \z \t "Table" \c Bảng 1.1: Tóm tắt công nghệ và kỹ thuật sử dụng trong hệ thống PAGEREF _Toc232483373 \h 5
+Bảng 1.2: Các nhóm bảng cơ sở dữ liệu PAGEREF _Toc232483374 \h 13
+Bảng 2.1: Yêu cầu chức năng nhóm người dùng PAGEREF _Toc232483375 \h 19
+Bảng 2.2: Yêu cầu chức năng nhóm quản trị PAGEREF _Toc232483376 \h 20
+Bảng 2.3: Các yêu cầu phi chức năng và phương án triển khai PAGEREF _Toc232483377 \h 21
+Bảng 2.4: Đặc tả ca sử dụng Tìm kiếm PAGEREF _Toc232483378 \h 24
+Bảng 2.5: Đặc tả ca sử dụng Chatbot tư vấn du lịch PAGEREF _Toc232483379 \h 25
+Bảng 2.6: Đặc tả ca sử dụng Đăng ký tài khoản PAGEREF _Toc232483380 \h 26
+Bảng 2.7: Đặc tả ca sử dụng Đăng nhập PAGEREF _Toc232483381 \h 27
+Bảng 2.8: Đặc tả ca sử dụng Đặt tour PAGEREF _Toc232483382 \h 28
+Bảng 2.9: Đặc tả ca sử dụng Thanh toán đơn đặt tour PAGEREF _Toc232483383 \h 29
+Bảng 2.10: Đặc tả ca sử dụng Đánh giá tour và địa điểm PAGEREF _Toc232483384 \h 30
+Bảng 2.11: Đặc tả ca sử dụng Quản lý tour và lịch khởi hành PAGEREF _Toc232483385 \h 32
+Bảng 2.12: Đặc tả ca sử dụng Quản lý đơn đặt tour PAGEREF _Toc232483386 \h 33
+Bảng 2.13: Quy trình các bước xử lý đầu vào và đầu ra của chatbot AI PAGEREF _Toc232483387 \h 41
+Bảng 3.1: Môi trường phát triển và triển khai của hệ thống PAGEREF _Toc232483388 \h 43
+Bảng 3.2: Một số endpoint tiêu biểu của Server API PAGEREF _Toc232483389 \h 44
+DANH SÁCH CÁC KÝ HIỆU, CHỮ VIẾT TẮT
+Từ
+Viết tắt của
+Diễn giải
+API
+Application Programming Interface
+Giao diện lập trình ứng dụng
+DB
+Database
+Cơ sở dữ liệu
+ERD
+Entity Relationship Diagram
+Biểu đồ quan hệ thực thể
+JWT
+JSON Web Token
+Chuẩn token dùng cho xác thực
+REST
+Representational State Transfer
+Kiến trúc API phổ biến trên HTTP
+SEO
+Search Engine Optimization
+Tối ưu hóa công cụ tìm kiếm
+UI
+User Interface
+Giao diện người dùng
+UX
+User Experience
+Trải nghiệm người dùng
+CRUD
+Create, Read, Update, Delete
+Nhóm thao tác thêm, đọc, sửa, xóa
+IPN
+Instant Payment Notification
+Thông báo thanh toán tức thời
+RAG
+Retrieval-Augmented Generation
+Kỹ thuật kết hợp truy xuất tri thức và sinh câu trả lời
+API
+Application Programming Interface
+Giao diện lập trình ứng dụng
+AI
+Artificial Intelligence
+Trí tuệ nhân tạo
+NLU
+Natural Language Understanding
+Hiểu Ngôn ngữ Tự nhiên
+MỞ ĐẦU
+1. Giới thiệu
+Trong lĩnh vực du lịch, công nghệ thông tin được ứng dụng để hỗ trợ tra cứu thông tin, quản lý dịch vụ, tiếp nhận đặt chỗ và tương tác với khách hàng trên môi trường trực tuyến. Người dùng thường tìm kiếm thông tin địa điểm, xem đánh giá, tham khảo lịch trình, so sánh giá tour và đặt dịch vụ trực tuyến trước khi quyết định chuyến đi. Đối với Đà Nẵng, hệ thống thông tin du lịch có thể hỗ trợ tổ chức dữ liệu địa điểm, tour, lịch khởi hành và đơn đặt tour theo mô hình tập trung, qua đó giảm thao tác quản lý thủ công và cải thiện khả năng tra cứu của người dùng.
+Hệ thống DanangTrip được xây dựng nhằm cung cấp nền tảng web phục vụ tra cứu thông tin du lịch Đà Nẵng, đặt tour trực tuyến và quản lý dữ liệu du lịch thông qua giao diện người dùng và giao diện quản trị. Hệ thống bao gồm các nhóm chức năng: tìm kiếm địa điểm/tour, bản đồ, giỏ hàng, đặt tour, thanh toán, khuyến mãi, phiếu giảm giá cá nhân, điểm thành viên, đánh giá, quản lý tài khoản, trợ lý tư vấn du lịch và quản trị dữ liệu vận hành.
+2. Mục đích và ý nghĩa đề tài
+2.1. Mục đích
+Mục đích của đề tài là xây dựng một website du lịch Đà Nẵng có khả năng phục vụ đồng thời hai nhóm người dùng: khách du lịch và quản trị viên. Hệ thống cần đáp ứng các mục tiêu chính:
+Cung cấp thông tin địa điểm du lịch, danh mục, tiện ích, hình ảnh, vị trí và đánh giá.
+Cung cấp danh sách tour, chi tiết tour, lịch khởi hành, kiểm tra chỗ trống và đặt tour.
+Hỗ trợ giỏ hàng, tính giá, khuyến mãi, thanh toán và tra cứu trạng thái thanh toán.
+Hỗ trợ tài khoản người dùng, hồ sơ cá nhân, yêu thích, lịch sử đặt tour, thông báo và đánh giá.
+Hỗ trợ tích lũy điểm từ các hành vi hợp lệ, đổi điểm lấy phiếu giảm giá cá nhân và sử dụng phiếu giảm giá khi đặt tour.
+Cho phép người dùng ghi nhận đánh giá hữu ích; gửi thông báo về trạng thái đơn, thanh toán, điểm thưởng và lịch khởi hành.
+Cung cấp trợ lý tư vấn du lịch (chatbot), tìm kiếm và gợi ý dựa trên dữ liệu trong hệ thống.
+Cung cấp trang quản trị để vận hành dữ liệu, theo dõi doanh thu, đơn đặt tour, thanh toán, đánh giá và báo cáo.
+2.2. Ý nghĩa
+Về mặt thực tiễn, đề tài góp phần xây dựng một nền tảng số hóa thông tin du lịch Đà Nẵng, giúp người dùng tìm kiếm và đặt dịch vụ thuận tiện hơn. Hệ thống cũng hỗ trợ đơn vị quản lý giảm thao tác thủ công trong việc cập nhật dữ liệu, xử lý đặt chỗ, xác nhận thanh toán và theo dõi tình hình kinh doanh.
+Về mặt học thuật, đề tài giúp sinh viên vận dụng kiến thức về phân tích thiết kế hệ thống, cơ sở dữ liệu, phát triển giao diện web, xây dựng API phía Server, xác thực, phân quyền, xử lý giao dịch, tích hợp dịch vụ bên ngoài, kiểm thử và triển khai.
+Về khả năng mở rộng, hệ thống có thể được bổ sung các chức năng cá nhân hóa lịch trình, đề xuất tour dựa trên hành vi người dùng và tích hợp dữ liệu từ các nhà cung cấp dịch vụ du lịch.
+3. Phạm vi đề tài
+Đề tài tập trung vào các chức năng chính:
+Website người dùng: trang chủ, địa điểm, tour, tìm kiếm, bản đồ, gần tôi, blog, liên hệ, giỏ hàng, đặt tour, thanh toán, hồ sơ, điểm thành viên, phiếu giảm giá cá nhân, đánh giá, yêu thích và thông báo.
+Website quản trị: bảng điều khiển, quản lý địa điểm, danh mục địa điểm, tour, danh mục tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, bài viết, đánh giá, liên hệ, thông báo, khuyến mãi, cấu hình và báo cáo.
+API phía server: cung cấp REST API theo nhóm công khai, nhóm yêu cầu xác thực và nhóm quản trị; xử lý xác thực, phân quyền, nghiệp vụ đặt tour, thanh toán, điểm thành viên, phiếu giảm giá, đánh giá, tải ảnh, thống kê và chatbot.
+Cơ sở dữ liệu: sử dụng PostgreSQL/Supabase để lưu trữ người dùng, địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, đánh giá lượt đánh giá hữu ích, blog, thông báo, khuyến mãi, điểm thành viên, phiếu giảm giá cá nhân, cấu hình, dữ liệu chatbot và nhật ký tương tác.
+Các nội dung ngoài phạm vi phiên bản hiện tại:
+Kết nối trực tiếp với hệ thống quản lý tour của bên thứ ba.
+Tối ưu đầy đủ hệ thống gợi ý độc lập trong môi trường vận hành thực tế.
+Ứng dụng di động nguyên bản.
+Hệ thống kế toán hoặc quản trị tài chính chuyên sâu.
+4. Đối tượng nghiên cứu
+Đối tượng nghiên cứu của đề tài gồm các thành phần sau:
+Nghiệp vụ du lịch trực tuyến: tra cứu địa điểm, xem tour, đặt tour, thanh toán, đánh giá và chăm sóc khách hàng.
+Nghiệp vụ quản trị du lịch: quản lý địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, nội dung, khuyến mãi và báo cáo.
+Kiến trúc phát triển web hiện đại với tầng giao diện tách riêng API phía Server.
+Kỹ thuật xây dựng RESTful API, xác thực bằng mã thông báo (token), phân quyền và xử lý giao dịch.
+Kỹ thuật tổ chức dữ liệu du lịch và khai thác dữ liệu cho tìm kiếm, gợi ý và chatbot.
+5. Phương pháp nghiên cứu
+5.1. Phương pháp khảo sát và phân tích yêu cầu
+Sinh viên khảo sát các chức năng phổ biến của website du lịch như tìm kiếm địa điểm, xem thông tin tour, đặt tour, thanh toán trực tuyến, quản lý hồ sơ người dùng, đánh giá dịch vụ và quản trị nội dung. Từ đó xác định các tác nhân, yêu cầu chức năng, yêu cầu phi chức năng và phạm vi triển khai.
+5.2. Phương pháp phân tích thiết kế hướng chức năng
+Các nghiệp vụ chính được phân rã thành ca sử dụng (use case), biểu đồ tuần tự, biểu đồ hoạt động và mô hình dữ liệu. Phương pháp này giúp làm rõ luồng xử lý giữa người dùng, giao diện, API, cơ sở dữ liệu và dịch vụ bên ngoài.
+5.3. Phương pháp thiết kế cơ sở dữ liệu quan hệ
+Dữ liệu được mô hình hóa thành các thực thể như người dùng, địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, đánh giá, lượt đánh giá hữu ích, quy tắc điểm, giao dịch điểm, phần thưởng, phiếu giảm giá cá nhân, bài viết và thông báo. Các quan hệ một-nhiều, nhiều-nhiều và ràng buộc dữ liệu được thể hiện qua migration Laravel.
+5.4. Phương pháp phát triển lặp
+Hệ thống được triển khai theo từng phân hệ: API phía Server, website người dùng, trang quản trị, thanh toán, báo cáo, chatbot và kiểm thử. Sau mỗi phân hệ, sinh viên kiểm tra chức năng, sửa lỗi và tích hợp với các phân hệ liên quan.
+5.5. Phương pháp kiểm thử thực nghiệm
+Các chức năng được kiểm thử thông qua kiểm thử đơn vị, kiểm thử chức năng, kiểm thử giao diện và kiểm thử thủ công. Đối với các luồng quan trọng như đặt tour và thanh toán, cần kiểm tra cả trường hợp thành công và thất bại.
+6. Các bước triển khai
+Quá trình thực hiện đề tài được chia thành các giai đoạn:
+Khảo sát và phân tích yêu cầu: xác định tác nhân, nghiệp vụ người dùng, nghiệp vụ quản trị và các dữ liệu cần quản lý.
+Thiết kế hệ thống: thiết kế kiến trúc tổng thể, phân tách website người dùng, trang quản trị, API phía Server và cơ sở dữ liệu.
+Xây dựng API phía Server: triển khai Laravel API, migration, model, repository, service, controller, middleware xác thực và phân quyền.
+Xây dựng website người dùng: triển khai Next.js, giao diện đa ngôn ngữ, tích hợp API, các luồng tìm kiếm, đặt tour, thanh toán và hồ sơ cá nhân.
+Xây dựng trang quản trị: triển khai React/Vite, định tuyến, biểu mẫu quản trị, bảng dữ liệu, báo cáo và phân quyền quản trị viên.
+Tích hợp dịch vụ: tải hình ảnh lên Cloudinary, thanh toán SePay, gửi email, xuất báo cáo và sinh hóa đơn PDF.
+Tích hợp AI/chatbot: đồng bộ cơ sở tri thức từ tour, địa điểm, bài viết và chính sách; xây dựng luồng tư vấn du lịch.
+Kiểm thử và hoàn thiện: kiểm tra chức năng, xử lý lỗi, tối ưu giao diện, hoàn thiện tài liệu và báo cáo.
+7. Công nghệ sử dụng
+Thành phần
+Công nghệ
+Website người dùng
+Next.js, React, TypeScript, React Query, Zustand, next-intl
+Trang quản trị
+React, Vite, TypeScript, React Router, React Query, React Hook Form
+API phía Server
+Laravel, PHP, JWT Auth, Laravel Sanctum, mẫu Repository-Service
+Cơ sở dữ liệu
+PostgreSQL/Supabase, quản lý lược đồ bằng Laravel migrations
+Bộ nhớ đệm/Hàng đợi
+Bảng chat_cache, Laravel Jobs; Redis/Predis có thể sử dụng theo cấu hình triển khai
+Bản đồ
+Leaflet, React Leaflet, Leaflet Routing Machine
+Tải ảnh
+Cloudinary
+Thanh toán
+SePay/VietQR, callback/IPN thanh toán
+Báo cáo/tài liệu
+Maatwebsite Excel, DomPDF
+AI/chatbot
+Bộ kiểm soát ý định (Intent Guard), phân tích truy vấn (Query Understanding), truy xuất dữ liệu có cấu trúc kết hợp embedding, chuyển đổi dự phòng AI và bộ nhớ đệm
+Kiểm thử
+PHPUnit, Vitest, Playwright
+Bảng 1.1: Tóm tắt công nghệ và kỹ thuật sử dụng trong hệ thống
+8. Cấu trúc báo cáo
+Báo cáo được tổ chức theo các phần chính:
+Mở đầu: Trình bày lý do chọn đề tài, mục tiêu, ý nghĩa, phạm vi, đối tượng, phương pháp nghiên cứu và công nghệ sử dụng.
+Chương 1 - Cơ sở lý thuyết: Trình bày kiến thức nền về kiến trúc Client - Server, Next.js/React, Laravel API, xác thực JWT, cơ sở dữ liệu quan hệ, thanh toán trực tuyến, chatbot và kiểm thử.
+Chương 2 - Phân tích thiết kế hệ thống: Trình bày tác nhân, yêu cầu chức năng, yêu cầu phi chức năng, ca sử dụng, biểu đồ tuần tự, biểu đồ hoạt động, kiến trúc hệ thống, thiết kế cơ sở dữ liệu và API.
+Chương 3 - Triển khai thực tế: Trình bày cấu trúc dự án, môi trường phát triển, triển khai API phía Server, website người dùng, trang quản trị, đặt tour, thanh toán, chatbot, kiểm thử và kết quả giao diện.
+Kết luận và hướng phát triển: Tổng kết kết quả đạt được, hạn chế và hướng mở rộng.
+9. Kết quả dự kiến đạt được
+9.1. Về mặt lý thuyết
+Nắm được quy trình phân tích, thiết kế và triển khai một hệ thống web theo kiến trúc Client - Server.
+Hiểu cách tổ chức API phía Server theo controller, service, repository, model và migration.
+Hiểu cách xây dựng giao diện web hiện đại với Next.js, React Query, quản lý trạng thái và đa ngôn ngữ.
+Nắm được quy trình thiết kế cơ sở dữ liệu cho nghiệp vụ du lịch, đặt tour, thanh toán và quản trị nội dung.
+Biết cách tích hợp các dịch vụ như thanh toán, tải ảnh, email, PDF, báo cáo và chatbot.
+9.2. Về mặt ứng dụng
+Hoàn thiện website người dùng phục vụ tra cứu, khám phá, đặt tour và quản lý tài khoản.
+Hoàn thiện chức năng điểm thành viên, đổi điểm lấy phiếu giảm giá, áp dụng khuyến mãi/phiếu giảm giá và ghi nhận đánh giá hữu ích
+Hoàn thiện trang quản trị phục vụ vận hành dữ liệu và theo dõi hoạt động kinh doanh.
+Hoàn thiện API phía Server có phân quyền, xử lý nghiệp vụ và cung cấp dữ liệu cho website người dùng cùng trang quản trị.
+Xây dựng nền tảng mở rộng cho gợi ý thông minh và trợ lý tư vấn du lịch.
+CHƯƠNG 1: CƠ SỞ LÝ THUYẾT
+right329565001.1. Tổng quan về kiến trúc client-server
+Hình 1.1: Kiến trúc client-server
+Kiến trúc client-server là mô hình phổ biến trong phát triển ứng dụng web. Trong mô hình này, phía client chịu trách nhiệm hiển thị giao diện và tương tác với người dùng, trong khi phía server xử lý nghiệp vụ, truy xuất dữ liệu, xác thực, phân quyền và cung cấp API.
+Trong hệ thống DanangTrip, kiến trúc client-server được thể hiện qua ba thành phần:
+danangtrip-web: website người dùng, gọi API để hiển thị dữ liệu địa điểm, tour, đơn đặt tour, thanh toán và hồ sơ.
+danangtrip-admin: giao diện quản trị, gọi API quản trị để quản lý dữ liệu và báo cáo.
+danangtrip-api: API phía server được xây dựng bằng Laravel, cung cấp REST API cho website người dùng và trang quản trị.
+Mô hình này giúp tách biệt trách nhiệm giữa giao diện và nghiệp vụ, thuận tiện cho bảo trì, mở rộng và triển khai độc lập.
+1.2. Tổng quan về Next.js và React
+13156624289100
+Hình 1. SEQ Hình_1. \* ARABIC 2: Logo của React và Next.js
+React là thư viện JavaScript dùng để xây dựng giao diện người dùng theo hướng thành phần (component). Next.js là khung phát triển (framework) xây dựng trên React, hỗ trợ định tuyến theo cấu trúc tệp, kết xuất phía server, sinh trang tĩnh, tối ưu SEO và triển khai linh hoạt.
+Trong DanangTrip, Next.js được dùng cho website người dùng vì phù hợp với các trang cần SEO như trang chủ, danh sách địa điểm, chi tiết địa điểm, danh sách tour, chi tiết tour và blog. Dự án còn sử dụng:
+TypeScript để tăng độ an toàn kiểu dữ liệu.
+React Query để quản lý trạng thái dữ liệu lấy từ API.
+Zustand để quản lý trạng thái cục bộ như xác thực, giỏ hàng hoặc trạng thái ứng dụng.
+next-intl để hỗ trợ đa ngôn ngữ.
+Leaflet để hiển thị bản đồ và vị trí du lịch.
+1.3. Tổng quan về React/Vite cho trang quản trị
+Hình 1. SEQ Hình_1. \* ARABIC 3: Logo của Vite và React
+Vite là công cụ đóng gói giao diện có tốc độ phát triển nhanh, phù hợp với ứng dụng quản trị dạng ứng dụng một trang. React Router được dùng để quản lý đường dẫn nội bộ, React Query để đồng bộ trạng thái dữ liệu từ server, React Hook Form và Yup/Zod để xử lý biểu mẫu và kiểm tra dữ liệu.
+Trang quản trị DanangTrip sử dụng React/Vite để xây dựng các phân hệ bảng điều khiển, tour, lịch khởi hành, đơn đặt tour, thanh toán, địa điểm, bài viết, người dùng, đánh giá, liên hệ, thông báo, khuyến mãi và cấu hình. Đây là nhóm màn hình có tính thao tác lặp lại cao, cần bảng dữ liệu, bộ lọc, biểu đồ, biểu mẫu thêm/sửa và kiểm soát trạng thái.
+1.4. Tổng quan về Laravel REST API
+Hình 1.4: Mô hình hoạt động của Laravel REST API
+Laravel là khung phát triển PHP hỗ trợ phát triển ứng dụng web và API với hệ sinh thái đầy đủ: định tuyến, lớp trung gian (middleware), ORM, migration, hàng đợi, kiểm tra dữ liệu, bộ nhớ đệm, sự kiện, tác vụ nền và kiểm thử. REST API là phong cách thiết kế API sử dụng các phương thức HTTP như GET, POST, PUT, PATCH và DELETE để thao tác tài nguyên.
+API phía server của DanangTrip sử dụng Laravel 12 và tổ chức mã nguồn theo hướng:
+Controller tiếp nhận yêu cầu và trả phản hồi.
+Service xử lý nghiệp vụ.
+Repository truy vấn và thao tác dữ liệu.
+Model đại diện bảng dữ liệu.
+Cơ chế kiểm tra yêu cầu đầu vào giúp xác thực dữ liệu trước khi xử lý nghiệp vụ.
+Middleware xử lý xác thực, phân quyền và throttle.
+Cách tổ chức này giúp nghiệp vụ được tách khỏi controller, dễ kiểm thử và dễ mở rộng.
+1.5. Xác thực JWT và phân quyền
+Hình 1.5: Sơ đồ luồng hoạt động của JWT
+JWT là chuẩn mã thông báo dùng để truyền thông tin xác thực giữa client và server. Sau khi đăng nhập thành công, server cấp mã thông báo truy cập (access token) và mã thông báo làm mới (refresh token). Client gửi mã thông báo trong các yêu cầu cần bảo vệ. Server kiểm tra mã thông báo để xác định người dùng và quyền truy cập.
+Trong DanangTrip, API được chia thành:
+Nhóm tuyến công khai: không cần mã thông báo, dùng cho trang chủ, địa điểm, tour, blog, tìm kiếm, chatbot và liên hệ.
+Nhóm tuyến yêu cầu xác thực: cần đăng nhập, dùng cho hồ sơ, đơn đặt tour, thanh toán, yêu thích, đánh giá, thông báo và giỏ hàng.
+Nhóm tuyến quản trị: cần mã thông báo và quyền quản trị viên, dùng cho quản trị hệ thống.
+1.6. PostgreSQL/Supabase và migration
+Hình 1.6: Nền tảng Supabase
+PostgreSQL là hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở, hỗ trợ khóa ngoại, giao dịch (transaction), chỉ mục (index), ràng buộc dữ liệu, JSON/JSONB và tìm kiếm toàn văn (full-text search). Supabase cung cấp nền tảng dịch vụ backend dựng sẵn (backend-as-a-service) sử dụng PostgreSQL làm lõi lưu trữ, phù hợp với các hệ thống cần triển khai nhanh cơ sở dữ liệu quan hệ và quản lý dữ liệu trên môi trường đám mây.
+PostgreSQL/Supabase được sử dụng do hệ thống có nhiều quan hệ dữ liệu cần quản lý bằng khóa ngoại và giao dịch, chẳng hạn quan hệ giữa người dùng, tour, lịch khởi hành, đơn đặt tour, chi tiết đơn đặt tour và thanh toán.
+Laravel migration giúp định nghĩa cấu trúc bảng bằng mã nguồn, hỗ trợ quản lý phiên bản lược đồ, tạo bảng, thêm cột, tạo chỉ mục và quay lui khi cần. Trong dự án, migration cũng được sử dụng để khai báo khóa ngoại, chỉ mục tìm kiếm, ràng buộc trạng thái, ràng buộc giá trị tiền và một số ràng buộc phục vụ toàn vẹn dữ liệu.
+Các nhóm bảng chính của DanangTrip gồm:
+STT
+Nhóm chức năng
+Các bảng trong cơ sở dữ liệu
+Mô tả chức năng chính
+1
+Nhóm người dùng và xác thực
+users, refresh_tokens, password_reset_tokens, sessions
+Quản lý thông tin tài khoản (khách du lịch, quản trị viên), lưu phiên làm việc, quản lý refresh token duy trì đăng nhập và xử lý yêu cầu đặt lại mật khẩu.
+2
+Nhóm địa điểm
+locations, categories, subcategories, tags, amenities, location_tags, location_amenities, views
+Lưu trữ thông tin chi tiết địa điểm (tọa độ GPS, mô tả, hình ảnh), danh mục phân loại, tiện ích dịch vụ đi kèm, thẻ tìm kiếm và thống kê lượt xem.
+3
+Nhóm tour và đặt tour
+tours, tour_categories, tour_schedules, tour_locations, bookings, booking_items, cart_items
+Lưu trữ thông tin tour, danh mục tour, lịch khởi hành, chỗ trống khả dụng, giỏ hàng tạm thời, đơn đặt tour, hành khách, khuyến mãi hệ thống và phiếu giảm giá cá nhân đã áp dụng.
+4
+Nhóm thanh toán
+payments
+Lưu trữ lịch sử giao dịch và trạng thái thanh toán của đơn đặt tour qua SePay/VietQR hoặc thao tác xác nhận chuyển khoản thủ công của quản trị viên.
+5
+Nhóm nội dung
+blog_posts, blog_categories, blog_post_categories, landing_pages
+Quản lý các bài viết cẩm nang du lịch Đà Nẵng, danh mục bài viết, liên kết danh mục và nội dung các trang đích (landing pages) phục vụ SEO.
+6
+Nhóm tương tác
+favorites, ratings, rating_images, rating_helpful_votes, search_logs, notifications, contacts
+Ghi nhận nội dung yêu thích, đánh giá kèm hình ảnh, người dùng xác nhận đánh giá hữu ích, nhật ký tìm kiếm, thông báo hệ thống và liên hệ.
+7
+Nhóm điểm thành viên
+user_point_balances, point_rules, point_rewards, point_transactions, user_vouchers
+8
+Nhóm cấu hình & AI Chatbot
+settings, promotions, chat_messages, chat_cache, chat_knowledge_base
+Quản lý cấu hình chung, khuyến mãi, lịch sử hội thoại, bộ nhớ đệm câu trả lời và cơ sở tri thức có dữ liệu embedding.
+Bảng 1.2: Các nhóm bảng cơ sở dữ liệu
+1.7. Thanh toán trực tuyến và IPN
+Thanh toán trực tuyến trong hệ thống đặt tour cần đảm bảo các yếu tố: tạo giao dịch, gắn giao dịch với đơn đặt tour, xác nhận trạng thái, chống xử lý trùng, cập nhật trạng thái đơn đặt tour sau thanh toán và lưu lịch sử giao dịch.
+DanangTrip tích hợp SePay/VietQR. Khi người dùng tạo thanh toán, hệ thống sinh thông tin giao dịch và nội dung chuyển khoản. Khi cổng thanh toán gửi IPN/callback, API phía server kiểm tra dữ liệu, xác thực giao dịch, cập nhật bảng payments và trạng thái bookings.
+1.8. Chatbot, truy xuất tri thức và gợi ý du lịch
+Chatbot du lịch cần trả lời dựa trên dữ liệu thật của hệ thống như tour, địa điểm, bài viết và chính sách. Nếu chatbot chỉ dựa vào kiến thức tổng quát của mô hình AI, câu trả lời có thể sai với dữ liệu hiện có trong hệ thống. Vì vậy, DanangTrip tổ chức chatbot theo hướng truy xuất dữ liệu nội bộ trước khi sinh phản hồi.
+Các thành phần chính trong quy trình xử lý của chatbot gồm:
+Bộ kiểm soát ý định (Intent Guard): kiểm tra câu hỏi có thuộc phạm vi du lịch, tour, địa điểm, đặt tour, thanh toán, tài khoản hoặc chương trình điểm thành viên hay không.
+Thành phần phân tích truy vấn (Query Understanding): trích xuất điểm đến, vùng, chủ đề địa điểm, khoảng giá, số người, ngày đi, thời lượng và tiêu chí sắp xếp.
+Truy xuất dữ liệu có cấu trúc: lọc dữ liệu từ tours, tour_schedules, locations, blog_posts và dữ liệu chính sách theo các tham số đã phân tích.
+Tìm kiếm ngữ nghĩa bằng embedding: khi được bật bằng cấu hình, hệ thống tạo embedding cho câu hỏi, lấy các bản ghi cơ sở tri thức có embedding và xếp hạng bằng độ tương đồng cosin. Phiên bản hiện tại không sử dụng một cơ sở dữ liệu véc-tơ chuyên dụng.
+Lớp bộ nhớ đệm (Cache Layer): lưu phản hồi trong bảng chat_cache theo khóa tạo từ ngôn ngữ, ý định và câu hỏi đã chuẩn hóa.
+Cơ chế chuyển đổi dự phòng AI (AI Failover): chuyển sang nhà cung cấp hoặc khóa khác khi nhà cung cấp hiện tại lỗi, hết hạn mức hoặc tạm thời không phản hồi.
+DanangTrip có nhóm lớp dịch vụ xử lý chatbot
+Hình 1.7: Sơ đồ cấu trúc các lớp dịch vụ chatbot
+Trong hệ thống DanangTrip, câu hỏi được phân loại bằng bộ kiểm soát ý định, phân tích để trích xuất tham số, truy xuất dữ liệu từ các bảng nghiệp vụ và có thể bổ sung kết quả tìm kiếm ngữ nghĩa bằng embedding trước khi chuyển ngữ cảnh cho mô hình AI.
+1.9. Đa ngôn ngữ trong website du lịch
+Website du lịch thường phục vụ nhiều nhóm người dùng, gồm khách nội địa và khách quốc tế. Vì vậy, hỗ trợ đa ngôn ngữ là một yếu tố quan trọng. DanangTrip sử dụng next-intl ở website người dùng và i18next ở trang quản trị.
+Lợi ích của đa ngôn ngữ:
+Tăng khả năng tiếp cận người dùng quốc tế.
+Tách nội dung hiển thị ra khỏi mã nguồn.
+Dễ bổ sung ngôn ngữ mới.
+Hỗ trợ SEO theo từng ngôn ngữ nếu cấu hình đường dẫn và siêu dữ liệu phù hợp.
+1.10. Bản đồ số và dữ liệu vị trí
+Hình 1.8: Bản đồ của hệ thống
+Đối với hệ thống du lịch, dữ liệu vị trí đóng vai trò quan trọng. Người dùng cần biết địa điểm nằm ở đâu, cách di chuyển như thế nào, có những điểm gần đó không và khoảng cách tương đối giữa các địa điểm.
+DanangTrip lưu tọa độ latitude, longitude trong bảng địa điểm và sử dụng Leaflet để hiển thị bản đồ. Các chức năng liên quan gồm:
+Xem vị trí địa điểm trên bản đồ.
+Tìm địa điểm gần người dùng.
+Hiển thị nhiều điểm du lịch trên cùng bản đồ.
+Gợi ý địa điểm lân cận trong trang chi tiết.
+1.11. Bảo mật trong hệ thống web
+Hệ thống du lịch có nhiều dữ liệu nhạy cảm như thông tin tài khoản, số điện thoại, email, đơn đặt tour và thanh toán. Do đó, bảo mật cần được áp dụng ở nhiều lớp:
+Xác thực bằng mã thông báo và mã thông báo làm mới.
+Phân quyền theo vai trò người dùng/quản trị viên.
+Kiểm tra dữ liệu đầu vào bằng cơ chế xác thực yêu cầu của Laravel.
+Giới hạn tần suất gọi các API nhạy cảm như đăng nhập, đăng ký, quên mật khẩu, tải ảnh và thanh toán.
+Không cho người dùng truy cập dữ liệu đơn đặt tour của người khác.
+Kiểm tra chữ ký hoặc dữ liệu xác thực khi nhận callback/IPN thanh toán.
+Giới hạn loại tệp và dung lượng khi tải ảnh.
+Ghi nhật ký lỗi và xử lý phản hồi lỗi thống nhất.
+CHƯƠNG 2: PHÂN TÍCH THIẾT KẾ HỆ THỐNG
+2.1. Các tác nhân chính
+Hình 2.1: Các tác nhân chính của hệ thống
+2.1.1. Khách truy cập
+Vai trò và quyền hạn: Khách truy cập có thể truy cập trang chủ để xem thông tin tổng quan, danh sách các địa điểm du lịch nổi bật, các tour du lịch hấp dẫn cũng như các bài viết chia sẻ cẩm nang du lịch. Họ được sử dụng các tính năng tìm kiếm, lọc địa điểm/tour, tra cứu bản đồ số để định vị các điểm đến tại Đà Nẵng, gửi thông tin liên hệ và tương tác với chatbot AI để được tư vấn thông tin du lịch tự động.
+Mục tiêu tương tác: Khách truy cập sử dụng hệ thống nhằm mục đích tham khảo thông tin, tìm kiếm các dịch vụ du lịch phù hợp trước khi quyết định đăng ký tài khoản để sử dụng các dịch vụ sâu hơn.
+2.1.2. Người dùng đã đăng nhập
+Vai trò và quyền hạn: Người dùng được phép quản lý hồ sơ cá nhân, danh sách yêu thích và giỏ hàng; tạo đơn đặt tour, áp dụng khuyến mãi hoặc phiếu giảm giá cá nhân, thanh toán qua VietQR/SePay, theo dõi trạng thái đơn và tải hóa đơn. Người dùng còn có thể viết đánh giá, tải ảnh đánh giá, ghi nhận đánh giá hữu ích, xem số dư/lịch sử điểm, đổi điểm lấy phiếu giảm giá và nhận thông báo cá nhân hóa.
+Mục tiêu tương tác: Người dùng sử dụng hệ thống để thực hiện đặt tour du lịch, thực hiện thanh toán trực tuyến nhanh chóng và tương tác cộng đồng thông qua việc chia sẻ trải nghiệm thực tế.
+2.1.3. Quản trị viên
+Vai trò và quyền hạn: Quản trị viên chịu trách nhiệm quản lý danh mục địa điểm, quản lý thông tin địa điểm (thêm, sửa, xóa, duyệt ảnh), quản lý tour du lịch và lịch khởi hành chi tiết. Quản trị viên theo dõi và xử lý các đơn đặt tour, xác nhận giao dịch thanh toán, quản lý tài khoản người dùng (bao gồm phân quyền, khóa hoặc mở khóa tài khoản), quản lý nội dung cẩm nang du lịch (bài viết blog), kiểm duyệt và xử lý các phản hồi/đánh giá từ người dùng. Đồng thời, quản trị viên sử dụng hệ thống báo cáo thống kê doanh thu, xu hướng đặt tour, tăng trưởng người dùng để đưa ra các quyết định vận hành tối ưu.
+Mục tiêu tương tác: Vận hành hệ thống ổn định, đảm bảo thông tin dịch vụ du lịch luôn chính xác, xử lý kịp thời các giao dịch tài chính của người dùng và giám sát hiệu quả hoạt động kinh doanh thông qua các số liệu báo cáo thực tế.
+2.2. Yêu cầu chức năng
+2.2.1. Nhóm chức năng người dùng
+STT
+Phân hệ (Module)
+Chi tiết yêu cầu chức năng
+1
+Xác thực và Tài khoản
+- Đăng ký, đăng nhập, đăng xuất, làm mới mã thông báo.
+- Quên mật khẩu, đặt lại mật khẩu mới.
+- Xác thực email bằng mã OTP và gửi lại mã xác thực.
+- Quản lý hồ sơ cá nhân (ảnh đại diện, đổi mật khẩu, xóa tài khoản).
+2
+Khám phá và Tìm kiếm
+- Xem trang chủ, danh mục, địa điểm/tour nổi bật, bài viết mới.
+- Tìm kiếm địa điểm/tour, xem gợi ý/xu hướng tìm kiếm và gợi ý cá nhân hóa.
+- Xem chi tiết địa điểm, hình ảnh, đánh giá, thống kê đánh giá.
+- Xem vị trí địa điểm trên bản đồ, tìm địa điểm lân cận hoặc gần vị trí người dùng.
+3
+Đặt Tour và Thanh toán
+- Xem danh sách tour, chi tiết tour, lịch khởi hành, kiểm tra số chỗ.
+- Quản lý giỏ hàng và đặt tour.
+- Tính giá, áp dụng mã khuyến mãi hoặc phiếu giảm giá cá nhân, tạo thanh toán.
+- Theo dõi trạng thái thanh toán, thử lại thanh toán và xem hóa đơn.
+4
+Tương tác và Tiện ích
+- Quản lý danh sách yêu thích, nhận thông báo hệ thống và nhắc lịch khởi hành.
+- Viết đánh giá, tải ảnh, quản lý lịch sử đánh giá và ghi nhận đánh giá hữu ích.
+- Xem số dư/lịch sử điểm, phần thưởng, phiếu giảm giá và đổi điểm.
+- Gửi liên hệ và tương tác với chatbot tư vấn du lịch.
+Bảng 2.1: Yêu cầu chức năng nhóm người dùng
+2.2.2. Nhóm chức năng quản trị
+STT
+Phân hệ (Module)
+Chi tiết yêu cầu chức năng
+1
+Tổng quan và Bảo mật
+- Đăng nhập trang quản trị và kiểm tra phân quyền.
+- Xem bảng điều khiển (Dashboard) tổng quan về doanh thu, tour/địa điểm nổi bật, tăng trưởng người dùng, xu hướng đặt tour và tìm kiếm.
+2
+Quản lý nghiệp vụ du lịch
+- Quản lý danh mục địa điểm, danh mục con, địa điểm, thẻ phân loại, tiện ích.
+- Quản lý tour, danh mục tour và lịch khởi hành.
+3
+Quản lý giao dịch
+- Quản lý đơn đặt tour, cập nhật trạng thái, xác nhận thanh toán và xuất hóa đơn.
+- Quản lý luồng thanh toán, xem chi tiết, xuất báo cáo và xử lý hoàn tiền.
+4
+Quản lý người dùng và Khách hàng
+- Quản lý tài khoản người dùng, phân quyền, khóa/mở khóa tài khoản, xuất danh sách.
+- Quản lý và phản hồi liên hệ, gửi email chăm sóc khách hàng.
+- Quản lý đánh giá (duyệt, từ chối, xóa, xử lý báo cáo vi phạm).
+5
+Quản lý nội dung và Tiếp thị
+- Quản lý bài viết blog, danh mục blog và các trang đích (Landing pages).
+- Tạo và quản lý các chương trình khuyến mãi.
+- Gửi thông báo (đơn lẻ hoặc hàng loạt cho toàn bộ người dùng).
+- Cấu hình các thông số hệ thống và xuất báo cáo thống kê.
+Bảng 2.2: Yêu cầu chức năng nhóm quản trị
+2.3. Yêu cầu phi chức năng
+Nhóm yêu cầu
+Mô tả
+Bảo mật
+Sử dụng JWT, phân quyền quản trị viên, giới hạn tần suất API, kiểm tra dữ liệu đầu vào, kiểm soát tải ảnh
+Hiệu năng
+Dùng bộ nhớ đệm của React Query, bộ nhớ đệm Laravel, Redis, phân trang dữ liệu, chỉ mục cơ sở dữ liệu
+Khả dụng
+Giao diện đáp ứng, có trạng thái đang tải/trạng thái lỗi, hỗ trợ đa ngôn ngữ
+Mở rộng
+Tách website người dùng, trang quản trị và API; service/repository tách nghiệp vụ; có thể mở rộng AI/hệ thống gợi ý
+Dễ bảo trì
+TypeScript ở tầng giao diện, tầng dịch vụ Laravel, migration, kiểm thử và cấu trúc phân hệ rõ ràng
+Toàn vẹn dữ liệu
+Dùng giao dịch cho đặt tour, thanh toán, cập nhật trạng thái và các thao tác quan trọng
+Bảng 2.3: Các yêu cầu phi chức năng và phương án triển khai
+2.4. Biểu đồ use case
+2.4.1. Người dùng đã đăng nhập
+Hình 2.2: Sơ đồ Use Case phân hệ Người dùng đã đăng nhập
+2.4.2. Khách truy cập
+Hình 2.3: Sơ đồ Use Case phân hệ Khách truy cập
+2.4.3. Quản trị viên
+Hình 2.4: Sơ đồ Use Case phân hệ Quản trị viên
+2.5. Đặc tả use case tiêu biểu
+2.5.1. Use case tìm kiếm địa điểm và tour
+Mã ca sử dụng
+UC01
+Tên use case
+Tìm kiếm
+Mô tả
+Người dùng tìm kiếm địa điểm, tour du lịch, bài viết bằng cách nhập từ khóa và thiết lập các bộ lọc.
+Tác nhân
+Khách truy cập, Người dùng
+Sự kiện kích hoạt
+Người dùng nhập từ khóa tìm kiếm hoặc nhấp vào các nút lọc giá trị.
+Tiền điều kiện
+Hệ thống có dữ liệu địa điểm du lịch, tour du lịch hoặc bài viết blog.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Người dùng
+Nhập từ khóa tìm kiếm vào thanh tìm kiếm
+2.
+Người dùng
+Chọn các bộ lọc mong muốn (khoảng giá, danh mục, đánh giá sao)
+3.
+Hệ thống
+Tiếp nhận thông tin và gửi yêu cầu truy vấn đến API
+4.
+Hệ thống
+Thực hiện truy vấn và sắp xếp kết quả dựa trên từ khóa
+5.
+Hệ thống
+Hiển thị danh sách kết quả phù hợp trên giao diện
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+5a.
+Hệ thống
+Thông báo lỗi nếu thông tin mật khẩu đối tượng cung cấp không đúng hoặc không trùng khớp.
+Hậu điều kiện
+Kết quả hiển thị đúng theo từ khóa và các điều kiện lọc được áp dụng.
+Trường hợp lỗi
+1. Từ khóa chứa các ký tự đặc biệt nguy hiểm hoặc lỗi truy vấn SQL.
+2. Lỗi kết nối mạng đến API.
+Bảng 2.4: Đặc tả ca sử dụng Tìm kiếm
+2.5.2. Use case chatbot tư vấn du lịch
+Mã ca sử dụng
+UC02
+Tên use case
+Chatbot tư vấn du lịch
+Mô tả
+Trò chuyện trực tuyến để tư vấn tour du lịch, tìm địa điểm hoặc tra cứu thông tin chính sách nhờ AI RAG.
+Tác nhân
+Khách truy cập, Người dùng
+Sự kiện kích hoạt
+Người dùng gửi câu hỏi trong khung chat của hệ thống.
+Tiền điều kiện
+API chatbot và cơ sở tri thức (knowledge base) hoạt động ổn định.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Người dùng
+Nhập câu hỏi du lịch vào khung chat
+2.
+Hệ thống
+Kiểm tra ý định câu hỏi
+3.
+Hệ thống
+Trích xuất tham số, truy xuất dữ liệu nghiệp vụ và tìm kiếm ngữ nghĩa nếu được bật
+4.
+Hệ thống
+Xây dựng lời nhắc và gọi API mô hình AI
+5.
+Hệ thống
+Nhận phản hồi, ghi lịch sử hội thoại và bộ nhớ đệm
+6.
+Hệ thống
+Hiển thị câu trả lời cho người dùng
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+2a.
+Hệ thống
+Câu hỏi ngoài phạm vi hỗ trợ, trả về câu trả lời từ chối theo kịch bản có sẵn
+4a.
+Hệ thống
+AI chính bị lỗi hoặc vượt hạn mức, tự động chuyển sang mô hình AI dự phòng (AI Failover)
+Hậu điều kiện
+Người dùng nhận được phản hồi tư vấn và lịch sử trò chuyện được lưu trữ thành công.
+Trường hợp lỗi
+1. Không có kết nối mạng từ hệ thống đến nhà cung cấp AI.
+2. Cơ sở tri thức không có dữ liệu trả lời phù hợp (Chatbot trả lời theo kịch bản dự phòng).
+Bảng 2.5: Đặc tả ca sử dụng Chatbot tư vấn du lịch
+2.5.3. Use case đăng ký tài khoản
+Mã ca sử dụng
+UC03
+Tên use case
+Đăng ký tài khoản
+Mô tả
+Người dùng vãng lai tạo tài khoản mới bằng cách điền thông tin cá nhân. Tài khoản được tạo ở trạng thái Chờ kích hoạt (pending). Người dùng thực hiện xác thực email qua mã OTP sau khi đăng nhập để sử dụng tài khoản.
+Tác nhân
+Khách truy cập
+Sự kiện kích hoạt
+Người dùng nhấp vào liên kết “Đăng ký” trên giao diện chính.
+Tiền điều kiện
+Người dùng chưa có tài khoản đăng ký trong hệ thống.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Khách truy cập
+Điền biểu mẫu đăng ký (Họ tên, Email, Tên đăng nhập, Mật khẩu, Xác nhận mật khẩu)
+2.
+Khách truy cập
+Nhấn nút “Đăng ký”
+3.
+Hệ thống
+Kiểm tra tính hợp lệ và duy nhất của email và tên đăng nhập
+4.
+Hệ thống
+Tạo bản ghi người dùng mới với trạng thái “Chờ kích hoạt”
+5.
+Hệ thống
+Gửi email chứa mã kích hoạt hoặc OTP đến hòm thư người dùng
+6.
+Khách truy cập
+Nhập mã OTP để kích hoạt tài khoản
+7.
+Hệ thống
+Kích hoạt tài khoản thành công và thông báo cho người dùng
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+5a.
+Hệ thống
+Cấu hình hệ thống không yêu cầu kích hoạt, kích hoạt tài khoản trực tiếp và đăng nhập ngay
+Hậu điều kiện
+Tài khoản thành viên mới được lưu vào cơ sở dữ liệu dưới trạng thái Hoạt động.
+Trường hợp lỗi
+1. Email hoặc Tên đăng nhập đã được đăng ký bởi người dùng khác.
+2. Mật khẩu nhập lại không khớp.
+3. Người dùng nhập sai mã OTP kích hoạt.
+Bảng 2.6: Đặc tả ca sử dụng Đăng ký tài khoản
+2.5.4. Use case đăng nhập
+Mã ca sử dụng
+UC04
+Tên use case
+Đăng nhập
+Mô tả
+Xác thực thông tin tài khoản của người dùng hoặc quản trị viên để cấp quyền truy cập hệ thống.
+Tác nhân
+Người dùng, Quản trị viên
+Sự kiện kích hoạt
+Người dùng nhấn nút “Đăng nhập” hoặc truy cập trực tiếp trang đăng nhập.
+Tiền điều kiện
+Người dùng đã có tài khoản trên hệ thống.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Người dùng
+Chọn chức năng Đăng nhập
+2.
+Hệ thống
+Hiển thị giao diện đăng nhập
+3.
+Người dùng
+Điền thông tin đăng nhập (Email, Mật khẩu, và tùy chọn Ghi nhớ đăng nhập)
+4.
+Người dùng
+Yêu cầu đăng nhập
+5.
+Hệ thống
+Kiểm tra xem người dùng đã nhập các trường bắt buộc nhập hay chưa
+6.
+Hệ thống
+Xác thực thông tin tài khoản, sinh Access Token (JWT) và Refresh Token ngẫu nhiên (64 ký tự)
+7.
+Hệ thống
+Lưu Hash SHA-256 của Refresh Token vào cơ sở dữ liệu và đính kèm token này vào phản hồi dưới dạng Cookie HttpOnly để đảm bảo an toàn
+8.
+Hệ thống
+Trả về dữ liệu JSON chứa Access Token và thông tin người dùng, hiển thị giao diện tương ứng theo vai trò
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+5a.
+Hệ thống
+Thông báo lỗi: Cần nhập các trường bắt buộc nhập nếu Người dùng nhập thiếu
+6a.
+Hệ thống
+Thông báo: Tài khoản hoặc mật khẩu chưa đúng nếu không tìm thấy tài khoản và mật khẩu trong hệ thống
+Hậu điều kiện
+Người dùng đăng nhập thành công và truy cập được chức năng tương ứng với quyền.
+Trường hợp lỗi
+1. Người dùng nhập sai Email hoặc Mật khẩu.
+2. Tài khoản đã bị khóa hoặc chưa được kích hoạt.
+3. Không thể kết nối với Server API.
+Bảng 2.7: Đặc tả ca sử dụng Đăng nhập
+2.5.5. Use case đặt tour
+Mã ca sử dụng
+UC05
+Tên use case
+Đặt tour
+Mô tả
+Người dùng chọn lịch khởi hành, số lượng hành khách, áp dụng mã giảm giá và khởi tạo đơn đặt tour trực tuyến.
+Tác nhân
+Người dùng đã đăng nhập
+Sự kiện kích hoạt
+Người dùng nhấn nút “Đặt tour” tại trang chi tiết tour hoặc giỏ hàng.
+Tiền điều kiện
+Người dùng đang xem chi tiết một tour du lịch và lịch khởi hành còn chỗ trống.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Người dùng
+Chọn lịch khởi hành mong muốn
+2.
+Người dùng
+Nhập số lượng khách hàng đi tour
+3.
+Hệ thống
+Tính toán tổng tiền và áp dụng các khuyến mãi hợp lệ
+4.
+Người dùng
+Nhấn nút “Xác nhận đặt tour” và cập nhật thông tin liên hệ
+5.
+Người dùng
+Nhấn nút “Đặt tour”
+6.
+Hệ thống
+Tạo đơn đặt tour mới trong cơ sở dữ liệu với trạng thái “Chờ thanh toán”
+7.
+Hệ thống
+Chuyển hướng người dùng đến giao diện thanh toán
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+3a.
+Người dùng
+Nhập mã giảm giá và hệ thống cập nhật lại tổng tiền giảm giá phù hợp
+Hậu điều kiện
+Đơn đặt tour (booking) được tạo thành công trong hệ thống và ở trạng thái Chờ thanh toán.
+Trường hợp lỗi
+1. Số lượng chỗ trống còn lại không đủ đáp ứng số lượng khách đặt.
+2. Nhập số lượng khách không hợp lệ (nhỏ hơn hoặc bằng 0).
+3. Lỗi tạo bản ghi trong cơ sở dữ liệu.
+Bảng 2.8: Đặc tả ca sử dụng Đặt tour
+2.5.6. Use case thanh toán
+Mã ca sử dụng
+UC06
+Tên use case
+Thanh toán đơn đặt tour
+Mô tả
+Khách hàng thực hiện thanh toán trực tuyến qua mã VietQR và hệ thống tự động cập nhật trạng thái đơn hàng nhờ cổng SePay IPN.
+Tác nhân
+Người dùng, Cổng thanh toán (SePay/VietQR)
+Sự kiện kích hoạt
+Người dùng chọn phương thức thanh toán VietQR cho đơn đặt tour đang chờ xử lý.
+Tiền điều kiện
+Đơn đặt tour tồn tại trong hệ thống và chưa được thanh toán (trạng thái Chờ thanh toán).
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Người dùng
+Chọn phương thức thanh toán chuyển khoản VietQR
+2.
+Hệ thống
+Hiển thị mã VietQR động cùng thông tin số tiền và nội dung chuyển khoản tự động
+3.
+Người dùng
+Sử dụng ứng dụng ngân hàng quét mã QR và thực hiện thanh toán
+4.
+Cổng thanh toán
+Nhận giao dịch thanh toán thành công và gửi Webhook (IPN) đến hệ thống API
+5.
+Hệ thống
+Xác thực thông tin Webhook và cập nhật trạng thái đơn đặt tour thành “Đã thanh toán”
+6.
+Hệ thống
+Hiển thị giao diện thanh toán thành công và gửi hóa đơn xác nhận qua email
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+4a.
+Hệ thống
+Quá thời gian quy định người dùng chưa thanh toán, tự động chuyển đơn hàng sang trạng thái “Hủy”
+Hậu điều kiện
+Đơn đặt tour được cập nhật thành Đã thanh toán, tạo mã giao dịch và phát hành hóa đơn thành công.
+Trường hợp lỗi
+1. Người dùng chuyển sai nội dung chuyển khoản hoặc sai số tiền yêu cầu.
+2. Lỗi kết nối Webhook giữa SePay và API Server.
+Bảng 2.9: Đặc tả ca sử dụng Thanh toán đơn đặt tour
+2.5.7. Use case đánh giá
+Mã ca sử dụng
+UC07
+Tên use case
+Đánh giá tour/địa điểm
+Mô tả
+Thành viên viết phản hồi, đăng tải ảnh, và chấm điểm sao cho các địa điểm hoặc tour du lịch đã trải nghiệm.
+Tác nhân
+Người dùng đã đăng nhập
+Sự kiện kích hoạt
+Người dùng nhấn nút “Gửi đánh giá” trong phần đánh giá của trang chi tiết.
+Tiền điều kiện
+Người dùng đã đăng nhập; nếu đánh giá tour thì yêu cầu người dùng từng đặt và đi tour đó thành công.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Người dùng
+Chọn viết đánh giá tại trang chi tiết tour hoặc địa điểm
+2.
+Người dùng
+Chọn số sao đánh giá (1-5 sao), nhập nội dung bình luận và đính kèm ảnh
+3.
+Người dùng
+Nhấn nút “Gửi đánh giá”
+4.
+Hệ thống
+Kiểm tra dữ liệu đầu vào hợp lệ
+5.
+Hệ thống
+Lưu đánh giá vào cơ sở dữ liệu và tự động tính toán lại điểm đánh giá trung bình
+6.
+Hệ thống
+Hiển thị thông báo gửi thành công trên giao diện
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+5a.
+Hệ thống
+Chế độ kiểm duyệt được kích hoạt, chuyển đánh giá sang trạng thái “Chờ duyệt” trước khi hiển thị công khai
+Hậu điều kiện
+Bản ghi đánh giá được ghi nhận và điểm đánh giá trung bình của đối tượng được cập nhật tương ứng.
+Trường hợp lỗi
+1. Nội dung bình luận trống hoặc vi phạm từ khóa cấm.
+2. Ảnh đính kèm không đúng định dạng hoặc vượt quá kích dung lượng tối đa.
+3. Người dùng cố gắng đánh giá nhiều lần cho một đối tượng (tránh spam).
+Bảng 2.10: Đặc tả ca sử dụng Đánh giá tour và địa điểm
+2.5.8. Use case quản lý tour và lịch khởi hành
+Mã ca sử dụng
+UC08
+Tên use case
+Quản lý tour và lịch khởi hành
+Mô tả
+Quản trị viên quản lý danh sách tour du lịch (thêm, sửa, xóa) và cấu hình lịch khởi hành chi tiết cho từng tour.
+Tác nhân
+Quản trị viên
+Sự kiện kích hoạt
+Quản trị viên truy cập phân hệ quản lý tour trên giao diện Admin Dashboard.
+Tiền điều kiện
+Quản trị viên đăng nhập thành công vào trang quản trị.
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Quản trị viên
+Chọn chức năng Quản lý Tour trên thanh điều hướng Sidebar
+2.
+Hệ thống
+Hiển thị danh sách các tour du lịch hiện có, thông tin chi tiết và bộ lọc tìm kiếm
+3.
+Quản trị viên
+Chọn thêm tour mới hoặc chỉnh sửa/cập nhật thông tin của một tour có sẵn
+4.
+Hệ thống
+Hiển thị biểu mẫu thông tin chi tiết của tour (tên tour, giá cả, thời lượng, lịch trình, số chỗ tối đa)
+5.
+Quản trị viên
+Điền hoặc cập nhật các trường thông tin, cấu hình lịch khởi hành cụ thể, và nhấn nút “Lưu”
+6.
+Hệ thống
+Kiểm tra tính hợp lệ của dữ liệu, lưu vào cơ sở dữ liệu và hiển thị thông báo thành công
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+3a.
+Quản trị viên
+Truy cập mục “Lịch khởi hành” của một tour cụ thể để thêm, sửa đổi hoặc xóa các ngày khởi hành và số chỗ override
+5a.
+Quản trị viên
+Nhấn nút “Hủy” để hủy bỏ các thay đổi, hệ thống không lưu và quay lại màn hình danh sách
+Hậu điều kiện
+Thông tin tour và lịch khởi hành được cập nhật mới nhất trong cơ sở dữ liệu và hiển thị lên giao diện người dùng.
+Trường hợp lỗi
+1. Nhập thiếu thông tin bắt buộc hoặc nhập sai định dạng dữ liệu.
+2. Ngày khởi hành bị trùng lặp hoặc thời gian không hợp lệ (ngày trong quá khứ).
+3. Lỗi kết nối cơ sở dữ liệu.
+Bảng 2.11: Đặc tả ca sử dụng Quản lý tour và lịch khởi hành
+2.5.9. Use case quản lý đơn đặt tour
+Mã ca sử dụng
+UC09
+Tên use case
+Quản lý đơn đặt tour
+Mô tả
+Quản trị viên duyệt, cập nhật trạng thái đơn đặt tour và xác nhận thanh toán thủ công.
+Tác nhân
+Quản trị viên
+Sự kiện kích hoạt
+Quản trị viên truy cập mục quản lý đơn đặt tour trên thanh điều hướng admin.
+Tiền điều kiện
+Quản trị viên đã đăng nhập thành công vào trang quản trị (Admin Dashboard).
+Luồng sự kiện chính (Thành công)
+STT
+Thực hiện bởi
+Hành động
+1.
+Quản trị viên
+Truy cập danh sách đơn đặt tour (booking)
+2.
+Quản trị viên
+Lọc danh sách theo trạng thái đơn hàng (Chờ thanh toán, Đã thanh toán, Chờ duyệt)
+3.
+Quản trị viên
+Chọn xem chi tiết một đơn đặt tour cụ thể
+4.
+Quản trị viên
+Thay đổi trạng thái đơn hàng hoặc xác nhận thanh toán
+5.
+Hệ thống
+Lưu trạng thái mới và gửi email cập nhật thông tin cho khách hàng
+Luồng sự kiện thay thế
+STT
+Thực hiện bởi
+Hành động
+4a.
+Quản trị viên
+Hủy đơn đặt tour, hệ thống cập nhật trạng thái đơn hàng thành “Đã hủy” và giải phóng số chỗ khởi hành
+Hậu điều kiện
+Trạng thái đơn đặt tour được cập nhật chính xác và khách hàng nhận được email thông báo trạng thái.
+Trường hợp lỗi
+1. Đơn đặt tour không tồn tại trong cơ sở dữ liệu.
+2. Quản trị viên cố gắng cập nhật trạng thái không hợp lệ (ví dụ: chuyển từ Đã hoàn thành sang Chờ thanh toán).
+Bảng 2.12: Đặc tả ca sử dụng Quản lý đơn đặt tour
+2.6. Biểu đồ tuần tự đặt tour và thanh toán
+Hình 2.5: Biểu đồ tuần tự đặt tour và thanh toán
+2.7. Biểu đồ tuần tự đăng nhập
+Hình 2.6: Biểu đồ tuần tự đăng nhập
+2.8. Biểu đồ tuần tự chatbot
+Hình 2.7: Quy trình hội thoại tổng quát
+Hình 2.8: Quy trình xử lý RAG và NLU chi tiết khi Cache Miss
+2.9. Thiết kế quy trình AI Chatbot
+Chatbot DanangTrip được thiết kế theo hướng Hybrid RAG kết hợp định tuyến NLU. Mục tiêu của thiết kế là ưu tiên dữ liệu thật trong hệ thống, giảm số lần gọi mô hình AI và hạn chế việc mô hình tự tạo ra giá, lịch khởi hành hoặc chính sách không tồn tại.
+Quy trình xử lý gồm các bước sau:
+Tiếp nhận và chuẩn hóa câu hỏi: Hệ thống chuyển câu hỏi về dạng thống nhất, xử lý khoảng trắng, chữ hoa/chữ thường, từ viết tắt, lỗi gõ phổ biến và một số cách viết tiếng Việt không dấu.
+Kiểm soát phạm vi và ý định: Câu hỏi được phân loại để xác định có thuộc các chủ đề DanangTrip hỗ trợ hay không, gồm tour, địa điểm, ăn uống, bài viết du lịch, lịch trình, đặt tour, thanh toán, hoàn tiền, tài khoản, điểm thưởng và voucher. Câu hỏi ngoài phạm vi được trả lời bằng thông báo định sẵn mà không gọi mô hình AI.
+Xử lý nhanh lời chào (Greeting Fast Path): Câu hỏi mang ý định chào hỏi (greeting) được trả lời tức thì bằng kịch bản cố định, bỏ qua toàn bộ pipeline cache, NLU, tìm kiếm và mô hình AI nhằm tiết kiệm tài nguyên.
+Phân tích truy vấn: Hệ thống trích xuất các thực thể như điểm đến, khu vực, loại địa điểm, mức giá, số người, ngày đi, thời lượng và yêu cầu sắp xếp. Việc nhận diện được thực hiện bằng quy tắc, biểu thức chính quy và từ điển địa danh động. Các từ ngắn tiếng Việt nhạy cảm (như “cac”, “rẻ”, “đẹp”, “tua”, “k”, “mai”, “tour”, “ks”) được kiểm tra bằng ranh giới từ (word boundary) thông qua Regex để tránh nhận diện sai các từ ghép (như “cac” trong “các”, “mai” trong “ngày mai”).
+Tính điểm tin cậy: Kết quả phân tích quy tắc được chấm điểm dựa trên số thực thể quan trọng đã nhận diện. Điểm này quyết định hệ thống có cần dùng AI để phân tích bổ sung hay không.
+Kiểm tra bộ nhớ đệm: Nếu câu hỏi đã có phản hồi còn hiệu lực, hệ thống trả kết quả ngay, không truy xuất lại dữ liệu và không gọi mô hình AI.
+Phân tích bổ sung bằng AI: Khi câu hỏi nghiệp vụ có điểm tin cậy thấp hơn ngưỡng 0,8, AI được dùng để bổ sung các thực thể khó nhận diện, chẳng hạn “cuối tuần sau”, “khoảng một triệu rưỡi” hoặc câu hỏi có nhiều điều kiện.
+Bảng tùy chọn tương tác làm rõ (Clarification Checklist): Trong trường hợp câu hỏi quá mơ hồ (thuộc ý định unknown) hoặc thiếu các thông tin thực thể cốt lõi (như số người đi, điểm đến mong muốn), hệ thống sẽ trả về danh sách các tùy chọn tương tác dạng checklist. Dưới mỗi mục chọn, giao diện tự động trượt mở một trường ghi chú để người dùng bổ sung thông tin cụ thể (ví dụ: tour dưới 500k, gần biển Mỹ Khê). Kết quả chọn kèm ghi chú này sẽ được gửi ngược lại chatbot để cập nhật session slot giúp sinh kết quả chính xác nhất.
+Chuẩn hóa truy vấn: Hệ thống ánh xạ tên địa điểm (chuỗi văn bản) sang định danh trong cơ sở dữ liệu để phục vụ bước lọc dữ liệu có cấu trúc chính xác hơn.
+Truy xuất dữ liệu kết hợp: Hệ thống vừa lọc dữ liệu có cấu trúc từ tour, lịch khởi hành, địa điểm và bài viết, vừa thực hiện tìm kiếm ngữ nghĩa trên cơ sở tri thức khi chế độ vector được bật. Để tránh lỗi truy vấn SQL khi lọc theo điều kiện strict AND, hệ thống thực hiện lọc bỏ các từ khóa chỉ giá cả (đã trích xuất riêng) và các stopWords chung (như “ăn”, “uống”, “món”, “ở”, “tại”) trước khi tạo mệnh đề tìm kiếm LIKE.
+Xây dựng gợi ý: Hệ thống hợp nhất kết quả SQL và vector, loại bỏ trùng lặp và chấm điểm xếp hạng. Điểm số được cộng ưu tiên (Boosts) dựa trên mức độ phù hợp. Đặc biệt, đối với các truy vấn tìm kiếm tour giá rẻ nhất (cheapest first), giá bán (price_adult) được sử dụng làm trọng số tuyệt đối chính để tính điểm cơ sở (100.000.000 - price_adult). Các điểm cộng phụ trợ khác (như khớp địa danh hay rating) chỉ được nhân với hệ số thập phân cực nhỏ (< 1.0) làm tie-breaker để đảm bảo kết quả rẻ nhất luôn được sắp xếp ở đầu danh sách. Ngoài ra, danh sách thẻ gợi ý sẽ được nhóm theo danh mục (Tours, Địa điểm, Bài viết) và tự động ưu tiên đưa nhóm có điểm số cao nhất lên đầu và mở sẵn, các nhóm khác thu gọn lại.
+Đồng bộ ngữ cảnh (Context Alignment): Để tránh mô hình AI phản hồi sai lệch hoặc tự bịa thông tin khác với các thẻ gợi ý hiển thị bên dưới, hệ thống thực hiện đồng bộ ngữ cảnh. Dữ liệu chi tiết của các thẻ gợi ý đã được xếp hạng cao nhất được đưa lên đầu ngữ cảnh (prompt) gửi đến LLM, giúp AI trực tiếp trích xuất thông tin khớp hoàn toàn với giao diện hiển thị.
+Tạo câu trả lời: Chỉ các dữ liệu liên quan nhất được đóng gói thành ngữ cảnh gửi tới mô hình AI. Prompt yêu cầu mô hình không tự tạo giá, lịch, địa chỉ hoặc chính sách ngoài dữ liệu được cung cấp.
+Ghi nhận kết quả và Quản lý Semantic Cache: Câu hỏi, phản hồi và thông tin xử lý được lưu để theo dõi; phản hồi phù hợp được đưa vào bộ nhớ đệm (Semantic Cache). Quản trị viên có thể tùy chỉnh thời gian sống (TTL) của cache và điều chỉnh hai ngưỡng Cosine Similarity động (cho giao dịch và FAQ) tại trang quản trị để tối ưu hóa tỷ lệ cache hit và giảm chi phí API.
+2.9.1. Công thức tính điểm tin cậy
+Điểm tin cậy của bước phân tích truy vấn được tính theo tổng trọng số của các thực thể đã nhận diện:
+∁=(Wi×Ii)Wi
+Trong đó:
+C là điểm tin cậy, có giá trị từ 0 đến 1.
+Wi là trọng số của thực thể thứ i.
+Ii=1 nếu thực thể được nhận diện và Ii=0 nếu không nhận diện được.
+Các trọng số đang được sử dụng:
+Thực thể
+Trọng số
+Điểm đến hoặc khu vực
+35
+Khoảng giá
+25
+Số người
+20
+Ngày khởi hành
+20
+Ví dụ, câu hỏi nhận diện được điểm đến và số người nhưng chưa nhận diện được giá và ngày đi:
+∁=35+2035+25+20+20=0,55
+Do 0,55<0,8 hệ thống kích hoạt bước phân tích bổ sung bằng AI. Cách tính này giúp những câu hỏi đã đủ rõ được xử lý nhanh bằng quy tắc, trong khi câu hỏi mơ hồ mới cần sử dụng thêm tài nguyên AI.
+2.9.2. Công thức tìm kiếm ngữ nghĩa
+Nội dung tour, địa điểm, bài viết và chính sách được biểu diễn bằng các vector embedding. Câu hỏi của người dùng cũng được chuyển thành một vector cùng không gian biểu diễn. Mức độ liên quan giữa vector câu hỏi AA và vector nội dung BB được tính bằng độ tương đồng cosin:
+sin(A, B)=A∙BA×B=i=1d(Ai×Bi)i=1d(A12)×i=1d(B12)
+Trong đó:
+A là vector embedding của câu hỏi.
+B là vector embedding của một bản ghi cơ sở tri thức.
+d là số chiều của vector; cấu hình embedding hiện tại sử dụng 768 chiều (model gemini-embedding-001 của Google).
+Kết quả càng gần 1 thì hai nội dung càng gần nhau về ngữ nghĩa.
+Các bản ghi có điểm thấp hơn ngưỡng bị loại; những bản ghi còn lại được sắp xếp giảm dần và chỉ tối đa 5 kết quả đầu được đưa vào ngữ cảnh cho mô hình AI. Hệ thống lấy tối đa 80 bản ghi ứng viên từ PostgreSQL rồi tính độ tương đồng tại tầng dịch vụ PHP. Phiên bản hiện tại chưa sử dụng pgvector hoặc chỉ mục vector chuyên dụng, phù hợp với quy mô đồ án (282 bản ghi tri thức).
+Hình 2.9: Sơ đồ quy trình xử lý của AI Chatbot
+2.9.3. Bảng mô tả đầu vào và đầu ra của quy trình AI
+Bước
+Thành phần
+Đầu vào
+Đầu ra
+Vai trò
+1
+Tiếp nhận yêu cầu
+Nội dung câu hỏi, mã phiên tùy chọn và ngôn ngữ
+Yêu cầu hợp lệ
+Kiểm tra dữ liệu đầu vào và xác định phiên gửi câu hỏi
+2
+Kiểm soát ý định
+Câu hỏi đã chuẩn hóa
+Ý định và trạng thái trong/ngoài phạm vi
+Ngăn câu hỏi không liên quan sử dụng tài nguyên AI
+3
+Greeting Fast Path
+Ý định greeting
+Phản hồi lời chào tức thì
+Bỏ qua toàn bộ pipeline để tiết kiệm tài nguyên
+4
+Phân tích truy vấn
+Câu hỏi thuộc phạm vi
+Các thực thể và điểm tin cậy
+Hiểu điều kiện tìm kiếm bằng quy tắc và từ điển động
+5
+Bộ nhớ đệm
+Ngôn ngữ, ý định và câu hỏi chuẩn hóa
+Phản hồi có sẵn hoặc trạng thái không tìm thấy cache
+Giảm thời gian phản hồi và số lần gọi AI
+6
+Định tuyến NLU
+Các thực thể và điểm tin cậy
+Bộ thực thể được giữ nguyên hoặc bổ sung
+Chỉ sử dụng AI phân tích khi câu hỏi chưa đủ rõ
+7
+Chuẩn hóa truy vấn
+Thực thể văn bản (tên địa điểm)
+Thực thể đã được ánh xạ sang định danh cơ sở dữ liệu (location_id)
+Tăng độ chính xác khi lọc dữ liệu có cấu trúc
+8
+Truy xuất tri thức
+Ý định và các điều kiện đã phân tích
+Tour, lịch, địa điểm, bài viết và chính sách liên quan
+Kết hợp bộ lọc nghiệp vụ với xếp hạng embedding
+9
+Xây dựng gợi ý
+Kết quả SQL và vector
+Danh sách thẻ gợi ý tour/địa điểm/blog đã xếp hạng
+Hợp nhất, xếp hạng và chọn kết quả tốt nhất để trả về giao diện
+10
+Đồng bộ ngữ cảnh (Context Alignment)
+Danh sách thẻ gợi ý và kết quả tìm kiếm
+Ngữ cảnh đã sắp xếp ưu tiên các thẻ gợi ý lên đầu
+Đảm bảo phản hồi của LLM khớp và trích dẫn đúng các thẻ gợi ý hiển thị
+11
+Tạo phản hồi
+Câu hỏi và ngữ cảnh đã truy xuất
+Câu trả lời tự nhiên
+Trả lời dựa trên dữ liệu nội bộ thay vì kiến thức suy đoán
+12
+Cơ chế chuyển đổi dự phòng AI (AI Failover)
+Lỗi nhà cung cấp, quá thời gian chờ, vượt giới hạn tần suất hoặc phản hồi không hợp lệ
+Nhà cung cấp hoặc khóa truy cập thay thế.
+Tăng khả năng sẵn sàng của chatbot
+13
+Lưu trữ kết quả
+Câu hỏi, ngữ cảnh, phản hồi và thông tin xử lý
+Nhật ký chat và phản hồi lưu trữ
+Hỗ trợ theo dõi, phân tích và tái sử dụng phản hồi
+Bảng 2.13: Quy trình các bước xử lý đầu vào và đầu ra của chatbot AI
+2.10. Kiến trúc hệ thống
+Hình 2.10: Sơ đồ kiến trúc hệ thống
+CHƯƠNG 3: TRIỂN KHAI THỰC TẾ
+3.1. Cấu trúc hệ thống
+Hình 3.1: Tổng quan về hệ thống
+3.2. Môi trường phát triển và triển khai hệ thống
+Thành phần
+Công nghệ/Môi trường
+Server API
+PHP 8.2, Laravel 12, Composer; triển khai trên PHP/Laravel Server hoặc dịch vụ tương đương
+Website người dùng
+Node.js, Next.js 16, React 19, TypeScript; có cấu hình OpenNext Cloudflare/Wrangler
+Trang quản trị
+Node.js, Vite, React 19, TypeScript; đóng gói và triển khai trên dịch vụ lưu trữ tĩnh
+Cơ sở dữ liệu
+PostgreSQL/Supabase, quản lý lược đồ bằng Laravel migration
+Bộ nhớ đệm/Hàng đợi
+Bảng chat_cache, Laravel Queue/Jobs; Redis/Predis tùy cấu hình
+Lưu trữ tệp
+Cloudinary
+Thanh toán
+SePay/VietQR
+AI
+Gemini, Groq, OpenRouter hoặc nhà cung cấp được cấu hình
+Kiểm thử và đóng gói
+PHPUnit, Playwright, Vitest, Vite build
+Bảng 3.1: Môi trường phát triển và triển khai của hệ thống
+3.3. Triển khai Server API
+Laravel cung cấp REST API phiên bản /api/v1. Các tuyến được chia thành ba nhóm: công khai, yêu cầu xác thực và quản trị. Ở tầng nghiệp vụ, mã nguồn được tổ chức theo các nhóm dịch vụ chính: xác thực, địa điểm và tour, đặt tour và thanh toán, nội dung và tương tác, điểm thành viên, cùng chatbot AI. Các nghiệp vụ quan trọng như tạo đơn đặt tour, cập nhật thanh toán và cấp quyền lợi thành viên đều sử dụng giao dịch cơ sở dữ liệu để bảo đảm toàn vẹn dữ liệu.
+3.3.1. Tổ chức tuyến API
+Tất cả API được đặt dưới tiền tố /api/v1. Việc chia tuyến thành ba nhóm giúp kiểm soát quyền truy cập rõ ràng:
+Tuyến công khai: phục vụ dữ liệu công khai, không yêu cầu mã thông báo.
+Tuyến yêu cầu xác thực: yêu cầu mã thông báo JWT, phục vụ nghiệp vụ cá nhân của người dùng.
+Tuyến quản trị: yêu cầu mã thông báo JWT và vai trò quản trị viên.
+Cách tổ chức này làm giảm rủi ro truy cập sai quyền và giúp tầng giao diện biết rõ API nào cần đăng nhập.
+Phương thức
+Endpoint
+Thẩm quyền
+Mô tả
+POST
+/api/v1/auth/login
+Công khai
+Đăng nhập và trả về mã thông báo
+GET
+/api/v1/tours
+Công khai
+Lấy danh sách tour du lịch
+GET
+/api/v1/locations/{slug}
+Công khai
+Lấy thông tin chi tiết địa điểm
+POST
+/api/v1/bookings
+Người dùng đã đăng nhập
+Tạo đơn đặt tour mới
+POST
+/api/v1/payments/create
+Người dùng đã đăng nhập
+Tạo giao dịch thanh toán
+GET
+/api/v1/user/points
+Người dùng đã đăng nhập
+Lấy tổng quan điểm thành viên
+POST
+/api/v1/chat
+Công khai
+Gửi câu hỏi đến chatbot
+PUT
+/api/v1/admin/tours/{id}
+Quản trị viên
+Cập nhật thông tin tour
+PATCH
+/api/v1/admin/bookings/{id}/
+confirm-payment
+Quản trị viên
+Xác nhận thanh toán thủ công
+POST
+/api/v1/sepay/ipn
+SePay/IPN
+Nhận thông báo thanh toán tự động
+Bảng 3.2: Một số endpoint tiêu biểu của Server API
+3.3.2. Tổ chức tầng dịch vụ
+Server API không xử lý toàn bộ nghiệp vụ trực tiếp trong controller. Controller chủ yếu nhận yêu cầu, gọi service và trả phản hồi. Service chịu trách nhiệm xử lý logic nghiệp vụ, còn repository/model chịu trách nhiệm truy vấn dữ liệu.
+Kiến trúc này giúp Controller gọn, Service tập trung nghiệp vụ và thuận lợi hơn cho kiểm thử cũng như mở rộng tính năng.
+Ví dụ:
+Khi tạo đơn đặt tour, BookingController gọi BookingService::createBooking.
+BookingService kiểm tra lịch khởi hành, số chỗ, giá, khuyến mãi và tạo dữ liệu trong giao dịch.
+Khi thanh toán thành công, hệ thống cập nhật đồng thời trạng thái thanh toán và trạng thái đơn đặt tour thông qua các dịch vụ xử lý thanh toán tương ứng.
+Hình 3.2: Luồng xử lý tạo đơn đặt tour từ Client đến Database
+3.3.3. Xử lý lỗi và phản hồi API
+Hệ thống có trait/support class phục vụ chuẩn hóa phản hồi lỗi. API cần trả về cấu trúc thống nhất để tầng giao diện dễ xử lý. Các nhóm lỗi phổ biến:
+Lỗi validate dữ liệu đầu vào.
+Lỗi xác thực hoặc hết hạn mã thông báo.
+Lỗi không đủ quyền.
+Lỗi không tìm thấy tài nguyên.
+Lỗi nghiệp vụ như hết chỗ, đơn đặt tour không thể hủy, thanh toán sai trạng thái.
+Lỗi hệ thống hoặc dịch vụ bên ngoài.
+Trong mã nguồn hiện tại, phản hồi thành công và phản hồi lỗi được chuẩn hóa như sau:
+Phản hồi thành công:
+{
+"code": 200,
+"message": "Success",
+"data": {
+"id": 123,
+"booking_code": "BOOK-AB12CD34"
+}
+}
+Phản hồi lỗi kiểm tra dữ liệu:
+{
+"code": 422,
+"message": "Validation failed",
+"error_key": "validation.failed",
+"user_message": "Email da ton tai tren he thong.",
+"errors": {
+"email": [
+"Email da ton tai tren he thong."
+]
+}
+}
+Việc giữ cấu trúc ổn định giúp tầng giao diện chỉ cần dựa vào code, message, data hoặc errors để hiển thị trạng thái phù hợp, đồng thời có thể sử dụng thêm error_key và user_message cho các tình huống nội địa hóa thông báo.
+3.3.4. Xử lý tải ảnh
+Tải ảnh được tách thành UploadService. Hệ thống hỗ trợ tải một ảnh, nhiều ảnh và xóa ảnh. Các chức năng cần tải ảnh gồm:
+Ảnh đại diện người dùng.
+Ảnh đại diện và bộ sưu tập ảnh của địa điểm.
+Ảnh đại diện và bộ sưu tập ảnh của tour.
+Ảnh trong đánh giá.
+Ảnh bài viết hoặc trang đích.
+Ảnh không được lưu cục bộ trên Server. UploadService sử dụng Cloudinary để tải tệp lên dịch vụ lưu trữ bên thứ ba, sau đó nhận về secure_url, public_id và asset_id. Các giá trị này được lưu vào cơ sở dữ liệu hoặc gắn với bản ghi nghiệp vụ tương ứng
+Hình 3.3: Luồng tải ảnh từ Client lên Cloudinary thông qua Server API
+3.4. Triển khai trang người dung
+Website người dùng là cổng thông tin chính để khách du lịch tìm kiếm thông tin và đăng ký dịch vụ của DanangTrip. Giao diện được thiết kế tối ưu hiển thị trên nhiều thiết bị (Responsive Design) với bố cục hiện đại, dễ tương tác. Các luồng nghiệp vụ chính dành cho du khách được phân chia thành các trang chức năng rõ ràng, hỗ trợ đầy đủ tiếng Việt và tiếng Anh, giúp du khách dễ dàng tra cứu điểm đến, đặt tour du lịch, thực hiện thanh toán trực tuyến và sử dụng các tính năng tích hợp như ví điểm thành viên và trợ lý ảo tư vấn thông minh.
+3.4.1. Luồng trang chủ
+Trang chủ là điểm vào chính của website, đóng vai trò tạo ấn tượng đầu tiên và định hướng người dùng. Giao diện trang chủ bao gồm các khối nội dung:
+Khối giới thiệu (Hero banner) hình ảnh đẹp mắt giới thiệu du lịch Đà Nẵng.
+Danh sách các địa điểm tham quan nổi bật nhất.
+Danh sách các tour du lịch tiêu biểu hoặc được quan tâm nhiều.
+Phân loại danh mục khám phá nhanh (như Khách sạn, Ẩm thực, Điểm tham quan).
+Khối hiển thị các bài viết cẩm nang du lịch mới nhất.
+Số liệu thống kê hoặc thông tin giới thiệu tổng quan về thương hiệu.
+Bong bóng chat hỗ trợ nhanh từ chatbot tư vấn.
+Giao diện trang chủ thực hiện tải động dữ liệu từ hệ thống để đảm bảo thông tin luôn được cập nhật mới nhất.
+Hình 3.4: Giao diện trang chủ DanangTrip
+Hình 3.5: Giao diện trang chủ DanangTrip – địa điểm
+Hình 3.6: Giao diện trang chủ DanangTrip – tour
+Hình 3.7: Giao diện trang chủ DanangTrip – cẩm nang
+3.4.2. Luồng địa điểm
+Phân hệ địa điểm gồm danh sách, bộ lọc, chi tiết, ảnh, đánh giá và bản đồ. Các trang danh sách và chi tiết địa điểm được render phía Server để tối ưu SEO; sau khi giao diện đã hiển thị, các dữ liệu động như ảnh bổ sung, đánh giá hoặc địa điểm lân cận được làm mới bằng React Query ở Client. Thành phần bản đồ được xây dựng trên Leaflet và react-leaflet, cho phép hiển thị tọa độ, xem lân cận và hỗ trợ chế độ gần vị trí người dùng.
+Hình 3.8: Giao diện danh sách địa điểm và bộ lọc tìm kiếm
+Hình 3.9: Giao diện chi tiết địa điểm và bản đồ vị trí
+Hình 3.10: Giao diện bản đồ vị trí và địa điểm lân cận
+3.4.3. Luồng tour và đặt tour
+Phân hệ tour chịu trách nhiệm hiển thị danh sách tour, chi tiết lịch trình, lịch khởi hành, giá và form đặt tour. Các trang danh sách, chi tiết và lịch khởi hành được render phía Server để tối ưu SEO; riêng form đặt tour và các thông tin biến động theo lựa chọn người dùng được xử lý ở Client. Thành phần đặt tour sử dụng react-hook-form để quản lý form, zod để kiểm tra dữ liệu đầu vào và React Query để gọi API tính giá.
+Một tour có thể có nhiều lịch khởi hành, mỗi lịch có số chỗ và giá riêng. Khi người dùng chọn lịch và số lượng khách, giao diện gọi POST /bookings/calculate để tính giá và gọi API kiểm tra chỗ còn lại theo thời gian thực trước khi cho phép thêm vào giỏ hàng hoặc chuyển sang bước đặt tour. Cơ chế này giúp hạn chế tình trạng đặt vượt số chỗ khả dụng.
+Hình 3.11: Giao diện chi tiết tour
+Hình 3.12: Giao diện chọn lịch khởi hành và kiểm tra số chỗ
+Hình 3.13: Giao diện thanh toán đơn
+3.4.4. Luồng hồ sơ người dùng
+Khu vực hồ sơ cho phép người dùng:
+Xem và cập nhật thông tin cá nhân.
+Đổi mật khẩu.
+Quản lý ảnh đại diện.
+Xem danh sách đơn đặt tour và chi tiết đơn đặt tour.
+Tra cứu đơn đặt tour theo mã.
+Xem danh sách yêu thích.
+Xem lịch sử đánh giá.
+Xem thông báo.
+Xem đề xuất cá nhân hóa.
+Xem số dư và lịch sử điểm, danh sách phần thưởng, phiếu giảm giá cá nhân và thực hiện đổi điểm.
+Xóa tài khoản.
+Hình 3.14: Giao diện hồ sơ người dùng
+Hình 3.15: Giao diện lịch sử đặt tour
+Hình 3.16: Giao diện điểm thành viên và phần thưởng
+3.4.5. Chatbot
+Hình 3.17: Giao diện chatbot tư vấn du lịch
+3.5. Triển khai trang quản trị
+3.5.1. Dashboard và báo cáo
+Bảng điều khiển quản trị giúp quản trị viên theo dõi tình trạng hệ thống. Các số liệu tổng hợp và biểu đồ được triển khai bằng Recharts, kết hợp các truy vấn React Query để tải và làm mới dữ liệu khi thay đổi bộ lọc hoặc khoảng thời gian. Các dữ liệu nên trình bày trong báo cáo:
+Tổng số người dùng.
+Tổng số đơn đặt tour.
+Doanh thu.
+Số thanh toán thành công/thất bại.
+Top tour được đặt nhiều.
+Top địa điểm được xem nhiều.
+Biểu đồ tăng trưởng người dùng.
+Biểu đồ đơn đặt tour theo thời gian.
+Xu hướng tìm kiếm.
+Hình 3.18: Giao diện bảng điều khiển quản trị và biểu đồ thống kê
+3.5.2. Quản lý địa điểm
+Quản trị viên có thể thêm, sửa, xóa, bật/tắt trạng thái và đánh dấu nổi bật địa điểm. Màn hình này kết hợp bảng dữ liệu, form nhập liệu và thành phần tải ảnh; biểu mẫu được quản lý bằng react-hook-form và yup, còn danh sách được đồng bộ bằng React Query sau mỗi thao tác thêm/sửa/xóa.
+Hình 3.19: Giao diện quản lý địa điểm
+3.5.3. Quản lý tour và lịch khởi hành
+Quản trị viên quản lý thông tin tour gồm tên, danh mục, mô tả, lịch trình, giá theo nhóm khách, thời lượng, điểm hẹn, hình ảnh, trạng thái hiển thị và trạng thái nổi bật. Lịch khởi hành được quản lý riêng để kiểm soát ngày đi, ngày về, số chỗ, số chỗ đã đặt, giá ghi đè và trạng thái. Việc tách tour và lịch khởi hành thành hai màn hình giúp dễ cập nhật năng lực phục vụ mà không làm thay đổi cấu trúc tour gốc.
+Hình 3.20: Giao diện quản lý tour
+Hình 3.21: Giao diện quản lý lịch khởi hành
+3.5.4. Quản lý đơn đặt tour và thanh toán
+Quản trị viên có thể xem danh sách đơn đặt tour, lọc theo trạng thái, xem chi tiết khách hàng, xác nhận thanh toán, cập nhật trạng thái đơn đặt tour, xuất hóa đơn và xuất báo cáo. Với thanh toán, quản trị viên có thể xem mã giao dịch, cổng thanh toán, số tiền, trạng thái, thời gian thanh toán và xử lý hoàn tiền nếu có. Mục xác nhận thanh toán thủ công là phần mở rộng quan trọng cho các khoản chuyển khoản chưa được SePay cập nhật tự động.
+Hình 3.22: Giao diện quản lý đơn đặt tour
+Hình 3.23: Giao diện chi tiết đơn đặt tour
+Hình 3.24: Giao diện quản lý thanh toán
+3.5.5. Quản lý nội dung và tương tác
+Quản trị viên có thể duyệt đánh giá, phản hồi liên hệ, gửi thông báo hàng loạt, tạo mã giảm giá và cập nhật cấu hình website.
+Hình 3.25: Giao diện quản lý bài viết
+Hình 3.26: Giao diện liên hệ
+KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+1. Kết quả đạt được
+Sau quá trình phân tích, thiết kế và triển khai, đề tài “Xây dựng website du lịch Đà Nẵng hỗ trợ tra cứu và đặt tour trực tuyến” đã đạt được các kết quả chính:
+Xây dựng website người dùng bằng Next.js phục vụ tra cứu địa điểm, tour, blog, tìm kiếm, bản đồ, đặt tour, thanh toán và quản lý tài khoản.
+Xây dựng trang quản trị bằng React/Vite phục vụ quản lý toàn bộ dữ liệu vận hành như địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, người dùng, đánh giá, blog, khuyến mãi, thông báo và báo cáo.
+Xây dựng Server API bằng Laravel với cấu trúc rõ ràng, có xác thực JWT, phân quyền quản trị viên, kiểm tra dữ liệu và phân tách theo mẫu controller-service-repository.
+Thiết kế cơ sở dữ liệu đáp ứng các nghiệp vụ chính của hệ thống du lịch: địa điểm, tour, lịch khởi hành, đơn đặt tour, thanh toán, đánh giá, lượt đánh giá hữu ích, điểm thành viên, phiếu giảm giá cá nhân, yêu thích, nội dung và chatbot.
+Tích hợp các nghiệp vụ như thanh toán SePay/VietQR, tải ảnh lên Cloudinary, xuất báo cáo Excel, sinh hóa đơn PDF, gửi email và chatbot tư vấn dựa trên dữ liệu nội bộ.
+Triển khai áp dụng khuyến mãi và phiếu giảm giá cá nhân trong luồng đặt tour; cộng điểm theo nguồn nghiệp vụ, đổi điểm lấy phần thưởng và quản lý lịch sử điểm.
+Triển khai thông báo trạng thái đơn/thanh toán, thông báo điểm và tác vụ nhắc lịch khởi hành; hỗ trợ quản trị viên xác nhận thanh toán chuyển khoản thủ công.
+Có nền tảng kiểm thử bằng PHPUnit, Playwright, Vitest và các script kiểm tra đóng gói, kiểu dữ liệu, quy tắc mã nguồn.
+2. Những vấn đề còn tồn tại
+Do giới hạn về thời gian và phạm vi đồ án, hệ thống vẫn còn một số điểm cần tiếp tục hoàn thiện:
+Chưa có dữ liệu vận hành thực tế đủ lớn để đánh giá sâu hiệu quả gợi ý cá nhân hóa.
+Chất lượng phản hồi của chatbot phụ thuộc vào độ đầy đủ của dữ liệu trong cơ sở tri thức, độ chính xác của bước phân tích truy vấn và khả năng sẵn sàng của các nhà cung cấp AI trong cơ chế chuyển đổi dự phòng.
+Chưa triển khai đầy đủ hệ thống gợi ý độc lập trong môi trường vận hành thực tế.
+Chưa tích hợp nhiều cổng thanh toán hoặc nhiều nhà cung cấp tour bên ngoài.
+Cần bổ sung thêm kiểm thử tự động cho toàn bộ luồng đầu cuối như đăng ký, đặt tour, thanh toán, quản trị đơn đặt tour và quản trị nội dung.
+Cần mở rộng kiểm thử tích hợp cho luồng đổi điểm - cấp phiếu - áp dụng phiếu và tác vụ nhắc lịch khởi hành.
+Cần tối ưu thêm SEO, hiệu năng, khả năng truy cập và trải nghiệm trên thiết bị di động.
+3. Hướng phát triển
+Trong tương lai, hệ thống có thể được mở rộng theo các hướng:
+Phát triển hệ thống gợi ý cá nhân hóa dựa trên lịch sử tìm kiếm, vị trí, ngân sách, số người, thời gian đi và hành vi tương tác.
+Xây dựng tính năng lập lịch trình du lịch tự động theo số ngày, ngân sách và sở thích.
+Tích hợp nhiều cổng thanh toán và ví điện tử.
+Phát triển ứng dụng di động cho khách du lịch.
+Tích hợp hệ thống đối tác để đồng bộ tour, khách sạn, phương tiện và vé tham quan.
+Bổ sung hệ thống đánh giá chống spam, kiểm duyệt tự động và phân tích cảm xúc.
+Bổ sung giao diện quản trị quy tắc điểm/phần thưởng, cơ chế thu hồi hoặc hoàn điểm khi đơn đặt tour bị hoàn tiền và báo cáo hiệu quả chương trình thành viên.
+Nâng cấp chatbot theo hướng RAG hoàn chỉnh hơn, có khả năng trích dẫn nguồn dữ liệu, ghi nhận độ tin cậy của câu trả lời và tư vấn theo ngữ cảnh cá nhân.
+Triển khai giám sát, ghi nhật ký tập trung và cảnh báo lỗi trong môi trường vận hành thực tế.
+4. Kết luận chung
+Đề tài DanangTrip đã giúp sinh viên vận dụng tổng hợp kiến thức về phát triển phần mềm, thiết kế cơ sở dữ liệu, xây dựng giao diện người dùng, xây dựng Server API, tích hợp dịch vụ và kiểm thử. Sản phẩm tạo ra đáp ứng các nghiệp vụ cơ bản của hệ thống du lịch trực tuyến và có thể tiếp tục mở rộng theo hướng cá nhân hóa, tư vấn thông minh và tích hợp nhiều dịch vụ du lịch hơn.
+TÀI LIỆU THAM KHẢO
+[1] Laravel: https://laravel.com/docs
+[2] Next.js: https://nextjs.org/docs
+[3] React: https://react.dev
+[4] Vite: https://vite.dev/guide

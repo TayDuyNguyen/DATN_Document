@@ -6,8 +6,8 @@
 >
 > **Prompt Playwright generic:** `playwright_auto_test_generator_prompt.md` — dùng được mọi project (PHASE 0.6 inventory, 0.7 data display). **Chi tiết DanangTrip nằm ở file này**, không nằm trong prompt.
 
-**Cập nhật lần cuối:** 2026-06-15 (User Edit automation hoàn tất)  
-**Phạm vi đã làm:** User List (`02a`) · User Create (`02b`) · User Edit (`02c`) · User Detail (`02d`) · Tour List (`03a`) · Tour Create (`03b`) · Tour Detail Modal (`03d`) · **Dashboard (`01`)**
+**Cập nhật lần cuối:** 2026-06-16 (Tour Edit 03c đóng; Tour Create 03b đóng; quy ước sticky header collapse mục 3c)  
+**Phạm vi đã làm:** User List (`02a`) · User Create (`02b`) · User Edit (`02c`) · User Detail (`02d`) · Tour List (`03a`) · Tour Create (`03b`) · **Tour Edit (`03c`)** · Tour Detail Modal (`03d`) · **Dashboard (`01`)**
 
 ---
 
@@ -114,6 +114,72 @@
 
 ---
 
+## 3c. Sticky header thu gọn khi cuộn (BẮT BUỘC cho form dài)
+
+> **Quy tắc user:** Màn admin **form dài** (create/edit) có header `sticky top-0` + breadcrumb + nút action → **phải** áp dụng cơ chế thu gọn khi cuộn giống **Tour Create**, trừ khi màn là detail/read-only ngắn.
+
+### Điều kiện áp dụng (màn “cùng kiểu”)
+
+- Layout `min-h-screen` + nội dung form nhiều section (cuộn trong `<main>` của `MainLayout`)
+- Header sticky chứa: breadcrumb (hoặc back), tiêu đề, mô tả phụ, nút Hủy/Lưu hoặc Tạo
+- **Không** áp dụng cho: list/table, modal, dashboard card, detail chỉ đọc ngắn
+
+### Reference implementation (chuẩn repo)
+
+**File:** `danangtrip-admin/src/pages/Tours/TourCreate/index.tsx`  
+**Test:** `TC_AD_TCREATE_027` — `TourCreatePage.scrollMainContent()` + badge `title.breadcrumb_create`
+
+### Cơ chế kỹ thuật (copy khi làm màn mới)
+
+1. **Scroll container:** `MainLayout` → `<main class="overflow-y-auto">` — **không** lắng nghe `window` scroll trực tiếp.
+2. **Listener:** `window.addEventListener('scroll', handler, true)` (capture); trong handler chỉ xử lý khi `e.target.tagName === 'MAIN'` (hoặc có class `overflow-y-auto`).
+3. **State `isScrolled`:** `scrollTop > 10` → thu gọn; `scrollTop < 2` → mở rộng (hysteresis tránh giật).
+4. **UI khi thu gọn:**
+   - Ẩn breadcrumb + subtitle (`opacity-0 h-0 overflow-hidden`)
+   - Tiêu đề `text-2xl` → `text-lg`
+   - Hiện badge ngữ cảnh (vd. `title.breadcrumb_create` / `breadcrumb_edit`) — `hidden md:inline-flex`
+   - Giảm padding header (`py-5` → `py-3`)
+   - **Giữ** nút action (Hủy / Lưu / Tạo)
+5. **CSS:** `sticky top-0 z-30` (hoặc `z-40`), `transition-all duration-300`, `backdrop-blur`.
+6. **Padding full-bleed (đừng quên):** Header + body form dùng **`w-full px-4 sm:px-6 lg:px-10`** — **không** bọc `max-w-[1600px] mx-auto` trong sticky header (Tour Edit từng lệch Create → MarkUp 2026-06-16). Nội dung form và header phải căn cùng một lề ngang.
+
+### Bảng trạng thái màn (cập nhật 2026-06-16)
+
+| Màn | Route / file | Sticky header | Collapse on scroll | Việc cần làm |
+|-----|----------------|---------------|-------------------|--------------|
+| **Tour Create** | `/admin/tours/create` · `TourCreate/index.tsx` | ✅ | ✅ **chuẩn** | — |
+| Tour Edit | `/admin/tours/edit/:id` · `TourEdit/index.tsx` | ✅ | ✅ | — |
+| User Create | `/admin/users/create` · `UserCreate/index.tsx` | ✅ | ❌ | Port pattern |
+| User Edit | `/admin/users/edit/:id` · `UserEdit/index.tsx` | ✅ | ❌ | Port pattern |
+| Blog Post Create | `BlogPostCreate/index.tsx` | ✅ | ❌ | Port pattern |
+| Blog Post Edit | `BlogPostEdit/index.tsx` | ✅ | ❌ | Port pattern |
+| Location Create | `LocationCreate/index.tsx` | ✅ | ❌ | Port pattern |
+| Location Edit | `LocationEdit/index.tsx` | ✅ | ❌ | Port pattern |
+| Settings | `Settings/index.tsx` | ✅ | ❌ | Port pattern (nếu form đủ dài) |
+| Chatbot | `Chatbot/index.tsx` | ✅ | ❌ | Tùy tab — ưu tiên thấp |
+| Booking Detail | `BookingDetail/index.tsx` | ✅ | ❌ | Detail — cân nhắc riêng |
+| User Detail | `UserDetailHeader.tsx` | ✅ | ❌ | Detail read-only — **không bắt buộc** |
+| Blog Post Detail | `BlogPostDetailHeader.tsx` | ✅ | ❌ | Detail — **không bắt buộc** |
+
+### Playwright (khi test collapse)
+
+```typescript
+// POM — cuộn đúng container
+await page.locator('main').evaluate((el, y) => { el.scrollTop = y; }, 250);
+await expect(page.getByText(/Tạo mới|Create new/i)).toBeVisible(); // badge thu gọn
+```
+
+- Trước khi assert: đảm bảo trang **đủ dài** để `scrollTop > 10`.
+- Scope badge/tiêu đề trong header sticky, tránh trùng copy body (vd. schedule guide “After creating…”).
+
+### Khi implement màn create/edit mới
+
+1. Copy hook/UX từ `TourCreate` (hoặc tách shared `useMainScrollCollapse` sau).
+2. Thêm TC UX: collapse sau scroll + expand khi scroll về đầu.
+3. Cập nhật bảng trạng thái mục này.
+
+---
+
 ## 4. MarkUp / Change Request — cách xử lý
 
 1. Map element MarkUp → component React (vd. `UserActionsCard.tsx`, `div.space-y-3`).
@@ -200,9 +266,11 @@
 
 - `TourListPage` — list + mở modal
 - `TourDetailModalPage` — assert trong panel, close X/footer, retry
-- `TourCreatePage` — form create, upload, itinerary builder; category click `[class*="-control"]`; itinerary placeholder EN `Discover Ba Na`
+- `TourCreatePage` — form create, upload, itinerary builder; category click `[class*="-control"]`; itinerary placeholder EN `Discover Ba Na`; **`scrollMainContent()`** cho sticky collapse (mục 3c)
 - `copy.bulkActivate` / `bulkDeactivate` — regex **anchored** (`^Activate$`) tránh khớp Deactivate
-- Mock 12 tour: `tests/fixtures/data/tours.data.ts` + `tours.mock.ts`
+- Mock 12 tour: `tests/fixtures/data/tours.data.ts` + `tours.mock.ts` — flags: `setTourStatsDelay`, `setTourExportFail`, `setFeaturedFailForTour`, `setDeleteFailForTour`, `appendMockTours`
+- Filter react-select: click `ancestor div[class*="-control"]` sau `scrollIntoViewIfNeeded` (tránh dummy input ngoài viewport)
+- `tourListCopy` bilingual — EN filter labels khác VI (`Hot Tour`, `Hidden`, `Active filters:`)
 
 ### Mapper — itinerary (đừng tái phạm)
 
@@ -210,6 +278,53 @@
 - DB/seed: `{ time, title, description }` hoặc `{ time, task }`
 - Fix: `normalizeItineraryRaw()` trong `tour.mapper.ts` — map `description`→`content`, `task`→`title`, parse JSON string
 - Test regression: `TC_AD_TMOD_017b` — `patchMockTour` legacy shape → `listPage.goto()` → assert text
+
+---
+
+## 5c. Product conventions — Admin Tour Create (`03b`)
+
+### Sticky header thu gọn
+
+- **Chuẩn repo** cho mục **3c** — màn form dài create/edit khác port từ đây.
+- Khi scroll `<main>`: ẩn breadcrumb + `form.page_subtitle`, thu nhỏ `title.add`, badge `title.breadcrumb_create`.
+- TC: `TC_AD_TCREATE_027`.
+
+### API / form (tóm tắt)
+
+| Hạng mục | Chi tiết |
+|----------|----------|
+| Create | `POST /admin/tours` → redirect edit |
+| Upload | `POST /upload/image`, `/upload/images` |
+| Submit | Header `form.actions.create_tour` · sidebar `form.actions.submit` |
+| Mock flags | `setTourCategoriesBlocked`, `setTourCategoriesDelay`, `setTourCreateDelay` |
+
+**Chạy:** `npm run test:admin:tour-create` — 36 passed, 1 skipped (`API_TCREATE_004b`).
+
+---
+
+## 5d. Product conventions — Admin Tour Edit (`03c`)
+
+### Khác Create
+
+| Hạng mục | Chi tiết |
+|----------|----------|
+| Update | `PUT /admin/tours/:id` partial (`dirtyFields`) → redirect **list** |
+| Categories | `useTourCategoriesQuery('admin')` — cache 30 phút; test lỗi category cần **browser context mới** |
+| Slug | Toggle auto/manual + `slug_warning` |
+| Departures | List schedules + `ScheduleDeleteDialog`; nút **Thêm lịch** / Add schedule |
+| Mobile | Footer cố định `data-tour-mobile-footer` (`md:hidden`) |
+| Guard | `UnsavedChangesGuard` + sticky header collapse (port từ Create) |
+| ImageGallery | Truyền `errors={errors}` |
+| **Layout header** | **`w-full px-4 sm:px-6 lg:px-10`** — **không** `max-w-[1600px] mx-auto` (căn sát lề như Create) |
+| Mock flags | `setTourDetailFail/Delay`, `setTourUpdateFail/Delay`, `setScheduleErrorForTour`, `patchMockTour` |
+
+### POM / specs
+
+- `TourEditPage.ts` extends `TourCreatePage` — scope `form .sticky` / `form aside` (tránh trùng sidebar nav)
+- Locator busy: `headerSaveOrSavingButton` (label đổi sang Saving khi pending)
+- Dialog xóa lịch EN: `Delete this schedule?`
+
+**Chạy:** `npm run test:admin:tour-edit` — **48 passed, 2 skipped** (`API_TEDIT_006`, `API_TEDIT_008`).
 
 ---
 
@@ -222,29 +337,42 @@ danangtrip-admin/
   tests/admin/users-create.spec.ts       # 02b
   tests/admin/users-edit.spec.ts         # 02c core
   tests/admin/users-edit-extended.spec.ts # 02c extended
-  tests/admin/users-detail.spec.ts       # 02d — 20 TC
-  tests/admin/tours-list.spec.ts         # 03a — 12 TC
-  tests/admin/tours-create.spec.ts       # 03b — 17 TC
+  tests/admin/users-detail.spec.ts       # 02d — 20 TC core
+  tests/admin/users-detail-extended.spec.ts # 02d — 32 TC extended
+  tests/admin/tours-list.spec.ts         # 03a — 12 TC core
+  tests/admin/tours-list-extended.spec.ts # 03a — 53 TC extended
+  tests/admin/tours-create.spec.ts       # 03b — 17 TC core
+  tests/admin/tours-create-extended.spec.ts # 03b — 19 TC extended
+  tests/api/admin-tours-create.api.spec.ts  # 03b — 5 API
+  tests/admin/tours-edit.spec.ts         # 03c — 20 TC core (+ 001b)
+  tests/admin/tours-edit-extended.spec.ts # 03c — 22 TC extended
+  tests/api/admin-tours-edit.api.spec.ts  # 03c — 8 API
   tests/admin/tours-detail-modal.spec.ts # 03d — 26 TC (gồm 017b legacy itinerary)
-  tests/api/admin-users-*.api.spec.ts
-  tests/api/admin-tours-list.api.spec.ts
+  tests/api/admin-tours-list.api.spec.ts  # 03a — 18 API
   tests/pages/admin/User*Page.ts
   tests/pages/admin/TourListPage.ts
   tests/pages/admin/TourCreatePage.ts
+  tests/pages/admin/TourEditPage.ts
+  tests/fixtures/data/tour-edit.data.ts
   tests/fixtures/api/*.mock.ts
   tests/fixtures/data/users.data.ts
   tests/fixtures/data/tours.data.ts
+  tests/helpers/mockRouteOnce.ts       # shouldRegisterMockRoutes — mock route 1 lần/page
   scripts/prepush-check.mjs
 ```
+
+**Mock route-once:** `shouldRegisterMockRoutes(page, mockId)` — cập nhật flags mỗi lần gọi; chỉ `page.route` lần đầu. Áp dụng: `users-detail`, `users-edit`, `users-create`, `tours`. Chưa: `users.mock` (dataset closure).
 
 ```bash
 npm run test:admin:users
 npm run test:admin:user-create
 npm run test:admin:user-edit      # 44 passed (--workers=1)
-npm run test:admin:user-detail    # 20 passed (--workers=1)
+npm run test:admin:user-detail    # 60 passed (--workers=1)
 npm run test:admin:tour-list      # 12 passed (--workers=1)
-npm run test:admin:tour-create      # 17 passed (--workers=1)
+npm run test:admin:tour-create      # 36 passed, 1 skipped (--workers=1)
+npm run test:admin:tour-edit        # 48 passed, 2 skipped (--workers=1)
 npm run test:admin:tour-detail-modal  # 26 passed (--workers=1)
+npm run test:api                  # --workers=1
 npm run prepush:check             # cần dev server :5173
 ```
 
@@ -261,7 +389,7 @@ Thứ tự children trong `div.space-y-3`:
 
 | # | Control | Loại | TC auto |
 |---|---------|------|---------|
-| 1 | Chỉnh sửa thông tin | Link → edit | (header cũng có; có thể bổ sung round-trip) |
+| 1 | Chỉnh sửa thông tin | Link → edit | `TC_AD_UDET_021`, `025` |
 | 2 | Đổi vai trò | button → dialog | `TC_AD_UDET_013`, `014` |
 | 3 | Xem đơn đặt tour | Link | `TC_AD_UDET_017`, `019` |
 | 4 | Xem đánh giá | Link | `TC_AD_UDET_018`, `020` |
@@ -280,7 +408,7 @@ POM getters: `actionsViewBookingsLink`, `actionsViewRatingsLink`, `actionsChange
 | Toggle/radio “không hoạt động” | Chỉ đổi form | PATCH ngay |
 | birthdate trống trên edit | ISO chưa normalize | `user.mapper.ts` |
 | Lưu edit không sang detail | Navigate sai | `navigate(USERS_DETAIL)` sau PUT |
-| Detail `goto` timeout | Chờ ratingsCard | Chỉ chờ `personalInfoCard` |
+| Detail `goto` timeout | Ratings chưa load xong (skeleton không có heading) | Chờ `personalInfoCard` + `ratingsCard` sau goto |
 | Ratings: Back không về detail 1 lần | `setSearchParams` push thêm history | `{ replace: true }` |
 | Locator ratings link not found (en) | Regex sai | `View Reviews` không phải `View.*ratings` |
 | Delete button vi | Nhãn `Xóa` | POM `/^(Xóa|Delete)$/i` |
@@ -306,7 +434,10 @@ POM getters: `actionsViewBookingsLink`, `actionsViewRatingsLink`, `actionsChange
 | Role spinner không thấy | Spinner nằm ngoài `user-edit-role-group` | `getByTestId('user-edit-role-group').locator('..').locator('.animate-spin')` |
 | API GET user 999999999 | Backend trả 422 thay 404 | Assert `[404, 422].toContain(status)` |
 | Top tours / search strict | Tên tour trùng keyword / recent orders | Scope `rounded-[32px]` card; keyword `exact: true` |
-| Notification New Contacts strict | Trùng stat card `new-contacts` | Assert `notification-item-contacts` trong popover |
+| Role dialog USER strict | Regex `/USER/i` khớp mô tả admin EN ("user accounts") | `getByRole('button', { name: /^USER\b/i })` |
+| Detail mock flake parallel | `usersById` shared + PATCH từ test khác | `test.describe.configure({ mode: 'serial' })` + `resetMockDetailUsers()` |
+| Detail mock gọi 2 lần | `page.route` trùng pattern | `shouldRegisterMockRoutes` trong `tests/helpers/mockRouteOnce.ts` |
+| View All link strict | 2 link "View All →" bookings + ratings | Scope trong `bookingsCard` / `ratingsCard` ancestor |
 | Top tours heading EN | Doc regex `Top tours` ≠ `Top 5 Best Selling Tours` | POM `copy.topTours` bilingual đủ cụm |
 
 ---
@@ -318,9 +449,10 @@ POM getters: `actionsViewBookingsLink`, `actionsViewRatingsLink`, `actionsChange
 | User List | `02a_user_list.md` | `users.spec.ts` + `users-extended.spec.ts` | **67 passed** (56 UI + 11 API) |
 | User Create | `02b_user_create.md` | `users-create.spec.ts` + `users-create-extended.spec.ts` | **38 TC** (30 UI + 8 API) |
 | User Edit | `02c_user_edit.md` | `users-edit.spec.ts` + `users-edit-extended.spec.ts` | **40 TC** (32 UI + 8 API) — **44 passed** |
-| User Detail | `02d_user_detail.md` | `users-detail.spec.ts` | 20 UI + 3 API; MarkUp actions + round-trip |
-| Tour List | `03a_tour_list.md` | `tours-list.spec.ts` | 12 UI + 2 API; bulk actions |
-| Tour Create | `03b_tour_create.md` | `tours-create.spec.ts` | 17 UI; inventory + validation + status/toggles |
+| User Detail | `02d_user_detail.md` | `users-detail.spec.ts` + `users-detail-extended.spec.ts` + API | **52 UI + 8 API — 60 passed** (đóng module) |
+| Tour List | `03a_tour_list.md` | `tours-list.spec.ts` + `tours-list-extended.spec.ts` + API | **82/83 auto** (65 UI + 17 API; `API_TLIST_017` skip) — **đóng module** |
+| Tour Create | `03b_tour_create.md` | `tours-create.spec.ts` + extended + API | **33/34 auto** (30 UI + 3 API; `API_TCREATE_004b` skip) — **đóng module** |
+| Tour Edit | `03c_tour_edit.md` | `tours-edit.spec.ts` + extended + API | **50 TC** (42 UI + 8 API) — **48 passed, 2 skipped** — **đóng module** |
 | Tour Detail Modal | `03d_tour_detail_modal.md` | `tours-detail-modal.spec.ts` | 26 UI (017b legacy itinerary); edge + mobile |
 | Dashboard | `01_dashboard.md` | `dashboard.spec.ts` + `dashboard-auth.spec.ts` | 29 UI + 2 API smoke; mock `mockDashboardApi` |
 
@@ -331,6 +463,7 @@ POM getters: `actionsViewBookingsLink`, `actionsViewRatingsLink`, `actionsChange
 ## 10. Checklist trước khi báo “done”
 
 - [ ] Đã đọc `memory_test.md`
+- [ ] **Form dài create/edit:** đã áp dụng sticky header collapse (mục 3c) hoặc ghi lý do skip trong doc
 - [ ] Inventory 100% button/link/toggle trên màn (mục 3)
 - [ ] **Data Display Integrity** (mục 3b): mock vs seed, assert text thật, legacy/empty/error TC
 - [ ] Doc `02*.md` / `03*.md` cột Auto ✅ khớp spec

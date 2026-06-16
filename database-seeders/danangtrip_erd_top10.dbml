@@ -1,0 +1,299 @@
+// DanangTrip - Top 10 Core Database Schema
+// Paste at: https://dbdiagram.io
+
+// ========== 1. USERS ==========
+Table users {
+  id                bigint       [pk, increment]
+  username          varchar(50)  [unique, not null]
+  email             varchar(100) [unique, not null]
+  password          varchar(255) [not null]
+  full_name         varchar(100) [not null]
+  avatar            varchar(255) [null]
+  phone             varchar(20)  [null]
+  birthdate         date         [null]
+  gender            varchar(20)  [null]
+  city              varchar(100) [null]
+  role              varchar(20)  [not null, default: 'user', note: 'user | admin']
+  status            varchar(20)  [not null, default: 'pending', note: 'active | blocked | pending']
+  email_verified_at timestamp    [null]
+  last_login_at     timestamp    [null]
+  created_at        timestamp
+  updated_at        timestamp
+
+  indexes {
+    role
+    status
+  }
+
+  Note: 'User accounts and administrators'
+}
+
+// ========== 2. TOURS ==========
+Table tours {
+  id                   bigint       [pk, increment]
+  name                 varchar(200) [not null]
+  slug                 varchar(220) [unique, not null]
+  tour_category_id     bigint       [not null, note: 'Logical ref to tour_categories.id']
+  description          text         [null]
+  short_desc           varchar(500) [null]
+  itinerary            json         [null, note: 'Detailed itinerary']
+  inclusions           json         [null, note: 'Included services']
+  exclusions           json         [null, note: 'Excluded services']
+  price_adult          decimal(12,2) [not null]
+  price_child          decimal(12,2) [default: 0]
+  price_infant         decimal(12,2) [default: 0]
+  discount_percent     int          [default: 0]
+  duration             varchar(50)  [null, note: 'Example: 1 day, 3 hours']
+  start_time           varchar(50)  [null]
+  meeting_point        varchar(255) [null]
+  max_people           int          [default: 0]
+  min_people           int          [default: 1]
+  available_from       date         [null]
+  available_to         date         [null]
+  thumbnail            varchar(255) [null]
+  images               json         [null]
+  status               varchar(20)  [default: 'active', note: 'active | inactive']
+  booking_availability varchar(20)  [default: 'open', note: 'open | sold_out']
+  is_featured          boolean      [default: false]
+  is_hot               boolean      [default: false]
+  view_count           int          [default: 0]
+  booking_count        int          [default: 0]
+  rating_count         int          [default: 0]
+  rating_avg           decimal(3,2) [default: 0]
+  created_by           bigint       [null, ref: > users.id]
+  created_at           timestamp
+  updated_at           timestamp
+
+  indexes {
+    price_adult
+    (status, booking_availability, tour_category_id, price_adult)
+    is_featured
+    is_hot
+  }
+
+  Note: 'Tour products'
+}
+
+// ========== 3. TOUR SCHEDULES ==========
+Table tour_schedules {
+  id            bigint       [pk, increment]
+  tour_id       bigint       [not null, ref: > tours.id]
+  start_date    date         [not null]
+  end_date      date         [not null]
+  max_people    int          [default: 0]
+  booked_people int          [default: 0]
+  price_adult   decimal(12,2) [null, note: 'Override tour price if applicable']
+  price_child   decimal(12,2) [null]
+  price_infant  decimal(12,2) [null]
+  status        varchar(20)  [default: 'available', note: 'available | full | cancelled']
+  created_at    timestamp
+  updated_at    timestamp
+
+  indexes {
+    (tour_id, start_date) [unique]
+    start_date
+    status
+  }
+
+  Note: 'Specific tour departure schedules'
+}
+
+// ========== 4. LOCATIONS ==========
+Table locations {
+  id                bigint       [pk, increment]
+  name              varchar(200) [not null]
+  slug              varchar(220) [unique, not null]
+  category_id       bigint       [not null, note: 'Logical ref to categories.id']
+  subcategory_id    bigint       [null, note: 'Logical ref to subcategories.id']
+  description       text         [not null]
+  short_description varchar(500) [not null]
+  address           varchar(255) [not null]
+  district          varchar(50)  [not null]
+  ward              varchar(50)  [null]
+  latitude          decimal(10,8) [not null]
+  longitude         decimal(11,8) [not null]
+  phone             varchar(20)  [null]
+  email             varchar(100) [null]
+  website           varchar(255) [null]
+  opening_hours     json         [null]
+  price_min         decimal(12,2) [null]
+  price_max         decimal(12,2) [null]
+  price_level       tinyint      [null, note: '1-4']
+  avg_rating        decimal(3,2) [default: 0]
+  review_count      int          [default: 0]
+  view_count        int          [default: 0]
+  favorite_count    int          [default: 0]
+  thumbnail         varchar(255) [null]
+  images            json         [null]
+  status            varchar(20)  [default: 'active', note: 'active | inactive']
+  is_featured       boolean      [default: false]
+  created_by        bigint       [null, ref: > users.id]
+  created_at        timestamp
+  updated_at        timestamp
+
+  indexes {
+    category_id
+    district
+    (status, is_featured)
+    avg_rating
+  }
+
+  Note: 'Tourist locations, dining and entertainment in Da Nang'
+}
+
+// ========== 5. BOOKINGS ==========
+Table bookings {
+  id                  bigint       [pk, increment]
+  booking_code        varchar(20)  [unique, not null]
+  user_id             bigint       [null, ref: > users.id]
+  promotion_id        bigint       [null, note: 'Logical ref to promotions.id']
+  customer_name       varchar(100) [not null]
+  customer_email      varchar(100) [not null]
+  customer_phone      varchar(20)  [not null]
+  customer_address    text         [null]
+  customer_note       text         [null]
+  total_amount        decimal(12,2) [not null]
+  discount_amount     decimal(12,2) [default: 0]
+  final_amount        decimal(12,2) [not null]
+  deposit_amount      decimal(12,2) [default: 0]
+  payment_method      varchar(30)  [not null]
+  payment_status      varchar(30)  [default: 'unpaid', note: 'unpaid | pending | success | failed | refunded | partially_paid']
+  booking_status      varchar(30)  [default: 'pending', note: 'pending | confirmed | completed | cancelled']
+  cancellation_reason text         [null]
+  booked_at           timestamp    [not null]
+  confirmed_at        timestamp    [null]
+  cancelled_at        timestamp    [null]
+  completed_at        timestamp    [null]
+  created_at          timestamp
+  updated_at          timestamp
+
+  indexes {
+    booking_status
+    payment_status
+    user_id
+    booked_at
+  }
+
+  Note: 'Tour bookings master records'
+}
+
+// ========== 6. BOOKING ITEMS ==========
+Table booking_items {
+  id               bigint       [pk, increment]
+  booking_id       bigint       [not null, ref: > bookings.id]
+  tour_id          bigint       [not null, ref: > tours.id]
+  tour_schedule_id bigint       [not null, ref: > tour_schedules.id]
+  item_type        varchar(30)  [default: 'tour']
+  item_name        varchar(200) [not null]
+  travel_date      date         [not null]
+  quantity_adult   int          [default: 0]
+  quantity_child   int          [default: 0]
+  quantity_infant  int          [default: 0]
+  unit_price_adult decimal(12,0) [not null]
+  unit_price_child decimal(12,0) [not null]
+  unit_price_infant decimal(12,0) [not null]
+  subtotal         decimal(12,0) [not null]
+  status           varchar(30)  [default: 'pending']
+  created_at       timestamp
+  updated_at       timestamp
+
+  indexes {
+    (booking_id, tour_id)
+    travel_date
+  }
+
+  Note: 'Details of booked tours in a booking'
+}
+
+// ========== 7. PAYMENTS ==========
+Table payments {
+  id               bigint       [pk, increment]
+  booking_id       bigint       [not null, ref: > bookings.id]
+  transaction_code varchar(100) [unique, not null]
+  amount           decimal(12,2) [not null]
+  payment_method   varchar(30)  [not null]
+  payment_status   varchar(30)  [default: 'pending', note: 'pending | success | failed | refunded']
+  payment_gateway  varchar(50)  [null, note: 'sepay | bank_transfer']
+  gateway_response json         [null]
+  paid_at          timestamp    [null]
+  refunded_at      timestamp    [null]
+  refund_reason    text         [null]
+  created_at       timestamp
+  updated_at       timestamp
+
+  indexes {
+    booking_id
+    payment_status
+    paid_at
+  }
+
+  Note: 'Payment transactions for bookings'
+}
+
+// ========== 8. RATINGS ==========
+Table ratings {
+  id              bigint    [pk, increment]
+  user_id         bigint    [not null, ref: > users.id]
+  location_id     bigint    [null, ref: > locations.id]
+  tour_id         bigint    [null, ref: > tours.id]
+  booking_id      bigint    [null, ref: > bookings.id]
+  score           tinyint   [not null, note: '1-5 stars']
+  comment         text      [null]
+  image_count     tinyint   [default: 0]
+  status          varchar(20) [default: 'approved', note: 'pending | approved | rejected']
+  rejected_reason varchar(255) [null]
+  approved_by     bigint    [null, ref: > users.id]
+  approved_at     timestamp [null]
+  helpful_count   int       [default: 0]
+  created_at      timestamp
+  updated_at      timestamp
+
+  Note: 'Ratings and reviews for locations, tours, or bookings'
+}
+
+// ========== 9. BLOG POSTS ==========
+Table blog_posts {
+  id             bigint       [pk, increment]
+  title          varchar(300) [not null]
+  slug           varchar(320) [unique, not null]
+  excerpt        varchar(600) [null]
+  content        text         [not null]
+  featured_image varchar(500) [null]
+  author_id      bigint       [not null, ref: > users.id]
+  view_count     int          [default: 0]
+  status         varchar(20)  [default: 'draft', note: 'draft | published | archived']
+  published_at   timestamp    [null]
+  created_at     timestamp
+  updated_at     timestamp
+
+  indexes {
+    (status, published_at)
+    author_id
+  }
+
+  Note: 'Blog articles for travel guides and SEO'
+}
+
+// ========== 10. CHATBOT KNOWLEDGE BASE ==========
+Table chat_knowledge_base {
+  id               bigint       [pk, increment]
+  type             varchar(30)  [not null, note: 'tour | location | blog | policy']
+  title            varchar(255) [not null]
+  content          text         [not null, note: 'Normalized text for embedding']
+  reference_id     bigint       [null, note: 'Logical ref to tours/locations/blog_posts']
+  reference_slug   varchar(280) [null]
+  metadata         json         [null, note: 'Price, ratings, slugs for recommendation cards']
+  embedding        json         [null, note: '768-dimensional vector (Gemini text-embedding-001)']
+  is_active        boolean      [default: true]
+  last_embedded_at timestamp    [null]
+  created_at       timestamp
+  updated_at       timestamp
+
+  indexes {
+    (type, is_active)
+    reference_id
+    reference_slug
+  }
+
+  Note: 'Knowledge base for RAG AI chatbot'
+}
