@@ -1,5 +1,7 @@
-// DanangTrip - Top 10 Core Database Schema
+// DanangTrip - Top 10 Core Database Schema (Simplified)
 // Paste at: https://dbdiagram.io
+// Note: Category, tag, amenity, voucher detail and cache/log tables are omitted
+// to keep the ERD focused on the main tourism, booking, payment, content and chatbot flows.
 
 // ========== 1. USERS ==========
 Table users {
@@ -14,7 +16,7 @@ Table users {
   gender            varchar(20)  [null]
   city              varchar(100) [null]
   role              varchar(20)  [not null, default: 'user', note: 'user | admin']
-  status            varchar(20)  [not null, default: 'pending', note: 'active | blocked | pending']
+  status            varchar(20)  [not null, default: 'pending', note: 'active | banned | pending']
   email_verified_at timestamp    [null]
   last_login_at     timestamp    [null]
   created_at        timestamp
@@ -52,6 +54,7 @@ Table tours {
   available_to         date         [null]
   thumbnail            varchar(255) [null]
   images               json         [null]
+  video_url            varchar(255) [null]
   status               varchar(20)  [default: 'active', note: 'active | inactive']
   booking_availability varchar(20)  [default: 'open', note: 'open | sold_out']
   is_featured          boolean      [default: false]
@@ -85,7 +88,7 @@ Table tour_schedules {
   price_adult   decimal(12,2) [null, note: 'Override tour price if applicable']
   price_child   decimal(12,2) [null]
   price_infant  decimal(12,2) [null]
-  status        varchar(20)  [default: 'available', note: 'available | full | cancelled']
+  status        varchar(20)  [default: 'available', note: 'available | cancelled']
   created_at    timestamp
   updated_at    timestamp
 
@@ -125,6 +128,7 @@ Table locations {
   favorite_count    int          [default: 0]
   thumbnail         varchar(255) [null]
   images            json         [null]
+  video_url         varchar(255) [null]
   status            varchar(20)  [default: 'active', note: 'active | inactive']
   is_featured       boolean      [default: false]
   created_by        bigint       [null, ref: > users.id]
@@ -147,6 +151,7 @@ Table bookings {
   booking_code        varchar(20)  [unique, not null]
   user_id             bigint       [null, ref: > users.id]
   promotion_id        bigint       [null, note: 'Logical ref to promotions.id']
+  user_voucher_id     bigint       [null, note: 'Logical ref to user_vouchers.id']
   customer_name       varchar(100) [not null]
   customer_email      varchar(100) [not null]
   customer_phone      varchar(20)  [not null]
@@ -254,11 +259,11 @@ Table ratings {
 // ========== 9. BLOG POSTS ==========
 Table blog_posts {
   id             bigint       [pk, increment]
-  title          varchar(300) [not null]
-  slug           varchar(320) [unique, not null]
-  excerpt        varchar(600) [null]
+  title          varchar(255) [not null]
+  slug           varchar(280) [unique, not null]
+  excerpt        varchar(500) [null]
   content        text         [not null]
-  featured_image varchar(500) [null]
+  featured_image varchar(255) [null]
   author_id      bigint       [not null, ref: > users.id]
   view_count     int          [default: 0]
   status         varchar(20)  [default: 'draft', note: 'draft | published | archived']
@@ -283,7 +288,10 @@ Table chat_knowledge_base {
   reference_id     bigint       [null, note: 'Logical ref to tours/locations/blog_posts']
   reference_slug   varchar(280) [null]
   metadata         json         [null, note: 'Price, ratings, slugs for recommendation cards']
-  embedding        json         [null, note: '768-dimensional vector (Gemini text-embedding-001)']
+  embedding        json         [null, note: 'Vector embedding values']
+  embedding_model  varchar(100) [null, note: 'Example: gemini-embedding-001']
+  embedding_dimension int       [null, note: 'Current default: 768']
+  content_hash     varchar(64)  [null, note: 'Detect content changes before re-embedding']
   is_active        boolean      [default: true]
   last_embedded_at timestamp    [null]
   created_at       timestamp

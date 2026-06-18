@@ -237,6 +237,8 @@ Giao diện trang chủ thực hiện tải động dữ liệu từ hệ thốn
 
 Phân hệ địa điểm cung cấp cho người dùng giao diện hiển thị danh sách các điểm đến hấp dẫn được phân loại theo danh mục cụ thể (ẩm thực, mua sắm, danh lam thắng cảnh). Người dùng có thể tìm kiếm theo từ khóa hoặc lọc theo khu vực địa lý. Trang chi tiết địa điểm hiển thị đầy đủ thông tin giới thiệu, giờ hoạt động, bộ sưu tập hình ảnh trực quan, đánh giá từ cộng đồng du khách và bản đồ tương tác hiển thị vị trí địa điểm kèm theo danh sách các địa điểm lân cận để giúp người dùng dễ dàng lên lịch trình di chuyển.
 
+Ở màn hình khám phá bản đồ, hệ thống sử dụng Leaflet để hiển thị lớp nền bản đồ OpenStreetMap, đánh dấu vị trí người dùng và các địa điểm du lịch. Khi người dùng chọn một điểm đến và bật chức năng chỉ đường, frontend kết hợp `leaflet-routing-machine` để tạo tuyến đường từ tọa độ hiện tại của người dùng đến tọa độ địa điểm được chọn, sau đó vẽ tuyến đường trực tiếp lên bản đồ. Ngoài tuyến đường hiển thị trong ứng dụng, hệ thống còn cung cấp liên kết mở Google Maps để người dùng xem hướng dẫn di chuyển chi tiết trên nền tảng bản đồ bên ngoài.
+
 *Hình 3.5: Giao diện danh sách địa điểm và bộ lọc tìm kiếm*
 
 *Hình 3.6: Giao diện chi tiết địa điểm*
