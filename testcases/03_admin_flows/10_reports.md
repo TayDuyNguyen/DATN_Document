@@ -1,60 +1,84 @@
-# Màn hình Báo cáo thống kê & Doanh thu (Admin Reports) - Test Cases
+# Admin — Báo cáo thống kê & Doanh thu (Reports)
 
-## 1. Tổng quan màn hình
+**Routes:**
+- `/admin/reports/revenue` — Báo cáo Doanh thu
+- `/admin/reports/bookings` — Báo cáo Đơn đặt chỗ
+- `/admin/reports/locations` — Báo cáo Địa điểm
+- `/admin/reports/ratings` — Báo cáo Đánh giá
+- `/admin/reports/users` — Báo cáo Người dùng
 
-* Đường dẫn route: 
-  - `/admin/reports/revenue` (Báo cáo Doanh thu)
-  - `/admin/reports/bookings` (Báo cáo Đơn đặt chỗ)
-  - `/admin/reports/locations` (Báo cáo Địa điểm)
-  - `/admin/reports/ratings` (Báo cáo Đánh giá)
-  - `/admin/reports/users` (Báo cáo Khách hàng/Thành viên)
-* File source chính: 
-  - `D:\DATN\danangtrip-admin\src\pages\Reports\RevenueReport\index.tsx`
-  - `D:\DATN\danangtrip-admin\src\pages\Reports\BookingsReport\index.tsx`
-  - `D:\DATN\danangtrip-admin\src\pages\Reports\LocationReport\index.tsx`
-  - `D:\DATN\danangtrip-admin\src\pages\Reports\RatingsReport\index.tsx`
-  - `D:\DATN\danangtrip-admin\src\pages\Reports\UsersReport\index.tsx`
-* Component liên quan: `ReportFilterBar`, `RevenueStatsCards`, `RevenueReportCharts`, `RevenueReportTable`, `Breadcrumbs`, `SectionHeader`
-* API/service sử dụng:
-  - `useRevenueReportQuery(activeFilters)` / `exportRevenueMutation`
-  - `useBookingsReportQuery(activeFilters)` / `exportBookingsMutation`
-  - `useLocationsReportQuery(activeFilters)` / `exportLocationsMutation`
-  - `useRatingsReportQuery(activeFilters)` / `exportRatingsMutation`
-  - `useUsersReportQuery(activeFilters)` / `exportUsersMutation`
-* Quyền truy cập: Quản trị viên (Admin), Quản lý (Manager) có quyền xem; Staff hạn chế theo phân quyền.
-* Mục đích màn hình: Cung cấp số liệu thống kê chi tiết, trực quan hóa dữ liệu qua biểu đồ, hỗ trợ phân tích xu hướng kinh doanh và xuất báo cáo ra Excel phục vụ nghiệp vụ kế toán/quản lý.
+**Source:** `danangtrip-admin/src/pages/Reports/`  
+**Automation:** `tests/admin/reports-revenue.spec.ts` · `tests/admin/reports-smoke.spec.ts` · `tests/admin/reports-auth.spec.ts`  
+**POM:** `ReportPage.ts` · Mock: `reports.mock.ts` · Data: `reports-shared.data.ts`  
+**Chạy test:** `npm run test:admin:reports`
 
-## 2. Điều kiện tiền đề
+---
 
-* Tài khoản cần dùng: Đăng nhập quyền `admin` hoặc `manager`.
-* Dữ liệu mẫu: Hệ thống đã seed nhiều dữ liệu tour, địa điểm, thành viên, đánh giá, booking thanh toán qua nhiều cổng khác nhau và các mốc thời gian khác nhau.
-* Trạng thái hệ thống: Cổng API hoạt động; mock mode bật/tắt được qua nút toggle.
+## 1. Phạm vi
 
-## 3. Danh sách chức năng chính
+| Hạng mục | Chi tiết |
+|----------|----------|
+| Vai trò | **Admin** only (`PrivateRoute` — staff/user → `/login`) |
+| API Revenue | `GET /admin/dashboard/revenue` · `GET /admin/reports/revenue-detail` · `GET /admin/payments` · `GET /admin/payments/export` |
+| API Bookings | `GET /admin/reports/bookings` · `GET /admin/bookings/export` |
+| API Locations | `GET /admin/reports/locations` · `GET /admin/locations/stats` · `GET /admin/locations` · `GET /admin/locations/export` |
+| API Ratings | `GET /admin/reports/ratings` · `GET /admin/ratings/export` |
+| API Users | `GET /admin/reports/users` · `GET /admin/users/export` |
+| UI chung | Filter bar · Mock toggle · Export Excel · Error panel (retry + use mock) · Stats cards · Recharts · Table + pagination |
+| URL sync | `from`, `to`, `payment_gateway`, `page` (revenue/bookings/ratings/locations); `year` (users). `per_page` **không** sync URL (hardcode 10). |
 
-* **Đồng bộ bộ lọc URL**: Mọi thay đổi về bộ lọc (Từ ngày, Đến ngày, Cổng thanh toán, Quận huyện, Trạng thái,...) tự động cập nhật lên URL search parameters để khi F5 trang không mất trạng thái lọc.
-* **Xử lý Mock Mode (Dữ liệu giả lập)**:
-  - Khi API lỗi hoặc chưa hoàn thiện, tự động kích hoạt Mock Mode (hoặc người dùng tự bấm nút toggle Mock Mode).
-  - Hiển thị thông tin thống kê, biểu đồ và danh sách dữ liệu giả lập chất lượng cao, đúng định dạng.
-* **Xử lý Lỗi API (Error State UI)**:
-  - Hiển thị card cảnh báo kết nối thất bại, nút "Thử lại" (Retry) để gọi lại API, và nút "Sử dụng dữ liệu mẫu" (Mock Mode) để chuyển sang chế độ giả lập.
-* **Báo cáo Doanh thu (Revenue)**:
-  - Thống kê: Tổng doanh thu, Doanh thu trung bình ngày, Tổng số giao dịch, Số tiền đã hoàn.
-  - Biểu đồ: Xu hướng doanh thu và giao dịch theo ngày, Biển đồ tròn cổng thanh toán (momo, vnpay, zalopay), Top 5 tour mang lại doanh thu cao nhất.
-* **Báo cáo Booking**:
-  - Thống kê: Tổng lượt đặt, tỷ lệ lấp đầy, số booking hoàn thành, đang chờ hoặc bị hủy.
-  - Biểu đồ: Xu hướng booking theo thời gian, tỷ lệ trạng thái booking.
-* **Báo cáo Địa điểm (Locations)**:
-  - Thống kê: Tổng số địa điểm, số địa điểm active/draft, phân bố địa điểm theo quận huyện (Hải Châu, Sơn Trà, Ngũ Hành Sơn,...).
-* **Báo cáo Đánh giá (Ratings)**:
-  - Thống kê: Điểm đánh giá trung bình toàn hệ thống, tổng số lượt review, phân phối số sao (1-5 sao).
-* **Báo cáo Khách hàng (Users)**:
-  - Thống kê: Tổng số user đăng ký mới, số user active/blocked, phân bố vai trò (admin, user, tour_guide, manager).
-* **Xuất báo cáo (Export Excel)**:
-  - Ở chế độ Mock Mode: Tải file `.csv` giả lập trực tiếp từ Client.
-  - Ở chế độ Real API: Gọi API Mutation xuất Excel tải file `.xlsx` thật từ Server.
+## 2. UI Interactive Inventory (Revenue — đại diện)
 
-## 4. Test cases chi tiết
+| # | Vùng UI | Nhãn (i18n) | Loại | Hành vi kỳ vọng | TC doc | Auto |
+|---|---------|-------------|------|-----------------|--------|------|
+| 1 | Header | Dữ liệu Thật/Giả lập | button | Toggle mock + toast | REP_GEN_005 | ✅ TC_AD_REP_005 |
+| 2 | Header | Xuất Excel | button | Mock CSV hoặc API xlsx | REP_EXP_019–021 | ✅ TC_AD_REP_019–021 |
+| 3 | Filter | Từ ngày / Đến ngày | date | URL sync on Apply | REP_GEN_001–002 | ✅ TC_AD_REP_001–002 |
+| 4 | Filter | Áp dụng | button | Validate range + fetch | REP_GEN_003 | ✅ TC_AD_REP_003 |
+| 5 | Filter | Mặc định | button | Reset defaults + URL | REP_GEN_004 | ✅ TC_AD_REP_004 |
+| 6 | Error panel | Thử lại | button | Refetch API | REP_GEN_008 | ✅ TC_AD_REP_008 |
+| 7 | Error panel | Sử dụng Mock Data | button | Bật mock mode | REP_GEN_007 | ✅ TC_AD_REP_007 |
+| 8 | Charts | Xu hướng doanh thu | chart | Recharts area | REP_REV_010 | ✅ TC_AD_REP_010 |
+| 9 | Charts | Cơ cấu cổng thanh toán | chart | Donut + gateway legend | REP_REV_011 | ✅ TC_AD_REP_011 |
+| 10 | Charts | Top 5 Tour doanh thu cao | chart | 5 bar horizontal | REP_REV_012 | ✅ TC_AD_REP_012 |
+| 11 | Table | Chi tiết giao dịch | table | Fields + pagination | REP_REV_013, REP_EXP_022 | ✅ TC_AD_REP_013, 022 |
+| 12 | Auto mock | API 500 | system | Toast + mock On | REP_GEN_006 | ✅ TC_AD_REP_006 |
+| 13 | Loading | Skeleton/spinner | state | Delay API | REP_GEN_009 | ✅ TC_AD_REP_009 |
+
+**Bookings / Locations / Ratings / Users:** cùng pattern mock toggle + export + filter; smoke assert stats/charts/table tương ứng.
+
+## 3. Mapping testcase doc → automation
+
+| ID gốc | ID Auto | Mô tả | Auto |
+|--------|---------|--------|------|
+| REP_GEN_001 | TC_AD_REP_001 | URL sync filter Apply | ✅ |
+| REP_GEN_002 | TC_AD_REP_002 | Khôi phục filter từ URL | ✅ |
+| REP_GEN_003 | TC_AD_REP_003 | Validate ngày from > to | ✅ |
+| REP_GEN_004 | TC_AD_REP_004 | Reset filter mặc định | ✅ |
+| REP_GEN_005 | TC_AD_REP_005 | Toggle mock thủ công | ✅ |
+| REP_GEN_006 | TC_AD_REP_006 | API lỗi → error panel (không auto mock) | ✅ |
+| REP_GEN_007 | TC_AD_REP_007 | Error panel → Use Mock | ✅ |
+| REP_GEN_008 | TC_AD_REP_008 | Retry từ error panel | ✅ |
+| REP_GEN_009 | TC_AD_REP_009 | Loading state | ✅ |
+| REP_REV_010 | TC_AD_REP_010 | Biểu đồ xu hướng doanh thu | ✅ |
+| REP_REV_011 | TC_AD_REP_011 | Biểu đồ cổng thanh toán | ✅ |
+| REP_REV_012 | TC_AD_REP_012 | Widget Top 5 tours | ✅ |
+| REP_REV_013 | TC_AD_REP_013 | Bảng giao dịch (mapper fields) | ✅ |
+| REP_BKG_014 | TC_AD_REP_014 | Bookings stats + charts | ✅ |
+| REP_LOC_015 | TC_AD_REP_015 | Locations theo quận | ✅ |
+| REP_RAT_016 | TC_AD_REP_016 | Ratings star distribution | ✅ |
+| REP_USR_017 | TC_AD_REP_017 | Users growth chart | ✅ |
+| REP_USR_018 | TC_AD_REP_018 | Users year filter + table | ✅ |
+| REP_EXP_019 | TC_AD_REP_019 | Export mock CSV | ✅ |
+| REP_EXP_020 | TC_AD_REP_020 | Export real xlsx API | ✅ |
+| REP_EXP_021 | TC_AD_REP_021 | Export API lỗi → toast | ✅ |
+| REP_EXP_022 | TC_AD_REP_022 | Pagination bảng revenue | ✅ |
+| REP_SEC_023 | TC_AD_REP_041 | Non-admin → `/login` | ✅ |
+| REP_SEC_024 | TC_AD_REP_040 | Guest → `/login` | ✅ |
+| — | TC_AD_REP_042 | Admin truy cập revenue | ✅ |
+| REP_RSP_025 | — | Responsive 375px | **manual-only** |
+
+## 4. Test cases chi tiết (spec gốc)
 
 | ID | Nhóm chức năng | Test case | Tiền điều kiện | Bước thực hiện | Dữ liệu test | Kết quả mong đợi | Mức độ ưu tiên | Loại test |
 | -- | -------------- | --------- | -------------- | -------------- | ------------ | ---------------- | -------------- | --------- |
@@ -84,21 +108,45 @@
 | REP_SEC_024 | Security | Truy cập trực tiếp link báo cáo không token | Chưa đăng nhập admin | 1. Đăng xuất.<br>2. Mở trực tiếp `/admin/reports/revenue`. | Không token | Chuyển hướng ngay lập tức về trang Đăng nhập `/login` của admin. | Critical | Security |
 | REP_RSP_025 | Responsive | Hiển thị biểu đồ và bảng trên Mobile | Viewport di động | 1. Chuyển sang màn hình 375px.<br>2. Kiểm tra layout. | Responsive testing | - Các khối stats chuyển từ hàng ngang thành cột đứng.<br>- Biểu đồ charts tự động resize theo khung chứa, không bị méo/tràn ngang.<br>- Bảng dữ liệu hiển thị scroll ngang mượt mà, text không chồng chéo. | Medium | Responsive |
 
-## 5. Test data đề xuất
+## 5. Test data mock
 
-* Khoảng ngày thử nghiệm: `Từ ngày: 2026-05-01` tới `Đến ngày: 2026-05-31`
-* Tài khoản test: 
-  - Admin: `admin@danangtrip.vn` / `DaNangTrip@2026`
-  - Staff hạn chế: `staff_junior@danangtrip.vn` / `DaNangTrip@2026`
+| Record | Mục đích |
+|--------|----------|
+| `primaryRevenuePayment` (TX20834 / DNT10452) | Bảng revenue, pagination |
+| `mockRevenueTourDetails` (5 tours) | Top 5 chart |
+| `mockBookingsReport` | Bookings smoke |
+| `mockLocationsDistribution` + list Mỹ Khê | Locations smoke |
+| `mockRatingsReport` | Ratings smoke |
+| `mockUsersReport` year 2026 | Users chart + table |
+
+**Filter kỳ vọng:** `from=2026-05-01` · `to=2026-05-31` · URL recovery `2026-04-01`–`2026-04-30`
 
 ## 6. Checklist regression
 
-* Bộ lọc ngày tháng áp dụng đúng cho tất cả biểu đồ và bảng giao dịch (không xảy ra tình trạng bảng lọc đúng nhưng biểu đồ vẫn hiển thị toàn bộ thời gian).
-* Bấm xuất Excel giữ nguyên các filter đang chọn để xuất đúng tập con dữ liệu mong muốn.
-* Bật/Tắt Mock Mode cập nhật ngay lập tức giao diện mà không yêu cầu người dùng phải refresh trang thủ công.
+- [x] URL query from/to/payment_gateway/page/per_page/mock đồng bộ (revenue)
+- [x] API lỗi → error panel + toast cảnh báo; retry / use mock thủ công
+- [x] Export mock CSV vs real xlsx
+- [x] Pagination URL `page=2` + selector `per_page`
+- [x] Auth guest → `/login`; staff → `/dashboard`; admin/manager vào reports
+- [x] Users role pie chart + stats cards thật
+- [ ] Responsive charts mobile (manual REP_RSP_025)
 
-## 7. Ghi chú kỹ thuật
+## 7. Đề xuất cải thiện (PHASE 0.8)
 
-* Các component biểu đồ sử dụng thư viện Recharts hoặc Chart.js (cần đảm bảo dọn dẹp canvas khi unmount tránh rò rỉ bộ nhớ).
-* Logic Mock Mode được xử lý trong hàm `getMockRevenueReportData` (hoặc các hàm tương ứng từng report) sinh dữ liệu ngẫu nhiên nhưng nhất quán theo khoảng ngày chọn.
-* Export file sử dụng `Blob` và URL tạm để trigger download trên trình duyệt client.
+| ID | Loại | Severity | Phát hiện | Đề xuất | Trạng thái |
+|----|------|----------|-----------|---------|------------|
+| IMP_REP_001 | Feature | P1 | REP_USR_018 thiếu role pie | Thêm `UsersRoleChart` + mapper `role_distribution` | **fixed** |
+| IMP_REP_002 | Test | P3 | TC flaky session khi chạy dài | mockAuthRefresh cho staff test | open |
+| IMP_REP_003 | UX | P2 | Top tour chart truncate 15 ký tự | YAxis width 140 + tooltip full name | **fixed** |
+
+**Trạng thái automation:** **26/26 passed** (`npm run test:admin:reports`, 2026-06-23; 3 flaky pass on retry)
+
+## 8. Ghi chú kỹ thuật
+
+- Revenue gọi **3 API song song**; lỗi → hiển thị error panel + toast `reports_common.mock.toast_to_mock` (không auto bật mock).
+- Cột tour trong bảng revenue: ưu tiên `booking.tour_name` từ API payments.
+- Mock mode persist URL `?mock=1`; i18n mock thống nhất namespace `reports_common`.
+- `ReportPageShell` + `data-testid` trên Revenue/Users; breadcrumb hub → `/admin/reports/revenue`.
+- Bookings/Locations/Ratings: đã bọc `ReportPageShell`, mock banner, `data-testid`, quick filter auto-apply, `per_page` URL.
+- Users report: role pie + total users / active rate stats; filter năm (`#users-filter-year`).
+- Recharts component unmount cần cleanup canvas (regression manual).

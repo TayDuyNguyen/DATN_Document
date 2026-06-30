@@ -2,8 +2,8 @@
 
 ## Phạm vi
 
-- Route: `/admin/locations/categories`
-- API liên quan: Thêm/Sửa/Xóa phân loại danh mục địa danh/địa điểm.
+- Route: `/admin/location-categories` (redirect cũ: `/admin/locations/categories`)
+- API liên quan: `GET/POST /admin/categories`, `PUT/PATCH/DELETE /admin/categories/:id`, `PATCH /admin/categories/:id/status`, `PATCH /admin/categories/reorder`
 - Vai trò: Quản trị viên (Admin) / Nhân viên (Staff).
 
 ## Điều kiện trước
@@ -13,13 +13,64 @@
 
 ## Test cases
 
-| TT | Test Case ID | Chức năng | Mô tả Test Case | Điều kiện tiên quyết | Bước thực hiện | Dữ liệu test | Kết quả mong đợi | Kết quả thực tế | Status | Ghi chú |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | TC_AD_LOCCAT_001 | Danh sách danh mục | Hiển thị danh sách các danh mục địa điểm | | Truy cập trang Quản lý Danh mục Địa điểm. | | Renders bảng chứa các danh mục gồm: Tên danh mục (ví dụ: Bãi biển, Di tích lịch sử, Đền chùa), Slug, Mô tả ngắn, Số lượng địa điểm đang thuộc danh mục này. | | | |
-| 2 | TC_AD_LOCCAT_002 | Thêm danh mục thành công | Tạo mới một danh mục địa điểm thành công | Tên danh mục chưa tồn tại | 1. Nhập Tên danh mục.<br>2. Nhập Mô tả ngắn.<br>3. Bấm "Lưu". | Tên: "Khu Vui Chơi"<br>Slug: `khu-vui-choi` | Danh mục mới được tạo thành công, xuất hiện ở bảng danh sách và hiển thị ở dropdown khi tạo/sửa địa điểm mới. | | | |
-| 3 | TC_AD_LOCCAT_003 | Chỉnh sửa danh mục | Cập nhật thông tin danh mục địa điểm | Danh mục cần sửa tồn tại | 1. Click nút "Sửa" tại danh mục.<br>2. Sửa thông tin mô tả.<br>3. Nhấn "Cập nhật". | | Lưu thành công thông tin mới. | | | |
-| 4 | TC_AD_LOCCAT_004 | Xóa danh mục | Xóa danh mục địa điểm khỏi hệ thống | Danh mục không chứa địa điểm nào | 1. Click nút "Xóa" tại danh mục.<br>2. Xác nhận xóa. | | Danh mục bị xóa khỏi hệ thống. Nếu danh mục đang chứa địa danh liên kết, hệ thống báo lỗi không cho xóa. | | | |
+| TT | Test Case ID | Chức năng | Mô tả Test Case | Auto |
+| --- | --- | --- | --- | --- |
+| 1 | TC_AD_LOCCAT_001 | Danh sách danh mục | Hiển thị lưới card: tên, slug, số địa điểm, thứ tự | ✅ |
+| 2 | TC_AD_LOCCAT_002 | Thêm — Validate | Bấm Lưu khi chưa nhập tên → báo lỗi | ✅ |
+| 3 | TC_AD_LOCCAT_003 | Thêm thành công | Tạo mới + auto slug từ tên (vd. "Khu Vui Chơi" → `khu-vui-choi`) | ✅ |
+| 4 | TC_AD_LOCCAT_004 | Chỉnh sửa | Sửa mô tả và lưu thành công | ✅ |
+| 5 | TC_AD_LOCCAT_005 | Xóa (có địa điểm) | Chặn xóa khi danh mục còn địa điểm liên kết | ✅ (TC_017) |
+| 6 | TC_AD_LOCCAT_006 | Thống kê | Stats: tổng / active / inactive danh mục | ✅ |
+| 7 | TC_AD_LOCCAT_007 | Tìm kiếm | Lọc theo tên/slug | ✅ |
+| 8 | TC_AD_LOCCAT_008 | Lọc trạng thái | Lọc inactive/active | ✅ |
+| 9 | TC_AD_LOCCAT_009 | Toggle status | Đổi trạng thái ngay trên card (PATCH) | ✅ |
+| 10 | TC_AD_LOCCAT_010 | Empty state | Không có kết quả sau lọc | ✅ |
+| 11 | TC_AD_LOCCAT_011 | Lỗi tải + retry | Hiển thị lỗi và nút Thử lại | ✅ |
+| 12 | TC_AD_LOCCAT_012 | Reorder — hủy | Vào chế độ sắp xếp và hủy | ✅ |
+| 13 | TC_AD_LOCCAT_013 | Reorder — disabled | Không sắp xếp khi đang search/lọc | ✅ |
+| 14 | TC_AD_LOCCAT_014 | Reorder — lưu | Lưu thứ tự (PATCH reorder) | ✅ |
+| 15 | TC_AD_LOCCAT_015 | Xóa — hủy dialog | Hủy xác nhận xóa | ✅ |
+| 16 | TC_AD_LOCCAT_016 | Xóa thành công | Xóa danh mục không có địa điểm | ✅ |
+| 17 | TC_AD_LOCCAT_017 | Xóa bị chặn | Nút xóa disabled khi còn địa điểm liên kết | ✅ |
+| 18 | TC_AD_LOCCAT_018 | Drawer — hủy | Đóng drawer tạo mới | ✅ |
+| 19 | TC_AD_LOCCAT_019 | Icon browser | Mở thư viện icon trong drawer | ✅ |
+| 40 | TC_AD_LOCCAT_040 | Auth guest | Guest redirect login | ✅ |
+| 41 | TC_AD_LOCCAT_041 | Auth non-admin | User thường redirect login | ✅ |
+| 42 | TC_AD_LOCCAT_042 | Auth admin | Admin truy cập được | ✅ |
 
 ## Ghi chú
 
--
+- UI dùng **card grid** (không phải bảng); mô tả chỉ hiển thị trong drawer.
+- Nút breadcrumb **Thêm mới** mở drawer tạo danh mục.
+- Xóa danh mục còn địa điểm: nút xóa **disabled** + tooltip (giống Tour Categories).
+- Drag reorder pixel-perfect: kiểm thử thủ công nếu cần (automation cover enter/save/cancel).
+
+## Automation
+
+- Script: `npm run test:admin:location-categories`
+- Spec: `tests/admin/location-categories.spec.ts`, `location-categories-auth.spec.ts`, `api/admin-location-categories.api.spec.ts`
+- POM: `tests/pages/admin/LocationCategoriesPage.ts`
+- Mock: `tests/fixtures/api/location-categories.mock.ts`
+
+## Improvement backlog (PHASE 0.8)
+
+| ID | Loại | Ưu tiên | Phát hiện | Ghi chú |
+|----|------|---------|-----------|---------|
+| IMP_LOCCAT_001 | Doc | P2 | Doc cũ ghi route `/admin/locations/categories` | **fixed** — doc |
+| IMP_LOCCAT_002 | UX | P1 | Xóa danh mục còn địa điểm chỉ fail sau confirm | **fixed** — disable nút xóa |
+| IMP_LOCCAT_003 | i18n | P3 | Empty grid dùng `messages.no_data` chung | **fixed** — `categories.empty_*` |
+| IMP_LOCCAT_004 | Test | P3 | Thiếu data-testid trên card/drawer/dialog | **fixed** |
+| IMP_LOCCAT_005 | UX | P2 | Progress bar `/50` trên card | **fixed** — bỏ bar, link count |
+| IMP_LOCCAT_006 | A11y | P2 | Nút edit/delete icon-only thiếu aria-label | **fixed** |
+| IMP_LOCCAT_007 | Test | P3 | Drag reorder pixel-perfect | manual |
+| IMP_LOCCAT_008 | Code | P1 | API unwrap `{ category }` | **fixed** — `categoryApi` |
+| IMP_LOCCAT_009 | UX | P1 | Subtitle drawer tạo mới sai ngữ cảnh | **fixed** — `categories.form.create_subtitle` |
+| IMP_LOCCAT_010 | UX | P1 | Drawer backdrop đóng mất data | **fixed** — `UnsavedChangesGuard` |
+| IMP_LOCCAT_011 | UX | P2 | Link count → location list | **fixed** — `?category_id=` + LocationList |
+| IMP_LOCCAT_012 | UX | P2 | Stats không ghi chú scope | **fixed** — `stats_scope_note` |
+| IMP_LOCCAT_013 | UX | P2 | Thiếu reset filters | **fixed** |
+| IMP_LOCCAT_014 | UX | P2 | Reorder cancel không rollback | **fixed** |
+| IMP_LOCCAT_015 | UX | P2 | Status toggle không disable pending | **fixed** |
+| IMP_LOCCAT_016 | UX | P3 | Mô tả không hiện trên card | **fixed** — line-clamp |
+| IMP_LOCCAT_017 | Code | P3 | Trùng colorOptions | **fixed** — `categoryTheme.ts` |
+| IMP_LOCCAT_018 | Code | P3 | placeholderData giữ data cũ | **fixed** — bỏ placeholderData |

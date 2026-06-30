@@ -1,34 +1,128 @@
-# Admin chi tiết booking - Test Cases
+# Admin — Chi tiết Booking (Booking Detail)
 
-## 1. Tổng quan màn hình
+**Route:** `/admin/bookings/detail/:id`  
+**Source:** `danangtrip-admin/src/pages/Bookings/BookingDetail/index.tsx`  
+**Automation:** `booking-detail.spec.ts` + `booking-detail-extended.spec.ts` + `booking-detail-auth.spec.ts` + `admin-booking-detail.api.spec.ts` · POM: `BookingDetailPage.ts`
 
-* Đường dẫn route: `/admin/bookings/detail/:id`
-* File source chính: `D:\DATN\danangtrip-admin\src\pages\Bookings\BookingDetail\index.tsx`
-* Component liên quan: `BookingStatusBadge`, `PaymentStatusBadge`, `BookingCancelDialog`, `VirtualTimeline`, `PassengerListPlaceholder`, `Breadcrumbs`
-* API/service sử dụng: `bookingApi.getDetail(id)`, `bookingApi.updateStatus(id)`, `bookingApi.getInvoice(id)`
-* Quyền truy cập: Admin qua `PrivateRoute`; source chỉ cho role admin theo `PrivateRoute`.
-* Mục đích màn hình: Cho admin xem thông tin đặt tour, khách hàng, tour, hành khách, thanh toán, timeline; xác nhận, hoàn thành, hủy booking và tải hóa đơn.
+**Chạy:** `npm run test:admin:booking-detail` — **45 passed** (`--workers=1`)
 
-## 2. Điều kiện tiền đề
+> **Lưu ý:** Chỉ Admin. Sticky header thu gọn khi cuộn `<main>`. Complete dùng `window.confirm`. Cancel qua dialog lý do. Invoice tải PDF mock. Mock detail: `booking-detail.data.ts` + `bookings.mock.ts`.
 
-* Dữ liệu cần có: booking pending, confirmed, completed, cancelled; booking có/không có note/address/thumbnail/schedule/departurePlace.
-* Tài khoản cần dùng: admin hợp lệ; user/staff nếu muốn kiểm tra guard.
-* Trạng thái hệ thống: API booking detail/update/invoice hoạt động.
-* Quyền user/admin/staff: admin được vào; user không được vào admin; staff theo source hiện tại không qua `hasRole(user,'admin')` nếu role không phải admin.
+---
 
-## 3. Danh sách chức năng chính
+## 1. Phạm vi
 
-* Load booking detail theo id.
-* Hiển thị sticky header, breadcrumb, mã booking, booking/payment status.
-* Hiển thị customer card, booked tour details, passenger breakdown, payment summary.
-* Hiển thị virtual timeline theo booked/confirmed/completed/cancelled.
-* Confirm pending booking.
-* Complete confirmed booking với `window.confirm`.
-* Cancel booking qua dialog nhập lý do.
-* Download invoice.
-* Error state có Back và Retry.
+| Hạng mục | Chi tiết |
+|----------|----------|
+| API detail | `GET /admin/bookings/:id` |
+| API mutation | `PATCH /admin/bookings/:id/status`, `PATCH /admin/bookings/:id/confirm-payment` |
+| API invoice | `GET /admin/bookings/:id/invoice` |
+| Quyền | Admin route guard |
 
-## 4. Test cases chi tiết
+---
+
+## 2. Tổng quan trạng thái
+
+| Nhóm | Tổng TC | ✅ Auto | Ghi chú |
+|------|---------|---------|---------|
+| Permission | 2 | 2 | `BDET_001`, `002` |
+| Load / error / retry | 4 | 4 | skeleton delay, 404, retry |
+| Data display | 12 | 12 | customer, tour, payment, passengers |
+| Timeline | 4 | 4 | booked → cancelled |
+| Actions | 14 | 14 | confirm, complete, cancel, payment, invoice |
+| Terminal / regression | 3 | 3 | completed, cancelled, lifecycle |
+| UX | 3 | 3 | sticky collapse, mobile, viewport screenshot |
+| **UI subtotal** | **42** | **42** | |
+| API smoke | 4 | 4 | khi API live |
+| **Tổng automation** | **45** | **45** | **đóng module** |
+
+---
+
+## 2b. UI Inventory (PHASE 0.6)
+
+| # | Vùng UI | Nhãn (i18n) | Loại | Hành vi | TC | Trạng thái |
+|---|---------|-------------|------|---------|-----|------------|
+| 1 | Header | Quay lại danh sách | button | → `/admin/bookings` | BDET_007 | ✅ |
+| 2 | Header | Xuất hóa đơn | button | GET invoice PDF | BDET_037, 038 | ✅ |
+| 3 | Header | Booking / Payment badges | badge | status hiển thị | BDET_008 | ✅ |
+| 4 | Sticky | Badge Chi tiết khi scroll | span | collapse | BDET_041 | ✅ |
+| 5 | Customer | name, email, phone, address, note | text | data display | BDET_009–011 | ✅ |
+| 6 | Tour | thumbnail / fallback | img / icon | có/không ảnh | BDET_012, 013 | ✅ |
+| 7 | Tour | travel date, departure, schedule | grid | format locale | BDET_014, 015 | ✅ |
+| 8 | Passengers | adults / children / infants | counts | tổng items | BDET_016, 017 | ✅ |
+| 9 | Payment | subtotal, discount, deposit, final | currency | không NaN | BDET_018, 019 | ✅ |
+| 10 | Operations | Xác nhận đơn | button | PATCH confirmed | BDET_024, 025, 026 | ✅ |
+| 11 | Operations | Xác nhận thanh toán | button + dialog | PATCH confirm-payment | BDET_053 | ✅ |
+| 12 | Operations | Hoàn tất đơn | button + confirm | PATCH completed | BDET_027–030 | ✅ |
+| 13 | Operations | Hủy đơn | button + dialog | PATCH cancelled + reason | BDET_031–034 | ✅ |
+| 14 | Timeline | booked / confirmed / completed / cancelled | milestones | ngày + lý do | BDET_020–023 | ✅ |
+| 15 | Error | Back + Retry | buttons | refetch detail | BDET_005, 006 | ✅ |
+| 16 | Mobile | actions usable 375px | layout | scroll + click | BDET_039 | ✅ |
+
+---
+
+## 2c. Data Display Integrity (PHASE 0.7)
+
+| # | Vùng UI | Field API | Field UI | TC | Trạng thái |
+|---|---------|-----------|----------|-----|------------|
+| 1 | Customer | `customer_name`, `customer_email`, … | card text | BDET_009 | ✅ |
+| 2 | Tour thumb | `items[].tour.thumbnail` | `<img alt={name}>` | BDET_012 | ✅ fallback URL mock |
+| 3 | Passengers | `quantity_adult/child/infant` | grid 3 cột | BDET_016 | ✅ |
+| 4 | Payment | `total_amount`, `discount_amount`, … | format VNĐ | BDET_018 | ✅ |
+| 5 | Timeline | `booked_at`, `confirmed_at`, … | milestone date | BDET_021 | ✅ |
+
+---
+
+## 3. Map doc ID → Playwright ID
+
+| Doc (ADMIN_BOOKING_DETAIL_*) | Playwright | Auto |
+|------------------------------|------------|------|
+| 001 Guest | TC_AD_BDET_001 | ✅ |
+| 002 User | TC_AD_BDET_002 | ✅ |
+| 003 Load detail | TC_AD_BDET_003 | ✅ |
+| 004 Loading skeleton | TC_AD_BDET_004 | ✅ |
+| 005 Invalid id | TC_AD_BDET_005 | ✅ |
+| 006 Retry | TC_AD_BDET_006 | ✅ |
+| 007 Back | TC_AD_BDET_007 | ✅ |
+| 008 Badges | TC_AD_BDET_008 | ✅ |
+| 009 Customer full | TC_AD_BDET_009 | ✅ |
+| 010 Address missing | TC_AD_BDET_010 | ✅ |
+| 011 Note missing | TC_AD_BDET_010 (cùng edge fixture) | ✅ |
+| 012 Thumbnail | TC_AD_BDET_012 | ✅ |
+| 013 No thumbnail | TC_AD_BDET_013 | ✅ |
+| 014 Schedule | TC_AD_BDET_014 | ✅ |
+| 015 Departure missing | TC_AD_BDET_015 | ✅ |
+| 016 Passenger totals | TC_AD_BDET_016, 016b | ✅ |
+| 017 Passenger zero | TC_AD_BDET_010 (edge 0 child/infant) | ✅ |
+| 018 Payment summary | TC_AD_BDET_018 | ✅ |
+| 019 Discount zero | TC_AD_BDET_019 | ✅ |
+| 020–023 Timeline | TC_AD_BDET_020–023 | ✅ |
+| 024 Confirm visible | TC_AD_BDET_024 | ✅ |
+| 025 Confirm action | TC_AD_BDET_025 | ✅ |
+| 026 Confirm API error | TC_AD_BDET_026 | ✅ |
+| 027 Complete visible | TC_AD_BDET_027 | ✅ |
+| 028 Complete dismiss confirm | TC_AD_BDET_028 | ✅ |
+| 029 Complete action | TC_AD_BDET_029 | ✅ |
+| 030 Complete API error | TC_AD_BDET_030 | ✅ |
+| 031 Cancel visible | TC_AD_BDET_024 | ✅ |
+| 032 Cancel reason | TC_AD_BDET_032 | ✅ |
+| 033 Cancel empty reason | TC_AD_BDET_033 | ✅ |
+| 034 Cancel API error | TC_AD_BDET_034 | ✅ |
+| 035 Terminal completed | TC_AD_BDET_035 | ✅ |
+| 036 Terminal cancelled | TC_AD_BDET_036 | ✅ |
+| 037 Invoice | TC_AD_BDET_037 | ✅ |
+| 038 Invoice error | TC_AD_BDET_038 | ✅ |
+| 039 Responsive mobile | TC_AD_BDET_039 | ✅ |
+| 040 Lifecycle | TC_AD_BDET_040 | ✅ |
+| — Confirm payment (inventory) | TC_AD_BDET_053 | ✅ |
+| — Sticky collapse | TC_AD_BDET_041 | ✅ |
+| — Viewport 1535×697 | TC_AD_BDET_060 | ✅ |
+
+**API:** `API_BDET_001`–`004`
+
+---
+
+## 4. Test cases chi tiết (mô tả gốc)
 
 | ID | Nhóm chức năng | Test case | Tiền điều kiện | Bước thực hiện | Dữ liệu test | Kết quả mong đợi | Mức độ ưu tiên | Loại test |
 | -- | -------------- | --------- | -------------- | -------------- | ------------ | ---------------- | -------------- | --------- |
@@ -73,12 +167,18 @@
 | ADMIN_BOOKING_DETAIL_039 | Responsive | Layout mobile/tablet | Viewport 375/768 | 1. Mở detail.<br>2. Quan sát sticky header, grid. | mobile | Header không tràn; layout chuyển 1 cột; actions vẫn dùng được. | Medium | Responsive |
 | ADMIN_BOOKING_DETAIL_040 | Regression full lifecycle | Pending -> confirmed -> completed | Booking test pending | 1. Mở detail.<br>2. Confirm.<br>3. Refetch.<br>4. Complete. | pending | Trạng thái chuyển đúng, action thay đổi đúng, timeline cập nhật. | High | Regression |
 
+---
+
 ## 5. Test data đề xuất
 
-* Booking pending unpaid, confirmed paid, completed success, cancelled có lý do.
-* Booking nhiều items để test passenger totals.
-* Booking thiếu thumbnail/address/note/departurePlace.
+* Booking pending unpaid (`id=101`), confirmed paid (`103`), completed (`107`), cancelled có lý do (`104`).
+* Booking edge minimal (`112`) — thiếu address/note/thumbnail/departure.
+* Booking multi passenger (`108`) — 2 items.
 * Admin account hợp lệ; user thường để test guard.
+
+**Mock flags:** `setBookingDetailFail`, `setBookingDetailDelay`, `setBookingMutationFail`, `setBookingInvoiceFail`
+
+---
 
 ## 6. Checklist regression
 
@@ -87,10 +187,34 @@
 * Timeline không sai mốc ngày.
 * Invoice không treo loading khi lỗi.
 * Customer/tour/payment card không lộ undefined/NaN.
-* Mobile không tràn header.
+* Mobile không tràn header; nút action scroll được.
+
+---
 
 ## 7. Ghi chú kỹ thuật
 
 * Logic lấy từ `BookingDetail/index.tsx`.
-* API lấy từ `bookingApi.ts`.
-* Rủi ro cao: trạng thái terminal, browser confirm complete, hủy không validate đủ lý do, invoice blob.
+* API lấy từ `bookingApi.ts` / `useBookingQueries`.
+* Screenshot UI: `reports/ui-screenshots/booking-detail/<TC_ID>.png` — viewport **1535×697**.
+* POM scope `main` cho section headings — tránh trùng sidebar/layout.
+
+---
+
+## 8. Đề xuất cải thiện (Improvement backlog — PHASE 0.8)
+
+> Chi tiết đầy đủ + ID: `memory_test.md` mục **11**. Cập nhật khi fix xong (`open` → `fixed`).
+
+| ID | Loại | Ưu tiên | Tóm tắt | Trạng thái |
+|----|------|---------|---------|------------|
+| IMP_BDET_001 | UX | P1 | Error load/404 dùng nhầm copy `update_error` | **fixed** 2026-06-18 |
+| IMP_BDET_002 | UX/A11y | P1 | Complete dùng `window.confirm` thay dialog | **fixed** — `BookingCompleteDialog` |
+| IMP_BDET_003 | UI | P1 | PTTT hiện raw enum (`bank_transfer`) | **fixed** — `PaymentGatewayBadge` |
+| IMP_BDET_004 | UX | P1 | Xuất hóa đơn ẩn trên mobile (`hidden md:flex`) | **fixed** — Operations + mobile footer |
+| IMP_BDET_005 | UX | P2 | Mobile: actions xa, cần sticky footer | **fixed** — `data-booking-detail-mobile-footer` |
+| IMP_BDET_006 | UI | P2 | Layout `max-w-[1600px]` chưa full-bleed | **fixed** |
+| IMP_BDET_007 | Function | P2 | Thiếu link nhanh → user / tour detail | **fixed** |
+| IMP_BDET_008 | Mock | P2 | Mock còn `bank_transfer` (web đã SePay-only) | **fixed** — mock `sepay` |
+| IMP_BDET_009 | API | P3 | Danh sách hành khách chi tiết — backlog API | deferred |
+| IMP_BDET_010 | Test | P3 | Error state thiếu test id ổn định | **fixed** — `data-testid="booking-detail-error"` |
+
+**Ưu tiên sửa trước release:** IMP_BDET_001 → 004 (copy lỗi, dialog, PTTT label, mobile invoice).

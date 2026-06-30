@@ -1,0 +1,1791 @@
+{
+    "generated_at": "2026-06-30T14:32:42+07:00",
+    "rows_scanned": 1552,
+    "fields_scanned": 3532,
+    "findings_total": 222,
+    "by_table": {
+        "tours": 222
+    },
+    "by_reason": {
+        "unaccented_vietnamese": 162,
+        "english_or_non_vietnamese": 60
+    },
+    "findings": [
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Daily Golden Bridge and Ba Na Hills Tour from Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a thrilling adventure to the iconic Golden Bridge and Ba Na Hills, departing from Da Nang. This guided tour offers a unique blend of natural beauty, cultural experiences, and thrilling activities. Discover the majestic scenery, in"
+        },
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Golden Bridge and Ba Na Hills"
+        },
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated pickup point"
+        },
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup and Departure\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting journey to the Golden Bridge and Ba Na Hills.\"},{\"time\":\"09:00\",\"ti"
+        },
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Guided tour with English-speaking guide\",\"Entrance fees to Golden Bridge and Ba Na Hills\",\"Lunch as part of the tour package\"]"
+        },
+        {
+            "table": "tours",
+            "id": 101,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips and gratuities for the guide and driver\",\"Optional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Ba Na Hills Tour From Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Join our Ba Na Hills Tour From Da Nang to experience the breathtaking scenery and rich culture of central Vietnam. This guided tour takes you through the stunning hills, golden bridges, and picturesque villages, offering a unique blend of n"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Ba Na Hills"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Da Nang city center"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Ba Na Hills adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Start y"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Guided tour with English-speaking guide\",\"Entrance fees to Ba Na Hills and Golden Bridge\",\"Lunch at a local restaurant\",\"Visit to Fantasy Park and Debay Wine Cellar\"]"
+        },
+        {
+            "table": "tours",
+            "id": 102,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and gratuities\",\"Travel insurance\",\"Optional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 103,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Bach Ma National Park Tour From Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 103,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Discover the breathtaking beauty of Bach Ma National Park on this guided tour from Da Nang. With its lush forests, stunning waterfalls, and diverse wildlife, this park is a nature lover's paradise. Our expert guides will take you on a journ"
+        },
+        {
+            "table": "tours",
+            "id": 103,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Bach Ma National Park adventure.\"},{\"time\":\"09:00\",\"title\":\"Park Exploration\",\"description"
+        },
+        {
+            "table": "tours",
+            "id": 103,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Guided tour of Bach Ma National Park\",\"Lunch at a local restaurant\",\"Entrance fees to the national park\"]"
+        },
+        {
+            "table": "tours",
+            "id": 103,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hoi An Basket Boat Tour From Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a unique journey through Hoi An's waterways on a traditional basket boat. This tour offers a glimpse into local life, rich history, and stunning natural beauty. From Da Nang, travel to Hoi An and experience the charm of this ancie"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Hoi An by basket boat"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hotel lobby in Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Hoi An adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Start your H"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Guided tour in Hoi An\",\"Basket boat experience\",\"Lunch as per the service package\",\"Entrance fees to attractions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 104,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any services not mentioned in the inclusions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 105,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Cham Island Snorkeling Tour From Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 105,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore the vibrant marine life of Cham Island on this guided snorkeling tour from Da Nang. With its crystal-clear waters and diverse coral reefs, Cham Island is a snorkeler's paradise. Our expert guides will take you to the best spots to s"
+        },
+        {
+            "table": "tours",
+            "id": 105,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Cham Island adventure.\"},{\"time\":\"09:00\",\"title\":\"Island Tour\",\"description\":\"Start your C"
+        },
+        {
+            "table": "tours",
+            "id": 105,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Snorkeling equipment\",\"Guided tour\",\"Lunch\",\"Entrance fees to attractions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 105,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 106,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hoa Phu Thanh Waterfall Sliding Daily Tour"
+        },
+        {
+            "table": "tours",
+            "id": 106,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Immerse yourself in the natural beauty of Hoa Phu Thanh waterfall on this daily tour. Discover the stunning scenery, experience the thrill of sliding down the waterfall, and learn about the local culture. With a knowledgeable guide, you'll "
+        },
+        {
+            "table": "tours",
+            "id": 106,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting journey to Hoa Phu Thanh waterfall.\"},{\"time\":\"09:00\",\"title\":\"Main Attraction\",\""
+        },
+        {
+            "table": "tours",
+            "id": 106,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Guided tour of Hoa Phu Thanh waterfall\",\"Sliding down the waterfall experience\",\"Meal as part of the package or freedom to experience local cuisine\",\"Insightful commentary about the local"
+        },
+        {
+            "table": "tours",
+            "id": 106,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hue City Tour from Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey from Da Nang to Hue, a city steeped in history and culture. This meticulously crafted tour allows you to delve into the imperial past of Vietnam, visiting iconic landmarks such as the Imperial Citadel, Thien "
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Hue's heritage"
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hotel lobby in Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our tour vehicle and guide will pick you up at the confirmed meeting point, ensuring a prompt start to your day.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Begin your H"
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang to Hue\",\"Experienced English-speaking guide\",\"Entrance fees to all mentioned attractions\",\"Lunch at a local restaurant\"]"
+        },
+        {
+            "table": "tours",
+            "id": 107,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any services not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Marble Mountains and Hoi An Discovery Tour"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a fascinating journey to the iconic Marble Mountains and the ancient town of Hoi An. This tour offers a unique blend of natural beauty, cultural heritage, and historical significance. Discover the stunning marble caves, sculptures"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Marble Mountains and Hoi An"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated spot"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting Marble Mountains and Hoi An tour.\"},{\"time\":\"09:00\",\"title\":\"Marble Mountai"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Experienced English-speaking guide\",\"Entrance fees to Marble Mountains and Hoi An Ancient Town\",\"Lunch at a local restaurant\",\"Bottled water throughout the tour\"]"
+        },
+        {
+            "table": "tours",
+            "id": 108,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any additional activities or services not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "My Son Sanctuary Tour From Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a fascinating journey to the ancient My Son Sanctuary, a UNESCO World Heritage Site, and discover the rich history and culture of the Champa Kingdom. This guided tour from Da Nang takes you through the stunning landscapes and arch"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore ancient My Son Sanctuary"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated point"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your My Son Sanctuary adventure.\"},{\"time\":\"09:00\",\"title\":\"Sanctuary Exploration\",\"description"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Guided tour of My Son Sanctuary\",\"Lunch as per the package details\",\"Entrance fees to the sanctuary\",\"Knowledgeable guide throughout the tour\"]"
+        },
+        {
+            "table": "tours",
+            "id": 109,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 110,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Than Tai Hot Spring Park Tour From Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 110,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a rejuvenating journey to Than Tai Hot Spring Park, nestled in the picturesque landscapes of Da Nang. This comprehensive tour offers a unique blend of natural beauty, cultural experiences, and relaxation. Guests will have the oppo"
+        },
+        {
+            "table": "tours",
+            "id": 110,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated point"
+        },
+        {
+            "table": "tours",
+            "id": 110,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Guests will be picked up from the designated meeting point by our experienced guide and driver, marking the beginning of an exciting adventure to Than Tai Hot Spring Park.\"},{\"time\":\"09:00\",\""
+        },
+        {
+            "table": "tours",
+            "id": 110,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Admission to Than Tai Hot Spring Park\",\"Guided tour with a knowledgeable and experienced guide\",\"Lunch as per the tour package or option to explore local cuisine\",\"Cultural experiences and activiti"
+        },
+        {
+            "table": "tours",
+            "id": 110,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Optional activities not included in the tour package\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Son Tra Peninsula, Marble Mountains & Hoi An Daily Tour"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey through Vietnam's stunning landscapes and rich cultural heritage. This daily tour takes you to the breathtaking Son Tra Peninsula, the majestic Marble Mountains, and the ancient town of Hoi An. With its uniqu"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Son Tra, Marble Mountains & Hoi An"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or a designated spot"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting journey.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Start your S"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Guided tour of Son Tra Peninsula, Marble Mountains, and Hoi An\",\"Lunch as per the service package\",\"Entry fees for all attractions mentioned in the itinerary\",\"Professional guide services"
+        },
+        {
+            "table": "tours",
+            "id": 111,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any meals or drinks not specified in the itinerary\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "French Village Ba Na Hills Tour"
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey to French Village Ba Na Hills, a mesmerizing destination near Da Nang. This tour offers a unique blend of French and Vietnamese cultures, breathtaking scenery, and thrilling experiences. Guests will have the "
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore French Village in Ba Na Hills"
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated point"
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your French Village Ba Na Hills adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"descri"
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Guided tour of French Village Ba Na Hills\",\"Lunch as per the tour package\",\"Admission fees to attractions and landmarks\"]"
+        },
+        {
+            "table": "tours",
+            "id": 112,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Optional activities not included in the tour package\",\"Tips for the guide and driver\"]"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Am Phu Cave and Marble Mountains Tour with Lady Buddha"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a fascinating journey to the Am Phu Cave, Marble Mountains, and the iconic Lady Buddha. This day trip from Hoi An offers a unique blend of natural beauty, cultural significance, and historical importance. Discover the stunning lan"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Explore caves and mountains"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated point"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Star"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Experienced guide throughout the tour\",\"Admission fees to Am Phu Cave and Marble Mountains\",\"Visit to the Lady Buddha\",\"Lunch as per the service package\"]"
+        },
+        {
+            "table": "tours",
+            "id": 113,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 114,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Ba Na Hills Afternoon Tour with Golden Bridge"
+        },
+        {
+            "table": "tours",
+            "id": 114,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on an unforgettable journey to Ba Na Hills, where breathtaking scenery and stunning architecture await. This afternoon tour takes you to the iconic Golden Bridge, offering panoramic views of the surrounding landscape. With a rich his"
+        },
+        {
+            "table": "tours",
+            "id": 114,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Ba Na Hills"
+        },
+        {
+            "table": "tours",
+            "id": 114,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Ba Na Hills adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Start y"
+        },
+        {
+            "table": "tours",
+            "id": 114,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Expert guide services throughout the tour\",\"Access to the Golden Bridge and other main attractions\",\"Meal as per the package details\"]"
+        },
+        {
+            "table": "tours",
+            "id": 114,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Ba Na Hills Early Morning Tour"
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on an early morning adventure to Ba Na Hills, a stunning destination known for its breathtaking scenery and unique attractions. This carefully crafted tour allows you to experience the best of Ba Na Hills before the crowds arrive, en"
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Beat the crowds in Ba Na Hills"
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated location"
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our tour vehicle and experienced guide will collect you from the designated meeting point, marking the beginning of your Ba Na Hills Early Morning Tour. This is a great opportunity to g"
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the designated meeting point\",\"Experienced guide with extensive knowledge of Ba Na Hills\",\"Admission to all attractions and landmarks\",\"Delicious meal as part of the tour package or freedom to explore local "
+        },
+        {
+            "table": "tours",
+            "id": 115,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Optional activities and experiences not included in the tour package\",\"Travel insurance and other related costs\"]"
+        },
+        {
+            "table": "tours",
+            "id": 116,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Ba Na Hills Night Tour with Golden Bridge, Dinner & Cabaret Show"
+        },
+        {
+            "table": "tours",
+            "id": 116,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Experience the breathtaking beauty of Ba Na Hills under the stars. This night tour includes a visit to the iconic Golden Bridge, a delicious dinner, and a spectacular cabaret show. With its stunning landscapes and exciting entertainment, th"
+        },
+        {
+            "table": "tours",
+            "id": 116,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Ba Na Hills at night"
+        },
+        {
+            "table": "tours",
+            "id": 116,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Ba Na Hills adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Commenc"
+        },
+        {
+            "table": "tours",
+            "id": 116,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Admission to Ba Na Hills and the Golden Bridge\",\"Dinner at a local restaurant\",\"Cabaret show ticket\",\"Guided tour with English-speaking guide\"]"
+        },
+        {
+            "table": "tours",
+            "id": 116,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 117,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "From Da Nang: My Son Holy Land & Rice Paper Making Morning Tour"
+        },
+        {
+            "table": "tours",
+            "id": 117,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a morning tour from Da Nang to My Son Holy Land, a UNESCO World Heritage Site, and experience the art of traditional rice paper making. Discover the ancient Cham ruins, learn about the history and culture of the region, and enjoy "
+        },
+        {
+            "table": "tours",
+            "id": 117,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore My Son Holy Land"
+        },
+        {
+            "table": "tours",
+            "id": 117,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting journey to My Son Holy Land and a traditional rice paper making experience.\"},{\"t"
+        },
+        {
+            "table": "tours",
+            "id": 117,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Da Nang\",\"Guided tour of My Son Holy Land\",\"Rice paper making experience with local artisans\",\"Lunch as per the package details\",\"English-speaking guide\"]"
+        },
+        {
+            "table": "tours",
+            "id": 117,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any services not mentioned in the inclusions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 118,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hoi An City Tour, Boat Ride & Flower Lantern Release"
+        },
+        {
+            "table": "tours",
+            "id": 118,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Discover the charm of Hoi An city with a guided tour, boat ride, and flower lantern release. Visit iconic landmarks, experience local culture, and enjoy a relaxing boat ride along the river. The tour includes a delicious meal, allowing you "
+        },
+        {
+            "table": "tours",
+            "id": 118,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Hoi An city"
+        },
+        {
+            "table": "tours",
+            "id": 118,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Hoi An city tour adventure.\"},{\"time\":\"09:00\",\"title\":\"City Tour\",\"description\":\"Emb"
+        },
+        {
+            "table": "tours",
+            "id": 118,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Guided tour of Hoi An city\",\"Boat ride along the river\",\"Flower lantern release experience\",\"Meal as per the package\",\"Knowledgeable guide throughout the tour\"]"
+        },
+        {
+            "table": "tours",
+            "id": 118,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Marble Mountains, Monkey Mountain & Am Phu Cave Morning Tour"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a fascinating morning tour to discover the natural beauty and cultural significance of Marble Mountains, Monkey Mountain, and Am Phu Cave. This guided tour offers a unique blend of stunning landscapes, ancient temples, and captiva"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Explore Marble Mountains, Monkey Mountain & Am Phu Cave"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated point"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our tour vehicle and guide will pick you up at the confirmed meeting point, ensuring a prompt start to your exciting journey.\"},{\"time\":\"09:00\",\"title\":\"Main Tour Attractions\",\"descript"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Guided tour service\",\"Admission fees to Marble Mountains, Monkey Mountain, and Am Phu Cave\",\"Meal as per the service package\"]"
+        },
+        {
+            "table": "tours",
+            "id": 119,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any additional activities not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Marble Mountains, Monkey Mountain & Am Phu Cave Sunset Tour"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey to Marble Mountains, Monkey Mountain, and Am Phu Cave, where breathtaking sunsets and stunning landscapes await. This tour offers a unique blend of natural beauty, cultural experiences, and thrilling adventur"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Explore Marble Mountains & Monkey Mountain"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or a designated spot"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting tour.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions Tour\",\"description\":\"Comm"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Experienced guide throughout the tour\",\"Admission fees to Marble Mountains, Monkey Mountain, and Am Phu Cave\",\"Lunch as per the service package\"]"
+        },
+        {
+            "table": "tours",
+            "id": 120,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Tips for the guide and driver\",\"Any services not mentioned in the inclusions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 121,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Three Traditional Handicraft Villages Tour"
+        },
+        {
+            "table": "tours",
+            "id": 121,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Immerse yourself in the rich cultural heritage of traditional handicraft villages. This tour takes you on a journey to three unique villages, each specializing in a distinct craft. From woodcarvings to textiles, and pottery, discover the sk"
+        },
+        {
+            "table": "tours",
+            "id": 121,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore 3 villages in 1 tour"
+        },
+        {
+            "table": "tours",
+            "id": 121,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, ensuring a prompt start to your tour.\"},{\"time\":\"09:00\",\"title\":\"Main Attraction Visit\",\"description\":\"Begin your "
+        },
+        {
+            "table": "tours",
+            "id": 121,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Transportation to and from the meeting point\",\"Guided tour of the three traditional handicraft villages\",\"Lunch as part of the service package\",\"Opportunities for photography and cultural immersion\"]"
+        },
+        {
+            "table": "tours",
+            "id": 121,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Additional meals or drinks not included in the package\",\"Optional activities or entrance fees not specified in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Afternoon Ba Na Hills, Golden Bridge & Dragon Bridge by Night"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on an unforgettable afternoon journey to Ba Na Hills, Golden Bridge, and Dragon Bridge. This tour offers breathtaking views, thrilling experiences, and insights into local culture. With a guided tour, you'll discover the natural beau"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Ba Na Hills & Golden Bridge"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated spot"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your exciting adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attractions\",\"description\":\"Start your"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation\",\"Guided tour\",\"Admission fees to Ba Na Hills and Golden Bridge\",\"Delicious meal\",\"Opportunities for photography and cultural immersion\"]"
+        },
+        {
+            "table": "tours",
+            "id": 122,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips for the guide and driver\",\"Any additional activities or services not mentioned in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 123,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Cam Thanh Coconut Jungle Muslim Tour"
+        },
+        {
+            "table": "tours",
+            "id": 123,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Immerse yourself in the serene beauty of Cam Thanh Coconut Jungle on this specially curated Muslim tour. Discover the local culture, savor delicious Halal cuisine, and unwind amidst the lush greenery of the coconut jungle. This tour offers "
+        },
+        {
+            "table": "tours",
+            "id": 123,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Hotel lobby or designated spot"
+        },
+        {
+            "table": "tours",
+            "id": 123,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Guest Pickup\",\"description\":\"Our vehicle and guide will pick you up at the confirmed meeting point, marking the beginning of your Cam Thanh Coconut Jungle Muslim Tour adventure.\"},{\"time\":\"09:00\",\"title\":\"Main Attr"
+        },
+        {
+            "table": "tours",
+            "id": 123,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from the meeting point\",\"Guided tour of Cam Thanh Coconut Jungle\",\"Halal meal as specified in the tour package\",\"Admission fees to attractions included in the itinerary\",\"Services of an experienced and knowledgea"
+        },
+        {
+            "table": "tours",
+            "id": 123,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and souvenirs\",\"Optional activities not mentioned in the itinerary\",\"Travel insurance\",\"Tips for the guide and driver\"]"
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Cam Thanh Cooking Class and My Son Holy Land Full-Day Tour"
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Join us on a full-day adventure to Cam Thanh and My Son, two of Vietnam's most fascinating destinations. Begin with a cooking class in Cam Thanh, where you'll learn the art of traditional Vietnamese cuisine from a local chef. Discover the s"
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Immerse yourself in the rich culture of Vietnam with a cooking class and historical tour."
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Please meet your guide at your hotel lobby at 07:30 AM, ready to begin your adventure."
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Morning Pickup\",\"description\":\"Our friendly guide will meet you at your hotel and escort you to the tour vehicle, where you'll begin your journey to Cam Thanh and My Son.\"},{\"time\":\"09:00\",\"title\":\"Cam Thanh Cookin"
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from your hotel\",\"Expert local guide\",\"Cam Thanh Cooking Class with lunch\",\"My Son Holy Land Tour\",\"All entrance fees and activities\"]"
+        },
+        {
+            "table": "tours",
+            "id": 124,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and gratuities\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Cam Thanh Eco Tour & My Son Holy Land Tour"
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a full-day adventure through the lush countryside and ancient ruins of Central Vietnam. This tour combines the tranquil beauty of Cam Thanh Eco Tour with the historical significance of My Son Holy Land, offering a unique and enric"
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Explore the natural beauty and cultural heritage of Central Vietnam"
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Meet at the hotel lobby or a designated meeting point in Hoi An city center at 07:30 AM sharp."
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Tour Commencement\",\"description\":\"Meet your guide and driver at the designated meeting point, where you'll begin your journey through the picturesque countryside of Central Vietnam. Enjoy a scenic drive to the firs"
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"English-speaking guide\",\"Air-conditioned vehicle\",\"Lunch at a local restaurant\",\"Boat ride through Cam Thanh Eco Tour\",\"Entrance fees to My Son Holy Land\"]"
+        },
+        {
+            "table": "tours",
+            "id": 125,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Tips and gratuities\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "name",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Cham Island Sightseeing and Snorkeling Adventure"
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey to the Cham Islands, a tranquil archipelago located off the coast of Central Vietnam. This enchanting tour offers a unique blend of culture, history, and natural beauty, perfect for those seeking an unforgett"
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Explore the stunning Cham Islands and discover their hidden treasures."
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Please meet your guide at your designated pickup point, located at the Da Nang Marina, 15 minutes prior to the scheduled departure time."
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Morning Pickup\",\"description\":\"Our friendly guide will meet you at your designated pickup point, where you'll board our comfortable vehicle for the journey to the Cham Islands.\"},{\"time\":\"09:00\",\"title\":\"Explore th"
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Round-trip transportation from your designated pickup point\",\"English-speaking guide\",\"Lunch at a local restaurant\",\"Snorkeling equipment\",\"Island entrance fees\"]"
+        },
+        {
+            "table": "tours",
+            "id": 126,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Additional food and drink\",\"Personal expenses\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Da Nang Shore Excursions from Tien Sa Port: Deluxe Tours"
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey through Da Nang, a coastal city in central Vietnam, known for its rich history, pristine beaches, and vibrant culture. This guided shore excursion is carefully crafted to provide an unforgettable experience f"
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Experience Da Nang's vibrant culture and stunning landscapes on this guided shore excursion."
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Tien Sa Port, near the cruise ship terminal. Please look for your driver and guide holding a sign with your name."
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Meet and Greet\",\"description\":\"Your driver and guide will meet you at the designated meeting point, where you'll board a comfortable vehicle for the start of your adventure.\"},{\"time\":\"09:00\",\"title\":\"Explore Da Na"
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Air-conditioned vehicle transportation\",\"Expert guide services\",\"Lunch at a local restaurant\",\"Bottled water and refreshments\",\"Entrance fees to attractions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 127,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Gratuities and tips\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hue Shore Excursions from Chan May Port"
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey through Hue's imperial past and vibrant present. Our expert guides will lead you through the city's most iconic landmarks, immersing you in the region's rich history, stunning natural beauty, and warm hospita"
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Hue's rich history and culture on this 1-day shore excursion."
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Chan May Port, near the cruise ship terminal. Please look for our staff holding a sign with your name or group number."
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Meet and Greet\",\"description\":\"Our friendly driver and guide will meet you at the designated meeting point, where you'll board our comfortable vehicle and begin your journey through Hue's breathtaking landscapes.\"}"
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Round-trip transportation from Chan May Port\",\"Expert guide services\",\"Lunch at a local restaurant\",\"Entrance fees to Imperial City and other attractions\"]"
+        },
+        {
+            "table": "tours",
+            "id": 128,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and gratuities\",\"Additional food and drink purchases\"]"
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Ba Na Hills and Golden Bridge Tour from Tien Sa Port"
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey to the majestic Ba Na Hills and Golden Bridge, a marvel of engineering and natural beauty. This guided tour from Tien Sa Port offers a unique blend of adventure, culture, and breathtaking scenery. As you asce"
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore the breathtaking Ba Na Hills and Golden Bridge on this guided tour from Tien Sa Port."
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Meet your guide and driver at the Tien Sa Port cruise terminal, near the main entrance."
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Meet and Greet\",\"description\":\"Our experienced guide and driver will meet you at the designated meeting point, where you'll board our comfortable vehicle and begin your journey to Ba Na Hills.\"},{\"time\":\"09:00\",\"ti"
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Round-trip transportation from Tien Sa Port\",\"Experienced guide and driver\",\"Delicious meal at a local restaurant\",\"Entrance fees to main attractions\",\"Complimentary water and snacks\"]"
+        },
+        {
+            "table": "tours",
+            "id": 129,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and gratuities\",\"Additional food and drink\",\"Souvenirs and shopping\"]"
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Da Nang City Tour from Tien Sa Port: Explore and Shopping"
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey through Da Nang's stunning landscapes, rich history, and bustling markets. This 10-hour tour from Tien Sa Port takes you to the city's most iconic attractions, including the Marble Mountains, Linh Ung Pagoda,"
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Discover Da Nang's vibrant culture and shopping scene"
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Tien Sa Port, Da Nang"
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Meet and Greet\",\"description\":\"Our friendly guide and driver will meet you at the designated pick-up point, Tien Sa Port, and escort you to the tour vehicle for a comfortable and scenic ride to Da Nang.\"},{\"time\":\""
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"English-speaking guide\",\"Comfortable air-conditioned transportation\",\"Lunch at a local restaurant\",\"Entrance fees to attractions\",\"Shopping and cultural experiences\"]"
+        },
+        {
+            "table": "tours",
+            "id": 130,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Gratuities and tips\",\"Travel insurance\"]"
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hoi An Day Tour from Tien Sa Port"
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey through Hoi An's rich history and culture on this day tour from Tien Sa Port. Our expert guides will lead you through the town's most iconic landmarks, including the Japanese Bridge, Phuc Kien Assembly Hall, "
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore Hoi An's ancient charm on this day tour from Tien Sa Port."
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Meet your guide at the Tien Sa Port cruise terminal, near the main entrance."
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Meet and Greet\",\"description\":\"Our friendly guides will meet you at the designated meeting point, where you'll board our comfortable vehicle and begin your journey to Hoi An.\"},{\"time\":\"09:00\",\"title\":\"Explore Hoi "
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Tien Sa Port\",\"Expert guides with in-depth knowledge of Hoi An's history and culture\",\"Delicious lunch at a local restaurant\",\"Range of activities, including traditional crafts and photography opportunities\""
+        },
+        {
+            "table": "tours",
+            "id": 131,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses and gratuities\",\"Additional activities or services not specified in the itinerary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "My Son Sanctuary Tour from Tien Sa Port"
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey to the ancient My Son Sanctuary, a UNESCO World Heritage Site, with our expertly guided tour from Tien Sa Port. This 10-hour excursion promises an immersive experience, delving into the rich history and cultu"
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Explore the ancient My Son Sanctuary with a guided tour from Tien Sa Port."
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "unaccented_vietnamese",
+            "sample": "Please assemble at the Tien Sa Port, near the cruise ship terminal, 15 minutes prior to the scheduled tour commencement time."
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Tour Commencement\",\"description\":\"Our experienced guide and comfortable vehicle will meet you at the pre-arranged pickup point, marking the beginning of your My Son Sanctuary adventure.\"},{\"time\":\"09:00\",\"title\":\"E"
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Expert English-speaking guide\",\"Comfortable, air-conditioned vehicle\",\"Delicious lunch at a local eatery\",\"Bottled water and refreshments\",\"Entrance fees to the My Son Sanctuary\"]"
+        },
+        {
+            "table": "tours",
+            "id": 132,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Travel insurance\",\"Personal expenses\",\"Tips and gratuities\"]"
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Ba Na Hills Day Trip from Chan May Port: Best Shore Excursion"
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a memorable adventure to Ba Na Hills, one of Vietnam's most stunning natural attractions. This day trip from Chan May Port offers a unique blend of culture, history, and breathtaking scenery. Our expert guides will take you on a j"
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Experience the breathtaking beauty of Ba Na Hills on this day trip from Chan May Port."
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "meeting_point",
+            "reason": "english_or_non_vietnamese",
+            "sample": "Please meet your driver and guide at the Chan May Port cruise ship terminal, near the main entrance."
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "itinerary",
+            "reason": "unaccented_vietnamese",
+            "sample": "[{\"time\":\"07:30\",\"title\":\"Meet and Greet\",\"description\":\"Our friendly driver and guide will meet you at the designated meeting point, where you'll board our comfortable vehicle for the day.\"},{\"time\":\"09:00\",\"title\":\"Main Attraction\",\"descr"
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "inclusions",
+            "reason": "unaccented_vietnamese",
+            "sample": "[\"Round-trip transportation from Chan May Port\",\"English-speaking guide\",\"Entrance fees to Ba Na Hills attractions\",\"Lunch at a local restaurant\"]"
+        },
+        {
+            "table": "tours",
+            "id": 133,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Optional activities and entrance fees\",\"Gratuities and tips\"]"
+        },
+        {
+            "table": "tours",
+            "id": 134,
+            "status": "inactive",
+            "column": "name",
+            "reason": "unaccented_vietnamese",
+            "sample": "Hue Imperial Tour from Chan May Port: Best Shore Excursions"
+        },
+        {
+            "table": "tours",
+            "id": 134,
+            "status": "inactive",
+            "column": "description",
+            "reason": "unaccented_vietnamese",
+            "sample": "Embark on a captivating journey through Hue's imperial past, exploring the city's majestic landmarks and UNESCO World Heritage Sites. This comprehensive shore excursion is carefully crafted to provide an unforgettable experience, showcasing"
+        },
+        {
+            "table": "tours",
+            "id": 134,
+            "status": "inactive",
+            "column": "short_desc",
+            "reason": "unaccented_vietnamese",
+            "sample": "Discover Hue's majestic past and UNESCO World Heritage Sites on this immersive shore excursion."
+        },
+        {
+            "table": "tours",
+            "id": 134,
+            "status": "inactive",
+            "column": "exclusions",
+            "reason": "english_or_non_vietnamese",
+            "sample": "[\"Personal expenses\",\"Gratuities for guide and driver\"]"
+        }
+    ]
+}

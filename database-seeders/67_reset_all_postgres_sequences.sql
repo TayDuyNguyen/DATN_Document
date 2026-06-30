@@ -10,6 +10,8 @@ SELECT setval(pg_get_serial_sequence('tour_schedules', 'id'), GREATEST((SELECT C
 SELECT setval(pg_get_serial_sequence('bookings', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM bookings), 1), true);
 SELECT setval(pg_get_serial_sequence('booking_items', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM booking_items), 1), true);
 SELECT setval(pg_get_serial_sequence('payments', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM payments), 1), true);
+SELECT setval(pg_get_serial_sequence('payment_receipts', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM payment_receipts), 1), true);
+SELECT setval(pg_get_serial_sequence('refund_requests', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM refund_requests), 1), true);
 SELECT setval(pg_get_serial_sequence('notifications', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM notifications), 1), true);
 SELECT setval(pg_get_serial_sequence('ratings', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM ratings), 1), true);
 SELECT setval(pg_get_serial_sequence('point_transactions', 'id'), GREATEST((SELECT COALESCE(MAX(id), 1) FROM point_transactions), 1), true);

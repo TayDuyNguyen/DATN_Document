@@ -24,7 +24,8 @@
 | Admin chi tiết địa điểm | `/admin/locations/detail/:id` | `danangtrip-admin/src/pages/Locations/LocationDetail/index.tsx` | `03_admin_flows/05d_location_detail.md` | Updated |
 | Admin chi tiết bài viết | `/admin/blog-posts/:id` | `danangtrip-admin/src/pages/Blog/BlogPostDetail/index.tsx` | `03_admin_flows/06d_blog_detail.md` | Updated |
 | Admin modal chi tiết tour | `/admin/tours/list` modal | `danangtrip-admin/src/pages/Tours/TourList/components/TourDetailModal.tsx` | `03_admin_flows/03d_tour_detail_modal.md` | Created |
-| Admin lịch khởi hành tour | `/admin/tours/schedules`, `/admin/tours/:id/schedules/create`, `/admin/tours/schedules/edit/:id` | `danangtrip-admin/src/pages/Tours/TourSchedules/index.tsx`, `TourScheduleCreate/index.tsx`, `TourScheduleEdit/index.tsx` | `03_admin_flows/03h_tour_schedule_detail.md` | Created |
+| Admin lịch khởi hành tour | `/admin/tours/schedules`, `/admin/tours/:id/schedules/create`, `/admin/tours/schedules/edit/:id` | `danangtrip-admin/src/pages/Tours/TourSchedules/index.tsx`, `TourScheduleCreate/index.tsx`, `TourScheduleEdit/index.tsx` | `03_admin_flows/03e`–`03g` (list/create/edit) | Updated |
+| Admin chi tiết lịch KH (API + read-only panels) | `/admin/tours/schedules/edit/:id` | `TourScheduleEdit/index.tsx` (`ScheduleInfoBox`, `ScheduleStatsBlock`) | `03_admin_flows/03h_tour_schedule_detail.md` | Updated |
 | Admin chi tiết liên hệ panel | `/admin/contacts?id=:id` | `danangtrip-admin/src/pages/Contacts/index.tsx`, `ContactDetailPanel.tsx` | `03_admin_flows/09_contacts.md` | Updated |
 | Admin quản lý đánh giá | `/admin/ratings` | `danangtrip-admin/src/pages/Ratings/index.tsx` | `03_admin_flows/08_ratings.md` | Updated |
 | Admin Báo cáo thống kê | `/admin/reports/revenue`, `/admin/reports/bookings`, `/admin/reports/locations`, `/admin/reports/ratings`, `/admin/reports/users` | `danangtrip-admin/src/pages/Reports/*` | `03_admin_flows/10_reports.md` | Updated |

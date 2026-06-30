@@ -88,7 +88,8 @@
 
 | ID | Mô tả | Dữ liệu | Auto |
 |----|--------|---------|------|
-| TC_AD_TLIST_002 | Tìm kiếm keyword | `Ba Na` | ✅ |
+| TC_AD_TLIST_002 | Tìm kiếm keyword | `Ba Na` — **không phân biệt hoa thường** (`ilike`) | ✅ |
+| TC_AD_TLIST_073 | Search `ba na` / `BA NA` cùng kết quả | — | ✅ |
 | TC_AD_TLIST_003 | Lọc status **active** | Tour inactive ẩn | ✅ |
 | TC_AD_TLIST_021 | Lọc status **inactive** | Tour Bán đảo Sơn Trà, Mỹ Sơn | ✅ |
 | TC_AD_TLIST_022 | Lọc **danh mục** (Mountain / category_id=2) | Tour Sơn Trà, Huế | ✅ |
@@ -212,6 +213,7 @@
 | API_TLIST_001 | GET list không auth → 401 | ✅ |
 | API_TLIST_002 | GET list admin → 200, `data` là array | ✅ |
 | API_TLIST_003 | `?search=` lọc đúng | ✅ |
+| API_TLIST_019 | `?search=` không phân biệt hoa thường | ✅ |
 | API_TLIST_004 | `?tour_category_id=` | ✅ |
 | API_TLIST_005 | `?status=active\|inactive` | ✅ |
 | API_TLIST_006 | `?booking_availability=open\|sold_out` | ✅ |
@@ -244,6 +246,7 @@
 | Stats "Hết chỗ" | `booking_availability=sold_out`, không phải `status` |
 | Nút **Lọc** | **Decorative** — filter apply ngay khi đổi select |
 | Active tags | **Không** tag search / booking_availability |
+| Search `search` | PostgreSQL: `unaccent` + `ilike` — **không phân biệt hoa thường** |
 | **TLIST_005** | Bulk deactivate thay per-row toggle |
 
 ---

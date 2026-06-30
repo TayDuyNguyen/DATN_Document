@@ -2,8 +2,8 @@
 
 ## Phạm vi
 
-- Route: `/admin/tours/categories`
-- API liên quan: Thêm/Sửa/Xóa phân loại danh mục tour.
+- Route: `/admin/tour-categories`
+- API liên quan: `GET/POST /admin/tour-categories`, `PUT/PATCH/DELETE /admin/tour-categories/:id`, `PATCH /admin/tour-categories/:id/status`, `PATCH /admin/tour-categories/reorder`
 - Vai trò: Quản trị viên (Admin) / Nhân viên (Staff).
 
 ## Điều kiện trước
@@ -13,14 +13,40 @@
 
 ## Test cases
 
-| TT | Test Case ID | Chức năng | Mô tả Test Case | Điều kiện tiên quyết | Bước thực hiện | Dữ liệu test | Kết quả mong đợi | Kết quả thực tế | Status | Ghi chú |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | TC_AD_TOURCAT_001 | Danh sách danh mục | Hiển thị danh sách các danh mục tour | | Truy cập trang Quản lý Danh mục Tour. | | Renders bảng/lưới chứa các danh mục gồm: Tên danh mục (ví dụ: Tour Trong Ngày, Tour Dài Ngày), Slug, Mô tả ngắn, Icon hiển thị, Số lượng tour đang thuộc danh mục. | | | |
-| 2 | TC_AD_TOURCAT_002 | Thêm danh mục - Validate | Kiểm tra trường bắt buộc khi tạo danh mục mới | Màn hình Thêm danh mục mở sẵn | Bấm "Lưu" mà không điền thông tin gì. | | Hệ thống báo lỗi trường Tên danh mục không được để trống. | | | |
-| 3 | TC_AD_TOURCAT_003 | Thêm danh mục thành công | Tạo mới một danh mục tour thành công | Tên danh mục chưa tồn tại | 1. Nhập Tên danh mục.<br>2. Nhập Mô tả và chọn Icon đại diện.<br>3. Bấm "Lưu". | Tên: "Tour Du Thuyền"<br>Slug: `tour-du-thuyen` | Danh mục mới được tạo thành công, tự động tạo slug thân thiện, hiển thị trong danh sách và xuất hiện ở phần chọn danh mục khi thêm/sửa tour mới. | | | |
-| 4 | TC_AD_TOURCAT_004 | Chỉnh sửa danh mục | Cập nhật thông tin danh mục tour | Danh mục cần sửa tồn tại | 1. Click nút "Sửa" tại dòng danh mục.<br>2. Thay đổi mô tả.<br>3. Nhấn "Cập nhật". | | Thông tin lưu lại thành công, cập nhật ngay lập tức giao diện. | | | |
-| 5 | TC_AD_TOURCAT_005 | Xóa danh mục | Xóa danh mục tour khỏi hệ thống | Danh mục không chứa tour nào hoạt động | 1. Click nút "Xóa" tại danh mục.<br>2. Xác nhận xóa. | | Danh mục bị xóa khỏi hệ thống. Nếu danh mục đang có tour thuộc về nó, hệ thống báo lỗi chặn không cho xóa để tránh lỗi mồ côi dữ liệu. | | | |
+| TT | Test Case ID | Chức năng | Mô tả Test Case | Auto |
+| --- | --- | --- | --- | --- |
+| 1 | TC_AD_TOURCAT_001 | Danh sách danh mục | Hiển thị lưới card: tên, slug, icon, số tour, thứ tự | ✅ |
+| 2 | TC_AD_TOURCAT_002 | Thêm — Validate | Bấm Lưu khi chưa nhập tên → báo lỗi | ✅ |
+| 3 | TC_AD_TOURCAT_003 | Thêm thành công | Tạo mới + auto slug từ tên | ✅ |
+| 4 | TC_AD_TOURCAT_004 | Chỉnh sửa | Sửa mô tả và lưu thành công | ✅ |
+| 5 | TC_AD_TOURCAT_005 | Xóa (có tour) | Chặn xóa khi danh mục còn tour liên kết | ✅ (TC_017) |
+| 6 | TC_AD_TOURCAT_006 | Thống kê | Stats: tổng tour, danh mục active/inactive | ✅ |
+| 7 | TC_AD_TOURCAT_007 | Tìm kiếm | Lọc theo tên/slug | ✅ |
+| 8 | TC_AD_TOURCAT_008 | Lọc trạng thái | Lọc inactive/active | ✅ |
+| 9 | TC_AD_TOURCAT_009 | Toggle status | Đổi trạng thái ngay trên card (PATCH) | ✅ |
+| 10 | TC_AD_TOURCAT_010 | Empty state | Không có kết quả sau lọc | ✅ |
+| 11 | TC_AD_TOURCAT_011 | Lỗi tải + retry | Hiển thị lỗi và nút Thử lại | ✅ |
+| 12 | TC_AD_TOURCAT_012 | Reorder — hủy | Vào chế độ sắp xếp và hủy | ✅ |
+| 13 | TC_AD_TOURCAT_013 | Reorder — disabled | Không sắp xếp khi đang search/lọc | ✅ |
+| 14 | TC_AD_TOURCAT_014 | Reorder — lưu | Lưu thứ tự (PATCH reorder) | ✅ |
+| 15 | TC_AD_TOURCAT_015 | Xóa — hủy dialog | Hủy xác nhận xóa | ✅ |
+| 16 | TC_AD_TOURCAT_016 | Xóa thành công | Xóa danh mục không có tour | ✅ |
+| 17 | TC_AD_TOURCAT_017 | Xóa bị chặn | Toast lỗi khi còn tour | ✅ |
+| 18 | TC_AD_TOURCAT_018 | Drawer — hủy | Đóng drawer tạo mới | ✅ |
+| 19 | TC_AD_TOURCAT_019 | Icon browser | Mở thư viện biểu tượng trong drawer | ✅ |
+| 40 | TC_AD_TOURCAT_040 | Auth guest | Guest redirect login | ✅ |
+| 41 | TC_AD_TOURCAT_041 | Auth non-admin | User thường redirect login | ✅ |
+| 42 | TC_AD_TOURCAT_042 | Auth admin | Admin truy cập được | ✅ |
 
 ## Ghi chú
 
--
+- Nút breadcrumb **Thêm mới** mở drawer tạo danh mục.
+- Mô tả danh mục chỉ hiển thị trong drawer, không trên card.
+- Drag reorder trên UI: kiểm thử thủ công nếu cần pixel-perfect (automation cover enter/save/cancel).
+
+## Automation
+
+- Script: `npm run test:admin:tour-categories`
+- Spec: `tests/admin/tour-categories.spec.ts`, `tour-categories-auth.spec.ts`, `api/admin-tour-categories.api.spec.ts`
+- POM: `tests/pages/admin/TourCategoriesPage.ts`
+- Mock: `tests/fixtures/api/tour-categories.mock.ts`

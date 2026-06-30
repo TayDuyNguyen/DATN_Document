@@ -1,5 +1,7 @@
 # Quản lý Trang đích (Landing Pages) - Test Cases
 
+> **Trạng thái UI (2026-06-23):** Mục menu **đã ẩn** khỏi sidebar admin. Route `/admin/landing-pages` vẫn hoạt động khi truy cập trực tiếp. Lý do: module CMS landing chưa tích hợp đầy đủ với website user (nội dung public đang fallback i18n). Automation Playwright: **tạm hoãn** cho đến khi bật lại menu.
+
 ## 1. Tổng quan màn hình
 
 * Đường dẫn route: `/admin/landing-pages`

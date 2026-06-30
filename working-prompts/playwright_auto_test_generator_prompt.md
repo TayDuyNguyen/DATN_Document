@@ -253,6 +253,52 @@ Nếu audit phát hiện gap mà testcase doc chưa liệt kê, AI **phải**:
 
 ---
 
+# PHASE 0.8 — IMPROVEMENT BACKLOG (BẮT BUỘC khi đóng module / sau audit)
+
+> **Mục đích:** Playwright pass **không** có nghĩa product hoàn hảo. Mọi phát hiện về UI, code, chức năng, mock lệch production **phải ghi lại** để dev/AI session sau không quên — kể cả khi **chưa fix ngay**.
+
+### Khi nào bắt buộc ghi
+
+- Sau **PHASE 0.6 / 0.7** (inventory + data display) phát hiện gap product
+- Sau chạy test: test pass nhưng UX/mock/ copy gây nghi ngờ
+- User hỏi *“có đề xuất sửa gì không?”*
+- Trước khi đánh dấu module **đóng** trong project local memory
+
+### Ba nơi đồng bộ (giống mục workflow memory_test)
+
+| File | Nội dung |
+|------|----------|
+| `memory_test.md` | Bảng backlog ngắn theo module + severity |
+| `testcases/03_admin_flows/<module>.md` | Mục **8. Đề xuất cải thiện** (chi tiết + file liên quan) |
+| (Tùy chọn) `*-backlog.spec.ts` | Chỉ khi đã có TC chờ product fix — `test.skip` + comment ID backlog |
+
+### Bảng backlog (bắt buộc điền)
+
+| ID | Module | Loại | Severity | Phát hiện | Đề xuất | File / vùng | Auto? | Trạng thái |
+|----|--------|------|----------|-----------|---------|-------------|-------|------------|
+| IMP_BDET_001 | 04b | UX | P1 | Error 404 dùng copy update_error | Message riêng not found | `BookingDetail/index.tsx` | — | open |
+
+**Loại:** `UI/UX` | `Code` | `Function/API` | `Mock/Test` | `A11y`  
+**Severity:** `P0` blocker release · `P1` nên sửa sprint tới · `P2` defer · `P3` cosmetic  
+**Trạng thái:** `open` | `fixed` | `wontfix` | `deferred`
+
+### Quy tắc nội dung
+
+1. **Phát hiện** — mô tả hành vi hiện tại (có evidence: test ID, screenshot, dòng code).
+2. **Đề xuất** — hành động cụ thể (không chung chung “cải thiện UX”).
+3. Phân biệt **bug product** vs **nợ test/mock** (ví dụ mock còn `bank_transfer` trong khi web đã SePay-only).
+4. Nếu **không** có đề xuất: ghi một dòng *“Không có — module sạch audit”* (tránh AI bỏ qua bước).
+5. Output section **29. Improvement Recommendations** (OUTPUT FORMAT) **phải** được rút gọn vào bảng trên — không chỉ nằm trong chat.
+
+### Checklist trước “đóng module”
+
+- [ ] Bảng IMP_* trong `memory_test.md`
+- [ ] Mục 8 trong file testcase module
+- [ ] Bug P0/P1 đã tạo TC regression hoặc ghi `skip` có lý do
+- [ ] Pattern mới (selector, mapper) đã cập nhật PHASE 0.5
+
+---
+
 # OUTPUT FORMAT
 
 Generate the output using the following sections:
@@ -1174,6 +1220,7 @@ Always:
 * Think like a Principal QA Architect.
 * **Đọc PHASE 0.5** nếu repo có file quy ước local — audit test case với code trước khi generate.
 * **Inventory toàn bộ button/link (PHASE 0.6)** và **data display (PHASE 0.7)** — thiếu testcase thì tự bổ sung doc + POM + spec.
+* **Ghi improvement backlog (PHASE 0.8)** vào `memory_test.md` + mục 8 testcase doc — kể cả khi chưa fix product.
 * Prefer maintainability over volume.
 * Prefer high-risk coverage over exhaustive duplication.
 * Maximize defect detection.

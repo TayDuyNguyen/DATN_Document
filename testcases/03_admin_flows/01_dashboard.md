@@ -144,13 +144,18 @@
 
 ## 12. Global search (P2)
 
+Quick search header — gọi song song tours / users / bookings / locations / blog. **Search không phân biệt hoa thường** trên PostgreSQL (tours/users/locations/blog đã có; bookings fix `ilike` 2026-06).
+
 | ID | Mô tả | Auto |
 |----|--------|------|
-| TC_AD_DASH_076 | Gõ keyword → dropdown nhóm | ⏳ |
-| TC_AD_DASH_077 | Chọn kết quả → navigate | ⏳ |
-| TC_AD_DASH_078 | Phím `/` focus search | ⏳ |
-| TC_AD_DASH_079 | Không có kết quả | ⏳ |
-| TC_AD_DASH_080 | Arrow + Enter | ⏳ |
+| TC_AD_DASH_076 | Gõ keyword → dropdown nhóm | ✅ |
+| TC_AD_DASH_077 | Chọn kết quả → navigate | ✅ |
+| TC_AD_DASH_078 | Phím `/` focus search | ✅ |
+| TC_AD_DASH_079 | Không có kết quả | ✅ |
+| TC_AD_DASH_080 | Arrow + Enter | ✅ |
+| TC_AD_DASH_092 | Tour keyword `BA NA` → cùng kết quả `ba na` | ✅ |
+| TC_AD_DASH_093 | Booking code `bk-...` → khớp `BK-...` | ✅ |
+| API_DASH_011 | `GET /admin/bookings?search=` case-insensitive | ✅ |
 
 ## 13. Language & layout phụ (P2)
 
